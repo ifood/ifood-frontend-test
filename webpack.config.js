@@ -1,14 +1,14 @@
 const { join } = require('path');
 
 const paths = {
-  styles: join(__dirname, '..', 'src', 'styles')
+  styles: join(__dirname, '..', 'src', 'styles'),
 };
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: './src/index.html',
-  filename: './index.html'
+  filename: './index.html',
 });
 
 module.exports = {
@@ -18,8 +18,8 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(scss|sass|css)$/,
@@ -27,27 +27,31 @@ module.exports = {
           {
             loader: 'style-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              includePaths: ['node_modules', paths.styles]
-            }
-          }
-        ]
-      }
-    ]
+              includePaths: ['node_modules', paths.styles],
+            },
+          },
+        ],
+      },
+    ],
+  },
+  devServer: {
+    hot: true,
+    historyApiFallback: true,
   },
   plugins: [
-    htmlPlugin
-  ]
+    htmlPlugin,
+  ],
 };
