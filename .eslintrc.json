@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "react/forbid-prop-types": 0,
+    "react/require-default-props": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "globals": {
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "shallow": true,
+    "mount": true,
+    "document": true
+  }
+}
