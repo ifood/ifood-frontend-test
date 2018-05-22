@@ -2,8 +2,14 @@
   "extends": "airbnb",
   "rules": {
     "react/forbid-prop-types": 0,
+    "react/prefer-stateless-function": [0],
     "react/require-default-props": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ]
+    }]
   },
   "globals": {
     "describe": true,
