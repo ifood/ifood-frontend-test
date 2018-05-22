@@ -26,7 +26,7 @@ class List extends Component {
   render() {
     const { playlists } = this.state;
     return (
-      <React.Fragment>
+      <div className="container">
         <Filters />
         {
           playlists.map(playlist => ((
@@ -38,7 +38,7 @@ class List extends Component {
             />
           )))
         }
-      </React.Fragment>
+      </div>
     );
   }
 }
