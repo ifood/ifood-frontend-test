@@ -1,5 +1,5 @@
 import React from 'react';
-import { spotifyAuthorizeUrl } from '../constants';
+import { spotifyAuthorizeUrl } from '../constants/spotify';
 
 const Home = () => ((
   <React.Fragment>
