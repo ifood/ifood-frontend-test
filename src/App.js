@@ -4,8 +4,8 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Header from './components/Header/Header';
-import Authorize from './components/Authorize/Authorize';
+import Header from './components/Header';
+import Authorize from './components/Authorize';
 
 import Home from './Pages/Home';
 import List from './Pages/List';
