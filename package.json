@@ -8,6 +8,7 @@
     "build": "webpack --mode production",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:watch:coverage": "jest --watch --coverage",
     "test:coverage": "jest --coverage"
   },
   "jest": {
@@ -31,8 +32,11 @@
   "homepage": "https://github.com/notnotgabriel/ifood-frontend-test#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-import": "^1.7.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
