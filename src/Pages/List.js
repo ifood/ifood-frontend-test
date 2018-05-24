@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Filters from '../components/Filters';
 import PlaylistCard from '../components/PlaylistCard';
@@ -6,8 +8,11 @@ import PlaylistCard from '../components/PlaylistCard';
 import { getPlaylists } from '../services/spotifyServices';
 import { THIRD_SECONDS } from '../constants/spotify';
 
-
 class List extends Component {
+  static propTypes = {
+    filters: PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
 
@@ -61,9 +66,12 @@ class List extends Component {
 
   render() {
     const { playlists } = this.state;
+    const { filters } = this.props;
+
     return (
       <div className="container">
         <Filters
+          filterValues={filters}
           filterByName={this.filterByName}
         />
         {
@@ -81,4 +89,8 @@ class List extends Component {
   }
 }
 
-export default List;
+const mapStateToProps = store => ({
+  filters: store.filters,
+});
+
+export default connect(mapStateToProps)(List);

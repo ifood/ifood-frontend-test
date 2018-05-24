@@ -21,6 +21,7 @@
     "shallow": true,
     "mount": true,
     "document": true,
-    "localStorage": true
+    "localStorage": true,
+    "window": true
   }
 }

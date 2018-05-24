@@ -9,7 +9,12 @@ import {
   LIMIT,
 } from '../../constants/filters';
 
-const RenderField = ({ id, values, validation }) => {
+const RenderField = ({
+  id,
+  values,
+  validation,
+  filterValues,
+}) => {
   switch (id) {
     case LOCALE:
       return ((
@@ -20,6 +25,7 @@ const RenderField = ({ id, values, validation }) => {
             name: 'Locale',
             id: 'locale',
           }}
+          value={filterValues.locale}
         />
       ));
     case COUNTRY:
@@ -31,6 +37,7 @@ const RenderField = ({ id, values, validation }) => {
             name: 'Country',
             id: 'country',
           }}
+          value={filterValues.country}
         />
       ));
     case TIMESTAMP:
@@ -44,6 +51,7 @@ const RenderField = ({ id, values, validation }) => {
           InputLabelProps={{
             shrink: true,
           }}
+          value={filterValues.datetime}
         />
       ));
     case LIMIT:
@@ -59,6 +67,7 @@ const RenderField = ({ id, values, validation }) => {
           min={validation.min}
           max={validation.max}
           margin="normal"
+          value={filterValues.limit}
         />
       ));
     default:
