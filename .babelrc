@@ -1,11 +1,7 @@
 {
   "presets": ["env", "react"],
   "plugins": [
-    ["import", {
-    "libraryName": "antd",
-    "style": "css"
-  }],
-  "transform-export-extensions",
-  "transform-class-properties"
-]
+    "transform-export-extensions",
+    "transform-class-properties"
+  ]
 }
