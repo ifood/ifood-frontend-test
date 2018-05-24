@@ -1,9 +1,9 @@
-export const locale = 'locale';
-export const country = 'country';
-export const timestamp = 'timestamp';
-export const limit = 'limit';
-export const offset = 'offset';
+export const LOCALE = 'locale';
+export const COUNTRY = 'country';
+export const TIMESTAMP = 'timestamp';
+export const LIMIT = 'limit';
+export const OFFSET = 'offset';
 
 export const filtersFields = [
-  locale, country, timestamp, limit, offset,
+  LOCALE, COUNTRY, TIMESTAMP, LIMIT, OFFSET,
 ];
