@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+
 import Filters from '../components/Filters';
 import PlaylistCard from '../components/PlaylistCard';
 
 import { getPlaylists } from '../services/spotifyServices';
+import { THIRD_SECONDS } from '../constants/spotify';
+
 
 class List extends Component {
   constructor(props) {
@@ -10,17 +13,22 @@ class List extends Component {
 
     this.state = {
       playlists: [],
+      intervalId: null,
     };
   }
 
   componentDidMount() {
-    this.callPlaylistService();
+    this._callPlaylistService();
+    this._updateRefreshInterval();
   }
 
-  callPlaylistService = () => ((
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
+  }
+
+  _callPlaylistService = () => ((
     getPlaylists()
       .then((response) => {
-        console.log(response);
         const playlists = response.data.playlists.items;
         this.setState({
           playlists,
@@ -30,6 +38,13 @@ class List extends Component {
         console.log(error);
       })
   ));
+
+  _updateRefreshInterval = () => {
+    const intervalId = setInterval(this._callPlaylistService, THIRD_SECONDS);
+    this.setState({
+      intervalId,
+    });
+  }
 
   filterByName = (event) => {
     const searchedName = event.target.value;
