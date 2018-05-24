@@ -7,15 +7,15 @@ import List from './List';
 jest.mock('../services/spotifyServices');
 
 describe('<List />', () => {
-  it('should get list of playlists', () => {
+  it('should get a list of playlists and set interval to get more after third seconds', () => {
     const list = shallow((
       <List />
     ));
 
-    const spyCallPlaylistService = jest.spyOn(list.instance(), 'callPlaylistService');
-
     list.instance().componentDidMount();
-    expect(spyCallPlaylistService).toBeCalled();
+    list.update();
+
+    expect(list.state().intervalId).toBeDefined();
     expect(getPlaylists).toBeCalled();
   });
 });
