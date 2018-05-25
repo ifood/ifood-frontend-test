@@ -5,7 +5,7 @@ export const filterReducer = (state = {}, action) => {
     case UPDATE_FILTERS:
       return {
         ...state,
-        filters: action.values,
+        ...action.values,
       };
     default:
       return state;
