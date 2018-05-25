@@ -2,11 +2,12 @@ import axios from 'axios';
 
 const playlistsUrl = 'https://api.spotify.com/v1/browse/featured-playlists';
 
-export const getPlaylists = () => {
+export const getPlaylists = params => {
   const accessToken = localStorage.getItem('access-token');
-  const headers = {
+  const options = {
     headers: { Authorization: `Bearer ${accessToken}` },
+    params,
   };
 
-  return axios.get(playlistsUrl, headers);
+  return axios.get(playlistsUrl, options);
 };
