@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import TextField from '@material-ui/core/TextField';
 import SelectRenderer from '../SelectRenderer';
 
@@ -7,13 +9,15 @@ import {
   COUNTRY,
   TIMESTAMP,
   LIMIT,
+  OFFSET,
 } from '../../constants/filters';
 
 const RenderField = ({
   id,
   values,
   validation,
-  filterValues,
+  fieldValues,
+  onChange,
 }) => {
   switch (id) {
     case LOCALE:
@@ -22,10 +26,12 @@ const RenderField = ({
           options={values}
           label="Locale"
           inputProps={{
-            name: 'Locale',
+            name: 'locale',
             id: 'locale',
           }}
-          value={filterValues.locale}
+          value={fieldValues.locale}
+          onChange={onChange}
+          className="filters-container__field"
         />
       ));
     case COUNTRY:
@@ -34,32 +40,35 @@ const RenderField = ({
           options={values}
           label="Country"
           inputProps={{
-            name: 'Country',
+            name: 'country',
             id: 'country',
           }}
-          value={filterValues.country}
+          value={fieldValues.country}
+          onChange={onChange}
+          className="filters-container__field"
         />
       ));
     case TIMESTAMP:
       return ((
         <TextField
-          id="datetime-local"
+          id="datetime"
+          name="datetime"
           label="Date and time"
           type="datetime-local"
-          onChange={() => {}}
           defaultValue="2017-05-24T10:30"
           InputLabelProps={{
             shrink: true,
           }}
-          value={filterValues.datetime}
+          value={fieldValues.datetime}
+          onChange={onChange}
+          className="filters-container__field"
         />
       ));
     case LIMIT:
       return ((
         <TextField
-          id="number"
           label="Limit"
-          onChange={() => {}}
+          name="limit"
           type="number"
           InputLabelProps={{
             shrink: true,
@@ -67,12 +76,40 @@ const RenderField = ({
           min={validation.min}
           max={validation.max}
           margin="normal"
-          value={filterValues.limit}
+          defaultValue={validation.min}
+          value={fieldValues.limit}
+          onChange={onChange}
+          className="filters-container__field"
+        />
+      ));
+    case OFFSET:
+      return ((
+        <TextField
+          label="Página"
+          name="offset"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          min={1}
+          margin="normal"
+          defaultValue={1}
+          value={fieldValues.offset}
+          onChange={onChange}
+          className="filters-container__field"
         />
       ));
     default:
       return null;
   }
+};
+
+RenderField.propTypes = {
+  id: PropTypes.string,
+  values: PropTypes.array,
+  validation: PropTypes.object,
+  fieldValues: PropTypes.object,
+  onChange: PropTypes.func,
 };
 
 export default RenderField;

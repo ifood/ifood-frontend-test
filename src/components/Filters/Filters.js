@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import TextField from '@material-ui/core/TextField';
 
 import { getFilters } from '../../services/filterServices';
-import { updateFilters } from '../../redux/actions/updateFilters';
 
 import RenderField from './RenderField';
 
@@ -13,6 +11,7 @@ class Filters extends Component {
   static propTypes = {
     filterByName: PropTypes.func,
     filterValues: PropTypes.object,
+    onChangeFilters: PropTypes.func,
   };
 
   constructor(props) {
@@ -20,7 +19,6 @@ class Filters extends Component {
 
     this.state = {
       filtersFields: [],
-      filterValues: {},
     };
   }
 
@@ -35,33 +33,29 @@ class Filters extends Component {
       });
   }
 
-  updateFilterValues = (filterValues) => {
-    const currentFilterValues = this.filterValues;
-    this.setState({
-      ...currentFilterValues,
-      filterValues,
-    });
-
-    //atualiza action
-  }
-
   render() {
     const { filtersFields } = this.state;
-    const { filterByName, filterValues } = this.props;
+    const {
+      filterByName,
+      filterValues,
+      onChangeFilters,
+    } = this.props;
+
     return (
       <div className="filters-container">
         <TextField
           id="search"
           label="Search by name"
           onChange={filterByName}
-          margin="normal"
+          className="filters-container__field"
         />
         {
           filtersFields.map(field => ((
             <RenderField
               {...field}
               key={field.id}
-              filterValues={filterValues}
+              onChange={onChangeFilters}
+              fieldValues={filterValues}
             />
           )))
         }

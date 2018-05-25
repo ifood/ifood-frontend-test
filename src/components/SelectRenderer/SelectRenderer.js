@@ -11,11 +11,13 @@ const SelectRenderer = ({
   options,
   label,
   inputProps,
+  value,
+  className,
 }) => ((
-  <FormControl>
+  <FormControl className={className}>
     <InputLabel htmlFor={inputProps.id}>{label}</InputLabel>
     <Select
-      value=""
+      value={value || ''}
       onChange={onChange}
       inputProps={inputProps}
     >
@@ -38,6 +40,8 @@ SelectRenderer.propTypes = {
   options: PropTypes.array,
   inputProps: PropTypes.object,
   label: PropTypes.string,
+  value: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default SelectRenderer;
