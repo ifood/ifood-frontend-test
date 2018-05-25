@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { updateFilters } from '../redux/actions/updateFilters';
 import Filters from '../components/Filters';
 import PlaylistCard from '../components/PlaylistCard';
 
 import { getPlaylists } from '../services/spotifyServices';
 import { THIRD_SECONDS } from '../constants/spotify';
 
-class List extends Component {
+export class RawList extends Component {
   static propTypes = {
     filters: PropTypes.object,
+    updateFilters: PropTypes.func,
   };
 
   constructor(props) {
@@ -31,8 +34,9 @@ class List extends Component {
     clearInterval(this.state.intervalId);
   }
 
-  _callPlaylistService = () => ((
-    getPlaylists()
+  _callPlaylistService = () => {
+    const { filters } = this.props;
+    return getPlaylists(filters)
       .then((response) => {
         const playlists = response.data.playlists.items;
         this.setState({
@@ -41,8 +45,8 @@ class List extends Component {
       })
       .catch((error) => {
         console.log(error);
-      })
-  ));
+      });
+  }
 
   _updateRefreshInterval = () => {
     const intervalId = setInterval(this._callPlaylistService, THIRD_SECONDS);
@@ -64,6 +68,21 @@ class List extends Component {
     });
   }
 
+  filterList = (event) => {
+    const field = {
+      [event.target.name]: event.target.value,
+    };
+
+    const currentFilterValues = this.props.filters;
+    const updatedFilters = {
+      ...currentFilterValues,
+      ...field,
+    };
+
+    this.props.updateFilters(updatedFilters);
+    this._callPlaylistService();
+  }
+
   render() {
     const { playlists } = this.state;
     const { filters } = this.props;
@@ -73,6 +92,7 @@ class List extends Component {
         <Filters
           filterValues={filters}
           filterByName={this.filterByName}
+          onChangeFilters={this.filterList}
         />
         {
           playlists.map(playlist => ((
@@ -93,4 +113,8 @@ const mapStateToProps = store => ({
   filters: store.filters,
 });
 
-export default connect(mapStateToProps)(List);
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ updateFilters }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(RawList);
