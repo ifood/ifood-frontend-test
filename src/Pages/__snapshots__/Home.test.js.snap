@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> should match snapshot 1`] = `
+<div
+  className="container"
+>
+  <WithStyles(Typography)
+    gutterBottom={true}
+    variant="headline"
+  >
+    Login in your Spotify account to see the featured playlists we have prepared for you.
+  </WithStyles(Typography)>
+  <a
+    className="auth-link"
+    href="https://accounts.spotify.com/authorize?client_id=5bed112155354bd9a18876c5d8dabcb9&response_type=token&redirect_uri=http://localhost:8080/authorize"
+  >
+    Authorize
+  </a>
+</div>
+`;

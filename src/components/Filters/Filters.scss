@@ -1,0 +1,8 @@
+.filters-container {
+  display: flex;
+  flex-direction: column;
+
+  .filters-container__field {
+    margin-bottom: .8em;
+  }
+}
