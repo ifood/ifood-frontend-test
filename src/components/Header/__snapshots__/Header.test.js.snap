@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> render() renders the content correctly 1`] = `
+<styled.div>
+  <Styled(WithStyles(AppBar))
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(Typography)
+        color="inherit"
+        variant="h4"
+      >
+        test title
+      </WithStyles(Typography)>
+    </WithStyles(Toolbar)>
+  </Styled(WithStyles(AppBar))>
+</styled.div>
+`;
