@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SelectField /> render() renders the content correctly when field is defined 1`] = `
+<TextField
+  fullWidth={true}
+  id="locale"
+  label="Locale"
+  margin="normal"
+  onChange={[MockFunction]}
+  required={false}
+  select={true}
+  value="en_AU"
+  variant="standard"
+>
+  <WithStyles(MenuItem)
+    key="en_AU"
+    value="en_AU"
+  >
+    en_AU
+  </WithStyles(MenuItem)>
+  <WithStyles(MenuItem)
+    key="de_DE"
+    value="de_DE"
+  >
+    de_DE 
+  </WithStyles(MenuItem)>
+  <WithStyles(MenuItem)
+    key="pt_BR"
+    value="pt_BR"
+  >
+    pt_BR
+  </WithStyles(MenuItem)>
+  <WithStyles(MenuItem)
+    key="fr_FR"
+    value="fr_FR"
+  >
+    fr_FR
+  </WithStyles(MenuItem)>
+  <WithStyles(MenuItem)
+    key="en_US"
+    value="en_US"
+  >
+    en_US
+  </WithStyles(MenuItem)>
+  <WithStyles(MenuItem)
+    key="es_AR"
+    value="es_AR"
+  >
+    es_AR
+  </WithStyles(MenuItem)>
+</TextField>
+`;
+
+exports[`<SelectField /> render() renders the content correctly when field is undefined 1`] = `""`;
+
+exports[`<SelectField /> renderValues() should return the content as expected according to the field 1`] = `
+Array [
+  <WithStyles(MenuItem)
+    value="en_AU"
+  >
+    en_AU
+  </WithStyles(MenuItem)>,
+  <WithStyles(MenuItem)
+    value="de_DE"
+  >
+    de_DE 
+  </WithStyles(MenuItem)>,
+  <WithStyles(MenuItem)
+    value="pt_BR"
+  >
+    pt_BR
+  </WithStyles(MenuItem)>,
+  <WithStyles(MenuItem)
+    value="fr_FR"
+  >
+    fr_FR
+  </WithStyles(MenuItem)>,
+  <WithStyles(MenuItem)
+    value="en_US"
+  >
+    en_US
+  </WithStyles(MenuItem)>,
+  <WithStyles(MenuItem)
+    value="es_AR"
+  >
+    es_AR
+  </WithStyles(MenuItem)>,
+]
+`;

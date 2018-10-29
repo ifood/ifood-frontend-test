@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playlists.actions action should return an object with type property and other properties spread  1`] = `
+Object {
+  "data": "hello",
+  "type": "SOMETHING",
+}
+`;
+
+exports[`Playlists.actions createRequestTypes should return an object with REQUEST, SUCCESS and FAILURE keys 1`] = `
+Object {
+  "FAILURE": "SOMETHING_FAILURE",
+  "REQUEST": "SOMETHING_REQUEST",
+  "SUCCESS": "SOMETHING_SUCCESS",
+}
+`;
+
+exports[`Playlists.actions filtersMetadata.failure should return an action as expected 1`] = `
+Object {
+  "filters": "error",
+  "type": "PLAYLISTS_REQUEST",
+}
+`;
+
+exports[`Playlists.actions filtersMetadata.request should return an action as expected 1`] = `
+Object {
+  "filters": undefined,
+  "type": "PLAYLISTS_REQUEST",
+}
+`;
+
+exports[`Playlists.actions filtersMetadata.success should return an action as expected 1`] = `
+Object {
+  "filters": Array [
+    "1",
+    "2",
+  ],
+  "type": "PLAYLISTS_REQUEST",
+}
+`;
+
+exports[`Playlists.actions playlists.failure should return an action as expected 1`] = `
+Object {
+  "filters": "error",
+  "type": "PLAYLISTS_REQUEST",
+}
+`;
+
+exports[`Playlists.actions playlists.request should return an action as expected 1`] = `
+Object {
+  "filters": Array [
+    "1",
+    "2",
+  ],
+  "type": "PLAYLISTS_REQUEST",
+}
+`;
+
+exports[`Playlists.actions playlists.success should return an action as expected 1`] = `
+Object {
+  "filters": Array [
+    "1",
+    "2",
+  ],
+  "type": "PLAYLISTS_REQUEST",
+}
+`;

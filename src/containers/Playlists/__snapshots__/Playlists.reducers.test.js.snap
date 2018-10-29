@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playlists.reducers filtersMetadata() should return the correct new state for FILTERS_METADATA.FAILURE action 1`] = `
+Object {
+  "error": "Some error",
+  "loading": false,
+  "something": "already there",
+}
+`;
+
+exports[`Playlists.reducers filtersMetadata() should return the correct new state for FILTERS_METADATA.REQUEST action 1`] = `
+Object {
+  "loading": true,
+  "something": "already there",
+}
+`;
+
+exports[`Playlists.reducers filtersMetadata() should return the correct new state for FILTERS_METADATA.SUCCESS action 1`] = `
+Object {
+  "loading": false,
+  "metadata": Array [
+    "1",
+    "2",
+  ],
+  "something": "already there",
+}
+`;
+
+exports[`Playlists.reducers playlistsData() should return the correct new state for PLAYLISTS.FAILURE action 1`] = `
+Object {
+  "data": Array [],
+  "error": "Some error",
+  "loading": false,
+  "something": "already there",
+}
+`;
+
+exports[`Playlists.reducers playlistsData() should return the correct new state for PLAYLISTS.REQUEST action 1`] = `
+Object {
+  "loading": true,
+  "something": "already there",
+}
+`;
+
+exports[`Playlists.reducers playlistsData() should return the correct new state for PLAYLISTS.SUCCESS action 1`] = `
+Object {
+  "data": Array [
+    "1",
+    "2",
+  ],
+  "loading": false,
+  "something": "already there",
+}
+`;

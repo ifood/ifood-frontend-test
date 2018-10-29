@@ -1,0 +1,465 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Playlists /> filterByText() should call return the filtered array if searchTerm is not empty 1`] = `
+Array [
+  Object {
+    "external_urls": Object {
+      "spotify": "spotify url2",
+    },
+    "images": Array [
+      Object {
+        "height": 300,
+        "url": "some.url2",
+        "width": 300,
+      },
+    ],
+    "name": "playlist name2",
+    "owner": Object {
+      "display_name": "some name 2",
+    },
+  },
+]
+`;
+
+exports[`<Playlists /> filterByText() should call return the same array if searchTerm is empty 1`] = `
+Array [
+  Object {
+    "external_urls": Object {
+      "spotify": "spotify url",
+    },
+    "images": Array [
+      Object {
+        "height": 300,
+        "url": "some.url",
+        "width": 300,
+      },
+    ],
+    "name": "playlist name1",
+    "owner": Object {
+      "display_name": "some name 1",
+    },
+  },
+  Object {
+    "external_urls": Object {
+      "spotify": "spotify url2",
+    },
+    "images": Array [
+      Object {
+        "height": 300,
+        "url": "some.url2",
+        "width": 300,
+      },
+    ],
+    "name": "playlist name2",
+    "owner": Object {
+      "display_name": "some name 2",
+    },
+  },
+]
+`;
+
+exports[`<Playlists /> render() renders the content correctly when data is loading 1`] = `
+<Fragment>
+  <Header
+    title="Spotifood"
+  />
+  <styled.div>
+    <Filters
+      metaFilters={
+        Array [
+          Object {
+            "id": "locale",
+            "name": "Locale",
+            "values": Array [
+              Object {
+                "name": "en_AU",
+                "value": "en_AU",
+              },
+              Object {
+                "name": "de_DE ",
+                "value": "de_DE",
+              },
+              Object {
+                "name": "pt_BR",
+                "value": "pt_BR",
+              },
+              Object {
+                "name": "fr_FR",
+                "value": "fr_FR",
+              },
+              Object {
+                "name": "en_US",
+                "value": "en_US",
+              },
+              Object {
+                "name": "es_AR",
+                "value": "es_AR",
+              },
+            ],
+          },
+          Object {
+            "id": "country",
+            "name": "País",
+            "values": Array [
+              Object {
+                "name": "Australia",
+                "value": "AU",
+              },
+              Object {
+                "name": "Alemanhã",
+                "value": "DE",
+              },
+              Object {
+                "name": "Brasil",
+                "value": "BR",
+              },
+              Object {
+                "name": "Portugal",
+                "value": "PT",
+              },
+              Object {
+                "name": "EUA",
+                "value": "en_US",
+              },
+              Object {
+                "name": "Rússia",
+                "value": "RU",
+              },
+            ],
+          },
+          Object {
+            "id": "timestamp",
+            "name": "Data e Horário",
+            "validation": Object {
+              "entityType": "DATE_TIME",
+              "pattern": "yyyy-MM-ddTHH:mm:ss",
+              "primitiveType": "STRING",
+            },
+          },
+          Object {
+            "id": "limit",
+            "name": "Quantidade",
+            "validation": Object {
+              "max": 50,
+              "min": 1,
+              "primitiveType": "INTEGER",
+            },
+          },
+          Object {
+            "id": "offset",
+            "name": "Página",
+            "validation": Object {
+              "primitiveType": "INTEGER",
+            },
+          },
+        ]
+      }
+      onChange={[Function]}
+      onSearch={[Function]}
+    />
+    <styled.div>
+      <WithStyles(CircularProgress) />
+    </styled.div>
+  </styled.div>
+</Fragment>
+`;
+
+exports[`<Playlists /> render() renders the content correctly when there is data 1`] = `
+<Fragment>
+  <Header
+    title="Spotifood"
+  />
+  <styled.div>
+    <Filters
+      metaFilters={
+        Array [
+          Object {
+            "id": "locale",
+            "name": "Locale",
+            "values": Array [
+              Object {
+                "name": "en_AU",
+                "value": "en_AU",
+              },
+              Object {
+                "name": "de_DE ",
+                "value": "de_DE",
+              },
+              Object {
+                "name": "pt_BR",
+                "value": "pt_BR",
+              },
+              Object {
+                "name": "fr_FR",
+                "value": "fr_FR",
+              },
+              Object {
+                "name": "en_US",
+                "value": "en_US",
+              },
+              Object {
+                "name": "es_AR",
+                "value": "es_AR",
+              },
+            ],
+          },
+          Object {
+            "id": "country",
+            "name": "País",
+            "values": Array [
+              Object {
+                "name": "Australia",
+                "value": "AU",
+              },
+              Object {
+                "name": "Alemanhã",
+                "value": "DE",
+              },
+              Object {
+                "name": "Brasil",
+                "value": "BR",
+              },
+              Object {
+                "name": "Portugal",
+                "value": "PT",
+              },
+              Object {
+                "name": "EUA",
+                "value": "en_US",
+              },
+              Object {
+                "name": "Rússia",
+                "value": "RU",
+              },
+            ],
+          },
+          Object {
+            "id": "timestamp",
+            "name": "Data e Horário",
+            "validation": Object {
+              "entityType": "DATE_TIME",
+              "pattern": "yyyy-MM-ddTHH:mm:ss",
+              "primitiveType": "STRING",
+            },
+          },
+          Object {
+            "id": "limit",
+            "name": "Quantidade",
+            "validation": Object {
+              "max": 50,
+              "min": 1,
+              "primitiveType": "INTEGER",
+            },
+          },
+          Object {
+            "id": "offset",
+            "name": "Página",
+            "validation": Object {
+              "primitiveType": "INTEGER",
+            },
+          },
+        ]
+      }
+      onChange={[Function]}
+      onSearch={[Function]}
+    />
+    <PlaylistGrid
+      playlists={
+        Array [
+          Object {
+            "external_urls": Object {
+              "spotify": "spotify url",
+            },
+            "images": Array [
+              Object {
+                "height": 300,
+                "url": "some.url",
+                "width": 300,
+              },
+            ],
+            "name": "playlist name1",
+            "owner": Object {
+              "display_name": "some name 1",
+            },
+          },
+          Object {
+            "external_urls": Object {
+              "spotify": "spotify url2",
+            },
+            "images": Array [
+              Object {
+                "height": 300,
+                "url": "some.url2",
+                "width": 300,
+              },
+            ],
+            "name": "playlist name2",
+            "owner": Object {
+              "display_name": "some name 2",
+            },
+          },
+        ]
+      }
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`<Playlists /> render() renders the content correctly when there is no data 1`] = `
+<Fragment>
+  <Header
+    title="Spotifood"
+  />
+  <styled.div>
+    <Filters
+      metaFilters={
+        Array [
+          Object {
+            "id": "locale",
+            "name": "Locale",
+            "values": Array [
+              Object {
+                "name": "en_AU",
+                "value": "en_AU",
+              },
+              Object {
+                "name": "de_DE ",
+                "value": "de_DE",
+              },
+              Object {
+                "name": "pt_BR",
+                "value": "pt_BR",
+              },
+              Object {
+                "name": "fr_FR",
+                "value": "fr_FR",
+              },
+              Object {
+                "name": "en_US",
+                "value": "en_US",
+              },
+              Object {
+                "name": "es_AR",
+                "value": "es_AR",
+              },
+            ],
+          },
+          Object {
+            "id": "country",
+            "name": "País",
+            "values": Array [
+              Object {
+                "name": "Australia",
+                "value": "AU",
+              },
+              Object {
+                "name": "Alemanhã",
+                "value": "DE",
+              },
+              Object {
+                "name": "Brasil",
+                "value": "BR",
+              },
+              Object {
+                "name": "Portugal",
+                "value": "PT",
+              },
+              Object {
+                "name": "EUA",
+                "value": "en_US",
+              },
+              Object {
+                "name": "Rússia",
+                "value": "RU",
+              },
+            ],
+          },
+          Object {
+            "id": "timestamp",
+            "name": "Data e Horário",
+            "validation": Object {
+              "entityType": "DATE_TIME",
+              "pattern": "yyyy-MM-ddTHH:mm:ss",
+              "primitiveType": "STRING",
+            },
+          },
+          Object {
+            "id": "limit",
+            "name": "Quantidade",
+            "validation": Object {
+              "max": 50,
+              "min": 1,
+              "primitiveType": "INTEGER",
+            },
+          },
+          Object {
+            "id": "offset",
+            "name": "Página",
+            "validation": Object {
+              "primitiveType": "INTEGER",
+            },
+          },
+        ]
+      }
+      onChange={[Function]}
+      onSearch={[Function]}
+    />
+    <styled.div>
+      There are no playlists for these filters, please change them and try again
+    </styled.div>
+  </styled.div>
+</Fragment>
+`;
+
+exports[`<Playlists /> renderPlaylistGrid() should return the expected content when the data is empty 1`] = `
+<ForwardRef>
+  There are no playlists for these filters, please change them and try again
+</ForwardRef>
+`;
+
+exports[`<Playlists /> renderPlaylistGrid() should return the expected content when the data is loading 1`] = `
+<ForwardRef>
+  <WithStyles(CircularProgress) />
+</ForwardRef>
+`;
+
+exports[`<Playlists /> renderPlaylistGrid() should return the expected content when the data is present 1`] = `
+<PlaylistGrid
+  playlists={
+    Array [
+      Object {
+        "external_urls": Object {
+          "spotify": "spotify url",
+        },
+        "images": Array [
+          Object {
+            "height": 300,
+            "url": "some.url",
+            "width": 300,
+          },
+        ],
+        "name": "playlist name1",
+        "owner": Object {
+          "display_name": "some name 1",
+        },
+      },
+      Object {
+        "external_urls": Object {
+          "spotify": "spotify url2",
+        },
+        "images": Array [
+          Object {
+            "height": 300,
+            "url": "some.url2",
+            "width": 300,
+          },
+        ],
+        "name": "playlist name2",
+        "owner": Object {
+          "display_name": "some name 2",
+        },
+      },
+    ]
+  }
+/>
+`;

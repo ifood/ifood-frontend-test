@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistGrid /> render() renders the content correctly 1`] = `
+<styled.div>
+  <WithStyles(GridList)
+    cellHeight={300}
+    cols={2}
+  >
+    <WithStyles(GridListTile)
+      cols={1}
+      key="some.url"
+    >
+      <styled.a
+        href="spotify url"
+        target="_blank"
+      >
+        <img
+          alt="playlist"
+          src="some.url"
+        />
+        <Styled(WithStyles(GridListTileBar))
+          subtitle="some name 1"
+          title="playlist name1"
+        />
+      </styled.a>
+    </WithStyles(GridListTile)>
+    <WithStyles(GridListTile)
+      cols={1}
+      key="some.url2"
+    >
+      <styled.a
+        href="spotify url2"
+        target="_blank"
+      >
+        <img
+          alt="playlist"
+          src="some.url2"
+        />
+        <Styled(WithStyles(GridListTileBar))
+          subtitle="some name 2"
+          title="playlist name2"
+        />
+      </styled.a>
+    </WithStyles(GridListTile)>
+  </WithStyles(GridList)>
+</styled.div>
+`;

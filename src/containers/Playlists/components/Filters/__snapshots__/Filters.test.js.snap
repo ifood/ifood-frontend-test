@@ -1,0 +1,345 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filters /> render() renders the content correctly 1`] = `
+<styled.div>
+  <WithStyles(Grid)
+    alignItems="flex-start"
+    container={true}
+    direction="row"
+    justify="center"
+    spacing={24}
+  >
+    <WithStyles(Grid)
+      item={true}
+      xs={12}
+    >
+      <TextField
+        fullWidth={true}
+        id="searchTerm"
+        label="Search"
+        margin="normal"
+        onChange={[Function]}
+        required={false}
+        select={false}
+        type="search"
+        value=""
+        variant="standard"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="locale"
+      sm={6}
+      xs={12}
+    >
+      <SelectField
+        field={
+          Object {
+            "id": "locale",
+            "name": "Locale",
+            "values": Array [
+              Object {
+                "name": "en_AU",
+                "value": "en_AU",
+              },
+              Object {
+                "name": "de_DE ",
+                "value": "de_DE",
+              },
+              Object {
+                "name": "pt_BR",
+                "value": "pt_BR",
+              },
+              Object {
+                "name": "fr_FR",
+                "value": "fr_FR",
+              },
+              Object {
+                "name": "en_US",
+                "value": "en_US",
+              },
+              Object {
+                "name": "es_AR",
+                "value": "es_AR",
+              },
+            ],
+          }
+        }
+        onChange={[Function]}
+        value=""
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="country"
+      sm={6}
+      xs={12}
+    >
+      <SelectField
+        field={
+          Object {
+            "id": "country",
+            "name": "País",
+            "values": Array [
+              Object {
+                "name": "Australia",
+                "value": "AU",
+              },
+              Object {
+                "name": "Alemanhã",
+                "value": "DE",
+              },
+              Object {
+                "name": "Brasil",
+                "value": "BR",
+              },
+              Object {
+                "name": "Portugal",
+                "value": "PT",
+              },
+              Object {
+                "name": "EUA",
+                "value": "en_US",
+              },
+              Object {
+                "name": "Rússia",
+                "value": "RU",
+              },
+            ],
+          }
+        }
+        onChange={[Function]}
+        value=""
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="timestamp"
+      sm={4}
+      xs={12}
+    >
+      <styled.div>
+        <PickerWrapper
+          format="YYYY-MM-DD HH:mm:ss"
+          inputPrefixCls="ant-input"
+          locale={Object {}}
+          onChange={[Function]}
+          onOk={[Function]}
+          onOpenChange={[Function]}
+          placeholder="Select Time"
+          popupStyle={Object {}}
+          prefixCls="ant-calendar"
+          showTime={true}
+          transitionName="slide-up"
+        />
+      </styled.div>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="limit"
+      sm={4}
+      xs={12}
+    >
+      <TextField
+        fullWidth={true}
+        id="limit"
+        inputProps={
+          Object {
+            "max": 50,
+            "min": 1,
+          }
+        }
+        label="Quantidade"
+        margin="normal"
+        onChange={[Function]}
+        required={false}
+        select={false}
+        type="number"
+        value=""
+        variant="standard"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="offset"
+      sm={4}
+      xs={12}
+    >
+      <TextField
+        fullWidth={true}
+        id="offset"
+        inputProps={
+          Object {
+            "min": 0,
+          }
+        }
+        label="Página"
+        margin="normal"
+        onChange={[Function]}
+        required={false}
+        select={false}
+        type="number"
+        value=""
+        variant="standard"
+      />
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</styled.div>
+`;
+
+exports[`<Filters /> renderFields() should return the content as expected according to the meta filters 1`] = `
+Array [
+  <WithStyles(Grid)
+    item={true}
+    sm={6}
+    xs={12}
+  >
+    <SelectField
+      field={
+        Object {
+          "id": "locale",
+          "name": "Locale",
+          "values": Array [
+            Object {
+              "name": "en_AU",
+              "value": "en_AU",
+            },
+            Object {
+              "name": "de_DE ",
+              "value": "de_DE",
+            },
+            Object {
+              "name": "pt_BR",
+              "value": "pt_BR",
+            },
+            Object {
+              "name": "fr_FR",
+              "value": "fr_FR",
+            },
+            Object {
+              "name": "en_US",
+              "value": "en_US",
+            },
+            Object {
+              "name": "es_AR",
+              "value": "es_AR",
+            },
+          ],
+        }
+      }
+      onChange={[Function]}
+      value=""
+    />
+  </WithStyles(Grid)>,
+  <WithStyles(Grid)
+    item={true}
+    sm={6}
+    xs={12}
+  >
+    <SelectField
+      field={
+        Object {
+          "id": "country",
+          "name": "País",
+          "values": Array [
+            Object {
+              "name": "Australia",
+              "value": "AU",
+            },
+            Object {
+              "name": "Alemanhã",
+              "value": "DE",
+            },
+            Object {
+              "name": "Brasil",
+              "value": "BR",
+            },
+            Object {
+              "name": "Portugal",
+              "value": "PT",
+            },
+            Object {
+              "name": "EUA",
+              "value": "en_US",
+            },
+            Object {
+              "name": "Rússia",
+              "value": "RU",
+            },
+          ],
+        }
+      }
+      onChange={[Function]}
+      value=""
+    />
+  </WithStyles(Grid)>,
+  <WithStyles(Grid)
+    item={true}
+    sm={4}
+    xs={12}
+  >
+    <ForwardRef>
+      <PickerWrapper
+        format="YYYY-MM-DD HH:mm:ss"
+        inputPrefixCls="ant-input"
+        locale={Object {}}
+        onChange={[Function]}
+        onOk={[Function]}
+        onOpenChange={[Function]}
+        placeholder="Select Time"
+        popupStyle={Object {}}
+        prefixCls="ant-calendar"
+        showTime={true}
+        transitionName="slide-up"
+      />
+    </ForwardRef>
+  </WithStyles(Grid)>,
+  <WithStyles(Grid)
+    item={true}
+    sm={4}
+    xs={12}
+  >
+    <TextField
+      fullWidth={true}
+      id="limit"
+      inputProps={
+        Object {
+          "max": 50,
+          "min": 1,
+        }
+      }
+      label="Quantidade"
+      margin="normal"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      value=""
+      variant="standard"
+    />
+  </WithStyles(Grid)>,
+  <WithStyles(Grid)
+    item={true}
+    sm={4}
+    xs={12}
+  >
+    <TextField
+      fullWidth={true}
+      id="offset"
+      inputProps={
+        Object {
+          "min": 0,
+        }
+      }
+      label="Página"
+      margin="normal"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      value=""
+      variant="standard"
+    />
+  </WithStyles(Grid)>,
+]
+`;

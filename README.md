@@ -1,29 +1,21 @@
-# iFood Frontend Test
+# Spotifood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+## Architechture details
 
-## Business rules
+- The solution was designed using create-react-app as the scafolding tool for out of the box webpack 4 config.
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+- React was chosen as suggested because it's very powerful and fast to develop
 
-## Hints or Constraints
+- The project structure is simple yet very effective. I chose to divide the app between containers that represents the main views of the application and components that are only responsible for rendering a specific content according to the data given to them.
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+- Even though redux wasn't really necessary due to the size of the app, I've chosen to use it because it was supposed to escale, thus adding redux would be a must eventually. Furthermore I've chosen redux-saga for handling side-effects in redux, as it's very powerful and testable.
 
-## Non functional requirements
+- Also, the files are separated by responsibility to avoid monolith files. i.e. Playlists.jsx has many files for each functionality such as Playlists.api.js, Playlists.saga.js, etc.
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+- I've used Material-UI because I didn't know the library and I wanted to try it. My impression was that it was good, but Ant Design is still much better =)
+
+- Tests are always located with the File being tested. Keeping things close usually increases the development velocity for quite a bit!
+
+- There are some things that I would improve, such as the withAuthorization component. It would be better to open the spotify authorization in a new small window and set the token into localStorage. Also, make a test request to avoid going through the login flow if we already have a valid token in localStorage.
+
+- I would also increase the code coverage
