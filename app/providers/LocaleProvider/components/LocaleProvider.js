@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
-import translations from '../../i18n';
+import translations from '../../../i18n';
 
 class LocaleProvider extends React.Component {
   state = {

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import LocaleProvider from './LocaleProvider';
-import { LOCALE_PROVIDER_REDUCERS_NAME } from './LocaleProviderReducers';
+import LocaleProvider from '../components/LocaleProvider';
+import { LOCALE_PROVIDER_REDUX_NAME } from '../modules/LocaleProviderRedux';
 
 const mapStateToProps = state => ({
-  locale: state[LOCALE_PROVIDER_REDUCERS_NAME].locale,
+  locale: state[LOCALE_PROVIDER_REDUX_NAME].locale,
 });
 
 const LocaleProviderContainer = connect(mapStateToProps)(LocaleProvider);

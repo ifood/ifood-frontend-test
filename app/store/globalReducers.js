@@ -1,5 +1,6 @@
-import LocaleProviderReducers, { LOCALE_PROVIDER_REDUCERS_NAME } from 'Providers/LocaleProvider/LocaleProviderReducers';
+import LocaleProviderReducers,
+{ LOCALE_PROVIDER_REDUX_NAME } from 'Providers/LocaleProvider/modules/LocaleProviderRedux';
 
 export default {
-  [LOCALE_PROVIDER_REDUCERS_NAME]: LocaleProviderReducers,
+  [LOCALE_PROVIDER_REDUX_NAME]: LocaleProviderReducers,
 };

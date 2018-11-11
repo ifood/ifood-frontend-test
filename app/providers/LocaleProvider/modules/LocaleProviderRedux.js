@@ -1,9 +1,9 @@
 import { addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
-import translations from '../../i18n';
+import translations from '../../../i18n';
 
-export const LOCALE_PROVIDER_REDUCERS_NAME = 'localeProvider';
+export const LOCALE_PROVIDER_REDUX_NAME = 'localeProvider';
 export const SWITCH_LANGUAGE = 'SWITCH_LANGUAGE';
 
 addLocaleData([...en, ...fr]);
