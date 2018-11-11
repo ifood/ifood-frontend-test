@@ -53,8 +53,6 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    // Enables HMR
-    new webpack.HotModuleReplacementPlugin(),
     // Don't emmit build when there was an error while compiling
     // No assets are emitted that include errors
     new webpack.NoEmitOnErrorsPlugin(),

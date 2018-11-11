@@ -1,12 +1,12 @@
 {
   "presets": [
-    "env",
-    "react"
+    ["@babel/env", {
+      "useBuiltIns": "entry"
+    }],
+    "@babel/react"
   ],
   "plugins": [
-    "transform-runtime",
-    "transform-object-rest-spread",
-    "transform-class-properties",
-    "transform-es2015-modules-commonjs"
+    "@babel/transform-runtime",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

@@ -52,7 +52,7 @@ module.exports = merge(common, {
       filename: '[name].[hash].css',
     }),
     new CompressionWebpackPlugin({
-      asset: '[path].gz[query]',
+      filename: '[path].gz[query]',
       algorithm: 'gzip',
       test: new RegExp('\\.(js|css)$'),
       threshold: 0,

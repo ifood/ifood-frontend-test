@@ -5,22 +5,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATH_ROOT = path.resolve('.');
 const PATH_SOURCE = path.resolve('app');
-const PATH_PUBLIC = path.resolve('public');
+const PATH_BUILD = path.resolve('build');
 const PATH_INDEX_HTML = path.resolve(PATH_SOURCE, 'index.html');
 const PATH_IMAGES = path.resolve(PATH_SOURCE, 'images');
 const PATH_STYLES = path.resolve(PATH_SOURCE, 'styles');
 const PATH_PROVIDERS = path.resolve(PATH_SOURCE, 'providers')
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const cleanOptions = { root: PATH_ROOT };
-const cleanPaths = [PATH_PUBLIC];
+const cleanPaths = [PATH_BUILD];
 
 module.exports = {
-  // babel-polyfill must be initialized here so the app works in production mode
-  entry: [
-    'babel-polyfill',
-    'whatwg-fetch',
-    path.join(PATH_SOURCE, 'main.js'),
-  ],
+  entry: path.join(PATH_SOURCE, 'main.js'),
   module: {
     rules: [
       // Babel loader
@@ -47,9 +42,9 @@ module.exports = {
     ],
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.[hash].js',
     publicPath: '/',
-    path: PATH_PUBLIC,
+    path: PATH_BUILD,
   },
   plugins: [
     // Injects env variables to our app
@@ -61,7 +56,7 @@ module.exports = {
     // Builds index.html
     new HtmlWebpackPlugin({
       template: PATH_INDEX_HTML,
-      path: PATH_PUBLIC,
+      path: PATH_BUILD,
       filename: 'index.html',
       hash: true,
       minify: {
