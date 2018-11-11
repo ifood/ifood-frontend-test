@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "Images/*": [
+        "app/images/*"
+      ],
+      "Providers/*": [
+        "app/providers/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

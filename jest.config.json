@@ -1,0 +1,31 @@
+{
+  "globals": {},
+  "testURL": "http://127.0.0.1:8080",
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80,
+      "statements": 80
+    }
+  },
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/app/tests/"
+  ],
+  "coverageDirectory": "<rootDir>/coverage",
+  "moduleNameMapper": {
+    "\\.(html|jpg|jpeg|png|gif|svg|ttf|woff|woff2)$": "<rootDir>/app/__mocks__/assetsMock.js",
+    "\\.(scss|css|less)$": "<rootDir>/app/__mocks__/assetsMock.js"
+  },
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  "setupFiles": [
+    "<rootDir>/app/tests/support/requestAnimationFrame.js",
+    "<rootDir>/app/tests/support/setupTests.js"
+  ],
+  "testPathIgnorePatterns": [],
+  "modulePaths": [
+    "<rootDir>/app/"
+  ]
+}

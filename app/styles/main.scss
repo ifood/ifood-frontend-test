@@ -1,0 +1,20 @@
+@import 'vars';
+
+html {
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+html,
+body {
+  color: $blue;
+  font-family: Arial;
+  font-size: 16px;
+  height: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
