@@ -5,7 +5,6 @@ class Auth extends PureComponent {
   componentDidMount() {
     const URLSearchParams = (new URL(document.location)).searchParams;
     const code = URLSearchParams.get('code');
-
     this.props.setupToken(code);
   }
 
@@ -17,10 +16,10 @@ class Auth extends PureComponent {
 
   render() {
     if (this.props.error) {
-      return <span>{this.props.error}</span>;
+      return <span id="error">{this.props.error}</span>;
     }
 
-    return <span>Loading..</span>;
+    return <span id="loading">Loading..</span>;
   }
 }
 

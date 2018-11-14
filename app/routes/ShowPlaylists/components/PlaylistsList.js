@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/playlistsList.scss';
 
-const PlaylistsList = ({ list, intl }) => {
+const PlaylistsList = ({ list/*, intl*/ }) => {
   if (!list || list.length === 0) {
     return null;
   }
@@ -10,8 +10,7 @@ const PlaylistsList = ({ list, intl }) => {
   return (
     <div className="playlist">
       {list.map((item) => (
-        <div key={item.id} className="playlistItem">
-          <div><span>{intl.formatMessage({ id: 'name' })}</span></div>
+        <div key={item.id} id={`playlistItem-${item.id}`} className="playlistItem">
           <div><span>{item.name}</span></div>
         </div>
       ))}
@@ -20,9 +19,9 @@ const PlaylistsList = ({ list, intl }) => {
 };
 
 PlaylistsList.propTypes = {
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
+  // intl: PropTypes.shape({
+  //   formatMessage: PropTypes.func.isRequired,
+  // }).isRequired,
   list: PropTypes.array,
 };
 

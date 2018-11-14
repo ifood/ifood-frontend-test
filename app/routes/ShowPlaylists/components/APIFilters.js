@@ -42,6 +42,7 @@ APIFilters.propTypes = {
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default APIFilters;

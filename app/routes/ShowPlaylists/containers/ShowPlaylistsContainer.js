@@ -5,8 +5,11 @@ import ShowPlaylistsPage from '../components/ShowPlaylistsPage';
 import { getAuthStore } from '../../Auth/modules/AuthRedux';
 
 function mapStateToProps(state) {
+  const auth = getAuthStore(state);
+  const token = auth ? auth.token : '';
+
   return {
-    token: getAuthStore(state).token,
+    token,
   };
 }
 
