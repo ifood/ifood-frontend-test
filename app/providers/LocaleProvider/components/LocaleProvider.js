@@ -5,7 +5,11 @@ import translations from '../../../i18n';
 
 class LocaleProvider extends React.Component {
   state = {
-    messages: { en: translations.en, fr: translations.fr },
+    messages: {
+      en: translations.en,
+      fr: translations.fr,
+      pt: translations.pt_BR
+    },
   };
 
   render() {

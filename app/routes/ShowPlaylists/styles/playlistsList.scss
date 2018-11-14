@@ -1,0 +1,13 @@
+.playlist {
+  display: flex;
+  flex-flow: column wrap;
+
+  .playlistItem {
+    display: flex;
+    flex-flow: row wrap;
+
+    div:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

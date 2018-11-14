@@ -7,6 +7,9 @@
       ],
       "Providers/*": [
         "app/providers/*"
+      ],
+      "Utils/*": [
+        "app/utils/*"
       ]
     }
   },

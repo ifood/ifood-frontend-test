@@ -1,0 +1,7 @@
+@import '../../../styles/mixins';
+
+.inputFilter {
+  height: 40px;
+
+  @include input;
+}

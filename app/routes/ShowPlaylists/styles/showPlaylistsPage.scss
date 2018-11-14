@@ -1,0 +1,8 @@
+.showPlaylistsPage {
+  display: flex;
+  flex-flow: column wrap;
+
+  label, div {
+    margin-bottom: 10px;
+  }
+}
