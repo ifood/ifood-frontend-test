@@ -9,9 +9,9 @@ export async function getFilters() {
   }
 }
 
-export async function getPlaylists(token) {
+export async function getPlaylists(token, query) {
   try {
-    const resp = await get('/api/featured-playlists', {
+    const resp = await get(`/api/featured-playlists${query ? `/?${query}` : ''}`, {
       Authorization: `Bearer ${token}`,
     });
     return resp;

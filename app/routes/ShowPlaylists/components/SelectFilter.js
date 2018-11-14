@@ -8,6 +8,7 @@ const SelectFilter = ({
   label,
   value,
   onChange,
+  intl,
   ...others,
 }) => (
     <label
@@ -21,6 +22,7 @@ const SelectFilter = ({
         onChange={onChange}
         {...others}
       >
+        <option value="">{intl.formatMessage({ id: 'select' })}</option>
         {values.map(({ name, value }) =>
           (<option key={value} value={value}>{name}</option>)
         )}
@@ -34,6 +36,9 @@ SelectFilter.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 }
 
 export default SelectFilter;

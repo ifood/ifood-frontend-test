@@ -9,7 +9,6 @@ const PlaylistsList = ({ list, intl }) => {
 
   return (
     <div className="playlist">
-      <h3>{intl.formatMessage({ id: 'playlists' })}</h3>
       {list.map((item) => (
         <div key={item.id} className="playlistItem">
           <div><span>{intl.formatMessage({ id: 'name' })}</span></div>

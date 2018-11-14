@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SelectFilter from './SelectFilter';
 import InputFilter from './InputFilter';
 
-const APIFilters = ({ filters, onChange }) => {
+const APIFilters = ({ filters, onChange, intl }) => {
   if (!filters || filters.length === 0) {
     return null;
   }
@@ -17,6 +17,7 @@ const APIFilters = ({ filters, onChange }) => {
         value={item.stateValue}
         onChange={onChange(item.id)}
         values={item.values}
+        intl={intl}
       />
     }
 
@@ -28,6 +29,7 @@ const APIFilters = ({ filters, onChange }) => {
         value={item.stateValue}
         onChange={onChange(item.id)}
         validation={item.validation}
+        intl={intl}
       />;
     }
 
@@ -35,6 +37,11 @@ const APIFilters = ({ filters, onChange }) => {
   });
 };
 
-APIFilters.propTypes = { filters: PropTypes.array };
+APIFilters.propTypes = {
+  filters: PropTypes.array,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default APIFilters;
