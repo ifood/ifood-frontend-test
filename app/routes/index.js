@@ -1,10 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import ShowPlaylists from './ShowPlaylists';
+import LandingPage from './LandingPage';
+import AuthWrapper from './Auth';
+import ShowPlalists from './ShowPlaylists';
 
 const Routes = (store) => (
   <Switch>
-    <Route path="/" render={() => ShowPlaylists(store)} exact />
+    <Route path="/" render={() => <LandingPage />} exact />
+    <Route path="/callback" render={() => AuthWrapper(store)} exact />
+    <Route path="/showplaylists" render={() => ShowPlalists(store)} exact />
   </Switch>
 );
 

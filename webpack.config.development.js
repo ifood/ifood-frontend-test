@@ -1,20 +1,23 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.config.common');
-const history = require('connect-history-api-fallback');
-const convert = require('koa-connect');
 
 module.exports = merge(common, {
   mode: 'development',
-  serve: {
-    add: (app) => {
-      app.use(convert(history({})));
-    },
-    clipboard: false,
-    dev: {
-      publicPath: '/',
-    },
+  devServer: {
+    compress: true,
+    port: 8080,
+    historyApiFallback: true,
     host: '0.0.0.0',
+    hot: true,
+    proxy: {
+      '/api': {
+        target: 'https://accounts.spotify.com',
+        changeOrigin: true,
+        logLevel: 'debug',
+      },
+    },
+    clientLogLevel: 'error',
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -53,6 +56,8 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
+    // Enables HMR
+    new webpack.HotModuleReplacementPlugin(),
     // Don't emmit build when there was an error while compiling
     // No assets are emitted that include errors
     new webpack.NoEmitOnErrorsPlugin(),

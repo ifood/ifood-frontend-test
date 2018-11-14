@@ -1,4 +1,4 @@
-import { get } from 'Utils/fetchWrapper';
+import { get } from 'Helpers/fetchWrapper';
 
 export async function getFilters() {
   try {

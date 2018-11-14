@@ -1,4 +1,15 @@
 /**
+ *
+ * @param {Object} body a javascript object
+ * @returns {String} an url query string (to use along with x-www-form-urlencoded Content-Type)
+ */
+function parseBody(body) {
+  return Object.keys(body)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(body[key])}`)
+    .join('&');
+}
+
+/**
  * Builds the request object and does a request using fetch
  *
  * @param {Object} requestConfig
@@ -9,9 +20,16 @@
  * @throws {Error}
  */
 async function createRequest({ method, url, body }) {
+  const client_id = '38165eb1c6e3421095c7e615c99d1899';
+  const client_secret = '3cbc3c6c01fc453782f27dbefc40f05b';
+  const authorizationHeaders = btoa(`${client_id}:${client_secret}`);
   const fetchPromise = await fetch(url, {
     method,
-    body: body && JSON.stringify(body)
+    body: body && parseBody(body),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': `Basic ${authorizationHeaders}`,
+    },
   });
 
   const result = await fetchPromise.json();
@@ -43,7 +61,7 @@ export async function get(url) {
  * @throws {Error}
  */
 export async function post(url, body) {
-  return createRequest({ method: 'POST', url, body});
+  return createRequest({ method: 'POST', url, body });
 }
 
 /**

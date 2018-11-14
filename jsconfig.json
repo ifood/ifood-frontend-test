@@ -8,8 +8,11 @@
       "Providers/*": [
         "app/providers/*"
       ],
-      "Utils/*": [
-        "app/utils/*"
+      "Helpers/*": [
+        "app/helpers/*"
+      ],
+      "Common/*": [
+        "app/common/*"
       ]
     }
   },

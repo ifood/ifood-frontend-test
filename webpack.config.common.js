@@ -9,7 +9,8 @@ const PATH_BUILD = path.resolve('build');
 const PATH_INDEX_HTML = path.resolve(PATH_SOURCE, 'index.html');
 const PATH_IMAGES = path.resolve(PATH_SOURCE, 'images');
 const PATH_STYLES = path.resolve(PATH_SOURCE, 'styles');
-const PATH_UTILS = path.resolve(PATH_SOURCE, 'utils');
+const PATH_HELPERS = path.resolve(PATH_SOURCE, 'helpers');
+const PATH_COMMON = path.resolve(PATH_SOURCE, 'common');
 const PATH_PROVIDERS = path.resolve(PATH_SOURCE, 'providers')
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const cleanOptions = { root: PATH_ROOT };
@@ -74,7 +75,8 @@ module.exports = {
       Images: PATH_IMAGES,
       Styles: PATH_STYLES,
       Providers: PATH_PROVIDERS,
-      Utils: PATH_UTILS,
+      Helpers: PATH_HELPERS,
+      Common: PATH_COMMON,
     },
   },
 };

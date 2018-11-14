@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.production.js",
     "lint": "eslint --ext .js app",
-    "start:development": "NODE_ENV=development webpack-serve --config webpack.config.development.js",
+    "start:development": "NODE_ENV=development webpack-dev-server --config webpack.config.development.js",
     "test:coverage": "jest --config jest.config.json --coverage",
     "test:watch": "jest --config jest.config.json --watch",
     "test": "jest --config jest.config.json"
@@ -62,7 +62,7 @@
     "style-loader": "0.23.1",
     "webpack": "4.25.1",
     "webpack-cli": "3.1.2",
-    "webpack-merge": "4.1.4",
-    "webpack-serve": "2.0.2"
+    "webpack-dev-server": "3.1.10",
+    "webpack-merge": "4.1.4"
   }
 }
