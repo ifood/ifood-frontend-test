@@ -9,6 +9,13 @@ export async function getFilters() {
   }
 }
 
-export async function getPlaylists() {
-
+export async function getPlaylists(token) {
+  try {
+    const resp = await get('/api/featured-playlists', {
+      Authorization: `Bearer ${token}`,
+    });
+    return resp;
+  } catch (e) {
+    return [];
+  }
 }

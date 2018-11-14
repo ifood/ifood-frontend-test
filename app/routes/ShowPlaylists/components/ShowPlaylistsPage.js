@@ -3,14 +3,8 @@ import PropTypes from 'prop-types';
 import NameFilter from './NameFilter';
 import APIFilters from './APIFilters';
 import PlaylistsList from './PlaylistsList';
-import { getFilters } from '../modules/ShowPlaylistsAPI';
+import { getFilters, getPlaylists } from '../modules/ShowPlaylistsAPI';
 import '../styles/showPlaylistsPage.scss';
-
-const spotify = {
-  "playlists": {
-    "items": [],
-  }
-};
 
 class ShowPlaylistsPage extends Component {
   state = {
@@ -20,13 +14,14 @@ class ShowPlaylistsPage extends Component {
   }
 
   async componentDidMount() {
-    const result = await getFilters();
-    const newStateProps = [...result.filters];
+    const result = await Promise.all([getFilters(), getPlaylists(this.props.token)]);
+    const nextFilters = [...result[0].filters];
+    const nextPlaylists = [...result[1].playlists.items];
 
     return this.setState({
-      filters: newStateProps,
-      playlists: [...spotify.playlists.items],
-      filteredPlaylists: [...spotify.playlists.items]
+      filters: nextFilters,
+      playlists: nextPlaylists,
+      filteredPlaylists: nextPlaylists
     });
   }
 

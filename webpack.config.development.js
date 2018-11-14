@@ -11,10 +11,16 @@ module.exports = merge(common, {
     host: '0.0.0.0',
     hot: true,
     proxy: {
-      '/api': {
+      '/api/token': {
         target: 'https://accounts.spotify.com',
         changeOrigin: true,
         logLevel: 'debug',
+      },
+      '/api/featured-playlists': {
+        target: 'https://api.spotify.com/v1/browse/',
+        changeOrigin: true,
+        logLevel: 'debug',
+        pathRewrite: {'^/api' : ''},
       },
     },
     clientLogLevel: 'error',
