@@ -15,7 +15,9 @@
   "coverageDirectory": "<rootDir>/coverage",
   "moduleNameMapper": {
     "\\.(html|jpg|jpeg|png|gif|svg|ttf|woff|woff2)$": "<rootDir>/app/__mocks__/assetsMock.js",
-    "\\.(scss|css|less)$": "<rootDir>/app/__mocks__/assetsMock.js"
+    "\\.(scss|css|less)$": "<rootDir>/app/__mocks__/assetsMock.js",
+    "^Helpers(.*)$": "<rootDir>/app/helpers/$1",
+    "^Providers(.*)$": "<rootDir>/app/providers/$1"
   },
   "snapshotSerializers": [
     "enzyme-to-json/serializer"

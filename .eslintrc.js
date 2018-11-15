@@ -19,7 +19,9 @@ module.exports = {
     'ecmaVersion': 9,
   },
   'rules': {},
-  'globals': {},
+  'globals': {
+    'Promise': true,
+  },
   'plugins': [
     'import',
     'promise',

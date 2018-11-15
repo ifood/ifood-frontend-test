@@ -57,7 +57,7 @@ class ShowPlaylistsPage extends Component {
     e.preventDefault();
     e.stopPropagation();
     this.setState({ [stateProp]: e.target.value },
-      () => this.filterPlaylists());
+      () => this.getPlaylists());
   }
 
   onNameChange = (e) => {
