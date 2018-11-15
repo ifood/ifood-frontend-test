@@ -11,7 +11,8 @@ class ShowPlaylistsPage extends Component {
   state = {
     name: '',
     filters: [],
-    playlists: []
+    playlists: [],
+    setInterval: null,
   }
 
   async componentDidMount() {
@@ -22,16 +23,22 @@ class ShowPlaylistsPage extends Component {
       const nextPlaylists = [...result[1].playlists.items];
 
       return this.setState({
+        setInterval: setInterval(() => this.getPlaylists(), 30000),
         filters: nextFilters,
         playlists: nextPlaylists,
         filteredPlaylists: nextPlaylists
       });
     } catch (e) {
       return this.setState({
+        setInterval: setInterval(() => this.getPlaylists(), 30000),
         playlists: [],
         filteredPlaylists: [],
       });
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.setInterval);
   }
 
   getPlaylists = async () => {
