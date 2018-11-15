@@ -42,4 +42,5 @@ Fork this repository and submit your code.
 * I wrote the code using ES2018 syntax sugar and it's only ok because the app uses babel 7
 * The app uses react-intl for internationalization
 * The app uses react-router for routing
+* The app uses fetch (browsers native) to communicate with the API
 
