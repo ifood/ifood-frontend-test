@@ -39,7 +39,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --jsx-single-quote --trailing-comma all --write",
+      "prettier --config .prettierrc --write",
       "git add"
     ]
   }
