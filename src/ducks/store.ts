@@ -2,15 +2,19 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import auth from './auth';
+import filter from './filter';
 
 import { IAuthState } from './auth/reducers';
+import { IFilterState } from './filter/reducers';
 
 const reducers = {
   auth,
+  filter,
 };
 
 export interface IStoreState {
   auth: IAuthState;
+  filter: IFilterState;
 }
 
 // a little hack to make the redux devtools work with typescript
