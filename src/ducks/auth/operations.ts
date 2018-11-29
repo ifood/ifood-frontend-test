@@ -10,6 +10,7 @@ export function init() {
     }
   };
 }
+
 export function signIn(token: string) {
   return dispatch => {
     dispatch(actions.setAuthToken(token));

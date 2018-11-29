@@ -19,10 +19,11 @@ describe('Test sign in', () => {
     expect.assertions(2);
     const token: string = 'mytoken';
     const state = reducer(initialState, actions.setAuthToken(token));
-    expect(state.token).toBe(token);
 
     const isSignedIn = selectors.isSignedIn({ auth: state });
     expect(isSignedIn).toBeTruthy();
+    const savedToken = selectors.getToken({ auth: state });
+    expect(savedToken).toBe(token);
   });
   it('should sign out and clear token', () => {
     expect.assertions(2);
