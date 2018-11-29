@@ -15,7 +15,8 @@
     "react-spotify-login": "^0.9.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "url-join": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

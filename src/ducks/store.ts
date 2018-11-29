@@ -3,18 +3,22 @@ import thunk from 'redux-thunk';
 
 import auth from './auth';
 import filter from './filter';
+import playlist from './playlist';
 
 import { IAuthState } from './auth/reducers';
 import { IFilterState } from './filter/reducers';
+import { IPlaylistState } from './playlist/reducers';
 
 const reducers = {
   auth,
   filter,
+  playlist,
 };
 
 export interface IStoreState {
   auth: IAuthState;
   filter: IFilterState;
+  playlist: IPlaylistState;
 }
 
 // a little hack to make the redux devtools work with typescript
