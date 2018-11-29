@@ -3,18 +3,25 @@ import { connect } from 'react-redux';
 
 import { Dispatch } from 'redux';
 
+import { IPlaylist } from '../api/spotify';
 import Filter from '../components/Filter';
+import List from '../components/List';
 import {
   operations as authOps,
   selectors as authSelectors,
 } from '../ducks/auth';
 import { operations as filterOps } from '../ducks/filter';
-import { operations as playlistOps } from '../ducks/playlist';
+import {
+  operations as playlistOps,
+  selectors as playlistSelectors,
+} from '../ducks/playlist';
 
 interface IProps {
+  playlists: IPlaylist[];
   token: string;
   getFilterConfig: () => Dispatch;
   listFeaturedPlaylists: (token: string) => Dispatch;
+  searchPlaylists: (token: string, search: string) => Dispatch;
   signOut: () => Dispatch;
 }
 
@@ -27,11 +34,15 @@ class Home extends PureComponent<IProps> {
   public render() {
     return (
       <div>
-        <Filter onSignOut={this.handleSignOut} />
-        <h1>Hi, I'm the list component</h1>
+        <Filter onSearch={this.handleSearch} onSignOut={this.handleSignOut} />
+        <List playlists={this.props.playlists} />
       </div>
     );
   }
+
+  private handleSearch = (search: string) => {
+    this.props.searchPlaylists(this.props.token, search);
+  };
 
   private handleSignOut = () => {
     this.props.signOut();
@@ -39,6 +50,7 @@ class Home extends PureComponent<IProps> {
 }
 
 const mapStateToProps = state => ({
+  playlists: playlistSelectors.getPlaylists(state),
   token: authSelectors.getToken(state),
 });
 
@@ -46,6 +58,8 @@ const mapDispatchToProps = dispatch => ({
   getFilterConfig: () => dispatch(filterOps.getConfig()),
   listFeaturedPlaylists: (token: string) =>
     dispatch(playlistOps.listFeaturedPlaylists(token)),
+  searchPlaylists: (token: string, search: string) =>
+    dispatch(playlistOps.searchPlaylists(token, search)),
   signOut: () => dispatch(authOps.signOut()),
 });
 

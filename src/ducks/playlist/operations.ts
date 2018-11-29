@@ -13,11 +13,11 @@ export function listFeaturedPlaylists(token: string) {
   };
 }
 
-export function searchPlaylist(search: string) {
+export function searchPlaylists(token: string, search: string) {
   return async dispatch => {
     try {
-      // const pagingObject = await api.searchPlaylists(search);
-      // dispatch(actions.listPlaylists(pagingObject.items));
+      const pagingObject = await api.searchPlaylists(token, search);
+      dispatch(actions.listPlaylists(pagingObject));
     } catch (err) {
       // TODO: something
     }

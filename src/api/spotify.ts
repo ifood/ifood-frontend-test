@@ -59,7 +59,7 @@ async function searchPlaylists(
       ...(offset && { offset }),
     },
     url: urljoin(settings.spotifyApiUrl, 'search'),
-  }).then(response => response.data);
+  }).then(response => response.data.playlists);
 }
 
 export { getFeaturedPlaylists, searchPlaylists };
