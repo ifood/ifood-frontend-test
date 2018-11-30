@@ -1,0 +1,25 @@
+{
+  "name": "spotifood",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "url": "https://github.com/jesse1983/sf-frontend",
+    "type": "git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "next build",
+    "dev": "next",
+    "start": "next start",
+    "test": "echo \"Tested!\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "next": "^7.0.2",
+    "node-sass": "^4.10.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}
