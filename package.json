@@ -10,6 +10,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next",
+    "export": "next export",
     "start": "next start",
     "test": "echo \"Tested!\""
   },

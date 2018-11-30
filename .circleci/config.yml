@@ -29,3 +29,5 @@ jobs:
       #       docker build -t jesse1983/spotifood:$TAG
       #       docker login -u $DOCKER_USER -p $DOCKER_PASS
       #       docker push jesse1983/spotifood:$TAG
+      - run: npm run build
+      - run: npm run export
