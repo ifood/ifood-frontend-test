@@ -17,9 +17,12 @@ import {
 } from '../ducks/playlist';
 
 interface IProps {
+  nextPage: string | null;
   playlists: IPlaylist[];
+  previousPage: string | null;
   token: string;
   getFilterConfig: () => Dispatch;
+  getPage: (token: string, pageAddress: string) => Dispatch;
   listFeaturedPlaylists: (token: string) => Dispatch;
   searchPlaylists: (token: string, search: string) => Dispatch;
   signOut: () => Dispatch;
@@ -35,10 +38,19 @@ class Home extends PureComponent<IProps> {
     return (
       <div>
         <Filter onSearch={this.handleSearch} onSignOut={this.handleSignOut} />
-        <List playlists={this.props.playlists} />
+        <List
+          nextPage={this.props.nextPage}
+          onPageChange={this.handlePageChange}
+          previousPage={this.props.previousPage}
+          playlists={this.props.playlists}
+        />
       </div>
     );
   }
+
+  private handlePageChange = (pageAddress: string) => {
+    this.props.getPage(this.props.token, pageAddress);
+  };
 
   private handleSearch = (search: string) => {
     this.props.searchPlaylists(this.props.token, search);
@@ -50,12 +62,16 @@ class Home extends PureComponent<IProps> {
 }
 
 const mapStateToProps = state => ({
+  nextPage: playlistSelectors.getNextPage(state),
   playlists: playlistSelectors.getPlaylists(state),
+  previousPage: playlistSelectors.getPreviousPage(state),
   token: authSelectors.getToken(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   getFilterConfig: () => dispatch(filterOps.getConfig()),
+  getPage: (token: string, pageAddress: string) =>
+    dispatch(playlistOps.getPage(token, pageAddress)),
   listFeaturedPlaylists: (token: string) =>
     dispatch(playlistOps.listFeaturedPlaylists(token)),
   searchPlaylists: (token: string, search: string) =>

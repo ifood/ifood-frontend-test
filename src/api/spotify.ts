@@ -39,6 +39,16 @@ async function getFeaturedPlaylists(
   }).then(response => response.data.playlists);
 }
 
+async function getPage(token: string, pageAddress: string): Promise<IPaging> {
+  return axios({
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: 'GET',
+    url: pageAddress,
+  }).then(response => response.data.playlists);
+}
+
 async function searchPlaylists(
   token: string,
   search: string,
@@ -62,4 +72,4 @@ async function searchPlaylists(
   }).then(response => response.data.playlists);
 }
 
-export { getFeaturedPlaylists, searchPlaylists };
+export { getFeaturedPlaylists, getPage, searchPlaylists };

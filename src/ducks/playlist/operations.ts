@@ -2,6 +2,17 @@ import { Dispatch } from 'redux';
 import * as api from '../../api/spotify';
 import * as actions from './actions';
 
+export function getPage(token: string, pageAddress: string) {
+  return async (dispatch: Dispatch) => {
+    try {
+      const pagingObject = await api.getPage(token, pageAddress);
+      dispatch(actions.listPlaylists(pagingObject));
+    } catch (err) {
+      // TODO: something
+    }
+  };
+}
+
 export function listFeaturedPlaylists(token: string) {
   return async (dispatch: Dispatch) => {
     try {
