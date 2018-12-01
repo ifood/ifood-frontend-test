@@ -1,0 +1,33 @@
+.startup {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.startup__div {
+  text-align: center; }
+
+.logo-spotifood {
+  font-size: 22vmin;
+  margin-bottom: 5vh; }
+
+.logo-spotifood {
+  font-weight: bold;
+  display: block; }
+
+.logo-spotifood__first {
+  color: #FFF; }
+
+.logo-spotifood__last {
+  color: #BC1F26; }
+
+.button {
+  background: none;
+  padding: 3vmin 9vmin;
+  border-radius: 4vmin;
+  border: 1px solid #E5E5E5;
+  font-size: 3vmin;
+  font-weight: bold;
+  color: #E5E5E5;
+  cursor: pointer; }
+
