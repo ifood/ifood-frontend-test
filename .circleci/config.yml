@@ -46,4 +46,5 @@ jobs:
             git pull origin gh-pages
             git add . --all
             git commit -m "Docs ${TAG}" --allow-empty
+            echo $DOCS_GITHUB_TOKEN
             git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
