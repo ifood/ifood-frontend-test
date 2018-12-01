@@ -9,7 +9,7 @@ jobs:
       - image: circleci/node:10.11
     branches:
       only:
-        - master
+        - deploy
     steps:
       - checkout
       - restore_cache:
@@ -33,14 +33,11 @@ jobs:
       - run: npm run build
       - run: npm run export
       - run:
-          name: Clone gh-pages
+          name: Push to master
           command: |
-            git clone git@github.com:jesse1983/sf-frontend.git docs
-            cp -a ./out/. docs
-            cd docs
-      - run:
-          name: Push to gh-pages branch
-          command: |
+            git checkout master
+            mkdir -p docs
+            mv out docs
             git config credential.helper 'cache --timeout=120'
             git config user.email deploy@circleci.com
             git config user.name "CircleCI"
@@ -48,5 +45,5 @@ jobs:
             git add . --all
             TAG=0.1.$CIRCLE_BUILD_NUM
             git commit -m "Docs ${TAG}" --allow-empty
-            git push origin gh-pages
+            git push origin master
             # git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
