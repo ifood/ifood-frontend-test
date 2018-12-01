@@ -44,6 +44,6 @@ jobs:
             git init
             git remote add origin git@github.com:jesse1983/sf-frontend.git
             git pull origin gh-pages
-            git add docs/*
+            git add . --all
             git commit -m "Docs ${TAG}" --allow-empty
             git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
