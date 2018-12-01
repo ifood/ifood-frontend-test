@@ -36,11 +36,14 @@ jobs:
           name: Push to gh-pages branch
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            mv out docs
+            mv out ../docs
+            cd ../docs
             git config credential.helper 'cache --timeout=120'
             git config user.email "deploy@circle.com"
             git config user.name "Circle CI"
-            git pull origin gh-pages --allow-unrelated-histories
+            git init
+            git remote add origin git@github.com:jesse1983/sf-frontend.git
+            git pull origin gh-pages
             git add docs/*
             git commit -m "Docs ${TAG}" --allow-empty
             git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
