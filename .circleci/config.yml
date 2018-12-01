@@ -30,4 +30,12 @@ jobs:
       #       docker login -u $DOCKER_USER -p $DOCKER_PASS
       #       docker push jesse1983/spotifood:$TAG
       - run: npm run build
-      - run: npm run export
+      - run:
+          name: Export docs to gh-pages branch
+          command: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            npm run export
+            mv out docs
+            git add docs --all
+            git commit -m "Docs ${TAG}"
+            git push origin gh-pages
