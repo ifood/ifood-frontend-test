@@ -37,7 +37,7 @@ jobs:
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             git clone git@github.com:jesse1983/sf-frontend.git docs
-            cp -n out/**/* docs
+            cp -a out/. docs
             cd docs
             git config credential.helper 'cache --timeout=120'
             git config user.email $GH_EMAIL
