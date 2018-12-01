@@ -1,1 +1,5 @@
-extends: airbnb
+extends:
+  - airbnb
+  - plugin:react/all
+plugins:
+  - react

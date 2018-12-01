@@ -14,7 +14,7 @@ export default class Component extends React.Component {
   }
 
   componentDidMount() {
-    store.on('change', state => this.setState(store.getState()));
+    store.on('change', () => { this.setState(store.getState()); });
   }
 
   render() {
