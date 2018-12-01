@@ -7,8 +7,9 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.11
-    working_directory: ~/repo
-
+    branches:
+      only:
+        - master
     steps:
       - checkout
       - restore_cache:
@@ -30,12 +31,16 @@ jobs:
       #       docker login -u $DOCKER_USER -p $DOCKER_PASS
       #       docker push jesse1983/spotifood:$TAG
       - run: npm run build
+      - run: npm run export
       - run:
-          name: Export docs to gh-pages branch
+          name: Push to gh-pages branch
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            npm run export
             mv out docs
             git add docs --all
             git commit -m "Docs ${TAG}"
-            git push origin gh-pages
+            git config credential.helper 'cache --timeout=120'
+            git config user.email "email@domain.com"
+            git config user.name "Circle CI"
+            git commit --allow-empty -m "Trigger deployment"
+            git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
