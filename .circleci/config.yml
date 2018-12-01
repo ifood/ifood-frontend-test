@@ -47,4 +47,5 @@ jobs:
             git add . --all
             TAG=0.1.$CIRCLE_BUILD_NUM
             git commit -m "Docs ${TAG}" --allow-empty
-            git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
+            git push origin gh-pages
+            # git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
