@@ -13,7 +13,8 @@
     "dev": "next",
     "export": "next export && cp -a out/* docs",
     "start": "next start",
-    "test": "echo \"Tested!\""
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "",
   "license": "ISC",
@@ -25,11 +26,32 @@
     "react-dom": "^16.6.3"
   },
   "devDependencies": {
-    "husky": "^1.2.0"
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.0",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.6.3"
   },
   "husky": {
     "hooks": {
       "pre-push": "npm run test && npm run check-docs && rm -rf out"
+    }
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/docs/",
+      "/.next/"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
     }
   }
 }

@@ -7,9 +7,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.11
-    branches:
-      only:
-        - deploy
     steps:
       - checkout
       - restore_cache:
