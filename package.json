@@ -9,8 +9,9 @@
   "main": "index.js",
   "scripts": {
     "build": "next build",
+    "check-docs": "node check-docs.js",
     "dev": "next",
-    "export": "next export",
+    "export": "next export && cp -a out/* docs",
     "start": "next start",
     "test": "echo \"Tested!\""
   },
@@ -22,5 +23,13 @@
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "husky": "^1.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test && npm run check-docs && rm -rf out"
+    }
   }
 }
