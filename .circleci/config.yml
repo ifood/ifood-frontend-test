@@ -42,8 +42,8 @@ jobs:
           name: Push to gh-pages branch
           command: |
             git config credential.helper 'cache --timeout=120'
-            git config user.email $GH_EMAIL
-            git config user.name $GH_NAME
+            git config user.email deploy@circleci.com
+            git config user.name "CircleCI"
             git add . --all
             TAG=0.1.$CIRCLE_BUILD_NUM
             git commit -m "Docs ${TAG}" --allow-empty
