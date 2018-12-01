@@ -37,9 +37,10 @@ jobs:
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             mv out docs
-            git add docs --all
             git config credential.helper 'cache --timeout=120'
             git config user.email "circle@deploy.com"
             git config user.name "Circle CI"
+            git pull origin gh-pages
+            git add docs --all
             git commit --allow-empty -m "Docs ${TAG}"
             git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
