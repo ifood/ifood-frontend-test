@@ -13,7 +13,7 @@
     "dev": "next",
     "export": "next export && cp -a out/* docs",
     "start": "next start",
-    "test": "jest test",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "author": "",
