@@ -38,6 +38,7 @@ jobs:
             TAG=0.1.$CIRCLE_BUILD_NUM
             mv out docs
             cd docs
+            echo $DOCS_GITHUB_TOKEN
             git config credential.helper 'cache --timeout=120'
             git config user.email $GH_EMAIL
             git config user.name $GH_NAME
@@ -46,5 +47,4 @@ jobs:
             git pull origin gh-pages
             git add . --all
             git commit -m "Docs ${TAG}" --allow-empty
-            echo $DOCS_GITHUB_TOKEN
             git push -q https://${DOCS_GITHUB_TOKEN}@github.com/jesse1983/sf-frontend.git gh-pages
