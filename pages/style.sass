@@ -3,12 +3,26 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 html, body
+  background: $background-default-color
   height: 100%
   font-family: Lato, sans-serif
   > div:first-child
     height: 100%
-.app
-    background: $background-default-color
-    color: $text-default-color
-    height: 100%
 
+.app
+  background: $background-default-color
+  color: $text-default-color
+  height: 100%
+  width: 100%
+  display: block
+  position: relative
+
+.app__bg
+  background: $background-default-color url(/static/bg.jpg) no-repeat
+  background-size: cover
+  background-position: center center
+  opacity: 0.10
+  height: 100%
+  width: 100%
+  display: block
+  position: absolute
