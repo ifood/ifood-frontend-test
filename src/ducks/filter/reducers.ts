@@ -1,7 +1,7 @@
 import { FilterAction } from './actions';
 import * as types from './types';
 
-export interface IParsedFilterConfig {
+export interface IFilterState {
   countries: Array<{ name: string; value: string }>;
   locales: Array<{ name: string; value: string }>;
   timestamp: string | null;
@@ -11,25 +11,14 @@ export interface IParsedFilterConfig {
   };
 }
 
-export type IFilterState = IParsedFilterConfig & {
-  currentLocale: string | null;
-  currentCountry: string | null;
-  currentLimit: number;
-  offset: number;
-};
-
 // set default state values
 export const initialState: IFilterState = {
   countries: [],
-  currentCountry: null,
-  currentLimit: 20,
-  currentLocale: null,
   limitBounds: {
     max: 50,
     min: 1,
   },
   locales: [],
-  offset: 0,
   timestamp: 'yyyy-MM-ddTHH:mm:ss',
 };
 
@@ -47,7 +36,7 @@ export default (
           acc[curr.id] = { ...curr };
           return acc;
         },
-        {} as any, // TODO: do we really need to set an efemeral type?
+        {} as any, // TODO: do we really need to set an efemeral type? let's use any
       );
 
       return {

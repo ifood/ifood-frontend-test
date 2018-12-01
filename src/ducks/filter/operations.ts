@@ -1,6 +1,5 @@
 import * as api from '../../api/filter';
 import * as actions from './actions';
-// import locale2 from 'locale2'; TODO: get default locale
 
 export function getConfig() {
   return async dispatch => {

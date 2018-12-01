@@ -13,10 +13,13 @@ export function getPage(token: string, pageAddress: string) {
   };
 }
 
-export function listFeaturedPlaylists(token: string) {
+export function listFeaturedPlaylists(
+  token: string,
+  countryCode: string | null,
+) {
   return async (dispatch: Dispatch) => {
     try {
-      const pagingObject = await api.getFeaturedPlaylists(token);
+      const pagingObject = await api.getFeaturedPlaylists(token, countryCode);
       dispatch(actions.listPlaylists(pagingObject));
     } catch (err) {
       // TODO: something

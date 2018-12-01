@@ -5,7 +5,6 @@ interface IFetchFilterConfig {
   type: typeof types.FILTER_CONFIG_FETCH;
   config: IFilterConfig;
 }
-
 const fetchFilterConfig = (config: IFilterConfig): IFetchFilterConfig => ({
   config,
   type: types.FILTER_CONFIG_FETCH,

@@ -21,7 +21,7 @@ export interface IPaging {
 
 async function getFeaturedPlaylists(
   token: string,
-  countryCode?: string,
+  countryCode?: string | null,
   limit?: number,
   offset?: number,
 ): Promise<IPaging> {
@@ -31,7 +31,7 @@ async function getFeaturedPlaylists(
     },
     method: 'GET',
     params: {
-      ...(countryCode && { market: countryCode }),
+      ...(countryCode && { country: countryCode }),
       ...(limit && { limit }),
       ...(offset && { offset }),
     },
@@ -52,7 +52,8 @@ async function getPage(token: string, pageAddress: string): Promise<IPaging> {
 async function searchPlaylists(
   token: string,
   search: string,
-  countryCode?: string,
+  // not useful when searching playlists by the docs https://developer.spotify.com/documentation/web-api/reference/search/search/
+  // countryCode?: string | null,
   limit?: number,
   offset?: number,
 ): Promise<IPaging> {
@@ -62,9 +63,9 @@ async function searchPlaylists(
     },
     method: 'GET',
     params: {
+      market: 'from_token', // the country comes from the access token
       q: search,
       type: 'playlist',
-      ...(countryCode && { market: countryCode }),
       ...(limit && { limit }),
       ...(offset && { offset }),
     },
