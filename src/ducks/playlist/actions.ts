@@ -1,16 +1,39 @@
+import { CancelTokenSource } from 'axios';
 import { IPaging } from '../../api/spotify';
 import * as types from './types';
 
-interface IListPlaylists {
-  type: typeof types.PLAYLISTS_LIST;
-  page: IPaging;
+interface IListPlaylistsBegin {
+  type: typeof types.PLAYLISTS_LIST_BEGIN;
+  cancelToken: CancelTokenSource;
 }
-
-const listPlaylists = (page: IPaging): IListPlaylists => ({
-  page,
-  type: types.PLAYLISTS_LIST,
+const listPlaylistsBegin = (
+  cancelToken: CancelTokenSource,
+): IListPlaylistsBegin => ({
+  cancelToken,
+  type: types.PLAYLISTS_LIST_BEGIN,
 });
 
-export type PlaylistAction = IListPlaylists;
+interface IListPlaylistsSuccess {
+  type: typeof types.PLAYLISTS_LIST_SUCCESS;
+  page: IPaging;
+}
+const listPlaylistsSuccess = (page: IPaging): IListPlaylistsSuccess => ({
+  page,
+  type: types.PLAYLISTS_LIST_SUCCESS,
+});
 
-export { listPlaylists };
+interface IListPlaylistsFailure {
+  type: typeof types.PLAYLISTS_LIST_FAILURE;
+  error: string;
+}
+const listPlaylistsFailure = (error: string): IListPlaylistsFailure => ({
+  error,
+  type: types.PLAYLISTS_LIST_FAILURE,
+});
+
+export type PlaylistAction =
+  | IListPlaylistsBegin
+  | IListPlaylistsSuccess
+  | IListPlaylistsFailure;
+
+export { listPlaylistsBegin, listPlaylistsSuccess, listPlaylistsFailure };

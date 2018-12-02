@@ -1,3 +1,4 @@
+import { CancelTokenSource } from 'axios';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 // import locale2 from 'locale2'; TODO: get default locale
@@ -21,6 +22,7 @@ import {
 } from '../ducks/playlist';
 
 interface IProps {
+  cancelToken: CancelTokenSource | null;
   countries: Array<{ name: string; value: string }>;
   country: string | null;
   nextPage: string | null;
@@ -28,12 +30,21 @@ interface IProps {
   previousPage: string | null;
   token: string;
   getFilterConfig: () => Dispatch;
-  getPage: (token: string, pageAddress: string) => Dispatch;
+  getPage: (
+    token: string,
+    currentCancelToken: CancelTokenSource | null,
+    pageAddress: string,
+  ) => Dispatch;
   listFeaturedPlaylists: (
     token: string,
+    currentCancelToken: CancelTokenSource | null,
     countryCode: string | null,
   ) => Dispatch;
-  searchPlaylists: (token: string, search: string) => Dispatch;
+  searchPlaylists: (
+    token: string,
+    currentCancelToken: CancelTokenSource | null,
+    search: string,
+  ) => Dispatch;
   signOut: () => Dispatch;
 }
 
@@ -57,7 +68,11 @@ class Home extends PureComponent<IProps, IState> {
 
   public componentDidMount() {
     this.props.getFilterConfig();
-    this.props.listFeaturedPlaylists(this.props.token, this.props.country);
+    this.props.listFeaturedPlaylists(
+      this.props.token,
+      this.props.cancelToken,
+      this.props.country,
+    );
   }
 
   public render() {
@@ -83,15 +98,23 @@ class Home extends PureComponent<IProps, IState> {
     this.setState({
       country: countryCode,
     });
-    this.props.listFeaturedPlaylists(this.props.token, countryCode);
+    this.props.listFeaturedPlaylists(
+      this.props.token,
+      this.props.cancelToken,
+      countryCode,
+    );
   };
 
   private handlePageChange = (pageAddress: string) => {
-    this.props.getPage(this.props.token, pageAddress);
+    this.props.getPage(this.props.token, this.props.cancelToken, pageAddress);
   };
 
   private handleSearch = (search: string) => {
-    this.props.searchPlaylists(this.props.token, search);
+    this.props.searchPlaylists(
+      this.props.token,
+      this.props.cancelToken,
+      search,
+    );
   };
 
   private handleSignOut = () => {
@@ -100,6 +123,7 @@ class Home extends PureComponent<IProps, IState> {
 }
 
 const mapStateToProps = state => ({
+  cancelToken: playlistSelectors.getCancellationToken(state),
   countries: filterSelectors.getCountryList(state),
   nextPage: playlistSelectors.getNextPage(state),
   playlists: playlistSelectors.getPlaylists(state),
@@ -109,12 +133,24 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getFilterConfig: () => dispatch(filterOps.getConfig()),
-  getPage: (token: string, pageAddress: string) =>
-    dispatch(playlistOps.getPage(token, pageAddress)),
-  listFeaturedPlaylists: (token: string, countryCode: string | null) =>
-    dispatch(playlistOps.listFeaturedPlaylists(token, countryCode)),
-  searchPlaylists: (token: string, search: string) =>
-    dispatch(playlistOps.searchPlaylists(token, search)),
+  getPage: (
+    token: string,
+    cancelToken: CancelTokenSource | null,
+    pageAddress: string,
+  ) => dispatch(playlistOps.getPage(token, cancelToken, pageAddress)),
+  listFeaturedPlaylists: (
+    token: string,
+    cancelToken: CancelTokenSource | null,
+    countryCode: string | null,
+  ) =>
+    dispatch(
+      playlistOps.listFeaturedPlaylists(token, cancelToken, countryCode),
+    ),
+  searchPlaylists: (
+    token: string,
+    cancelToken: CancelTokenSource | null,
+    search: string,
+  ) => dispatch(playlistOps.searchPlaylists(token, cancelToken, search)),
   signOut: () => dispatch(authOps.signOut()),
 });
 

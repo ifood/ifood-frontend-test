@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { CancelTokenSource } from 'axios';
 import urljoin from 'url-join';
 import settings from '../settings';
 
@@ -21,11 +21,13 @@ export interface IPaging {
 
 async function getFeaturedPlaylists(
   token: string,
+  cancelToken: CancelTokenSource,
   countryCode?: string | null,
   limit?: number,
   offset?: number,
 ): Promise<IPaging> {
   return axios({
+    cancelToken: cancelToken.token,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -39,8 +41,13 @@ async function getFeaturedPlaylists(
   }).then(response => response.data.playlists);
 }
 
-async function getPage(token: string, pageAddress: string): Promise<IPaging> {
+async function getPage(
+  token: string,
+  cancelToken: CancelTokenSource,
+  pageAddress: string,
+): Promise<IPaging> {
   return axios({
+    cancelToken: cancelToken.token,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -51,6 +58,7 @@ async function getPage(token: string, pageAddress: string): Promise<IPaging> {
 
 async function searchPlaylists(
   token: string,
+  cancelToken: CancelTokenSource,
   search: string,
   // not useful when searching playlists by the docs https://developer.spotify.com/documentation/web-api/reference/search/search/
   // countryCode?: string | null,
@@ -58,6 +66,7 @@ async function searchPlaylists(
   offset?: number,
 ): Promise<IPaging> {
   return axios({
+    cancelToken: cancelToken.token,
     headers: {
       Authorization: `Bearer ${token}`,
     },
