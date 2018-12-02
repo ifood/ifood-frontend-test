@@ -21,6 +21,7 @@ export default class Component extends React.Component {
     return <div className="app">
       <Head>
         <title>Spotifood</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
       </Head>
       <div className="app__bg"></div>
       <Main />

@@ -1,7 +1,7 @@
 export default class SpotityService {
   static connect() {
     return new Promise((resolve) => {
-      setTimeout(resolve, 2000);
+      setTimeout(resolve, 200);
     });
   }
 }

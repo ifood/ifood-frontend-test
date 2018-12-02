@@ -13,6 +13,7 @@
     "dev": "next",
     "export": "next export && rm -rf docs && mkdir docs && cp -a out/* docs && touch docs/_next/.nojekyll",
     "start": "next start",
+    "surge": "surge --project $(pwd)/docs --domain ifood-frontend-test.surge.sh",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -36,7 +37,8 @@
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.2.0",
     "jest": "^23.6.0",
-    "react-test-renderer": "^16.6.3"
+    "react-test-renderer": "^16.6.3",
+    "surge": "^0.20.1"
   },
   "husky": {
     "hooks": {

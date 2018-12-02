@@ -1,6 +1,7 @@
 import React from 'react';
 import "./style.sass";
 import store from '../../store';
+import Header from './components/Header';
 // import SpotifyService from '../../../services/spotify.service';
 
 
@@ -18,7 +19,12 @@ export default class Component extends React.Component {
     const className = ['main'];
     className.push(this.state.spotifyStatus === 'CONNECTED' ? 'main--show' : 'main--hidden');
     return <div className={className.join(' ')}>
-      <h1>Connected</h1>
+      <div className="main__left">
+
+      </div>
+      <div className="main__center">
+        <Header />
+      </div>
     </div>;
   }
 }
