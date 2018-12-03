@@ -1,0 +1,50 @@
+@import '../../variables'
+@import '../../mixin'
+
+
+.main
+  height: 100%
+  width: 100%
+  position: absolute
+  transition: all 750ms cubic-bezier(0.165, 0.84, 0.44, 1)
+  overflow: hidden
+
+.main--show
+  opacity: 1
+
+.main--hidden
+  opacity: 0
+
+.main__slider
+  width: (2 * 100vw)
+  display: flex
+  height: 100%
+  overflow: hidden
+
+.main__slider__left
+  width: 25vw
+  margin-left: -25vw
+  background-color: $background-default-color
+  @include mobile
+    width: 75vw
+    margin-left: -100vw
+    padding-left: 25vw
+  overflow: hidden
+
+  transition: margin 500ms cubic-bezier(0.165, 0.84, 0.44, 1)
+
+.main__slider__center
+  width: 100vw
+  overflow: hidden
+  transition: opacity 500ms cubic-bezier(0.165, 0.84, 0.44, 1)
+
+
+.main--filtering
+  .main__slider__left
+    margin-left: 0vw
+    @include mobile
+      margin-left: -25vw
+
+  .main__slider__center
+    opacity: 0.25
+

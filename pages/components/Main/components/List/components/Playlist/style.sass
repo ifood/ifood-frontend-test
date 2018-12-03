@@ -1,0 +1,48 @@
+@import '../../../../../../mixin'
+@import '../../../../../../variables'
+
+.playlist
+  perspective: 1000px
+  background-color: transparent
+  width: 100%
+  height: 100%
+  @include mobile
+    pointer-events: none
+
+.playlist__flip
+  position: relative
+  width: 100%
+  height: 100%
+  transition: transform 0.5s
+  transform-style: preserve-3d
+
+.playlist:hover .playlist__flip
+  transform: rotateY(180deg)
+
+.playlist__flip__front, .playlist__flip__back
+  position: absolute
+  width: 100%
+  height: 100%
+  backface-visibility: hidden
+
+.playlist__flip__front
+  background-color: $background-default-color
+
+.playlist__flip__back
+  background-color: $background-default-color
+  color: $text-default-color
+  transform: rotateY(180deg)
+
+  div
+    padding: 2vmin
+
+  h2
+    font-size: 3rem
+
+
+
+.playlist__cover
+  width: 100%
+  height: 100%
+  background-size: cover
+  background-position: center center
