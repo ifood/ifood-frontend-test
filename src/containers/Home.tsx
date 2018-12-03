@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { Dispatch } from 'redux';
 
+import settings from '../settings';
+
 import { IPlaylist } from '../api/spotify';
 import Filter from '../components/Filter';
 import List from '../components/List';
@@ -24,7 +26,6 @@ import {
 interface IProps {
   cancelToken: CancelTokenSource | null;
   countries: Array<{ name: string; value: string }>;
-  country: string | null;
   nextPage: string | null;
   playlists: IPlaylist[];
   previousPage: string | null;
@@ -56,6 +57,8 @@ interface IState {
   country: string | null;
   currentLimit: number;
   offset: number;
+  search: string;
+  timeoutId: NodeJS.Timeout | null;
 }
 
 class Home extends PureComponent<IProps, IState> {
@@ -64,15 +67,13 @@ class Home extends PureComponent<IProps, IState> {
     currentLimit: 20,
     currentLocale: null,
     offset: 0,
+    search: '',
+    timeoutId: null,
   };
 
   public componentDidMount() {
     this.props.getFilterConfig();
-    this.props.listFeaturedPlaylists(
-      this.props.token,
-      this.props.cancelToken,
-      this.props.country,
-    );
+    this.loadFeaturedPlaylists(null);
   }
 
   public render() {
@@ -94,15 +95,33 @@ class Home extends PureComponent<IProps, IState> {
     );
   }
 
-  private handleCountryChange = (countryCode: string) => {
-    this.setState({
-      country: countryCode,
-    });
+  private loadFeaturedPlaylists(country?: string | null) {
     this.props.listFeaturedPlaylists(
       this.props.token,
       this.props.cancelToken,
-      countryCode,
+      country || this.state.country,
     );
+    this.clearPlaylistRefresh();
+
+    // set new timeout
+    const timeoutId = setTimeout(() => {
+      this.loadFeaturedPlaylists();
+    }, settings.playlistRefreshInterval);
+
+    this.setState({ timeoutId });
+  }
+
+  private clearPlaylistRefresh() {
+    // clear current timeout if set
+    const { timeoutId } = this.state;
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  private handleCountryChange = (countryCode: string) => {
+    this.setState({ country: countryCode });
+    this.loadFeaturedPlaylists(countryCode);
   };
 
   private handlePageChange = (pageAddress: string) => {
@@ -110,11 +129,16 @@ class Home extends PureComponent<IProps, IState> {
   };
 
   private handleSearch = (search: string) => {
-    this.props.searchPlaylists(
-      this.props.token,
-      this.props.cancelToken,
-      search,
-    );
+    if (search.length > 0) {
+      this.props.searchPlaylists(
+        this.props.token,
+        this.props.cancelToken,
+        search,
+      );
+      this.clearPlaylistRefresh(); // refresh can be confusing when searching
+    } else {
+      this.loadFeaturedPlaylists();
+    }
   };
 
   private handleSignOut = () => {
