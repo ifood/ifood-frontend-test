@@ -11,8 +11,11 @@
     "build": "next build",
     "check-docs": "node check-docs.js",
     "dev": "next",
-    "export": "next export && rm -rf docs && mkdir docs && cp -a out/* docs && touch docs/.nojekyll",
+    "export": "next export",
+    "presurge": "npm run export",
+    "preexport": "npm run build",
     "start": "next start",
+    "surge": "surge --project $(pwd)/out --domain ifood-frontend-test.surge.sh",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -20,12 +23,15 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.18.0",
+    "dotenv": "^6.1.0",
     "next": "^7.0.2",
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -36,11 +42,12 @@
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.2.0",
     "jest": "^23.6.0",
-    "react-test-renderer": "^16.6.3"
+    "react-test-renderer": "^16.6.3",
+    "surge": "^0.20.1"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run test && npm run check-docs && rm -rf out"
+      "pre-push": "npm run test"
     }
   },
   "jest": {

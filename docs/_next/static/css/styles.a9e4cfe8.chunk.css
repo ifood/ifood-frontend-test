@@ -1,0 +1,121 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+.startup {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 500ms cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+.startup--show {
+  top: 0;
+  opacity: 1; }
+
+.startup--hidden {
+  top: -100%;
+  opacity: 0; }
+
+.startup__div {
+  text-align: center; }
+
+.logo-spotifood {
+  font-size: 14vmin;
+  margin-bottom: 5vh; }
+
+.button {
+  background: none;
+  padding: 2vmin 6vmin;
+  border-radius: 3vmin;
+  border: 1px solid #E5E5E5;
+  font-size: 1.5vmin;
+  font-weight: bold;
+  color: #E5E5E5;
+  cursor: pointer; }
+
+.button--size-lg {
+  font-size: 2vmin;
+  padding: 3vmin 9vmin;
+  border-radius: 4vmin; }
+
+.main {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: all 750ms cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+.main--show {
+  opacity: 1; }
+
+.main--hidden {
+  opacity: 0; }
+
+.main__left {
+  width: 0; }
+
+.main__center {
+  width: 100%; }
+
+/* http://meyerweb.com/eric/tools/css/reset/
+ * v2.0 | 20110126
+ * License: none (public domain) */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html, body {
+  background: #1A1A1A;
+  height: 100%;
+  font-family: Lato, sans-serif; }
+  html > div:first-child, body > div:first-child {
+    height: 100%; }
+
+.app {
+  background: #1A1A1A;
+  color: #CCC;
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: relative; }
+
+.app__bg {
+  background: #1A1A1A url(/static/bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.10;
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute; }
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./style.sass"
+import './style.sass';
 
 
 export default class Component extends React.Component {
@@ -10,14 +10,19 @@ export default class Component extends React.Component {
 
   handleClick(ev) {
     ev.preventDefault();
-    if (this.props.onClick) this.props.onClick(ev);
+    const { onClick } = this.props;
+    if (onClick) onClick(ev);
   }
 
   render() {
     const className = ['button'];
-    if (this.props.size === 'lg') className.push('button--size-lg');
-    return <button className={className.join(' ')} onClick={this.handleClick}>
-      {this.props.text}
-    </button>;
+    const { size, text, disabled } = this.props;
+    if (size === 'lg') className.push('button--size-lg');
+    if (disabled) className.push('button--disabled');
+    return (
+      <button type="button" className={className.join(' ')} onClick={this.handleClick} disabled={disabled}>
+        {text}
+      </button>
+    );
   }
 }
