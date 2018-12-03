@@ -17,8 +17,14 @@ export default class Component extends React.Component {
     MainStore.on('change', (state) => {
       this.setState(state);
     });
+    MainStore.on('change-filters', () => {
+      this.getPlayLists();
+    });
     this.getPlayLists();
-    setTimeout(this.getPlayLists.bind(this), 30000);
+    setTimeout(() => {
+      MainStore._offset = 0;
+      MainStore.filters = {};
+    }, 30000);
   }
 
   getPlayLists() {
@@ -31,9 +37,8 @@ export default class Component extends React.Component {
       })
       .catch((error) => {
         MainStore.error = error;
-        MainStore.playlists = null;
-        MainStore.total = null;
-        MainStore.filters = {};
+        MainStore.playlists = [];
+        MainStore.total = 0;
       });
   }
 
@@ -74,6 +79,9 @@ export default class Component extends React.Component {
           <SpIcon icon="bars" />
         </div>
       );
+    }
+    if (playlists.length === 0) {
+      return <div className="list__404">Not found</div>;
     }
     const next = total > limit && (offset + limit) < total;
     const prev = total > limit && offset >= limit;

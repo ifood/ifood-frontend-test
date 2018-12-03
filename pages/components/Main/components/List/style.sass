@@ -22,11 +22,20 @@
     fill: $text-dark-color
     stroke: $text-dark-color
 
+.list__404
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+
 .list__block
   width: 100vw
   height: 100%
   display: inline-grid
   grid-template-columns: 10% auto 10%
+  @include mobile
+    display: block
 
 .list__block__playlists
   display: grid
@@ -35,6 +44,11 @@
   grid-gap: 4vmin
   width: 100%
   height: 90%
+  @include mobile
+    display: block
+    overflow-y: scroll
+    height: 99%
+
 
 .list__block__nav
   display: flex
@@ -42,6 +56,8 @@
   justify-content: center
   fill: $text-dark-color
   stroke: $text-dark-color
+  @include mobile
+    display: none
 
   svg
     width: 10vmin

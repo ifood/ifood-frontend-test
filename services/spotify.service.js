@@ -40,6 +40,7 @@ export default class SpotityService {
         params: {
           limit,
           offset,
+          ...filters,
         },
       })
       .then(result => result.data.playlists);

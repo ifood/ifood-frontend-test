@@ -20,3 +20,4 @@ Figma design:
 - E2E tests
 - WPA
 - Docker
+- Shorticon

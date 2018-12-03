@@ -57,6 +57,7 @@ export default class Component extends React.Component {
       <div className="app">
         <Head>
           <title>Spotifood</title>
+          <link rel="shortcut icon" href="static/logo.png" />
           <meta name="viewport" content="width=device-width, user-scalable=no" />
         </Head>
         <div className="app__bg" />
