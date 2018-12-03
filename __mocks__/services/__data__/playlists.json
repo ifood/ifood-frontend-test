@@ -1,0 +1,588 @@
+{
+  "message" : "Just 5 weeks left to Christmas",
+  "playlists" : {
+    "href" : "https://api.spotify.com/v1/browse/featured-playlists?timestamp=2018-12-02T19%3A23%3A02&offset=0&limit=20",
+    "items" : [ {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX0Yxoavh5qJV"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX0Yxoavh5qJV",
+      "id" : "37i9dQZF1DX0Yxoavh5qJV",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/1cb85a37fe0edd56ed0984fae6625e4b06704583",
+        "width" : 300
+      } ],
+      "name" : "Christmas Hits",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MzU3NDI3MCwwMDAwMDAwZjAwMDAwMTY3NjQzMjMzMzUwMDAwMDE2NzE3MTE2NzRm",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX0Yxoavh5qJV/tracks",
+        "total" : 90
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX0Yxoavh5qJV"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DXbPHTEEyQ6Hv"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DXbPHTEEyQ6Hv",
+      "id" : "37i9dQZF1DXbPHTEEyQ6Hv",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/a7facbec4c4990240ddc50b7dbc4b41f2463ef49",
+        "width" : 300
+      } ],
+      "name" : "Christmas Peaceful Piano",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MjIxMDUyMSwwMDAwMDAzYTAwMDAwMTY3MTJlOTBhODAwMDAwMDE2NjdjZTY0NjYw",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DXbPHTEEyQ6Hv/tracks",
+        "total" : 80
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DXbPHTEEyQ6Hv"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX4ELVW61Sklr"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4ELVW61Sklr",
+      "id" : "37i9dQZF1DX4ELVW61Sklr",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/076cb5e4d1623e80b664fd75e76acbe7adbfa70d",
+        "width" : 300
+      } ],
+      "name" : "Soulful Christmas",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MzU0MDM5NywwMDAwMDAxMDAwMDAwMTY3NjIyZDU0OTAwMDAwMDE2NzM2YzQzY2Rk",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4ELVW61Sklr/tracks",
+        "total" : 58
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX4ELVW61Sklr"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX6R7QUWePReA"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX6R7QUWePReA",
+      "id" : "37i9dQZF1DX6R7QUWePReA",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/055b1cbfd55f50c341f3db0f7e7ee03fdfae120d",
+        "width" : 300
+      } ],
+      "name" : "Christmas Classics",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0Mjc0MDg3OCwwMDAwMDAxZTAwMDAwMTY3MzI4NWE1YjcwMDAwMDE2NjdjZWNmMDZm",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX6R7QUWePReA/tracks",
+        "total" : 56
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX6R7QUWePReA"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DWZv6UE8BMPO0"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWZv6UE8BMPO0",
+      "id" : "37i9dQZF1DWZv6UE8BMPO0",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/8f16d9467e7865bad7ad303abd6d36ca18706e15",
+        "width" : 300
+      } ],
+      "name" : "Christmas Cocktail Jazz",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MzI0ODY4MCwwMDAwMDAwNTAwMDAwMTY3NTBjYTE1NTgwMDAwMDE2NzBmODU2YmFj",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWZv6UE8BMPO0/tracks",
+        "total" : 35
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DWZv6UE8BMPO0"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX2uk5oHRWimT"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX2uk5oHRWimT",
+      "id" : "37i9dQZF1DX2uk5oHRWimT",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/0fabaf56d832e61666d9f61ce9b2a198b885da8e",
+        "width" : 300
+      } ],
+      "name" : "Acoustic Christmas",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MzQxNjQ5OCwwMDAwMDAxOTAwMDAwMTY3NWFjYWM4YzIwMDAwMDE2NmQ0ZmE5Mzc4",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX2uk5oHRWimT/tracks",
+        "total" : 115
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX2uk5oHRWimT"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX7pYJHz6u9GC"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX7pYJHz6u9GC",
+      "id" : "37i9dQZF1DX7pYJHz6u9GC",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/be4019ac2614e8893a99f508ce9db7f37921ad81",
+        "width" : 300
+      } ],
+      "name" : "Christmas Crooners",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MjAyODgwMiwwMDAwMDAxNDAwMDAwMTY3MDgxNDM4YTIwMDAwMDE2NjliMTAyMjRm",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX7pYJHz6u9GC/tracks",
+        "total" : 50
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX7pYJHz6u9GC"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX26MMm9GTjCc"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX26MMm9GTjCc",
+      "id" : "37i9dQZF1DX26MMm9GTjCc",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/3f2972cca26fff2cbcfad4017db5461b200ec2db",
+        "width" : 300
+      } ],
+      "name" : "Christmas Party",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTUzOTg1NTczMCwwMDAwMDAxNTAwMDAwMTY2ODY4ZGM5MTUwMDAwMDE2Njg2OGRhNjky",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX26MMm9GTjCc/tracks",
+        "total" : 47
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX26MMm9GTjCc"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX5D4gDh3HAsM"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX5D4gDh3HAsM",
+      "id" : "37i9dQZF1DX5D4gDh3HAsM",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/935311aeabec1c093ded15ebbf22a4f820de6694",
+        "width" : 300
+      } ],
+      "name" : "Christmas Jazz",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MTQ0MzE5MywwMDAwMDAxNzAwMDAwMTY2ZTUyYzhhZjMwMDAwMDE2NjdjZTg5NGZh",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX5D4gDh3HAsM/tracks",
+        "total" : 40
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX5D4gDh3HAsM"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX8c93KtGDPub"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX8c93KtGDPub",
+      "id" : "37i9dQZF1DX8c93KtGDPub",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/2d278a445a5243d962b99fc5c123bb1625d85f77",
+        "width" : 300
+      } ],
+      "name" : "Folksy Christmas",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTUyNDQ5MDEwMywwMDAwMDAxZjAwMDAwMTYwZWM2NTdiMGQwMDAwMDE2MmYyYjBlOGQ4",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX8c93KtGDPub/tracks",
+        "total" : 171
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX8c93KtGDPub"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DWYyYwAzt1cvG"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWYyYwAzt1cvG",
+      "id" : "37i9dQZF1DWYyYwAzt1cvG",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/1ee5d9671365da6700b6c8e75b4e9d40947e8fd0",
+        "width" : 300
+      } ],
+      "name" : "A Swingin' Christmas",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MDkxNDg1MSwwMDAwMDAwNzAwMDAwMTY2YzVhZWFkZDEwMDAwMDE2NmM1YWU3MDBk",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWYyYwAzt1cvG/tracks",
+        "total" : 32
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DWYyYwAzt1cvG"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DXb7KOnsvmh8V"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DXb7KOnsvmh8V",
+      "id" : "37i9dQZF1DXb7KOnsvmh8V",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/9178ddc3bb8b9b35c3fcb388396c5efde91a49e4",
+        "width" : 300
+      } ],
+      "name" : "Christmas Coffeehouse",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MjMxMDkwNywwMDAwMDAxZDAwMDAwMTY3MThlNGNmNTQwMDAwMDE2NzE0NWM5NmNl",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DXb7KOnsvmh8V/tracks",
+        "total" : 48
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DXb7KOnsvmh8V"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DWYTNedJ22GVG"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWYTNedJ22GVG",
+      "id" : "37i9dQZF1DWYTNedJ22GVG",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/93b8984879704d5326d37a71c1bfbda0f0a96d67",
+        "width" : 300
+      } ],
+      "name" : "Kids' Christmas Party Classics",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTUzOTc4MDIyMywwMDAwMDAxNjAwMDAwMTY2ODIwZGEwOWQwMDAwMDE2NjgyMGQyMGI1",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWYTNedJ22GVG/tracks",
+        "total" : 50
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DWYTNedJ22GVG"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX4yszbjaERiB"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4yszbjaERiB",
+      "id" : "37i9dQZF1DX4yszbjaERiB",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/94dfd78893ac8f08e0977ca641509879c07c1e6f",
+        "width" : 300
+      } ],
+      "name" : "Blue Christmas",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTUyNDQ5MDEwMywwMDAwMDAwYTAwMDAwMTYwN2E3ZGQ3M2QwMDAwMDE2MmYyYjBlOGQ4",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4yszbjaERiB/tracks",
+        "total" : 64
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX4yszbjaERiB"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX2C6Zlz76Dq4"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX2C6Zlz76Dq4",
+      "id" : "37i9dQZF1DX2C6Zlz76Dq4",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/45298b4a29bfe0556e42c113da3acf007a631779",
+        "width" : 300
+      } ],
+      "name" : "Country Christmas Classics",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MjkyODgxNSwwMDAwMDAwNTAwMDAwMTY3M2RiOTU1YmMwMDAwMDE2NzIyY2EwNTBm",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX2C6Zlz76Dq4/tracks",
+        "total" : 179
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX2C6Zlz76Dq4"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX8bPpooSiXy2"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX8bPpooSiXy2",
+      "id" : "37i9dQZF1DX8bPpooSiXy2",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/6c0cf22ff41ee97b702104efc48968c406163849",
+        "width" : 300
+      } ],
+      "name" : "Tropical Christmas",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MDMwNTcxNywwMDAwMDAwYzAwMDAwMTY2YTE2MDA3ZTcwMDAwMDE2NmExNWZkYjU0",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX8bPpooSiXy2/tracks",
+        "total" : 54
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DX8bPpooSiXy2"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DWY6fIMH0GtCp"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWY6fIMH0GtCp",
+      "id" : "37i9dQZF1DWY6fIMH0GtCp",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/a2c8a9c215c504c975c25ab17b3b3c2d3c44e5e9",
+        "width" : 300
+      } ],
+      "name" : "Hanukkah",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MDMwMzQ2NiwwMDAwMDAwYTAwMDAwMTY2YTEzZGFlMjAwMDAwMDE2NmExM2Q5Nzg2",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWY6fIMH0GtCp/tracks",
+        "total" : 45
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DWY6fIMH0GtCp"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DWVbb8LK4P3Mg"
+      },
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWVbb8LK4P3Mg",
+      "id" : "37i9dQZF1DWVbb8LK4P3Mg",
+      "images" : [ {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/440e00579cce35b1e8cccdb15c42bacd55e858fc",
+        "width" : 300
+      } ],
+      "name" : "Christmas K-Pop",
+      "owner" : {
+        "display_name" : "Spotify",
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/user/spotify"
+        },
+        "href" : "https://api.spotify.com/v1/users/spotify",
+        "id" : "spotify",
+        "type" : "user",
+        "uri" : "spotify:user:spotify"
+      },
+      "primary_color" : null,
+      "public" : null,
+      "snapshot_id" : "MTU0MzM5MjYyNiwwMDAwMDAzMjAwMDAwMTY3NTk1ZTg3MjcwMDAwMDE2NmExNmZlYjc3",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWVbb8LK4P3Mg/tracks",
+        "total" : 52
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:spotify:playlist:37i9dQZF1DWVbb8LK4P3Mg"
+    } ],
+    "limit" : 20,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 18
+  }
+}

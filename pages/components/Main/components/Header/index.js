@@ -1,19 +1,38 @@
+import './style.sass';
 import React from 'react';
-import "./style.sass";
-import IconSettings from '../../../../../components/IconSettings';
+import SpIcon from '../../../../../components/SpIcon';
 import LogoSpotifood from '../../../../../components/LogoSpotifood';
+import IndexStore from '../../../../index.store';
+import SpotifyService from '../../../../../services/spotify.service';
 
 export default class Component extends React.Component {
   constructor(props) {
     super(props);
+    this.handleQuit = this.handleQuit.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
+  }
+
+  handleQuit() {
+    IndexStore.spotifyStatus = 'DISCONNECTED';
+    SpotifyService.logout();
+  }
+
+  handleFilter() {
+    IndexStore.filterStatus = true;
   }
 
   render() {
-    return <div className="header">
-      <div className="header__left"><IconSettings /></div>
-      <div className="header__center"><LogoSpotifood /></div>
-      <div className="header__right" style={{ backgroundImage: 'url(https://images-na.ssl-images-amazon.com/images/M/MV5BMTA2OTE1Njg4NjVeQTJeQWpwZ15BbWU3MDAyNjU4MDM@._V1_UY256_CR18,0,172,256_AL_.jpg)' }}>
+    const { me } = IndexStore;
+    const thumb = me && me.images && me.images[0] ? me.images[0].url : '';
+    const rStyle = thumb ? { backgroundImage: `url(${thumb})` } : {};
+    return (
+      <div className="header">
+        <div className="header__left"><SpIcon icon="settings" onClick={this.handleFilter} /></div>
+        <div className="header__center"><LogoSpotifood /></div>
+        <div className="header__right" style={rStyle}>
+          <button type="button" onClick={this.handleQuit} onKeyPress={this.handleQuit}>Quit</button>
+        </div>
       </div>
-    </div>
+    );
   }
 }
