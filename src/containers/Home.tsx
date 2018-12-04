@@ -31,7 +31,7 @@ interface IProps {
   previousPage: string | null;
   token: string;
   getFilterConfig: () => Dispatch;
-  getPage: (
+  appendPage: (
     token: string,
     currentCancelToken: CancelTokenSource | null,
     pageAddress: string,
@@ -90,7 +90,6 @@ class Home extends PureComponent<IProps, IState> {
         <List
           nextPage={this.props.nextPage}
           onPageChange={this.handlePageChange}
-          previousPage={this.props.previousPage}
           playlists={this.props.playlists}
         />
       </div>
@@ -128,7 +127,11 @@ class Home extends PureComponent<IProps, IState> {
   };
 
   private handlePageChange = (pageAddress: string) => {
-    this.props.getPage(this.props.token, this.props.cancelToken, pageAddress);
+    this.props.appendPage(
+      this.props.token,
+      this.props.cancelToken,
+      pageAddress,
+    );
   };
 
   private handleSearch = (search: string) => {
@@ -161,12 +164,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getFilterConfig: () => dispatch(filterOps.getConfig()),
-  getPage: (
+  appendPage: (
     token: string,
     cancelToken: CancelTokenSource | null,
     pageAddress: string,
-  ) => dispatch(playlistOps.getPage(token, cancelToken, pageAddress)),
+  ) => dispatch(playlistOps.appendPage(token, cancelToken, pageAddress)),
+  getFilterConfig: () => dispatch(filterOps.getConfig()),
   listFeaturedPlaylists: (
     token: string,
     cancelToken: CancelTokenSource | null,

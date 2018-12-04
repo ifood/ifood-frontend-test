@@ -75,14 +75,32 @@ describe('begin listing playlists', () => {
 
 describe('Get list of playlists', () => {
   it('should set state from valid page', () => {
-    expect.assertions(5);
+    expect.assertions(6);
     const cancelToken = generateCancellationToken();
     let state = reducer(initialState, actions.listPlaylistsBegin(cancelToken));
 
-    state = reducer(undefined, actions.listPlaylistsSuccess(validPage));
+    state = reducer(state, actions.listPlaylistsSuccess(validPage));
     expect(selectors.getPlaylists({ playlist: state })).toEqual(
       validPage.items,
     );
+    expect(selectors.getLimit({ playlist: state })).toBe(30);
+    expect(selectors.getOffset({ playlist: state })).toBe(10);
+    expect(selectors.getNextPage({ playlist: state })).toBe('https://next');
+    expect(selectors.getPreviousPage({ playlist: state })).toBe('https://prev');
+    expect(selectors.getCancellationToken({ playlist: state })).toBeNull();
+  });
+  it('should set state from valid page', () => {
+    expect.assertions(6);
+    const cancelToken = generateCancellationToken();
+    let state = reducer(initialState, actions.listPlaylistsBegin(cancelToken));
+
+    state = reducer(state, actions.listPlaylistsSuccess(validPage));
+    state = reducer(state, actions.listPlaylistsAppend(validPage));
+
+    expect(selectors.getPlaylists({ playlist: state })).toEqual([
+      ...validPage.items,
+      ...validPage.items,
+    ]);
     expect(selectors.getLimit({ playlist: state })).toBe(30);
     expect(selectors.getOffset({ playlist: state })).toBe(10);
     expect(selectors.getNextPage({ playlist: state })).toBe('https://next');
@@ -93,7 +111,7 @@ describe('Get list of playlists', () => {
 
 describe('Fail to get list of playlists', () => {
   it('should unset cancel token set state from valid page', () => {
-    expect.assertions(5);
+    expect.assertions(1);
     const cancelToken = generateCancellationToken();
     let state = reducer(initialState, actions.listPlaylistsBegin(cancelToken));
 

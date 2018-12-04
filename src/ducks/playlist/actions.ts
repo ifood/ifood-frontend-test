@@ -14,12 +14,18 @@ const listPlaylistsBegin = (
 });
 
 interface IListPlaylistsSuccess {
-  type: typeof types.PLAYLISTS_LIST_SUCCESS;
+  type:
+    | typeof types.PLAYLISTS_LIST_SUCCESS
+    | typeof types.PLAYLISTS_LIST_APPEND;
   page: IPaging;
 }
 const listPlaylistsSuccess = (page: IPaging): IListPlaylistsSuccess => ({
   page,
   type: types.PLAYLISTS_LIST_SUCCESS,
+});
+const listPlaylistsAppend = (page: IPaging): IListPlaylistsSuccess => ({
+  page,
+  type: types.PLAYLISTS_LIST_APPEND,
 });
 
 interface IListPlaylistsFailure {
@@ -36,4 +42,9 @@ export type PlaylistAction =
   | IListPlaylistsSuccess
   | IListPlaylistsFailure;
 
-export { listPlaylistsBegin, listPlaylistsSuccess, listPlaylistsFailure };
+export {
+  listPlaylistsAppend,
+  listPlaylistsBegin,
+  listPlaylistsSuccess,
+  listPlaylistsFailure,
+};

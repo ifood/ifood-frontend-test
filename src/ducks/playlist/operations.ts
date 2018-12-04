@@ -5,6 +5,34 @@ import { generateCancellationToken } from '../../api/axios';
 import * as api from '../../api/spotify';
 import * as actions from './actions';
 
+export function appendPage(
+  token: string,
+  currentCancelToken: CancelTokenSource | null,
+  pageAddress: string,
+) {
+  return async (dispatch: Dispatch) => {
+    // cancel ongoing request
+    if (currentCancelToken) {
+      currentCancelToken.cancel();
+    }
+    const cancellationToken = generateCancellationToken();
+    dispatch(actions.listPlaylistsBegin(cancellationToken));
+    try {
+      const pagingObject = await api.getPage(
+        token,
+        cancellationToken,
+        pageAddress,
+      );
+      dispatch(actions.listPlaylistsAppend(pagingObject));
+    } catch (err) {
+      // FIXME: this may erase all already loaded playlists
+      // needs a mechanism to show loading errors while keeping
+      // the loaded playlists
+      dispatch(actions.listPlaylistsFailure('Sorry, could not load playlists'));
+    }
+  };
+}
+
 export function getPage(
   token: string,
   currentCancelToken: CancelTokenSource | null,

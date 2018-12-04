@@ -39,6 +39,16 @@ export default (
         offset: action.page.offset,
         previousPageUrl: action.page.previous,
       };
+    case types.PLAYLISTS_LIST_APPEND:
+      return {
+        ...state,
+        cancelToken: null,
+        limit: action.page.limit,
+        list: [...state.list, ...action.page.items], // append items
+        nextPageUrl: action.page.next,
+        offset: action.page.offset,
+        previousPageUrl: action.page.previous,
+      };
     case types.PLAYLISTS_LIST_FAILURE:
       return { ...state, cancelToken: null };
     default:
