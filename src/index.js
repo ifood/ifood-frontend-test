@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import store from './ducks/store';
 import * as serviceWorker from './serviceWorker';
+import 'bulma/css/bulma.min.css';
 
 ReactDOM.render(
   <Provider store={store}>

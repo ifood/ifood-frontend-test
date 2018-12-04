@@ -33,7 +33,7 @@ export function getPage(
 export function listFeaturedPlaylists(
   token: string,
   currentCancelToken: CancelTokenSource | null,
-  countryCode: string | null,
+  countryCode?: string | null,
 ) {
   return async (dispatch: Dispatch) => {
     // cancel ongoing request

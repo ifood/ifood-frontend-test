@@ -39,7 +39,7 @@ interface IProps {
   listFeaturedPlaylists: (
     token: string,
     currentCancelToken: CancelTokenSource | null,
-    countryCode: string | null,
+    countryCode?: string | null,
   ) => Dispatch;
   searchPlaylists: (
     token: string,
@@ -81,9 +81,11 @@ class Home extends PureComponent<IProps, IState> {
       <div>
         <Filter
           countries={this.props.countries}
+          country={this.state.country}
           onCountryChange={this.handleCountryChange}
           onSearch={this.handleSearch}
           onSignOut={this.handleSignOut}
+          search={this.state.search}
         />
         <List
           nextPage={this.props.nextPage}
@@ -99,7 +101,7 @@ class Home extends PureComponent<IProps, IState> {
     this.props.listFeaturedPlaylists(
       this.props.token,
       this.props.cancelToken,
-      country || this.state.country,
+      country,
     );
     this.clearPlaylistRefresh();
 
@@ -120,7 +122,8 @@ class Home extends PureComponent<IProps, IState> {
   }
 
   private handleCountryChange = (countryCode: string) => {
-    this.setState({ country: countryCode });
+    // resets search when country changes
+    this.setState({ country: countryCode, search: '' });
     this.loadFeaturedPlaylists(countryCode);
   };
 
@@ -129,6 +132,8 @@ class Home extends PureComponent<IProps, IState> {
   };
 
   private handleSearch = (search: string) => {
+    // resets country when search changes
+    this.setState({ country: null, search });
     if (search.length > 0) {
       this.props.searchPlaylists(
         this.props.token,
@@ -165,7 +170,7 @@ const mapDispatchToProps = dispatch => ({
   listFeaturedPlaylists: (
     token: string,
     cancelToken: CancelTokenSource | null,
-    countryCode: string | null,
+    countryCode?: string | null,
   ) =>
     dispatch(
       playlistOps.listFeaturedPlaylists(token, cancelToken, countryCode),

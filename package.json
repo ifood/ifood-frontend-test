@@ -8,6 +8,7 @@
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
     "axios": "^0.18.0",
+    "bulma": "^0.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
@@ -15,6 +16,7 @@
     "react-spotify-login": "^0.9.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^4.1.2",
     "typescript": "^3.1.6",
     "url-join": "^4.0.0"
   },
