@@ -7,6 +7,7 @@ export interface IPlaylist {
   images: Array<{ height: number; url: string; width: number }>;
   href: string;
   name: string;
+  external_urls: { spotify: string };
 }
 
 export interface IPaging {

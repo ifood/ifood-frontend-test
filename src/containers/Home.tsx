@@ -71,6 +71,10 @@ class Home extends PureComponent<IProps, IState> {
     timeoutId: null,
   };
 
+  private componentRef: React.RefObject<HTMLDivElement> = React.createRef<
+    HTMLDivElement
+  >();
+
   public componentDidMount() {
     this.props.getFilterConfig();
     this.loadFeaturedPlaylists(null);
@@ -78,7 +82,7 @@ class Home extends PureComponent<IProps, IState> {
 
   public render() {
     return (
-      <div>
+      <div ref={this.componentRef}>
         <Filter
           countries={this.props.countries}
           country={this.state.country}
@@ -97,6 +101,7 @@ class Home extends PureComponent<IProps, IState> {
   }
 
   private loadFeaturedPlaylists(country?: string | null) {
+    this.scrollToTop();
     this.props.listFeaturedPlaylists(
       this.props.token,
       this.props.cancelToken,
@@ -135,6 +140,7 @@ class Home extends PureComponent<IProps, IState> {
   };
 
   private handleSearch = (search: string) => {
+    this.scrollToTop();
     // resets country when search changes
     this.setState({ country: null, search });
     if (search.length > 0) {
@@ -151,6 +157,17 @@ class Home extends PureComponent<IProps, IState> {
 
   private handleSignOut = () => {
     this.props.signOut();
+  };
+
+  // FIXME: a little component/container pattern offense
+  // this component should not worry about visual stuff
+  private scrollToTop = () => {
+    if (this.componentRef && this.componentRef.current) {
+      window.scrollTo({
+        behavior: 'auto',
+        top: this.componentRef.current.offsetTop,
+      });
+    }
   };
 }
 

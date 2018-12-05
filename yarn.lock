@@ -741,6 +741,13 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
+"@babel/runtime@^7.0.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
+  integrity sha512-oouEibCbHMVdZSDlJBO6bZmID/zA/G/Qx3H1d3rSNPTD+L8UNKvCat7aKWSJ74zYbm5zWGh0GQN0hKj8zYFTCg==
+  dependencies:
+    regenerator-runtime "^0.12.0"
+
 "@babel/runtime@^7.1.2":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.1.5.tgz#4170907641cf1f61508f563ece3725150cc6fe39"
@@ -821,6 +828,40 @@
     inversify "^5.0.0"
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
+
+"@fortawesome/fontawesome-common-types@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.8.tgz#8cacd1efd1aa956e1ef173f0abcf2ce1b7a0c66f"
+  integrity sha512-0sU7JDLdEeGQlWBSr5uEE6PZOM15YM1s9rFlpZV+WhNdX2V6Co3Sj0OW5el4F54X1Tw+nfxf4Cc3dUedudaDWg==
+
+"@fortawesome/fontawesome-svg-core@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.8.tgz#b802b7f3d5b9d9d92ae92c18e865df468dcdf561"
+  integrity sha512-cvcMQZ5F8WSNSGMk9uWlkmZNfDzmdsWLRrTMrNwwihHcEmWRlIuSbDt+PQ/rXsnGmJnmLQJLFBT1cse/3swxbg==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.8"
+
+"@fortawesome/free-brands-svg-icons@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.5.0.tgz#50e020aced5b9652db1d2d9d7909c73561ff1f4a"
+  integrity sha512-R2I2eARMVofGTtfxe5+VaMRXiQYQQFoDkHj2Q1qZVn37eRFszDySvSlJuKTsqFRsOxoP4Iq+xIGFy/ppoSo3Wg==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.8"
+
+"@fortawesome/free-solid-svg-icons@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.5.0.tgz#4d815df4bba076f209eb409bc56d9d830367a7c0"
+  integrity sha512-VawIT2owNP97EwehZmxkvZDhoKwEevU/1HOMkln6kc4OtfE+JKYr6DpyzQnHVWXvz/eFj36QElHNe6zT8gR+Tg==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.8"
+
+"@fortawesome/react-fontawesome@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.3.tgz#266b4047892c3d10498af1075d89252f74015b11"
+  integrity sha512-tc689l67rPZ7+ynZVUgOXY80rAt5KxvuH1qjPpJcbyJzJHzk5yhrD993BjsSEdPBLTtPqmvwynsO/XrAQqHbtg==
+  dependencies:
+    humps "^2.0.1"
+    prop-types "^15.5.10"
 
 "@iamstarkov/listr-update-renderer@0.4.1":
   version "0.4.1"
@@ -4692,6 +4733,11 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
+humps@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/humps/-/humps-2.0.1.tgz#dd02ea6081bd0568dc5d073184463957ba9ef9aa"
+  integrity sha1-3QLqYIG9BWjcXQcxhEY5V7qe+ao=
+
 husky@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/husky/-/husky-1.1.4.tgz#92f61383527d2571e9586234e5864356bfaceaa9"
@@ -8011,7 +8057,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@15.6.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -8231,6 +8277,14 @@ react-error-overlay@^5.1.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.0.tgz#c516995a5652e7bfbed8b497910d5280df74a7e8"
   integrity sha512-akMy/BQT5m1J3iJIHkSb4qycq2wzllWsmmolaaFVnb+LPV9cIJ/nTud40ZsiiT0H3P+/wXIdbjx2fzF61OaeOQ==
 
+react-image@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/react-image/-/react-image-1.5.1.tgz#e900baa3f48b15ca94500542a2aff762c94431b8"
+  integrity sha512-UHVXGmv9NttI5nWlvXdqxqzbfRebZSmHTT4n5hsUb0uElYXwE71+Zla4/KZjjU96Z6eZPT66OFSVwd2wwBOKyg==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    prop-types "15.6.2"
+
 react-infinite-scroller@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.2.2.tgz#1d13b8167476dfe64c401983293dabc6a8a8ecf3"
@@ -8238,7 +8292,7 @@ react-infinite-scroller@^1.2.2:
   dependencies:
     prop-types "^15.5.8"
 
-react-is@^16.3.2, react-is@^16.6.0:
+react-is@^16.3.2, react-is@^16.6.0, react-is@^16.6.3:
   version "16.6.3"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
   integrity sha512-u7FDWtthB4rWibG/+mFbVd5FvdI20yde86qKGx4lVUTWmPlSWQ4QxbBIrrs+HnXGbxOUlUzTAP/VDmvCwaP2yA==
@@ -8320,6 +8374,16 @@ react-spotify-login@^0.9.1:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/react-spotify-login/-/react-spotify-login-0.9.1.tgz#1afc35c02c424ac2f16494c713cd7515937e4b4e"
   integrity sha512-H6CghrD79Q35tI7NixwsfXQBdoLrqimX58NGUQbY/ptVbSLb+qDPlj3jQY6+eGi0P/QS7H8qbFS+7UWh7aVDvw==
+
+react-test-renderer@^16.6.3:
+  version "16.6.3"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.6.3.tgz#5f3a1a7d5c3379d46f7052b848b4b72e47c89f38"
+  integrity sha512-B5bCer+qymrQz/wN03lT0LppbZUDRq6AMfzMKrovzkGzfO81a9T+PWQW6MzkWknbwODQH/qpJno/yFQLX5IWrQ==
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    react-is "^16.6.3"
+    scheduler "^0.11.2"
 
 react@^16.6.3:
   version "16.6.3"

@@ -8,6 +8,9 @@ const validPage: IPaging = {
   href: 'https://api.spotify.com',
   items: [
     {
+      external_urls: {
+        spotify: 'https://open.spotify',
+      },
       href: '/playlists/37i9dQZF1DX7rOY2tZUw1k',
       id: '37i9dQZF1DX7rOY2tZUw1k',
       images: [
@@ -20,6 +23,9 @@ const validPage: IPaging = {
       name: 'Timeless Love Songs',
     },
     {
+      external_urls: {
+        spotify: 'https://open.spotify',
+      },
       href: '/playlists/37i9dQZF1DX5bjCEbRU4SJ',
       id: '37i9dQZF1DX5bjCEbRU4SJ',
       images: [

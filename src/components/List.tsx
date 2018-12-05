@@ -1,7 +1,9 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
+import styled from 'styled-components';
 
 import { IPlaylist } from '../api/spotify';
+import PlaylistCard from './PlaylistCard';
 
 interface IProps {
   nextPage: string | null;
@@ -9,28 +11,36 @@ interface IProps {
   onPageChange: (page: string) => void;
 }
 
+const StyledDiv = styled.div`
+  margin-top: 4.8rem;
+
+  @media (max-width: 1087px) {
+    margin-top: 9.6rem;
+  }
+`;
+
+const CardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export default class List extends PureComponent<IProps> {
   public render() {
     return (
-      <Fragment>
+      <StyledDiv>
         <InfiniteScroll
           pageStart={0}
           loadMore={this.handleNextPage}
-          hasMore={this.props.nextPage}
-          loader={
-            <div className='loader' key={0}>
-              Loading ...
-            </div>
-          }
+          hasMore={!!this.props.nextPage}
         >
-          {this.props.playlists.map(p => (
-            <div key={p.id}>
-              <img src={p.images[0].url} />
-              <div>{p.name}</div>
-            </div>
-          ))}
+          <CardsContainer>
+            {this.props.playlists.map(p => (
+              <PlaylistCard playlist={p} key={p.id} />
+            ))}
+          </CardsContainer>
         </InfiniteScroll>
-      </Fragment>
+      </StyledDiv>
     );
   }
 

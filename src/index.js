@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import { library as fontawesomeLibrary } from '@fortawesome/fontawesome-svg-core';
+import { faCompactDisc } from '@fortawesome/free-solid-svg-icons';
+import { faSpotify } from '@fortawesome/free-brands-svg-icons';
+
 import './index.css';
 import App from './App';
 import store from './ducks/store';
 import * as serviceWorker from './serviceWorker';
 import 'bulma/css/bulma.min.css';
+
+// setup font-awesome
+fontawesomeLibrary.add(faCompactDisc, faSpotify);
 
 ReactDOM.render(
   <Provider store={store}>

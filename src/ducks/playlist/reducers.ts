@@ -34,7 +34,7 @@ export default (
         ...state,
         cancelToken: null,
         limit: action.page.limit,
-        list: action.page.items,
+        list: [...action.page.items],
         nextPageUrl: action.page.next,
         offset: action.page.offset,
         previousPageUrl: action.page.previous,

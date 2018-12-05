@@ -54,7 +54,6 @@ class Filter extends PureComponent<IProps> {
             <div className='select is-danger'>
               <select
                 onChange={this.handleCountryChange}
-                defaultValue='placeholder'
                 value={
                   this.props.country !== null
                     ? this.props.country
