@@ -111,7 +111,7 @@ class Home extends PureComponent<IProps, IState> {
 
     // set new timeout
     const timeoutId = setTimeout(() => {
-      this.loadFeaturedPlaylists();
+      this.loadFeaturedPlaylists(this.state.country);
     }, settings.playlistRefreshInterval);
 
     this.setState({ timeoutId });
