@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import { library as fontawesomeLibrary } from '@fortawesome/fontawesome-svg-core';
-import { faCompactDisc } from '@fortawesome/free-solid-svg-icons';
+import { faCompactDisc, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 import './index.css';
@@ -13,7 +13,7 @@ import * as serviceWorker from './serviceWorker';
 import 'bulma/css/bulma.min.css';
 
 // setup font-awesome
-fontawesomeLibrary.add(faCompactDisc, faSpotify);
+fontawesomeLibrary.add(faCompactDisc, faSpotify, faCamera);
 
 ReactDOM.render(
   <Provider store={store}>
