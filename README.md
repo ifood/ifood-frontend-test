@@ -1,44 +1,93 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spotifood
 
-## Available Scripts
+This is spotifood, an app to find playlists while eating!
 
-In the project directory, you can run:
+## Dev
 
-### `npm start`
+Install dependencies running
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+yarn
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+then, run the app with
 
-### `npm test`
+```
+yarn start
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Test
 
-### `npm run build`
+To test, run
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+yarn test
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+for coverage, run
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+yarn coverage
+```
 
-### `npm run eject`
+and then check the `coverage/` dir for the report.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Build
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To build, run
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+yarn build
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can find the build app at the `build/` directory.
 
-## Learn More
+The app has less than 100KB after gzip.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Architecture
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This app is bootstraped with [create-react-app](https://github.com/facebook/create-react-app).
+
+It uses `typescript` for static typing and `tslint` for linting.
+
+### Redux and Ducks
+
+For state management, we use redux with the [re-ducks architecture](https://github.com/alexnm/re-ducks).
+
+Also, it tries to follow the [container/component](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) as much as possible.
+
+### Tests
+
+The app is not thoroughly tested, but we use
+
+- jest: for general testing
+- react-test-renderer: for component testing
+
+### Mobile-first
+
+The app looks fine in most resolutions.
+
+### Misc
+
+Here are some other technologies used:
+
+- axios: for HTTP requests
+- styled-components + bulma + font-awesome: for styling
+- react-infinite-scroller: for automatic pagination while listing playlists
+- react-image: to show a placeholder while playlist images are not loaded
+- prettier + tslint + lint-staged: for formatting and lint on pre-commit
+
+## What can be improved
+
+- There are no visual feedback for loading playlists
+- There are no visual feedback that no playlists met the search
+- There are some visual inconsistencies when automatically scrolling to top for new searches/listings
+- The config API locale was ignored for simplicity
+- The config API limit/offset were ignored in favour of simplicity/infinite scrolling
+- Spotifood logo could use some love
+- Bulma default colors were used for the sake of fast development, some better colors could be used
+- Token expiration is not handled whatsoever, the application just ceases to work correctly
+- 'Sign out' button is hidden on mobile for visuals, but this can be a disaster in union with the previous item
+- Login button was meant to have a spotify logo, but `react-spotify-login` does not allow it
+- Bulma is modular, so the best solution would import only what is used, and not everything (as it is being done). We could achieve less than the actual 100KB app size easily.
+- Error support is kind of ridiculous
