@@ -6,6 +6,7 @@ import { IPlaylist } from '../api/spotify';
 import PlaylistCard from './PlaylistCard';
 
 interface IProps {
+  error: string | null;
   nextPage: string | null;
   playlists: IPlaylist[];
   onPageChange: (page: string) => void;
@@ -40,6 +41,9 @@ export default class List extends PureComponent<IProps> {
             ))}
           </CardsContainer>
         </InfiniteScroll>
+        {this.props.error && (
+          <div className='notification is-danger'>{this.props.error}</div>
+        )}
       </StyledDiv>
     );
   }

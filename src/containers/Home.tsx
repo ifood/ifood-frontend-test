@@ -1,7 +1,6 @@
 import { CancelTokenSource } from 'axios';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-// import locale2 from 'locale2'; TODO: get default locale
 
 import { Dispatch } from 'redux';
 
@@ -26,6 +25,7 @@ import {
 interface IProps {
   cancelToken: CancelTokenSource | null;
   countries: Array<{ name: string; value: string }>;
+  error: string | null;
   nextPage: string | null;
   playlists: IPlaylist[];
   previousPage: string | null;
@@ -95,6 +95,7 @@ class Home extends PureComponent<IProps, IState> {
           nextPage={this.props.nextPage}
           onPageChange={this.handlePageChange}
           playlists={this.props.playlists}
+          error={this.props.error}
         />
       </div>
     );
@@ -174,6 +175,7 @@ class Home extends PureComponent<IProps, IState> {
 const mapStateToProps = state => ({
   cancelToken: playlistSelectors.getCancellationToken(state),
   countries: filterSelectors.getCountryList(state),
+  error: playlistSelectors.getError(state),
   nextPage: playlistSelectors.getNextPage(state),
   playlists: playlistSelectors.getPlaylists(state),
   previousPage: playlistSelectors.getPreviousPage(state),

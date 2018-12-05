@@ -5,6 +5,7 @@ import * as types from './types';
 
 export interface IPlaylistState {
   cancelToken: CancelTokenSource | null;
+  error: string | null;
   list: IPlaylist[];
   limit: number;
   offset: number;
@@ -15,6 +16,7 @@ export interface IPlaylistState {
 // set default state values
 export const initialState: IPlaylistState = {
   cancelToken: null,
+  error: null,
   limit: 20,
   list: [],
   nextPageUrl: null,
@@ -28,7 +30,7 @@ export default (
 ): IPlaylistState => {
   switch (action.type) {
     case types.PLAYLISTS_LIST_BEGIN:
-      return { ...state, cancelToken: action.cancelToken };
+      return { ...state, cancelToken: action.cancelToken, error: null };
     case types.PLAYLISTS_LIST_SUCCESS:
       return {
         ...state,
@@ -50,7 +52,7 @@ export default (
         previousPageUrl: action.page.previous,
       };
     case types.PLAYLISTS_LIST_FAILURE:
-      return { ...state, cancelToken: null };
+      return { ...state, cancelToken: null, error: action.error };
     default:
       return { ...state };
   }
