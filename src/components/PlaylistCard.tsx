@@ -55,9 +55,9 @@ export default class PlaylistCard extends PureComponent<IProps> {
           <StyledImageContainer>
             <Img
               className='image'
-              src={playlist.images[0].url}
+              src={playlist.images[0] && playlist.images[0].url}
               loader={<DiscPlaceholder />}
-              unloader={'failed to load image'}
+              unloader={<DiscPlaceholder />}
             />
           </StyledImageContainer>
         </a>
