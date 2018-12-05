@@ -1,29 +1,93 @@
-# iFood Frontend Test
+# Spotifood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+This is spotifood, an app to find playlists while eating!
 
-## Business rules
+## Dev
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+Install dependencies running
 
-## Hints or Constraints
+```
+yarn
+```
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+then, run the app with
 
-## Non functional requirements
+```
+yarn start
+```
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+### Test
+
+To test, run
+
+```
+yarn test
+```
+
+for coverage, run
+
+```
+yarn coverage
+```
+
+and then check the `coverage/` dir for the report.
+
+### Build
+
+To build, run
+
+```
+yarn build
+```
+
+You can find the build app at the `build/` directory.
+
+The app has less than 100KB after gzip.
+
+## Architecture
+
+This app is bootstraped with [create-react-app](https://github.com/facebook/create-react-app).
+
+It uses `typescript` for static typing and `tslint` for linting.
+
+### Redux and Ducks
+
+For state management, we use redux with the [re-ducks architecture](https://github.com/alexnm/re-ducks).
+
+Also, it tries to follow the [container/component](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) as much as possible.
+
+### Tests
+
+The app is not thoroughly tested, but we use
+
+- jest: for general testing
+- react-test-renderer: for component testing
+
+### Mobile-first
+
+The app looks fine in most resolutions.
+
+### Misc
+
+Here are some other technologies used:
+
+- axios: for HTTP requests
+- styled-components + bulma + font-awesome: for styling
+- react-infinite-scroller: for automatic pagination while listing playlists
+- react-image: to show a placeholder while playlist images are not loaded
+- prettier + tslint + lint-staged: for formatting and lint on pre-commit
+
+## What can be improved
+
+- There are no visual feedback for loading playlists
+- There are no visual feedback that no playlists met the search
+- There are some visual inconsistencies when automatically scrolling to top for new searches/listings
+- The config API locale was ignored for simplicity
+- The config API limit/offset were ignored in favour of simplicity/infinite scrolling
+- Spotifood logo could use some love
+- Bulma default colors were used for the sake of fast development, some better colors could be used
+- Token expiration is not handled whatsoever, the application just ceases to work correctly
+- 'Sign out' button is hidden on mobile for visuals, but this can be a disaster in union with the previous item
+- Login button was meant to have a spotify logo, but `react-spotify-login` does not allow it
+- Bulma is modular, so the best solution would import only what is used, and not everything (as it is being done). We could achieve less than the actual 100KB app size easily.
+- Error support is kind of ridiculous
