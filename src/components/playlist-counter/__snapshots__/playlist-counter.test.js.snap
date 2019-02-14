@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with props 1`] = `
+<div
+  style={
+    Object {
+      "color": "#000",
+      "display": "inline-block",
+      "fontFamily": "Papyrus",
+      "fontSize": "20px",
+      "lineHeight": "30px",
+      "marginBottom": "20px",
+      "width": "40%",
+    }
+  }
+>
+  <h2>
+    Number of playlists: 
+    <span
+      style={
+        Object {
+          "color": "blue",
+          "fontWeight": "bold",
+        }
+      }
+    >
+      2
+    </span>
+  </h2>
+</div>
+`;
