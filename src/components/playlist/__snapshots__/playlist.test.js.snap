@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with props 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#808080",
+      "color": "#000",
+      "display": "inline-block",
+      "fontFamily": "Papyrus",
+      "padding": "10px",
+      "width": "25%",
+    }
+  }
+>
+  <img
+    alt="Image URL index: undefined"
+    src="https://pl.scdn.co/images/pl/default/dd52dbcce4e10a2feb519e9c282b4d3b0dcc7442"
+    style={
+      Object {
+        "width": "60px",
+      }
+    }
+  />
+  <h3
+    style={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Sweet Soul Chillout
+  </h3>
+  <ul
+    style={
+      Object {
+        "marginTop": "10px",
+      }
+    }
+  >
+    <li
+      style={
+        Object {
+          "paddingTop": "2px",
+        }
+      }
+    >
+      <span
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Owner: 
+      </span>
+      Spotify
+    </li>
+    <li
+      style={
+        Object {
+          "paddingTop": "2px",
+        }
+      }
+    >
+      <span
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Total of tracks: 
+      </span>
+      36
+    </li>
+  </ul>
+</div>
+`;

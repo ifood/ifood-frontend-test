@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with props 1`] = `
+<WithStyles(FormControl)>
+  <WithStyles(WithFormControlContext(InputLabel))
+    htmlFor="country"
+  >
+    País
+  </WithStyles(WithFormControlContext(InputLabel))>
+  <WithStyles(WithFormControlContext(Select))
+    inputProps={
+      Object {
+        "id": "country",
+        "name": "country",
+      }
+    }
+    onChange={null}
+    value={
+      Object {
+        "country": "Brasil",
+      }
+    }
+  >
+    <WithStyles(MenuItem)
+      key="AU"
+      value="AU"
+    >
+      Australia
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="DE"
+      value="DE"
+    >
+      Alemanhã
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="BR"
+      value="BR"
+    >
+      Brasil
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="PT"
+      value="PT"
+    >
+      Portugal
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="en_US"
+      value="en_US"
+    >
+      EUA
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="RU"
+      value="RU"
+    >
+      Rússia
+    </WithStyles(MenuItem)>
+  </WithStyles(WithFormControlContext(Select))>
+</WithStyles(FormControl)>
+`;

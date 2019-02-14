@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with props 1`] = `
+<div
+  style={
+    Object {
+      "color": "black",
+      "display": "inline-block",
+      "fontFamily": "Papyrus",
+      "fontSize": "20px",
+      "fontWeight": "normal",
+      "lineHeight": "30px",
+      "marginBottom": "20px",
+      "width": "40%",
+    }
+  }
+>
+  <h2>
+    Number of tracks in all Playlists: 
+    1375
+  </h2>
+</div>
+`;

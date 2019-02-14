@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with no props 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+      }
+    }
+  >
+    <TextField
+      id="search"
+      label="Filter playlists by name"
+      onKeyUp={[Function]}
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginBottom": ".8em",
+        }
+      }
+      variant="standard"
+    />
+  </div>
+</div>
+`;
+
+exports[`should render correctly with props 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+      }
+    }
+  >
+    <TextField
+      id="search"
+      label="Filter playlists by name"
+      onKeyUp={[Function]}
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginBottom": ".8em",
+        }
+      }
+      variant="standard"
+    />
+  </div>
+</div>
+`;
+
+exports[`should render correctly with props null 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+      }
+    }
+  >
+    <TextField
+      id="search"
+      label="Filter playlists by name"
+      onKeyUp={[Function]}
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginBottom": ".8em",
+        }
+      }
+      variant="standard"
+    />
+  </div>
+</div>
+`;
