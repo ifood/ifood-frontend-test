@@ -61,6 +61,12 @@ The deploy of the application was done in Heroku (https://heroku.com), because i
 
 To access the application, enter this link: https://spotifood-raphael.herokuapp.com
 
+If you wish to run the application in your local machine, write the below commands in your terminal (replacing XXXX with your acutal client id from the page where you registered your application).
+
+Windows: SET REACT_APP_SPOTIFY_CLIENT_ID=XXXX
+Linux: export REACT_APP_SPOTIFY_CLIENT_ID=XXXX
+npm start
+
 ## Tests
 
 For unit tests, Jest was used (already installed in the package of the create-react-app) along with enzyme.
