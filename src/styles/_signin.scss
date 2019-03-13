@@ -1,0 +1,52 @@
+.signin-container {
+    background: rgb(59, 110, 172);
+    height: 100vh;
+    padding: 0% 0;
+    overflow: hidden;
+
+    .background-ifood {
+        float: left;
+        z-index: -1;
+        height: 100vh;
+        content:url('../images/ifood-background-left.webp');
+        filter: grayscale(60%);
+        margin-left: -2%;
+    }
+
+    .background-spotify {
+        float: right;
+        z-index: -1;
+        height: 100vh;
+        content:url('../images/spotify-background.right.png');
+        filter: grayscale(30%);
+        margin-right: -10%;
+    }
+
+    .signin-content {
+        @include rounded(6px);
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.08);
+        margin: 0px auto;
+        background: $white;
+        width: 400px;
+        margin-top: 15%;
+
+        .welcome-heading {
+            margin-top: 15px;
+        }
+        .welcome-text {
+            margin-top: 20px;
+            font-size: small;
+        }
+        .singin-button {
+            margin: 20px 0;
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .background-ifood, .background-spotify {
+        display: none;
+    }
+}

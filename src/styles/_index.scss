@@ -1,0 +1,63 @@
+.landing-filter {
+    padding: 3% 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: left center;
+    border-bottom: 1px solid $gray-300;
+    min-height: 28vh;
+    background-image: url('../images/filters-background.jpeg');
+    filter: grayscale(65%);
+    
+    .page-highlight {
+        color: $white;
+        margin-bottom: 10px;
+    }
+
+    .page-highlight-text {
+        font-size: 14px;
+        color: $gray-150;
+    }
+
+    .filter-container {
+        height: 100%;
+        margin-top: 20px;
+
+        .filter-field-container {
+            .filter-dropdown {
+                background: $white;
+                color: $gray-300;
+                height: 38px;
+            }
+
+            .filter-field-number {
+                color: $gray-300;
+                width: 100%;
+            }
+            .filter-field-date {
+                color: $primary-input-color;
+                width: 100%;
+            }
+        }
+
+        .reset-filters {
+            height: 38px;
+            width: 100%;
+            font-weight: bolder;
+        }
+    }
+}
+
+.playlist-listing {
+    min-height: 49vh;
+}
+
+@media only screen and (max-width: 600px) {
+    .reset-filters {
+        margin: 10px 0;
+    }
+
+    .filter-container {
+        margin: 5px 0;
+        min-height: 40vh;
+    }
+}

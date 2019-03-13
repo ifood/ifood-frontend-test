@@ -1,0 +1,27 @@
+.featured-playlists-container {
+    margin-top: 70px;
+    padding: 1.5% 0;
+    border-bottom: 1px solid #444444;
+    min-height: 5vh;
+    text-align: center;
+    color: $gray-200;
+    font-size: 1rem;
+
+    .featured-playlist-item {
+        cursor: pointer;
+    }
+
+    .playlist-item {
+        background: $primary-theme-color;
+        margin: 25px 0px;
+        @include rounded(5px);
+        padding: 35px;
+        z-index: -10;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .background-ifood, .background-spotify {
+        display: none;
+    }
+}

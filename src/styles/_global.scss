@@ -1,0 +1,46 @@
+
+body {
+  color: rgb(72, 72, 72);
+  line-height: 1;
+  font-size: 9rem;
+  background: #1d1d1d !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Catamaran';
+  font-weight: 500 !important;
+}
+
+input {
+  height: 38px;
+  margin: 2px 0;
+  padding-left: 5px;
+}
+button {
+  height: 45px;
+  margin: 2px 0;
+  color: $white;
+}
+
+.button {
+  @include rounded(5px);
+  min-width: 190px;
+  background: $gray-200;
+}
+
+.button-spotifood {
+  background: $primary-theme-color;
+}
+
+.page-container {
+  
+}
+
+.page-content {
+  margin-top: 2%;;
+}
