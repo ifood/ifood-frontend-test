@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.0.0
+    working_directory: ~/spotifood
+    steps:
+      - checkout
+      - run:
+          name: 'Install dependecies'
+          command: 'sudo npm install'
+      - run:
+          name: 'Build assets'
+          command: 'sudo npm run build'
+      - run:
+          name: 'Deploy aster to Firebase'
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build

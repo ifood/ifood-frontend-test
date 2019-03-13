@@ -1,0 +1,17 @@
+.react-dropdown-select-item  {
+    display: flex;
+    align-items: center;
+    background: $white;
+    color: $primary-input-color;
+}
+
+.react-dropdown-select-content {
+    display: flex;
+    align-items: center;
+    color: $primary-input-color;
+}
+
+.react-dropdown-select-item-selected {
+    color: $primary-input-color;
+    background: $primary-theme-color;
+}
