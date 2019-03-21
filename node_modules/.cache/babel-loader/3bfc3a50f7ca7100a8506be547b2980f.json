@@ -1,0 +1,1 @@
+{"ast":null,"code":"\"use strict\";\n\nexports.__esModule = true;\nexports.default = camelize;\nvar rHyphen = /-(.)/g;\n\nfunction camelize(string) {\n  return string.replace(rHyphen, function (_, chr) {\n    return chr.toUpperCase();\n  });\n}\n\nmodule.exports = exports[\"default\"];","map":null,"metadata":{},"sourceType":"script"}

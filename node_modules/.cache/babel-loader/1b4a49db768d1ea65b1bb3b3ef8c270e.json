@@ -1,0 +1,1 @@
+{"ast":null,"code":"\"use strict\";\n\nexports.__esModule = true;\nexports.default = ownerDocument;\n\nfunction ownerDocument(node) {\n  return node && node.ownerDocument || document;\n}\n\nmodule.exports = exports[\"default\"];","map":null,"metadata":{},"sourceType":"script"}
