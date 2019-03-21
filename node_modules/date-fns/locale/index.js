@@ -1,0 +1,33 @@
+'use strict';
+
+// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
+
+module.exports = {
+  af: require('./af/index.js'),
+  arSA: require('./ar-SA/index.js'),
+  bn: require('./bn/index.js'),
+  de: require('./de/index.js'),
+  el: require('./el/index.js'),
+  enCA: require('./en-CA/index.js'),
+  enGB: require('./en-GB/index.js'),
+  enUS: require('./en-US/index.js'),
+  eo: require('./eo/index.js'),
+  es: require('./es/index.js'),
+  et: require('./et/index.js'),
+  fr: require('./fr/index.js'),
+  gl: require('./gl/index.js'),
+  he: require('./he/index.js'),
+  hu: require('./hu/index.js'),
+  it: require('./it/index.js'),
+  ja: require('./ja/index.js'),
+  lt: require('./lt/index.js'),
+  nb: require('./nb/index.js'),
+  nl: require('./nl/index.js'),
+  pt: require('./pt/index.js'),
+  ptBR: require('./pt-BR/index.js'),
+  ru: require('./ru/index.js'),
+  sv: require('./sv/index.js'),
+  uk: require('./uk/index.js'),
+  vi: require('./vi/index.js'),
+  zhCN: require('./zh-CN/index.js')
+};
