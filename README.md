@@ -27,3 +27,24 @@ As this application will be a worldwide success, it must be prepared to be acces
 We **strongly recommend** using React to build the application.
 Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
 Fork this repository and submit your code.
+
+### how to run project as development
+
+- `git clone https://github.com/kevinbreaker/ifood-frontend-test.git`
+- `yarn`
+- `yarn dev`
+  <br/>
+
+### Demo
+
+[See my project online =)](https://spotifood.kevinmartin.app)
+
+<br/>
+
+## screenshots
+
+<img alt="login mobile" height="450" src="./screenshots/spotifood.kevinmartin.app_(Nexus 5X)1.png" />
+<img alt="playlist mobile" height="450" src="./screenshots/spotifood.kevinmartin.app_(Nexus 5X).png" />
+<br />
+<img alt="login desktop" height="450" src="./screenshots/spotifood.png" />
+<img alt="playlist desktop" height="450" src="./screenshots/spotifood1.png" />
