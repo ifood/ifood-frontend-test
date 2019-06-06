@@ -1,0 +1,96 @@
+$gap = 8px
+
+.tx-12
+  font-size 12px
+.tx-16
+  font-size 16px
+.tx-18
+  font-size 18px
+.tx-24
+  font-size 24px
+.tx-36
+  font-size 36px
+.tx-48
+  font-size 48px
+.fw-300
+  font-weight 300
+.fw-500
+  font-weight 500
+.fw-bold
+  font-weight 900
+
+for number in (1 .. 8)
+  .mt-{number}
+    margin-top (number * $gap)
+  .mb-{number}
+    margin-bottom (number * $gap)
+  .ml-{number}
+    margin-left (number * $gap)
+  .mr-{number}
+    margin-right (number * $gap)
+
+  .mx-{number}
+    margin-left (number * $gap)
+    margin-right (number * $gap)
+
+  .my-{number}
+    margin-top (number * $gap)
+    margin-bottom (number * $gap)
+
+  .ma-{number}
+    margin-top (number * $gap)
+    margin-bottom (number * $gap)
+    margin-left (number * $gap)
+    margin-right (number * $gap)
+
+  .pt-{number}
+    padding-top (number * $gap)
+  .pb-{number}
+    padding-bottom (number * $gap)
+  .pl-{number}
+    padding-left (number * $gap)
+  .pr-{number}
+    padding-right (number * $gap)
+
+  .px-{number}
+    padding-left (number * $gap)
+    padding-right (number * $gap)
+
+  .py-{number}
+    padding-top (number * $gap)
+    padding-bottom (number * $gap)
+
+  .pa-{number}
+    padding-top (number * $gap)
+    padding-bottom (number * $gap)
+    padding-left (number * $gap)
+    padding-right (number * $gap)
+
+.flex
+  display flex
+
+.column
+  flex-direction column
+.row
+  flex-direction row
+.wrap
+  flex-wrap wrap
+.justify-center
+  justify-content center
+
+.align-center 
+  align-items center
+  
+.f-vh
+  height 100vh
+
+.f-wh
+  width 100vw
+.f-wp
+  width 100%
+
+.uppercase
+  text-transform uppercase
+
+.align-center 
+  align-self center

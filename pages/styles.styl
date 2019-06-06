@@ -1,0 +1,94 @@
+@import '../styles/metrics.styl'
+@import '../styles/colors.styl'
+
+.the-header
+  grid-area header
+  background purple
+
+.the-main
+  grid-area main
+  color white
+  background #20
+  overflow-y auto
+  display grid
+  gap 0.5em
+  grid-template-columns 1fr 1fr
+
+  @media (max-width: 800px)
+    grid-template-columns 1fr
+
+.the-aside
+  grid-area aside
+  background $primary
+
+.search
+  outline none
+  border none
+  height 50px
+
+  @media (max-width: 700px)
+    height 20px
+
+.center
+  text-align center
+
+body
+  overflow hidden
+
+.app
+  font-size 1.4rem
+  display grid
+  grid-gap 0.01em
+  grid-template-columns 240px 3fr
+  grid-template-rows 84px calc(100vh - 84px)
+  grid-template-areas 'aside header' 'aside main'
+
+  @media (max-width: 700px)
+    grid-template-areas 'header' 'aside' 'main'
+    grid-template-rows 50px 130px calc(100vh - 50px - 130px)
+    grid-template-columns 1fr
+
+.login
+  background linear-gradient(335deg, $primary 50%, $secondary)
+  text-align center
+
+  @media (min-width: 600px)
+    &::before
+      content ''
+      display inline-block
+      position absolute
+      height 561px
+      width 500px
+      background-image url('/static/girl.png'), radial-gradient(#b4ff0057 20%, #f3e5e500 70%)
+      background-blend-mode hue
+      right -5%
+      bottom -5%
+      transform rotate(-25deg)
+
+  @media (max-width: 600px)
+    &__header
+      font-size 0.8em
+
+    &__text
+      font-size 0.8em
+      padding 0 20px
+      width 70vw
+
+.title
+  font-size 3em
+
+.btn
+  padding 10px 40px
+  margin 20px 0
+  background white
+  border none
+  text-transform uppercase
+  font-weight bold
+  color $primary
+  border-radius 4px
+  font-size 16px
+
+  &:hover
+    background $primary
+    color white
+    border 1px white solid
