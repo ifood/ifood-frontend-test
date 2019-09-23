@@ -1,0 +1,17 @@
+@import "./variables.scss";
+
+.header-container {
+  background-image: linear-gradient(to right, $logo-black 50%, $logo-red 50%);
+  max-height: 150px;
+  align-content: center;
+
+  img {
+    margin: auto;
+    display: block;
+    height: 150px;
+
+    @media (max-width: 600px) {
+      width: 350px;
+    }
+  }
+}

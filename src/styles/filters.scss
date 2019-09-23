@@ -1,0 +1,59 @@
+@import "./variables.scss";
+
+.filters-container {
+  display: flex;
+  background-color: $gray;
+  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .filter-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    flex: 0;
+    min-width: 200px;
+
+    input {
+      border-radius: 5px;
+      height: 100%;
+    }
+
+    > div {
+      width: 100%;
+      height: 30px;
+    }
+
+    .filter-name {
+      color: $white;
+      margin-bottom: 10px;
+    }
+
+    .react-datepicker-wrapper,
+    .react-datepicker__input-container {
+      height: 100%;
+    }
+
+    .rc-input-number {
+      height: 100%;
+      border: 0;
+
+      .rc-input-number-input {
+        border-radius: 5px 0 0 5px;
+      }
+
+      .rc-input-number-handler-wrap {
+        border: 1px solid $lighter-gray;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .rc-input-number-handler-up-inner,
+      .rc-input-number-handler-down-inner {
+        color: $white;
+        font-weight: $boldest;
+      }
+    }
+  }
+}

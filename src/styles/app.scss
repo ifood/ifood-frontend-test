@@ -1,0 +1,12 @@
+@import "./variables.scss";
+
+.App {
+  background-color: $dark-gray;
+  min-height: 100%;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
