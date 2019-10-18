@@ -1,7 +1,7 @@
 import React from 'react';
 import shortid from 'shortid';
 
-const SingleOption = ({ name = '', value = '' }) => {
+const SingleOption = ({ value = '', name = '' }) => {
   return <option value={value}>{name}</option>
 }
 
@@ -16,12 +16,13 @@ const Options = ({ values = [] }) => {
 }
 
 const Select = ({
-  id =  '',
+  selectedValue = '',
   name = '',
-  values = []
+  values = [],
+  onChange = () => {}
 }) => {
   return (
-    <select id={id} name={name} className="form-control">
+    <select name={name} className="form-control" onChange={onChange} value={selectedValue}>
       <Options values={values} />
     </select>
   );

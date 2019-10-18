@@ -1,20 +1,23 @@
 import React from 'react';
 
-const TYPE = {
+const PRIMITIVE_TYPE = {
   STRING: 'text',
   INTEGER: 'number',
-}
+};
 
 const Input = ({
-  id =  '',
   name = '',
-  validation = {}
+  type = 'text',
+  validation = {},
+  onChange = () => {},
+  value = ''
 }) => {
   return <input
     className="form-control"
-    id={id}
-    type={TYPE[validation.primitiveType]}
+    type={PRIMITIVE_TYPE[type] || type}
     name={name}
+    onChange={onChange}
+    value={value}
   />
 }
 
