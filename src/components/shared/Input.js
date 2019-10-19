@@ -9,6 +9,7 @@ const Input = ({
   name = '',
   type = 'text',
   validation = {},
+  placeholder = '',
   onChange = () => {},
   value = ''
 }) => {
@@ -18,6 +19,7 @@ const Input = ({
     name={name}
     onChange={onChange}
     value={value}
+    placeholder={placeholder}
   />
 }
 

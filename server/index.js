@@ -1,20 +1,12 @@
-/**
- * This is an example of a basic node.js script that performs
- * the Client Credentials oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow
- */
+const url = require('url');
+const http = require('http');
+const request = require('request');
 
-var http = require('http'); // "Request" library
-var request = require('request'); // "Request" library
-
-var client_id = '0ccd27fc88af4a6d977c79da63468b84'; // Your client id
-var client_secret = '394b1b9256634cca8e8a03a1376f4fb0'; // Your secret
+const client_id = '0ccd27fc88af4a6d977c79da63468b84'; // Your client id
+const client_secret = '394b1b9256634cca8e8a03a1376f4fb0'; // Your secret
 
 // your application requests authorization
-var authOptions = {
+const authOptions = {
   url: 'https://accounts.spotify.com/api/token',
   headers: {
     'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64'))
@@ -25,7 +17,7 @@ var authOptions = {
   json: true
 };
 
-function getFeaturedPlaylists() {
+function getFeaturedPlaylists(qs = {}) {
   return new Promise((resolve, reject) => {
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
@@ -33,13 +25,10 @@ function getFeaturedPlaylists() {
         var token = body.access_token;
         var options = {
           url: 'https://api.spotify.com/v1/browse/featured-playlists',
-          qs: {
-            country: 'BR',
-            limit: 5
-          },
           headers: {
             'Authorization': 'Bearer ' + token
           },
+          qs,
           json: true
         };
         request.get(options, function(error, response, body) {
@@ -63,8 +52,9 @@ http.createServer(async (req, res) => {
     res.end();
     return;
   }
-  if (req.method === 'GET' && req.url === '/featured-playlists') {
-    const result = await getFeaturedPlaylists();
+  const incomingUrl = url.parse(req.url, true);
+  if (req.method === 'GET' && incomingUrl.pathname === '/featured-playlists') {
+    const result = await getFeaturedPlaylists(incomingUrl.query);
     res.writeHead(200, {
       ...corsHeaders,
       'Content-Type': 'application/json'

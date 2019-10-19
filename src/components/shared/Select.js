@@ -19,10 +19,12 @@ const Select = ({
   selectedValue = '',
   name = '',
   values = [],
+  initialValue = 'Selecione...',
   onChange = () => {}
 }) => {
   return (
     <select name={name} className="form-control" onChange={onChange} value={selectedValue}>
+      <SingleOption value="" name={initialValue} />
       <Options values={values} />
     </select>
   );

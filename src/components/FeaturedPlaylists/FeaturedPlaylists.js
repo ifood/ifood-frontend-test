@@ -1,47 +1,35 @@
-import React, { useState, useEffect } from 'react';
-// import constructRequest from '../../helpers/fetch';
-import styles from './featured-playlists.module.css';
-import fetch from 'unfetch';
-// import Multiple from '../../shared/Multiple'
+import React from 'react';
+// import styles from './featured-playlists.module.css';
 
-const playlistsUrl = process.env.REACT_APP_PLAYLISTS_API_URL;
+const PlaylistCard = (props) => (
+  <div className="col-4">
+    <div className="card">
+    <img className="card-img-top" src={props.imageUrl} alt={props.name} />
+    <div className="card-body">
+      <h5 className="card-title">{props.name}</h5>
+      <p className="card-text">Total tracks: {props.tracks.total}</p>
+      <a href={props.externalUrl} className="btn btn-primary">See on Spotify</a>
+    </div>
+  </div>
+  </div>
+);
 
-const PlaylistItem = (props) => {
-  
-}
-
-const FeaturedPlaylists = (props) => {
-
-  const [result, setResult] = useState({});
-  const [fetching, setFetching] = useState(false);
-
-  useEffect(() => {
-    async function fetchPlaylists() {
-      setFetching(true);
-      const response = await fetch(playlistsUrl, { method: 'GET' });
-      const { result = {} } = await response.json();
-      console.log(result);
-      setResult(result);
-      setFetching(false);
-    }
-    fetchPlaylists();
-  }, [])
-
-  // const onFilterSubmit = (ev) => {
-  //   ev.preventDefault();
-  //   console.log('enviando... %o', playlists);
-  // }
-
+const FeaturedPlaylists = ({
+  featuredPlaylist = {}
+}) => {
   return (
     <div className="container">
       <div className="row">
-      { fetching && <span>Carregando...</span> }
-      { !fetching && Boolean(result.playlists) && result.playlists.items.map(item => (
-        <div className="col-3">
-          <h4 className={styles.title}>{ item.name }</h4>
-          <img className={styles.image} src={item.images[0].url} alt={item.name} />
-        </div>
-      )) }
+      {
+        Boolean(featuredPlaylist.playlists) ? featuredPlaylist.playlists.items.map(item =>
+          <PlaylistCard
+            name={item.name}
+            imageUrl={item.images[0].url}
+            tracks={item.tracks}
+            externalUrl={item.external_urls.spotify}
+          />
+        ) : <p>Gostaria de filtrar sua playlist? :)</p>
+      }
       </div>
     </div>
   )
