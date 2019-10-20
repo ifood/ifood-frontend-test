@@ -2,8 +2,8 @@ const url = require('url');
 const http = require('http');
 const request = require('request');
 
-const client_id = '0ccd27fc88af4a6d977c79da63468b84'; // Your client id
-const client_secret = '394b1b9256634cca8e8a03a1376f4fb0'; // Your secret
+const client_id = '0ccd27fc88af4a6d977c79da63468b84';
+const client_secret = '394b1b9256634cca8e8a03a1376f4fb0';
 
 // your application requests authorization
 const authOptions = {
@@ -17,13 +17,13 @@ const authOptions = {
   json: true
 };
 
-function getFeaturedPlaylists(qs = {}) {
+const getFeaturedPlaylists = (qs = {}) => {
   return new Promise((resolve, reject) => {
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
         // use the access token to access the Spotify Web API
-        var token = body.access_token;
-        var options = {
+        const token = body.access_token;
+        const options = {
           url: 'https://api.spotify.com/v1/browse/featured-playlists',
           headers: {
             'Authorization': 'Bearer ' + token
@@ -31,7 +31,7 @@ function getFeaturedPlaylists(qs = {}) {
           qs,
           json: true
         };
-        request.get(options, function(error, response, body) {
+        request.get(options, (error, response, body) => {
           resolve(body);
         });
       }
@@ -63,7 +63,7 @@ http.createServer(async (req, res) => {
     res.end();
   }
   else {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.writeHead(404, {'Content-Type': 'text/plain'});
     res.write('Not found.');
     res.end();
   }

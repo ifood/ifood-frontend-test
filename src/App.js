@@ -15,12 +15,25 @@ const filterListToObj = filters => filters.reduce((acc, curr) => ({
   [curr.id]: ''
 }), {})
 
-// Fake delay
-async function sleep (ms) {
-  return new Promise(resolve => {
-    setTimeout(() => { resolve() }, ms)
-  })
+const getUrlParams = formData => {
+  let firstParam = true;
+  let params;
+  Object.keys(formData).forEach(key => {
+    if (formData[key]) {
+      if (firstParam) {
+        firstParam = false;
+        params = `?${key}=${formData[key]}`;
+      } else {
+        params += `&${key}=${formData[key]}`;
+      }
+    }
+  });
+  return params;
 }
+
+const intervalTime = 30000;
+const debounceTime = 500;
+let timeoutId = null;
 
 function App() {
 
@@ -50,31 +63,47 @@ function App() {
     fetchApiFields();
   }, [])
 
+  useEffect(() => {
+
+    let intervalId;
+    const hasAnyFormValue = Object.keys(formData).some(key => Boolean(formData[key]));
+
+    if (!hasAnyFormValue) {
+      return () => clearInterval(intervalId);
+    }
+
+    // if able to fetch again, clear previous timeout
+    // to avoid multiple calls to api
+    clearInterval(timeoutId);
+
+    async function fetchPlaylists() {
+      const playlistsUrl = `${playlistsBaseUrl}${getUrlParams(formData)}`;
+
+      setLoadingPlaylists(true);
+      const playlistResponse = await fetch(playlistsUrl, { method: 'GET' });
+      const { result = {}} = await playlistResponse.json();
+      setFeaturedPlaylists(result);
+      setLoadingPlaylists(false);
+      // clear previous interval
+      clearInterval(intervalId);
+      // create a new interval
+      intervalId = setInterval(() => {
+        fetchPlaylists()
+      }, intervalTime);
+    }
+
+    // debounce control
+    timeoutId = setTimeout(() => {
+      fetchPlaylists();
+    }, debounceTime);
+
+    // always unset interval when unmounting
+    return () => clearInterval(intervalId);
+  }, [formData])
+
   const onSubmit = async (ev) => {
     ev.preventDefault();
-    console.log('buscando playlists... %o', formData);
-
-    let playlistsUrl = playlistsBaseUrl;
-    let firstParam = true;
-
-    Object.keys(formData).forEach(key => {
-      if (formData[key]) {
-        if (firstParam) {
-          firstParam = false;
-          playlistsUrl += `?${key}=${formData[key]}`;
-        }
-        playlistsUrl += `&${key}=${formData[key]}`;
-      }
-    });
-
-    setLoadingPlaylists(true);
-    const playlistResponse = await fetch(playlistsUrl, {
-      method: 'GET'
-    });
-    const { result = {} } = await playlistResponse.json();
-    setFeaturedPlaylists(result);
-    setLoadingPlaylists(false);
-  }
+    console.log('buscando playlists... %o', formData);  }
 
   const onFieldChange = ev => {
     setFormData({
@@ -86,7 +115,7 @@ function App() {
   return (
     <div className="container">
       <div className="row">
-        <aside className="col-3">
+        <aside className="col-sm-4 col-lg-3">
           <FilterWithLoader
             apiFields={apiFields}
             onFieldChange={onFieldChange}
@@ -95,7 +124,7 @@ function App() {
             loading={loadingApiFields}
           />
         </aside>
-        <div className="col-9">
+        <div className="col-sm-8 col-lg-9">
           <FeaturedPlaylistsWithLoader
             featuredPlaylist={featuredPlaylist}
             loading={loadingPlaylists}

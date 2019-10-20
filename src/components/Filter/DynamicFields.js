@@ -18,7 +18,7 @@ const DynamicFields = ({
         selectedValue={formData[field.id]}
       /> :
       <Input
-        validations={field.validation}
+        validation={field.validation}
         type={field.validation.primitiveType}
         name={field.id}
         onChange={onChange}
