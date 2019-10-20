@@ -23,7 +23,7 @@ const DynamicFields = ({
         name={field.id}
         onChange={onChange}
         value={formData[field.id]}
-        placeholder={field.name}
+        placeholder={field.validation.pattern || field.name}
       />;
     return (
       <FieldContainer name={field.name} key={field.id}>

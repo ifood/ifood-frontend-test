@@ -1,0 +1,44 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.filterContainer {
+  background-color: #ffffff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+
+.playlistContainer {
+  flex-grow: 1;
+}
+
+@media (min-width: 576px) {
+  .container { max-width: 100%; }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .filterContainer {
+    max-width: 300px;
+    min-width: 300px;
+    margin-right: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .container { max-width: 960px; }
+  .filterContainer { margin-bottom: 0; }
+}
+@media (min-width: 1200px) {
+  .container { max-width: 1140px; }
+}
+
+body { padding: 15px; }
+

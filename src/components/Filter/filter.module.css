@@ -1,0 +1,13 @@
+
+.title {
+  margin: -15px -15px 15px;
+  background-color: #007bff;
+  padding: 15px 10px;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.form {
+  padding: 15px;
+  padding-bottom: 0;
+}

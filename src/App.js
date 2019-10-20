@@ -3,6 +3,7 @@ import FeaturedPlaylists from './components/FeaturedPlaylists/FeaturedPlaylists'
 import Filter from './components/Filter/Filter';
 import fetch from 'unfetch';
 import WithLoader from './components/shared/WithLoader';
+import style from './app.module.css';
 
 const FilterWithLoader = WithLoader(Filter);
 const FeaturedPlaylistsWithLoader = WithLoader(FeaturedPlaylists);
@@ -87,9 +88,9 @@ function App() {
       // clear previous interval
       clearInterval(intervalId);
       // create a new interval
-      intervalId = setInterval(() => {
-        fetchPlaylists()
-      }, intervalTime);
+      // intervalId = setInterval(() => {
+      //   fetchPlaylists()
+      // }, intervalTime);
     }
 
     // debounce control
@@ -113,24 +114,22 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <div className="row">
-        <aside className="col-sm-4 col-lg-3">
-          <FilterWithLoader
-            apiFields={apiFields}
-            onFieldChange={onFieldChange}
-            onSubmit={onSubmit}
-            formData={formData}
-            loading={loadingApiFields}
-          />
-        </aside>
-        <div className="col-sm-8 col-lg-9">
-          <FeaturedPlaylistsWithLoader
-            featuredPlaylist={featuredPlaylist}
-            loading={loadingPlaylists}
-          />
-        </div>
-      </div>
+    <div className={style.container}>
+      <aside className={style.filterContainer}>
+        <FilterWithLoader
+          apiFields={apiFields}
+          onFieldChange={onFieldChange}
+          onSubmit={onSubmit}
+          formData={formData}
+          loading={loadingApiFields}
+        />
+      </aside>
+      <section className={style.playlistContainer}>
+        <FeaturedPlaylistsWithLoader
+          featuredPlaylist={featuredPlaylist}
+          loading={loadingPlaylists}
+        />
+      </section>
     </div>
   );
 }

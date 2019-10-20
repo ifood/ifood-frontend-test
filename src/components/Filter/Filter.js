@@ -1,5 +1,5 @@
 import React from 'react';
-// import styles from './filter.module.css';
+import style from './filter.module.css';
 import DynamicFields from './DynamicFields';
 import FieldContainer from '../shared/FieldContainer';
 import Input from '../shared/Input';
@@ -11,8 +11,8 @@ const Filter = ({
   apiFields
 }) => {
   return (
-    <form onSubmit={onSubmit}>
-      <h3>Buscar playlist</h3>
+    <form onSubmit={onSubmit} className={style.form}>
+      <h3 className={style.title}>Buscar playlist</h3>
       <FieldContainer name="Nome">
         <Input
           type="text"
