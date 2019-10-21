@@ -33,7 +33,7 @@ const getUrlParams = formData => {
 }
 
 const intervalTime = 30000;
-const debounceTime = 500;
+const debounceTime = 300;
 let timeoutId = null;
 
 function App() {
@@ -88,9 +88,9 @@ function App() {
       // clear previous interval
       clearInterval(intervalId);
       // create a new interval
-      // intervalId = setInterval(() => {
-      //   fetchPlaylists()
-      // }, intervalTime);
+      intervalId = setInterval(() => {
+        fetchPlaylists()
+      }, intervalTime);
     }
 
     // debounce control
@@ -102,9 +102,9 @@ function App() {
     return () => clearInterval(intervalId);
   }, [formData])
 
-  const onSubmit = async (ev) => {
+  const onSubmit = ev => {
     ev.preventDefault();
-    console.log('buscando playlists... %o', formData);  }
+  }
 
   const onFieldChange = ev => {
     setFormData({

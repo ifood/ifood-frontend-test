@@ -49,7 +49,7 @@ const Input = ({
   };
   const additionalProps = validationProps(validation);
 
-  return  validation.pattern ?
+  return validation.pattern ?
     <InputMask
       type="text"
       mask={validation.pattern}

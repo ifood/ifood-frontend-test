@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> Should render correctly 1`] = `
+<select
+  className="form-control"
+  name="field-name"
+  onChange={[Function]}
+  value=""
+>
+  <option
+    value=""
+  >
+    Selecione...
+  </option>
+  <option
+    value="1"
+  >
+    First item
+  </option>
+  <option
+    value="2"
+  >
+    Second item
+  </option>
+  <option
+    value="3"
+  >
+    Third item
+  </option>
+</select>
+`;
