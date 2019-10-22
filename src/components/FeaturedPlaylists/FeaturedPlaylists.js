@@ -4,12 +4,17 @@ import PlaylistCard from './PlaylistCard';
 import style from './featured-playlists.module.css';
 
 const FeaturedPlaylists = ({
-  featuredPlaylist = {}
+  playlists = {},
+  nameFilter = ''
 }) => {
+  console.log(playlists);
+  const filteredPlaylists = nameFilter
+    ? playlists.items.filter(item => item.name.indexOf(nameFilter) > -1)
+    : playlists.items;
   return (
     <div className={`row ${style.row}`}>
       {
-        Boolean(featuredPlaylist.playlists) ? featuredPlaylist.playlists.items.map(item =>
+        Boolean(filteredPlaylists.length) ? filteredPlaylists.map(item =>
           <PlaylistCard
             key={shortid()}
             name={item.name}

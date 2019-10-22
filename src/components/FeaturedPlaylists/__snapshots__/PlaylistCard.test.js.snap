@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistCard /> Should render correctly 1`] = `
+<div
+  className="col-sm-6 col-md-6 col-lg-4 cardContainer"
+>
+  <div
+    className="card"
+  >
+    <img
+      alt="card name"
+      className="card-img-top"
+      src="some/image/path"
+    />
+    <div
+      className="card-body cardBody"
+    >
+      <h5
+        className="card-title"
+      >
+        card name
+      </h5>
+      <p
+        className="card-text"
+      >
+        Total tracks: 
+        57
+      </p>
+      <a
+        className="btn btn-primary"
+        href="some-external-url"
+      >
+        See on Spotify
+      </a>
+    </div>
+  </div>
+</div>
+`;

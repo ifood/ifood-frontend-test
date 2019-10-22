@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DynamicFields /> Should render correctly 1`] = `
+Array [
+  <div
+    className="form-group"
+  >
+    <label>
+      Field Mask
+    </label>
+    <input
+      className="form-control"
+      name="fieldMask"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onPaste={[Function]}
+      placeholder="dd/MM/yyyy"
+      type="text"
+      value=""
+    />
+  </div>,
+  <div
+    className="form-group"
+  >
+    <label>
+      Field Number
+    </label>
+    <input
+      className="form-control"
+      max={30}
+      min={10}
+      name="fieldNumber"
+      onChange={[Function]}
+      placeholder="Field Number"
+      type="number"
+      value=""
+    />
+  </div>,
+  <div
+    className="form-group"
+  >
+    <label>
+      Field Select
+    </label>
+    <select
+      className="form-control"
+      name="fieldSelect"
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value=""
+      >
+        Selecione...
+      </option>
+      <option
+        value="item1"
+      >
+        1st item
+      </option>
+      <option
+        value="item2"
+      >
+        2nd item
+      </option>
+    </select>
+  </div>,
+]
+`;

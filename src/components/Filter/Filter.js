@@ -8,6 +8,8 @@ const Filter = ({
   onSubmit,
   onFieldChange,
   formData,
+  onNameChange,
+  playlistName,
   apiFields
 }) => {
   return (
@@ -17,8 +19,8 @@ const Filter = ({
         <Input
           type="text"
           name="playlistName"
-          value={formData.playlistName}
-          onChange={onFieldChange}
+          value={playlistName}
+          onChange={onNameChange}
           placeholder="Digite o nome"
         />
       </FieldContainer>

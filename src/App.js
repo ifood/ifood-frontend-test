@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FeaturedPlaylists from './components/FeaturedPlaylists/FeaturedPlaylists';
 import Filter from './components/Filter/Filter';
 import fetch from 'unfetch';
+import { mountUrlParams } from './helpers/url';
 import WithLoader from './components/shared/WithLoader';
 import style from './app.module.css';
 
@@ -16,48 +17,31 @@ const filterListToObj = filters => filters.reduce((acc, curr) => ({
   [curr.id]: ''
 }), {})
 
-const getUrlParams = formData => {
-  let firstParam = true;
-  let params;
-  Object.keys(formData).forEach(key => {
-    if (formData[key]) {
-      if (firstParam) {
-        firstParam = false;
-        params = `?${key}=${formData[key]}`;
-      } else {
-        params += `&${key}=${formData[key]}`;
-      }
-    }
-  });
-  return params;
-}
-
-const intervalTime = 30000;
-const debounceTime = 300;
-let timeoutId = null;
+const INTERVAL_TIME = 30000;
+const DEBOUNCE_TIME = 300;
 
 function App() {
 
   // Filter state
-  const [formData, setFormData] = useState({});
   const [loadingApiFields, setLoadingApiFields] = useState(false);
   const [apiFields, setApiFields] = useState([]);
+  const [formData, setFormData] = useState({});
+  const [playlistName, setPlaylistName] = useState('');
 
   // Playlist state
-  const [featuredPlaylist, setFeaturedPlaylists] = useState({});
+  const [playlists, setPlaylists] = useState({ items: [] });
   const [loadingPlaylists, setLoadingPlaylists] = useState(false);
+
+  const debounceHandler = useRef(null);
+  const intervalHandler = useRef(null);
 
   useEffect(() => {
     async function fetchApiFields() {
       setLoadingApiFields(true);
       const result = await fetch(filterApiUrl, { method: 'GET' });
       const { filters = [] } = await result.json();
-      // await sleep(3000);
       setApiFields(filters);
-      setFormData({
-        ...filterListToObj(filters),
-        playlistName: ''
-      });
+      setFormData(filterListToObj(filters));
       setLoadingApiFields(false);
     }
 
@@ -65,45 +49,49 @@ function App() {
   }, [])
 
   useEffect(() => {
-
-    let intervalId;
     const hasAnyFormValue = Object.keys(formData).some(key => Boolean(formData[key]));
 
     if (!hasAnyFormValue) {
-      return () => clearInterval(intervalId);
+      return;
     }
 
-    // if able to fetch again, clear previous timeout
-    // to avoid multiple calls to api
-    clearInterval(timeoutId);
+    clearInterval(debounceHandler.current);
 
     async function fetchPlaylists() {
-      const playlistsUrl = `${playlistsBaseUrl}${getUrlParams(formData)}`;
+      const playlistsUrl = `${playlistsBaseUrl}${mountUrlParams(formData)}`;
 
       setLoadingPlaylists(true);
-      const playlistResponse = await fetch(playlistsUrl, { method: 'GET' });
-      const { result = {}} = await playlistResponse.json();
-      setFeaturedPlaylists(result);
+      const response = await fetch(playlistsUrl, { method: 'GET' });
+      const { result = {}} = await response.json();
+      setPlaylists(result.playlists);
       setLoadingPlaylists(false);
       // clear previous interval
-      clearInterval(intervalId);
+      clearInterval(intervalHandler.current);
       // create a new interval
-      intervalId = setInterval(() => {
+      intervalHandler.current = setInterval(() => {
         fetchPlaylists()
-      }, intervalTime);
+      }, INTERVAL_TIME);
     }
 
-    // debounce control
-    timeoutId = setTimeout(() => {
+    debounceHandler.current = setTimeout(() => {
       fetchPlaylists();
-    }, debounceTime);
+    }, DEBOUNCE_TIME);
 
     // always unset interval when unmounting
-    return () => clearInterval(intervalId);
+    return () => clearInterval(intervalHandler.current);
   }, [formData])
 
   const onSubmit = ev => {
     ev.preventDefault();
+  }
+
+  const onNameChange = ev => {
+    clearInterval(debounceHandler.current);
+    setPlaylistName(ev.target.value);
+
+    // debounceHandler.current = setTimeout(() => {
+    //   console.log(value);
+    // }, DEBOUNCE_TIME);
   }
 
   const onFieldChange = ev => {
@@ -121,12 +109,15 @@ function App() {
           onFieldChange={onFieldChange}
           onSubmit={onSubmit}
           formData={formData}
+          onNameChange={onNameChange}
+          playlistName={playlistName}
           loading={loadingApiFields}
         />
       </aside>
       <section className={style.playlistContainer}>
         <FeaturedPlaylistsWithLoader
-          featuredPlaylist={featuredPlaylist}
+          nameFilter={playlistName}
+          playlists={playlists}
           loading={loadingPlaylists}
         />
       </section>

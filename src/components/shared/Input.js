@@ -1,19 +1,6 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
-
-const PRIMITIVE_TYPE = {
-  STRING: 'text',
-  INTEGER: 'number',
-};
-
-const formatChars = {
-  'y': '[0-9]',
-  'M': '[0-9]',
-  'd': '[0-9]',
-  'H': '[0-9]',
-  'm': '[0-9]',
-  's': '[0-9]'
-}
+import { charFormatMap, typeMap } from '../../helpers/maps'
 
 const validationProps = props =>
   Object.keys(props).reduce((prev, current) =>
@@ -53,11 +40,11 @@ const Input = ({
     <InputMask
       type="text"
       mask={validation.pattern}
-      formatChars={formatChars}
+      formatChars={charFormatMap[validation.entityType]}
       {...defaultProps}
     /> :
     <input
-      type={PRIMITIVE_TYPE[type] || type}
+      type={typeMap[type] || type}
       {...defaultProps}
       {...additionalProps}
     />

@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 import renderer from 'react-test-renderer';
-import Filter from './Filter';
+import { shallow } from 'enzyme';
+import DynamicFields from './DynamicFields';
 
 const defaultProps = {
-  onSubmit: () => {},
-  onFieldChange: () => {},
+  onChange: () => {},
   formData: {},
-  apiFields: [{
+  fields: [{
     id: 'fieldMask',
     name: 'Field Mask',
     validation: {
@@ -35,13 +35,18 @@ const defaultProps = {
   }]
 }
 
-describe('<Filter />', () => {
+describe('<DynamicFields />', () => {
 
   it('Should render correctly', () => {
     const elem = renderer
-      .create(<Filter { ...defaultProps } />)
+      .create(<DynamicFields { ...defaultProps } />)
       .toJSON();
     expect(elem).toMatchSnapshot();
+  });
+
+  it('Should render nothing', () => {
+    const elem = shallow(<DynamicFields { ...defaultProps } fields={[]} />);
+    expect(elem.children().exists()).toBeFalsy();
   });
 
 });
