@@ -11,7 +11,7 @@ exports[`<FeaturedPlaylists /> Should render correctly 1`] = `
       className="card"
     >
       <img
-        alt="Playlist name"
+        alt="Cool Sound"
         className="card-img-top"
         src="some/image/path"
       />
@@ -21,7 +21,7 @@ exports[`<FeaturedPlaylists /> Should render correctly 1`] = `
         <h5
           className="card-title"
         >
-          Playlist name
+          Cool Sound
         </h5>
         <p
           className="card-text"
@@ -41,14 +41,26 @@ exports[`<FeaturedPlaylists /> Should render correctly 1`] = `
 </div>
 `;
 
-exports[`<FeaturedPlaylists /> Should render empty text 1`] = `
+exports[`<FeaturedPlaylists /> Should render with "do you search" text 1`] = `
 <div
   className="row row"
 >
   <p
     className="noResultsText"
   >
-    Nenhum filtro aplicado no momento.
+    Selecione a playlist ao lado
+  </p>
+</div>
+`;
+
+exports[`<FeaturedPlaylists /> Should render with "no results found" text 1`] = `
+<div
+  className="row row"
+>
+  <p
+    className="noResultsText"
+  >
+    Nenhum resultado encontrado
   </p>
 </div>
 `;

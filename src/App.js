@@ -12,10 +12,8 @@ const FeaturedPlaylistsWithLoader = WithLoader(FeaturedPlaylists);
 const filterApiUrl = process.env.REACT_APP_FILTER_API_URL;
 const playlistsBaseUrl = process.env.REACT_APP_PLAYLISTS_API_URL;
 
-const filterListToObj = filters => filters.reduce((acc, curr) => ({
-  ...acc,
-  [curr.id]: ''
-}), {})
+const filterListToObj = filters =>
+  filters.reduce((acc, curr) => ({ ...acc, [curr.id]: '' }), {})
 
 const INTERVAL_TIME = 30000;
 const DEBOUNCE_TIME = 300;
@@ -52,6 +50,7 @@ function App() {
     const hasAnyFormValue = Object.keys(formData).some(key => Boolean(formData[key]));
 
     if (!hasAnyFormValue) {
+      setPlaylists({ items: []});
       return;
     }
 

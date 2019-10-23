@@ -3,13 +3,15 @@ import shortid from 'shortid';
 import PlaylistCard from './PlaylistCard';
 import style from './featured-playlists.module.css';
 
-const FeaturedPlaylists = ({
-  playlists = {},
+const filterByName = (name) => item =>
+  item.name.toLowerCase().indexOf(name.toLowerCase()) > -1;
+
+const FeaturedPlaylists = React.memo(({
+  playlists = { items: [] },
   nameFilter = ''
 }) => {
-  console.log(playlists);
   const filteredPlaylists = nameFilter
-    ? playlists.items.filter(item => item.name.indexOf(nameFilter) > -1)
+    ? playlists.items.filter(filterByName(nameFilter))
     : playlists.items;
   return (
     <div className={`row ${style.row}`}>
@@ -22,10 +24,17 @@ const FeaturedPlaylists = ({
             tracks={item.tracks}
             externalUrl={item.external_urls.spotify}
           />
-        ) : <p className={style.noResultsText}>Nenhum filtro aplicado no momento.</p>
+        ) :
+        <p className={style.noResultsText}>
+          {
+            nameFilter && Boolean(playlists.items.length)
+              ? 'Nenhum resultado encontrado'
+              : 'Selecione a playlist ao lado'
+          }
+        </p>
       }
     </div>
   )
-}
+});
 
 export default FeaturedPlaylists;

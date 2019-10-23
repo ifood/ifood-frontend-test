@@ -5,7 +5,7 @@ import FeaturedPlaylists from './FeaturedPlaylists';
 const defaultProps = {
   playlists: {
     items: [{
-      name: 'Playlist name',
+      name: 'Cool Sound',
       images: [{
         url: 'some/image/path'
       }],
@@ -16,7 +16,8 @@ const defaultProps = {
         spotify: 'some-external-url'
       }
     }]
-  }
+  },
+  nameFilter: ''
 }
 
 describe('<FeaturedPlaylists />', () => {
@@ -28,9 +29,16 @@ describe('<FeaturedPlaylists />', () => {
     expect(elem).toMatchSnapshot();
   });
 
-  it('Should render empty text', () => {
+  it(`Should render with "do you search" text`, () => {
     const elem = renderer
       .create(<FeaturedPlaylists />)
+      .toJSON();
+    expect(elem).toMatchSnapshot();
+  });
+
+  it(`Should render with "no results found" text`, () => {
+    const elem = renderer
+      .create(<FeaturedPlaylists { ...defaultProps } nameFilter="Mundo Animal" />)
       .toJSON();
     expect(elem).toMatchSnapshot();
   });
