@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FeaturedPlaylists /> Should render correctly 1`] = `
+<div
+  className="row playlistWrapper"
+>
+  <div
+    className="col-sm-6 col-md-6 col-lg-4 cardContainer"
+  >
+    <div
+      className="card"
+    >
+      <img
+        alt="Cool Sound"
+        className="card-img-top"
+        src="some/image/path"
+      />
+      <div
+        className="card-body cardBody"
+      >
+        <h5
+          className="card-title"
+        >
+          Cool Sound
+        </h5>
+        <p
+          className="card-text"
+        >
+          Total tracks: 
+          55
+        </p>
+        <a
+          className="btn btn-primary"
+          href="some-external-url"
+        >
+          See on Spotify
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<FeaturedPlaylists /> Should render with \`do you search\` text 1`] = `
+<div
+  className="row playlistWrapper"
+>
+  <p
+    className="noResultsText"
+  >
+    Selecione a playlist
+  </p>
+</div>
+`;
+
+exports[`<FeaturedPlaylists /> Should render with \`no results found\` text 1`] = `
+<div
+  className="row playlistWrapper"
+>
+  <p
+    className="noResultsText"
+  >
+    Nenhum resultado encontrado
+  </p>
+</div>
+`;

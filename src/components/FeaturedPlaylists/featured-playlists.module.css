@@ -1,0 +1,8 @@
+.noResultsText {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.playlistWrapper {
+  margin-right: 0;
+}
