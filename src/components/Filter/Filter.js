@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './filter.module.css';
-import DynamicFields from './DynamicFields';
+import DynamicFields from '../shared/DynamicFields';
 import FieldContainer from '../shared/FieldContainer';
 import Input from '../shared/Input';
 

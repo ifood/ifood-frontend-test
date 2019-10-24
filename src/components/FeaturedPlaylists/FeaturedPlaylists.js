@@ -1,6 +1,6 @@
 import React from 'react';
 import shortid from 'shortid';
-import PlaylistCard from './PlaylistCard';
+import PlaylistCard from '../PlaylistCard/PlaylistCard';
 import style from './featured-playlists.module.css';
 
 const filterByName = (name) => item =>

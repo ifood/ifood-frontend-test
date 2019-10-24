@@ -1,7 +1,7 @@
 import React from 'react';
-import FieldContainer from '../shared/FieldContainer';
-import Select from '../shared/Select';
-import Input from '../shared/Input';
+import FieldContainer from './FieldContainer';
+import Select from './Select';
+import Input from './Input';
 
 const DynamicFields = ({
   fields = [],
