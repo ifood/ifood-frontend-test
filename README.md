@@ -1,3 +1,12 @@
+## How to start the application
+
+* Open your terminal, jump into the project folder and run `npm install`
+* Start the server with `npm run server:start` command
+* Start the client with `npm run client:start` command
+* Your browser will open the app at `localhost:3000`
+* If you want to run the tests, simply run: `npm test`
+___
+
 # iFood Frontend Test
 
 Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
