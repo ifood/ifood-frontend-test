@@ -13,6 +13,7 @@ const DynamicFields = ({
     const filterItem = field.values ?
       <Select
         values={field.values}
+        id={field.id}
         name={field.id}
         onChange={onChange}
         selectedValue={formData[field.id]}
@@ -20,6 +21,7 @@ const DynamicFields = ({
       <Input
         validation={field.validation}
         type={field.validation.primitiveType}
+        id={field.id}
         name={field.id}
         onChange={onChange}
         value={formData[field.id]}

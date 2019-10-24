@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FeaturedPlaylists from './components/FeaturedPlaylists/FeaturedPlaylists';
 import Filter from './components/Filter/Filter';
-import fetch from 'unfetch';
 import { mountUrlParams } from './helpers/url';
+import request from './helpers/request';
 import WithLoader from './components/shared/WithLoader';
 import style from './app.module.css';
 
@@ -20,13 +20,11 @@ const DEBOUNCE_TIME = 300;
 
 function App() {
 
-  // Filter state
   const [loadingApiFields, setLoadingApiFields] = useState(false);
   const [apiFields, setApiFields] = useState([]);
   const [formData, setFormData] = useState({});
   const [playlistName, setPlaylistName] = useState('');
 
-  // Playlist state
   const [playlists, setPlaylists] = useState({ items: [] });
   const [loadingPlaylists, setLoadingPlaylists] = useState(false);
 
@@ -36,8 +34,7 @@ function App() {
   useEffect(() => {
     async function fetchApiFields() {
       setLoadingApiFields(true);
-      const result = await fetch(filterApiUrl, { method: 'GET' });
-      const { filters = [] } = await result.json();
+      const { filters = [] } = await request(filterApiUrl, 'GET');
       setApiFields(filters);
       setFormData(filterListToObj(filters));
       setLoadingApiFields(false);
@@ -60,13 +57,12 @@ function App() {
       const playlistsUrl = `${playlistsBaseUrl}${mountUrlParams(formData)}`;
 
       setLoadingPlaylists(true);
-      const response = await fetch(playlistsUrl, { method: 'GET' });
-      const { result = {}} = await response.json();
+      const { result = {}} = await request(playlistsUrl, 'GET');
+
       setPlaylists(result.playlists);
       setLoadingPlaylists(false);
-      // clear previous interval
+
       clearInterval(intervalHandler.current);
-      // create a new interval
       intervalHandler.current = setInterval(() => {
         fetchPlaylists()
       }, INTERVAL_TIME);
@@ -76,7 +72,6 @@ function App() {
       fetchPlaylists();
     }, DEBOUNCE_TIME);
 
-    // always unset interval when unmounting
     return () => clearInterval(intervalHandler.current);
   }, [formData])
 
@@ -87,10 +82,6 @@ function App() {
   const onNameChange = ev => {
     clearInterval(debounceHandler.current);
     setPlaylistName(ev.target.value);
-
-    // debounceHandler.current = setTimeout(() => {
-    //   console.log(value);
-    // }, DEBOUNCE_TIME);
   }
 
   const onFieldChange = ev => {

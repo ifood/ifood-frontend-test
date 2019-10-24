@@ -69,6 +69,7 @@ exports[`<Filter /> Should render correctly 1`] = `
     </label>
     <select
       className="form-control"
+      id="fieldSelect"
       name="fieldSelect"
       onChange={[Function]}
       value=""
@@ -89,16 +90,6 @@ exports[`<Filter /> Should render correctly 1`] = `
         2nd item
       </option>
     </select>
-  </div>
-  <div
-    className="form-group"
-  >
-    
-    <button
-      className="btn btn-primary"
-    >
-      Filtrar
-    </button>
   </div>
 </form>
 `;

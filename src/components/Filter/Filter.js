@@ -29,11 +29,6 @@ const Filter = ({
         onChange={onFieldChange}
         formData={formData}
       />
-      <FieldContainer>
-        <button className="btn btn-primary">
-          Filtrar
-        </button>
-      </FieldContainer>
     </form>
   )
 }

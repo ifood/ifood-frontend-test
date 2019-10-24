@@ -8,8 +8,7 @@
     "react-dom": "^16.10.2",
     "react-input-mask": "^2.0.4",
     "react-scripts": "3.2.0",
-    "shortid": "^2.2.15",
-    "unfetch": "^4.1.0"
+    "shortid": "^2.2.15"
   },
   "scripts": {
     "server:start": "node server",

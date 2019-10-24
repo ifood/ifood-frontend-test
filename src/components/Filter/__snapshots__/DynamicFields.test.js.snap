@@ -46,6 +46,7 @@ Array [
     </label>
     <select
       className="form-control"
+      id="fieldSelect"
       name="fieldSelect"
       onChange={[Function]}
       value=""

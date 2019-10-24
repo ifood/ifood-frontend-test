@@ -2,7 +2,7 @@
 
 exports[`<FeaturedPlaylists /> Should render correctly 1`] = `
 <div
-  className="row row"
+  className="row playlistWrapper"
 >
   <div
     className="col-sm-6 col-md-6 col-lg-4 cardContainer"
@@ -41,21 +41,21 @@ exports[`<FeaturedPlaylists /> Should render correctly 1`] = `
 </div>
 `;
 
-exports[`<FeaturedPlaylists /> Should render with "do you search" text 1`] = `
+exports[`<FeaturedPlaylists /> Should render with \`do you search\` text 1`] = `
 <div
-  className="row row"
+  className="row playlistWrapper"
 >
   <p
     className="noResultsText"
   >
-    Selecione a playlist ao lado
+    Selecione a playlist
   </p>
 </div>
 `;
 
-exports[`<FeaturedPlaylists /> Should render with "no results found" text 1`] = `
+exports[`<FeaturedPlaylists /> Should render with \`no results found\` text 1`] = `
 <div
-  className="row row"
+  className="row playlistWrapper"
 >
   <p
     className="noResultsText"

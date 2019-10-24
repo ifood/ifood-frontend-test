@@ -29,14 +29,14 @@ describe('<FeaturedPlaylists />', () => {
     expect(elem).toMatchSnapshot();
   });
 
-  it(`Should render with "do you search" text`, () => {
+  it('Should render with `do you search` text', () => {
     const elem = renderer
       .create(<FeaturedPlaylists />)
       .toJSON();
     expect(elem).toMatchSnapshot();
   });
 
-  it(`Should render with "no results found" text`, () => {
+  it('Should render with `no results found` text', () => {
     const elem = renderer
       .create(<FeaturedPlaylists { ...defaultProps } nameFilter="Mundo Animal" />)
       .toJSON();

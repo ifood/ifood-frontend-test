@@ -14,7 +14,7 @@ const FeaturedPlaylists = React.memo(({
     ? playlists.items.filter(filterByName(nameFilter))
     : playlists.items;
   return (
-    <div className={`row ${style.row}`}>
+    <div className={`row ${style.playlistWrapper}`}>
       {
         Boolean(filteredPlaylists.length) ? filteredPlaylists.map(item =>
           <PlaylistCard
@@ -29,7 +29,7 @@ const FeaturedPlaylists = React.memo(({
           {
             nameFilter && Boolean(playlists.items.length)
               ? 'Nenhum resultado encontrado'
-              : 'Selecione a playlist ao lado'
+              : 'Selecione a playlist'
           }
         </p>
       }
