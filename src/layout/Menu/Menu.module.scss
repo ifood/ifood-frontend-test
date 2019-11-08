@@ -1,0 +1,37 @@
+@import 'scss/components.scss';
+
+.Menu {
+
+    width: 250px;
+    height: 100%;
+
+    padding: $theme-padding * 2;
+
+    background: #191e26;
+    background: linear-gradient(-45deg, #2e3947, #191e26);
+
+    &Logo {
+
+        font-family: 'Quicksand', sans-serif;
+        @include font-sizer(24);
+        color: white;
+
+        display: flex;
+        align-items: center;
+
+        &Icon {
+
+            $size: 30px;
+
+            width: $size;
+            height: $size;
+
+            margin-right: 5px;
+
+            fill: white;
+
+        }
+
+    }
+
+}

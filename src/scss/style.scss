@@ -1,0 +1,82 @@
+// $grid-breakpoints: (
+//
+//     xs: 0,
+//     sm: 576px,
+//     md: 768px,
+//     lg: 992px,
+//     xl: 1280px
+//
+// );
+
+@import './bootstrap/scss/bootstrap-reboot';
+@import './bootstrap/scss/bootstrap-grid';
+@import 'node_modules/material-colors/dist/colors.scss';
+
+/* */
+
+:root {
+
+    --theme-color-1 : #{$md-blue-500};
+    --theme-color-2 : #{rgba($md-blue-500, .1)};
+
+}
+
+html {
+
+    font-size: 10px;
+
+    touch-action: manipulation;
+
+}
+
+body {
+
+    -webkit-tap-highlight-color: rgba(white, 0);
+    -webkit-touch-callout: none;
+    text-size-adjust: none;
+    user-select: none;
+
+}
+
+a,
+a:hover {
+
+    text-decoration: none;
+
+}
+
+input,
+textarea,
+select,
+button {
+
+    margin: 0;
+    outline: none;
+    border: none;
+
+}
+
+[required]{
+
+    box-shadow: none;
+
+}
+
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+
+    text-rendering : optimizeLegibility;
+    -webkit-font-smoothing : antialiased;
+
+    font-smooth: always;
+
+}
+
+img {
+
+    pointer-events: none;
+
+}

@@ -1,0 +1,18 @@
+@mixin font-sizer($size, $important: false){
+
+	$px  : $size;
+	$rem : $size / 10;
+
+	@if $important {
+
+		font-size: #{$px}px !important;
+		font-size: #{$rem}rem !important;
+
+	} @else {
+
+		font-size: #{$px}px;
+		font-size: #{$rem}rem;
+
+	}
+
+}

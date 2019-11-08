@@ -1,0 +1,15 @@
+@import 'scss/components.scss';
+
+.Header {
+
+    position: sticky;
+
+    top: 0;
+
+    padding: $theme-padding / 2;
+
+    background: $md-grey-900;
+
+    height: 80px;
+
+}
