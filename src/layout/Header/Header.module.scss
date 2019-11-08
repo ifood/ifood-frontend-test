@@ -6,10 +6,73 @@
 
     top: 0;
 
-    padding: $theme-padding / 2;
+    padding: $theme-padding * 2;
+    margin-bottom: -$theme-padding * 2;
 
-    background: $md-grey-900;
+    background: linear-gradient(to bottom, rgba(#1c222a, .8) 0%,rgba(black, 0) 100%);
 
-    height: 80px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    
+    &Search {
+
+        $size: 30px;
+
+        position: relative;
+
+        width: 100%;
+        height: $size;
+        padding: 5px 7px;
+
+        background: rgba(black, .2);
+
+        border-radius: $size;
+        border: 1px solid rgba(white, .1);
+
+        &Icon {
+
+            $size: 18px;
+
+            width: $size;
+            height: $size;
+
+            fill: white;
+
+            transition: .2s ease;
+            transition-property: fill;
+
+        }
+
+        &Input {
+
+            position: absolute;
+
+            top: -1px;
+            left: 0;
+
+            width: inherit;
+            height: inherit;
+
+            padding: 3px 15px 3px 30px;
+
+            font-family: 'Barlow', sans-serif;
+            @include font-sizer(13);
+            font-weight: 600;
+            line-height: 1.2;
+            color: white;
+
+            background: rgba(black, 0);
+
+        }
+
+        &Input:focus + &Icon {
+
+            fill: $md-pink-500;
+
+        }
+
+    }
 
 }

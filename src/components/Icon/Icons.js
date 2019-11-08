@@ -23,6 +23,12 @@ const Icons = () => {
 
                 </symbol>
 
+                <symbol id="search" viewBox="0 0 24 24">
+
+                    <path d="M15.5 14h-.8l-.3-.3a6.5 6.5 0 10-.7.7l.3.3v.8l4.3 4.3a1 1 0 001.4-1.5L15.5 14zm-6 0a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"/>
+
+                </symbol>
+
             </defs>
 
         </svg>
