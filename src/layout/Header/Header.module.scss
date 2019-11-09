@@ -9,13 +9,48 @@
     padding: $theme-padding * 2;
     margin-bottom: -$theme-padding * 2;
 
-    background: linear-gradient(to bottom, rgba(#1c222a, .8) 0%,rgba(black, 0) 100%);
+    background: rgba(#1c222a, 0);
 
     height: 100px;
 
     display: flex;
     align-items: center;
-    
+
+    z-index: 100;
+
+    transition: .2s ease;
+    transition-property: background;
+
+    &Opaque {
+
+        background: rgba(#1c222a, .95);
+
+    }
+
+    &Logo {
+
+        font-family: 'Quicksand', sans-serif;
+        @include font-sizer(24);
+        color: white;
+
+        display: flex;
+        align-items: center;
+
+        &Icon {
+
+            $size: 30px;
+
+            width: $size;
+            height: $size;
+
+            margin-right: 5px;
+
+            fill: $md-pink-500;
+
+        }
+
+    }
+
     &Search {
 
         $size: 30px;

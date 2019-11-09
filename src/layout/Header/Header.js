@@ -28,9 +28,29 @@ class Header extends React.Component {
 
         return (
 
-            <div className={ styles.Header }>
+            <div className={
+
+                [
+
+                    styles.Header,
+                    this.props.opaque && styles.HeaderOpaque
+
+                ].join(' ')
+
+            }>
 
                 <div className="row no-gutters align-items-center flex-fill">
+
+                    <div className="col-auto pr-5">
+
+                        <div className={ styles.HeaderLogo }>
+
+                            <Icon className={ styles.HeaderLogoIcon } glyph="logo-play-button" />
+                            SpotiFood
+
+                        </div>
+
+                    </div>
 
                     <div className="col-lg-3">
 
@@ -41,7 +61,7 @@ class Header extends React.Component {
                             className={ styles.HeaderSearchInput }
 
                             type="text"
-                            placeholder="Busque por uma playlist aqui..."
+                            placeholder="Faça uma busca..."
 
                             value={ this.state.search }
                             onChange={ e => {

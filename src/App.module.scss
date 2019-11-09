@@ -27,17 +27,7 @@
     &View {
 
         padding: $theme-padding * 2;
-
-    }
-
-    &Title {
-
-        margin: 0;
-
-        font-family: 'Barlow', sans-serif;
-        @include font-sizer(28);
-        line-height: 1;
-        color: white;
+        padding-right: 0;
 
     }
 

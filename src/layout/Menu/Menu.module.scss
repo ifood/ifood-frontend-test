@@ -10,28 +10,4 @@
     background: #191e26;
     background: linear-gradient(-45deg, #2e3947, #191e26);
 
-    &Logo {
-
-        font-family: 'Quicksand', sans-serif;
-        @include font-sizer(24);
-        color: white;
-
-        display: flex;
-        align-items: center;
-
-        &Icon {
-
-            $size: 30px;
-
-            width: $size;
-            height: $size;
-
-            margin-right: 5px;
-
-            fill: $md-pink-500;
-
-        }
-
-    }
-
 }

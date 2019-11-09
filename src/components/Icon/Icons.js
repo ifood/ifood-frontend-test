@@ -29,6 +29,24 @@ const Icons = () => {
 
                 </symbol>
 
+                <symbol id="play_arrow" viewBox="0 0 24 24">
+
+                    <path d="M8 6.82v10.36a1 1 0 001.54.84l8.14-5.18a1 1 0 000-1.69L9.54 5.98A1 1 0 008 6.82z"/>
+
+                </symbol>
+
+                <symbol id="arrow_right" viewBox="0 0 24 24">
+
+                    <path d="M11.7 15.3l2.6-2.6c.4-.4.4-1 0-1.4l-2.6-2.6a1 1 0 00-1.7.7v5.2a1 1 0 001.7.7z"/>
+
+                </symbol>
+
+                <symbol id="arrow_left" viewBox="0 0 24 24">
+
+                    <path d="M12.3 8.7l-2.6 2.6a1 1 0 000 1.4l2.6 2.6a1 1 0 001.7-.7V9.4a1 1 0 00-1.7-.7z"/>
+
+                </symbol>
+
             </defs>
 
         </svg>

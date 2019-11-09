@@ -23,6 +23,41 @@
         <div id="root"></div>
 
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600|Barlow:400,400i,500,600,700&display=swap" rel="stylesheet">
+<!-- 
+        <script async src="https://sdk.scdn.co/spotify-player.js"></script>
+
+        <script>
+           window.onSpotifyWebPlaybackSDKReady = () => {
+             const token = 'BQDlVk4Mt2tU4fkTU4luISfHmdriPvulOvrQ465pb39r5gqWhX7oiUGvx7T0a5srmY_ag4dGodf7wOLp8OCeZuhIi1Jhp0IyFoQLESfO4NwPl3U_lAWhl_46qwmLhRCVrUaMJ4N-xjrU2eVHb3D3wIYj5pRemLwEmg';
+             const player = window.Spotify.Player({
+               name: 'Web Playback SDK Quick Start Player',
+               getOAuthToken: cb => { cb(token); }
+             });
+
+             // Error handling
+             player.addListener('initialization_error', ({ message }) => { console.error(message); });
+             player.addListener('authentication_error', ({ message }) => { console.error(message); });
+             player.addListener('account_error', ({ message }) => { console.error(message); });
+             player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+             // Playback status updates
+             player.addListener('player_state_changed', state => { console.log(state); });
+
+             // Ready
+             player.addListener('ready', ({ device_id }) => {
+               console.log('Ready with Device ID', device_id);
+             });
+
+             // Not Ready
+             player.addListener('not_ready', ({ device_id }) => {
+               console.log('Device ID has gone offline', device_id);
+             });
+
+             // Connect to the player!
+             player.connect();
+
+           };
+         </script> -->
 
     </body>
 

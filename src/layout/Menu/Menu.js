@@ -18,13 +18,6 @@ class Menu extends React.Component {
 
             <div className={ styles.Menu }>
 
-                <div className={ styles.MenuLogo }>
-
-                    <Icon className={ styles.MenuLogoIcon } glyph="logo-play-button" />
-                    SpotiFood
-
-                </div>
-
             </div>
 
         )

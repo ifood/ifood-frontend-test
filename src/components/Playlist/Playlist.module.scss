@@ -1,0 +1,159 @@
+@import 'scss/components.scss';
+
+:global {
+
+    .animation {
+
+        &-enter {
+
+            transform: translateX(-100%);
+            margin-right: -250px !important;
+
+        }
+
+        &-enter-active {
+
+            transform: translateX(0);
+            margin-right: 0 !important;
+
+            transition: .4s ease-in-out;
+            transition-property: transform, margin-right;
+
+        }
+
+        &-exit-active {
+
+            transform: translateX(-100%);
+            margin-right: -250px !important;
+
+            transition: .4s ease-in-out;
+            transition-property: transform, margin-right;
+
+        }
+
+    }
+
+}
+
+.Playlist {
+
+    &Title {
+
+        margin: 0;
+        margin-bottom: $theme-padding * 2;
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(28);
+        line-height: 1;
+        color: white;
+
+    }
+
+    &List {
+
+        &:not(:last-of-type){
+
+            margin-bottom: $theme-padding * 4;
+
+        }
+
+        &Navigation {
+
+            $size: 24px;
+
+            width: $size;
+            height: $size;
+
+            padding: 0;
+
+            background: $md-blue-grey-800;
+
+            border: 0;
+            border-radius: $size / 2;
+
+            outline: none !important;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+            transition-property: opacity;
+
+            &:not(:last-of-type){
+
+                margin-right: $theme-padding / 2;
+
+            }
+
+            &[disabled]{
+
+                opacity: 0.25
+
+            }
+
+            svg {
+
+                width: inherit;
+                height: inherit;
+
+                fill: rgba(white, .5);
+
+            }
+
+        }
+
+        &Row {
+
+            margin-left: -30px;
+            padding: 0;
+            padding-left: 15px;
+
+            list-style: none;
+
+            display: flex;
+
+            overflow: hidden;
+
+        }
+
+        &List {
+
+            padding-left: 15px;
+            padding-right: 15px;
+
+            display: inline-block;
+
+        }
+
+        &Cover {
+
+            $size: 220px;
+
+            width: $size;
+            height: $size;
+
+            margin-bottom: $theme-padding / 2;
+
+        }
+
+        &Title {
+
+            font-family: 'Barlow', sans-serif;
+            @include font-sizer(14);
+            line-height: 1;
+            font-weight: 800;
+            color: white;
+
+        }
+
+        &Owner {
+
+            font-family: 'Barlow', sans-serif;
+            @include font-sizer(12);
+            font-weight: 400;
+            color: rgba(white, .75);
+
+        }
+
+    }
+
+}
