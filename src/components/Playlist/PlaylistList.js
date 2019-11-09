@@ -113,7 +113,7 @@ class PlaylistList extends React.Component {
 
                 {
 
-                this.props.data.items.length &&
+                this.props.data.items.length ?
 
                 <TransitionGroup className={ styles.PlaylistListRow } component="ul">
 
@@ -158,6 +158,8 @@ class PlaylistList extends React.Component {
                     }
 
                 </TransitionGroup>
+
+                : null
 
                 }
 

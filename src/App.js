@@ -4,6 +4,7 @@ import axios from 'axios'
 /* */
 
 import Icons from 'components/Icon/Icons'
+import Icon from 'components/Icon/Icon'
 import Menu from 'layout/Menu/Menu'
 import Header from 'layout/Header/Header'
 import PlaylistList from 'components/Playlist/PlaylistList'
@@ -14,7 +15,7 @@ import styles from 'App.module.scss'
 
 /* */
 
-var auth = 'BQCvYK5Py6Kze8XogD5Ron--wnYqM5uOXU_p6muwwWWVT905VT9nYbTx2HjIFLsaFVT2_T56PXI-5u46sSw'
+var auth = 'BQCEWl521lg_0Czb_V5djupp6XkY1CPB4Y210RbegQ4Dr72qRqU7LQ_VZHfVBJFs7sQTuy3dJ8MbNS-x8Wg'
 
 class App extends React.Component {
 
@@ -212,6 +213,8 @@ class App extends React.Component {
                     <Header opaque={ this.state.wrapperScrollTop > 10 } />
 
                     <div className={ styles.AppView } ref={ this.AppVierRef }>
+
+                        <Icon glyph="logo-play-button" className={ styles.AppViewBackground } />
 
                         <PlaylistList data={ this.state.featured } viewport={ this.state.viewport.width } />
                         <PlaylistList data={ this.state.releases } viewport={ this.state.viewport.width } />

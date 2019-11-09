@@ -26,8 +26,31 @@
 
     &View {
 
+        position: relative;
+
         padding: $theme-padding * 2;
         padding-right: 0;
+
+        overflow: hidden;
+
+        &Background {
+
+            position: fixed;
+
+            top: 40px;
+            left: 0;
+
+            width: 1000px;
+            height: 1000px;
+
+            fill: rgba($md-red-100, .5);
+
+            transform: rotate(185deg);
+
+            z-index: -1;
+
+
+        }
 
     }
 

@@ -52,7 +52,7 @@ class Header extends React.Component {
 
                     </div>
 
-                    <div className="col-lg-3">
+                    <div className="col-lg-4">
 
                         <div className={ styles.HeaderSearch }>
 
