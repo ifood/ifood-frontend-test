@@ -2,7 +2,7 @@
 
 :global {
 
-    .animation {
+    .PlaylistListSlider {
 
         &-enter {
 
@@ -45,7 +45,7 @@
         font-family: 'Barlow', sans-serif;
         @include font-sizer(28);
         line-height: 1;
-        color: white;
+        color: $md-red-500;
 
     }
 
@@ -66,7 +66,7 @@
 
             padding: 0;
 
-            background: $md-blue-grey-800;
+            background: $md-grey-700;
 
             border: 0;
             border-radius: $size / 2;
@@ -95,7 +95,7 @@
                 width: inherit;
                 height: inherit;
 
-                fill: rgba(white, .5);
+                fill: white;
 
             }
 
@@ -103,9 +103,11 @@
 
         &Row {
 
-            margin-left: -30px;
+            margin-left: -($theme-padding * 2);
+            margin-top: -$theme-padding;
             padding: 0;
-            padding-left: 15px;
+            padding-top: $theme-padding;
+            padding-left: $theme-padding;
 
             list-style: none;
 
@@ -117,8 +119,8 @@
 
         &List {
 
-            padding-left: 15px;
-            padding-right: 15px;
+            padding-left: $theme-padding;
+            padding-right: $theme-padding;
 
             display: inline-block;
 
@@ -131,17 +133,21 @@
             width: $size;
             height: $size;
 
-            margin-bottom: $theme-padding / 2;
+            margin-bottom: $theme-padding;
+
+            border-radius: 8px;
+
+            box-shadow: 0 20px 20px rgba(black, .1)
 
         }
 
         &Title {
 
             font-family: 'Barlow', sans-serif;
-            @include font-sizer(14);
+            @include font-sizer(16);
             line-height: 1;
-            font-weight: 800;
-            color: white;
+            font-weight: 600;
+            color: $md-grey-800;
 
         }
 
@@ -150,7 +156,7 @@
             font-family: 'Barlow', sans-serif;
             @include font-sizer(12);
             font-weight: 400;
-            color: rgba(white, .75);
+            color: rgba(black, .5);
 
         }
 

@@ -11,7 +11,7 @@
 
     background: rgba(#1c222a, 0);
 
-    height: 100px;
+    height: 80px;
 
     display: flex;
     align-items: center;
@@ -23,15 +23,17 @@
 
     &Opaque {
 
-        background: rgba(#1c222a, .95);
+        background: white;
+
+        box-shadow: 0 0 10px rgba(black, .1)
 
     }
 
     &Logo {
 
         font-family: 'Quicksand', sans-serif;
-        @include font-sizer(24);
-        color: white;
+        @include font-sizer(20);
+        color: black;
 
         display: flex;
         align-items: center;
@@ -45,7 +47,7 @@
 
             margin-right: 5px;
 
-            fill: $md-pink-500;
+            fill: $md-red-500;
 
         }
 
@@ -61,7 +63,7 @@
         height: $size;
         padding: 5px 7px;
 
-        background: rgba(black, .2);
+        background: rgba(black, .1);
 
         border-radius: $size;
         border: 1px solid rgba(white, .1);
@@ -73,7 +75,7 @@
             width: $size;
             height: $size;
 
-            fill: white;
+            fill: $md-grey-500;
 
             transition: .2s ease;
             transition-property: fill;
@@ -96,7 +98,7 @@
             @include font-sizer(13);
             font-weight: 600;
             line-height: 1.2;
-            color: white;
+            color: black;
 
             background: rgba(black, 0);
 
@@ -105,6 +107,43 @@
         &Input:focus + &Icon {
 
             fill: $md-pink-500;
+
+        }
+
+    }
+
+    &User {
+
+        &Avatar {
+
+            $size: 40px;
+
+            width: $size;
+            height: $size;
+
+            background: $md-blue-grey-700 no-repeat center;
+            background-size: cover;
+
+            border-radius: $size / 2;
+
+        }
+
+        &Name {
+
+            font-family: 'Barlow', sans-serif;
+            @include font-sizer(13);
+            line-height: 1;
+            font-weight: 700;
+            color: $md-grey-800;
+
+        }
+
+        &Email {
+
+            font-family: 'Barlow', sans-serif;
+            @include font-sizer(13);
+            line-height: 1.2;
+            color: $md-grey-600;
 
         }
 

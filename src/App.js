@@ -14,7 +14,7 @@ import styles from 'App.module.scss'
 
 /* */
 
-var auth = 'BQBq5wnO8e8_u_LYQojckrk17H2hhG6deMZvirvh0ueIyrPZ-pEhYVAIgv7BPCZmrxI4rEQDjN-3ujUQ8bo'
+var auth = 'BQCvYK5Py6Kze8XogD5Ron--wnYqM5uOXU_p6muwwWWVT905VT9nYbTx2HjIFLsaFVT2_T56PXI-5u46sSw'
 
 class App extends React.Component {
 
@@ -209,7 +209,7 @@ class App extends React.Component {
 
                 >
 
-                    <Header opaque={ this.state.wrapperScrollTop > 30 } />
+                    <Header opaque={ this.state.wrapperScrollTop > 10 } />
 
                     <div className={ styles.AppView } ref={ this.AppVierRef }>
 

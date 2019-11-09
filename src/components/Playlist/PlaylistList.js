@@ -125,7 +125,7 @@ class PlaylistList extends React.Component {
 
                                 <CSSTransition
 
-                                classNames="animation"
+                                classNames="PlaylistListSlider"
                                 timeout={ 400 }
                                 key={ val.id }
 
