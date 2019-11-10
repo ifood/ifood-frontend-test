@@ -1,10 +1,4 @@
 import React from 'react'
-import {
-
-    CSSTransition,
-    TransitionGroup
-
-} from 'react-transition-group'
 
 /* */
 
@@ -124,6 +118,8 @@ class PlaylistList extends React.Component {
 
                         }
 
+                        title="Anterior"
+
                         >
 
                             <Icon glyph="arrow_left" />
@@ -139,7 +135,11 @@ class PlaylistList extends React.Component {
 
                             () => this.handleNavigation('next')
 
-                        }>
+                        }
+
+                        title="Próximo"
+
+                        >
 
                             <Icon glyph="arrow_right" />
 

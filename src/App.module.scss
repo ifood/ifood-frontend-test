@@ -1,4 +1,5 @@
 @import 'scss/components.scss';
+@import 'scss/Form.module.scss';
 
 /* */
 
@@ -94,6 +95,12 @@
 
 
         }
+
+    }
+
+    &Settings {
+
+        padding: $theme-padding * 2;
 
     }
 

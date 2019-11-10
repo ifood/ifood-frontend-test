@@ -1,0 +1,14 @@
+@import 'components.scss';
+
+.Form {
+
+    &Label {
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(16);
+        font-weight: 600;
+        color: black;
+
+    }
+
+}

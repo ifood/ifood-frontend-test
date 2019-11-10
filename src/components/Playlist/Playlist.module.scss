@@ -76,7 +76,13 @@
             cursor: pointer;
 
             transition: .2s ease;
-            transition-property: opacity;
+            transition-property: opacity, transform;
+
+            &:active {
+
+                transform: scale(0.9)
+
+            }
 
             &:not(:last-of-type){
 
