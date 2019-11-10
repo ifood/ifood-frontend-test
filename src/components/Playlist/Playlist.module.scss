@@ -2,21 +2,21 @@
 
 :global {
 
-    .PlaylistListSlider {
+    .playlist-slider {
 
         &-enter {
 
             transform: translateX(-100%);
-            margin-right: -250px !important;
+            // margin-right: -250px !important;
 
         }
 
         &-enter-active {
 
             transform: translateX(0);
-            margin-right: 0 !important;
+            // margin-right: 0 !important;
 
-            transition: .4s ease-in-out;
+            transition: .3s ease;
             transition-property: transform, margin-right;
 
         }
@@ -24,9 +24,9 @@
         &-exit-active {
 
             transform: translateX(-100%);
-            margin-right: -250px !important;
+            // margin-right: -250px !important;
 
-            transition: .4s ease-in-out;
+            transition: .3s ease;
             transition-property: transform, margin-right;
 
         }
@@ -113,7 +113,8 @@
 
             display: flex;
 
-            overflow: hidden;
+            transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition-property: transform;
 
         }
 
@@ -123,6 +124,9 @@
             padding-right: $theme-padding;
 
             display: inline-block;
+
+            backface-visibility: hidden;
+            perspective: 1000;
 
         }
 
@@ -137,7 +141,7 @@
 
             border-radius: 8px;
 
-            box-shadow: 0 20px 20px rgba(black, .1)
+            // box-shadow: 0 20px 20px rgba(black, .1);
 
         }
 

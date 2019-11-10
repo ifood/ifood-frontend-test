@@ -2,6 +2,10 @@
 
 .Modal {
 
+    $header-height: 85px;
+
+    /* */
+
     position: fixed;
 
     top: 0;
@@ -10,8 +14,94 @@
     width: 100%;
     height: 100%;
 
-    background: rgba(black, .5);
+    background: rgba(black, .4);
 
     z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &Header {
+
+        height: $header-height;
+
+        padding: $theme-padding * 2;
+
+        border-bottom: 1px solid $md-grey-200;
+
+        &Title {
+
+            font-family: 'Barlow', sans-serif;
+            @include font-sizer(20);
+            font-weight: 700;
+            line-height: 1;
+            color: $md-red-500;
+
+        }
+
+        &Close {
+
+            $size: 24px;
+
+            width: $size;
+            height: $size;
+
+            fill: $md-red-500;
+
+            cursor: pointer;
+
+        }
+
+    }
+
+    &:global(.transition-fade-exit-active) &Wrapper {
+
+        opacity: 0;
+        transform: scale(0.98);
+
+    }
+
+    &Wrapper {
+
+        background: white;
+
+        border-radius: 10px;
+
+        animation: slideUp .3s ease;
+
+        transition: .2s ease;
+        transition-property: opacity, transform;
+
+        box-shadow: 0 0 50px rgba(black, .1);
+
+        @keyframes slideUp {
+
+            from {
+
+                opacity: 0;
+                transform: translateY(10px);
+
+            }
+
+            to {
+
+                opacity: 1;
+                transform: translateY(0);
+
+            }
+
+        }
+
+    }
+
+    &Content {
+
+        max-height: 90vh;
+        max-height: calc(90vh - #{$header-height});
+
+        overflow: auto;
+
+    }
 
 }

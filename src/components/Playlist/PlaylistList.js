@@ -25,7 +25,9 @@ class PlaylistList extends React.Component {
 
         this.state = {
 
-            index: 0
+            index: 0,
+            translate: 0,
+            duration: '0s'
 
         }
 
@@ -35,21 +37,57 @@ class PlaylistList extends React.Component {
 
     getItemsOffset(){
 
-        return Math.ceil(this.props.viewport / 250) + 1
+        return Math.ceil(this.props.viewport / 250) + 2
 
     }
 
     /* */
 
-    handlePrev(){
+    handleNavigation(direction){
 
-        if(this.state.index) this.setState({ index: this.state.index - 1 })
+        let duration = 600
 
-    }
+        /* */
 
-    handleNext(){
+        if(direction == 'prev'){
 
-        if(this.state.index < this.props.data.items.length - 1) this.setState({ index: this.state.index + 1 })
+            if(this.state.index) this.setState({ index: this.state.index - 1 })
+
+        } else {
+
+            if(this.state.index < this.props.data.items.length - 1) this.setState({ index: this.state.index + 1 })
+
+        }
+
+        /* */
+
+        window.requestAnimationFrame(() => {
+
+            this.setState({
+
+                translate: direction == 'prev' ? -250 : 250,
+                duration : '0s'
+
+            })
+
+            setTimeout(() => {
+
+                this.setState({
+
+                    translate: 0,
+                    duration : `${(duration / 1000)}s`
+
+                })
+
+                setTimeout(() => {
+
+                    this.setState({ duration : '0s' })
+
+                }, duration)
+
+            }, 1)
+
+        })
 
     }
 
@@ -82,7 +120,7 @@ class PlaylistList extends React.Component {
                         disabled={ !this.state.index }
                         onClick={
 
-                            () => this.handlePrev()
+                            () => this.handleNavigation('prev')
 
                         }
 
@@ -99,7 +137,7 @@ class PlaylistList extends React.Component {
                         disabled={ this.state.index === this.props.data.items.length - 1 }
                         onClick={
 
-                            () => this.handleNext()
+                            () => this.handleNavigation('next')
 
                         }>
 
@@ -115,49 +153,68 @@ class PlaylistList extends React.Component {
 
                 this.props.data.items.length ?
 
-                <TransitionGroup className={ styles.PlaylistListRow } component="ul">
+                <div className={ styles.PlaylistSlider }>
 
-                    {
+                    <ul className={ styles.PlaylistListRow } style={{
 
-                        this.props.data.items.slice(this.state.index, this.state.index + getItemsOffset).map((val, index) => {
+                        transform : `translate3d(${this.state.translate - 250}px, 0, 0)`,
+                        transitionDuration : this.state.duration
 
-                            return (
+                    }}>
 
-                                <CSSTransition
+                        {
 
-                                classNames="PlaylistListSlider"
-                                timeout={ 400 }
-                                key={ val.id }
+                            this.props.data.items.slice(this.state.index, this.state.index + getItemsOffset).map((val, index) => {
 
-                                >
+                                return (
 
-                                    <li className={ styles.PlaylistListList }>
+                                    <li className={ styles.PlaylistListList } key={ val.id || 0 }>
 
                                         <div className={ styles.PlaylistListCover }>
 
-                                            <Cover
+                                            {
 
-                                            url={ val.img }
-                                            uri={ val.uri }
+                                            (val.img && val.uri) && (
 
-                                            />
+                                                <Cover
+
+                                                url={ val.img }
+                                                uri={ val.uri }
+
+                                                />
+
+                                            )
+
+                                            }
 
                                         </div>
 
-                                        <div className={ styles.PlaylistListTitle }>{ val.title }</div>
-                                        <div className={ styles.PlaylistListOwner }>de { val.owner }</div>
+                                        {
+
+                                        (val.title && val.owner) && (
+
+                                            <>
+
+                                                <div className={ styles.PlaylistListTitle }>{ val.title }</div>
+                                                <div className={ styles.PlaylistListOwner }>de { val.owner }</div>
+
+                                            </>
+
+                                        )
+
+                                        }
 
                                     </li>
 
-                                </CSSTransition>
+                                )
 
-                            )
+                            })
 
-                        })
+                        }
 
-                    }
+                    </ul>
 
-                </TransitionGroup>
+                </div>
 
                 : null
 
