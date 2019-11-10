@@ -8,6 +8,7 @@ import Icon from 'components/Icon/Icon'
 import Menu from 'layout/Menu/Menu'
 import Header from 'layout/Header/Header'
 import PlaylistList from 'components/Playlist/PlaylistList'
+import Modal from 'components/Modal/Modal'
 
 /* */
 
@@ -190,6 +191,12 @@ class App extends React.Component {
 
     }
 
+    openSettings(){
+
+        console.log(1)
+
+    }
+
     /* */
 
     render(){
@@ -210,7 +217,13 @@ class App extends React.Component {
 
                 >
 
-                    <Header opaque={ this.state.wrapperScrollTop > 10 } />
+                    <Header
+
+                    opaque={ this.state.wrapperScrollTop > 10 }
+
+                    openSettings={ () => this.openSettings() }
+
+                    />
 
                     <div className={ styles.AppView } ref={ this.AppVierRef }>
 
@@ -222,6 +235,8 @@ class App extends React.Component {
                     </div>
 
                 </div>
+
+                // <Modal />
 
             </div>
 

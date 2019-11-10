@@ -84,6 +84,16 @@ class Header extends React.Component {
 
                     <div className="col"></div>
 
+                    <div className="col-auto pr-3">
+
+                        <div onClick={ () => this.props.openSettings() }>
+
+                            <Icon className={ styles.HeaderUserSettings } glyph="settings" />
+
+                        </div>
+
+                    </div>
+
                     <div className="col-auto">
 
                         <div className={ styles.HeaderUser }>

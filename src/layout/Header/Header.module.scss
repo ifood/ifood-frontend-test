@@ -54,7 +54,7 @@
 
     &Search {
 
-        $size: 30px;
+        $size: 32px;
 
         position: relative;
 
@@ -62,10 +62,8 @@
         height: $size;
         padding: 5px 7px;
 
-        background: rgba(black, .1);
-
         border-radius: $size;
-        border: 1px solid rgba(white, .1);
+        border: 2px solid rgba(black, .1);
 
         &Icon {
 
@@ -85,7 +83,7 @@
 
             position: absolute;
 
-            top: -1px;
+            top: -3px;
             left: 0;
 
             width: inherit;
@@ -105,7 +103,7 @@
 
         &Input:focus + &Icon {
 
-            fill: $md-pink-500;
+            fill: $md-red-500;
 
         }
 
@@ -143,6 +141,19 @@
             @include font-sizer(13);
             line-height: 1.2;
             color: $md-grey-600;
+
+        }
+
+        &Settings {
+
+            $size: 24px;
+
+            width: $size;
+            height: $size;
+
+            fill: $md-grey-500;
+
+            cursor: pointer;
 
         }
 
