@@ -11,4 +11,19 @@
 
     }
 
+    &Input {
+
+        width: 100%;
+
+        padding: $theme-padding / 2 $theme-padding;
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(16);
+        font-weight: 400;
+        color: black;
+
+        border-radius: 10px;
+
+    }
+
 }

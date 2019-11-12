@@ -1,4 +1,5 @@
 import React from 'react'
+import _lang from 'lodash/lang'
 
 /* */
 
@@ -22,6 +23,18 @@ class PlaylistList extends React.Component {
             index: 0,
             translate: 0,
             duration: '0s'
+
+        }
+
+    }
+
+    /* */
+
+    async componentDidUpdate(prevProps, prevState){
+
+        if(!_lang.isEqual(prevProps.data, this.props.data)){
+
+            this.setState({ index: 0 })
 
         }
 
@@ -112,11 +125,7 @@ class PlaylistList extends React.Component {
                         className={ styles.PlaylistListNavigation }
 
                         disabled={ !this.state.index }
-                        onClick={
-
-                            () => this.handleNavigation('prev')
-
-                        }
+                        onClick={ () => this.handleNavigation('prev') }
 
                         title="Anterior"
 
@@ -131,11 +140,7 @@ class PlaylistList extends React.Component {
                         className={ styles.PlaylistListNavigation }
 
                         disabled={ this.state.index === this.props.data.items.length - 1 }
-                        onClick={
-
-                            () => this.handleNavigation('next')
-
-                        }
+                        onClick={ () => this.handleNavigation('next') }
 
                         title="Próximo"
 

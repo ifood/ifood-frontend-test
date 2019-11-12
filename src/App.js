@@ -5,11 +5,13 @@ import {
     CSSTransition
 
 } from 'react-transition-group'
+import _lang from 'lodash/lang'
 
 /* */
 
 import Icons from 'components/Icon/Icons'
 import Icon from 'components/Icon/Icon'
+import Button from 'components/Button/Button'
 import Menu from 'layout/Menu/Menu'
 import Header from 'layout/Header/Header'
 import PlaylistList from 'components/Playlist/PlaylistList'
@@ -21,7 +23,7 @@ import styles from 'App.module.scss'
 
 /* */
 
-var auth = 'BQDTEBEo0ktNZeep6nHIeqzm6X4bC0xv6DYvw3Gch2MVdEWrLwqBlLU7VkwP67ZcqX-PIG-BPpt7r37hwuw'
+var auth = 'BQBosBt5NGrrmsDm6-3U7qYKrJ6SgAYLQxpgNmMpMFi9D7DKWDmUpcp21C189dhNFSWIYB3UmSY0ikM76VM'
 
 class App extends React.Component {
 
@@ -41,7 +43,7 @@ class App extends React.Component {
 
             releases : {
 
-                message : 'Lançamentos',
+                message : null,
                 items: []
 
             },
@@ -54,7 +56,7 @@ class App extends React.Component {
 
             settings : {
 
-                active : true,
+                active : false,
                 data : {
 
                     country : 'BR',
@@ -88,15 +90,37 @@ class App extends React.Component {
         })
 
         viewportObserver.observe(this.AppVierRef.current)
-
         /* */
 
-        await this.getFeaturedPlaylists()
-        await this.getNewReleases()
+        await this.init()
+
+    }
+
+    async componentDidUpdate(prevProps, prevState){
+
+        if(!_lang.isEqual(prevState.settings.data, this.state.settings.data)) await this.init()
 
     }
 
     /* */
+
+    init(){
+
+        return Promise.resolve().then(() => {
+
+            return this.getFeaturedPlaylists()
+
+        }).then(() => {
+
+            return this.getNewReleases()
+
+        }).catch(error => {
+
+            console.log(error)
+
+        })
+
+    }
 
     async getFeaturedPlaylists(){
 
@@ -148,10 +172,6 @@ class App extends React.Component {
 
             })
 
-        }).catch(error => {
-
-            console.log(error)
-
         })
 
     }
@@ -196,16 +216,12 @@ class App extends React.Component {
 
                 releases : {
 
-                    ...this.state.releases,
+                    message : this.getNewReleasesMessage(this.state.settings.data.locale),
                     items
 
                 }
 
             })
-
-        }).catch(error => {
-
-            console.log(error)
 
         })
 
@@ -243,6 +259,7 @@ class App extends React.Component {
             settings : {
 
                 ...this.state.settings,
+                temp : this.state.settings.data,
                 active : true
 
             }
@@ -258,6 +275,55 @@ class App extends React.Component {
             settings : {
 
                 ...this.state.settings,
+                active : false,
+                temp : {}
+
+            }
+
+        })
+
+    }
+
+    changeSettings(e, type){
+
+        let temp = JSON.parse(JSON.stringify(this.state.settings.temp))
+
+        /* */
+
+        if(type == 'country'){
+
+            temp.country = e.target.value
+
+        } else if(type == 'locale'){
+
+            temp.locale = e.target.value
+
+        }
+
+        /* */
+
+        this.setState({
+
+            settings : {
+
+                ...this.state.settings,
+                temp
+
+            }
+
+        })
+
+    }
+
+    applySettings(){
+
+        this.setState({
+
+            settings : {
+
+                ...this.state.settings,
+                data : this.state.settings.temp,
+                temp : {},
                 active : false
 
             }
@@ -268,9 +334,46 @@ class App extends React.Component {
 
     /* */
 
-    render(){
+    getNewReleasesMessage(locale){
 
-        /* */
+        switch(locale){
+
+            case 'en_AU' :
+            case 'en_US' :
+
+                return 'New Releases'
+
+            break;
+
+            case 'de_DE' :
+
+                return 'Neuerscheinungen'
+
+            break;
+
+            case 'fr_FR' :
+
+                return 'Nouvelles Versions'
+
+            break;
+
+            case 'en_US' :
+
+                return 'Nuevos Lanzamientos'
+
+            break;
+
+            default :
+
+                return 'Lançamentos'
+
+        }
+
+    }
+
+    /* */
+
+    render(){
 
         return (
 
@@ -318,23 +421,93 @@ class App extends React.Component {
 
                         <div className={ styles.AppSettings }>
 
-                            <div className="row">
+                            <div className="row mb-4">
 
                                 <div className="col">
 
-                                    <label htmlFor="country" className={ styles.FormLabel }>Exibir playlists do país</label>
-                                    <input type="text" id="country" />
+                                    <div className="row align-items-center">
+
+                                        <div className="col">
+
+                                            <label htmlFor="country" className={ styles.FormLabel }>Exibir playlists do país</label>
+
+                                        </div>
+
+                                        <div className="col-5">
+
+                                            <select
+
+                                            className={ styles.FormInput }
+                                            name="country"
+                                            value={ this.state.settings.temp.country }
+                                            onChange={ e => this.changeSettings(e, 'country') }
+
+                                            >
+
+                                                <option value="AU">Austrália</option>
+                                                <option value="DE">Alemanha</option>
+                                                <option value="BR">Brasil</option>
+                                                <option value="PT">Portugal</option>
+                                                <option value="en_US">EUA</option>
+                                                <option value="RU">Rússia</option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                            <div className="row">
+                            <div className="row mb-4">
 
                                 <div className="col">
 
-                                    <label htmlFor="locale" className={ styles.FormLabel }>Idioma</label>
-                                    <input type="text" id="locale" />
+                                    <div className="row align-items-center">
+
+                                        <div className="col">
+
+                                            <label htmlFor="locale" className={ styles.FormLabel }>Idioma</label>
+
+                                        </div>
+
+                                        <div className="col-5">
+
+                                            <select
+
+                                            className={ styles.FormInput }
+                                            name="locale"
+
+                                            value={ this.state.settings.temp.locale }
+                                            onChange={ e => this.changeSettings(e, 'locale') }
+
+                                            >
+
+                                                <option value="en_AU">en_AU</option>
+                                                <option value="de_DE">de_DE</option>
+                                                <option value="pt_BR">pt_BR</option>
+                                                <option value="fr_FR">fr_FR</option>
+                                                <option value="en_US">en_US</option>
+                                                <option value="es_AR">es_AR</option>
+
+                                            </select>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className="row justify-content-center mt-5">
+
+                                <div className="col-auto">
+
+                                    <Button label="Salvar" color="green" onClick={ () => this.applySettings() } />
 
                                 </div>
 

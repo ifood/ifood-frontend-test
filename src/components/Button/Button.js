@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 /* */
 
-import styles from './button.module.scss'
+import styles from './Button.module.scss'
 
 /* */
 
