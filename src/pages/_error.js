@@ -1,4 +1,5 @@
 import React from 'react'
+import { ErrorMessage } from '../components/error-message'
 
 function Error({ statusCode }) {
   return (
@@ -6,6 +7,7 @@ function Error({ statusCode }) {
       {statusCode
         ? `An error ${statusCode} occurred on server`
         : 'An error occurred on client'}
+      <ErrorMessage />
     </p>
   )
 }

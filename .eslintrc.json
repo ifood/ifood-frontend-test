@@ -25,6 +25,8 @@
   },
   "plugins": ["react", "react-hooks", "jsx-a11y", "prettier"],
   "rules": {
+    "import/no-named-as-default": "off",
+    "import/prefer-default-export": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [
       1,
