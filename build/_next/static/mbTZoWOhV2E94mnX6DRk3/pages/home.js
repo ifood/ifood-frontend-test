@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{"4EvU":function(n,e,o){"use strict";o.r(e);var t=o("q1tI"),u=o.n(t).a.createElement;e.default=function(){return u("div",null,"Welcome to Home!")}},DljF:function(n,e,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/home",function(){return o("4EvU")}])}},[["DljF",1,0]]]);
