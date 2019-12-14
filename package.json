@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build && next export -o build",
+    "build": "next build && next export -o build && touch build/.nojekyll",
     "start": "next start",
     "deploy": "yarn build && gh-pages -d build",
     "test": "react-scripts test",
