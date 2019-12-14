@@ -22,21 +22,20 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build && next export && touch out/.nojekyll",
+    "build": "next build && next export -o build && touch build/.nojekyll",
     "start": "next start",
-    "deploy": "rm -rf node_modules/.cache && rimraf out && yarn build && gh-pages -d out",
-    "test": "react-scripts test --testPathIgnorePatterns=out",
+    "deploy": "yarn build && gh-pages -d build",
+    "test": "react-scripts test",
     "test:staged": "CI=true yarn test",
-    "lint": "eslint 'src/**/*.{js,jsx}'",
-    "lint:fix": "yarn lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "precommit": "lint-staged",
     "coverage": "CI=true yarn test -- --coverage"
   },
   "collectCoverageFrom": [
     "src/**/*.{js,jsx}",
     "!<rootDir>/node_modules/",
-    "!<rootDir>/build",
-    "!<rootDir>/out"
+    "!<rootDir>/build"
   ],
   "engines": {
     "node": ">=10"
