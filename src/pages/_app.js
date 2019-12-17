@@ -1,6 +1,10 @@
 import React from 'react'
 import App from 'next/app'
 
+import { Provider } from 'react-redux'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import store from '../store'
+
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for
   // every single page in your application. This disables the ability to
@@ -16,7 +20,12 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    return <Component {...pageProps} />
+    return (
+      <Provider store={store}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </Provider>
+    )
   }
 }
 

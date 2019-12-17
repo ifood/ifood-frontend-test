@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import playlists from './ducks/playlists'
-import formFields from './ducks/form-fields'
+import playlists from './playlists'
+import filters from './form-filters'
 
 const reducers = combineReducers({
   playlists,
-  formFields
+  filters
 })
 
 export default reducers

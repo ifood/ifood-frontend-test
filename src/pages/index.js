@@ -1,20 +1,19 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import Button from '@material-ui/core/Button'
-
-import store from '../store'
-import { Search } from '../components/search'
+import Head from 'next/head'
 
 function App() {
   return (
-    <Provider store={store}>
-      <div>
-        <Search />
-        <Button variant='contained' color='primary'>
-          Olá Mundo
-        </Button>
-      </div>
-    </Provider>
+    <Head>
+      <link
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+      />
+      <link
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/icon?family=Material+Icons'
+      />
+      <title>Spotifood</title>
+    </Head>
   )
 }
 

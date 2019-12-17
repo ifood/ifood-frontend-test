@@ -3,18 +3,18 @@ import { ErrorMessage } from '../components/error-message'
 
 function Error({ statusCode }) {
   return (
-    <p>
+    <div>
       {statusCode
         ? `An error ${statusCode} occurred on server`
         : 'An error occurred on client'}
       <ErrorMessage />
-    </p>
+    </div>
   )
 }
 
 Error.getInitialProps = ({ res, err }) => {
   const error = res ? res.statusCode : err
-  const statusCode = error ? err.statusCode : 404
+  const statusCode = error ? error.statusCode : 404
   return { statusCode }
 }
 
