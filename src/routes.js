@@ -1,4 +1,4 @@
-export const ROUTES = {
+module.exports = {
   HOME: '/home',
   CALLBACK: '/callback'
 }

@@ -3,6 +3,7 @@ import App from 'next/app'
 
 import { Provider } from 'react-redux'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import Head from 'next/head'
 import store from '../store'
 
 class MyApp extends App {
@@ -22,6 +23,27 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <Provider store={store}>
+        <Head>
+          <meta charSet='utf-8' />
+
+          {/* <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> */}
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+          <meta name='theme-color' content='#000000' />
+          <meta
+            name='description'
+            content='Web site created using create-react-app'
+          />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/icon?family=Material+Icons'
+          />
+          <title>Spotifood</title>
+        </Head>
+
         <CssBaseline />
         <Component {...pageProps} />
       </Provider>

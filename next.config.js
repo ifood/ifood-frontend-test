@@ -1,13 +1,12 @@
 const withCSS = require('@zeit/next-css')
-const { ROUTES } = require('./src/routes')
+const ROUTES = require('./src/routes')
 
 const debug = process.env.NODE_ENV !== 'production'
 
 module.exports = withCSS({
   exportPathMap() {
     return {
-      '/': { page: '/' },
-      '/home': { page: ROUTES.HOME },
+      '/': { page: ROUTES.HOME },
       '/callback': { page: ROUTES.CALLBACK }
     }
   },

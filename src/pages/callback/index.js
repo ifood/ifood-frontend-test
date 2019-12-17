@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { setSession, decodeSession } from '../../utils/session'
-import { ROUTES } from '../../routes'
+import ROUTES from '../../routes'
 
 function Callback(props) {
   useEffect(() => {
