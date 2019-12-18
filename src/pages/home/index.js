@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import { login } from '../../services/spotify'
 import { getSession, isValidSession } from '../../utils/session'
+import { url } from '../../services/form-filters'
 
 import HomeTemplate from '../../templates/home'
 
@@ -17,7 +18,7 @@ function Home({ filters }) {
 }
 
 Home.getInitialProps = async () => {
-  const res = await fetch('http://www.mocky.io/v2/5a25fade2e0000213aa90776')
+  const res = await fetch(url)
   const { filters } = await res.json()
   return { filters }
 }
