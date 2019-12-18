@@ -11,6 +11,8 @@ This project is built in with:
 
 Demo: <https://ricardo-teixeira.github.io/ifood-frontend-test/>
 
+![Spotifood](./screenshot.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
