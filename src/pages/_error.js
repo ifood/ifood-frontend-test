@@ -2,14 +2,11 @@ import React from 'react'
 import { ErrorMessage } from '../components/error-message'
 
 function Error({ statusCode }) {
-  return (
-    <div>
-      {statusCode
-        ? `An error ${statusCode} occurred on server`
-        : 'An error occurred on client'}
-      <ErrorMessage />
-    </div>
-  )
+  const errorMessage = statusCode
+    ? `An error ${statusCode} occurred on server`
+    : 'An error occurred on client'
+
+  return <ErrorMessage message={errorMessage} />
 }
 
 Error.getInitialProps = ({ res, err }) => {

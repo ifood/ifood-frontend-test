@@ -1,5 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export function ErrorMessage() {
-  return <div>ErrorMessage</div>
+export function ErrorMessage({ message }) {
+  return <div>{message}</div>
+}
+
+ErrorMessage.propTypes = {
+  message: PropTypes.string.isRequired
 }

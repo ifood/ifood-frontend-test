@@ -9,17 +9,15 @@ import { PlaylistItem } from './playlist-item'
 import { PlaylistItemSkeleton } from './playlist-item-skeleton'
 import { filterByText } from '../../utils/filter-by-text'
 
+import { ErrorMessage } from '../error-message'
+
 export function Playlist() {
   const [filtered, setFiltered] = useState([])
   const { playlists, loading, error } = useSelector(state => state.playlists)
 
   const renderContent = () => {
     if (error) {
-      return (
-        <div>
-          <h3>{error.message}</h3>
-        </div>
-      )
+      return <ErrorMessage message={error.message} />
     }
 
     if (!loading && !playlists.length) {

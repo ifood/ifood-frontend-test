@@ -2,8 +2,6 @@
 
 exports[`ErrorMessage should render component correctly 1`] = `
 <DocumentFragment>
-  <div>
-    ErrorMessage
-  </div>
+  <div />
 </DocumentFragment>
 `;
