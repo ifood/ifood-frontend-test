@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputInteger should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-formControl-1"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+    >
+      Country
+    </label>
+    <span
+      class="MuiSlider-root MuiSlider-colorPrimary"
+      id="country"
+    >
+      <span
+        class="MuiSlider-rail"
+      />
+      <span
+        class="MuiSlider-track"
+        style="left: 0%; width: 1%;"
+      />
+      <input
+        name="country"
+        type="hidden"
+        value="1"
+      />
+      <span
+        aria-label="Country"
+        aria-orientation="horizontal"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="1"
+        class="MuiSlider-thumb MuiSlider-thumbColorPrimary PrivateValueLabel-thumb-42"
+        data-index="0"
+        role="slider"
+        style="left: 1%;"
+        tabindex="0"
+      >
+        <span
+          class="PrivateValueLabel-offset-44 MuiSlider-valueLabel"
+        >
+          <span
+            class="PrivateValueLabel-circle-45"
+          >
+            <span
+              class="PrivateValueLabel-label-46"
+            >
+              1
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </div>
+</DocumentFragment>
+`;

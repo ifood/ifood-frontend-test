@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaylistItem should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation1 MuiCard-root makeStyles-card-1 MuiPaper-rounded"
+  >
+    <a
+      class="makeStyles-link-2"
+      href="https://open.spotify.com/playlist/37i9dQZF1DXbPHTEEyQ6Hv"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <div
+        class="MuiCardContent-root"
+      >
+        <img
+          alt="Christmas Peaceful Piano"
+          class="makeStyles-cover-3"
+          src="https://i.scdn.co/image/ab67706f0000000299748689e4c7392f05545a1a"
+        />
+        <h3
+          class="MuiTypography-root makeStyles-title-4 MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom"
+        >
+          Christmas Peaceful Piano
+        </h3>
+        <span
+          class="MuiTypography-root makeStyles-description-5 MuiTypography-caption MuiTypography-colorTextSecondary"
+        >
+          A calm and relaxing Christmas piano soundtrack for...
+        </span>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;

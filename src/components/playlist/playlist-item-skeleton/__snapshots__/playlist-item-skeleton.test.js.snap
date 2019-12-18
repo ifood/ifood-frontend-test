@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaylistItemSkeleton should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-3 makeStyles-box-1"
+  >
+    <div
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-animate"
+      style="width: 100%; height: 118px;"
+    />
+    <div
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-animate"
+    />
+    <div
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-animate"
+      style="width: 60%;"
+    />
+  </div>
+</DocumentFragment>
+`;

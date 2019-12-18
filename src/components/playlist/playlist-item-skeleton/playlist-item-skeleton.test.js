@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { ErrorMessage } from '.'
+import { PlaylistItemSkeleton } from '.'
 
-describe('ErrorMessage', () => {
+describe('PlaylistItemSkeleton', () => {
   let component
 
   beforeEach(() => {
-    component = render(<ErrorMessage />)
+    component = render(<PlaylistItemSkeleton />)
   })
 
   it('should render component correctly', () => {

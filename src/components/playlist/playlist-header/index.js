@@ -53,6 +53,7 @@ export function PlaylistHeader({ onFilter, showFilter }) {
           <InputLabel htmlFor='playlist-filter-adornment'>Filter</InputLabel>
           <FilledInput
             id='playlist-filter-adornment'
+            data-testid='playlist-filter-adornment'
             type='text'
             value={value}
             onChange={handleChange}

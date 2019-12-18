@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playlist should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-root-1"
+  >
+    <h2
+      class="MuiTypography-root makeStyles-title-2 MuiTypography-h1"
+    >
+      Featured Playlists
+    </h2>
+  </div>
+  <div
+    class="MuiGrid-root MuiGrid-container"
+  >
+    <div>
+      Nenhuma playlist encontrada
+    </div>
+  </div>
+</DocumentFragment>
+`;

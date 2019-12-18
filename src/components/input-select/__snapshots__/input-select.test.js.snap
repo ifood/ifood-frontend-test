@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputSelect should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiFormControl-root makeStyles-formControl-1"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+    >
+      Country
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+    >
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="1 1"
+        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+        id="1"
+        role="button"
+        tabindex="0"
+      >
+        Option 1
+      </div>
+      <input
+        type="hidden"
+        value="1"
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;

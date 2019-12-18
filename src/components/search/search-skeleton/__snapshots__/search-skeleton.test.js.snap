@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchSkeleton should render component correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="MuiSkeleton-root MuiSkeleton-rect makeStyles-skeleton-1 MuiSkeleton-animate"
+    />
+    <div
+      class="MuiSkeleton-root MuiSkeleton-rect makeStyles-skeleton-1 MuiSkeleton-animate"
+    />
+    <div
+      class="MuiSkeleton-root MuiSkeleton-rect makeStyles-skeleton-1 MuiSkeleton-animate"
+    />
+    <div
+      class="MuiSkeleton-root MuiSkeleton-rect makeStyles-skeleton-1 MuiSkeleton-animate"
+    />
+    <div
+      class="MuiSkeleton-root MuiSkeleton-rect makeStyles-skeleton-1 MuiSkeleton-animate"
+    />
+  </div>
+</DocumentFragment>
+`;

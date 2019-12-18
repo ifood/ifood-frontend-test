@@ -1,0 +1,293 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should render component correctly 1`] = `
+<DocumentFragment>
+  <h1
+    class="MuiTypography-root makeStyles-title-1 MuiTypography-h1 MuiTypography-gutterBottom"
+  >
+    Spotifood
+  </h1>
+  <form
+    novalidate=""
+  >
+    <div
+      class="MuiFormControl-root makeStyles-formControl-33"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+        data-shrink="false"
+      >
+        Locale
+      </label>
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+      >
+        <div
+          aria-haspopup="listbox"
+          aria-labelledby="field-locale field-locale"
+          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+          id="field-locale"
+          role="button"
+          tabindex="0"
+        >
+          <span>
+            ​
+          </span>
+        </div>
+        <input
+          type="hidden"
+          value=""
+        />
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSelect-icon"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root makeStyles-formControl-33"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+        data-shrink="false"
+      >
+        País
+      </label>
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+      >
+        <div
+          aria-haspopup="listbox"
+          aria-labelledby="field-country field-country"
+          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+          id="field-country"
+          role="button"
+          tabindex="0"
+        >
+          <span>
+            ​
+          </span>
+        </div>
+        <input
+          type="hidden"
+          value=""
+        />
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSelect-icon"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root makeStyles-formControl-115"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+          data-shrink="false"
+          for="field-timestamp"
+          id="field-timestamp-label"
+        >
+          Data e Horário
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
+            id="field-timestamp"
+            type="text"
+            value=""
+          />
+          <div
+            class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                  />
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="makeStyles-formControl-155"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+      >
+        Quantidade
+      </label>
+      <span
+        class="MuiSlider-root MuiSlider-colorPrimary"
+        id="field-limit"
+      >
+        <span
+          class="MuiSlider-rail"
+        />
+        <span
+          class="MuiSlider-track"
+          style="left: 0%; width: 18.367346938775512%;"
+        />
+        <input
+          name="limit"
+          type="hidden"
+          value="10"
+        />
+        <span
+          aria-label="Quantidade"
+          aria-orientation="horizontal"
+          aria-valuemax="50"
+          aria-valuemin="1"
+          aria-valuenow="10"
+          class="MuiSlider-thumb MuiSlider-thumbColorPrimary PrivateValueLabel-thumb-176"
+          data-index="0"
+          role="slider"
+          style="left: 18.367346938775512%;"
+          tabindex="0"
+        >
+          <span
+            class="PrivateValueLabel-offset-178 MuiSlider-valueLabel"
+          >
+            <span
+              class="PrivateValueLabel-circle-179"
+            >
+              <span
+                class="PrivateValueLabel-label-180"
+              >
+                10
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </div>
+    <div
+      class="makeStyles-formControl-155"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+      >
+        Página
+      </label>
+      <span
+        class="MuiSlider-root MuiSlider-colorPrimary"
+        id="field-offset"
+      >
+        <span
+          class="MuiSlider-rail"
+        />
+        <span
+          class="MuiSlider-track"
+          style="left: 0%; width: 0%;"
+        />
+        <input
+          name="offset"
+          type="hidden"
+          value="0"
+        />
+        <span
+          aria-label="Página"
+          aria-orientation="horizontal"
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow="0"
+          class="MuiSlider-thumb MuiSlider-thumbColorPrimary PrivateValueLabel-thumb-176"
+          data-index="0"
+          role="slider"
+          style="left: 0%;"
+          tabindex="0"
+        >
+          <span
+            class="PrivateValueLabel-offset-178 MuiSlider-valueLabel"
+          >
+            <span
+              class="PrivateValueLabel-circle-179"
+            >
+              <span
+                class="PrivateValueLabel-label-180"
+              >
+                0
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submitButton-2 MuiButton-containedPrimary"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </span>
+          Buscar
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;

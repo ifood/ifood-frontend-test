@@ -27,13 +27,13 @@ describe('Playlist', () => {
   })
 
   it('should render component correctly', () => {
-    const { getByText } = component
-    const linkElement = getByText(/Playlists/i)
-    expect(linkElement).toBeInTheDocument()
+    const { asFragment } = component
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  // TODO: snapshots
-  // it('should render with given state from Redux store', () => {
-  //   expect(component.toJSON()).toMatchSnapshot()
-  // })
+  it('should find component title text', () => {
+    const { getByText } = component
+    const linkElement = getByText(/Featured Playlists/i)
+    expect(linkElement).toBeInTheDocument()
+  })
 })

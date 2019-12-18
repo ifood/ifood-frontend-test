@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaylistHeader should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-root-1"
+  >
+    <h2
+      class="MuiTypography-root makeStyles-title-2 MuiTypography-h1"
+    >
+      Featured Playlists
+    </h2>
+    <div
+      class="MuiFormControl-root makeStyles-margin-3 makeStyles-textField-4"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled"
+        data-shrink="false"
+        for="playlist-filter-adornment"
+      >
+        Filter
+      </label>
+      <div
+        class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-formControl MuiInputBase-adornedEnd MuiFilledInput-adornedEnd"
+        data-testid="playlist-filter-adornment"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputAdornedEnd MuiFilledInput-inputAdornedEnd"
+          id="playlist-filter-adornment"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-filled MuiInputAdornment-positionEnd"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

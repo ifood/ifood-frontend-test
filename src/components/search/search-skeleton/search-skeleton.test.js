@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { ErrorMessage } from '.'
+import { SearchSkeleton } from '.'
 
-describe('ErrorMessage', () => {
+describe('SearchSkeleton', () => {
   let component
 
   beforeEach(() => {
-    component = render(<ErrorMessage />)
+    component = render(<SearchSkeleton />)
   })
 
   it('should render component correctly', () => {

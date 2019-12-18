@@ -30,12 +30,13 @@ describe('Search', () => {
   })
 
   it('should render component correctly', () => {
+    const { asFragment } = component
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should find title text', () => {
     const { getByText } = component
     const linkElement = getByText(/Spotifood/i)
     expect(linkElement).toBeInTheDocument()
   })
-
-  // it('should render with given state from Redux store', () => {
-  //   expect(component.toJSON()).toMatchSnapshot()
-  // })
 })

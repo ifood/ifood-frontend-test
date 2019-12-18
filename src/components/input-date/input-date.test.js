@@ -1,12 +1,20 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { ErrorMessage } from '.'
+import { InputDate } from '.'
 
-describe('ErrorMessage', () => {
+describe('InputDate', () => {
   let component
 
   beforeEach(() => {
-    component = render(<ErrorMessage />)
+    const props = {
+      id: 'date',
+      name: 'date',
+      label: 'Date',
+      value: null,
+      onChange: jest.fn(x => x)
+    }
+
+    component = render(<InputDate {...props} />)
   })
 
   it('should render component correctly', () => {
