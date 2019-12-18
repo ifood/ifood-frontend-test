@@ -12,14 +12,14 @@ const useStyles = makeStyles({
   }
 })
 
-export default function HomeTemplate() {
+export default function HomeTemplate({ filters }) {
   const classes = useStyles()
 
   return (
     <Grid container spacing={0}>
       <Grid item component='aside' xs={12} md={3} lg={2}>
         <Box className={classes.box}>
-          <Search />
+          <Search filters={filters} />
         </Box>
       </Grid>
       <Grid item xs={12} md={9} lg={10}>

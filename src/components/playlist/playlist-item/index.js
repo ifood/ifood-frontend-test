@@ -33,6 +33,12 @@ export function PlaylistItem({ playlist }) {
   const classes = useStyles()
   const { external_urls: externalUrls, name, images, description } = playlist
 
+  const sanitizedDescription = description.replace(/<[^>]+>/g, '')
+  const descriptionText =
+    sanitizedDescription.length > 50
+      ? `${sanitizedDescription.substr(0, 50)}...`
+      : sanitizedDescription
+
   return (
     <Card className={classes.card}>
       <a
@@ -57,9 +63,7 @@ export function PlaylistItem({ playlist }) {
             variant='caption'
             color='textSecondary'
           >
-            {description.length > 50
-              ? `${description.substr(0, 50)}...`
-              : description}
+            {descriptionText}
           </Typography>
         </CardContent>
       </a>

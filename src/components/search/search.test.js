@@ -4,6 +4,8 @@ import { render } from '@testing-library/react'
 import configureStore from 'redux-mock-store'
 import { Search } from '.'
 
+import filtersMock from '../../__mocks__/filters.json'
+
 const mockStore = configureStore([])
 
 describe('Search', () => {
@@ -22,7 +24,7 @@ describe('Search', () => {
 
     component = render(
       <Provider store={store}>
-        <Search />
+        <Search filters={filtersMock.filters} />
       </Provider>
     )
   })

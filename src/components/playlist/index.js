@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Fade from '@material-ui/core/Fade'
 
 import { PlaylistHeader } from './playlist-header'
 import { PlaylistItem } from './playlist-item'
+import { PlaylistItemSkeleton } from './playlist-item-skeleton'
 import { filterByText } from '../../utils/filter-by-text'
 
 export function Playlist() {
@@ -30,17 +31,17 @@ export function Playlist() {
     return (loading ? Array.from(new Array(6)) : visibleList).map(
       (item, index) => (
         <Grid key={item ? item.id : index} item xs={12} md={3} xl={2}>
-          {!item ? (
-            <Box pt={0.5} mr={2}>
-              <Skeleton variant='rect' width='100%' height={118} />
-              <Skeleton />
-              <Skeleton width='60%' />
-            </Box>
-          ) : (
-            <Box pr={2}>
-              <PlaylistItem playlist={item} />
-            </Box>
-          )}
+          <Fade in>
+            {!item ? (
+              <Box pt={0.5} mr={2}>
+                <PlaylistItemSkeleton />
+              </Box>
+            ) : (
+              <Box pr={2}>
+                <PlaylistItem playlist={item} />
+              </Box>
+            )}
+          </Fade>
         </Grid>
       )
     )
@@ -49,7 +50,6 @@ export function Playlist() {
   const handleFilter = input => {
     const filteredItems = filterByText(playlists, input)
     setFiltered(filteredItems)
-    console.log({ filtered })
   }
 
   return (
