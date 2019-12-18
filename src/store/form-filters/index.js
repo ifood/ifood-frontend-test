@@ -6,16 +6,30 @@ export const Types = {
 
 const initialState = {
   filters: [],
+  loading: false,
   error: null
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case Types.GET_FORM_FILTERS: {
+      return { ...state, loading: true, error: null }
+    }
     case Types.GET_FORM_FILTERS_SUCCESS: {
-      return { ...state, filters: action.payload.filters, error: null }
+      return {
+        ...state,
+        filters: action.payload.filters,
+        loading: false,
+        error: null
+      }
     }
     case Types.GET_FORM_FILTERS_FAIL:
-      return { ...state, filters: [], error: action.payload.error }
+      return {
+        ...state,
+        filters: [],
+        loading: false,
+        error: action.payload.error
+      }
     default:
       return state
   }

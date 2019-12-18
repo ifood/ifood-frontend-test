@@ -12,7 +12,9 @@ describe('Search', () => {
 
   beforeEach(() => {
     store = mockStore({
-      filters: {},
+      filters: {
+        filters: []
+      },
       playlists: {
         error: null
       }
@@ -27,7 +29,7 @@ describe('Search', () => {
 
   it('should render component correctly', () => {
     const { getByText } = component
-    const linkElement = getByText(/Search/i)
+    const linkElement = getByText(/Spotifood/i)
     expect(linkElement).toBeInTheDocument()
   })
 

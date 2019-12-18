@@ -3,11 +3,19 @@ import PropTypes from 'prop-types'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
-import Grid from '@material-ui/core/Grid'
+import FormControl from '@material-ui/core/FormControl'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles({
+  formControl: {
+    width: '100%'
+  }
+})
 
 export function InputSelect({ id, name, label, value, options, onChange }) {
+  const classes = useStyles()
   return (
-    <Grid container>
+    <FormControl className={classes.formControl}>
       <InputLabel>{label}</InputLabel>
       <Select
         fullWidth
@@ -22,7 +30,7 @@ export function InputSelect({ id, name, label, value, options, onChange }) {
           </MenuItem>
         ))}
       </Select>
-    </Grid>
+    </FormControl>
   )
 }
 

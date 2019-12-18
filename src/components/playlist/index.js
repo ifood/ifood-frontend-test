@@ -1,80 +1,74 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
 import Skeleton from '@material-ui/lab/Skeleton'
 
+import { PlaylistHeader } from './playlist-header'
+import { PlaylistItem } from './playlist-item'
+
 export function Playlist() {
-  const { playlists, error } = useSelector(state => state.playlists)
+  const [filtered, setFiltered] = useState([])
+  const { playlists, loading, error } = useSelector(state => state.playlists)
 
-  console.log('Playlists', playlists)
-  console.log('Playlists Error', error)
+  const renderContent = () => {
+    if (error) {
+      return (
+        <div>
+          <h3>{error.message}</h3>
+        </div>
+      )
+    }
 
-  if (error) {
-    return (
-      <div>
-        <h3>{error.message}</h3>
-      </div>
+    if (!loading && !playlists.length) {
+      return <div>Nenhuma playlist encontrada</div>
+    }
+
+    const visibleList = filtered.length ? filtered : playlists
+
+    return (loading ? Array.from(new Array(6)) : visibleList).map(
+      (item, index) => (
+        <Grid key={item ? item.id : index} item xs={12} md={3} xl={2}>
+          {!item ? (
+            <Box pt={0.5} mr={2}>
+              <Skeleton variant='rect' width='100%' height={118} />
+              <Skeleton />
+              <Skeleton width='60%' />
+            </Box>
+          ) : (
+            <Box pr={2}>
+              <PlaylistItem playlist={item} />
+            </Box>
+          )}
+        </Grid>
+      )
     )
   }
 
-  return (
-    <div className='playlist'>
-      Playlists
-      <Grid container>
-        {(!playlists || !playlists.length
-          ? Array.from(new Array(3))
-          : playlists
-        ).map((item, index) => (
-          <Box
-            key={item ? item.id : index}
-            width={210}
-            marginRight={0.5}
-            my={5}
-          >
-            {item ? (
-              <img
-                style={{ width: 210, height: 118 }}
-                alt={item.name}
-                src={item.images[0].url}
-              />
-            ) : (
-              <Skeleton variant='rect' width={210} height={118} />
-            )}
+  const handleFilter = input => {
+    const filteredItems = playlists.filter(item => {
+      return !Object.values(item)
+        .map(value => {
+          return String(value)
+        })
+        .filter(value => {
+          console.log('value', value)
+          return value.includes(input)
+        })
+    })
 
-            {item ? (
-              <Box pr={2}>
-                <a
-                  href={item.external_urls.spotify}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <Typography gutterBottom variant='body2'>
-                    {item.name}
-                  </Typography>
-                </a>
-                <Typography
-                  display='block'
-                  variant='caption'
-                  color='textSecondary'
-                >
-                  {item.channel}
-                </Typography>
-                <Typography variant='caption' color='textSecondary'>
-                  {`${item.views} • ${item.createdAt}`}
-                </Typography>
-              </Box>
-            ) : (
-              <Box pt={0.5}>
-                <Skeleton />
-                <Skeleton width='60%' />
-              </Box>
-            )}
-          </Box>
-        ))}
-      </Grid>
-    </div>
+    setFiltered(filteredItems)
+
+    console.log({ filtered })
+  }
+
+  return (
+    <>
+      <PlaylistHeader
+        showFilter={playlists.length > 0}
+        onFilter={handleFilter}
+      />
+      <Grid container>{renderContent()}</Grid>
+    </>
   )
 }

@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
-import { setSession, decodeSession } from '../../utils/session'
+import Router from 'next/router'
+import { setSession, decodeSession, isValidSession } from '../../utils/session'
 import ROUTES from '../../routes'
 
 function Callback(props) {
   useEffect(() => {
     const session = decodeSession(window.location.hash)
-    setSession(session)
 
-    // TODO: redirect and clear params from url
-    window.location.pathname = ROUTES.HOME
+    if (isValidSession(session)) {
+      setSession(session)
+      Router.push(ROUTES.HOME)
+    }
   }, [props])
 
   return <div>Loading...</div>

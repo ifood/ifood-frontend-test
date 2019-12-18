@@ -6,17 +6,24 @@ export const Types = {
 
 const initialState = {
   playlists: [],
-  message: '',
+  loading: false,
   error: null
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case Types.GET_PLAYLISTS: {
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+    }
     case Types.GET_PLAYLISTS_SUCCESS: {
       return {
         ...state,
         playlists: action.payload.playlists.items,
-        message: action.payload.message,
+        loading: false,
         error: null
       }
     }
@@ -24,7 +31,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         playlists: [],
-        message: '',
+        loading: false,
         error: action.payload.error
       }
     }

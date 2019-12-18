@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { Playlist } from '.'
 
+import playlistsMock from '../../__mocks__/playlists.json'
+
 const mockStore = configureStore([])
 
 describe('Playlist', () => {
@@ -12,7 +14,9 @@ describe('Playlist', () => {
 
   beforeEach(() => {
     store = mockStore({
-      playlists: []
+      playlists: {
+        ...playlistsMock
+      }
     })
 
     component = render(
@@ -28,6 +32,7 @@ describe('Playlist', () => {
     expect(linkElement).toBeInTheDocument()
   })
 
+  // TODO: snapshots
   // it('should render with given state from Redux store', () => {
   //   expect(component.toJSON()).toMatchSnapshot()
   // })

@@ -1,28 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import InputLabel from '@material-ui/core/InputLabel'
-import Grid from '@material-ui/core/Grid'
 import DateFnsUtils from '@date-io/date-fns'
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from '@material-ui/pickers'
+import FormControl from '@material-ui/core/FormControl'
+import { makeStyles } from '@material-ui/core/styles'
 
-export function InputDate({ id, name, label, value, onChange }) {
+const useStyles = makeStyles({
+  formControl: {
+    width: '100%'
+  }
+})
+
+export function InputDate({ id, name, label, value, onChange, format }) {
+  const classes = useStyles()
   return (
-    <Grid container>
-      <InputLabel>{label}</InputLabel>
+    <FormControl className={classes.formControl}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <KeyboardDatePicker
           disableToolbar
           fullWidth
-          format='yyyy-MM-dd hh:mm:ss'
+          format={format}
+          label={label}
           id={id}
           value={value}
           onChange={e => onChange(name, e.toISOString())}
         />
       </MuiPickersUtilsProvider>
-    </Grid>
+    </FormControl>
   )
 }
 
@@ -31,10 +38,12 @@ InputDate.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  format: PropTypes.string
 }
 
 InputDate.defaultProps = {
   id: '',
-  value: null
+  value: null,
+  format: 'yyyy-MM-dd hh:mm:ss'
 }

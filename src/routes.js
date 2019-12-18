@@ -1,4 +1,4 @@
 module.exports = {
-  HOME: '/home',
+  HOME: '/',
   CALLBACK: '/callback'
 }

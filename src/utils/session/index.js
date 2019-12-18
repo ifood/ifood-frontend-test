@@ -12,8 +12,7 @@ export const getSession = () => {
   return session
 }
 
-export const isValidSession = () => {
-  const session = getSession()
+export const isValidSession = session => {
   return session.access_token && session.expires_in
 }
 

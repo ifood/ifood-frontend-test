@@ -3,6 +3,14 @@ import PropTypes from 'prop-types'
 import InputLabel from '@material-ui/core/InputLabel'
 import TextField from '@material-ui/core/TextField'
 import Slider from '@material-ui/core/Slider'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles({
+  formControl: {
+    width: '100%',
+    marginTop: '1rem'
+  }
+})
 
 export function InputInteger({
   validation,
@@ -13,10 +21,12 @@ export function InputInteger({
   min,
   onChange
 }) {
-  if (validation) {
-    return (
-      <div>
-        <InputLabel>{label}</InputLabel>
+  const classes = useStyles()
+
+  return (
+    <div className={classes.formControl}>
+      <InputLabel>{label}</InputLabel>
+      {validation ? (
         <Slider
           id={id}
           aria-label={label}
@@ -27,29 +37,24 @@ export function InputInteger({
           onChange={(_, val) => onChange(name, val)}
           valueLabelDisplay='auto'
         />
-      </div>
-    )
-  }
-
-  return (
-    <div>
-      <InputLabel>{label}</InputLabel>
-      <TextField
-        id={id}
-        // label={label}
-        type='number'
-        fullWidth
-        name={name}
-        value={value}
-        min={0}
-        onChange={e => {
-          const newValue = +e.target.value
-          onChange(name, newValue < min ? min : newValue)
-        }}
-        InputLabelProps={{
-          shrink: true
-        }}
-      />
+      ) : (
+        <TextField
+          id={id}
+          label={label}
+          type='number'
+          fullWidth
+          name={name}
+          value={value}
+          min={0}
+          onChange={e => {
+            const newValue = +e.target.value
+            onChange(name, newValue < min ? min : newValue)
+          }}
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
+      )}
     </div>
   )
 }

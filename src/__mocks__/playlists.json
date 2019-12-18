@@ -1,0 +1,373 @@
+{
+  "message": "Editor's picks",
+  "playlists": {
+    "href": "https://api.spotify.com/v1/browse/featured-playlists?timestamp=2019-12-18T02%3A36%3A13&offset=0&limit=10",
+    "items": [
+      {
+        "collaborative": false,
+        "description": "A calm and relaxing Christmas piano soundtrack for the Holidays",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXbPHTEEyQ6Hv"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXbPHTEEyQ6Hv",
+        "id": "37i9dQZF1DXbPHTEEyQ6Hv",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f0000000299748689e4c7392f05545a1a",
+            "width": null
+          }
+        ],
+        "name": "Christmas Peaceful Piano",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NjU3OTU3OCwwMDAwMDA0OTAwMDAwMTZmMTM3NzM5MjIwMDAwMDE2ZDE1NTZjYWY1",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXbPHTEEyQ6Hv/tracks",
+          "total": 86
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DXbPHTEEyQ6Hv"
+      },
+      {
+        "collaborative": false,
+        "description": "A Christmas playlist full of wonderful jazzy interpretations of some of the most classic and beloved Christmas songs.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX5D4gDh3HAsM"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX5D4gDh3HAsM",
+        "id": "37i9dQZF1DX5D4gDh3HAsM",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000002d7682533f84fa4de68c680eb",
+            "width": null
+          }
+        ],
+        "name": "Christmas Jazz",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NjYzNjUyMywwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX5D4gDh3HAsM/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX5D4gDh3HAsM"
+      },
+      {
+        "collaborative": false,
+        "description": "The biggest Christmas songs of all time.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX0Yxoavh5qJV"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0Yxoavh5qJV",
+        "id": "37i9dQZF1DX0Yxoavh5qJV",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/1cb85a37fe0edd56ed0984fae6625e4b06704583",
+            "width": null
+          }
+        ],
+        "name": "Christmas Hits",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NjU4MDM3MCwwMDAwMDAyMzAwMDAwMTZmMTM4MzRmNDQwMDAwMDE2NzE3MTE2NzRm",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0Yxoavh5qJV/tracks",
+          "total": 93
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX0Yxoavh5qJV"
+      },
+      {
+        "collaborative": false,
+        "description": "Spread some cheer with our ultimate Christmas Hits mix.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX0A8zVl7p82B"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0A8zVl7p82B",
+        "id": "37i9dQZF1DX0A8zVl7p82B",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000002db1b5d5f13e77669c4b4cb00",
+            "width": null
+          }
+        ],
+        "name": "Christmas Pop",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NTY0MTEyNywwMDAwMDAzZDAwMDAwMTZlZGI4NzljMTAwMDAwMDE2ZDE1NTQwMjI0",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0A8zVl7p82B/tracks",
+          "total": 108
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX0A8zVl7p82B"
+      },
+      {
+        "collaborative": false,
+        "description": "Holiday music you'll actually want to hear.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXaf9K2UnDhgp"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXaf9K2UnDhgp",
+        "id": "37i9dQZF1DXaf9K2UnDhgp",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000025212d0f37414c322e360b3e5",
+            "width": null
+          }
+        ],
+        "name": "Rock Christmas",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NjYzNjU2NSwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXaf9K2UnDhgp/tracks",
+          "total": 70
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DXaf9K2UnDhgp"
+      },
+      {
+        "collaborative": false,
+        "description": "Drift into a deep sleep with these beautiful ambient tracks.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWYcDQ1hSjOpY"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWYcDQ1hSjOpY",
+        "id": "37i9dQZF1DWYcDQ1hSjOpY",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000002c601a6a746366286845b8fda",
+            "width": null
+          }
+        ],
+        "name": "Deep Sleep",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NTI1MzYyMCwwMDAwMDAzZjAwMDAwMTZlYzQ2ZWI1MmIwMDAwMDE2ZDE1MjI3Zjk3",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWYcDQ1hSjOpY/tracks",
+          "total": 164
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWYcDQ1hSjOpY"
+      },
+      {
+        "collaborative": false,
+        "description": "Slow burners for late nights.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXdQvOLqzNHSW"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdQvOLqzNHSW",
+        "id": "37i9dQZF1DXdQvOLqzNHSW",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000028e92d886aa1c53e80c1a56cb",
+            "width": null
+          }
+        ],
+        "name": "Late Night Vibes",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NjYzNjUyMywwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdQvOLqzNHSW/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DXdQvOLqzNHSW"
+      },
+      {
+        "collaborative": false,
+        "description": "Beautifully dark, dramatic tracks.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX2pSTOxoPbx9"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX2pSTOxoPbx9",
+        "id": "37i9dQZF1DX2pSTOxoPbx9",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000002a6e2870c97bde5e2719c20b8",
+            "width": null
+          }
+        ],
+        "name": "Dark & Stormy",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3NjYzNjUyMywwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX2pSTOxoPbx9/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX2pSTOxoPbx9"
+      },
+      {
+        "collaborative": false,
+        "description": "Traditional carols and hymns for a classic Christmas feeling.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWViKwLyOBsJF"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWViKwLyOBsJF",
+        "id": "37i9dQZF1DWViKwLyOBsJF",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/9cfeb0f4018dbd085cef6832c821f8b22c03d4a4",
+            "width": null
+          }
+        ],
+        "name": "Instrumental Christmas Hymns",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU3MjQ3MzQ4OSwwMDAwMDAwYTAwMDAwMTZlMWViOTQ5NDQwMDAwMDE2NmY1YjU3NDgx",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWViKwLyOBsJF/tracks",
+          "total": 59
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWViKwLyOBsJF"
+      },
+      {
+        "collaborative": false,
+        "description": "Welcome to the soothing hum...",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWUZ5bk6qqDSy"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWUZ5bk6qqDSy",
+        "id": "37i9dQZF1DWUZ5bk6qqDSy",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000025654f5615b2aec45465d0fd2",
+            "width": null
+          }
+        ],
+        "name": "White Noise",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU2ODgzNjMwOCwwMDAwMDAxZDAwMDAwMTZkNDVlZTRmNDcwMDAwMDE2ZDAwYzlhOWI5",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWUZ5bk6qqDSy/tracks",
+          "total": 103
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWUZ5bk6qqDSy"
+      }
+    ],
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/browse/featured-playlists?timestamp=2019-12-18T02%3A36%3A13&offset=10&limit=10",
+    "offset": 0,
+    "previous": null,
+    "total": 17
+  }
+}
