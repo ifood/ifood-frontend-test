@@ -26,7 +26,7 @@ export function InputDate({ id, name, label, value, onChange, format }) {
           label={label}
           id={id}
           value={value}
-          onChange={e => onChange(name, e.toISOString())}
+          onChange={e => onChange(name, e ? e.toISOString() : null)}
         />
       </MuiPickersUtilsProvider>
     </FormControl>

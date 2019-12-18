@@ -6,6 +6,7 @@ import Skeleton from '@material-ui/lab/Skeleton'
 
 import { PlaylistHeader } from './playlist-header'
 import { PlaylistItem } from './playlist-item'
+import { filterByText } from '../../utils/filter-by-text'
 
 export function Playlist() {
   const [filtered, setFiltered] = useState([])
@@ -46,19 +47,8 @@ export function Playlist() {
   }
 
   const handleFilter = input => {
-    const filteredItems = playlists.filter(item => {
-      return !Object.values(item)
-        .map(value => {
-          return String(value)
-        })
-        .filter(value => {
-          console.log('value', value)
-          return value.includes(input)
-        })
-    })
-
+    const filteredItems = filterByText(playlists, input)
     setFiltered(filteredItems)
-
     console.log({ filtered })
   }
 
