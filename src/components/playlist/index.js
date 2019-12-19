@@ -21,7 +21,7 @@ export function Playlist() {
     }
 
     if (!loading && !playlists.length) {
-      return <div>Nenhuma playlist encontrada</div>
+      return <Grid item>Nenhuma playlist encontrada</Grid>
     }
 
     const visibleList = filtered.length ? filtered : playlists
@@ -31,13 +31,11 @@ export function Playlist() {
         <Grid key={item ? item.id : index} item xs={12} md={3} xl={2}>
           <Fade in>
             {!item ? (
-              <Box pt={0.5} mr={2}>
+              <Box mb={2}>
                 <PlaylistItemSkeleton />
               </Box>
             ) : (
-              <Box pr={2}>
-                <PlaylistItem playlist={item} />
-              </Box>
+              <PlaylistItem playlist={item} />
             )}
           </Fade>
         </Grid>
@@ -56,7 +54,9 @@ export function Playlist() {
         showFilter={playlists.length > 0}
         onFilter={handleFilter}
       />
-      <Grid container>{renderContent()}</Grid>
+      <Grid container spacing={2}>
+        {renderContent()}
+      </Grid>
     </>
   )
 }

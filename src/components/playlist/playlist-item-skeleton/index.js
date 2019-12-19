@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
   box: {
-    // marginBottom: 10
+    marginBottom: 10
   }
 })
 
@@ -14,7 +14,7 @@ export function PlaylistItemSkeleton() {
 
   return (
     <Box className={classes.box}>
-      <Skeleton variant='rect' width='100%' height={118} />
+      <Skeleton variant='rect' width='100%' height={200} />
       <Skeleton />
       <Skeleton width='60%' />
     </Box>
