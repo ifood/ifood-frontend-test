@@ -9,7 +9,7 @@ This project is built in with:
 - [ESlint](https://eslint.org/) and [Prettier](https://prettier.io/) to stardardize code style
 - [Travis CI](https://travis-ci.com/)
 
-Demo: <https://ricardo-teixeira.github.io/ifood-frontend-test/>
+Demo: <https://spotifood-test.herokuapp.com/>
 
 ![Spotifood](./screenshot.png)
 
@@ -33,10 +33,8 @@ Build:
 
 ## Deployment
 
-Deploys application to Github Pages
+Deploys application to Heroku after pipeline success
 
 `yarn deploy`
 
-After publishing, a demo will be available at <https://ricardo-teixeira.github.io/ifood-frontend-test/>.
-
-P.S.: Make sure there's a `.nojekyll` inside the branch 'gh-pages', otherwise, assets folder at `_next/` will be ignored
+After publishing, a demo will be available at <https://spotifood-test.herokuapp.com/>.
