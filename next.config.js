@@ -6,7 +6,7 @@ const debug = process.env.NODE_ENV !== 'production'
 module.exports = withCSS({
   exportPathMap() {
     return {
-      '/': { page: '/home' },
+      '/': { page: '/' },
       '/callback': { page: ROUTES.CALLBACK }
     }
   },
