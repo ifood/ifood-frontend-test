@@ -1,7 +1,12 @@
 import axios from 'axios'
 import { getSession, clearSession } from '../../utils/session'
 
-axios.interceptors.response.use(null, error => {
+const instance = axios.create({
+  baseURL: 'https://api.spotify.com/v1/browse/',
+  timeout: 60000
+})
+
+instance.interceptors.response.use(null, error => {
   if (error.response.status === 401) {
     clearSession()
     window.location.reload()
@@ -10,15 +15,8 @@ axios.interceptors.response.use(null, error => {
   return Promise.reject(error)
 })
 
-const instance = axios.create({
-  baseURL: 'https://api.spotify.com/v1/browse/',
-  timeout: 60000
-})
-
 export const getPlaylists = params =>
-  instance({
-    method: 'GET',
-    url: '/featured-playlists',
+  instance.get('/featured-playlists', {
     params,
     headers: {
       Authorization: `Bearer ${getSession().access_token}`

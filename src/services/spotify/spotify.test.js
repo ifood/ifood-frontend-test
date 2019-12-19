@@ -1,19 +1,17 @@
-import axios from 'axios'
+import mockAxios from 'axios'
 
 import { getPlaylists } from '.'
 
 import playlistsMock from '../../__mocks__/playlists.json'
 
-jest.mock('axios')
-
 describe('Spotify service', () => {
-  xit('should return playlists payload', async () => {
+  it('should return playlists payload', async () => {
     const data = { data: playlistsMock }
 
-    axios.get.mockImplementationOnce(() => Promise.resolve(data))
+    mockAxios.get.mockResolvedValue(data)
 
     const response = await getPlaylists()
 
-    expect(response.data).toHaveProperty('filters')
+    expect(response.data).toEqual(playlistsMock)
   })
 })

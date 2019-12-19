@@ -6,5 +6,9 @@ export function ErrorMessage({ message }) {
 }
 
 ErrorMessage.propTypes = {
-  message: PropTypes.string.isRequired
+  message: PropTypes.string
+}
+
+ErrorMessage.defaultProps = {
+  message: 'An error has occurred :('
 }
