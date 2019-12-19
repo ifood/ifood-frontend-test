@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
   card: {
+    padding: 0,
     cursor: 'pointer',
     marginBottom: 10
   },
