@@ -10,7 +10,6 @@ module.exports = withCSS({
       '/callback': { page: ROUTES.CALLBACK }
     }
   },
-  // assetPrefix: !debug ? '/ifood-frontend-test/' : '',
   env: {
     CLIENT_ID: 'a62f3983edba4acdbf505b5f49c7d07e',
     REDIRECT_URI: debug
