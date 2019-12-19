@@ -32,7 +32,7 @@
     "dev": "next",
     "build": "next build && next export -o build && touch build/.nojekyll",
     "heroku-postbuild": "npm run build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "deploy": "yarn build && gh-pages -d build",
     "test": "react-scripts test --testPathIgnorePatterns=build",
     "test:staged": "CI=true yarn test",
