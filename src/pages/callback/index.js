@@ -1,19 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import { setSession, decodeSession, isValidSession } from '../../utils/session'
 import ROUTES from '../../routes'
+import { ErrorMessage } from '../../components/error-message'
 
-function Callback(props) {
+function Callback() {
+  const [error, setError] = useState(false)
+
   useEffect(() => {
     const session = decodeSession(window.location.hash)
+    setSession(session)
 
-    if (isValidSession(session)) {
-      setSession(session)
-      Router.push(ROUTES.HOME)
+    if (!isValidSession(session)) {
+      setError(true)
+    } else {
+      setTimeout(() => Router.push(ROUTES.HOME), 500)
     }
-  }, [props])
+  }, [])
 
-  return <div>Loading...</div>
+  return error ? <div>Loading...</div> : <ErrorMessage />
 }
 
 export default Callback
