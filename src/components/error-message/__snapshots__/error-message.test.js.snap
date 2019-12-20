@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMessage should render component correctly 1`] = `
+<DocumentFragment>
+  <div>
+    An error has occurred :(
+  </div>
+</DocumentFragment>
+`;
