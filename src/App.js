@@ -23,8 +23,6 @@ import styles from 'App.module.scss'
 
 /* */
 
-var auth = 'BQBosBt5NGrrmsDm6-3U7qYKrJ6SgAYLQxpgNmMpMFi9D7DKWDmUpcp21C189dhNFSWIYB3UmSY0ikM76VM'
-
 class App extends React.Component {
 
     constructor(){
@@ -65,7 +63,9 @@ class App extends React.Component {
                 },
                 temp : {}
 
-            }
+            },
+
+            auth : null
 
         }
 
@@ -108,6 +108,10 @@ class App extends React.Component {
 
         return Promise.resolve().then(() => {
 
+            return this.getToken()
+
+        }).then(() => {
+
             return this.getFeaturedPlaylists()
 
         }).then(() => {
@@ -117,6 +121,20 @@ class App extends React.Component {
         }).catch(error => {
 
             console.log(error)
+
+        })
+
+    }
+
+    async getToken(){
+
+        return axios.get(`http://localhost:8888`).then(response => {
+
+            this.setState({
+
+                auth : response.data.data.access_token
+
+            })
 
         })
 
@@ -137,7 +155,7 @@ class App extends React.Component {
 
             headers : {
 
-                Authorization: `Bearer ${auth}`
+                Authorization: `Bearer ${this.state.auth}`
 
             }
 
@@ -190,7 +208,7 @@ class App extends React.Component {
 
             headers : {
 
-                Authorization: `Bearer ${auth}`
+                Authorization: `Bearer ${this.state.auth}`
 
             }
 
