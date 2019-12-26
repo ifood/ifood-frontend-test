@@ -24,6 +24,7 @@ const Modal = props => {
 
                         [
 
+                            props.colXl && `col-xl-${props.colXl}`,
                             props.colLg && `col-lg-${props.colLg}`,
                             props.colMd && `col-md-${props.colMd}`,
                             props.colSm && `col-sm-${props.colSm}`,

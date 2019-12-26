@@ -35,6 +35,7 @@ class App extends React.Component {
             featured : {
 
                 message : null,
+                loading : true,
                 items: []
 
             },
@@ -42,6 +43,7 @@ class App extends React.Component {
             releases : {
 
                 message : null,
+                loading : true,
                 items: []
 
             },
@@ -73,6 +75,10 @@ class App extends React.Component {
 
         this.AppVierRef = React.createRef()
 
+        /* */
+
+        this.timer = null
+
     }
 
     /* */
@@ -92,7 +98,46 @@ class App extends React.Component {
         viewportObserver.observe(this.AppVierRef.current)
         /* */
 
+        // await this.initPlayer().then(() => {
+        //
+        //     window.onSpotifyWebPlaybackSDKReady = () => {
+        //
+        //       const player = new window.Spotify.Player({
+        //
+        //         name: 'Web Playback SDK Quick Start Player',
+        //         getOAuthToken: cb => { cb(this.auth) },
+        //         volume : 0.5
+        //
+        //       });
+        //
+        //       // Error handling
+        //       player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        //       player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        //       player.addListener('account_error', ({ message }) => { console.error(message); });
+        //       player.addListener('playback_error', ({ message }) => { console.error(message); });
+        //
+        //       // Playback status updates
+        //       player.addListener('player_state_changed', state => { console.log(state); });
+        //
+        //       // Ready
+        //       player.addListener('ready', ({ device_id }) => {
+        //         console.log('Ready with Device ID', device_id);
+        //       });
+        //
+        //       // Not Ready
+        //       player.addListener('not_ready', ({ device_id }) => {
+        //         console.log('Device ID has gone offline', device_id);
+        //       });
+        //
+        //       // Connect to the player!
+        //       player.connect();
+        //
+        //     }
+        //
+        // })
+
         await this.init()
+        this.initTimer()
 
     }
 
@@ -126,7 +171,61 @@ class App extends React.Component {
 
     }
 
+    initTimer(){
+
+        this.timer = setInterval(() => {
+
+            this.init()
+
+        }, 30000)
+
+    }
+
+    initPlayer(){
+
+        return new Promise((resolve, reject) => {
+
+            const script = document.createElement('script')
+
+            /* */
+
+            script.type = 'text/javascript'
+            // script.async = true
+            script.src = 'https://sdk.scdn.co/spotify-player.js'
+
+            script.onload = () => resolve()
+
+            document.body.appendChild(script)
+
+        })
+
+    }
+
     async getToken(){
+
+        this.setState({
+
+            featured : {
+
+                ...this.state.featured,
+                loading: true
+
+            }
+
+        })
+
+        this.setState({
+
+            releases : {
+
+                ...this.state.releases,
+                loading: true
+
+            }
+
+        })
+
+        /* */
 
         return axios.get(`http://localhost:8888`).then(response => {
 
@@ -141,6 +240,19 @@ class App extends React.Component {
     }
 
     async getFeaturedPlaylists(){
+
+        this.setState({
+
+            featured : {
+
+                ...this.state.featured,
+                loading: true
+
+            }
+
+        })
+
+        /* */
 
         let query = [
 
@@ -184,6 +296,7 @@ class App extends React.Component {
                 featured : {
 
                     message : response.data.message,
+                    loading: false,
                     items
 
                 }
@@ -195,6 +308,19 @@ class App extends React.Component {
     }
 
     async getNewReleases(){
+
+        this.setState({
+
+            releases : {
+
+                ...this.state.releases,
+                loading: true
+
+            }
+
+        })
+
+        /* */
 
         let query = [
 
@@ -235,6 +361,7 @@ class App extends React.Component {
                 releases : {
 
                     message : this.getNewReleasesMessage(this.state.settings.data.locale),
+                    loading: false,
                     items
 
                 }
@@ -267,6 +394,16 @@ class App extends React.Component {
             wrapperScrollTop: e.target.scrollTop
 
         })
+
+        this.handleTimer()
+
+    }
+
+    handleTimer(e){
+
+        clearInterval(this.timer)
+
+        this.initTimer()
 
     }
 
@@ -395,7 +532,15 @@ class App extends React.Component {
 
         return (
 
-            <div className={ styles.App }>
+            <div
+
+            className={ styles.App }
+
+            onMouseMove={ e => this.handleTimer() }
+            onClick={ e => this.handleTimer() }
+            onKeyDown={ e => this.handleTimer() }
+
+            >
 
                 <Icons />
 
@@ -435,7 +580,18 @@ class App extends React.Component {
 
                 >
 
-                    <Modal title="Preferências" col="6" onClose={ () => this.closeSettings( )}>
+                    <Modal
+
+                    title="Preferências"
+
+                    colXl="4"
+                    colLg="6"
+                    colMd="6"
+                    col="10"
+
+                    onClose={ () => this.closeSettings( )}
+
+                    >
 
                         <div className={ styles.AppSettings }>
 

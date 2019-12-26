@@ -1,0 +1,22 @@
+@import 'scss/components.scss';
+
+/* */
+
+.card {
+
+    padding: $theme-padding;
+
+    &Cover {
+
+        $size: 80px;
+
+        width: $size;
+        height: $size;
+
+        margin-bottom: $theme-padding;
+
+        border-radius: 8px;
+
+    }
+
+}

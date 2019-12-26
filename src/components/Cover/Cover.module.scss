@@ -85,6 +85,24 @@
 
             }
 
+            &Small {
+
+                $size: $size / 2;
+
+                width: $size;
+                height: $size;
+
+            }
+
+            &Small &Icon {
+
+                $size: $size - ($size / 3);
+
+                width: $size;
+                height: $size;
+
+            }
+
         }
 
     }

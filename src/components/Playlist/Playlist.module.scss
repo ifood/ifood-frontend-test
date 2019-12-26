@@ -1,5 +1,34 @@
 @import 'scss/components.scss';
 
+/* */
+
+$loading-placeholder-color: $md-grey-300;
+$loading-placeholder-color-dark: $md-grey-400;
+
+/* */
+
+%loadingPlaceholder {
+
+    animation: loadingPlaceholder 3s infinite;
+
+    @keyframes loadingPlaceholder {
+
+        0%, 75%, 100% {
+
+            background: $loading-placeholder-color;
+
+        }
+
+        25% {
+
+            background: $loading-placeholder-color-dark;
+
+        }
+
+    }
+
+}
+
 :global {
 
     .playlist-slider {
@@ -46,6 +75,18 @@
         @include font-sizer(28);
         line-height: 1;
         color: $md-red-500;
+
+        &Loading {
+
+            width: 30%;
+
+            background: $loading-placeholder-color;
+
+            border-radius: 6px;
+
+            @extend %loadingPlaceholder;
+
+        }
 
     }
 
@@ -149,6 +190,14 @@
 
             // box-shadow: 0 20px 20px rgba(black, .1);
 
+            &Loading {
+
+                background: $loading-placeholder-color;
+
+                @extend %loadingPlaceholder;
+
+            }
+
         }
 
         &Title {
@@ -159,6 +208,18 @@
             font-weight: 600;
             color: $md-grey-800;
 
+            &Loading {
+
+                width: 80%;
+
+                background: $loading-placeholder-color;
+
+                display: inline-block;
+
+                @extend %loadingPlaceholder;
+
+            }
+
         }
 
         &Owner {
@@ -167,6 +228,18 @@
             @include font-sizer(12);
             font-weight: 400;
             color: rgba(black, .5);
+
+            &Loading {
+
+                width: 60%;
+
+                background: $loading-placeholder-color;
+
+                display: inline-block;
+
+                @extend %loadingPlaceholder;
+
+            }
 
         }
 

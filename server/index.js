@@ -57,14 +57,18 @@ server.on('request', (req, res) => {
 
         res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
 
-        res.write(JSON.stringify({
+        setTimeout(() => {
 
-            success : true,
-            data : response.data
+            res.write(JSON.stringify({
 
-        }))
+                success : true,
+                data : response.data
 
-        res.end()
+            }))
+
+            res.end()
+
+        }, 3000)
 
     }).catch(error => {
 

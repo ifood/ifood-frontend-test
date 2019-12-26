@@ -48,6 +48,20 @@ class PlaylistList extends React.Component {
 
     }
 
+    getItems(){
+
+        if(this.props.data.loading){
+
+            return [...new Array(this.getItemsOffset()).keys()]
+
+        } else {
+
+            return this.props.data.items
+
+        }
+
+    }
+
     /* */
 
     handleNavigation(direction){
@@ -56,7 +70,7 @@ class PlaylistList extends React.Component {
 
         /* */
 
-        if(direction == 'prev'){
+        if(direction === 'prev'){
 
             if(this.state.index) this.setState({ index: this.state.index - 1 })
 
@@ -72,7 +86,7 @@ class PlaylistList extends React.Component {
 
             this.setState({
 
-                translate: direction == 'prev' ? -250 : 250,
+                translate: direction === 'prev' ? -250 : 250,
                 duration : '0s'
 
             })
@@ -102,6 +116,7 @@ class PlaylistList extends React.Component {
 
     render(){
 
+        const getItems = this.getItems()
         const getItemsOffset = this.getItemsOffset()
 
         /* */
@@ -114,7 +129,20 @@ class PlaylistList extends React.Component {
 
                     <div className="col">
 
-                        <h1 className={ styles.PlaylistTitle }>{ this.props.data.message }</h1>
+                        <h1 className={
+
+                            [
+
+                                styles.PlaylistTitle,
+                                this.props.data.loading && styles.PlaylistTitleLoading
+
+                            ].filter(Boolean).join(' ')
+
+                        }>{
+
+                            !this.props.data.loading ? this.props.data.message : <>&nbsp;</>
+
+                        }</h1>
 
                     </div>
 
@@ -156,7 +184,7 @@ class PlaylistList extends React.Component {
 
                 {
 
-                this.props.data.items.length ?
+                getItems.length ?
 
                 <div className={ styles.PlaylistSlider }>
 
@@ -165,49 +193,87 @@ class PlaylistList extends React.Component {
                         transform : `translate3d(${this.state.translate - 250}px, 0, 0)`,
                         transitionDuration : this.state.duration
 
-                    }}>
+                    }}
+
+                    >
 
                         {
 
-                            this.props.data.items.slice(this.state.index, this.state.index + getItemsOffset).map((val, index) => {
+                            getItems.slice(this.state.index, this.state.index + getItemsOffset).map((val, index) => {
 
                                 return (
 
-                                    <li className={ styles.PlaylistListList } key={ val.id || 0 }>
+                                    <li className={ styles.PlaylistListList } key={ val.id || index }>
 
-                                        <div className={ styles.PlaylistListCover }>
+                                        <div className={
+
+                                            [
+
+                                                styles.PlaylistListCover,
+                                                this.props.data.loading && styles.PlaylistListCoverLoading
+
+                                            ].filter(Boolean).join(' ')
+
+                                        } style={{
+
+                                            animationDelay : `${(0.4 * index)}s`
+
+                                        }}>
 
                                             {
 
-                                            (val.img && val.uri) && (
+                                                (val.img && val.uri) ? (
 
-                                                <Cover
+                                                    <Cover
 
-                                                url={ val.img }
-                                                uri={ val.uri }
+                                                    url={ val.img }
+                                                    uri={ val.uri }
 
-                                                />
+                                                    />
 
-                                            )
+                                                ) : null
 
                                             }
 
                                         </div>
 
-                                        {
+                                        <div className={
 
-                                        (val.title && val.owner) && (
+                                            [
 
-                                            <>
+                                                styles.PlaylistListTitle,
+                                                this.props.data.loading && styles.PlaylistListTitleLoading
 
-                                                <div className={ styles.PlaylistListTitle }>{ val.title }</div>
-                                                <div className={ styles.PlaylistListOwner }>de { val.owner }</div>
-
-                                            </>
-
-                                        )
+                                            ].filter(Boolean).join(' ')
 
                                         }
+
+                                        style={{
+
+                                           animationDelay : `${(0.4 * index)}s`
+
+                                       }}
+
+                                        >{ !this.props.data.loading ? val.title : <>&nbsp;</> }</div>
+
+                                        <div className={
+
+                                            [
+
+                                                styles.PlaylistListOwner,
+                                                this.props.data.loading && styles.PlaylistListOwnerLoading
+
+                                            ].join(' ')
+
+                                        }
+
+                                        style={{
+
+                                           animationDelay : `${(0.4 * index)}s`
+
+                                       }}
+
+                                        >{ !this.props.data.loading ? `de ${val.owner}` : <>&nbsp;</> }</div>
 
                                     </li>
 

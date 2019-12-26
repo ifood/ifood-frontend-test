@@ -107,6 +107,67 @@
 
         }
 
+        &Results {
+
+            position: absolute;
+
+            top: 100%;
+            left: 0;
+
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+
+            margin-top: $theme-padding;
+
+            background: white;
+
+            border-radius: 8px;
+
+            filter: drop-shadow(0 0 20px rgba(black, .1));
+
+            &::before {
+
+                $size: 14px;
+
+                /* */
+
+                content: '';
+
+                position: absolute;
+
+                top: -$size;
+                left: $theme-padding;
+
+                width: $size;
+                height: $size;
+
+                border: $size / 2 solid transparent;
+                border-bottom-color: white;
+
+            }
+
+            &Row {
+
+                padding: 0;
+                margin: 0;
+
+                list-style: none;
+
+            }
+
+            &List {
+
+                &:not(:last-of-type){
+
+                    border-bottom: 1px solid $md-grey-100;
+
+                }
+
+            }
+
+        }
+
     }
 
     &User {

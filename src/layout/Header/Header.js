@@ -3,6 +3,7 @@ import React from 'react'
 /* */
 
 import Icon from 'components/Icon/Icon'
+import MediaCard from 'components/MediaCard/MediaCard'
 
 /* */
 
@@ -77,6 +78,26 @@ class Header extends React.Component {
                             />
 
                             <Icon className={ styles.HeaderSearchIcon } glyph="search" />
+
+                            <div className={ styles.HeaderSearchResults }>
+
+                                <ul className={ styles.HeaderSearchResultsRow }>
+
+                                    <li className={ styles.HeaderSearchResultsList }>
+
+                                        <MediaCard />
+
+                                    </li>
+
+                                    <li className={ styles.HeaderSearchResultsList }>
+
+                                        <MediaCard />
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
 
                         </div>
 

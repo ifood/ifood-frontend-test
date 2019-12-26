@@ -63,7 +63,16 @@ class Cover extends React.Component {
 
                 <div className={ styles.CoverOverlay }>
 
-                    <a className={ styles.CoverOverlayPlay } href={ this.props.uri } target="_blank" rel="noopener noreferrer">
+                    <a className={
+
+                        [
+
+                            styles.CoverOverlayPlay,
+                            this.props.small && styles.CoverOverlayPlaySmall
+
+                        ].filter(Boolean).join(' ')
+
+                    } href={ this.props.uri } target="_blank" rel="noopener noreferrer">
 
                         <Icon className={ styles.CoverOverlayPlayIcon } glyph="play_arrow" />
 
