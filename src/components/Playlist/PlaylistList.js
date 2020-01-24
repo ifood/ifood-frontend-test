@@ -42,9 +42,27 @@ class PlaylistList extends React.Component {
 
     /* */
 
+    getSlideStepWidth(){
+
+        if(this.props.viewport < 768){
+
+            return 160
+
+        } else if(this.props.viewport > 768 && this.props.viewport <= 992){
+
+            return 210
+
+        } else {
+
+            return 250
+
+        }
+
+    }
+
     getItemsOffset(){
 
-        return Math.ceil(this.props.viewport / 250) + 2
+        return Math.ceil(this.props.viewport / this.getSlideStepWidth()) + 2
 
     }
 
@@ -86,7 +104,7 @@ class PlaylistList extends React.Component {
 
             this.setState({
 
-                translate: direction === 'prev' ? -250 : 250,
+                translate: direction === 'prev' ? -this.getSlideStepWidth() : this.getSlideStepWidth(),
                 duration : '0s'
 
             })
@@ -118,6 +136,7 @@ class PlaylistList extends React.Component {
 
         const getItems = this.getItems()
         const getItemsOffset = this.getItemsOffset()
+        const getSlideStepWidth = this.getSlideStepWidth()
 
         /* */
 
@@ -142,43 +161,51 @@ class PlaylistList extends React.Component {
 
                             !this.props.data.loading ? this.props.data.message : <>&nbsp;</>
 
-                        }</h1>
+                    }</h1>
 
                     </div>
 
-                    <div className="col-auto pr-5">
+                    {
 
-                        <button
+                        !this.props.data.loading && (
 
-                        className={ styles.PlaylistListNavigation }
+                            <div className="col-auto pr-4 pr-md-5">
 
-                        disabled={ !this.state.index }
-                        onClick={ () => this.handleNavigation('prev') }
+                                <button
 
-                        title="Anterior"
+                                className={ styles.PlaylistListNavigation }
 
-                        >
+                                disabled={ !this.state.index }
+                                onClick={ () => this.handleNavigation('prev') }
 
-                            <Icon glyph="arrow_left" />
+                                title="Anterior"
 
-                        </button>
+                                >
 
-                        <button
+                                    <Icon glyph="arrow_left" />
 
-                        className={ styles.PlaylistListNavigation }
+                                </button>
 
-                        disabled={ this.state.index === this.props.data.items.length - 1 }
-                        onClick={ () => this.handleNavigation('next') }
+                                <button
 
-                        title="Próximo"
+                                className={ styles.PlaylistListNavigation }
 
-                        >
+                                disabled={ this.state.index === this.props.data.items.length - 1 }
+                                onClick={ () => this.handleNavigation('next') }
 
-                            <Icon glyph="arrow_right" />
+                                title="Próximo"
 
-                        </button>
+                                >
 
-                    </div>
+                                    <Icon glyph="arrow_right" />
+
+                                </button>
+
+                            </div>
+
+                        )
+
+                    }
 
                 </div>
 
@@ -190,7 +217,7 @@ class PlaylistList extends React.Component {
 
                     <ul className={ styles.PlaylistListRow } style={{
 
-                        transform : `translate3d(${this.state.translate - 250}px, 0, 0)`,
+                        transform : `translate3d(${this.state.translate - getSlideStepWidth}px, 0, 0)`,
                         transitionDuration : this.state.duration
 
                     }}

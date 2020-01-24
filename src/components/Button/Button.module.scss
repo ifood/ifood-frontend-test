@@ -5,6 +5,7 @@
 .button {
 
     $min-size: 40px;
+    $min-size-small: 30px;
 
     /* */
 
@@ -13,10 +14,10 @@
     min-width: $min-size;
     min-height: $min-size;
 
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Barlow', sans-serif;
     @include font-sizer(12);
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: white;
 
@@ -29,9 +30,21 @@
 
     z-index: 1;
 
+    :global(.theme--dark--high-contrast) & {
+
+        color: black !important;
+
+    }
+
     &--padding {
 
         padding: 0 $theme-padding * 2;
+
+    }
+
+    &--small {
+
+        min-height: $min-size-small
 
     }
 
@@ -48,6 +61,18 @@
         border-radius: 50px;
 
         z-index: -1;
+
+        :global(.theme--light--high-contrast) & {
+
+            background: black !important;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            background: white !important;
+
+        }
 
     }
 

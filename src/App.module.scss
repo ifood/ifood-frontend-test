@@ -60,6 +60,24 @@
 
     display: flex;
 
+    :global(.theme--dark) & {
+
+        background: darken($md-grey-900, 2%);
+
+    }
+
+    :global(.theme--light--high-contrast) & {
+
+        background: $md-yellow-500;
+
+    }
+
+    :global(.theme--dark--high-contrast) & {
+
+        background: black;
+
+    }
+
     &Wrapper {
 
         flex-grow: 1;
@@ -77,6 +95,13 @@
 
         overflow: hidden;
 
+        @media(max-width: $break-point-md){
+
+            padding: $theme-padding;
+            padding-right: 0;
+
+        }
+
         &Background {
 
             position: fixed;
@@ -93,6 +118,23 @@
 
             z-index: -1;
 
+            :global(.theme--dark) & {
+
+                fill: rgba(black, .1);
+
+            }
+
+            :global(.theme--light--high-contrast) & {
+
+                fill: transparent;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                fill: transparent;
+
+            }
 
         }
 

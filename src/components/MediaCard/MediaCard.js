@@ -19,7 +19,7 @@ class MediaCard extends React.Component {
 
             <div className={ styles.card }>
 
-                <div className="row no-gutters">
+                <div className="row no-gutters align-items-center">
 
                     <div className="col-auto pr-3">
 
@@ -27,8 +27,8 @@ class MediaCard extends React.Component {
 
                             <Cover
 
-                            url='aaaaaa'
-                            uri='bbbbbb'
+                            url={ this.props.data.img }
+                            uri={ this.props.data.uri }
 
                             small
 
@@ -40,7 +40,8 @@ class MediaCard extends React.Component {
 
                     <div className="col">
 
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus eos laudantium quisquam vero distinctio facilis molestiae deserunt vel iure, earum, fuga nihil dolor hic sapiente quos eaque impedit ab eveniet?
+                        <div className={ styles.cardTitle }>{ this.props.data.title }</div>
+                        <div className={ styles.cardOwner }>de { this.props.data.owner }</div>
 
                     </div>
 

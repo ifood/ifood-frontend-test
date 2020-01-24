@@ -41,7 +41,8 @@ class Button extends React.Component {
                 [
 
                     styles.button,
-                    withLabel && styles['button--padding']
+                    withLabel && styles['button--padding'],
+                    this.props.small && styles['button--small']
 
                 ].join(' ')
 

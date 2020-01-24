@@ -41,6 +41,18 @@
         transition: .2s ease;
         transition-property: opacity;
 
+        :global(.theme--light--high-contrast) & {
+
+            background: black;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            background: white;
+
+        }
+
         &Play {
 
             $size: 80px;
@@ -59,15 +71,45 @@
             transition: .2s ease;
             transition-property: border-color;
 
+            :global(.theme--dark--high-contrast) & {
+
+                border-color: black;
+
+            }
+
             &:hover {
 
                 border-color: $md-red-500
+
+                :global(.theme--light--high-contrast) & {
+
+                    border-color: white
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    border-color: black
+
+                }
 
             }
 
             &:hover &Icon {
 
-                fill: $md-red-500
+                fill: $md-red-500;
+
+                :global(.theme--light--high-contrast) & {
+
+                    fill: white
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    fill: black
+
+                }
 
             }
 
@@ -82,6 +124,12 @@
 
                 transition: .2s ease;
                 transition-property: fill;
+
+                :global(.theme--dark--high-contrast) & {
+
+                    fill: black;
+
+                }
 
             }
 

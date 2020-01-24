@@ -23,6 +23,10 @@ import styles from 'App.module.scss'
 
 /* */
 
+const STORAGE_SETTINGS_HASH = 'kdap3WzWLmO5eeZuY4U8Opx9wJwnXKW7'
+
+/* */
+
 class App extends React.Component {
 
     constructor(){
@@ -60,7 +64,8 @@ class App extends React.Component {
                 data : {
 
                     country : 'BR',
-                    locale: 'pt_BR'
+                    locale: 'pt_BR',
+                    theme : 'light'
 
                 },
                 temp : {}
@@ -73,7 +78,8 @@ class App extends React.Component {
 
         /* */
 
-        this.AppVierRef = React.createRef()
+        this.AppViewRef = React.createRef()
+        this.AppWrapperRef = React.createRef()
 
         /* */
 
@@ -89,13 +95,14 @@ class App extends React.Component {
 
         let viewportObserver = new ResizeObserver(entries => {
 
-            let width = entries[0].contentRect.width
+            // let width = entries[0].contentRect.width
+            let width = this.AppViewRef.current.offsetWidth
 
             if(this.state.viewport.width !== width) this.setViewportWidth(width)
 
         })
 
-        viewportObserver.observe(this.AppVierRef.current)
+        viewportObserver.observe(this.AppViewRef.current)
         /* */
 
         // await this.initPlayer().then(() => {
@@ -136,6 +143,27 @@ class App extends React.Component {
         //
         // })
 
+        /* */
+
+        if(localStorage.getItem(STORAGE_SETTINGS_HASH)){
+
+            let settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS_HASH))
+
+            this.setState({
+
+                settings : {
+
+                    ...this.state.settings,
+                    data : settings
+
+                }
+
+            })
+
+        }
+
+        /* */
+
         await this.init()
         this.initTimer()
 
@@ -143,7 +171,23 @@ class App extends React.Component {
 
     async componentDidUpdate(prevProps, prevState){
 
-        if(!_lang.isEqual(prevState.settings.data, this.state.settings.data)) await this.init()
+        let
+
+        prevDataSettings = JSON.parse(JSON.stringify(prevState.settings.data)),
+        newDataSettings = JSON.parse(JSON.stringify(this.state.settings.data))
+
+        if(prevDataSettings.theme !== newDataSettings.theme){
+
+            this.setThemeColor(newDataSettings.theme)
+
+        }
+
+        delete prevDataSettings.theme
+        delete newDataSettings.theme
+
+        /* */
+
+        if(!_lang.isEqual(prevDataSettings, newDataSettings)) await this.init()
 
     }
 
@@ -227,7 +271,7 @@ class App extends React.Component {
 
         /* */
 
-        return axios.get(`http://localhost:8888`).then(response => {
+        return axios.get(`http://192.168.15.20:8888`).then(response => {
 
             this.setState({
 
@@ -379,7 +423,7 @@ class App extends React.Component {
             viewport : {
 
                 ...this.state.viewport,
-                width: width ? width : this.AppVierRef.current.offsetWidth
+                width: width ? width : this.AppViewRef.current.offsetWidth
 
             }
 
@@ -387,23 +431,40 @@ class App extends React.Component {
 
     }
 
+    setThemeColor(color){
+
+        let documentBody = document.querySelector('body')
+
+        documentBody.removeAttribute('class')
+        documentBody.classList.add(color)
+
+    }
+
     handleWrapperScroll(e){
 
-        this.setState({
+        if(this.AppWrapperRef.current === e.target){
 
-            wrapperScrollTop: e.target.scrollTop
+            this.setState({
 
-        })
+                wrapperScrollTop: e.target.scrollTop
 
-        this.handleTimer()
+            })
+
+            this.handleTimer()
+
+        }
 
     }
 
     handleTimer(e){
 
-        clearInterval(this.timer)
+        if(this.timer){
 
-        this.initTimer()
+            clearInterval(this.timer)
+
+            this.initTimer()
+
+        }
 
     }
 
@@ -445,13 +506,17 @@ class App extends React.Component {
 
         /* */
 
-        if(type == 'country'){
+        if(type === 'country'){
 
             temp.country = e.target.value
 
-        } else if(type == 'locale'){
+        } else if(type === 'locale'){
 
             temp.locale = e.target.value
+
+        } else if(type === 'theme'){
+
+            temp.theme = e.target.value
 
         }
 
@@ -482,6 +547,10 @@ class App extends React.Component {
                 active : false
 
             }
+
+        }, () => {
+
+            localStorage.setItem(STORAGE_SETTINGS_HASH, JSON.stringify(this.state.settings.data))
 
         })
 
@@ -549,6 +618,7 @@ class App extends React.Component {
                 className={ styles.AppWrapper }
 
                 onScroll={ e => this.handleWrapperScroll(e) }
+                ref={ this.AppWrapperRef }
 
                 >
 
@@ -557,10 +627,22 @@ class App extends React.Component {
                     opaque={ this.state.wrapperScrollTop > 10 }
 
                     openSettings={ () => this.openSettings() }
+                    searchInput={ () => this.handleTimer() }
+
+                    search={
+
+                        [
+
+                            ...this.state.featured.items,
+                            ...this.state.releases.items
+
+                        ]
+
+                    }
 
                     />
 
-                    <div className={ styles.AppView } ref={ this.AppVierRef }>
+                    <div className={ styles.AppView } ref={ this.AppViewRef }>
 
                         <Icon glyph="logo-play-button" className={ styles.AppViewBackground } />
 
@@ -587,7 +669,7 @@ class App extends React.Component {
                     colXl="4"
                     colLg="6"
                     colMd="6"
-                    col="10"
+                    col="11"
 
                     onClose={ () => this.closeSettings( )}
 
@@ -601,13 +683,13 @@ class App extends React.Component {
 
                                     <div className="row align-items-center">
 
-                                        <div className="col">
+                                        <div className="col-12 col-sm">
 
                                             <label htmlFor="country" className={ styles.FormLabel }>Exibir playlists do país</label>
 
                                         </div>
 
-                                        <div className="col-5">
+                                        <div className="col-12 col-sm-5">
 
                                             <select
 
@@ -641,13 +723,13 @@ class App extends React.Component {
 
                                     <div className="row align-items-center">
 
-                                        <div className="col">
+                                        <div className="col-12 col-sm">
 
                                             <label htmlFor="locale" className={ styles.FormLabel }>Idioma</label>
 
                                         </div>
 
-                                        <div className="col-5">
+                                        <div className="col-12 col-sm-5">
 
                                             <select
 
@@ -665,6 +747,46 @@ class App extends React.Component {
                                                 <option value="fr_FR">fr_FR</option>
                                                 <option value="en_US">en_US</option>
                                                 <option value="es_AR">es_AR</option>
+
+                                            </select>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className="row mb-4">
+
+                                <div className="col">
+
+                                    <div className="row align-items-center">
+
+                                        <div className="col-12 col-sm">
+
+                                            <label htmlFor="theme" className={ styles.FormLabel }>Cor do Tema</label>
+
+                                        </div>
+
+                                        <div className="col-12 col-sm-5">
+
+                                            <select
+
+                                            className={ styles.FormInput }
+                                            name="theme"
+
+                                            value={ this.state.settings.temp.theme }
+                                            onChange={ e => this.changeSettings(e, 'theme') }
+
+                                            >
+
+                                                <option value="theme--light">Claro</option>
+                                                <option value="theme--light--high-contrast">Claro (Alto Contraste)</option>
+                                                <option value="theme--dark">Escuro</option>
+                                                <option value="theme--dark--high-contrast">Escuro (Alto Contraste)</option>
 
                                             </select>
 

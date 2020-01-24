@@ -1,8 +1,15 @@
 import React from 'react'
+import {
+
+    CSSTransition
+
+} from 'react-transition-group'
+import TextSearch from 'text-search'
 
 /* */
 
 import Icon from 'components/Icon/Icon'
+import Button from 'components/Button/Button'
 import MediaCard from 'components/MediaCard/MediaCard'
 
 /* */
@@ -23,13 +30,59 @@ class Header extends React.Component {
 
         }
 
+        /* */
+
+        this.searchInputRef = React.createRef()
+
     }
+
+    /* */
+
+    getItemsFiltered(){
+
+        if(this.state.search.length){
+
+            let keywords = this.state.search.split(' ').filter(Boolean)
+
+            let items = this.props.search.filter(val => val.id).filter(({ title, owner }) => TextSearch.textMatch(keywords, title) || TextSearch.textMatch(keywords, owner))
+
+            return items
+
+        } else {
+
+            return []
+
+        }
+
+    }
+
+    /* */
+
+    resetSearch(){
+
+        this.setState({
+
+            search: ''
+
+        })
+
+        /* */
+
+        this.searchInputRef.current.focus()
+
+    }
+
+    /* */
 
     render(){
 
+        const getItemsFiltered = this.getItemsFiltered()
+
+        /* */
+
         return (
 
-            <div className={
+            <header className={
 
                 [
 
@@ -40,9 +93,9 @@ class Header extends React.Component {
 
             }>
 
-                <div className="row no-gutters align-items-center flex-fill">
+                <div className="row no-gutters flex-nowrap align-items-center flex-fill">
 
-                    <div className="col-auto pr-5">
+                    <div className="col-auto pr-2 pr-lg-3">
 
                         <div className={ styles.HeaderLogo }>
 
@@ -53,16 +106,25 @@ class Header extends React.Component {
 
                     </div>
 
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 pr-3 pr-lg-0">
 
-                        <div className={ styles.HeaderSearch }>
+                        <div className={
+
+                            [
+
+                                styles.HeaderSearch,
+                                !!this.state.search.length && styles.HeaderSearchFilled
+
+                            ].join(' ')
+
+                         }>
 
                             <input
 
                             className={ styles.HeaderSearchInput }
 
                             type="text"
-                            placeholder="Faça uma busca..."
+                            placeholder="Buscar"
 
                             value={ this.state.search }
                             onChange={ e => {
@@ -73,33 +135,88 @@ class Header extends React.Component {
 
                                 })
 
+                                this.props.searchInput(e.target.value)
+
                             }}
+
+                            ref={ this.searchInputRef }
 
                             />
 
                             <Icon className={ styles.HeaderSearchIcon } glyph="search" />
 
+                            {
+
+                                !!this.state.search.length && (
+
+                                    <div onClick={ () => this.resetSearch() } style={{ float: 'right' }}>
+
+                                        <Icon className={ styles.HeaderSearchIconReset } glyph="close" />
+
+                                    </div>
+
+                                )
+
+                            }
+
+                        </div>
+
+                        <CSSTransition
+
+                        in={ !!this.state.search.length }
+                        timeout={ 200 }
+                        classNames="transition-fade"
+                        unmountOnExit
+
+                        >
+
                             <div className={ styles.HeaderSearchResults }>
 
                                 <ul className={ styles.HeaderSearchResultsRow }>
 
-                                    <li className={ styles.HeaderSearchResultsList }>
+                                    {
 
-                                        <MediaCard />
+                                    !!getItemsFiltered.length ? getItemsFiltered.map((data, index) => {
 
-                                    </li>
+                                        return (
 
-                                    <li className={ styles.HeaderSearchResultsList }>
+                                            <li className={ styles.HeaderSearchResultsList } key={ data.id || index }>
 
-                                        <MediaCard />
+                                                <MediaCard data={ data } />
 
-                                    </li>
+                                            </li>
+
+                                        )
+
+                                    }) : (
+
+                                        <div className={ styles.HeaderSearchResultsEmpty }>
+
+                                            <div className={ styles.HeaderSearchResultsEmptyIcon }>
+
+                                                <Icon glyph="find_in_page" />
+
+                                            </div>
+
+                                            <div className={ styles.HeaderSearchResultsEmptyDescription }>Não foi encontrado nenhum resultado para sua busca</div>
+
+                                            <div className={ styles.HeaderSearchResultsEmptyReset }>
+
+                                                <Button label="Limpar Busca" color="blue" small onClick={ () => this.resetSearch() } />
+
+                                            </div>
+
+                                        </div>
+
+                                    )
+
+                                    }
 
                                 </ul>
 
                             </div>
 
-                        </div>
+                        </CSSTransition>
 
                     </div>
 
@@ -121,7 +238,7 @@ class Header extends React.Component {
 
                             <div className="row no-gutters align-items-center">
 
-                                <div className="col-auto pr-3">
+                                <div className="col-auto pr-md-3">
 
                                     <div className={ styles.HeaderUserAvatar } style={{
 
@@ -131,7 +248,7 @@ class Header extends React.Component {
 
                                 </div>
 
-                                <div className="col">
+                                <div className="col d-none d-md-block">
 
                                     <div className={ styles.HeaderUserInfo }>
 
@@ -150,7 +267,7 @@ class Header extends React.Component {
 
                 </div>
 
-            </div>
+            </header>
 
         )
 

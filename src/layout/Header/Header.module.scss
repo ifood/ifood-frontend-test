@@ -8,7 +8,7 @@
 
     padding: $theme-padding * 2;
 
-    background: rgba(#1c222a, 0);
+    background: rgba(white, 0);
 
     height: 80px;
 
@@ -20,11 +20,49 @@
     transition: .2s ease;
     transition-property: background;
 
+    :global(.theme--light--high-contrast) & {
+
+        border-bottom: 2px solid black;
+
+    }
+
+    :global(.theme--dark--high-contrast) & {
+
+        border-bottom: 2px solid white;
+
+    }
+
+    @media(max-width: $break-point-md){
+
+        height: 60px;
+
+        padding: $theme-padding;
+
+    }
+
     &Opaque {
 
         background: white;
 
         box-shadow: 0 0 10px rgba(black, .1)
+
+        :global(.theme--dark) & {
+
+            background: $md-grey-900;
+
+        }
+
+        :global(.theme--light--high-contrast) & {
+
+            background: $md-yellow-500;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            background: black;
+
+        }
 
     }
 
@@ -37,6 +75,19 @@
         display: flex;
         align-items: center;
 
+        @media(max-width: $break-point-lg - 1){
+
+            @include font-sizer(0);
+
+        }
+
+        :global(.theme--dark) &,
+        :global(.theme--dark--high-contrast) & {
+
+            color: white;
+
+        }
+
         &Icon {
 
             $size: 30px;
@@ -47,6 +98,18 @@
             margin-right: 5px;
 
             fill: $md-red-500;
+
+            :global(.theme--light--high-contrast) & {
+
+                fill: black;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                fill: white;
+
+            }
 
         }
 
@@ -65,7 +128,45 @@
         border-radius: $size;
         border: 2px solid rgba(black, .1);
 
-        &Icon {
+        z-index: 2;
+
+        transition: .2s ease;
+        transition-property: width, margin-left;
+
+        :global(.theme--dark) & {
+
+            border-color: rgba(white, .1);
+
+        }
+
+        :global(.theme--light--high-contrast) & {
+
+            border-color: black;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            border-color: white;
+
+        }
+
+        &Filled {
+
+            @media(max-width: $break-point-md){
+
+                width: calc(100% + 125px);
+
+                margin-left: -40px;
+
+            }
+
+        }
+
+        &Icon,
+        &IconReset {
+
+            position: relative;
 
             $size: 18px;
 
@@ -77,6 +178,20 @@
             transition: .2s ease;
             transition-property: fill;
 
+            z-index: 2;
+
+            :global(.theme--light--high-contrast) & {
+
+                fill: black;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                fill: white;
+
+            }
+
         }
 
         &Input {
@@ -86,10 +201,10 @@
             top: -3px;
             left: 0;
 
-            width: inherit;
+            width: 100%;
             height: inherit;
 
-            padding: 3px 15px 3px 30px;
+            padding: 3px 30px 3px 30px;
 
             font-family: 'Barlow', sans-serif;
             @include font-sizer(13);
@@ -99,11 +214,46 @@
 
             background: rgba(black, 0);
 
+            :global(.theme--dark) &,
+            :global(.theme--dark--high-contrast) & {
+
+                color: white;
+
+            }
+
+            &::placeholder {
+
+                :global(.theme--light--high-contrast) & {
+
+                    color: black;
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    color: white;
+
+                }
+
+            }
+
         }
 
         &Input:focus + &Icon {
 
             fill: $md-red-500;
+
+            :global(.theme--light--high-contrast) & {
+
+                fill: black;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                fill: white;
+
+            }
 
         }
 
@@ -116,7 +266,7 @@
 
             width: 100%;
             max-width: 500px;
-            height: 500px;
+            max-height: 80vh;
 
             margin-top: $theme-padding;
 
@@ -124,7 +274,72 @@
 
             border-radius: 8px;
 
+            display: flex;
+
             filter: drop-shadow(0 0 20px rgba(black, .1));
+
+            animation: slideUp .2s ease;
+
+            :global(.theme--dark) & {
+
+                background: $md-grey-800;
+
+            }
+
+            :global(.theme--light--high-contrast) & {
+
+                border: 2px solid black;
+
+                background: $md-yellow-500;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                border: 2px solid white;
+
+                background: black;
+
+            }
+
+            @media(max-width: $break-point-md){
+
+                position: fixed;
+
+                max-width: 100%;
+                max-height: 100%;
+                height: 100%;
+
+                top: 0;
+
+                margin-top: 0;
+                padding-top: 60px;
+
+                border-radius: 0;
+
+                filter: none;
+
+                animation: none;
+
+                z-index: 1;
+
+            }
+
+            @keyframes slideUp {
+
+                from {
+
+                    transform: translateY(3px);
+
+                }
+
+                to {
+
+                    transform: translateY(0);
+
+                }
+
+            }
 
             &::before {
 
@@ -145,6 +360,24 @@
                 border: $size / 2 solid transparent;
                 border-bottom-color: white;
 
+                :global(.theme--dark) & {
+
+                    border-bottom-color: $md-grey-800;
+
+                }
+
+                :global(.theme--light--high-contrast) & {
+
+                    border-bottom-color: black;
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    border-bottom-color: white;
+
+                }
+
             }
 
             &Row {
@@ -154,6 +387,34 @@
 
                 list-style: none;
 
+                flex-grow: 1;
+
+                overflow: auto;
+
+                @media(max-width: $break-point-md){
+
+                    border-top: 1px solid $md-grey-100;
+
+                    :global(.theme--dark) & {
+
+                        border-top-color: $md-grey-900;
+
+                    }
+
+                    :global(.theme--light--high-contrast) & {
+
+                        border-top-color: black;
+
+                    }
+
+                    :global(.theme--dark--high-contrast) & {
+
+                        border-top-color: white;
+
+                    }
+
+                }
+
             }
 
             &List {
@@ -161,6 +422,110 @@
                 &:not(:last-of-type){
 
                     border-bottom: 1px solid $md-grey-100;
+
+                    :global(.theme--dark) & {
+
+                        border-bottom-color: darken($md-grey-800, 2%);
+
+                    }
+
+                    :global(.theme--light--high-contrast) & {
+
+                        border-bottom-color: black;
+
+                    }
+
+                    :global(.theme--dark--high-contrast) & {
+
+                        border-bottom-color: white;
+
+                    }
+
+                }
+
+            }
+
+            &Empty {
+
+                min-height: 300px;
+
+                padding: $theme-padding * 2;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                @media(max-width: $break-point-md){
+
+                    min-height: 100%;
+
+                }
+
+                &Icon {
+
+                    margin-bottom: $theme-padding;
+
+                    svg {
+
+                        width: 100px;
+                        height: 100px;
+
+                        fill: $md-grey-200;
+
+                        :global(.theme--dark) & {
+
+                            fill: $md-grey-700;
+
+                        }
+
+                        :global(.theme--light--high-contrast) & {
+
+                            fill: black;
+
+                        }
+
+                        :global(.theme--dark--high-contrast) & {
+
+                            fill: white;
+
+                        }
+
+                    }
+
+                }
+
+                &Description {
+
+                    font-family: 'Barlow', sans-serif;
+                    @include font-sizer(16);
+                    line-height: 1.2;
+                    text-align: center;
+                    color: $md-grey-600;
+
+                    :global(.theme--dark) & {
+
+                        color: $md-grey-300;
+
+                    }
+
+                    :global(.theme--light--high-contrast) & {
+
+                        color: black;
+
+                    }
+
+                    :global(.theme--dark--high-contrast) & {
+
+                        color: white;
+
+                    }
+
+                }
+
+                &Reset {
+
+                    margin-top: $theme-padding;
 
                 }
 
@@ -194,6 +559,19 @@
             font-weight: 700;
             color: $md-grey-800;
 
+            :global(.theme--dark) &,
+            :global(.theme--dark--high-contrast) & {
+
+                color: white;
+
+            }
+
+            :global(.theme--light--high-contrast) & {
+
+                color: black;
+
+            }
+
         }
 
         &Email {
@@ -202,6 +580,18 @@
             @include font-sizer(13);
             line-height: 1.2;
             color: $md-grey-600;
+
+            :global(.theme--light--high-contrast) & {
+
+                color: black;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                color: white;
+
+            }
 
         }
 
@@ -215,6 +605,18 @@
             fill: $md-grey-500;
 
             cursor: pointer;
+
+            :global(.theme--light--high-contrast) & {
+
+                fill: black;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                fill: white;
+
+            }
 
         }
 

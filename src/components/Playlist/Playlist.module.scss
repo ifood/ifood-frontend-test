@@ -5,6 +5,15 @@
 $loading-placeholder-color: $md-grey-300;
 $loading-placeholder-color-dark: $md-grey-400;
 
+$theme-dark-loading-placeholder-color: darken($md-grey-800, 7.5%);
+$theme-dark-loading-placeholder-color-dark: $md-grey-800;
+
+$theme-high-contrast-loading-placeholder-color: black;
+$theme-high-contrast-loading-placeholder-color-dark: rgba(black, .75);
+
+$theme-dark-high-contrast-loading-placeholder-color: black;
+$theme-dark-high-contrast-loading-placeholder-color-dark: rgba(white, .1);
+
 /* */
 
 %loadingPlaceholder {
@@ -22,6 +31,72 @@ $loading-placeholder-color-dark: $md-grey-400;
         25% {
 
             background: $loading-placeholder-color-dark;
+
+        }
+
+    }
+
+}
+
+%loadingPlaceholderDark {
+
+    animation: loadingPlaceholderDark 3s infinite;
+
+    @keyframes loadingPlaceholderDark {
+
+        0%, 75%, 100% {
+
+            background: $theme-dark-loading-placeholder-color;
+
+        }
+
+        25% {
+
+            background: $theme-dark-loading-placeholder-color-dark;
+
+        }
+
+    }
+
+}
+
+%loadingPlaceholderHighContrast {
+
+    animation: loadingPlaceholderHighContrast 3s infinite;
+
+    @keyframes loadingPlaceholderHighContrast {
+
+        0%, 75%, 100% {
+
+            background: $theme-high-contrast-loading-placeholder-color;
+
+        }
+
+        25% {
+
+            background: $theme-high-contrast-loading-placeholder-color-dark;
+
+        }
+
+    }
+
+}
+
+%loadingPlaceholderDarkHighContrast {
+
+    animation: loadingPlaceholderDarkHighContrast 3s infinite;
+
+    @keyframes loadingPlaceholderDarkHighContrast {
+
+        0%, 75%, 100% {
+
+            background: $theme-dark-high-contrast-loading-placeholder-color;
+
+        }
+
+        25% {
+
+            background: $theme-dark-high-contrast-loading-placeholder-color-dark;
 
         }
 
@@ -76,6 +151,26 @@ $loading-placeholder-color-dark: $md-grey-400;
         line-height: 1;
         color: $md-red-500;
 
+        :global(.theme--light--high-contrast) & {
+
+            color: black;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            color: white
+
+        }
+
+        @media(max-width: $break-point-md){
+
+            margin-bottom: $theme-padding * 1.1;
+
+            @include font-sizer(24);
+
+        }
+
         &Loading {
 
             width: 30%;
@@ -86,6 +181,34 @@ $loading-placeholder-color-dark: $md-grey-400;
 
             @extend %loadingPlaceholder;
 
+            :global(.theme--dark) & {
+
+                background: $theme-dark-loading-placeholder-color;
+
+                @extend %loadingPlaceholderDark;
+
+            }
+
+            :global(.theme--light--high-contrast) & {
+
+                background: $theme-high-contrast-loading-placeholder-color;
+
+                box-shadow: inset 0 0 0 2px black;
+
+                @extend %loadingPlaceholderHighContrast;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                background: $theme-dark-high-contrast-loading-placeholder-color;
+
+                box-shadow: inset 0 0 0 2px white;
+
+                @extend %loadingPlaceholderDarkHighContrast;
+
+            }
+
         }
 
     }
@@ -95,6 +218,12 @@ $loading-placeholder-color-dark: $md-grey-400;
         &:not(:last-of-type){
 
             margin-bottom: $theme-padding * 4;
+
+            @media(max-width: $break-point-md){
+
+                margin-bottom: $theme-padding * 2;
+
+            }
 
         }
 
@@ -107,7 +236,7 @@ $loading-placeholder-color-dark: $md-grey-400;
 
             padding: 0;
 
-            background: $md-grey-500;
+            background: rgba(black, .4);
 
             border: 0;
             border-radius: $size / 2;
@@ -119,7 +248,25 @@ $loading-placeholder-color-dark: $md-grey-400;
             transition: .2s ease;
             transition-property: opacity, transform;
 
-            &:active {
+            :global(.theme--dark) & {
+
+                background: rgba(white, .5);
+
+            }
+
+            :global(.theme--light--high-contrast) & {
+
+                background: black;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                background: white;
+
+            }
+
+            &:not([disabled]):active {
 
                 transform: scale(0.9)
 
@@ -133,7 +280,9 @@ $loading-placeholder-color-dark: $md-grey-400;
 
             &[disabled]{
 
-                opacity: 0.25
+                opacity: 0.25;
+
+                cursor: default;
 
             }
 
@@ -143,6 +292,12 @@ $loading-placeholder-color-dark: $md-grey-400;
                 height: inherit;
 
                 fill: white;
+
+                :global(.theme--dark--high-contrast) & {
+
+                    fill: black;
+
+                }
 
             }
 
@@ -179,22 +334,75 @@ $loading-placeholder-color-dark: $md-grey-400;
 
         &Cover {
 
-            $size: 220px;
+            $size-xl: 220px;
+            $size-lg: 180px;
+            $size-md: 130px;
 
-            width: $size;
-            height: $size;
+            width: $size-xl;
+            height: $size-xl;
 
             margin-bottom: $theme-padding;
 
             border-radius: 8px;
 
+            :global(.theme--light--high-contrast) & {
+
+                border: 2px solid black;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                border: 2px solid white;
+
+            }
+
             // box-shadow: 0 20px 20px rgba(black, .1);
+
+            @media(max-width: $break-point-lg){
+
+                width: $size-lg;
+                height: $size-lg;
+
+            }
+
+            @media(max-width: $break-point-md){
+
+                width: $size-md;
+                height: $size-md;
+
+            }
 
             &Loading {
 
                 background: $loading-placeholder-color;
 
                 @extend %loadingPlaceholder;
+
+                :global(.theme--dark) & {
+
+                    background: $theme-dark-loading-placeholder-color;
+
+                    @extend %loadingPlaceholderDark;
+
+                }
+
+                :global(.theme--light--high-contrast) & {
+
+                    background: $theme-high-contrast-loading-placeholder-color;
+
+                    @extend %loadingPlaceholderHighContrast;
+
+                }
+
+
+                :global(.theme--dark--high-contrast) & {
+
+                    background: $theme-dark-high-contrast-loading-placeholder-color;
+
+                    @extend %loadingPlaceholderDarkHighContrast;
+
+                }
 
             }
 
@@ -208,6 +416,28 @@ $loading-placeholder-color-dark: $md-grey-400;
             font-weight: 600;
             color: $md-grey-800;
 
+            :global(.theme--dark) & {
+
+                color: white;
+
+            }
+
+            :global(.theme--light--high-contrast) & {
+
+                color: black;
+
+                text-decoration: underline;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                color: white;
+
+                text-decoration: underline;
+
+            }
+
             &Loading {
 
                 width: 80%;
@@ -216,7 +446,41 @@ $loading-placeholder-color-dark: $md-grey-400;
 
                 display: inline-block;
 
+                border-radius: 8px;
+
                 @extend %loadingPlaceholder;
+
+                :global(.theme--dark) & {
+
+                    background: $theme-dark-loading-placeholder-color;
+
+                    @extend %loadingPlaceholderDark;
+
+                }
+
+                :global(.theme--light--high-contrast) & {
+
+                    text-decoration: none;
+
+                    background: $theme-high-contrast-loading-placeholder-color;
+
+                    box-shadow: inset 0 0 0 2px black;
+
+                    @extend %loadingPlaceholderHighContrast;
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    text-decoration: none;
+
+                    background: $theme-dark-high-contrast-loading-placeholder-color;
+
+                    box-shadow: inset 0 0 0 2px white;
+
+                    @extend %loadingPlaceholderDarkHighContrast;
+
+                }
 
             }
 
@@ -229,6 +493,28 @@ $loading-placeholder-color-dark: $md-grey-400;
             font-weight: 400;
             color: rgba(black, .5);
 
+            :global(.theme--dark) & {
+
+                color: rgba(white, .5);
+
+            }
+
+            :global(.theme--light--high-contrast) & {
+
+                color: black;
+
+                text-decoration: underline;
+
+            }
+
+            :global(.theme--dark--high-contrast) & {
+
+                color: white;
+
+                text-decoration: underline;
+
+            }
+
             &Loading {
 
                 width: 60%;
@@ -237,7 +523,41 @@ $loading-placeholder-color-dark: $md-grey-400;
 
                 display: inline-block;
 
+                border-radius: 8px;
+
                 @extend %loadingPlaceholder;
+
+                :global(.theme--dark) & {
+
+                    background: $theme-dark-loading-placeholder-color;
+
+                    @extend %loadingPlaceholderDark;
+
+                }
+
+                :global(.theme--light--high-contrast) & {
+
+                    text-decoration: none;
+
+                    background: $theme-high-contrast-loading-placeholder-color;
+
+                    box-shadow: inset 0 0 0 2px black;
+
+                    @extend %loadingPlaceholderHighContrast;
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    text-decoration: none;
+
+                    background: $theme-dark-high-contrast-loading-placeholder-color;
+
+                    box-shadow: inset 0 0 0 2px white;
+
+                    @extend %loadingPlaceholderDarkHighContrast;
+
+                }
 
             }
 
