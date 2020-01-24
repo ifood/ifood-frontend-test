@@ -14,7 +14,7 @@ const Modal = props => {
 
     return (
 
-        <div className={ styles.Modal }>
+        <div className={ styles.Modal } role="dialog">
 
             <div className="container-fluid">
 
@@ -49,15 +49,23 @@ const Modal = props => {
 
                                         </div>
 
-                                        <div className="col-auto">
+                                        {
 
-                                            <div onClick={ () => props.onClose() }>
+                                        props.close && (
 
-                                                <Icon className={ styles.ModalHeaderClose } glyph="close" />
+                                            <div className="col-auto">
+
+                                                <button className={ styles.ModalHeaderClose } onClick={ () => props.onClose() } aria-label="Fechar" title="Fechar">
+
+                                                    <Icon glyph="close" />
+
+                                                </button>
 
                                             </div>
 
-                                        </div>
+                                        )
+
+                                        }
 
                                     </div>
 

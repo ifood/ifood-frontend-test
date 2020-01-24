@@ -23,16 +23,9 @@ class MediaCard extends React.Component {
 
                     <div className="col-auto pr-3">
 
-                        <div className={ styles.cardCover }>
+                        <div className={ styles.cardCover } role="img" aria-label={ `Imagem de capa ${(this.props.data.type === 'album' ? 'do álbum' : 'da playlist')} "${this.props.data.title}" de ${this.props.data.owner}` }>
 
-                            <Cover
-
-                            url={ this.props.data.img }
-                            uri={ this.props.data.uri }
-
-                            small
-
-                            />
+                            <Cover data={ this.props.data } small />
 
                         </div>
 

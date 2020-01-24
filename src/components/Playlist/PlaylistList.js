@@ -180,6 +180,8 @@ class PlaylistList extends React.Component {
 
                                 title="Anterior"
 
+                                aria-label="Anterior"
+
                                 >
 
                                     <Icon glyph="arrow_left" />
@@ -194,6 +196,8 @@ class PlaylistList extends React.Component {
                                 onClick={ () => this.handleNavigation('next') }
 
                                 title="Próximo"
+
+                                aria-label="Próximo"
 
                                 >
 
@@ -245,18 +249,13 @@ class PlaylistList extends React.Component {
 
                                             animationDelay : `${(0.4 * index)}s`
 
-                                        }}>
+                                        }} role="img" aria-label={ `Imagem de capa ${(val.type === 'album' ? 'do álbum' : 'da playlist')} "${val.title}" de ${val.owner}` }>
 
                                             {
 
                                                 (val.img && val.uri) ? (
 
-                                                    <Cover
-
-                                                    url={ val.img }
-                                                    uri={ val.uri }
-
-                                                    />
+                                                    <Cover data={ val } />
 
                                                 ) : null
 

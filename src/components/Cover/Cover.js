@@ -55,11 +55,9 @@ class Cover extends React.Component {
 
         return (
 
-            <div className={ styles.Cover } style={{
+            <figure className={ styles.Cover }>
 
-                backgroundImage: `url(${ this.props.url })`
-
-            }}>
+                <img className={ styles.CoverImg } src={ this.props.data.img } alt={ `Imagem de capa ${(this.props.data.type === 'album' ? 'do álbum' : 'da playlist')} "${this.props.data.title}" de ${this.props.data.owner}` } />
 
                 <div className={ styles.CoverOverlay }>
 
@@ -72,7 +70,13 @@ class Cover extends React.Component {
 
                         ].filter(Boolean).join(' ')
 
-                    } href={ this.props.uri } target="_blank" rel="noopener noreferrer">
+                    }
+
+                    href={ this.props.data.uri } target="_blank" rel="noopener noreferrer"
+
+                    title={ `Tocar ${(this.props.data.type === 'album' ? 'álbum' : 'playlist')} "${this.props.data.title}" de ${this.props.data.owner}` }
+
+                    >
 
                         <Icon className={ styles.CoverOverlayPlayIcon } glyph="play_arrow" />
 
@@ -80,7 +84,7 @@ class Cover extends React.Component {
 
                 </div>
 
-            </div>
+            </figure>
 
         )
 

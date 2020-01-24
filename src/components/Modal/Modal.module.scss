@@ -90,24 +90,36 @@
 
         &Close {
 
-            $size: 24px;
+            background: transparent;
 
-            width: $size;
-            height: $size;
+            &:focus {
 
-            fill: $md-red-500;
-
-            cursor: pointer;
-
-            :global(.theme--light--high-contrast) & {
-
-                fill: black;
+                outline: none;
 
             }
 
-            :global(.theme--dark--high-contrast) & {
+            svg {
 
-                fill: white;
+                $size: 24px;
+
+                width: $size;
+                height: $size;
+
+                fill: $md-red-500;
+
+                cursor: pointer;
+
+                :global(.theme--light--high-contrast) & {
+
+                    fill: black;
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    fill: white;
+
+                }
 
             }
 

@@ -1,0 +1,48 @@
+@import 'scss/components.scss';
+
+.Confirm {
+
+    padding: $theme-padding * 2;
+
+    &Title {
+
+        margin-bottom: $theme-padding;
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(20);
+        font-weight: 700;
+        line-height: 1;
+        color: $md-red-500;
+
+        :global(.theme--light--high-contrast) & {
+
+            color: black;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            color: white;
+
+        }
+
+    }
+
+    &Description {
+
+        margin-bottom: $theme-padding;
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(14);
+        color: black;
+
+        :global(.theme--dark) &,
+        :global(.theme--dark--high-contrast) & {
+
+            color: white;
+
+        }
+
+    }
+
+}

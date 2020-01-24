@@ -48,7 +48,7 @@
 
         :global(.theme--dark) & {
 
-            background: $md-grey-900;
+            background: darken($md-grey-900, 2%);
 
         }
 
@@ -191,6 +191,12 @@
                 fill: white;
 
             }
+
+        }
+
+        &IconReset {
+
+            cursor: pointer;
 
         }
 
@@ -597,24 +603,36 @@
 
         &Settings {
 
-            $size: 24px;
+            background: transparent;
 
-            width: $size;
-            height: $size;
+            &:focus {
 
-            fill: $md-grey-500;
-
-            cursor: pointer;
-
-            :global(.theme--light--high-contrast) & {
-
-                fill: black;
+                outline: none;
 
             }
 
-            :global(.theme--dark--high-contrast) & {
+            cursor: pointer;
 
-                fill: white;
+            svg {
+
+                $size: 24px;
+
+                width: $size;
+                height: $size;
+
+                fill: $md-grey-500;
+
+                :global(.theme--light--high-contrast) & {
+
+                    fill: black;
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    fill: white;
+
+                }
 
             }
 

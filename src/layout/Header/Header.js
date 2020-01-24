@@ -117,7 +117,7 @@ class Header extends React.Component {
 
                             ].join(' ')
 
-                         }>
+                        } role="search" aria-label="Buscar">
 
                             <input
 
@@ -149,7 +149,7 @@ class Header extends React.Component {
 
                                 !!this.state.search.length && (
 
-                                    <div onClick={ () => this.resetSearch() } style={{ float: 'right' }}>
+                                    <div onClick={ () => this.resetSearch() } style={{ float: 'right' }} role="button" aria-label="Fechar Busca" title="Fechar Busca">
 
                                         <Icon className={ styles.HeaderSearchIconReset } glyph="close" />
 
@@ -224,11 +224,11 @@ class Header extends React.Component {
 
                     <div className="col-auto pr-3">
 
-                        <div onClick={ () => this.props.openSettings() }>
+                        <button className={ styles.HeaderUserSettings } onClick={ () => this.props.openSettings() } aria-label="Preferências do SpotiFood" title="Preferências do SpotiFood">
 
-                            <Icon className={ styles.HeaderUserSettings } glyph="settings" />
+                            <Icon glyph="settings" />
 
-                        </div>
+                        </button>
 
                     </div>
 

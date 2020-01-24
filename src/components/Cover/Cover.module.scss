@@ -11,9 +11,41 @@
 
     border-radius: 8px;
 
+    animation: fadein .3s ease;
+
+    @keyframes fadein {
+
+        from {
+
+            opacity: 0
+
+        }
+
+        to {
+
+            opacity: 1
+
+        }
+
+    }
+
     &:hover &Overlay {
 
         opacity: 1;
+
+    }
+
+    &Img {
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        border-radius: 8px;
 
     }
 

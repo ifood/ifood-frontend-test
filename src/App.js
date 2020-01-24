@@ -12,10 +12,10 @@ import _lang from 'lodash/lang'
 import Icons from 'components/Icon/Icons'
 import Icon from 'components/Icon/Icon'
 import Button from 'components/Button/Button'
-import Menu from 'layout/Menu/Menu'
 import Header from 'layout/Header/Header'
 import PlaylistList from 'components/Playlist/PlaylistList'
 import Modal from 'components/Modal/Modal'
+import Confirm from 'components/Confirm/Confirm'
 
 /* */
 
@@ -34,6 +34,8 @@ class App extends React.Component {
         super()
 
         this.state = {
+
+            ready : false,
 
             wrapperScrollTop : 0,
             featured : {
@@ -65,7 +67,7 @@ class App extends React.Component {
 
                     country : 'BR',
                     locale: 'pt_BR',
-                    theme : 'light'
+                    theme: 'theme--dark'
 
                 },
                 temp : {}
@@ -77,6 +79,8 @@ class App extends React.Component {
         }
 
         /* */
+
+        this.ConfirmRef = React.createRef()
 
         this.AppViewRef = React.createRef()
         this.AppWrapperRef = React.createRef()
@@ -103,6 +107,7 @@ class App extends React.Component {
         })
 
         viewportObserver.observe(this.AppViewRef.current)
+
         /* */
 
         // await this.initPlayer().then(() => {
@@ -160,11 +165,16 @@ class App extends React.Component {
 
             })
 
+        } else {
+
+            // this.setThemeColor(this.state.settings.data.theme)
+            //
+            // await this.init()
+
         }
 
         /* */
 
-        await this.init()
         this.initTimer()
 
     }
@@ -176,7 +186,7 @@ class App extends React.Component {
         prevDataSettings = JSON.parse(JSON.stringify(prevState.settings.data)),
         newDataSettings = JSON.parse(JSON.stringify(this.state.settings.data))
 
-        if(prevDataSettings.theme !== newDataSettings.theme){
+        if((prevDataSettings.theme !== newDataSettings.theme) || !this.state.ready){
 
             this.setThemeColor(newDataSettings.theme)
 
@@ -187,13 +197,25 @@ class App extends React.Component {
 
         /* */
 
-        if(!_lang.isEqual(prevDataSettings, newDataSettings)) await this.init()
+        if(!_lang.isEqual(prevDataSettings, newDataSettings) || !this.state.ready){
+
+            await this.init()
+
+        }
 
     }
 
     /* */
 
     init(){
+
+        this.setState({
+
+            ready : true
+
+        })
+
+        /* */
 
         return Promise.resolve().then(() => {
 
@@ -209,7 +231,11 @@ class App extends React.Component {
 
         }).catch(error => {
 
-            console.log(error)
+            this.ConfirmRef.current.open(`<b>Ocorreu um erro ao solicitar os dados do Spotify</b></br>${ error.response.data.error.message }`, `Abrir Preferências`).then(() => {
+
+                this.openSettings(false)
+
+            }).catch(() => false)
 
         })
 
@@ -325,7 +351,8 @@ class App extends React.Component {
                     title : val.name,
                     img : val.images[0].url,
                     owner : val.owner.display_name,
-                    uri: val.uri || val.external_urls.spotify
+                    uri: val.uri || val.external_urls.spotify,
+                    type: 'playlist'
 
                 }
 
@@ -392,7 +419,8 @@ class App extends React.Component {
                     title : val.name,
                     img : val.images[0].url,
                     owner : val.artists.map(({ name }) => name).join(', '),
-                    uri: val.uri || val.external_urls.spotify
+                    uri: val.uri || val.external_urls.spotify,
+                    type: 'album'
 
                 }
 
@@ -468,7 +496,7 @@ class App extends React.Component {
 
     }
 
-    openSettings(){
+    openSettings(close){
 
         this.setState({
 
@@ -476,7 +504,8 @@ class App extends React.Component {
 
                 ...this.state.settings,
                 temp : this.state.settings.data,
-                active : true
+                active : true,
+                close : !!close
 
             }
 
@@ -538,6 +567,8 @@ class App extends React.Component {
     applySettings(){
 
         this.setState({
+
+            ready: false,
 
             settings : {
 
@@ -626,7 +657,7 @@ class App extends React.Component {
 
                     opaque={ this.state.wrapperScrollTop > 10 }
 
-                    openSettings={ () => this.openSettings() }
+                    openSettings={ () => this.openSettings(true) }
                     searchInput={ () => this.handleTimer() }
 
                     search={
@@ -665,6 +696,7 @@ class App extends React.Component {
                     <Modal
 
                     title="Preferências"
+                    close={ this.state.settings.close }
 
                     colXl="4"
                     colLg="6"
@@ -814,6 +846,8 @@ class App extends React.Component {
                     </Modal>
 
                 </CSSTransition>
+
+                <Confirm ref={ this.ConfirmRef } />
 
             </div>
 
