@@ -48,7 +48,7 @@
 
         :global(.theme--dark) & {
 
-            background: darken($md-grey-900, 2%);
+            background: $md-grey-900;
 
         }
 
