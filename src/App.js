@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import {
 
@@ -23,6 +25,11 @@ import styles from 'App.module.scss'
 
 /* */
 
+import { AddPlaylistItems } from 'state/actions/Playlist'
+import { SetAuth } from 'state/actions/Auth'
+
+/* */
+
 const STORAGE_SETTINGS_HASH = 'kdap3WzWLmO5eeZuY4U8Opx9wJwnXKW7'
 
 /* */
@@ -36,6 +43,7 @@ class App extends React.Component {
         this.state = {
 
             ready : false,
+            error : false,
 
             wrapperScrollTop : 0,
             featured : {
@@ -47,6 +55,14 @@ class App extends React.Component {
             },
 
             releases : {
+
+                message : null,
+                loading : true,
+                items: []
+
+            },
+
+            categories : {
 
                 message : null,
                 loading : true,
@@ -67,10 +83,13 @@ class App extends React.Component {
 
                     country : 'BR',
                     locale: 'pt_BR',
-                    theme: 'theme--dark'
+                    theme: 'theme--dark',
+                    timestamp : null
 
                 },
-                temp : {}
+                temp : {},
+                filters : [],
+                loaded : false
 
             },
 
@@ -207,70 +226,6 @@ class App extends React.Component {
 
     /* */
 
-    init(){
-
-        this.setState({
-
-            ready : true
-
-        })
-
-        /* */
-
-        return Promise.resolve().then(() => {
-
-            return this.getToken()
-
-        }).then(() => {
-
-            return this.getFeaturedPlaylists()
-
-        }).then(() => {
-
-            return this.getNewReleases()
-
-        }).catch(error => {
-
-            this.ConfirmRef.current.open(`<b>Ocorreu um erro ao solicitar os dados do Spotify</b></br>${ error.response.data.error.message }`, `Abrir Preferências`).then(() => {
-
-                this.openSettings(false)
-
-            }).catch(() => false)
-
-        })
-
-    }
-
-    initTimer(){
-
-        this.timer = setInterval(() => {
-
-            this.init()
-
-        }, 30000)
-
-    }
-
-    initPlayer(){
-
-        return new Promise((resolve, reject) => {
-
-            const script = document.createElement('script')
-
-            /* */
-
-            script.type = 'text/javascript'
-            // script.async = true
-            script.src = 'https://sdk.scdn.co/spotify-player.js'
-
-            script.onload = () => resolve()
-
-            document.body.appendChild(script)
-
-        })
-
-    }
-
     async getToken(){
 
         this.setState({
@@ -280,15 +235,18 @@ class App extends React.Component {
                 ...this.state.featured,
                 loading: true
 
-            }
-
-        })
-
-        this.setState({
+            },
 
             releases : {
 
                 ...this.state.releases,
+                loading: true
+
+            },
+
+            categories : {
+
+                ...this.state.categories,
                 loading: true
 
             }
@@ -309,6 +267,67 @@ class App extends React.Component {
 
     }
 
+    async getFilterOptions(){
+
+        if(!this.state.settings.loaded){
+
+            return axios.get(`http://www.mocky.io/v2/5a25fade2e0000213aa90776`).then(response => {
+
+                let options = response.data.filters
+
+                options.forEach(val => {
+
+                    switch(val.id){
+
+                        case 'locale' :
+                        case 'country' :
+                        case 'timestamp' :
+
+                            this.setState({
+
+                                settings : {
+
+                                    ...this.state.settings,
+                                    filters : [
+
+                                        ...this.state.settings.filters,
+                                        val
+
+                                    ]
+
+                                }
+
+                            })
+
+                        break;
+
+                    }
+
+                })
+
+                // this.setState({
+                //
+                //     auth : response.data.data.access_token
+                //
+                // })
+
+                this.setState({
+
+                    settings : {
+
+                        ...this.state.settings,
+                        loaded : true
+
+                    }
+
+                })
+
+            })
+
+        }
+
+    }
+
     async getFeaturedPlaylists(){
 
         this.setState({
@@ -326,10 +345,11 @@ class App extends React.Component {
 
         let query = [
 
-            `locale=${this.state.settings.data.locale}`,
-            `country=${this.state.settings.data.country}`
+            this.state.settings.data.locale && `locale=${this.state.settings.data.locale}`,
+            this.state.settings.data.country && `country=${this.state.settings.data.country}`,
+            this.state.settings.data.timestamp && `timestamp=${this.state.settings.data.timestamp}:00`
 
-        ].join('&')
+        ].filter(Boolean).join('&')
 
         /* */
 
@@ -395,9 +415,9 @@ class App extends React.Component {
 
         let query = [
 
-            `country=${this.state.settings.data.country}`
+            this.state.settings.data.country && `country=${this.state.settings.data.country}`
 
-        ].join('&')
+        ].filter(Boolean).join('&')
 
         /* */
 
@@ -439,6 +459,164 @@ class App extends React.Component {
                 }
 
             })
+
+        })
+
+    }
+
+    async getCategories(){
+
+        this.setState({
+
+            categories : {
+
+                ...this.state.categories,
+                loading: true
+
+            }
+
+        })
+
+        /* */
+
+        let query = [
+
+            this.state.settings.data.country && `country=${this.state.settings.data.country}`,
+            this.state.settings.data.locale && `locale=${this.state.settings.data.locale}`
+
+        ].filter(Boolean).join('&')
+
+        /* */
+
+        return axios.get(`https://api.spotify.com/v1/browse/categories?${query}&limit=50`, {
+
+            headers : {
+
+                Authorization: `Bearer ${this.state.auth}`
+
+            }
+
+        }).then(response => {
+
+            let items = response.data.categories.items.map(val => {
+
+                return {
+
+                    id: val.id,
+                    title : val.name,
+                    owner : 'Spotify',
+                    img : val.icons[0].url,
+                    uri: val.href,
+                    type: 'category'
+
+                }
+
+            })
+
+            items.unshift({})
+
+            this.setState({
+
+                categories : {
+
+                    message : this.getCategoriesMessage(this.state.settings.data.locale),
+                    loading: false,
+                    items
+
+                }
+
+            })
+
+        })
+
+    }
+
+    /* */
+
+    init(){
+
+        this.setState({
+
+            ready : true,
+            error : false
+
+        })
+
+        /* */
+
+        return Promise.resolve().then(() => {
+
+            return this.getToken()
+
+        }).then(() => {
+
+            this.getFilterOptions()
+
+        }).then(() => {
+
+            return this.getFeaturedPlaylists()
+
+        }).then(() => {
+
+            return this.getNewReleases()
+
+        }).then(() => {
+
+            return this.getCategories()
+
+        }).then(() => {
+
+            this.props.AddPlaylistItems([
+
+                ...this.state.featured.items,
+                ...this.state.releases.items,
+                ...this.state.categories.items
+
+            ])
+
+        }).catch(error => {
+
+            this.setState({
+
+                error: true
+
+            })
+
+            this.ConfirmRef.current.open(`<b>Ocorreu um erro ao solicitar os dados do Spotify</b></br>${ error.response.data.error.message }`, `Abrir Preferências`).then(() => {
+
+                this.openSettings(false)
+
+            }).catch(() => false)
+
+        })
+
+    }
+
+    initTimer(){
+
+        this.timer = setInterval(() => {
+
+            this.init()
+
+        }, 30000)
+
+    }
+
+    initPlayer(){
+
+        return new Promise((resolve, reject) => {
+
+            const script = document.createElement('script')
+
+            /* */
+
+            script.type = 'text/javascript'
+            // script.async = true
+            script.src = 'https://sdk.scdn.co/spotify-player.js'
+
+            script.onload = () => resolve()
+
+            document.body.appendChild(script)
 
         })
 
@@ -535,19 +713,7 @@ class App extends React.Component {
 
         /* */
 
-        if(type === 'country'){
-
-            temp.country = e.target.value
-
-        } else if(type === 'locale'){
-
-            temp.locale = e.target.value
-
-        } else if(type === 'theme'){
-
-            temp.theme = e.target.value
-
-        }
+        temp[type] = e.target.value
 
         /* */
 
@@ -568,7 +734,7 @@ class App extends React.Component {
 
         this.setState({
 
-            ready: false,
+            ready: !this.state.error,
 
             settings : {
 
@@ -586,8 +752,6 @@ class App extends React.Component {
         })
 
     }
-
-    /* */
 
     getNewReleasesMessage(locale){
 
@@ -612,15 +776,40 @@ class App extends React.Component {
 
             break;
 
+            default :
+
+                return 'Lançamentos'
+
+        }
+
+    }
+
+    getCategoriesMessage(locale){
+
+        switch(locale){
+
+            case 'en_AU' :
             case 'en_US' :
 
-                return 'Nuevos Lanzamientos'
+                return 'Categories'
+
+            break;
+
+            case 'de_DE' :
+
+                return 'Kategorien'
+
+            break;
+
+            case 'fr_FR' :
+
+                return 'Catégories'
 
             break;
 
             default :
 
-                return 'Lançamentos'
+                return 'Categorias'
 
         }
 
@@ -660,17 +849,6 @@ class App extends React.Component {
                     openSettings={ () => this.openSettings(true) }
                     searchInput={ () => this.handleTimer() }
 
-                    search={
-
-                        [
-
-                            ...this.state.featured.items,
-                            ...this.state.releases.items
-
-                        ]
-
-                    }
-
                     />
 
                     <div className={ styles.AppView } ref={ this.AppViewRef }>
@@ -679,6 +857,7 @@ class App extends React.Component {
 
                         <PlaylistList data={ this.state.featured } viewport={ this.state.viewport.width } />
                         <PlaylistList data={ this.state.releases } viewport={ this.state.viewport.width } />
+                        <PlaylistList data={ this.state.categories } viewport={ this.state.viewport.width } />
 
                     </div>
 
@@ -709,37 +888,126 @@ class App extends React.Component {
 
                         <div className={ styles.AppSettings }>
 
-                            <div className="row mb-4">
+                            <form action="#" onSubmit={ e => {
 
-                                <div className="col">
+                                e.preventDefault()
 
-                                    <div className="row align-items-center">
+                                this.applySettings()
 
-                                        <div className="col-12 col-sm">
+                            }}>
 
-                                            <label htmlFor="country" className={ styles.FormLabel }>Exibir playlists do país</label>
+                                {
+
+                                    this.state.settings.filters.map((val, index) => (
+
+                                        <div className="row mb-4" key={ index }>
+
+                                            <div className="col">
+
+                                                <div className="row align-items-center">
+
+                                                    <div className="col-12 col-sm">
+
+                                                        <label htmlFor={ val.id } className={ styles.FormLabel }>{ val.name }</label>
+
+                                                    </div>
+
+                                                    <div className="col-12 col-sm-5">
+
+                                                        {
+
+                                                            ['country', 'locale'].includes(val.id) ? (
+
+                                                                <select
+
+                                                                className={ styles.FormInput }
+                                                                name={ val.id }
+                                                                value={ this.state.settings.temp[val.id] }
+                                                                onChange={ e => this.changeSettings(e, val.id) }
+
+                                                                >
+
+                                                                    {
+
+                                                                        val.values.map((val, index) => (
+
+                                                                            <option value={ val.value } key={ index }>{ val.name }</option>
+
+                                                                        ))
+
+                                                                    }
+
+                                                                </select>
+
+                                                            ) : null
+
+                                                        }
+
+                                                        {
+
+                                                            ['timestamp'].includes(val.id) ? (
+
+                                                                <input
+
+                                                                className={ styles.FormInput }
+                                                                value={ this.state.settings.temp[val.id] }
+                                                                onChange={ e => this.changeSettings(e, val.id) }
+
+                                                                type="datetime-local"
+
+                                                                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+
+                                                                />
+
+                                                            ) : null
+
+                                                        }
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
 
                                         </div>
 
-                                        <div className="col-12 col-sm-5">
+                                    ))
 
-                                            <select
+                                }
 
-                                            className={ styles.FormInput }
-                                            name="country"
-                                            value={ this.state.settings.temp.country }
-                                            onChange={ e => this.changeSettings(e, 'country') }
+                                <div className="row mb-4">
 
-                                            >
+                                    <div className="col">
 
-                                                <option value="AU">Austrália</option>
-                                                <option value="DE">Alemanha</option>
-                                                <option value="BR">Brasil</option>
-                                                <option value="PT">Portugal</option>
-                                                <option value="en_US">EUA</option>
-                                                <option value="RU">Rússia</option>
+                                        <div className="row align-items-center">
 
-                                            </select>
+                                            <div className="col-12 col-sm">
+
+                                                <label htmlFor="theme" className={ styles.FormLabel }>Cor do Tema</label>
+
+                                            </div>
+
+                                            <div className="col-12 col-sm-5">
+
+                                                <select
+
+                                                className={ styles.FormInput }
+                                                name="theme"
+
+                                                value={ this.state.settings.temp.theme }
+                                                onChange={ e => this.changeSettings(e, 'theme') }
+
+                                                >
+
+                                                    <option value="theme--light">Claro</option>
+                                                    <option value="theme--light--high-contrast">Claro (Alto Contraste)</option>
+                                                    <option value="theme--dark">Escuro</option>
+                                                    <option value="theme--dark--high-contrast">Escuro (Alto Contraste)</option>
+
+                                                </select>
+
+
+                                            </div>
 
                                         </div>
 
@@ -747,99 +1015,17 @@ class App extends React.Component {
 
                                 </div>
 
-                            </div>
+                                <div className="row justify-content-center mt-5">
 
-                            <div className="row mb-4">
+                                    <div className="col-auto">
 
-                                <div className="col">
-
-                                    <div className="row align-items-center">
-
-                                        <div className="col-12 col-sm">
-
-                                            <label htmlFor="locale" className={ styles.FormLabel }>Idioma</label>
-
-                                        </div>
-
-                                        <div className="col-12 col-sm-5">
-
-                                            <select
-
-                                            className={ styles.FormInput }
-                                            name="locale"
-
-                                            value={ this.state.settings.temp.locale }
-                                            onChange={ e => this.changeSettings(e, 'locale') }
-
-                                            >
-
-                                                <option value="en_AU">en_AU</option>
-                                                <option value="de_DE">de_DE</option>
-                                                <option value="pt_BR">pt_BR</option>
-                                                <option value="fr_FR">fr_FR</option>
-                                                <option value="en_US">en_US</option>
-                                                <option value="es_AR">es_AR</option>
-
-                                            </select>
-
-
-                                        </div>
+                                        <Button label="Salvar" color="green" type="submit" />
 
                                     </div>
 
                                 </div>
 
-                            </div>
-
-                            <div className="row mb-4">
-
-                                <div className="col">
-
-                                    <div className="row align-items-center">
-
-                                        <div className="col-12 col-sm">
-
-                                            <label htmlFor="theme" className={ styles.FormLabel }>Cor do Tema</label>
-
-                                        </div>
-
-                                        <div className="col-12 col-sm-5">
-
-                                            <select
-
-                                            className={ styles.FormInput }
-                                            name="theme"
-
-                                            value={ this.state.settings.temp.theme }
-                                            onChange={ e => this.changeSettings(e, 'theme') }
-
-                                            >
-
-                                                <option value="theme--light">Claro</option>
-                                                <option value="theme--light--high-contrast">Claro (Alto Contraste)</option>
-                                                <option value="theme--dark">Escuro</option>
-                                                <option value="theme--dark--high-contrast">Escuro (Alto Contraste)</option>
-
-                                            </select>
-
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div className="row justify-content-center mt-5">
-
-                                <div className="col-auto">
-
-                                    <Button label="Salvar" color="green" onClick={ () => this.applySettings() } />
-
-                                </div>
-
-                            </div>
+                            </form>
 
                         </div>
 
@@ -857,4 +1043,6 @@ class App extends React.Component {
 
 }
 
-export default App
+/* */
+
+export default connect(null, dispatch => bindActionCreators({ AddPlaylistItems, SetAuth }, dispatch))(App)

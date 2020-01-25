@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {
 
     CSSTransition
@@ -44,7 +45,7 @@ class Header extends React.Component {
 
             let keywords = this.state.search.split(' ').filter(Boolean)
 
-            let items = this.props.search.filter(val => val.id).filter(({ title, owner }) => TextSearch.textMatch(keywords, title) || TextSearch.textMatch(keywords, owner))
+            let items = this.props.playlistItems.filter(val => val.id).filter(({ title, owner }) => TextSearch.textMatch(keywords, title) || TextSearch.textMatch(keywords, owner))
 
             return items
 
@@ -275,4 +276,10 @@ class Header extends React.Component {
 
 }
 
-export default Header
+/* */
+
+export default connect(store => ({
+
+    playlistItems : store.playlistItems
+
+}))(Header)

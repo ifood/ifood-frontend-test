@@ -282,24 +282,32 @@ class PlaylistList extends React.Component {
 
                                         >{ !this.props.data.loading ? val.title : <>&nbsp;</> }</div>
 
-                                        <div className={
+                                        {
 
-                                            [
+                                            (val.owner || this.props.data.loading) && (
 
-                                                styles.PlaylistListOwner,
-                                                this.props.data.loading && styles.PlaylistListOwnerLoading
+                                                <div className={
 
-                                            ].join(' ')
+                                                    [
+
+                                                        styles.PlaylistListOwner,
+                                                        this.props.data.loading && styles.PlaylistListOwnerLoading
+
+                                                    ].join(' ')
+
+                                                }
+
+                                                style={{
+
+                                                   animationDelay : `${(0.4 * index)}s`
+
+                                               }}
+
+                                                >{ !this.props.data.loading ? `de ${val.owner}` : <>&nbsp;</> }</div>
+
+                                            )
 
                                         }
-
-                                        style={{
-
-                                           animationDelay : `${(0.4 * index)}s`
-
-                                       }}
-
-                                        >{ !this.props.data.loading ? `de ${val.owner}` : <>&nbsp;</> }</div>
 
                                     </li>
 

@@ -2,12 +2,14 @@ import { combineReducers } from 'redux'
 
 /* */
 
-import { CartReducer } from './Cart'
+import { PlaylistReducer } from './Playlist'
+import { AuthReducer } from './Auth'
 
 /* */
 
 export const Reducers = combineReducers({
 
-     cart: CartReducer
+    auth : AuthReducer,
+    playlistItems : PlaylistReducer
 
 })

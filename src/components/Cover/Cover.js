@@ -1,5 +1,6 @@
 import React from 'react'
-// import axios from 'axios'
+import { connect } from 'react-redux'
+import axios from 'axios'
 
 /* */
 
@@ -72,7 +73,7 @@ class Cover extends React.Component {
 
                     }
 
-                    href={ this.props.data.uri } target="_blank" rel="noopener noreferrer"
+                    href={ this.props.data.type === 'category' ? `https://open.spotify.com/genre/${this.props.data.id}` : this.props.data.uri } target="_blank" rel="noopener noreferrer"
 
                     title={ `Tocar ${(this.props.data.type === 'album' ? 'álbum' : 'playlist')} "${this.props.data.title}" de ${this.props.data.owner}` }
 
