@@ -38,6 +38,8 @@
   },
   "devDependencies": {
     "concurrently": "^5.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "material-colors": "^1.2.6",
     "node-sass": "^4.13.0",
     "nodemon": "^2.0.2"
