@@ -255,7 +255,7 @@ class App extends React.Component {
 
         /* */
 
-        return axios.get(`http://192.168.15.20:8888`).then(response => {
+        return axios.get(`http://localhost:8888`).then(response => {
 
             this.setState({
 
