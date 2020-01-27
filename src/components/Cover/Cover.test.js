@@ -44,30 +44,33 @@ let itemCategory = {
 
 describe('Cover.js', () => {
 
-    it('Renderiza as informações de playlist corretamente', () => {
+    it('Renderiza as informações de playlist', () => {
 
         const component = shallow(<Cover data={ itemPlaylist } />)
 
         expect(component.find('.CoverImg').prop('alt')).toBe(`Imagem de capa da playlist "${itemPlaylist.title}" de ${itemPlaylist.owner}`)
         expect(component.find('.CoverOverlayPlay').prop('title')).toBe(`Tocar playlist "${itemPlaylist.title}" de ${itemPlaylist.owner}`)
+        expect(component.find('.CoverOverlayPlay').prop('href')).toBe(itemPlaylist.uri)
 
     })
 
-    it('Renderiza as informações de álbum corretamente', () => {
+    it('Renderiza as informações de álbum', () => {
 
         const component = shallow(<Cover data={ itemAlbum } />)
 
         expect(component.find('.CoverImg').prop('alt')).toBe(`Imagem de capa do álbum "${itemAlbum.title}" de ${itemAlbum.owner}`)
         expect(component.find('.CoverOverlayPlay').prop('title')).toBe(`Tocar álbum "${itemAlbum.title}" de ${itemAlbum.owner}`)
+        expect(component.find('.CoverOverlayPlay').prop('href')).toBe(itemAlbum.uri)
 
     })
 
-    it('Renderiza as informações de categoria corretamente', () => {
+    it('Renderiza as informações de categoria', () => {
 
         const component = shallow(<Cover data={ itemCategory } />)
 
         expect(component.find('.CoverImg').prop('alt')).toBe(`Imagem de capa da playlist "${itemCategory.title}" de ${itemCategory.owner}`)
         expect(component.find('.CoverOverlayPlay').prop('title')).toBe(`Tocar playlist "${itemCategory.title}" de ${itemCategory.owner}`)
+        expect(component.find('.CoverOverlayPlay').prop('href')).toBe(`https://open.spotify.com/genre/${itemCategory.id}`)
 
     })
 
