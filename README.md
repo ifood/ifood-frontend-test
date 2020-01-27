@@ -24,4 +24,4 @@ Na visualização, cada capa de album, playlist ou categoria possui um link para
 
 Todas os dados retornados pelas requisições, ficam disponíveis na busca no cabeçalho. Essa busca possibilita a localização de dados por palavra chave e relevância dos termos em cada registro (Ex. Caso a busca seja por "maria", serão exibidos todos os resultados que possuam a palavra "maria", porém se a busca for por "maria bethania", serão exibidos todos os resultados que possuam as palavras "maria" e "bethania" na mesma sequencia ou vice versa)
 
-No cabeçalho, ao lado da imagem de usuário, existe um botão de "Preferências", onde é possível alterar as opções de filtro da API, além de alterar o tema da aplicação para versões clara e escura com ou sem alto contraste.
+No cabeçalho, ao lado da imagem de usuário, existe um botão de "Preferências", onde é possível alterar as opções de filtro da API, além de alterar o tema da aplicação para versões clara e escura com ou sem alto contraste..
