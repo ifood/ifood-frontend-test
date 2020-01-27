@@ -1,0 +1,2 @@
+export const ADD_PLAYLIST_ITEMS = 'ADD_PLAYLIST_ITEMS'
+export const SET_AUTH = 'SET_AUTH'

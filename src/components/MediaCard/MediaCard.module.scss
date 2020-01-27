@@ -1,0 +1,64 @@
+@import 'scss/components.scss';
+
+/* */
+
+.card {
+
+    padding: $theme-padding;
+
+    &Cover {
+
+        $size: 80px;
+
+        width: $size;
+        height: $size;
+
+        border-radius: 8px;
+
+    }
+
+    &Title {
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(16);
+        line-height: 1;
+        font-weight: 600;
+        color: $md-grey-800;
+
+        :global(.theme--dark) &,
+        :global(.theme--dark--high-contrast) & {
+
+            color: white;
+
+        }
+
+    }
+
+    &Owner {
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(12);
+        font-weight: 400;
+        color: rgba(black, .5);
+
+        :global(.theme--dark) & {
+
+            color: rgba(white, .5);
+
+        }
+
+        :global(.theme--light--high-contrast) & {
+
+            color: black;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            color: white;
+
+        }
+
+    }
+
+}

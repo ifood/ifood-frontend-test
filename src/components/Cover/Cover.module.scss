@@ -1,0 +1,190 @@
+@import 'scss/components.scss';
+
+.Cover {
+
+    position: relative;
+
+    padding-bottom: 100%;
+
+    background: rgba(white, .05) no-repeat center;
+    background-size: cover;
+
+    border-radius: 8px;
+
+    animation: fadein .3s ease;
+
+    @keyframes fadein {
+
+        from {
+
+            opacity: 0
+
+        }
+
+        to {
+
+            opacity: 1
+
+        }
+
+    }
+
+    &:hover &Overlay {
+
+        opacity: 1;
+
+    }
+
+    &Img {
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        border-radius: 8px;
+
+    }
+
+    &Overlay {
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: rgba(black, .5);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        opacity: 0;
+
+        border-radius: 7px;
+
+        transition: .2s ease;
+        transition-property: opacity;
+
+        :global(.theme--light--high-contrast) & {
+
+            background: black;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            background: white;
+
+        }
+
+        &Play {
+
+            $size: 80px;
+
+            width: $size;
+            height: $size;
+
+            border-radius: $size / 2;
+            border: 2px solid white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            transition: .2s ease;
+            transition-property: border-color;
+
+            :global(.theme--dark--high-contrast) & {
+
+                border-color: black;
+
+            }
+
+            &:hover {
+
+                border-color: $md-red-500
+
+                :global(.theme--light--high-contrast) & {
+
+                    border-color: white
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    border-color: black
+
+                }
+
+            }
+
+            &:hover &Icon {
+
+                fill: $md-red-500;
+
+                :global(.theme--light--high-contrast) & {
+
+                    fill: white
+
+                }
+
+                :global(.theme--dark--high-contrast) & {
+
+                    fill: black
+
+                }
+
+            }
+
+            &Icon {
+
+                $size: $size - ($size / 3);
+
+                width: $size;
+                height: $size;
+
+                fill: white;
+
+                transition: .2s ease;
+                transition-property: fill;
+
+                :global(.theme--dark--high-contrast) & {
+
+                    fill: black;
+
+                }
+
+            }
+
+            &Small {
+
+                $size: $size / 2;
+
+                width: $size;
+                height: $size;
+
+            }
+
+            &Small &Icon {
+
+                $size: $size - ($size / 3);
+
+                width: $size;
+                height: $size;
+
+            }
+
+        }
+
+    }
+
+}

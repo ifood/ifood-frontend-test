@@ -1,0 +1,69 @@
+@import 'components.scss';
+
+.Form {
+
+    &Label {
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(16);
+        font-weight: 600;
+        color: black;
+
+        :global(.theme--dark) &,
+        :global(.theme--dark--high-contrast) & {
+
+            color: white;
+
+        }
+
+    }
+
+    &Input {
+
+        width: 100%;
+
+        padding: $theme-padding / 2;
+
+        font-family: 'Barlow', sans-serif;
+        @include font-sizer(15);
+        font-weight: 400;
+        color: black;
+
+        border-radius: 10px;
+        border: 2px solid $md-grey-100;
+
+        background: white;
+
+        :global(.theme--dark) & {
+
+            color: white;
+
+            background: $md-grey-900;
+
+            border-color: $md-grey-700;
+
+        }
+
+        :global(.theme--light--high-contrast) & {
+
+            color: black;
+
+            background: $md-yellow-500;
+
+            border-color: black;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            color: white;
+
+            background: black;
+
+            border-color: white;
+
+        }
+
+    }
+
+}

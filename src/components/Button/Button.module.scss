@@ -1,0 +1,99 @@
+@import 'scss/components.scss';
+
+/* */
+
+.button {
+
+    $min-size: 40px;
+    $min-size-small: 30px;
+
+    /* */
+
+    position: relative;
+
+    min-width: $min-size;
+    min-height: $min-size;
+
+    background: transparent;
+
+    font-family: 'Barlow', sans-serif;
+    @include font-sizer(12);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+
+    cursor: pointer;
+
+    outline: none !important;
+
+    border: none;
+    border-radius: 50px;
+
+    z-index: 1;
+
+    :global(.theme--dark--high-contrast) & {
+
+        color: black !important;
+
+    }
+
+    &--padding {
+
+        padding: 0 $theme-padding * 2;
+
+    }
+
+    &--small {
+
+        min-height: $min-size-small
+
+    }
+
+    &__background {
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        border-radius: 50px;
+
+        z-index: -1;
+
+        :global(.theme--light--high-contrast) & {
+
+            background: black !important;
+
+        }
+
+        :global(.theme--dark--high-contrast) & {
+
+            background: white !important;
+
+        }
+
+    }
+
+    &:hover &__background {
+
+        filter: brightness(0.9);
+
+    }
+
+    &:active &__background {
+
+        filter: brightness(0.8);
+
+    }
+
+    &:not(:last-of-type){
+
+        margin-right: $theme-padding;
+
+    }
+
+}

@@ -1,29 +1,27 @@
-# iFood Frontend Test
+## SpotiFood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+### Como iniciar o projeto
 
-## Business rules
+- Rode no terminal `npm install` para instalar as dependências (caso não tenha feito)
+- Rode no terminal `npm start`
+- Aproveite :)
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+A aplicação estará rodando em localhost na porta `3000` e o servidor do token estará rodando em paralelo na porta `8888`.
 
-## Hints or Constraints
+### Aplicação
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+Foi criado um pequeno servidor de HTTP com Node.js para fazer a requisição ao Spotify e retornar o token de acesso aos dados das APIs.
 
-## Non functional requirements
+A aplicação, ao ser inicializada, faz uma requisição ao servidor do token. Esse token quando retornado é gravado no estado e usado nas requisições subsequentes para a Spotify API que retorna os seguintes dados:
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+- Playlists em destaque
+- Lançamentos em destaque
+- Categorias de gêneros
+
+A cada 30 segundos, caso não haja nenhuma interação do usuário com a aplicação, uma nova requisição é realizada repetindo todos os passos acima, para atualizar as informações.
+
+Na visualização, cada capa de album, playlist ou categoria possui um link para abrir o Spotify possibilitando tocar as musicas dos albuns e playlists ou visualizar as playlists de uma determinada categoria.
+
+Todos os dados retornados pelas requisições, ficam disponíveis na busca no cabeçalho. Essa busca possibilita a localização de dados por palavra chave e relevância dos termos em cada registro (Ex. Caso a busca seja por "maria", serão exibidos todos os resultados que possuam a palavra "maria", porém se a busca for por "maria bethania", serão exibidos todos os resultados que possuam as palavras "maria" e "bethania" na mesma sequencia ou vice versa)
+
+No cabeçalho, ao lado da imagem de usuário, existe um botão de "Preferências", onde é possível alterar as opções de filtro da API, além de alterar o tema da aplicação para versões clara e escura com ou sem alto contraste.
