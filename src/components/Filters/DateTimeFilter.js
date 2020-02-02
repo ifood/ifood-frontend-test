@@ -30,7 +30,6 @@ function DateTimeFilter({ filterName, id }) {
       name={id}
       component={renderDateTimerField}
       label={filterName}
-      margin="normal"
     />
   );
 }

@@ -13,6 +13,7 @@ const renderTextField = ({
     placeholder={label}
     {...input}
     {...custom}
+    fullWidth
   />
 );
 
@@ -27,7 +28,6 @@ function InputFilter({ filterName, id }) {
       name={id}
       component={renderTextField}
       label={filterName}
-      margin="normal"
     />
   );
 }
