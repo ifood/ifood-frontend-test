@@ -3,6 +3,7 @@ import { CircularProgress } from '@material-ui/core';
 import { reduxForm } from 'redux-form';
 import { getFilters } from '../../services';
 import SelectFilter from './SelectFilter';
+import DateTimeFilter from './DateTimeFilter';
 
 class Filters extends Component {
   state = {
@@ -19,10 +20,31 @@ class Filters extends Component {
     switch (filter.id) {
       case 'locale':
         return (
-          <SelectFilter filterName={filter.name} values={filter.values} key={filter.id} />
+          <SelectFilter
+            filterName={filter.name}
+            values={filter.values}
+            key={filter.id}
+            id={filter.id}
+          />
         );
       case 'country':
-        return <SelectFilter filterName={filter.name} values={filter.values} key={filter.id} />;
+        return (
+          <SelectFilter
+            filterName={filter.name}
+            values={filter.values}
+            key={filter.id}
+            id={filter.id}
+          />
+        );
+      case 'timestamp':
+        return (
+          <DateTimeFilter
+            filterName={filter.name}
+            validations={filter.validations}
+            key={filter.id}
+            id={filter.id}
+          />
+        );
       default:
         // throw Error('Invalid filter type');
     }

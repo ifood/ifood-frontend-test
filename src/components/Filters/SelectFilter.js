@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
@@ -19,10 +20,11 @@ const renderSelectField = ({
   input,
   children,
   className,
+  label,
   ...custom
 }) => (
   <FormControl className={className.formControl}>
-    <InputLabel htmlFor="age-native-simple">{input.name}</InputLabel>
+    <InputLabel>{label}</InputLabel>
     <Select
       native
       {...input}
@@ -37,15 +39,17 @@ const renderSelectField = ({
 );
 
 renderSelectField.propTypes = {
+  label: PropTypes.string,
   children: PropTypes.node,
   input: PropTypes.object,
   className: PropTypes.object,
 };
 
-function SelectFilter({ values, filterName }) {
+function SelectFilter({ values, id, filterName }) {
   const classes = useStyles();
   return (
-    <Field name={filterName} component={renderSelectField} className={classes}>
+    <Field name={id} component={renderSelectField} className={classes} label={filterName}>
+      <option />
       {values.map(({ value, name }, index) => (
         <option value={value} key={index}>{name}</option>))}
     </Field>
@@ -53,6 +57,7 @@ function SelectFilter({ values, filterName }) {
 }
 
 SelectFilter.propTypes = {
+  id: PropTypes.string,
   filterName: PropTypes.string,
   values: PropTypes.array,
 };
