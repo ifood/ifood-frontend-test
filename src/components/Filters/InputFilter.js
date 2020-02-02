@@ -3,41 +3,38 @@ import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-const renderDateTimerField = ({
+const renderTextField = ({
   label,
   input,
-  className,
   ...custom
 }) => (
   <TextField
-    InputLabelProps={{ shrink: true }}
-    type="datetime-local"
     label={label}
+    placeholder={label}
     {...input}
     {...custom}
   />
 );
 
-renderDateTimerField.propTypes = {
-  className: PropTypes.object,
+renderTextField.propTypes = {
   label: PropTypes.string,
   input: PropTypes.object,
 };
 
-function DateTimeFilter({ filterName, id }) {
+function InputFilter({ filterName, id }) {
   return (
     <Field
       name={id}
-      component={renderDateTimerField}
+      component={renderTextField}
       label={filterName}
       margin="normal"
     />
   );
 }
 
-DateTimeFilter.propTypes = {
-  id: PropTypes.string,
+InputFilter.propTypes = {
   filterName: PropTypes.string,
+  id: PropTypes.string,
 };
 
-export default DateTimeFilter;
+export default InputFilter;

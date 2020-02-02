@@ -48,7 +48,12 @@ renderSelectField.propTypes = {
 function SelectFilter({ values, id, filterName }) {
   const classes = useStyles();
   return (
-    <Field name={id} component={renderSelectField} className={classes} label={filterName}>
+    <Field
+      name={id}
+      component={renderSelectField}
+      className={classes}
+      label={filterName}
+    >
       <option />
       {values.map(({ value, name }, index) => (
         <option value={value} key={index}>{name}</option>))}

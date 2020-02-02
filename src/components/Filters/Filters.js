@@ -4,6 +4,7 @@ import { reduxForm } from 'redux-form';
 import { getFilters } from '../../services';
 import SelectFilter from './SelectFilter';
 import DateTimeFilter from './DateTimeFilter';
+import InputFilter from './InputFilter';
 
 class Filters extends Component {
   state = {
@@ -45,8 +46,26 @@ class Filters extends Component {
             id={filter.id}
           />
         );
+      case 'limit':
+        return (
+          <InputFilter
+            filterName={filter.name}
+            validations={filter.validations}
+            key={filter.id}
+            id={filter.id}
+          />
+        );
+      case 'offset':
+        return (
+          <InputFilter
+            filterName={filter.name}
+            validations={filter.validations}
+            key={filter.id}
+            id={filter.id}
+          />
+        );
       default:
-        // throw Error('Invalid filter type');
+        throw Error('Invalid filter type');
     }
   }
 
