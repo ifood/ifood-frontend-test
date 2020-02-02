@@ -3,7 +3,7 @@ import './App.css';
 import Login from './pages/Login';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { setAccessToken, getAccessToken } from './utils/accessToken';
+import { getAccessToken, setAccessToken } from './utils/accessToken';
 
 const theme = createMuiTheme({
   palette: {
@@ -15,7 +15,7 @@ const theme = createMuiTheme({
 
 export default class App extends Component {
   state = {
-    hasToken: false
+    hasAccessToken: false
   };
 
   componentDidMount() {
@@ -25,20 +25,19 @@ export default class App extends Component {
   handleAccessToken() {
     const accessToken = getAccessToken();
 
-    if (!accessToken) {
-      return setAccessToken();
+    if (accessToken) {
+      setAccessToken(accessToken);
+      this.setState({ hasAccessToken: true });
     }
-
-    return this.setState({ hasToken: true });
   }
 
   render() {
-    const { hasToken } = this.state;
+    const { hasAccessToken } = this.state;
     return (
       <div className="App">
         <ThemeProvider theme={theme}>
-          {hasToken && <h1>Welcome</h1>}
-          {!hasToken && <Login />}
+          {hasAccessToken && <h1>Welcome</h1>}
+          {!hasAccessToken && <Login />}
         </ThemeProvider>
       </div>
     );
