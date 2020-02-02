@@ -6,20 +6,29 @@ import {
   InputLabel,
   FormControl,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 200,
+  },
+}));
 
 const renderSelectField = ({
   input,
   children,
+  className,
   ...custom
 }) => (
-  <FormControl>
-    <InputLabel htmlFor="age-native-simple">Locale</InputLabel>
+  <FormControl className={className.formControl}>
+    <InputLabel htmlFor="age-native-simple">{input.name}</InputLabel>
     <Select
       native
       {...input}
       {...custom}
       inputProps={{
-        name: 'Locale',
+        name: input.name,
       }}
     >
       {children}
@@ -30,21 +39,22 @@ const renderSelectField = ({
 renderSelectField.propTypes = {
   children: PropTypes.node,
   input: PropTypes.object,
+  className: PropTypes.object,
 };
 
-function LocaleFilter({ values, filterName, id }) {
+function SelectFilter({ values, filterName }) {
+  const classes = useStyles();
   return (
-    <Field name={filterName} component={renderSelectField} id={id}>
+    <Field name={filterName} component={renderSelectField} className={classes}>
       {values.map(({ value, name }, index) => (
         <option value={value} key={index}>{name}</option>))}
     </Field>
   );
 }
 
-LocaleFilter.propTypes = {
-  id: PropTypes.string,
+SelectFilter.propTypes = {
   filterName: PropTypes.string,
   values: PropTypes.array,
 };
 
-export default LocaleFilter;
+export default SelectFilter;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { CircularProgress } from '@material-ui/core';
 import { reduxForm } from 'redux-form';
 import { getFilters } from '../../services';
-import LocaleFilter from './LocaleFilter';
+import SelectFilter from './SelectFilter';
 
 class Filters extends Component {
   state = {
@@ -18,7 +18,11 @@ class Filters extends Component {
   renderFilters(filter) {
     switch (filter.id) {
       case 'locale':
-        return <LocaleFilter id={filter.id} filterName={filter.name} values={filter.values} />;
+        return (
+          <SelectFilter filterName={filter.name} values={filter.values} key={filter.id} />
+        );
+      case 'country':
+        return <SelectFilter filterName={filter.name} values={filter.values} key={filter.id} />;
       default:
         // throw Error('Invalid filter type');
     }
