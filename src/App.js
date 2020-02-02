@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import Login from './pages/Login';
 import { getAccessToken, setAccessToken } from './utils/accessToken';
+import Login from './pages/Login';
+import Playlists from './pages/Playlists';
 
 const theme = createMuiTheme({
   palette: {
@@ -13,7 +14,7 @@ const theme = createMuiTheme({
   },
 });
 
-export default class App extends Component {
+class App extends Component {
   state = {
     hasAccessToken: false,
   };
@@ -36,10 +37,12 @@ export default class App extends Component {
     return (
       <div className="App">
         <ThemeProvider theme={theme}>
-          {hasAccessToken && <h1>Welcome</h1>}
+          {hasAccessToken && <Playlists />}
           {!hasAccessToken && <Login />}
         </ThemeProvider>
       </div>
     );
   }
 }
+
+export default App;
