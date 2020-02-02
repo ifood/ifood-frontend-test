@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 import Login from './pages/Login';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
 import { getAccessToken, setAccessToken } from './utils/accessToken';
 
 const theme = createMuiTheme({
   palette: {
     secondary: {
-      main: '#1ED760'
-    }
-  }
+      main: '#1ED760',
+    },
+  },
 });
 
 export default class App extends Component {
   state = {
-    hasAccessToken: false
+    hasAccessToken: false,
   };
 
   componentDidMount() {

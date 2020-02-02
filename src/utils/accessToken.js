@@ -1,7 +1,7 @@
+/* eslint-disable camelcase */
 import qs from 'qs';
 
-const _clearAccessTokenUrl = () =>
-  window.history.pushState(null, '', window.location.href.split('#')[0]);
+const _clearAccessTokenUrl = () => window.history.pushState(null, '', window.location.href.split('#')[0]);
 
 export const getAccessToken = () => {
   const accessToken = localStorage.getItem('accessToken');
@@ -15,6 +15,6 @@ export const getAccessToken = () => {
   return accessToken;
 };
 
-export const setAccessToken = accessToken => {
+export const setAccessToken = (accessToken) => {
   localStorage.setItem('accessToken', accessToken);
 };
