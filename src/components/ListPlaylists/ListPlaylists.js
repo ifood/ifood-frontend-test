@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-  Container, GridList, GridListTile, IconButton, GridListTileBar, ListSubheader, CircularProgress,
+  GridList, GridListTile, IconButton, GridListTileBar, ListSubheader, CircularProgress,
 } from '@material-ui/core';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
 import { getFeaturedPlaylists } from '../../services/services';
 
@@ -18,20 +19,14 @@ class ListPlaylists extends Component {
   async listFeaturedPlaylists() {
     const playlists = await getFeaturedPlaylists();
     this.setState({ isLoading: false, playlists });
-
-    console.log('playlists', playlists);
   }
 
   render() {
     const { isLoading, playlists } = this.state;
-    console.log(playlists);
     return (
       <>
         {isLoading && <CircularProgress />}
         <GridList cellHeight={180}>
-          <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-            <ListSubheader component="div">December</ListSubheader>
-          </GridListTile>
           {!isLoading && playlists.map((playlist, index) => (
             <GridListTile key={index}>
               <img src={playlist.images[0].url} alt={playlist.name} />
@@ -39,14 +34,12 @@ class ListPlaylists extends Component {
                 title={playlist.name}
                 subtitle={(
                   <span>
-                    by:
-                    {' '}
                     {playlist.description}
                   </span>
 )}
                 actionIcon={(
-                  <IconButton aria-label={`info about ${playlist.name}`}>
-                    {/* <InfoIcon /> */}
+                  <IconButton aria-label={`Link para a playlist ${playlist.name}`}>
+                    <OpenInNewIcon />
                   </IconButton>
               )}
               />

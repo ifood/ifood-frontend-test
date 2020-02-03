@@ -7,6 +7,9 @@ import Playlists from './pages/Playlists';
 
 const theme = createMuiTheme({
   palette: {
+    primary: {
+      main: '#EA1D2C',
+    },
     secondary: {
       main: '#1ED760',
     },
