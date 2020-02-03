@@ -3,16 +3,16 @@ import { Button, Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { SPOTIFY_CLIENT_ID } from '../constants';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   button: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(5),
   },
   h4: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   h2: {
-    fontWeight: '500'
-  }
+    fontWeight: '500',
+  },
 }));
 
 export default function Login() {

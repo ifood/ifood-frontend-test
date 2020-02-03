@@ -1,0 +1,5 @@
+.content {
+  flex-grow: 1;
+  height: 100vh;
+  overflow: auto;
+}

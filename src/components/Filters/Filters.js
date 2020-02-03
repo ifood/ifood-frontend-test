@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CircularProgress, List, ListItem } from '@material-ui/core';
 import { reduxForm } from 'redux-form';
-import { getFilters } from '../../services';
+import { getFilters } from '../../services/services';
 import SelectFilter from './SelectFilter';
 import DateTimeFilter from './DateTimeFilter';
 import InputFilter from './InputFilter';

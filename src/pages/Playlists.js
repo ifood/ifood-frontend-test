@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import Filters from '../components/Filters/Filters';
+import Filters from '../components/Filters';
+import ListPlaylists from '../components/ListPlaylists';
+import './Playlists.css';
 
-
-class Playlists extends Component {
-  render() {
-    return (
-      <Drawer variant="permanent">
-        <Filters />
-      </Drawer>
-    );
-  }
-}
+const Playlists = () => (
+  <>
+    <Drawer variant="permanent">
+      <Filters />
+    </Drawer>
+    <main className="content">
+      <ListPlaylists />
+    </main>
+  </>
+);
 
 export default Playlists;
