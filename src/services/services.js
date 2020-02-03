@@ -13,7 +13,7 @@ export const getFeaturedPlaylists = async () => {
     const { data } = await Axios.get('https://api.spotify.com/v1/browse/featured-playlists',
       { headers: { Authorization: `Bearer ${accessToken}` } });
 
-    return data;
+    return data.playlists.items;
   } catch (error) {
     if (error.response.status === 401) {
       return removeAccessToken();

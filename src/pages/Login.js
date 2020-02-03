@@ -13,17 +13,26 @@ const useStyles = makeStyles((theme) => ({
   h2: {
     fontWeight: '500',
   },
+  main: {
+    textAlign: 'center',
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+  },
 }));
 
 export default function Login() {
   const classes = useStyles();
   return (
-    <Container component="main">
+    <Container component="main" className={classes.main}>
       <Typography variant="h2" className={classes.h2}>
         SPOTIFOOD
       </Typography>
       <Typography variant="h4" className={classes.h4}>
-        Best playlists to enjoy your food
+        Top playlists para aproveitar sua comida!
       </Typography>
       <Button
         href={`https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=http://localhost:3000&response_type=token`}
