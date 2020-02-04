@@ -18,16 +18,20 @@ class ListPlaylists extends Component {
 
   componentDidMount() {
     this.listFeaturedPlaylists();
+
+    this.pollingInterval = setInterval(() => this.listFeaturedPlaylists(), 30000);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { formValues } = this.props;
-
     if (this.state !== prevState) {
       return;
     }
 
-    this.listFeaturedPlaylists(formValues);
+    this.listFeaturedPlaylists();
+  }
+
+  componentWillUnmount() {
+    this.pollingInterval = null;
   }
 
   _handleNameChange = (event) => {
@@ -35,8 +39,10 @@ class ListPlaylists extends Component {
     this.setState({ name: value });
   }
 
-  async listFeaturedPlaylists(params = {}) {
-    const playlists = await getFeaturedPlaylists(params);
+  async listFeaturedPlaylists() {
+    const { formValues } = this.props;
+
+    const playlists = await getFeaturedPlaylists(formValues);
     this.setState({ isLoading: false, playlists });
   }
 
