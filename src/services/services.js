@@ -7,6 +7,14 @@ export const getFilters = async () => {
   return data.filters;
 };
 
+const _handleFeaturedPlaylists = ({ response }) => {
+  if (response.status === 401) {
+    return removeAccessToken();
+  }
+
+  return response;
+};
+
 export const getFeaturedPlaylists = async (params = {}) => {
   const accessToken = localStorage.getItem('accessToken');
 
@@ -19,10 +27,6 @@ export const getFeaturedPlaylists = async (params = {}) => {
 
     return data.playlists.items;
   } catch (error) {
-    if (error.response.status === 401) {
-      return removeAccessToken();
-    }
-
-    throw Error(error);
+    return _handleFeaturedPlaylists(error);
   }
 };
