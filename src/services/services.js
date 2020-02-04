@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { toast } from 'react-toastify';
 import { removeAccessToken } from '../utils/accessToken';
 
 export const getFilters = async () => {
@@ -7,12 +8,11 @@ export const getFilters = async () => {
   return data.filters;
 };
 
-const _handleFeaturedPlaylists = ({ response }) => {
+const _handleFeaturedPlaylistsError = ({ response }) => {
   if (response.status === 401) {
-    return removeAccessToken();
+    removeAccessToken();
   }
-
-  return response;
+  toast.error(`[${response.status}] - ${response.data.error.message}`);
 };
 
 export const getFeaturedPlaylists = async (params = {}) => {
@@ -27,6 +27,7 @@ export const getFeaturedPlaylists = async (params = {}) => {
 
     return data.playlists.items;
   } catch (error) {
-    return _handleFeaturedPlaylists(error);
+    _handleFeaturedPlaylistsError(error);
+    return [];
   }
 };
