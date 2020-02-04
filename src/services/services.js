@@ -7,11 +7,15 @@ export const getFilters = async () => {
   return data.filters;
 };
 
-export const getFeaturedPlaylists = async () => {
+export const getFeaturedPlaylists = async (params = {}) => {
   const accessToken = localStorage.getItem('accessToken');
+
   try {
     const { data } = await Axios.get('https://api.spotify.com/v1/browse/featured-playlists',
-      { headers: { Authorization: `Bearer ${accessToken}` } });
+      {
+        params,
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
 
     return data.playlists.items;
   } catch (error) {
