@@ -6,6 +6,7 @@ import {
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
+import { PLAYLISTS_REFRESH_INTERVAL } from '../../constants';
 
 import { getFeaturedPlaylists } from '../../services/services';
 
@@ -19,7 +20,9 @@ class ListPlaylists extends Component {
   componentDidMount() {
     this.listFeaturedPlaylists();
 
-    this.pollingInterval = setInterval(() => this.listFeaturedPlaylists(), 30000);
+    this.pollingInterval = setInterval(
+      () => this.listFeaturedPlaylists(), PLAYLISTS_REFRESH_INTERVAL,
+    );
   }
 
   componentDidUpdate(prevProps, prevState) {
