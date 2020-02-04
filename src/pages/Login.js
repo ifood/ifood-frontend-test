@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { SPOTIFY_CLIENT_ID } from '../constants';
+import { SPOTIFY_CLIENT_ID, REDIRECT_URL } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -35,7 +35,7 @@ export default function Login() {
         Top playlists para aproveitar sua comida!
       </Typography>
       <Button
-        href={`https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=http://localhost:3000&response_type=token`}
+        href={`https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${REDIRECT_URL}&response_type=token`}
         variant="contained"
         color="secondary"
         size="large"

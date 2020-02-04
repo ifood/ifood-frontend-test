@@ -19,7 +19,7 @@ class ListPlaylists extends Component {
     this.listFeaturedPlaylists();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     const { formValues } = this.props;
 
     if (this.state !== prevState) {
