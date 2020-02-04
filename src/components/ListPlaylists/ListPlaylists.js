@@ -48,37 +48,35 @@ class ListPlaylists extends Component {
 
     return (
       <>
+        <TextField
+          margin="normal"
+          label="Buscar playlists"
+          variant="outlined"
+          onChange={this._handleNameChange}
+          fullWidth
+        />
         {isLoading && <CircularProgress />}
         {!isLoading && (
-          <>
-            <TextField
-              margin="normal"
-              label="Buscar playlists"
-              variant="outlined"
-              onChange={this._handleNameChange}
-              fullWidth
-            />
-            <GridList cellHeight={300}>
-              {playlists.filter(_filterPlaylistsByName).map((playlist, index) => (
-                <GridListTile key={index}>
-                  <img src={playlist.images[0].url} alt={playlist.name} />
-                  <GridListTileBar
-                    title={playlist.name}
-                    subtitle={(
-                      <span>
-                        {playlist.description}
-                      </span>
-                    )}
-                    actionIcon={(
-                      <IconButton aria-label={`Link para a playlist ${playlist.name}`}>
-                        <OpenInNewIcon />
-                      </IconButton>
-                    )}
-                  />
-                </GridListTile>
-              ))}
-            </GridList>
-          </>
+          <GridList cellHeight={300}>
+            {playlists.filter(_filterPlaylistsByName).map((playlist, index) => (
+              <GridListTile key={index}>
+                <img src={playlist.images[0].url} alt={playlist.name} />
+                <GridListTileBar
+                  title={playlist.name}
+                  subtitle={(
+                    <span>
+                      {playlist.description}
+                    </span>
+                  )}
+                  actionIcon={(
+                    <IconButton aria-label={`Link para a playlist ${playlist.name}`}>
+                      <OpenInNewIcon />
+                    </IconButton>
+                  )}
+                />
+              </GridListTile>
+            ))}
+          </GridList>
         )}
       </>
     );
