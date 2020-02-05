@@ -29,6 +29,7 @@ class App extends Component {
 
   handleAccessToken() {
     const accessToken = getAccessToken();
+    console.log(accessToken);
 
     if (accessToken) {
       setAccessToken(accessToken);

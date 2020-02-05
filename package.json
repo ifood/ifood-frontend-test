@@ -27,8 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
-    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix"
+    "deploy": "gh-pages -d build"
   },
   "husky": {
     "hooks": {
