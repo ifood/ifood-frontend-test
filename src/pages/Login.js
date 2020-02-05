@@ -35,7 +35,7 @@ export default function Login() {
         Top playlists para aproveitar sua comida!
       </Typography>
       <Button
-        href={`https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${REDIRECT_URL}&response_type=token`}
+        href={`https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URL}`}
         variant="contained"
         color="secondary"
         size="large"
