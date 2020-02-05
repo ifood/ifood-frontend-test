@@ -2,6 +2,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import moment from 'moment';
 
 const renderDateTimerField = ({
   label,
@@ -24,12 +25,13 @@ renderDateTimerField.propTypes = {
   input: PropTypes.object,
 };
 
-function DateTimeFilter({ filterName, id }) {
+function DateTimeFilter({ filterName, id, validation }) {
   return (
     <Field
       name={id}
       component={renderDateTimerField}
       label={filterName}
+      parse={(value) => moment(value).toISOString(validation.pattern)}
     />
   );
 }
@@ -37,6 +39,7 @@ function DateTimeFilter({ filterName, id }) {
 DateTimeFilter.propTypes = {
   id: PropTypes.string,
   filterName: PropTypes.string,
+  validation: PropTypes.object,
 };
 
 export default DateTimeFilter;

@@ -46,7 +46,7 @@ class Filters extends Component {
     return (
       <DateTimeFilter
         filterName={filter.name}
-        validations={filter.validations}
+        validation={filter.validation}
         key={filter.id}
         id={filter.id}
       />
