@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { CircularProgress, List, ListItem } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import {
+  CircularProgress, List, ListItem, Button,
+} from '@material-ui/core';
 import { reduxForm } from 'redux-form';
 import { getFilters } from '../../services/services';
 import SelectFilter from './SelectFilter';
@@ -52,6 +55,8 @@ class Filters extends Component {
 
   render() {
     const { filters, isLoadingFilters } = this.state;
+    const { reset, pristine } = this.props;
+
     return (
       <List>
         {isLoadingFilters && <CircularProgress />}
@@ -60,10 +65,26 @@ class Filters extends Component {
             {this.renderFilters(filter)}
           </ListItem>
         ))}
+        <ListItem>
+          <Button
+            onClick={reset}
+            disabled={pristine}
+            color="primary"
+            variant="contained"
+            fullWidth
+          >
+            Limpar filtros
+          </Button>
+        </ListItem>
       </List>
     );
   }
 }
+
+Filters.propTypes = {
+  reset: PropTypes.func,
+  pristine: PropTypes.bool,
+};
 
 export default reduxForm({
   form: 'FILTERS_FORM',
