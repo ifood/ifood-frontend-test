@@ -14,6 +14,7 @@ const renderTextField = ({
     {...input}
     {...custom}
     fullWidth
+    type="number"
   />
 );
 
