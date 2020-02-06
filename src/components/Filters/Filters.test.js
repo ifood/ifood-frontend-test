@@ -1,5 +1,7 @@
 import React from 'react';
 import shallow from 'enzyme/shallow';
+import { CircularProgress } from '@material-ui/core';
+
 import { RawFilters } from './Filters';
 import SelectField from '../Fields/SelectField';
 import InputField from '../Fields/InputField';
@@ -22,7 +24,7 @@ const setup = (overrideProps) => shallow(
 describe('Filters', () => {
   it('should render CircularProgress when getting filters', () => {
     const wrapper = setup();
-    expect(wrapper.find("[data-test-id='circular-progress']").exists()).toBe(true);
+    expect(wrapper.find(CircularProgress).exists()).toBe(true);
   });
 
   it('should render Filters when get filters', async () => {

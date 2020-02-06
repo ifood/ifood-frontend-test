@@ -59,7 +59,7 @@ export class RawFilters extends Component {
 
     return (
       <List>
-        {isLoadingFilters && <CircularProgress data-test-id="circular-progress" />}
+        {isLoadingFilters && <CircularProgress />}
         {!isLoadingFilters && filters.map((filter) => (
           <ListItem key={filter.id} data-test-id="filter-item">
             {this.renderFilters(filter)}
