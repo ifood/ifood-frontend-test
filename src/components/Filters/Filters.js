@@ -9,7 +9,7 @@ import SelectField from '../Fields/SelectField';
 import DateTimeField from '../Fields/DateTimeFIeld';
 import InputField from '../Fields/InputField';
 
-class Filters extends Component {
+export class RawFilters extends Component {
   state = {
     filters: null,
     isLoadingFilters: true,
@@ -59,9 +59,9 @@ class Filters extends Component {
 
     return (
       <List>
-        {isLoadingFilters && <CircularProgress />}
+        {isLoadingFilters && <CircularProgress data-test-id="circular-progress" />}
         {!isLoadingFilters && filters.map((filter) => (
-          <ListItem key={filter.id}>
+          <ListItem key={filter.id} data-test-id="filter-item">
             {this.renderFilters(filter)}
           </ListItem>
         ))}
@@ -81,11 +81,11 @@ class Filters extends Component {
   }
 }
 
-Filters.propTypes = {
+RawFilters.propTypes = {
   reset: PropTypes.func,
   pristine: PropTypes.bool,
 };
 
 export default reduxForm({
   form: 'FILTERS_FORM',
-})(Filters);
+})(RawFilters);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
+import * as accessToken from './utils/accessToken';
 
 const setup = () => shallow(
   <App />,
@@ -15,5 +16,12 @@ describe('<App/>', () => {
     const wrapper = setup();
 
     expect(wrapper.find('Login').exists()).toBe(true);
+  });
+
+  it('should render Playlists when user has access token', () => {
+    accessToken.getAccessToken = jest.fn(() => 'fakeToken');
+    const wrapper = setup();
+
+    expect(wrapper.find('Playlists').exists()).toBe(true);
   });
 });
