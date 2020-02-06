@@ -23,7 +23,7 @@ renderTextField.propTypes = {
   input: PropTypes.object,
 };
 
-function InputFilter({ filterName, id }) {
+function InputField({ filterName, id }) {
   return (
     <Field
       name={id}
@@ -33,9 +33,9 @@ function InputFilter({ filterName, id }) {
   );
 }
 
-InputFilter.propTypes = {
+InputField.propTypes = {
   filterName: PropTypes.string,
   id: PropTypes.string,
 };
 
-export default InputFilter;
+export default InputField;

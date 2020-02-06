@@ -25,7 +25,7 @@ renderDateTimerField.propTypes = {
   input: PropTypes.object,
 };
 
-function DateTimeFilter({ filterName, id, validation }) {
+function DateTimeField({ filterName, id, validation }) {
   return (
     <Field
       name={id}
@@ -36,10 +36,10 @@ function DateTimeFilter({ filterName, id, validation }) {
   );
 }
 
-DateTimeFilter.propTypes = {
+DateTimeField.propTypes = {
   id: PropTypes.string,
   filterName: PropTypes.string,
   validation: PropTypes.object,
 };
 
-export default DateTimeFilter;
+export default DateTimeField;

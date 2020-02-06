@@ -44,7 +44,7 @@ renderSelectField.propTypes = {
   className: PropTypes.object,
 };
 
-function SelectFilter({ values, id, filterName }) {
+function SelectField({ values, id, filterName }) {
   const classes = useStyles();
   return (
     <Field
@@ -60,10 +60,10 @@ function SelectFilter({ values, id, filterName }) {
   );
 }
 
-SelectFilter.propTypes = {
+SelectField.propTypes = {
   id: PropTypes.string,
   filterName: PropTypes.string,
   values: PropTypes.array,
 };
 
-export default SelectFilter;
+export default SelectField;

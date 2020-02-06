@@ -5,9 +5,9 @@ import {
 } from '@material-ui/core';
 import { reduxForm } from 'redux-form';
 import { getFilters } from '../../services/services';
-import SelectFilter from './SelectFilter';
-import DateTimeFilter from './DateTimeFilter';
-import InputFilter from './InputFilter';
+import SelectField from '../Fields/SelectField';
+import DateTimeField from '../Fields/DateTimeFIeld';
+import InputField from '../Fields/InputField';
 
 class Filters extends Component {
   state = {
@@ -23,7 +23,7 @@ class Filters extends Component {
   renderFilters(filter) {
     if (filter.id === 'locale' || filter.id === 'country') {
       return (
-        <SelectFilter
+        <SelectField
           filterName={filter.name}
           values={filter.values}
           key={filter.id}
@@ -34,7 +34,7 @@ class Filters extends Component {
 
     if (filter.id === 'limit' || filter.id === 'offset') {
       return (
-        <InputFilter
+        <InputField
           filterName={filter.name}
           validations={filter.validations}
           key={filter.id}
@@ -44,7 +44,7 @@ class Filters extends Component {
     }
 
     return (
-      <DateTimeFilter
+      <DateTimeField
         filterName={filter.name}
         validation={filter.validation}
         key={filter.id}
