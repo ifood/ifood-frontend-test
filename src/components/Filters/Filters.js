@@ -36,7 +36,7 @@ export class RawFilters extends Component {
       return (
         <InputField
           filterName={filter.name}
-          validations={filter.validations}
+          validation={filter.validation}
           key={filter.id}
           id={filter.id}
         />
