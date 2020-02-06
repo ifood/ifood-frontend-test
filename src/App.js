@@ -3,7 +3,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { getAccessToken, setAccessToken } from './utils/accessToken';
+import { getAccessToken, setAccessToken, removeAccessToken } from './utils/accessToken';
 import Login from './pages/Login';
 import Playlists from './pages/Playlists';
 
@@ -27,6 +27,11 @@ class App extends Component {
     this.handleAccessToken();
   }
 
+  handleLogout = () => {
+    removeAccessToken();
+    this.setState({ hasAccessToken: false });
+  }
+
   handleAccessToken() {
     const accessToken = getAccessToken();
 
@@ -42,7 +47,7 @@ class App extends Component {
     return (
       <div className="App">
         <ThemeProvider theme={theme}>
-          {hasAccessToken && <Playlists />}
+          {hasAccessToken && <Playlists handleLogout={this.handleLogout} />}
           {!hasAccessToken && <Login />}
         </ThemeProvider>
         <ToastContainer position="bottom-right" />

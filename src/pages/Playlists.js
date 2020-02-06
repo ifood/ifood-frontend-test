@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   makeStyles,
   useTheme,
@@ -9,6 +10,8 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  List,
+  Button,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -54,10 +57,22 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     display: 'flex',
   },
+  drawerContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+  },
+  logoutButton: {
+    margin: '20px',
+    display: 'flex',
+    alignItems: 'flex-end',
+    height: '100%',
+  },
 }));
 
 
-function Playlists() {
+function Playlists(props) {
+  const { handleLogout } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -67,9 +82,19 @@ function Playlists() {
   };
 
   const drawer = (
-    <div>
+    <div className={classes.drawerContent}>
       <div className={classes.toolbar} />
       <Filters />
+      <List className={classes.logoutButton}>
+        <Button
+          onClick={handleLogout}
+          variant="contained"
+          color="primary"
+          fullWidth
+        >
+          Sair
+        </Button>
+      </List>
     </div>
   );
 
@@ -129,5 +154,9 @@ function Playlists() {
     </div>
   );
 }
+
+Playlists.propTypes = {
+  handleLogout: PropTypes.object.isRequired,
+};
 
 export default Playlists;

@@ -41,7 +41,7 @@ export default function Login() {
         size="large"
         className={classes.button}
       >
-        Login com Spotify
+        Entrar com Spotify
       </Button>
     </Container>
   );
