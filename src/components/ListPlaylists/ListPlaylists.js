@@ -10,7 +10,7 @@ import { PLAYLISTS_REFRESH_INTERVAL } from '../../constants';
 
 import { getFeaturedPlaylists } from '../../services/services';
 
-class ListPlaylists extends Component {
+export class RawListPlaylists extends Component {
   state = {
     isLoading: true,
     playlists: [],
@@ -92,10 +92,10 @@ class ListPlaylists extends Component {
   }
 }
 
-ListPlaylists.propTypes = {
+RawListPlaylists.propTypes = {
   formValues: PropTypes.object,
 };
 
 export default connect((state) => ({
   formValues: getFormValues('FILTERS_FORM')(state),
-}))(ListPlaylists);
+}))(RawListPlaylists);
