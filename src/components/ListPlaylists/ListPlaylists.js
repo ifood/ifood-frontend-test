@@ -71,15 +71,20 @@ export class RawListPlaylists extends Component {
               <GridListTile key={index}>
                 <img src={playlist.images[0].url} alt={playlist.name} />
                 <GridListTileBar
+                  aria-label="Nome da playlist"
                   title={playlist.name}
                   subtitle={(
-                    <span>
+                    <span aria-label="Descrição da playlist">
                       {playlist.description}
                     </span>
                   )}
                   actionIcon={(
-                    <IconButton aria-label={`Link para a playlist ${playlist.name}`}>
-                      <OpenInNewIcon />
+                    <IconButton
+                      aria-label={`Link para a playlist ${playlist.name}`}
+                      href={playlist.external_urls.spotify}
+                      target="blank"
+                    >
+                      <OpenInNewIcon color="secondary" />
                     </IconButton>
                   )}
                 />
