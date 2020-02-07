@@ -10,7 +10,6 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
-    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "qs": "^6.9.1",
     "react": "^16.12.0",
