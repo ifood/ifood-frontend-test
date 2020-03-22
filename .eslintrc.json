@@ -1,0 +1,25 @@
+{
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"extends": ["plugin:react/recommended", "plugin:prettier/recommended"],
+	"plugins": ["react", "prettier"],
+	"env": {
+		"browser": true
+	},
+	"rules": {
+		"no-unused-vars": [
+			"error",
+			{
+				"args": "none",
+				"ignoreRestSiblings": true
+			}
+		]
+	},
+	"settings": {
+		"react": {
+			"version": "16.9"
+		}
+	}
+}
