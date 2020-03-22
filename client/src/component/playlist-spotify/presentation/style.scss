@@ -1,0 +1,20 @@
+.Title {
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.Link {
+	display: inline-block;
+	opacity: 1;
+	transition: 0.3s;
+
+	&:hover {
+		opacity: 0.6;
+	}
+}
+
+.Card {
+	justify-content: center;
+	display: flex;
+}
