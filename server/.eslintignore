@@ -1,0 +1,6 @@
+.idea/**
+coverage/**
+node_modules/**
+packages/*/lib/**
+packages/*/build/**
+packages/*/node_modules/**

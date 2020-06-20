@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base",
+  "compilerOptions": {
+    "outDir": "build",
+    "baseUrl": "./",
+    "types": [
+      "react",
+      "react-dom",
+      "styled-components",
+      "webpack-env"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "lib/**"
+  ]
+}

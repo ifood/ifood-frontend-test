@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./lib",
+    "rootDirs": [
+      "src",
+      "tests"
+    ],
+    "paths": {
+      "@project": [
+        "src"
+      ]
+    },
+    "types": [
+      "react",
+      "pubsub-js"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "lib/**"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@spotifood/internationalization",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "main-source": "src/index.ts",
+  "typings": "lib/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "i18next": "^19.4.5",
+    "i18next-browser-languagedetector": "^4.2.0",
+    "react": "^16.13.0",
+    "react-i18next": "^11.5.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.23"
+  }
+}

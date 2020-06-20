@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  web:
+    container_name: spotifood_web
+    ports: 
+      - "9000:80"
+    build: client/
+    depends_on: 
+      - server
+  server:
+    container_name: spotifood_server
+    ports:
+      - "5000:5000"
+    build: "server/"
+    depends_on: 
+      - redis
+  redis:
+    image: redis
+    container_name: spotifood_redis
+    ports:
+      - "6379:6379"
