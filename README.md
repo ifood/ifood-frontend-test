@@ -192,8 +192,6 @@ There's a BFF between the front and the spotify and filters API. There are two r
   2. GraphQL DataSources combined to Redis has a amazing caching power.
 However, time-to-leave is 30 seconds in order to fulfill the test requirements. It might help reduce network traffic though. 
 
-## Ifood Test Checklist
-
 ## Running the app!
 ### Requirements
  - Node

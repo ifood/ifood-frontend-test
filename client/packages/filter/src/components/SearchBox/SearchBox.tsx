@@ -1,4 +1,4 @@
-import React, { ReactElement, memo } from 'react'
+import React, { ReactElement } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
@@ -39,4 +39,4 @@ function SearchBox(): ReactElement {
 }
 
 
-export default memo(SearchBox)
+export default SearchBox

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useTheme } from 'styled-components'
-import { ControlOverlay, Tag } from '@spotifood/ui'
+import { ControlOverlay, Tag, Button } from '@spotifood/ui'
 import { FilterType } from '../../types'
 import { Container } from './styles'
 import { FilterTitle } from '../FilterTitle'
@@ -33,9 +33,17 @@ export default function CountryFilter(props: CountryFilterProps): ReactElement {
     <ControlOverlay
       show={showCountry}
       onClose={handleOverlayClose}
-      onAction={handleOverlayAction}
-      actionButtonText={t('filter')}
       palette={theme.filter.color}
+      actionButton={
+        <Button
+          title={t('filtercountrytitle')}
+          primaryColor={theme.filter.color.primary}
+          secondaryColor={theme.filter.color.secondary}
+          onClick={handleOverlayAction}
+        >
+          {t('filter')}
+        </Button>
+      }
     >
       <FilterTitle>{t('country')}</FilterTitle>
       <Container>

@@ -1,18 +1,23 @@
 import React from 'react'
-import { ControlOverlay, Title } from '../src'
+import { ControlOverlay, Title, Button } from '../src'
 
 export default { title: 'ControlOverlay' }
 
 export const standard = () => (
   <ControlOverlay
     show
-    actionButtonText="Close"
-    onAction={() => console.log('action')}
     onClose={() => console.log('close')}
     palette={{
       primary: "#666",
       secondary: "#fff"
     }}
+    actionButton={
+      <Button
+        onClick={() => console.log('close')}
+      >
+        Close
+      </Button>
+    }
   >
   </ControlOverlay>
 )
@@ -20,13 +25,18 @@ export const standard = () => (
 export const withTitle = () => (
   <ControlOverlay
     show
-    actionButtonText="Close"
-    onAction={() => console.log('action')}
     onClose={() => console.log('close')}
     palette={{
       primary: "#ea1d2c",
       secondary: "#fff"
     }}
+    actionButton={
+      <Button
+        onClick={() => console.log('ok')}
+      >
+        Ok
+      </Button>
+    }
   >
     <Title>Overlay Title</Title>
   </ControlOverlay>

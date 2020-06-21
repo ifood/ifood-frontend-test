@@ -1,9 +1,4 @@
 import styled from "styled-components"
-import { Button } from '../Button'
-
-export const ActionButton = styled(Button)`
-  width: 120px;
-`
 
 export const UpperControlSection = styled.div`
   display: flex;
@@ -17,6 +12,10 @@ export const FiltersSection = styled.div`
 export const LowerControlSection = styled.div`
   display: flex;
   justify-content: flex-end;
+
+  > button {
+    width: 120px;
+  }
 `
 
 interface FiltersOverlayContainerProps {

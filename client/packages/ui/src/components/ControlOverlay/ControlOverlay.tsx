@@ -1,31 +1,29 @@
 import React, { ReactElement, ReactNode, memo } from 'react'
 import { CloseIcon } from '../CloseIcon'
+import { ButtonType } from '../Button'
 import {
   FiltersOverlayContainer,
   UpperControlSection,
   FiltersSection,
-  LowerControlSection,
-  ActionButton
+  LowerControlSection
 } from './styles'
 
-export interface ControleOverlayProps {
+export interface ControlOverlayProps {
   show?: boolean;
   onClose?: () => void;
-  onAction?: () => void;
+  actionButton?: ReactElement<ButtonType>;
   children: ReactNode;
-  actionButtonText?: string;
   palette?: {
     primary: string;
     secondary: string;
   };
 }
 
-function ControleOverlay(props: ControleOverlayProps): ReactElement {
+function ControlOverlay(props: ControlOverlayProps): ReactElement {
   const {
     onClose,
-    onAction,
     show = false,
-    actionButtonText,
+    actionButton,
     children,
     palette = {
       primary: '#666',
@@ -47,19 +45,13 @@ function ControleOverlay(props: ControleOverlayProps): ReactElement {
       <FiltersSection>
         {children}
       </FiltersSection>
-      {actionButtonText && onAction && (
+      {actionButton && (
         <LowerControlSection>
-          <ActionButton
-            onClick={onAction}
-            primaryColor={palette.primary}
-            secondaryColor={palette.secondary}
-          >
-            {actionButtonText}
-          </ActionButton>
+          {actionButton}
         </LowerControlSection>
       )}
     </FiltersOverlayContainer>
   )
 }
 
-export default memo(ControleOverlay)
+export default memo(ControlOverlay)
