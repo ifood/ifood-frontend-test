@@ -1,0 +1,7 @@
+{
+  "watch": ["src", "tests"],
+  "execMap": {
+    "ts": "tsc && node build/index.js"
+  },
+  "ext": "ts"
+}

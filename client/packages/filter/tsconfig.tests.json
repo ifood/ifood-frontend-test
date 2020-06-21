@@ -1,0 +1,29 @@
+{
+  "extends": "../../tsconfig.base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "rootDirs": [
+      "src",
+      "tests"
+    ],
+    "paths": {
+      "@project": [
+        "src"
+      ]
+    },
+    "types": [
+      "react",
+      "react-dom",
+      "styled-components",
+      "jest"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "tests/**/*"
+  ],
+  "exclude": [
+    "lib/**"
+  ]
+}

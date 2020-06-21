@@ -1,0 +1,34 @@
+{
+  "name": "@spotifood/shell",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/development.js",
+    "build": "cross-env NODE_ENV=production  webpack --config webpack/production.js"
+  },
+  "dependencies": {
+    "@spotifood/filter": "^0.0.1",
+    "@spotifood/playlists": "^0.0.1",
+    "@spotifood/communication-sdk": "^0.0.1",
+    "@spotifood/internationalization": "^0.0.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@types/styled-components": "^5.1.0",
+    "@types/webpack-env": "^1.15.1",
+    "cross-env": "^7.0.2",
+    "html-webpack-plugin": "^4.0.3",
+    "react-hot-loader": "^4.12.20",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-env": "^0.8.0",
+    "webpack-merge": "^4.2.2"
+  }
+}

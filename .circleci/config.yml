@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@6'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "client/yarn.lock" }}
+      - run:
+          name: install-npm-wee
+          command: cd client && npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "client/yarn.lock" }}
+          paths:
+            - ./client/node_modules
+      - run:
+          name: bootstrap
+          command: cd client && npm run bootstrap
+      - run:
+          name: linter
+          command: cd client && npm run lint
+      - run:
+          name: build
+          command: cd client && npm run build
+      - run:
+          name: test
+          command: cd client && npm run test
