@@ -7,6 +7,7 @@ import {
 import { i18nReducer } from 'react-redux-i18n';
 import thunk from 'redux-thunk';
 
+import authReducer from './reducers/auth';
 import loadingReducer from './reducers/loading';
 
 export default () => {
@@ -14,6 +15,7 @@ export default () => {
     combineReducers(
       {
         i18n: i18nReducer,
+        auth: authReducer,
         loading: loadingReducer,
       },
     ),

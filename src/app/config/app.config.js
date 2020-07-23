@@ -6,4 +6,13 @@ export default {
   },
   timezone: 'America/Sao_Paulo',
   language: 'pt-br',
+  spotify: {
+    authEndpoint: 'https://accounts.spotify.com/authorize',
+    clientId: 'cb35234f6d744330bd6d0316848519a3',
+    redirectUri: 'http://localhost:3000/',
+    scopes: [
+      'user-read-currently-playing',
+      'user-read-playback-state',
+    ],
+  },
 };
