@@ -16,18 +16,21 @@ import Config from '../../app/config/app.config';
 
 const { Content } = Layout;
 
-const Home = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => AuthSelectors.getAuth(state));
 
   useEffect(() => {
-    // if(auth) redirect
-    const _token = getUrlHashAccessToken();
-    if (_token) dispatch(AuthActions.saveAuthentication(_token));
-  }, []);
+    const saveAccessTokenIfExists = () => {
+      const _token = getUrlHashAccessToken();
+      if (_token) dispatch(AuthActions.saveAuthentication(_token));
+    };
+
+    saveAccessTokenIfExists();
+  }, [dispatch]);
 
   return (
-    <Content className="home__container">
+    <Content className="login__container">
       <Row
         type="flex"
         justify="center"
@@ -35,11 +38,11 @@ const Home = () => {
         <Col
           span={6}
         >
-          <Row className="home__logo">
+          <Row className="login__logo">
             <Col>
               <img
-                alt="home logo"
-                className="home__logo__img"
+                alt="login logo"
+                className="login__logo__img"
                 src="/assets/img/LogoAug.png"
               />
             </Col>
@@ -50,8 +53,8 @@ const Home = () => {
                 span={24}
                 className="text-center"
               >
-                <h1 className="home__logo__title">
-                  {I18n.t('routes.home.pageTitle')}
+                <h1 className="login__logo__title">
+                  {I18n.t('routes.login.pageTitle')}
                 </h1>
               </Col>
             </Row>
@@ -62,13 +65,13 @@ const Home = () => {
               >
                 {!auth && (
                 <a
-                  className="home__spotify-button"
+                  className="login__spotify-button"
                   href={`${Config.spotify.authEndpoint}?client_id=${Config.spotify.clientId}`
                   + `&redirect_uri=${Config.spotify.redirectUri}&scope=${Config.spotify.scopes.join(
                     '%20',
                   )}&response_type=token&show_dialog=true`}
                 >
-                  {I18n.t('routes.home.spotifyButton')}
+                  {I18n.t('routes.login.spotifyButton')}
                 </a>
                 )}
               </Col>
@@ -80,4 +83,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Login;

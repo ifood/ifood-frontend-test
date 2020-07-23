@@ -14,7 +14,7 @@ export default {
     },
   },
   routes: {
-    home: {
+    login: {
       url: '/',
       pageTitle: 'Seja bem-vindo ao Spotifood, aqui você encontrará as melhores playlists,'
       + 'faça o seu acesso para continuar',
