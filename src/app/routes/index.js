@@ -4,18 +4,14 @@ import { I18n } from 'react-redux-i18n';
 import Public from './Public';
 import Login from '../../containers/login';
 
-class Content extends React.PureComponent {
-  render() {
-    return (
-      <Router>
-        <Public
-          path={I18n.t('routes.login.url')}
-          container={<Login />}
-          title={`${I18n.t('routes.login.pageTitle')} - ${I18n.t('application.name')}`}
-        />
-      </Router>
-    );
-  }
-}
+const Content = () => (
+  <Router>
+    <Public
+      path={I18n.t('routes.login.url')}
+      container={<Login />}
+      title={`${I18n.t('routes.login.pageTitle')} - ${I18n.t('application.name')}`}
+    />
+  </Router>
+);
 
 export default Content;
