@@ -2,6 +2,7 @@ import { PlaylistActions } from '../actions';
 
 const initialState = {
   list: null,
+  filters: null,
 };
 
 export default (
@@ -14,6 +15,11 @@ export default (
         ...state,
         list: action.payload,
       };
+    case PlaylistActions.ACTION_SAVE_PLAYLIST_FILTERS:
+      return {
+        ...state,
+        filters: action.payload,
+      };
     default:
       return state;
   }
@@ -21,4 +27,8 @@ export default (
 
 export function getPlaylists(state) {
   return state.playlist.list;
+}
+
+export function getPlaylistFilters(state) {
+  return state.playlist.filters;
 }

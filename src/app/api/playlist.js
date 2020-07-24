@@ -6,10 +6,12 @@ export default class PlaylistApi {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      // params: {
-      //   limit: 8,
-      // },
     });
+    return data;
+  }
+
+  static async getPlaylistFilters() {
+    const { data } = await axios.get('http://www.mocky.io/v2/5a25fade2e0000213aa90776');
     return data;
   }
 }
