@@ -1,7 +1,9 @@
 import * as AuthActions from './auth';
+import * as PlaylistActions from './playlist';
 import * as LoadingActions from './loading';
 
 export {
-  LoadingActions,
   AuthActions,
+  PlaylistActions,
+  LoadingActions,
 };

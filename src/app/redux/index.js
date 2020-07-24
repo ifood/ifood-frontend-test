@@ -8,6 +8,7 @@ import { i18nReducer } from 'react-redux-i18n';
 import thunk from 'redux-thunk';
 
 import authReducer from './reducers/auth';
+import playlistReducer from './reducers/playlist';
 import loadingReducer from './reducers/loading';
 
 export default () => {
@@ -16,6 +17,7 @@ export default () => {
       {
         i18n: i18nReducer,
         auth: authReducer,
+        playlist: playlistReducer,
         loading: loadingReducer,
       },
     ),

@@ -20,5 +20,10 @@ export default {
       + 'faça o seu acesso para continuar',
       spotifyButton: 'Login com Spotify',
     },
+    home: {
+      url: '/home',
+      pageTitle: 'As playlists em destaque, estão aqui!',
+      spotifyButton: 'Login com Spotify',
+    },
   },
 };

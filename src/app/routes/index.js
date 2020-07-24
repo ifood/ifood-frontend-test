@@ -3,6 +3,7 @@ import React from 'react';
 import { I18n } from 'react-redux-i18n';
 import Public from './Public';
 import Login from '../../containers/login';
+import Home from '../../containers/home';
 
 const Content = () => (
   <Router>
@@ -10,6 +11,11 @@ const Content = () => (
       path={I18n.t('routes.login.url')}
       container={<Login />}
       title={`${I18n.t('routes.login.pageTitle')} - ${I18n.t('application.name')}`}
+    />
+    <Public
+      path={I18n.t('routes.home.url')}
+      container={<Home />}
+      title={`${I18n.t('routes.home.pageTitle')} - ${I18n.t('application.name')}`}
     />
   </Router>
 );

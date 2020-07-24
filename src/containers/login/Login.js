@@ -7,6 +7,7 @@ import {
 } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { I18n } from 'react-redux-i18n';
+import axios from 'axios';
 
 import { AuthActions } from '../../app/redux/actions';
 import { AuthSelectors } from '../../app/redux/reducers';
@@ -23,7 +24,14 @@ const Login = () => {
   useEffect(() => {
     const saveAccessTokenIfExists = () => {
       const _token = getUrlHashAccessToken();
-      if (_token) dispatch(AuthActions.saveAuthentication(_token));
+      if (_token) {
+        dispatch(AuthActions.saveAuthentication(_token));
+        axios.get('https://api.spotify.com/v1/browse/featured-playlists', {
+          headers: {
+            Authorization: `Bearer ${_token}`,
+          },
+        });
+      }
     };
 
     saveAccessTokenIfExists();
