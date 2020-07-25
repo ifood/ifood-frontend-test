@@ -19,6 +19,9 @@ export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState)
   try {
     dispatch(savePlaylists(null));
     const { auth } = getState().auth;
+
+    if (filters && filters.country && filters.country === 'en_US') filters.country = 'US';
+
     const response = await PlaylistRequests.getPaginated(auth, filters);
     dispatch(savePlaylists(response));
   } catch (err) {
