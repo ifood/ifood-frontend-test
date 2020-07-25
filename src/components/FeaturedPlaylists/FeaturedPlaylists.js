@@ -26,7 +26,7 @@ const FeaturedPlaylists = () => {
           xxl={{ span: 6 }}
         >
           {featuredPlaylists && (
-          <h3 className="home__header__title">{featuredPlaylists.message}</h3>
+          <h3 className="header__title">{featuredPlaylists.message}</h3>
           )}
         </Col>
       </Row>
