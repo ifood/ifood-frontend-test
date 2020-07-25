@@ -14,12 +14,13 @@ export const savePlaylistFilters = (payload) => ({
   payload,
 });
 
-export const getFeaturedPlaylists = () => async (dispatch, getState) => {
+export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState) => {
   dispatch(addLoading());
   try {
+    dispatch(savePlaylists(null));
     const { auth } = getState().auth;
-    const response = await PlaylistRequests.getPaginated(auth);
-    dispatch(savePlaylists(response.playlists));
+    const response = await PlaylistRequests.getPaginated(auth, filters);
+    dispatch(savePlaylists(response));
   } catch (err) {
     //
   } finally {

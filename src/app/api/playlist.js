@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 export default class PlaylistApi {
-  static async getPaginated(token) {
+  static async getPaginated(token, filters) {
     const { data } = await axios.get('https://api.spotify.com/v1/browse/featured-playlists', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      params: filters,
     });
     return data;
   }
