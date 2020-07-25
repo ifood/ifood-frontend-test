@@ -7,13 +7,13 @@ import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
 
 import './FeaturedPlaylists.less';
 
-const FeaturedPlaylists = ({ data }) => {
+const FeaturedPlaylists = () => {
   const loading = useSelector((state) => LoadingSelectors.getLoading(state));
   const featuredPlaylists = useSelector((state) => PlaylistSelectors.getPlaylists(state));
 
   return (
     <>
-      {featuredPlaylists && featuredPlaylists.items && featuredPlaylists.items.map((item) => (
+      {featuredPlaylists && featuredPlaylists.playlists && featuredPlaylists.playlists.items.map((item) => (
         <Col
           className="home__playlist"
           key={item.id}
@@ -41,7 +41,7 @@ const FeaturedPlaylists = ({ data }) => {
         </Col>
       ))}
 
-      {!data && loading !== 0 && (
+      {!featuredPlaylists && loading !== 0 && (
       <Col
         span={24}
         className="home__loading"

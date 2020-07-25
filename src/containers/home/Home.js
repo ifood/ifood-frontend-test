@@ -10,6 +10,7 @@ import { Link } from '@reach/router';
 import { AuthActions, PlaylistActions } from '../../app/redux/actions';
 import getUrlHashAccessToken from '../../app/utils/hash';
 
+import AdvancedFiltersComponent from '../../components/AdvancedFiltersComponent/AdvancedFiltersComponent';
 import FeaturedPlaylists from '../../components/FeaturedPlaylists/FeaturedPlaylists';
 
 const { Content } = Layout;
@@ -25,6 +26,7 @@ const Home = () => {
       const _token = getUrlHashAccessToken();
       if (_token) dispatch(AuthActions.saveAuthentication(_token));
       dispatch(PlaylistActions.getFeaturedPlaylists());
+      dispatch(PlaylistActions.getPlaylistFilters());
     };
 
     initialize();
@@ -39,11 +41,12 @@ const Home = () => {
         <Col
           span={20}
         >
-          <Row className="home__header">
-            <Col
-              span={24}
-              className="my-4"
-            >
+          <Row
+            className="home__header my-5"
+            justify="center"
+            align="middle"
+          >
+            <Col span={3}>
               <Link to="/">
                 <img
                   alt="home logo"
@@ -52,15 +55,15 @@ const Home = () => {
                 />
               </Link>
             </Col>
-            <Col span={24}>
+            <Col span={20}>
               <h1 className="home__header__title">As playlists mais quentes estão bem aqui!</h1>
             </Col>
           </Row>
 
-          <Row
-            className="home__container"
-            justify="center"
-          >
+          <Row>
+            <AdvancedFiltersComponent />
+          </Row>
+          <Row>
             <FeaturedPlaylists />
           </Row>
         </Col>
