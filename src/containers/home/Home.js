@@ -40,10 +40,17 @@ const Home = () => {
         >
           <Row
             className="home__header my-5"
-            justify="center"
+            type="flex"
             align="middle"
           >
-            <Col span={3}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 7 }}
+              lg={{ span: 8 }}
+              xl={{ span: 4 }}
+              xxl={{ span: 4 }}
+            >
               <Link to="/">
                 <img
                   alt="home logo"
@@ -52,17 +59,23 @@ const Home = () => {
                 />
               </Link>
             </Col>
-            <Col span={20}>
+            <Col
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 17 }}
+              lg={{ span: 16 }}
+              xl={{ span: 20 }}
+              xxl={{ span: 20 }}
+            >
               <h1 className="home__header__title">As playlists mais quentes estão bem aqui!</h1>
             </Col>
           </Row>
 
-          <Row>
-            <AdvancedFiltersComponent />
-          </Row>
-          <Row>
-            <FeaturedPlaylists />
-          </Row>
+
+          <AdvancedFiltersComponent />
+
+          <FeaturedPlaylists />
+
         </Col>
       </Row>
     </Content>
