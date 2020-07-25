@@ -17,14 +17,7 @@ const FeaturedPlaylists = () => {
         type="flex"
         justify="space-between"
       >
-        <Col
-          xs={{ span: 20 }}
-          sm={{ span: 20 }}
-          md={{ span: 20 }}
-          lg={{ span: 6 }}
-          xl={{ span: 6 }}
-          xxl={{ span: 6 }}
-        >
+        <Col span={20}>
           {featuredPlaylists && (
           <h3 className="header__title">{featuredPlaylists.message}</h3>
           )}
