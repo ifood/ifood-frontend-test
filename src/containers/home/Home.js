@@ -14,10 +14,7 @@ import AdvancedFiltersComponent from '../../components/AdvancedFiltersComponent/
 import FeaturedPlaylists from '../../components/FeaturedPlaylists/FeaturedPlaylists';
 
 const { Content } = Layout;
-// const removeHtmlTagsFromDescription = (text) => {
-//   if (!text) return '';
-//   return text.replace(/<\/?[^>]+(>|$)/g, '');
-// };
+
 const Home = () => {
   const dispatch = useDispatch();
 

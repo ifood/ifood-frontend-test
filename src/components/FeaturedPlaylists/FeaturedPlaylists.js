@@ -1,10 +1,10 @@
 import React from 'react';
-import { Col, Card, Spin } from 'antd';
+import { Col, Spin } from 'antd';
 import { useSelector } from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons';
 
 import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
-
+import { removeHtmlTagsFromDescription } from '../../app/utils/string';
 import './FeaturedPlaylists.less';
 
 const FeaturedPlaylists = () => {
@@ -15,7 +15,7 @@ const FeaturedPlaylists = () => {
     <>
       {featuredPlaylists && featuredPlaylists.playlists && featuredPlaylists.playlists.items.map((item) => (
         <Col
-          className="home__playlist"
+          className="playlist"
           key={item.id}
           xs={{ span: 20 }}
           sm={{ span: 20 }}
@@ -24,20 +24,16 @@ const FeaturedPlaylists = () => {
           xl={{ span: 6 }}
           xxl={{ span: 4 }}
         >
-          <Card
-            hoverable
-            style={{ width: 250 }}
-            cover={item.images && item.images[0] && (
-            <img
-              alt="playlist"
-              src={item.images[0].url}
-            />
-            )}
+          <div
+            className="playlist__item"
+            style={{
+              backgroundImage: `url(${item.images[0].url})`,
+            }}
           >
-            <span className="home__playlist__item">
-              <strong className="home__playlist__item">{item.name}</strong> <br />
-            </span>
-          </Card>
+            <div className="playlist__item__info">
+              <p>{removeHtmlTagsFromDescription(item.description)}</p>
+            </div>
+          </div>
         </Col>
       ))}
 

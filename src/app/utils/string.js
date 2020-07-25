@@ -16,3 +16,8 @@ export function validateEmail(str) {
 export function removeSpecialChars(str) {
   return str ? str.replace(/[^A-Za-z0-9]/g, '').replace(/\/s/g, '') : null;
 }
+
+export const removeHtmlTagsFromDescription = (text) => {
+  if (!text) return '';
+  return text.replace(/<\/?[^>]+(>|$)/g, '');
+};
