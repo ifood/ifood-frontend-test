@@ -1,5 +1,6 @@
 import PlaylistRequests from '../../api/playlist';
 import { addLoading, removeLoading } from './loading';
+import { saveAuthentication } from './auth';
 
 export const ACTION_SAVE_PLAYLISTS = 'ACTION_SAVE_PLAYLISTS';
 export const ACTION_SAVE_PLAYLIST_FILTERS = 'ACTION_SAVE_PLAYLIST_FILTERS';
@@ -35,7 +36,9 @@ export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState)
     const response = await PlaylistRequests.getPaginated(auth, filters);
     dispatch(savePlaylists(response));
   } catch (err) {
-    //
+    if (err.status === 401) {
+      dispatch(saveAuthentication(null));
+    }
   } finally {
     dispatch(removeLoading());
   }
