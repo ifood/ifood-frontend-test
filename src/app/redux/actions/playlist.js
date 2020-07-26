@@ -1,6 +1,8 @@
 import PlaylistRequests from '../../api/playlist';
 import { addLoading, removeLoading } from './loading';
 
+import getUrlHashAccessToken from '../../utils/hash';
+
 export const ACTION_SAVE_PLAYLISTS = 'ACTION_SAVE_PLAYLISTS';
 export const ACTION_SAVE_PLAYLIST_FILTERS = 'ACTION_SAVE_PLAYLIST_FILTERS';
 
@@ -18,7 +20,7 @@ export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState)
   dispatch(addLoading());
   try {
     dispatch(savePlaylists(null));
-    const { auth } = getState().auth;
+    const auth = getUrlHashAccessToken();
     const { country, offset } = filters;
 
     if (country && country.length > 2) {

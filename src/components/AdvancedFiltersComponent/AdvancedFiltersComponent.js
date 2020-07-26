@@ -26,6 +26,11 @@ const AdvancedFiltersComponent = () => {
 
   const debouncedSearchTerm = useDebounce(selectedFilters, 500);
 
+
+  useEffect(() => {
+    dispatch(PlaylistActions.getPlaylistFilters());
+  }, [dispatch]);
+
   useEffect(() => {
     if (debouncedSearchTerm) {
       dispatch(PlaylistActions.getFeaturedPlaylists(selectedFilters));
