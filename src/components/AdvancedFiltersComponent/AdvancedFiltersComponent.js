@@ -1,15 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import {
   Col, Spin, Select, Input,
-  Row,
+  Row, InputNumber,
 } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons';
 
 import { PlaylistActions } from '../../app/redux/actions';
 import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
+import useDebounce from '../../app/hooks/useDebounce';
 
 import './AdvancedFiltersComponent.less';
+
 
 const { Option } = Select;
 const { Search } = Input;
@@ -21,9 +24,13 @@ const AdvancedFiltersComponent = () => {
 
   const [selectedFilters, setSelectedFilters] = useState({});
 
+  const debouncedSearchTerm = useDebounce(selectedFilters, 500);
+
   useEffect(() => {
-    dispatch(PlaylistActions.getFeaturedPlaylists(selectedFilters));
-  }, [selectedFilters, dispatch]);
+    if (debouncedSearchTerm) {
+      dispatch(PlaylistActions.getFeaturedPlaylists(selectedFilters));
+    }
+  }, [debouncedSearchTerm]);
 
   const onFieldChange = (filterId, value) => {
     setSelectedFilters((prevState) => ({
@@ -57,7 +64,12 @@ const AdvancedFiltersComponent = () => {
     }
     return (
       <div className="advanced-filters__item">
-        <Input placeholder={filter.name} />
+        <InputNumber
+          placeholder={filter.name}
+          onChange={(value) => onFieldChange(filter.id, value)}
+          min={filter.validation.min || undefined}
+          max={filter.validation.max || undefined}
+        />
       </div>
     );
   };
@@ -80,6 +92,7 @@ const AdvancedFiltersComponent = () => {
               placeholder="Buscar por nome"
               style={{ width: 200 }}
               enterButton
+              // onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </Col>

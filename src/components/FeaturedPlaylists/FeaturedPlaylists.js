@@ -23,10 +23,7 @@ const FeaturedPlaylists = () => {
           )}
         </Col>
       </Row>
-      <Row
-        type="flex"
-        justify="space-between"
-      >
+      <Row type="flex">
         {featuredPlaylists && featuredPlaylists.playlists && featuredPlaylists.playlists.items.map((item) => (
           <Col
             className="playlist"
