@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Row, Col, Spin } from 'antd';
 import { useSelector } from 'react-redux';
@@ -13,19 +14,22 @@ const FeaturedPlaylists = () => {
 
   return (
     <>
-      {featuredPlaylists && (
       <Row
         type="flex"
         justify="space-between"
       >
         <Col span={20}>
-          <h3 className="header__title">{featuredPlaylists.message}</h3>
+          {featuredPlaylists && (
+            <h3 className="header__title">{featuredPlaylists.message}</h3>
+          )}
+          {!featuredPlaylists && loading === 0 && (
+            <h5 className="header__title">Nenhum resultado encontrado, altere os filtros e tente novamente.</h5>
+          )}
         </Col>
       </Row>
-      )}
 
       <Row type="flex">
-        {featuredPlaylists && featuredPlaylists.playlists && featuredPlaylists.playlists.items.map((item) => (
+        {featuredPlaylists && featuredPlaylists.playlists && featuredPlaylists.playlists.items.map((item, index) => (
           <Col
             className="playlist"
             key={item.id}
@@ -41,6 +45,9 @@ const FeaturedPlaylists = () => {
               style={{
                 backgroundImage: `url(${item.images[0].url})`,
               }}
+              onClick={() => window.open(item.external_urls.spotify)}
+              role="button"
+              tabIndex={index}
             >
               <div className="playlist__item__info">
                 <p>{removeHtmlTagsFromDescription(item.description)}</p>
