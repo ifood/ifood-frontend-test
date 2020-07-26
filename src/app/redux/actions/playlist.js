@@ -19,7 +19,7 @@ export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState)
   try {
     dispatch(savePlaylists(null));
     const { auth } = getState().auth;
-    const { country } = filters;
+    const { country, offset } = filters;
 
     if (country && country.length > 2) {
       filters = {
@@ -27,6 +27,10 @@ export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState)
         country: country.substr(country.length - 2, country.length),
       };
     }
+
+    if (offset) filters = { ...filters, offset: offset <= 0 ? 0 : offset - 1 };
+
+
     const response = await PlaylistRequests.getPaginated(auth, filters);
     dispatch(savePlaylists(response));
   } catch (err) {
