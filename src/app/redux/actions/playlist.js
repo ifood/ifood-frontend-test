@@ -1,8 +1,6 @@
 import PlaylistRequests from '../../api/playlist';
 import { addLoading, removeLoading } from './loading';
 
-import getUrlHashAccessToken from '../../utils/hash';
-
 export const ACTION_SAVE_PLAYLISTS = 'ACTION_SAVE_PLAYLISTS';
 export const ACTION_SAVE_PLAYLIST_FILTERS = 'ACTION_SAVE_PLAYLIST_FILTERS';
 
@@ -19,10 +17,11 @@ export const savePlaylistFilters = (payload) => ({
 export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState) => {
   dispatch(addLoading());
   try {
-    dispatch(savePlaylists(null));
-    const auth = getUrlHashAccessToken();
+    const { auth } = getState().auth;
     const { country, offset } = filters;
 
+    dispatch(savePlaylists(null));
+    // workaround to wrong value in mocky filters api country array (getting en_US instead of US)
     if (country && country.length > 2) {
       filters = {
         ...filters,
