@@ -13,16 +13,17 @@ const FeaturedPlaylists = () => {
 
   return (
     <>
+      {featuredPlaylists && (
       <Row
         type="flex"
         justify="space-between"
       >
         <Col span={20}>
-          {featuredPlaylists && (
           <h3 className="header__title">{featuredPlaylists.message}</h3>
-          )}
         </Col>
       </Row>
+      )}
+
       <Row type="flex">
         {featuredPlaylists && featuredPlaylists.playlists && featuredPlaylists.playlists.items.map((item) => (
           <Col

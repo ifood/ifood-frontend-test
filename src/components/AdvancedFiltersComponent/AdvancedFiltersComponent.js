@@ -10,6 +10,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { PlaylistActions } from '../../app/redux/actions';
 import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
 import useDebounce from '../../app/hooks/useDebounce';
+import useInterval from '../../app/hooks/useInterval';
 
 import './AdvancedFiltersComponent.less';
 
@@ -36,6 +37,10 @@ const AdvancedFiltersComponent = () => {
       dispatch(PlaylistActions.getFeaturedPlaylists(selectedFilters));
     }
   }, [debouncedSearchTerm]);
+
+  useInterval(() => {
+    dispatch(PlaylistActions.getFeaturedPlaylists(selectedFilters));
+  }, 3000);
 
   const onFieldChange = (filterId, value) => {
     setSelectedFilters((prevState) => ({

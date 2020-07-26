@@ -6,7 +6,7 @@ import './Header.less';
 
 const Header = () => (
   <Row
-    className="header my-5"
+    className="header my-3"
     type="flex"
     align="middle"
   >
