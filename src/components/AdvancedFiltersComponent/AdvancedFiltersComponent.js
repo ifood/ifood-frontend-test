@@ -40,7 +40,7 @@ const AdvancedFiltersComponent = () => {
 
   useInterval(() => {
     dispatch(PlaylistActions.getFeaturedPlaylists(selectedFilters));
-  }, 3000);
+  }, 30000);
 
   const onFieldChange = (filterId, value) => {
     setSelectedFilters((prevState) => ({
