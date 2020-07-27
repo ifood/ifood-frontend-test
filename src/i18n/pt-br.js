@@ -15,13 +15,13 @@ export default {
   },
   routes: {
     login: {
-      url: '/',
+      url: '/login',
       pageTitle: 'Seja bem-vindo ao Spotifood, aqui você encontrará as melhores playlists,'
       + ' faça o seu acesso para continuar',
       spotifyButton: 'Login com Spotify',
     },
     home: {
-      url: '/home',
+      url: '/',
       pageTitle: 'As playlists em destaque, estão aqui!',
       spotifyButton: 'Login com Spotify',
     },

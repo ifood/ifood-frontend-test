@@ -10,6 +10,7 @@ import { AuthActions } from '../../app/redux/actions';
 import getUrlHashAccessToken from '../../app/utils/hash';
 
 import Header from '../../components/shared/Header';
+import Footer from '../../components/shared/Footer';
 import Login from '../../components/Login';
 import AdvancedFiltersComponent from '../../components/AdvancedFiltersComponent/AdvancedFiltersComponent';
 import FeaturedPlaylists from '../../components/FeaturedPlaylists/FeaturedPlaylists';
@@ -33,6 +34,7 @@ const Home = () => {
       >
         <Col
           span={20}
+          style={{ marginBottom: '80px' }}
         >
           <Header />
           {auth
@@ -47,6 +49,7 @@ const Home = () => {
             )}
         </Col>
       </Row>
+      <Footer />
     </Content>
   );
 };
