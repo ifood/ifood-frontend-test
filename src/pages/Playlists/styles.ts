@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   width: 100vw;
-  height: 100vh;
-  padding: 32px;
+  min-height: 100vh;
+  padding: 16px;
 
   @media screen and (min-width: 768px) {
+    padding: 32px;
     display: grid;
     grid-template-columns: 350px auto;
     grid-column-gap: 24px;

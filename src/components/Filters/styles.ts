@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { TextField, Checkbox as MUCheckbox, Slider } from '@material-ui/core';
+import {
+  Button as MUButton,
+  TextField,
+  Checkbox as MUCheckbox,
+  Slider,
+  Accordion as MUAccordion,
+} from '@material-ui/core';
 
 export const Container = styled.aside`
   padding: 16px;
@@ -26,6 +32,19 @@ export const TextInput = styled(TextField)`
   .MuiInputBase-root.Mui-focused::after {
     border-color: #d23232;
   }
+`;
+
+export const Accordion = styled(MUAccordion)`
+  margin-top: 16px;
+
+  &.MuiPaper-root {
+    color: #f5f5f5;
+    background-color: #4d4d4d;
+  }
+`;
+
+export const FiltersContainer = styled.div`
+  width: 100%;
 `;
 
 export const ValuesContainer = styled.div`
@@ -57,4 +76,22 @@ export const DateTimePicker = styled(TextField)`
   }
 `;
 
-export const QuantitySlider = styled(Slider)``;
+export const QuantitySlider = styled(Slider)`
+  margin-top: 12px;
+
+  &.MuiSlider-root {
+    color: #d23232;
+
+    .MuiSlider-thumb:hover {
+      box-shadow: 0px 0px 0px 8px #d2323266;
+    }
+  }
+`;
+
+export const Button = styled(MUButton)`
+  &.MuiButton-contained {
+    background-color: #d23232;
+    color: #f5f5f5;
+    margin-top: 16px;
+  }
+`;

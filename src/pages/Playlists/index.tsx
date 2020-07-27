@@ -2,7 +2,7 @@ import React from 'react';
 
 import Filters from '../../components/Filters';
 
-import { Container, FilterBox, ListContainer } from './styles';
+import { Container, ListContainer } from './styles';
 
 const Playlists: React.FC = () => {
   return (
