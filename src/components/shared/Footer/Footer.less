@@ -1,7 +1,14 @@
+@import '../../../styles/less/_parameters';
+
 .footer{
-  background: #0e0e0e;
+  background: @footer-background;
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 120px;
+
+  &__col{
+    display:flex;
+    align-items: center;
+  }
 }

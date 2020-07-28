@@ -42,7 +42,7 @@ const Footer = () => (
             lg={{ span: 16 }}
             xl={{ span: 20 }}
             xxl={{ span: 20 }}
-            style={{ display: 'flex', alignItems: 'center' }}
+            className="footer__col"
           >
             <h5 className="header__title">As playlists mais quentes estão bem aqui!</h5>
           </Col>

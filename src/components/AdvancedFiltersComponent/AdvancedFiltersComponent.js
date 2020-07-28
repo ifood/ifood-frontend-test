@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import {
-  Col, Spin, Select, Input,
+  Col, Select, Input,
   Row, InputNumber,
 } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoadingOutlined } from '@ant-design/icons';
 
 import { PlaylistActions } from '../../app/redux/actions';
 import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
 import useDebounce from '../../app/hooks/useDebounce';
 import useInterval from '../../app/hooks/useInterval';
 
+import Loading from '../shared/Loading';
 import './AdvancedFiltersComponent.less';
 
 
@@ -54,7 +54,7 @@ const AdvancedFiltersComponent = () => {
       return (
         <div className="advanced-filters__item">
           <Select
-            style={{ width: 120 }}
+            className="advanced-filters__item__select"
             placeholder={filter.name}
             onChange={(value) => onFieldChange(filter.id, value)}
           >
@@ -100,29 +100,14 @@ const AdvancedFiltersComponent = () => {
           <div className="advanced-filters__item">
             <Search
               placeholder="Buscar por nome"
-              style={{ width: 200 }}
+              className="advanced-filters__item__search"
               enterButton
-              // onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </Col>
         )}
 
-        {!filters && loading !== 0 && (
-        <Col
-          span={24}
-          className="home__loading"
-        >
-          <Spin indicator={(
-            <LoadingOutlined
-              style={{ fontSize: 50 }}
-              className="home__loading__spin"
-              spin
-            />
-          )}
-          />
-        </Col>
-        )}
+        {!filters && loading !== 0 && (<Loading />)}
       </Row>
     </>
   );

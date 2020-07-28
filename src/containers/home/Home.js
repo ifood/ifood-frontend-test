@@ -34,7 +34,7 @@ const Home = () => {
       >
         <Col
           span={20}
-          style={{ marginBottom: '80px' }}
+          className="home__container"
         >
           <Header />
           {auth

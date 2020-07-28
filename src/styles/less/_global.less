@@ -1,7 +1,7 @@
 html,
 body {
   font-family: 'Montserrat', sans-serif;
-  background-image: linear-gradient(to bottom, #1a1a1a, #151515, #101010, #080808, #000000);
+  background-image: @background-linear;
   overflow-x: hidden;
 }
 
@@ -46,26 +46,20 @@ h2 {
   font-size: 13pt;
 }
 
-.ant-menu-dark, .ant-menu-dark .ant-menu-sub {
-  color: rgba(255, 255, 255, 0.65);
-  background: #bdd8cf !important;
-}
-
-.ant-layout-sider-children {
-  height: 100%;
-  margin-top: -0.1px;
-  padding-top: 0.1px;
-  background: #bdd8cf !important;
-  border-right: 1px solid #bfbfbf4a;
-}
-
-.ant-menu-dark .ant-menu-item:hover > a, .ant-menu-dark .ant-menu-item-active > a, .ant-menu-dark .ant-menu-submenu-active > a, .ant-menu-dark .ant-menu-submenu-open > a, .ant-menu-dark .ant-menu-submenu-selected > a, .ant-menu-dark .ant-menu-submenu-title:hover > a {
-  color: #ff3333 !important;
-}
-.ant-menu-dark .ant-menu-item, .ant-menu-dark .ant-menu-item-group-title, .ant-menu-dark .ant-menu-item > a {
-  color: #ff3333 !important;
-}
-
 .ant-input{
-  width:auto!important;
+  width: auto !important;
+}
+
+.ant-card {
+  width: 100%;
+  background:#5f5f5fa8 !important;
+}
+
+.ant-card-body {
+  padding: 15px !important;
+  zoom: 1;
+}
+
+.ant-card-bordered {
+  border: 1px solid #464646 !important;
 }

@@ -1,3 +1,5 @@
+@import '../../styles/less/_parameters';
+
 .playlist{
   padding:15px 0px;
 
@@ -17,13 +19,13 @@
       align-items:center;
       justify-content:center;
 
-      background-color: #0000;
+      background-color: @card-background;
       color:transparent;
       font-weight: 600;
 
       &:hover{
-        background-color:#151515e6;
-        color:#fff;
+        background-color:@card-background-hover;
+        color:@white;
 
       -webkit-transition: background-color 300ms linear, color 800ms linear;
       -moz-transition: background-color 300ms linear, color 800ms linear;

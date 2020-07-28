@@ -1,11 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Row, Col, Spin } from 'antd';
+import {
+  Row, Col,
+} from 'antd';
 import { useSelector } from 'react-redux';
-import { LoadingOutlined } from '@ant-design/icons';
 
 import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
 import { removeHtmlTagsFromDescription } from '../../app/utils/string';
+
+import Loading from '../shared/Loading';
 import './FeaturedPlaylists.less';
 
 const FeaturedPlaylists = () => {
@@ -56,21 +59,7 @@ const FeaturedPlaylists = () => {
           </Col>
         ))}
 
-        {!featuredPlaylists && loading !== 0 && (
-        <Col
-          span={24}
-          className="home__loading"
-        >
-          <Spin indicator={(
-            <LoadingOutlined
-              style={{ fontSize: 50 }}
-              className="home__loading__spin"
-              spin
-            />
-          )}
-          />
-        </Col>
-        )}
+        {!featuredPlaylists && loading !== 0 && (<Loading />)}
       </Row>
     </>
   );
