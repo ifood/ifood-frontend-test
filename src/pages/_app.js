@@ -1,10 +1,13 @@
-import { AuthProvider } from '../contexts/Autenthication'
+import { AuthProvider } from '../contexts/AutenthicationContext'
 import { element, func, object, oneOfType } from 'prop-types'
+import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </AuthProvider>
   )
 }

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getUserToken } from './auth'
+import { getUserToken } from './auth.service'
 
 const apiInstance = axios.create({
   baseURL: 'https://api.spotify.com/v1',

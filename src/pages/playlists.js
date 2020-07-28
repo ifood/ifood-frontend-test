@@ -1,5 +1,28 @@
+import usePlaylists, { PlaylistProvider } from '../contexts/PlaylistContext'
+import { withContext } from '../hocs/withContext'
+
 const Playlists = () => {
-  return <div>Playlists</div>
+  const { featuredPlaylists, loadingPlaylists } = usePlaylists()
+
+  return (
+    <div>
+      {loadingPlaylists ? (
+        <p>loading</p>
+      ) : (
+        <div>
+          <h1>{featuredPlaylists.message}</h1>
+          <ul>
+            {featuredPlaylists.playlists.items.map((playlist) => (
+              <li key={playlist.id}>
+                <p>{playlist.name}</p>
+                <img loading="lazy" src={playlist.images[0].url} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  )
 }
 
-export default Playlists
+export default withContext(PlaylistProvider, Playlists)

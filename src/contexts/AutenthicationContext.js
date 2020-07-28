@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from 'react'
 import { element } from 'prop-types'
 import { useRouter } from 'next/router'
-import { setUserToken } from '../services/auth'
+import { setUserToken } from '../services/auth.service'
 import qs from 'qs'
 
 const AuthContext = createContext({})
