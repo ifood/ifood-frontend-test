@@ -19,7 +19,11 @@
     "lint": "eslint src --max-warnings=0"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "js-cookie": "^2.2.1",
     "next": "9.5.0",
+    "prop-types": "^15.7.2",
+    "qs": "^6.9.4",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
@@ -30,6 +34,7 @@
     "eslint-plugin-react": "^7.20.4",
     "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11"
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
   }
 }
