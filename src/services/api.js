@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getUserToken } from './auth.service'
 
-const apiInstance = axios.create({
+export const apiInstanceSpotify = axios.create({
   baseURL: 'https://api.spotify.com/v1',
   headers: {
     Accept: 'application/json',
@@ -9,7 +9,15 @@ const apiInstance = axios.create({
   }
 })
 
-apiInstance.interceptors.request.use(
+export const apiInstanceMocky = axios.create({
+  baseURL: 'http://www.mocky.io/v2/5a25fade2e0000213aa90776',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+
+apiInstanceSpotify.interceptors.request.use(
   (config) => {
     const configWithAuthorization = config
     const token = getUserToken()
@@ -25,7 +33,7 @@ apiInstance.interceptors.request.use(
   }
 )
 
-apiInstance.interceptors.response.use(
+apiInstanceSpotify.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response.status === 401) {
@@ -33,5 +41,3 @@ apiInstance.interceptors.response.use(
     }
   }
 )
-
-export default apiInstance

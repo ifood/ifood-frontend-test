@@ -1,10 +1,10 @@
-import apiInstance from './api'
+import { apiInstanceSpotify, apiInstanceMocky } from './api'
 
 export const getFeaturedPlaylists = (
   country,
   timestamp,
-  limit,
-  offset,
+  limit = 50,
+  offset = 2,
   locale = 'PT_br'
 ) => {
   const params = {
@@ -15,5 +15,7 @@ export const getFeaturedPlaylists = (
     ...(offset ? { offset } : null)
   }
 
-  return apiInstance.get('/browse/featured-playlists', { params })
+  return apiInstanceSpotify.get('/browse/featured-playlists', { params })
 }
+
+export const getChoicesForFilter = () => apiInstanceMocky.get()

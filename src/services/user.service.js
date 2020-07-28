@@ -1,3 +1,3 @@
-import apiInstance from './api'
+import { apiInstanceSpotify } from './api'
 
-export const getUserDetails = () => apiInstance.get('/me')
+export const getUserDetails = () => apiInstanceSpotify.get('/me')

@@ -1,4 +1,5 @@
 import usePlaylists, { PlaylistProvider } from '../contexts/PlaylistContext'
+import Filter from '../components/Filter'
 import { withContext } from '../hocs/withContext'
 
 const Playlists = () => {
@@ -10,6 +11,7 @@ const Playlists = () => {
         <p>loading</p>
       ) : (
         <div>
+          <Filter />
           <h1>{featuredPlaylists.message}</h1>
           <ul>
             {featuredPlaylists.playlists.items.map((playlist) => (
