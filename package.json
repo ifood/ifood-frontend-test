@@ -12,14 +12,11 @@
       "yarn lint --fix"
     ]
   },
-  "eslintIgnore": [
-    ".babelrc"
-  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src"
+    "lint": "eslint src --max-warnings=1"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -34,7 +31,6 @@
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.11.0",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
