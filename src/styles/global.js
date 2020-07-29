@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -58,6 +58,10 @@ const GlobalStyle = createGlobalStyle`
   button:-moz-focusring, [type='button']:-moz-focusring, [type='reset']:-moz-focusring, [type='submit']:-moz-focusring {
     outline: 1px dotted ButtonText;
   }
-`;
 
-export default GlobalStyle;
+  li {
+    list-style-type: none;
+  }
+`
+
+export default GlobalStyle
