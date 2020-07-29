@@ -3,10 +3,15 @@ import {
   Row,
   Col,
   Card,
+  Button,
 } from 'antd';
 import { I18n } from 'react-redux-i18n';
-
+import { CustomerServiceOutlined } from '@ant-design/icons';
 import Config from '../../app/config/app.config';
+
+const hrefButton = `${Config.spotify.authEndpoint}?client_id=${Config.spotify.clientId}`
++ `&redirect_uri=${Config.spotify.redirectUri}&scope=${Config.spotify.scopes.join('%20')}`
++ '&response_type=token&show_dialog=true';
 
 const Login = () => (
   <Row
@@ -37,16 +42,13 @@ const Login = () => (
             span={24}
             className="text-center"
           >
-
-            <a
-              className="login__spotify-button"
-              href={`${Config.spotify.authEndpoint}?client_id=${Config.spotify.clientId}`
-        + `&redirect_uri=${Config.spotify.redirectUri}&scope=${Config.spotify.scopes.join(
-          '%20',
-        )}&response_type=token&show_dialog=true`}
+            <Button
+              type="primary"
+              href={hrefButton}
             >
               {I18n.t('routes.login.spotifyButton')}
-            </a>
+              <CustomerServiceOutlined className="login__btn-icon" />
+            </Button>
           </Col>
         </Row>
       </Card>
