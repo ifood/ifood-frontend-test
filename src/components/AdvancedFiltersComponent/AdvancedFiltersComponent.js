@@ -22,8 +22,10 @@ const AdvancedFiltersComponent = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => LoadingSelectors.getLoading(state));
   const filters = useSelector((state) => PlaylistSelectors.getPlaylistFilters(state));
+  const playlists = useSelector((state) => PlaylistSelectors.getPlaylists(state));
 
   const [selectedFilters, setSelectedFilters] = useState({});
+  const [searchText, setSearchText] = useState('');
 
   const debouncedSearchTerm = useDebounce(selectedFilters, 500);
 
@@ -47,6 +49,13 @@ const AdvancedFiltersComponent = () => {
       ...prevState,
       [filterId]: value,
     }));
+  };
+
+  const onSearchChange = (value) => {
+    setSearchText(value);
+    const filteredList = playlists.playlists.items
+      .filter((subs) => subs.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
+    dispatch(PlaylistActions.saveFilteredPlaylistByName(filteredList));
   };
 
   const renderAdvancedFilter = (filter) => {
@@ -102,6 +111,8 @@ const AdvancedFiltersComponent = () => {
               placeholder="Buscar por nome"
               className="advanced-filters__item__search"
               enterButton
+              value={searchText}
+              onChange={(e) => onSearchChange(e.target.value)}
             />
           </div>
         </Col>

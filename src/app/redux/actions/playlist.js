@@ -4,9 +4,15 @@ import { saveAuthentication } from './auth';
 
 export const ACTION_SAVE_PLAYLISTS = 'ACTION_SAVE_PLAYLISTS';
 export const ACTION_SAVE_PLAYLIST_FILTERS = 'ACTION_SAVE_PLAYLIST_FILTERS';
+export const ACTION_SAVE_FILTERED_PLAYLIST_BY_NAME = 'ACTION_SAVE_FILTERED_PLAYLIST_BY_NAME';
 
 export const savePlaylists = (payload) => ({
   type: ACTION_SAVE_PLAYLISTS,
+  payload,
+});
+
+export const saveFilteredPlaylistByName = (payload) => ({
+  type: ACTION_SAVE_FILTERED_PLAYLIST_BY_NAME,
   payload,
 });
 
@@ -34,6 +40,7 @@ export const getFeaturedPlaylists = (filters = {}) => async (dispatch, getState)
 
 
     const response = await PlaylistRequests.getPaginated(auth, filters);
+    dispatch(saveFilteredPlaylistByName(null));
     dispatch(savePlaylists(response));
   } catch (err) {
     if (err.status === 401) {
