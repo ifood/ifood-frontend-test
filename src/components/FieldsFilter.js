@@ -3,7 +3,7 @@ import Select from './Select'
 import Datetime from './Datetime'
 import { object } from 'prop-types'
 import usePlaylist from '../contexts/PlaylistContext'
-import { ID_LOCALE, ID_COUNTRY, ID_TIMESTAMP } from './constantsComponents'
+import { ID_LOCALE, ID_COUNTRY, ID_TIMESTAMP } from '../constants/components'
 
 const FieldsFilter = ({ filter }) => {
   const { setFilterChoices } = usePlaylist()

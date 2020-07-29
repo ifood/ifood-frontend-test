@@ -1,15 +1,18 @@
 import { AuthProvider } from '../contexts/AutenthicationContext'
 import { element, func, object, oneOfType } from 'prop-types'
 import Layout from '../components/Layout'
-import 'react-datepicker/dist/react-datepicker.css'
+import GlobalStyle from '../assets/styles/GlobalStyle'
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
-    <AuthProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AuthProvider>
+    <>
+      <GlobalStyle />
+      <AuthProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthProvider>
+    </>
   )
 }
 
