@@ -1,5 +1,6 @@
 import usePlaylists, { PlaylistProvider } from '../contexts/PlaylistContext'
 import Filter from '../components/Filter'
+import Loader from '../components/Loader'
 import { withContext } from '../hocs/withContext'
 
 const Playlists = () => {
@@ -8,7 +9,7 @@ const Playlists = () => {
   return (
     <div>
       {loadingPlaylists ? (
-        <p>loading</p>
+        <Loader centered />
       ) : (
         <div>
           <Filter />
