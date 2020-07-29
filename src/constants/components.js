@@ -4,3 +4,5 @@ export const ID_TIMESTAMP = 'timestamp'
 export const ID_LIMIT = 'limit'
 export const ID_OFFSET = 'offset'
 export const INPUT_TYPES = ['text', 'number']
+export const ID_SEARCH = 'search'
+export const LABEL_SEARCH = 'procurar playlist'
