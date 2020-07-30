@@ -12,7 +12,7 @@ const Datetime = ({ id, onChange, text }) => {
 
   useEffect(() => {
     if (selectedDate) {
-      onChange(id, new Date(selectedDate).getTime())
+      onChange(id, selectedDate)
     }
   }, [id, onChange, selectedDate])
 

@@ -18,7 +18,9 @@ const INITIAL_STATE = {
   loadingFilterFields: true,
   featuredPlaylists: {},
   filterFields: [],
-  filterChoices: {}
+  filterChoices: {
+    locale: 'pt-BR'
+  }
 }
 
 export const PlaylistProvider = (contextProps) => {
@@ -31,9 +33,9 @@ export const PlaylistProvider = (contextProps) => {
     }
   }, [state])
 
-  const featuredPlaylists = async () => {
+  const featuredPlaylists = async (params) => {
     try {
-      const { data } = await getFeaturedPlaylists()
+      const { data } = await getFeaturedPlaylists(params)
       if (data && Object.keys(data)) {
         setState((prevState) => ({
           ...prevState,
@@ -70,8 +72,19 @@ export const PlaylistProvider = (contextProps) => {
   }
 
   useEffect(() => {
+    if ( Object.keys(state.filterChoices).length ) {
+      const fetchWithParams = async() => {
+        await featuredPlaylists(state.filterChoices)
+      }
+
+      fetchWithParams()
+    }
+  }, [state.filterChoices])
+
+  useEffect(() => {
+    console.log(INITIAL_STATE.filterChoices)
     const fetch = async () => {
-      await featuredPlaylists()
+      await featuredPlaylists(INITIAL_STATE.filterChoices)
       await choicesForFilter()
     }
 
