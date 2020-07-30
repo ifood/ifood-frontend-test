@@ -1,0 +1,38 @@
+@import '../../styles/less/_parameters';
+
+.playlist{
+  padding:15px 0px;
+
+  &__item{
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    cursor:pointer;
+
+    &__info{
+      width: 100%;
+      height: 100%;
+      padding:15px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      background-color: @card-background;
+      color:transparent;
+      font-weight: 600;
+
+      &:hover{
+        background-color:@card-background-hover;
+        color:@white;
+
+      -webkit-transition: background-color 300ms linear, color 800ms linear;
+      -moz-transition: background-color 300ms linear, color 800ms linear;
+      -o-transition: background-color 300ms linear, color 800ms linear;
+      -ms-transition: background-color 300ms linear, color 800ms linear;
+      transition: background-color 300ms linear, color 800ms linear;
+      }
+    }
+  }
+}
