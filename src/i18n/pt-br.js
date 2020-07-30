@@ -13,6 +13,21 @@ export default {
       poweredByBrandUrl: 'https://www.linkedin.com/in/glongatti/',
     },
   },
+  components: {
+    header: {
+      title: 'As playlists mais quentes estão bem aqui!',
+    },
+    advancedFilter: {
+      placeholders: {
+        searchByName: 'Buscar por nome',
+      },
+    },
+    featuredPlaylists: {
+      content: {
+        empty: 'Nenhum resultado encontrado, altere os filtros e tente novamente.',
+      },
+    },
+  },
   routes: {
     login: {
       url: '/login',

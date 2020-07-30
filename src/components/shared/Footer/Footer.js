@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { Link } from '@reach/router';
+import { I18n } from 'react-redux-i18n';
 
 import './Footer.less';
 
@@ -44,7 +45,7 @@ const Footer = () => (
             xxl={{ span: 20 }}
             className="footer__col"
           >
-            <h5 className="header__title">As playlists mais quentes estão bem aqui!</h5>
+            <h5 className="header__title">{I18n.t('components.header.title')}</h5>
           </Col>
         </Row>
       </Col>

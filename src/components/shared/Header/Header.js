@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { Link } from '@reach/router';
+import { I18n } from 'react-redux-i18n';
 
 import './Header.less';
 
@@ -34,7 +35,7 @@ const Header = () => (
       xl={{ span: 20 }}
       xxl={{ span: 20 }}
     >
-      <h1 className="header__title">As playlists mais quentes estão bem aqui!</h1>
+      <h1 className="header__title">{I18n.t('components.header.title')}</h1>
     </Col>
   </Row>
 );

@@ -4,6 +4,7 @@ import {
   Row, Col,
 } from 'antd';
 import { useSelector } from 'react-redux';
+import { I18n } from 'react-redux-i18n';
 
 import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
 import { removeHtmlTagsFromDescription } from '../../app/utils/string';
@@ -63,7 +64,9 @@ const FeaturedPlaylists = () => {
           <h3 className="header__title">{featuredPlaylists.message}</h3>
           )}
           {!featuredPlaylists && loading === 0 && (
-          <h5 className="header__title">Nenhum resultado encontrado, altere os filtros e tente novamente.</h5>
+          <h5 className="header__title">
+            {I18n.t('components.featuredPlaylists.content.empty')}
+          </h5>
           )}
         </Col>
       </Row>

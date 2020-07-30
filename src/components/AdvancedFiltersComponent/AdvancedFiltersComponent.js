@@ -5,6 +5,7 @@ import {
   Row, InputNumber,
 } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
+import { I18n } from 'react-redux-i18n';
 
 import { PlaylistActions } from '../../app/redux/actions';
 import { PlaylistSelectors, LoadingSelectors } from '../../app/redux/reducers';
@@ -108,7 +109,7 @@ const AdvancedFiltersComponent = () => {
 
           <div className="advanced-filters__item">
             <Search
-              placeholder="Buscar por nome"
+              placeholder={I18n.t('components.advancedFilter.placeholders.searchByName')}
               className="advanced-filters__item__search"
               enterButton
               value={searchText}
