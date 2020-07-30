@@ -126,6 +126,16 @@ export const PlaylistProvider = (contextProps) => {
     fetch()
   }, [choicesForFilter, fetchFeaturedPlaylists])
 
+  useEffect(() => {
+    const fetch = async () => {
+      await fetchFeaturedPlaylists(INITIAL_STATE.filterChoices)
+    }
+
+    const timer = setTimeout(fetch, 30000)
+
+    return () => clearTimeout(timer)
+  }, [fetchFeaturedPlaylists])
+
   return <PlaylistContext.Provider value={{...value, filterByText, setFilterChoices }} {...contextProps} />
 }
 
