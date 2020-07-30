@@ -10,7 +10,7 @@ export const apiInstanceSpotify = axios.create({
 })
 
 export const apiInstanceMocky = axios.create({
-  baseURL: 'http://www.mocky.io/v2/5a25fade2e0000213aa90776',
+  baseURL: 'https://www.mocky.io/v2/5a25fade2e0000213aa90776',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
