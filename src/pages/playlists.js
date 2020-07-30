@@ -99,7 +99,7 @@ const PlaylistItemStyle = styled.li`
       transition: all .3s ease-in-out;
       top: 20px;
       right: -10px;
-      z-index: 2;
+      z-index: 0;
 
       &:after {
         background-color: ${colors.pink};
