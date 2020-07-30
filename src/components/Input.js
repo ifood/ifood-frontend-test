@@ -21,6 +21,10 @@ const Input = ({ id, text }) => {
 }
 
 const ContainValueStyle = `
+  input {
+    border-color: white;
+  }
+
   label {
     color: white;
     top: -40px;
@@ -45,6 +49,7 @@ const InputStyle = styled.div`
     height: 100%;
     position: relative;
     outline: none;
+    transition: all .3s ease-in-out;
     width: 100%;
     z-index: 1;
   }
@@ -63,6 +68,10 @@ const InputStyle = styled.div`
       font-size: 3rem;
       top: -30px;
     }
+  }
+
+  input:focus {
+    border-color: white;
   }
 
   input:focus + label {

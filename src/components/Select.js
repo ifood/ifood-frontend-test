@@ -36,6 +36,7 @@ const Select = ({ id, onChange, options, text }) => {
 
 const valueActive = `
   select.filter-select {
+    border-color: white;
     color: white;
   }
 
@@ -44,9 +45,15 @@ const valueActive = `
     top: -10px;
     z-index: 1;
   }
+
+  &:after {
+    border-color: white;
+  }
 `
 
 const SelectStyle = styled.div`
+  position: relative;
+
   .filter-select {
     cursor: pointer;
     -webkit-appearance: none;
@@ -57,6 +64,19 @@ const SelectStyle = styled.div`
       top: -10px;
       z-index: 1;
     }
+  }
+
+  &:after {
+    border: solid rgba(255, 255, 255, .5);
+    border-width: 0 3px 3px 0;
+    content: '';
+    display: inline-block;
+    padding: 3px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transition: all .3s ease-in-out;
+    transform: rotate(45deg);
   }
 
   ${({ valueSelected }) => (valueSelected ? valueActive : '')}

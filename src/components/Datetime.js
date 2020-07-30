@@ -39,7 +39,8 @@ const Datetime = ({ id, onChange, text }) => {
 }
 
 const CalendarActiveStyle = `
-  & .filter-input {
+  & .react-datepicker-wrapper .filter-input {
+    border-color: white;
     color: white;
   }
 
