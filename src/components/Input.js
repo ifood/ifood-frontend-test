@@ -45,20 +45,24 @@ const InputStyle = styled.div`
     border: none;
     border-bottom: 3px solid var(--input-color);
     color: white;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     height: 100%;
     position: relative;
     outline: none;
     transition: all .3s ease-in-out;
     width: 100%;
     z-index: 1;
+
+    @media (min-width: ${mediaQueries.mobile.max}px) {
+      font-size: 1.75rem;
+    }
   }
 
   label {
     color: var(--input-color);
     font-family: 'Kanit', sans-serif;
     position: absolute;
-    font-size: 2.25rem;
+    font-size: 2.15rem;
     top: -15px;
     transition: all 0.3s ease-in-out;
     left: 0;

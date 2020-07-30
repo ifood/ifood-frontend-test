@@ -70,9 +70,8 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 
-  a:hover {
-    text-decoration: underline;
-    transition: all .3s ease-in-out;
+  a {
+    text-decoration: none;
   }
 
   strong {
@@ -85,11 +84,6 @@ const GlobalStyle = createGlobalStyle`
 
   ul {
     list-style: none;
-  }
-
-  button {
-    border: none;
-    background-color: transparent;
   }
 `
 
