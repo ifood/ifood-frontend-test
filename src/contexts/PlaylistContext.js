@@ -21,7 +21,7 @@ const INITIAL_STATE = {
   filterChoices: {
     locale: 'pt-BR'
   },
-  initialPlaylists: []
+  playlists: []
 }
 
 export const PlaylistProvider = (contextProps) => {
@@ -44,19 +44,6 @@ export const PlaylistProvider = (contextProps) => {
     [setState]
   )
 
-  const changePlaylists = playlists => {
-    setState((prevState) => ({
-      ...prevState,
-      featuredPlaylists: {
-        ...prevState.featuredPlaylists,
-        playlists: {
-          ...prevState.featuredPlaylists.playlists,
-          items: playlists
-        }
-      }
-    }))
-  }
-
   const changeState = (changedValue, keyValue) => {
     setState((prevState) => ({
       ...prevState,
@@ -70,7 +57,8 @@ export const PlaylistProvider = (contextProps) => {
       if (data && Object.keys(data)) {
         changeState(data, 'featuredPlaylists')
         if ( data.playlists && data.playlists.items && data.playlists.items.length ) {
-          changeState(data.playlists.items, 'initialPlaylists')
+          console.log(data.playlists.items)
+          changeState(data.playlists.items, 'playlists')
         }
       }
     } catch (error) {
@@ -94,16 +82,20 @@ export const PlaylistProvider = (contextProps) => {
   }, [])
 
   const filterByText = useCallback(text => {
-    const { initialPlaylists } = state
+    const { featuredPlaylists } = state
+    const hasPlaylists = Object.keys(featuredPlaylists) &&
+      featuredPlaylists.playlists &&
+      featuredPlaylists.playlists.items &&
+      featuredPlaylists.playlists.items.length
 
-    if (initialPlaylists.length) {
-      const filteredByNames = initialPlaylists.filter(playlist => {
+    if (hasPlaylists) {
+      const filteredByNames = featuredPlaylists.playlists.items.filter(playlist => {
         const replace = new RegExp(text.toLowerCase(),"g")
         const hasMatch = replace.test(playlist.name.toLowerCase())
         return hasMatch
       })
 
-      changePlaylists(filteredByNames)
+      changeState(filteredByNames, 'playlists')
     }
   }, [state])
 

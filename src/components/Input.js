@@ -40,7 +40,7 @@ const InputStyle = styled.div`
 
   height: 50px;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   width: 100%;
 
   input {
@@ -88,6 +88,10 @@ const InputStyle = styled.div`
   }
 
   ${({ containValue }) => (containValue ? ContainValueStyle : '')}
+
+  @media (min-width: ${mediaQueries.mobile.max}px) {
+    margin-bottom: 50px;
+  }
 `
 
 Input.propTypes = {

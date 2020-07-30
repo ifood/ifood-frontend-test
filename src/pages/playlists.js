@@ -5,23 +5,26 @@ import Loader from '../components/Loader'
 import { withContext } from '../hocs/withContext'
 import { colors, mediaQueries } from '../assets/styles/default-style'
 import { CALL_TO_ACTION_PLAYLIST_ITEM } from '../constants/pages'
+import NoDataPlaylists from '../components/NoDataPlaylists'
 
 const Playlists = () => {
-  const { featuredPlaylists, loadingPlaylists } = usePlaylists()
+  const { featuredPlaylists, playlists, loadingPlaylists } = usePlaylists()
+
+  if (loadingPlaylists) {
+    return <Loader centered/>
+  }
 
   return (
     <PlaylistStyle>
-      {loadingPlaylists ? (
-        <Loader centered />
-      ) : (
-        <>
-          <Filter />
-          <div className="playlist">
-            <h1>
-              {featuredPlaylists.message}
-            </h1>
+      <Filter />
+      <div className="playlist">
+        {playlists.length ?
+          <>
+          <h1>
+            {featuredPlaylists.message}
+          </h1>
             <ul className="playlist-list">
-              {featuredPlaylists.playlists.items.map((playlist) => (
+              {playlists.map((playlist) => (
                 <PlaylistItemStyle 
                   image={playlist.images.length ? playlist.images[0].url : './cd.png' }
                   key={playlist.id}
@@ -47,9 +50,9 @@ const Playlists = () => {
                 </PlaylistItemStyle>
               ))}
             </ul>
-          </div>
-        </>
-      )}
+          </> : <NoDataPlaylists />
+        }
+      </div>
     </PlaylistStyle>
   )
 }
@@ -176,7 +179,7 @@ const PlaylistStyle = styled.div`
       text-transform: uppercase;
 
       @media (max-width: ${mediaQueries.mobile.max}px) {
-        font-size: 3rem;
+        font-size: 2.15rem;
       }
     }
   }
