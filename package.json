@@ -16,7 +16,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --max-warnings=1"
+    "lint": "eslint src --max-warnings=0"
   },
   "dependencies": {
     "axios": "^0.19.2",
