@@ -17,11 +17,13 @@ const Playlists = () => {
         <>
           <Filter />
           <div className="playlist">
-            <h1>{featuredPlaylists.message}</h1>
+            <h1>
+              {featuredPlaylists.message}
+            </h1>
             <ul className="playlist-list">
               {featuredPlaylists.playlists.items.map((playlist) => (
                 <PlaylistItemStyle 
-                  image={playlist.images[0].url}
+                  image={playlist.images.length ? playlist.images[0].url : './cd.png' }
                   key={playlist.id}
                 >
                   <a 
@@ -31,11 +33,15 @@ const Playlists = () => {
                   >
                     <span className="playlist-cta">{CALL_TO_ACTION_PLAYLIST_ITEM}</span>
                     <div className="playlist-item-wrapper">
-                      <h2>
-                        {playlist.name}
-                      </h2>
+                      {playlist.name ?
+                        <h2>
+                          {playlist.name}
+                        </h2> : null
+                      }
                       <br />
-                      <p>{`por ${playlist.owner.display_name}`}</p>
+                      {playlist.owner && playlist.owner.display_name ?
+                        <p>{`por ${playlist.owner.display_name}`}</p> : null
+                      }
                     </div>
                   </a>
                 </PlaylistItemStyle>
@@ -160,8 +166,18 @@ const PlaylistStyle = styled.div`
     padding: 0 20px;
 
     h1 {
-      color: rgba(255, 255, 255, .5);
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: white;
+      font-size: 4rem;
+      letter-spacing: 2px;
+      line-height: 1.2;
       margin-bottom: 30px;
+      text-transform: uppercase;
+
+      @media (max-width: ${mediaQueries.mobile.max}px) {
+        font-size: 3rem;
+      }
     }
   }
 
