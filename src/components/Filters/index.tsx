@@ -1,12 +1,15 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
 
 import { useFilters } from '../../hooks/filters';
 
 import OptionsFilter from '../OptionsFilter';
 import DateFilter from '../DateFilter';
 import QuantityFilter from '../QuantityFilter';
+import SearchInput from '../SearchInput';
 
 import {
   Accordion,
@@ -14,12 +17,11 @@ import {
   Container,
   Filter,
   FiltersContainer,
-  TextInput,
 } from './styles';
 
 const Filters: React.FC = () => {
   const { defaultFilters } = useFilters();
-  console.log(defaultFilters);
+  const formRef = useRef<FormHandles>(null);
 
   const getFilterComponent = useCallback(filter => {
     if (filter.validation?.entityType === 'DATE_TIME') {
@@ -30,15 +32,20 @@ const Filters: React.FC = () => {
       return <QuantityFilter />;
     }
 
-    return <OptionsFilter values={filter.values} />;
+    return <OptionsFilter name={filter.id} values={filter.values} />;
+  }, []);
+
+  const handleSubmit = useCallback(data => {
+    console.log('submit form');
+    console.log(data);
   }, []);
 
   return (
     <Container>
       <h2>Filtros</h2>
-      <form>
+      <Form ref={formRef} onSubmit={handleSubmit}>
         <Filter>
-          <TextInput id="standard-basic" label="Nome da playlist" fullWidth />
+          <SearchInput name="search" />
         </Filter>
         <Accordion>
           <AccordionSummary
@@ -60,10 +67,10 @@ const Filters: React.FC = () => {
             </FiltersContainer>
           </AccordionDetails>
         </Accordion>
-        <Button variant="contained" fullWidth>
+        <Button type="submit" variant="contained" fullWidth>
           Filtrar
         </Button>
-      </form>
+      </Form>
     </Container>
   );
 };
