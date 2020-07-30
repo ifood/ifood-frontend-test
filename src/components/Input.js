@@ -3,13 +3,16 @@ import { func, string } from 'prop-types'
 import styled from 'styled-components'
 import { mediaQueries } from '../assets/styles/default-style'
 
-const Input = ({ id, text }) => {
+const Input = ({ id, onChange, text }) => {
   const [value, setValue] = useState('')
 
   return (
     <InputStyle containValue={!!value}>
       <input
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(event) => {
+          onChange(event.target.value)
+          setValue(event.target.value)
+        }}
         id={id}
         type="text"
         name={id}

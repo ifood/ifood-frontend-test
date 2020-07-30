@@ -7,7 +7,7 @@ import { ID_SEARCH, LABEL_SEARCH } from '../constants/components'
 import { colors } from '../assets/styles/default-style'
 
 const Filter = () => {
-  const { filterFields, loadingFilterFields } = usePlaylists()
+  const { filterFields, filterByText, loadingFilterFields } = usePlaylists()
 
   return (
     <FilterStyle>
@@ -16,7 +16,7 @@ const Filter = () => {
       ) : (
         <>
           <Input
-            onChange={() => console.log('oi')}
+            onChange={filterByText}
             id={ID_SEARCH}
             text={LABEL_SEARCH}
           />

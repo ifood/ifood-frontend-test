@@ -20,7 +20,8 @@ const INITIAL_STATE = {
   filterFields: [],
   filterChoices: {
     locale: 'pt-BR'
-  }
+  },
+  initialPlaylists: []
 }
 
 export const PlaylistProvider = (contextProps) => {
@@ -33,74 +34,6 @@ export const PlaylistProvider = (contextProps) => {
     }
   }, [state])
 
-  const featuredPlaylists = async (params) => {
-    try {
-      const { data } = await getFeaturedPlaylists(params)
-      if (data && Object.keys(data)) {
-        setState((prevState) => ({
-          ...prevState,
-          featuredPlaylists: data
-        }))
-      }
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setState((prevState) => ({
-        ...prevState,
-        loadingPlaylists: false
-      }))
-    }
-  }
-
-  const choicesForFilter = async () => {
-    try {
-      const { data } = await getChoicesForFilter()
-      if (data && Object.keys(data) && data.filters.length) {
-        setState((prevState) => ({
-          ...prevState,
-          filterFields: data.filters
-        }))
-      }
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setState((prevState) => ({
-        ...prevState,
-        loadingFilterFields: false
-      }))
-    }
-  }
-
-  useEffect(() => {
-    if ( Object.keys(state.filterChoices).length ) {
-      const fetchWithParams = async() => {
-        await featuredPlaylists(state.filterChoices)
-      }
-
-      fetchWithParams()
-    }
-  }, [state.filterChoices])
-
-  useEffect(() => {
-    console.log(INITIAL_STATE.filterChoices)
-    const fetch = async () => {
-      await featuredPlaylists(INITIAL_STATE.filterChoices)
-      await choicesForFilter()
-    }
-
-    fetch()
-  }, [])
-
-  return <PlaylistContext.Provider value={value} {...contextProps} />
-}
-
-export default function usePlaylist() {
-  const context = useContext(PlaylistContext)
-  const { state, setState } = context
-  if (!context) {
-    throw new Error('usePlaylist must go inside PlaylistProvider')
-  }
-
   const setFilterChoices = useCallback(
     (filter) => {
       setState((prevState) => ({
@@ -111,9 +44,101 @@ export default function usePlaylist() {
     [setState]
   )
 
+  const changePlaylists = playlists => {
+    setState((prevState) => ({
+      ...prevState,
+      featuredPlaylists: {
+        ...prevState.featuredPlaylists,
+        playlists: {
+          ...prevState.featuredPlaylists.playlists,
+          items: playlists
+        }
+      }
+    }))
+  }
+
+  const changeState = (changedValue, keyValue) => {
+    setState((prevState) => ({
+      ...prevState,
+      [keyValue]: changedValue
+    }))
+  }
+
+  const fetchFeaturedPlaylists = useCallback(async (params) => {
+    try {
+      const { data } = await getFeaturedPlaylists(params)
+      if (data && Object.keys(data)) {
+        changeState(data, 'featuredPlaylists')
+        if ( data.playlists && data.playlists.items && data.playlists.items.length ) {
+          changeState(data.playlists.items, 'initialPlaylists')
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      changeState(false, 'loadingPlaylists')
+    }
+  }, [])
+
+  const choicesForFilter = useCallback(async () => {
+    try {
+      const { data } = await getChoicesForFilter()
+      if (data && Object.keys(data) && data.filters.length) {
+        changeState(data.filters, 'filterFields')
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      changeState(false, 'loadingFilterFields')
+    }
+  }, [])
+
+  const filterByText = useCallback(text => {
+    const { initialPlaylists } = state
+
+    if (initialPlaylists.length) {
+      const filteredByNames = initialPlaylists.filter(playlist => {
+        const replace = new RegExp(text.toLowerCase(),"g")
+        const hasMatch = replace.test(playlist.name.toLowerCase())
+        return hasMatch
+      })
+
+      changePlaylists(filteredByNames)
+    }
+  }, [state])
+
+  useEffect(() => {
+    if ( Object.keys(state.filterChoices).length ) {
+      const fetchWithParams = async() => {
+        await fetchFeaturedPlaylists(state.filterChoices)
+      }
+
+      fetchWithParams()
+    }
+  }, [fetchFeaturedPlaylists, state.filterChoices])
+
+  useEffect(() => {
+    const fetch = async () => {
+      await fetchFeaturedPlaylists(INITIAL_STATE.filterChoices)
+      await choicesForFilter()
+    }
+
+    fetch()
+  }, [choicesForFilter, fetchFeaturedPlaylists])
+
+  return <PlaylistContext.Provider value={{...value, filterByText, setFilterChoices }} {...contextProps} />
+}
+
+export default function usePlaylist() {
+  const context = useContext(PlaylistContext)
+
+  if (!context) {
+    throw new Error('usePlaylist must go inside PlaylistProvider')
+  }
+
   return {
-    ...state,
-    setFilterChoices
+    ...context.state,
+    ...context
   }
 }
 
