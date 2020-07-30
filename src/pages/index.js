@@ -14,13 +14,15 @@ const Home = () => {
         className="card"
         onClick={() => (document.location.href = SPOTIFY_LOGIN_URL)}
       >
-        <div className="card-image" />
-        <div className="logo">
-          <h1>{APP_NAME.toUpperCase()}</h1>
-        </div>
-        <div className="card-content">
-          <p className="card-description">{INITIAL_PAGE_DESCRIPTION}</p>
-          <span>{INITIAL_PAGE_CALL_TO_ACTION}</span>
+        <div className="card-wrapper">
+          <div className="card-image" />
+          <div className="logo">
+            <h1>{APP_NAME.toUpperCase()}</h1>
+          </div>
+          <div className="card-content">
+            <p className="card-description">{INITIAL_PAGE_DESCRIPTION}</p>
+            <span>{INITIAL_PAGE_CALL_TO_ACTION}</span>
+          </div>
         </div>
       </div>
     </HomeStyle>
@@ -29,8 +31,9 @@ const Home = () => {
 
 const HomeStyle = styled.section`
   --percentage-title: -12vw;
-  --size-title: 13vw;
-  --size-title-mobile: 50px;
+  --size-title: 8rem;
+  --size-title-mobile: 70px;
+  --wrapper-size: 65vw;
 
   align-items: center;
   display: flex;
@@ -42,6 +45,8 @@ const HomeStyle = styled.section`
     cursor: pointer;
     height: 650px;
     position: relative;
+    max-width: var(--wrapper-size);
+    width: 100%;
 
     &:hover {
       .card-image {
@@ -60,8 +65,15 @@ const HomeStyle = styled.section`
       }
     }
 
+    .card-wrapper {
+      height: 100%;
+      margin: 0 auto;
+      width: var(--wrapper-size);
+    }
+
     .card-image {
       background-image: url('./cd.png');
+      background-repeat: no-repeat;
       height: 90vh;
       left: 0;
       max-height: 100%;
@@ -73,7 +85,7 @@ const HomeStyle = styled.section`
 
       @media (min-width: ${mediaQueries.tablet.min + 1}px) {
         height: 100%;
-        max-width: 850px;
+        max-width: var(--wrapper-size);
         width: 70vw;
       }
     }
@@ -96,8 +108,11 @@ const HomeStyle = styled.section`
       }
 
       @media (max-width: ${mediaQueries.mobile.max - 1}px) {
-        top: -40px;
-        -webkit-text-stroke-width: 3px;
+        top: -58px;
+        word-break: break-word;
+        max-width: 210px;
+        z-index: -1;
+        left: 15px;
       }
     }
 
@@ -120,7 +135,14 @@ const HomeStyle = styled.section`
       }
 
       @media (max-width: ${mediaQueries.mobile.max - 1}px) {
+        -webkit-text-fill-color: white;
+        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-color: white;
+        left: 15px;
+        line-height: 1;
+        max-width: 210px;
         top: -40px;
+        word-break: break-word;
       }
     }
 
