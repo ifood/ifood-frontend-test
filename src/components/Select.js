@@ -13,7 +13,7 @@ const Select = ({ id, onChange, options, text }) => {
 
   return (
     <SelectStyle
-      className="wrapper-filter-input wrapper-filter-select"
+      className="wrapper-filter-input wrapper-filter-column"
       valueSelected={valueSelected}
     >
       {options && options.length ? (

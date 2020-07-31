@@ -77,8 +77,9 @@ const FilterStyle = styled.div`
     }
   }
 
-  .wrapper-filter-select {
+  .wrapper-filter-column {
     max-width: calc((100%/2) - 10px);
+    margin-bottom: 30px;
   }
 `
 

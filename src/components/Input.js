@@ -1,29 +1,35 @@
 import { useState } from 'react'
-import { func, string } from 'prop-types'
+import { func, string, object } from 'prop-types'
 import styled from 'styled-components'
 import { mediaQueries } from '../assets/styles/default-style'
+import { ID_SEARCH } from '../constants/components'
 
-const Input = ({ id, onChange, text }) => {
+const Input = ({ id, onChange, text, validation }) => {
   const [value, setValue] = useState('')
 
   return (
-    <InputStyle containValue={!!value}>
+    <InputStyle 
+      className={`${id !== ID_SEARCH ? 'wrapper-filter-input wrapper-filter-column' : ''}`}
+      containValue={Boolean(value)}
+      inputType={id}
+    >
       <input
+        className={`${id !== ID_SEARCH ? 'filter-input' : ''}`}
         onChange={(event) => {
-          onChange(event.target.value)
+          onChange(id, event.target.value)
           setValue(event.target.value)
         }}
         id={id}
-        type="text"
+        type={validation && validation.primitiveType === "INTEGER" ? "number" : "text"}
         name={id}
         value={value}
       />
-      <label>{text}</label>
+      <label id="label-input">{text}</label>
     </InputStyle>
   )
 }
 
-const ContainValueStyle = `
+const ContainValueSearchStyle = `
   input {
     border-color: white;
   }
@@ -35,7 +41,7 @@ const ContainValueStyle = `
   }
 `
 
-const InputStyle = styled.div`
+const SearchInputStyle = `
   --input-color: rgba(255, 255, 255, 0.5);
 
   height: 50px;
@@ -74,7 +80,7 @@ const InputStyle = styled.div`
 
     @media (min-width: ${mediaQueries.mobile.max}px) {
       font-size: 3rem;
-      top: -30px;
+      top: -20px;
     }
   }
 
@@ -88,17 +94,56 @@ const InputStyle = styled.div`
     top: -40px;
   }
 
-  ${({ containValue }) => (containValue ? ContainValueStyle : '')}
-
   @media (min-width: ${mediaQueries.mobile.max}px) {
     margin-bottom: 50px;
   }
 `
 
+const ContainValueNumberStyle = `
+  #label-input {
+    color: white;
+    top: -10px;
+    z-index: 1;
+  }
+
+  input.filter-input {
+    border-color: white;
+    color: white;
+  }
+`
+
+const NumberInputStyle = `
+  input:focus + label {
+    color: white;
+    top: -10px;
+    z-index: 1;
+  }
+`
+
+const InputStyle = styled.div`
+  ${({inputType}) => inputType === ID_SEARCH ? SearchInputStyle : NumberInputStyle}
+  ${({ containValue, inputType }) => {
+    if(containValue) {
+      if ( inputType === ID_SEARCH ) {
+        return ContainValueSearchStyle
+      } else if ( inputType !== ID_SEARCH ) {
+        return ContainValueNumberStyle
+      }
+    }
+
+    return ''
+  }}
+`
+
 Input.propTypes = {
   id: string.isRequired,
   onChange: func.isRequired,
-  text: string.isRequired
+  text: string.isRequired,
+  validation: object
+}
+
+Input.defaultProps = {
+  validation: null
 }
 
 export default Input

@@ -33,6 +33,8 @@ To run the project on your machine follow the steps below:
 3. Now type `yarn dev` or `npm start` to run the project
 4. The application will run in `http://localhost:3000` and enjoy it 🚀
 
+---
+
 ## Production
 
 The project its also alive in production, just access the website link: [Spotifood](https://spotifood.vercel.app/)

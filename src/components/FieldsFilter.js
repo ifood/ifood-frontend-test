@@ -1,9 +1,10 @@
 import { useCallback } from 'react'
 import Select from './Select'
 import Datetime from './Datetime'
+import Input from './Input'
 import { object } from 'prop-types'
 import usePlaylist from '../contexts/PlaylistContext'
-import { ID_LOCALE, ID_COUNTRY, ID_TIMESTAMP } from '../constants/components'
+import { ID_LOCALE, ID_COUNTRY, ID_TIMESTAMP, ID_OFFSET, ID_LIMIT } from '../constants/components'
 
 const FieldsFilter = ({ filter }) => {
   const { setFilterChoices } = usePlaylist()
@@ -32,6 +33,24 @@ const FieldsFilter = ({ filter }) => {
           onChange={handleFilters}
           options={filter.values}
           text={filter.name}
+        />
+      )
+    case ID_OFFSET:
+      return (
+        <Input
+          id={filter.id}
+          onChange={handleFilters}
+          text={filter.name}
+          validation={filter.validation}
+        />
+      )
+    case ID_LIMIT:
+      return (
+        <Input
+          id={filter.id}
+          onChange={handleFilters}
+          text={filter.name}
+          validation={filter.validation}
         />
       )
     case ID_TIMESTAMP:

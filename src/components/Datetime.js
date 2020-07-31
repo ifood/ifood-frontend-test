@@ -52,8 +52,6 @@ const CalendarActiveStyle = `
 `
 
 const DatetimeStyle = styled.div`
-  margin-top: 30px;
-
   .react-datepicker-wrapper {
     width: 100%;
 

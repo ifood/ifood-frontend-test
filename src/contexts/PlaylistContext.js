@@ -11,6 +11,7 @@ import {
   getChoicesForFilter
 } from '../services/playlist.service'
 import { element } from 'prop-types'
+import { ID_TIMESTAMP, ID_SEARCH } from '../constants/components'
 
 const PlaylistContext = createContext({})
 const INITIAL_STATE = {
@@ -71,7 +72,9 @@ export const PlaylistProvider = (contextProps) => {
     try {
       const { data } = await getChoicesForFilter()
       if (data && Object.keys(data) && data.filters.length) {
-        changeState(data.filters, 'filterFields')
+        const filtersWithoutTimestamp = data.filters.filter(filter => filter.id !== ID_TIMESTAMP)
+        const timestampFilter = data.filters.filter(filter => filter.id === ID_TIMESTAMP)
+        changeState([...filtersWithoutTimestamp, ...timestampFilter], 'filterFields')
       }
     } catch (error) {
       console.log(error)
@@ -80,14 +83,14 @@ export const PlaylistProvider = (contextProps) => {
     }
   }, [])
 
-  const filterByText = useCallback(text => {
+  const filterByText = useCallback((name, text) => {
     const { featuredPlaylists } = state
     const hasPlaylists = Object.keys(featuredPlaylists) &&
       featuredPlaylists.playlists &&
       featuredPlaylists.playlists.items &&
       featuredPlaylists.playlists.items.length
 
-    if (hasPlaylists) {
+    if (hasPlaylists && name === ID_SEARCH) {
       const filteredByNames = featuredPlaylists.playlists.items.filter(playlist => {
         const replace = new RegExp(text.toLowerCase(),"g")
         const hasMatch = replace.test(playlist.name.toLowerCase())
