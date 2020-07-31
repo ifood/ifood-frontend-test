@@ -36,8 +36,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3 {
-    font-family: 'Kanit', sans-serif;
-    font-weight: 400;
+    font-family: sans-serif;
+    font-weight: bold;
   }
 
   h1 {

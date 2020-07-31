@@ -81,7 +81,8 @@ const PlaylistItemStyle = styled.li`
       background-color: ${colors.pink};
       color: ${colors.purple};
       display: inline;
-      font-family: 'Kanit', sans-serif;
+      font-family: sans-serif;
+      font-weight: bold;
       line-height: 2;
       margin: 0;
       text-transform: lowercase;
@@ -96,7 +97,8 @@ const PlaylistItemStyle = styled.li`
     .playlist-cta {
       background-color: ${colors.purple};
       color: ${colors.pink};
-      font-family: 'Kanit', sans-serif;
+      font-family: sans-serif;
+      font-weight: bold;
       font-size: 1rem;
       position: absolute;
       transition: all .3s ease-in-out;
@@ -172,7 +174,7 @@ const PlaylistStyle = styled.div`
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: white;
-      font-size: 4rem;
+      font-size: 3.5rem;
       letter-spacing: 2px;
       line-height: 1.2;
       margin-bottom: 30px;

@@ -96,8 +96,9 @@ const HomeStyle = styled.section`
       -webkit-text-stroke-color: white;
       content: 'SPOTIFOOD';
       color: transparent;
-      font-family: 'Kanit', sans-serif;
+      font-family: sans-serif;
       font-size: var(--size-title-mobile);
+      font-weight: bold;
       letter-spacing: 3px;
       position: absolute;
       top: 0;
@@ -154,7 +155,8 @@ const HomeStyle = styled.section`
 
       p,
       span {
-        font-family: 'Kanit', sans-serif;
+        font-family: sans-serif;
+        font-weight: bold;
       }
 
       p {

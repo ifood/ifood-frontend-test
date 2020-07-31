@@ -63,7 +63,8 @@ const InputStyle = styled.div`
 
   label {
     color: var(--input-color);
-    font-family: 'Kanit', sans-serif;
+    font-family: sans-serif;
+    font-weight: bold;
     position: absolute;
     font-size: 2.15rem;
     top: -15px;
