@@ -57,7 +57,6 @@ export const PlaylistProvider = (contextProps) => {
       if (data && Object.keys(data)) {
         changeState(data, 'featuredPlaylists')
         if ( data.playlists && data.playlists.items && data.playlists.items.length ) {
-          console.log(data.playlists.items)
           changeState(data.playlists.items, 'playlists')
         }
       }
