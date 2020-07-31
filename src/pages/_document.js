@@ -1,6 +1,7 @@
 import React from 'react'
-import Document from 'next/document'
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
+import { APP_DESCRIPTION, APP_NAME } from '../constants/project'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -27,6 +28,21 @@ class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <Html lang="pt-br">
+        <Head>
+          <title>{APP_NAME}</title>
+          <meta name="description" content={APP_DESCRIPTION}/>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }
 

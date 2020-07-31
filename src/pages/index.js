@@ -17,7 +17,7 @@ const Home = () => {
         <div className="card-wrapper">
           <div className="card-image" />
           <div className="logo">
-            <h1>{APP_NAME.toUpperCase()}</h1>
+            <h1>{APP_NAME}</h1>
           </div>
           <div className="card-content">
             <p className="card-description">{INITIAL_PAGE_DESCRIPTION}</p>
@@ -59,7 +59,7 @@ const HomeStyle = styled.section`
         transition: all 0.3s ease-in-out;
 
         &:after {
-          height: 30px;
+          height: 25px;
           transition: all 0.3s ease-in-out;
         }
       }
@@ -72,7 +72,7 @@ const HomeStyle = styled.section`
     }
 
     .card-image {
-      background-image: url('./cd.png');
+      background-image: url('./cd.jpg');
       background-repeat: no-repeat;
       height: 90vh;
       left: 0;
@@ -109,7 +109,7 @@ const HomeStyle = styled.section`
       }
 
       @media (max-width: ${mediaQueries.mobile.max - 1}px) {
-        top: -58px;
+        top: -45px;
         word-break: break-word;
         max-width: 210px;
         z-index: -1;
@@ -128,6 +128,7 @@ const HomeStyle = styled.section`
       flex-direction: column;
       letter-spacing: 3px;
       position: relative;
+      text-transform: uppercase;
       z-index: 1;
 
       @media (min-width: ${mediaQueries.mobile.max}px) {

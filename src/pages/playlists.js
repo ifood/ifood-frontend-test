@@ -26,7 +26,7 @@ const Playlists = () => {
             <ul className="playlist-list">
               {playlists.map((playlist) => (
                 <PlaylistItemStyle 
-                  image={playlist.images.length ? playlist.images[0].url : './cd.png' }
+                  image={playlist.images.length ? playlist.images[0].url : './cd.jpg' }
                   key={playlist.id}
                 >
                   <a 
@@ -130,7 +130,7 @@ const PlaylistItemStyle = styled.li`
       }
 
       .playlist-cta:after {
-        height: 24px;
+        height: 18px;
       }
     }
 
