@@ -18,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook"
   },
   "browserslist": {
     "production": [
@@ -33,12 +34,13 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.5.0",
-    "eslint-plugin-react": "^7.20.5",
+    "@storybook/react": "^5.3.19",
+    "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-standard": "^4.0.1",
     "styled-components": "^5.1.1"
   }
