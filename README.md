@@ -1,6 +1,6 @@
 # Spotifood
 
-![Image of the initial and login page of the project](https://imgur.com/Gpn7g1s)
+![Image of the initial and login page of the project](https://i.imgur.com/Gpn7g1s.png)
 
 A web application to navigate around the best playlists in Spotify while wait for your order in Ifood. Where you can browse which playlists are hot in any time or navigate through different countries and languages.
 
@@ -28,9 +28,9 @@ Those are the technologies used in this project.
 
 To run the project on your machine follow the steps below:
 
-1. Clone the repository using `git clone` or download it
-2. Install all the dependencies necessary for the project to run with `yarn` or `npm install` 
-3. Open the terminal and type `yarn dev` or `npm start`
+1. Open the terminal in your machine and clone the repository using `git clone` or download it
+2. Go to the main folder and install all the dependencies necessary for the project to run with `yarn` or `npm install` 
+3. Now type `yarn dev` or `npm start` to run the project
 4. The application will run in `http://localhost:3000` and enjoy it 🚀
 
 ## Production
