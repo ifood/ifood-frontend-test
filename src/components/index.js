@@ -1,7 +1,11 @@
-import CardFeatured from './card-featured';
-import Filtros from './filtros';
+import Loading from './loading'
+import CardFeatured from './card-featured'
+import Filters from './filters'
+import Header from './header'
 
 export {
   CardFeatured,
-  Filtros
+  Filters,
+  Header,
+  Loading
 }
