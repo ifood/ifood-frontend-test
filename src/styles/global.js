@@ -40,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button, input {
+    outline: none;
     overflow: visible;
   }
 
