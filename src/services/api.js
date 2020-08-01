@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getUserToken } from './auth.service'
 
 export const apiInstanceSpotify = axios.create({
-  baseURL: 'https://api.spotify.com/va1',
+  baseURL: 'https://api.spotify.com/v1',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'

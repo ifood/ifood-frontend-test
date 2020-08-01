@@ -60,7 +60,7 @@ const Playlists = () => {
 const PlaylistItemStyle = styled.li`
   cursor: pointer;
   height: 400px;
-  margin-bottom: 30px; 
+  margin-bottom: 50px; 
   position: relative;
   width: 100%;
 
