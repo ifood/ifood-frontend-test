@@ -4,22 +4,26 @@ import PropTypes from 'prop-types'
 import * as S from './styles'
 
 import Background from './background'
+import Pagination from './pagination'
 
-export default function CardFeatured ({ playlists }) {
+export default function CardFeatured ({ title, playlists, searchies, onSubmit }) {
   return (
     <S.Container>
       <S.Content>
-        <S.Title>Featured Playlists</S.Title>
+        <S.Title>{title} Featured Playlists </S.Title>
+        <Pagination
+          totalItems={playlists.total}
+          limit={searchies.limit}
+          onSubmitPagination={onSubmit}/>
         <S.WrapperCard>
           {playlists.items && playlists.items.map(item => (
             <S.Card key={item.id}>
               <S.LinkSpotify href={item.external_urls.spotify} target='_blank'>
                 <Background
                   bg={item.images[0].url}
-                  title={item.name}
-                />
+                  title={item.name}/>
               </S.LinkSpotify>
-              <S.Description>{item.description}</S.Description>
+              <S.TitleItem>{item.name}</S.TitleItem>
             </S.Card>
           ))}
         </S.WrapperCard>
@@ -29,12 +33,18 @@ export default function CardFeatured ({ playlists }) {
 }
 
 CardFeatured.propTypes = {
+  title: PropTypes.string,
   playlists: PropTypes.shape({
+    total: PropTypes.number,
     items: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string,
       images: PropTypes.arrayOf(PropTypes.shape({
         url: PropTypes.string
       }))
     }))
-  }).isRequired
+  }).isRequired,
+  searchies: PropTypes.shape({
+    limit: PropTypes.number
+  }),
+  onSubmit: PropTypes.func.isRequired
 }

@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Container = styled.section``
+export const Container = styled.section`
+  margin: 0 auto;
+  max-width: 1140px;
+  padding: 0 15px;
+`
 
 export const Content = styled.div`
   margin-top: 40px;
@@ -9,11 +13,12 @@ export const Content = styled.div`
 export const WrapperCard = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+  justify-content: center;
+  margin-top: 20px;
 `
 
 export const Card = styled.div`
-  margin-right: 15px;
+  margin: 0 20px 20px 0;
   width: 200px;
 `
 
@@ -21,8 +26,8 @@ export const Title = styled.h1``
 
 export const LinkSpotify = styled.a``
 
-export const Description = styled.p`
+export const TitleItem = styled(Title)`
   font-size: 0.75rem;
   text-align: justify;
-  margin: 5px 0 10px;
+  margin-top: 10px;
 `
