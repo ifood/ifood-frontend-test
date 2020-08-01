@@ -1,7 +1,7 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import FeaturedPlaylist from './featured-playlists';
+import FeaturedPlaylist from './featured-playlists'
 
 const Router = () => {
   return (
