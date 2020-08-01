@@ -19,9 +19,7 @@ const INITIAL_STATE = {
   loadingFilterFields: true,
   featuredPlaylists: {},
   filterFields: [],
-  filterChoices: {
-    locale: 'pt-BR'
-  },
+  filterChoices: {},
   playlists: []
 }
 
@@ -34,23 +32,6 @@ export const PlaylistProvider = (contextProps) => {
       state
     }
   }, [state])
-
-  const setFilterChoices = useCallback(
-    (filter) => {
-      setState((prevState) => ({
-        ...prevState,
-        filterChoices: { ...prevState.filterChoices, ...filter }
-      }))
-    },
-    [setState]
-  )
-
-  const changeState = (changedValue, keyValue) => {
-    setState((prevState) => ({
-      ...prevState,
-      [keyValue]: changedValue
-    }))
-  }
 
   const fetchFeaturedPlaylists = useCallback(async (params) => {
     try {
@@ -83,6 +64,36 @@ export const PlaylistProvider = (contextProps) => {
     }
   }, [])
 
+  const setFilterChoices = useCallback(
+    (filter) => {
+      setState((prevState) => ({
+        ...prevState,
+        filterChoices: { ...prevState.filterChoices, ...filter }
+      }))
+    },
+    [setState]
+  )
+
+  const removeFilterChoices = useCallback(async id => {
+    setState((prevState) => {
+      // eslint-disable-next-line no-unused-vars
+      const { [id]: omit, ...filters } = prevState.filterChoices
+      return {
+        ...prevState,
+        filterChoices: filters,
+      }
+    })
+
+    await fetchFeaturedPlaylists()
+  }, [fetchFeaturedPlaylists])
+
+  const changeState = (changedValue, keyValue) => {
+    setState((prevState) => ({
+      ...prevState,
+      [keyValue]: changedValue
+    }))
+  }
+
   const filterByText = useCallback((name, text) => {
     const { featuredPlaylists } = state
     const hasPlaylists = Object.keys(featuredPlaylists) &&
@@ -113,7 +124,7 @@ export const PlaylistProvider = (contextProps) => {
 
   useEffect(() => {
     const fetch = async () => {
-      await fetchFeaturedPlaylists(INITIAL_STATE.filterChoices)
+      await fetchFeaturedPlaylists()
       await choicesForFilter()
     }
 
@@ -122,7 +133,7 @@ export const PlaylistProvider = (contextProps) => {
 
   useEffect(() => {
     const fetch = async () => {
-      await fetchFeaturedPlaylists(INITIAL_STATE.filterChoices)
+      await fetchFeaturedPlaylists()
     }
 
     const timer = setTimeout(fetch, 30000)
@@ -130,7 +141,7 @@ export const PlaylistProvider = (contextProps) => {
     return () => clearTimeout(timer)
   }, [fetchFeaturedPlaylists])
 
-  return <PlaylistContext.Provider value={{...value, filterByText, setFilterChoices }} {...contextProps} />
+  return <PlaylistContext.Provider value={{...value, filterByText, removeFilterChoices, setFilterChoices }} {...contextProps} />
 }
 
 export default function usePlaylist() {

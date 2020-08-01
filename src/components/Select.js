@@ -6,9 +6,7 @@ const Select = ({ id, onChange, options, text }) => {
   const [valueSelected, setValueSelected] = useState('')
 
   useEffect(() => {
-    if (valueSelected) {
-      onChange(id, valueSelected)
-    }
+    onChange(id, valueSelected)
   }, [id, onChange, valueSelected])
 
   return (
@@ -19,10 +17,13 @@ const Select = ({ id, onChange, options, text }) => {
       {options && options.length ? (
         <>
           <select
+            defaultValue=""
             className="filter-input filter-select"
-            onChange={(event) => setValueSelected(event.target.value)}
+            onChange={(event) => {
+              setValueSelected(event.target.value)
+            }}
           >
-            <option />
+            <option value="" />
             {options.map((option) => (
               <option key={option.value} value={option.value}>{option.name}</option>
             ))}

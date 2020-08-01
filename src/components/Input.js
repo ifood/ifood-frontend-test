@@ -2,27 +2,51 @@ import { useState } from 'react'
 import { func, string, object } from 'prop-types'
 import styled from 'styled-components'
 import { mediaQueries } from '../assets/styles/default-style'
-import { ID_SEARCH } from '../constants/components'
+import { ID_SEARCH, PRIMITIVE_TYPE_NUMBER } from '../constants/components'
 
 const Input = ({ id, onChange, text, validation }) => {
-  const [value, setValue] = useState('')
+  const [inputValue, setInputValue] = useState('')
+
+  const validate = event => {
+    const { value } = event.target
+    if(validation && validation.max && validation.min && validation.primitiveType === PRIMITIVE_TYPE_NUMBER) {
+      const numberValue = Number(value)
+      if (numberValue >= validation.min && numberValue <= validation.max) {
+        return true
+      } else {
+        return false
+      }
+    } else {
+      return true
+    }
+  }
+
+  const handleChange = event => {
+    const { value } = event.target
+    const validationField = validate(event)
+    if ( validationField ) {
+      onChange(id, value)
+    }
+  }
 
   return (
     <InputStyle 
       className={`${id !== ID_SEARCH ? 'wrapper-filter-input wrapper-filter-column' : ''}`}
-      containValue={Boolean(value)}
+      containValue={Boolean(inputValue)}
       inputType={id}
     >
       <input
         className={`${id !== ID_SEARCH ? 'filter-input' : ''}`}
         onChange={(event) => {
-          onChange(id, event.target.value)
-          setValue(event.target.value)
+          const { value } = event.target
+          handleChange(event)
+          setInputValue(value)
         }}
         id={id}
-        type={validation && validation.primitiveType === "INTEGER" ? "number" : "text"}
+        type={validation && validation.primitiveType === PRIMITIVE_TYPE_NUMBER ? "phone" : "text"}
         name={id}
-        value={value}
+        value={inputValue}
+        maxLength={validation && validation.max && validation.max.toString().length}
       />
       <label id="label-input">{text}</label>
     </InputStyle>

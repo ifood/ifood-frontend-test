@@ -31,8 +31,9 @@ const Home = () => {
 
 const HomeStyle = styled.section`
   --percentage-title: -12vw;
-  --size-title: 8rem;
-  --size-title-mobile: 70px;
+  --size-title-large: 8rem;
+  --size-title-medium: 6rem;
+  --size-title-small: 70px;
   --wrapper-size: 65vw;
 
   align-items: center;
@@ -97,21 +98,25 @@ const HomeStyle = styled.section`
       content: 'SPOTIFOOD';
       color: transparent;
       font-family: sans-serif;
-      font-size: var(--size-title-mobile);
+      font-size: var(--size-title-small);
       font-weight: bold;
       letter-spacing: 3px;
       position: absolute;
       top: 0;
 
       @media (min-width: ${mediaQueries.mobile.max}px) {
-        font-size: var(--size-title);
+        font-size: var(--size-title-medium);
         transform: translateX(var(--percentage-title));
+      }
+
+      @media (min-width: ${mediaQueries.desktop.max}px) {
+        font-size: var(--size-title-large);
       }
 
       @media (max-width: ${mediaQueries.mobile.max - 1}px) {
         top: -45px;
         word-break: break-word;
-        max-width: 210px;
+        max-width: 230px;
         z-index: -1;
         left: 15px;
       }
@@ -124,7 +129,7 @@ const HomeStyle = styled.section`
     h1 {
       color: white;
       display: flex;
-      font-size: var(--size-title-mobile);
+      font-size: var(--size-title-small);
       flex-direction: column;
       letter-spacing: 3px;
       position: relative;
@@ -132,8 +137,12 @@ const HomeStyle = styled.section`
       z-index: 1;
 
       @media (min-width: ${mediaQueries.mobile.max}px) {
-        font-size: var(--size-title);
+        font-size: var(--size-title-medium);
         transform: translateX(var(--percentage-title));
+      }
+
+      @media (min-width: ${mediaQueries.desktop.max}px) {
+        font-size: var(--size-title-large);
       }
 
       @media (max-width: ${mediaQueries.mobile.max - 1}px) {
@@ -142,7 +151,7 @@ const HomeStyle = styled.section`
         -webkit-text-stroke-color: white;
         left: 15px;
         line-height: 1;
-        max-width: 210px;
+        max-width: 230px;
         top: -40px;
         word-break: break-word;
       }
@@ -203,8 +212,12 @@ const HomeStyle = styled.section`
       height: 500px;
     }
 
-    @media (min-width: ${mediaQueries.mobile.max + 1}) {
-      right: -70px;
+    @media (min-width: ${mediaQueries.tablet.max}px) {
+      transform: translateX(4vw);
+    }
+
+    @media (min-width: ${mediaQueries.desktop.max}px) {
+      transform: translateX(6vw);
     }
   }
 `

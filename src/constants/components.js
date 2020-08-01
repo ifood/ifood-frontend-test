@@ -7,4 +7,5 @@ export const INPUT_TYPES = ['text', 'number']
 export const ID_SEARCH = 'search'
 export const LABEL_SEARCH = 'procurar playlist'
 export const NO_DATA_TITLE = 'Ops, playlist não encontrada :('
-export const NO_DATA_DESCRIPTION = 'Tente limpar os filtros e procurar novamente!'
+export const NO_DATA_DESCRIPTION = 'Tente limpar os filtros ou atualizar a página e procurar novamente!'
+export const PRIMITIVE_TYPE_NUMBER = 'INTEGER'

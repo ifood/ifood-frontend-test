@@ -7,13 +7,17 @@ import usePlaylist from '../contexts/PlaylistContext'
 import { ID_LOCALE, ID_COUNTRY, ID_TIMESTAMP, ID_OFFSET, ID_LIMIT } from '../constants/components'
 
 const FieldsFilter = ({ filter }) => {
-  const { setFilterChoices } = usePlaylist()
+  const { removeFilterChoices, setFilterChoices } = usePlaylist()
 
   const handleFilters = useCallback(
     (filterName, value) => {
-      setFilterChoices({ [filterName]: value })
+      if ( value !== "" ) {
+        setFilterChoices({ [filterName]: value })
+      } else {
+        removeFilterChoices(filterName)
+      }
     },
-    [setFilterChoices]
+    [removeFilterChoices, setFilterChoices]
   )
 
   switch (filter.id) {
