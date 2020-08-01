@@ -76,6 +76,7 @@ const SearchInputStyle = `
   input {
     background-color: transparent;
     border: none;
+    border-radius: 0;
     border-bottom: 3px solid var(--input-color);
     color: white;
     font-size: 1.25rem;
