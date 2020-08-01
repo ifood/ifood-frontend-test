@@ -21,4 +21,4 @@ export const DefaultWithText = () => <Button handleClick={mockFunc}>Click Me!</B
 
 export const FilterWithIcon = () => <Button template='filter' handleClick={mockFunc}><MdFilterList size={22}/></Button>
 
-export const withEmoji = () => <Button handleClick={mockFunc}>😀 😎 👍 💯</Button>
+export const WithEmoji = () => <Button handleClick={mockFunc}>😀 😎 👍 💯</Button>
