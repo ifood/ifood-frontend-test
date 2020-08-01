@@ -20,7 +20,10 @@ Button.propTypes = {
   type: PropTypes.string,
   handleClick: PropTypes.func,
   template: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ])
 }
 
 Button.defaultProps = {

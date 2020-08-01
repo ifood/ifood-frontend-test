@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react'
 import { render, screen, waitForElement } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
