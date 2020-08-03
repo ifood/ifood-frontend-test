@@ -1,11 +1,13 @@
-import styled from 'styled-components';
-import media from '../../styles/media-queries';
+import styled from 'styled-components'
 
 export const Main = styled.main`
-  background-color: ${ props => props.theme.palette.black };
-  color: ${ props => props.theme.palette.white };
+  background-image: linear-gradient(90deg, #c074b2, #8ab5e8);
+  overflow: auto;
+  height: 100vh;
+`
 
-  ${ media.mobile`
-    background-color: red;
-  `}
-`;
+export const Section = styled.section`
+  background-image: linear-gradient(transparent, #000);
+  overflow: auto;
+  height: 100%;
+`
