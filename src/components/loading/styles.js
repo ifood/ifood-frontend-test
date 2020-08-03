@@ -20,6 +20,7 @@ export const Container = styled.div`
   justify-content: center;
   position: absolute;
   width: 100%;
+  z-index: 9999;
 `
 
 export const Content = styled.div``
