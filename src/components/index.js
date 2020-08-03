@@ -1,11 +1,13 @@
 import Loading from './loading'
-import CardFeatured from './card-featured'
-import Filters from './filters'
 import Header from './header'
+import Filters from './filters'
+import CardFeatured from './card-featured'
+import Premium from './premium'
 
 export {
-  CardFeatured,
-  Filters,
+  Loading,
   Header,
-  Loading
+  Filters,
+  CardFeatured,
+  Premium
 }
