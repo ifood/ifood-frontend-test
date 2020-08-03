@@ -1,9 +1,23 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+} from 'react';
 
 import filtersService from '../services/filtersService';
 
 interface Filter {
   [key: string]: string;
+}
+
+interface Filters {
+  search?: string;
+  locale?: Array<string>;
+  country?: Array<string>;
+  timestamp?: string;
+  quantity: 25;
 }
 
 interface FiltersContextInterface {
@@ -16,6 +30,8 @@ interface FiltersContextInterface {
       validation?: object;
     }>;
   }>;
+  filtersApplied: Filters;
+  setFilters(filters: Filters): void;
 }
 
 const FiltersContext = createContext<FiltersContextInterface>(
@@ -24,6 +40,7 @@ const FiltersContext = createContext<FiltersContextInterface>(
 
 export const FiltersProvider: React.FC = ({ children }) => {
   const [defaultFilters, setDefaultFilters] = useState([]);
+  const [filtersApplied, setFiltersApplied] = useState<Filters>({} as Filters);
 
   useEffect(() => {
     async function getFilters(): Promise<void> {
@@ -37,8 +54,14 @@ export const FiltersProvider: React.FC = ({ children }) => {
     getFilters();
   }, []);
 
+  const setFilters = useCallback((filters: Filters) => {
+    setFiltersApplied(filters);
+  }, []);
+
   return (
-    <FiltersContext.Provider value={{ defaultFilters }}>
+    <FiltersContext.Provider
+      value={{ defaultFilters, setFilters, filtersApplied }}
+    >
       {children}
     </FiltersContext.Provider>
   );

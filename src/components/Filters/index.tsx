@@ -20,7 +20,7 @@ import {
 } from './styles';
 
 const Filters: React.FC = () => {
-  const { defaultFilters } = useFilters();
+  const { defaultFilters, setFilters } = useFilters();
   const formRef = useRef<FormHandles>(null);
 
   const getFilterComponent = useCallback(filter => {
@@ -35,10 +35,16 @@ const Filters: React.FC = () => {
     return <OptionsFilter name={filter.id} values={filter.values} />;
   }, []);
 
-  const handleSubmit = useCallback(data => {
-    console.log('submit form');
-    console.log(data);
-  }, []);
+  const handleSubmit = useCallback(
+    data => {
+      const formData = {
+        ...data,
+        quantity: data.quantity || 25,
+      };
+      setFilters(formData);
+    },
+    [setFilters],
+  );
 
   return (
     <Container>
