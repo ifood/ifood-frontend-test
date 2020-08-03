@@ -8,7 +8,14 @@ export const Container = styled.section`
 `
 
 export const Content = styled.div`
-  margin-top: 40px;
+  color: ${props => props.theme.palette.white};
+
+  ${media.mobile`
+    margin-top: 15px;
+  `}
+  ${media.desktop`
+    margin-top: 40px;
+  `}
 `
 
 export const WrapperTitle = styled.div`
@@ -55,7 +62,6 @@ export const Card = styled.div`
 export const LinkSpotify = styled.a``
 
 export const TitleItem = styled.h2`
-  color: ${props => props.theme.palette.white};
   font-size: 1rem;
   text-align: justify;
   margin-top: 10px;

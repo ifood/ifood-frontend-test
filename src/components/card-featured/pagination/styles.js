@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.section``
 
 export const Content = styled.div`
+  color: ${props => props.theme.palette.black};
   margin-top: 20px;
 `
 

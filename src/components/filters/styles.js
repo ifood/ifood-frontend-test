@@ -109,14 +109,15 @@ export const Values = styled.ul`
 export const WrapperValidation = styled.div``
 
 export const Value = styled.li`
-  background-color: ${props => props.theme.palette.white};
   border-radius: 20px;
   cursor: pointer;
   padding: 3px 15px;
   margin: 0 8px 6px 0;
 
-  ${props => props.selected && `
+  ${props => props.selected ? `
       background-color: ${props.theme.palette.green};
+    ` : `
+      background-color: ${props.theme.palette.white};
     `
   }
 `
