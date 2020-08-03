@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from '../../styles/media-queries'
 
 export const Container = styled.section`
   margin: 0 auto;
@@ -8,6 +9,35 @@ export const Container = styled.section`
 
 export const Content = styled.div`
   margin-top: 40px;
+`
+
+export const WrapperTitle = styled.div`
+  text-align: center;
+`
+
+export const Title = styled.h1`
+  font-size: 30px;
+  margin-bottom: 40px;
+
+  ${media.mobile`
+    font-size: 18px;
+    margin-bottom: 20px;
+  `}
+  ${media.desktop`
+    font-size: 30px;
+    margin-bottom: 40px;
+  `}
+`
+
+export const PlaylistTitle = styled.h2`
+  margin-bottom: 30px;
+
+  ${media.mobile`
+    font-size: 18px;
+  `}
+  ${media.desktop`
+    font-size: 25px;
+  `}
 `
 
 export const WrapperCard = styled.div`
@@ -22,12 +52,11 @@ export const Card = styled.div`
   width: 200px;
 `
 
-export const Title = styled.h1``
-
 export const LinkSpotify = styled.a``
 
-export const TitleItem = styled(Title)`
-  font-size: 0.75rem;
+export const TitleItem = styled.h2`
+  color: ${props => props.theme.palette.white};
+  font-size: 1rem;
   text-align: justify;
   margin-top: 10px;
 `

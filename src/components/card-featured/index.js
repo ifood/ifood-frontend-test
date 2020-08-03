@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 
 import * as S from './styles'
@@ -10,7 +11,12 @@ export default function CardFeatured ({ title, playlists, searchies, onSubmit })
   return (
     <S.Container>
       <S.Content>
-        <S.Title>{title} Featured Playlists </S.Title>
+        <S.WrapperTitle>
+          <S.Title>
+            <FormattedMessage id='greeting' values={{ title }}/>
+          </S.Title>
+          <S.PlaylistTitle>{ title }</S.PlaylistTitle>
+        </S.WrapperTitle>
         <Pagination
           totalItems={playlists.total}
           limit={searchies.limit}
