@@ -49,8 +49,6 @@ const _getAuthorize = () => {
 const _getAccessToken = async () => {
   // Get code with get authorize
   const code = sessionStorage.getItem('code')
-  // Convert keys for base64
-  // const authorization = `Basic ${btoa(env.CLIENT_ID)}:${btoa(env.CLIENT_SECRETE)}`
   // Convert uri to URL encoded
   const uriEncoded = `${encodeURI(env.REDIRECT_URI)}`
 
@@ -60,6 +58,7 @@ const _getAccessToken = async () => {
   params.append('redirect_uri', uriEncoded)
 
   const { data } = (await SpotifyAccount('accounts').post('/api/token', params))
+
   return data
 }
 

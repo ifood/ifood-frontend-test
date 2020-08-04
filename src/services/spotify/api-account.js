@@ -1,10 +1,14 @@
 import axios from 'axios'
+import env from './../../env'
 
 const SpotifyAccount = (prefix) => {
+  // Convert keys for base64
+  const authorization = `Basic ${btoa(`${env.CLIENT_ID}:${env.CLIENT_SECRET}`)}`
+
   return axios.create({
     baseURL: `https://${prefix}.spotify.com/`,
     headers: {
-      Authorization: 'Basic YTM4ZDZmMGE5MDcxNDZmZTg2ZjhmMDQxYmM1MTViM2E6ZjM2YTJhYjA2ZjJjNGE5NWFhNDVhZjI2MzI5NTk5OGU='
+      Authorization: authorization
     }
   })
 }
