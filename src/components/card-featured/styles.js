@@ -55,14 +55,29 @@ export const WrapperCard = styled.div`
 `
 
 export const Card = styled.div`
-  margin: 0 20px 20px 0;
-  width: 200px;
+  text-align: center;
+
+  ${media.mobile`
+    width: 135px;
+    margin: 0 5px 15px 5px;
+  `}
+  ${media.desktop`
+    width: 200px;
+    margin: 0 20px 20px 0;
+  `}
 `
 
 export const LinkSpotify = styled.a``
 
 export const TitleItem = styled.h2`
   font-size: 1rem;
-  text-align: justify;
   margin-top: 10px;
+
+  ${media.mobile`
+    font-size: 12px;
+    margin-top: 5px;
+  `}
+  ${media.desktop`
+    margin-top: 10px;
+  `}
 `
