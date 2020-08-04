@@ -103,12 +103,14 @@ export default function Filters ({ filters, handlerSubmitFilters, handlerLanguag
     e.preventDefault()
 
     const newSearchies = {
-      country: searchies.country.value,
-      locale: searchies.locale.value,
       offset,
       limit,
       timestamp
     }
+
+    if (searchies.country.value) newSearchies.country = searchies.country.value.slice(-2)
+
+    if (searchies.locale.value) newSearchies.locale = searchies.locale.value
 
     setOpened(!opened)
     handlerSubmitFilters(newSearchies)
@@ -121,11 +123,13 @@ export default function Filters ({ filters, handlerSubmitFilters, handlerLanguag
           type='button'
           template='filter'
           handleClick={() => setOpened(!opened)}>
-          <S.Title>Filtros</S.Title>
-          <S.IconFilter />
+          <>
+            <S.Title>Filtros</S.Title>
+            <S.IconFilter />
+          </>
         </Button>
         <Search handleChange={filterPLaylists} />
-        <S.IconCountry name={`icon-${searchies.country && searchies.country.value.toLowerCase()}`} alt='Country' />
+        {searchies.country && <S.IconCountry name={`icon-${searchies.country && searchies.country.value.toLowerCase()}`} alt='Country' />}
         <S.WrapperFilters opened={opened}>
           <S.Form onSubmit={(e) => loadByFilters(e)} >
             {filters.map((filter) => (
