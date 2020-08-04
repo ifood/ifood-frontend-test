@@ -50,7 +50,10 @@ CardFeatured.propTypes = {
     }))
   }).isRequired,
   searchies: PropTypes.shape({
-    limit: PropTypes.number
+    limit: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ])
   }),
   onSubmit: PropTypes.func.isRequired
 }
