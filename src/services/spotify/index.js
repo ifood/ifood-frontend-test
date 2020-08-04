@@ -2,7 +2,7 @@ import SpotifyApi from './api'
 import SpotifyAccount from './api-account'
 import * as QueryStringService from './../query-string'
 
-import env from '../../env'
+import env from './../../env'
 
 export const getFeturedPlaylist = async (searchies) => {
   const queryString = buildQueryString(searchies)
@@ -13,7 +13,6 @@ export const getFeturedPlaylist = async (searchies) => {
   } catch (err) {
     const { response } = err
     const { error } = response.data
-    // if (error.status === 401) return accessTokenValidation(error.status)
     return { error }
   }
 }
