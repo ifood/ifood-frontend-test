@@ -12,7 +12,7 @@ This project was built with modern technologies like React with Styled Component
     * Assets Folder: In this are all images, svgs icons, etc;
     * Lang Folder: We have information to internationalize the application;
 
-# Run the Project
+## Run the Project
 * Install NodeJs and execute the following commands.
     * `npm install` or `yarn install` to install the dependencies;
     * `npm start` or `yarn start` to execute the App;
