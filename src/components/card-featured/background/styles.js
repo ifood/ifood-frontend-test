@@ -1,15 +1,23 @@
 import styled from 'styled-components'
+import media from '../../../styles/media-queries'
 import { MdPlayCircleOutline } from 'react-icons/md'
 
 export const Container = styled.section``
 
 export const Content = styled.div`
-  width: 200px;
-  height: 200px;
   background-image: url(${props => props.bg});
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+
+  ${media.mobile`
+    height: 135px;
+    width: 135px;
+  `}
+  ${media.desktop`
+    height: 200px;
+    width: 200px;
+  `}
 `
 
 export const Shadow = styled.div`
