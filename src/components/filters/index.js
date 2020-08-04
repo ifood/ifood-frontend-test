@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 
 import * as S from './styles'
@@ -124,7 +125,7 @@ export default function Filters ({ filters, handlerSubmitFilters, handlerLanguag
           template='filter'
           handleClick={() => setOpened(!opened)}>
           <>
-            <S.Title>Filtros</S.Title>
+            <S.Title><FormattedMessage id='filter.title'/></S.Title>
             <S.IconFilter />
           </>
         </Button>

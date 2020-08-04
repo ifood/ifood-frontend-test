@@ -1,7 +1,7 @@
 export default {
+  'filter.title': 'Filters',
+  'search.title': 'Search',
   greeting: 'Welcome to Spotifood\'s featured playlist',
-  time: 'The time is {t, time, short}.',
-  date: 'The date is {d, date}.',
   'premium.title': 'Pick your Premium',
   'premium.description': 'Listen without limits on your phone, speaker, and other devices.',
   'premium.plan0': 'Individual',

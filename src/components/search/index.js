@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FormattedMessage } from 'react-intl'
 
 import * as S from './styles'
 
@@ -8,10 +9,14 @@ export default function Search ({ handleChange }) {
     <S.Container>
       <S.Content>
         <S.Form>
-          <S.Input
-            type='text'
-            placeholder='Search'
-            onChange={(e) => handleChange(e.target.value)} />
+          <FormattedMessage id="search.title">
+            {placeholder =>
+              <S.Input
+                type='text'
+                placeholder={placeholder}
+                onChange={(e) => handleChange(e.target.value)} />
+            }
+          </FormattedMessage>
         </S.Form>
       </S.Content>
     </S.Container>
