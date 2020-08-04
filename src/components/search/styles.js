@@ -2,11 +2,13 @@ import styled from 'styled-components'
 import media from '../../styles/media-queries'
 
 export const Container = styled.div`
+  flex: 1;
+
   ${media.mobile`
     margin: 0 15px;
   `}
   ${media.desktop`
-    width: 50%;
+    margin: 0 60px;
   `}
 `
 
