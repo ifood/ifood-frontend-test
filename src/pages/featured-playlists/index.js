@@ -19,7 +19,17 @@ function FeaturedPlaylist ({ handlerLanguage }) {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      await loadFeturedPlaylist(searchies)
+    }, 10000)
+
+    return () => clearInterval(interval)
+  })
+
   async function fetchData () {
+    setIsLoading(true)
+
     const [filtersData, hasToken] = await Promise.all([
       loadFilters(),
       SpotifyService.accessTokenValidation()
@@ -27,7 +37,9 @@ function FeaturedPlaylist ({ handlerLanguage }) {
 
     setFilters(filtersData)
 
-    if (hasToken) loadFeturedPlaylist(searchies)
+    if (hasToken) await loadFeturedPlaylist(searchies)
+
+    setIsLoading(false)
   }
 
   async function loadFilters () {
@@ -37,7 +49,7 @@ function FeaturedPlaylist ({ handlerLanguage }) {
   }
 
   async function loadFeturedPlaylist (data) {
-    setIsLoading(true)
+    // setIsLoading(true)
 
     const newSearchies = {
       ...searchies,
@@ -50,15 +62,15 @@ function FeaturedPlaylist ({ handlerLanguage }) {
 
     if (resp.error) {
       if (resp.error.status === 401) {
-        if (await SpotifyService.accessTokenValidation()) await loadFeturedPlaylist({ offset: 0, limit: 5 })
+        if (await SpotifyService.accessTokenValidation(resp.error.status)) await loadFeturedPlaylist(newSearchies)
       }
     } else {
-      setPlaylists(resp.playlists)
-      setTotalPlaylists(resp.playlists)
+      setPlaylists({ ...playlists, ...resp.playlists })
+      setTotalPlaylists({ ...playlists, ...resp.playlists })
       setMessage(resp.message)
     }
 
-    setIsLoading(false)
+    // setIsLoading(false)
   }
 
   function filterPLaylists (search) {
