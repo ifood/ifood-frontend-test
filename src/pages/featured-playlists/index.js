@@ -14,6 +14,7 @@ function FeaturedPlaylist ({ handlerLanguage }) {
   const [totalPlaylists, setTotalPlaylists] = useState({})
   const [searchies, setSearchies] = useState({ offset: 0, limit: 5 })
   const [message, setMessage] = useState('')
+  const TIMER_REFRESH = 5000
 
   useEffect(() => {
     fetchData()
@@ -22,7 +23,7 @@ function FeaturedPlaylist ({ handlerLanguage }) {
   useEffect(() => {
     const interval = setInterval(async () => {
       await loadFeturedPlaylist(searchies)
-    }, 30000)
+    }, TIMER_REFRESH)
 
     return () => clearInterval(interval)
   })
