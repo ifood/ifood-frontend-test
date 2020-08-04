@@ -22,7 +22,7 @@ function FeaturedPlaylist ({ handlerLanguage }) {
   useEffect(() => {
     const interval = setInterval(async () => {
       await loadFeturedPlaylist(searchies)
-    }, 10000)
+    }, 30000)
 
     return () => clearInterval(interval)
   })
@@ -49,8 +49,6 @@ function FeaturedPlaylist ({ handlerLanguage }) {
   }
 
   async function loadFeturedPlaylist (data) {
-    // setIsLoading(true)
-
     const newSearchies = {
       ...searchies,
       ...data
@@ -69,8 +67,6 @@ function FeaturedPlaylist ({ handlerLanguage }) {
       setTotalPlaylists({ ...playlists, ...resp.playlists })
       setMessage(resp.message)
     }
-
-    // setIsLoading(false)
   }
 
   function filterPLaylists (search) {
