@@ -1,5 +1,5 @@
 export default {
-  greeting: 'Bem vimdo a lista de reprodução em destaque do Spotifood',
+  greeting: 'Bem-vindo a lista de reprodução em destaque do Spotifood',
   time: 'Es ist {t, time, short} Uhr.',
   date: 'Das Datum ist {d, date}.',
   'premium.title': 'Obter o seu Premium',
