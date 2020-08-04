@@ -45,7 +45,10 @@ export default function Pagination ({ totalItems, limit, onSubmitPagination }) {
 
 Pagination.propTypes = {
   totalItems: PropTypes.number,
-  limit: PropTypes.number,
+  limit: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   onSubmitPagination: PropTypes.func.isRequired
 }
 
