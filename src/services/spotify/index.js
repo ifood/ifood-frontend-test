@@ -5,7 +5,7 @@ import * as QueryStringService from './../query-string'
 import env from './../../env'
 
 export const getFeturedPlaylist = async (searchies) => {
-  const queryString = buildQueryString(searchies)
+  const queryString = QueryStringService.build(searchies)
 
   try {
     const { data } = (await SpotifyApi().get(`/browse/featured-playlists?${queryString}`))
@@ -60,5 +60,3 @@ const _getAccessToken = async () => {
 
   return data
 }
-
-const buildQueryString = (searchies) => Object.entries(searchies).map(search => search.join('=')).join('&')
