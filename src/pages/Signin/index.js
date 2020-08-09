@@ -9,22 +9,29 @@ import {
   REDIRECT_URI,
   RESPONSE_TYPE,
 } from '../../config/SPOTIFY';
+import { useHistory } from 'react-router-dom';
+import { setSession } from '../../services/auth';
 
 const Signin = () => {
   const classes = useStyles();
+  const history = useHistory();
 
   useEffect(() => {
-    window.location.hash
+    const result = window.location.hash
       .substring(1)
       .split('&')
-      .reduce(function (initial, item) {
-        if (item) {
-          var parts = item.split('=');
-          initial[parts[0]] = decodeURIComponent(parts[1]);
+      .reduce((data, parm) => {
+        if (parm) {
+          var parts = parm.split('=');
+          data[parts[0]] = decodeURIComponent(parts[1]);
         }
-        return initial;
+        return data;
       }, {});
-  }, []);
+    if (result.access_token) {
+      setSession(result);
+      history.push('/home');
+    }
+  }, [history]);
 
   return (
     <div className={classes.root}>

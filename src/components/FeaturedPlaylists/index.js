@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import {
   Card,
-  CardActionArea,
   CardContent,
   CardMedia,
   Typography,
@@ -57,28 +56,23 @@ const FeaturedPlaylists = () => {
         </Grid>
       </Grid>
 
-      <Grid container justify="flex-start" spacing={2}>
+      <Grid container justify="flex-start" spacing={3}>
         {playlists.map((playlist, key) => (
           <Grid key={key} item>
             <Card className={classes.card} elevation={0}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image={playlist.images[0].url}
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {playlist.name}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    {playlist.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={playlist.images[0].url}
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {playlist.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {playlist.description}
+                </Typography>
+              </CardContent>
             </Card>
           </Grid>
         ))}

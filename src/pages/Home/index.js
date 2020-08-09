@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   CssBaseline,
   Drawer,
@@ -6,20 +6,16 @@ import {
   IconButton,
   AppBar,
   Toolbar,
-  Box,
-  Icon,
   makeStyles,
   useTheme,
-  Typography,
   Grid,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Filters from '../../components/Filters';
 import FeaturedPlaylists from '../../components/FeaturedPlaylists';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
-import AudiotrackIcon from '@material-ui/icons/Audiotrack';
-import { API_SPOTIFY } from '../../config/API';
 import Logo from '../../components/shared/Logo';
+
 const drawerWidth = 250;
 
 const useStyles = makeStyles(theme => ({
@@ -64,16 +60,6 @@ const Home = props => {
     setMobileOpen(!mobileOpen);
   };
 
-  // const Logo = ({ direction }) => {
-  //   return (
-  //     <Box display="flex" flexDirection={direction} alignItems="center">
-  //       <Icon fontSize="large">
-  //         <AudiotrackIcon fontSize="large" color="error" />
-  //       </Icon>
-  //       <Typography variant="h4">Spotifood</Typography>
-  //     </Box>
-  //   );
-  // };
   const drawer = (
     <div>
       <div className={classes.toolbar} />
