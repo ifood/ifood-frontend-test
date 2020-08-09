@@ -1,60 +1,20 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
-import { Container, Filters, LogInButton } from "./styles";
+import { Container, Filters, LogInButton, Repositories } from "./styles";
 
-interface IFiltersLists {
-  id: string;
-  name: string;
-  values: [
-    {
-      value: string;
-      name: string;
-    }
-  ];
-}
-
-interface ITimeStamp {
-  id: string;
-  name: string;
-  validation: [
-    {
-      primitiveType: string;
-      entityType: string;
-      pattern: string;
-    }
-  ];
-}
-
-interface ILimit {
-  id: string;
-  name: string;
-  validation: [
-    {
-      primitiveType: string;
-      min: number;
-      max: number;
-    }
-  ];
-}
-
-interface IOffset {
-  id: string;
-  name: string;
-  validation: [
-    {
-      primitiveType: string;
-    }
-  ];
-}
+import { IFiltersLists, ILimit, ISpotifyResponse, IOffset, ITimeStamp } from "../../config/interfaces";
 
 const Main: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
   const [locale, setLocale] = useState<IFiltersLists>({} as IFiltersLists);
-  const [country, setCountry] = useState<IFiltersLists>({} as IFiltersLists);
+  const [countries, setCountry] = useState<IFiltersLists>({} as IFiltersLists);
   const [timestamp, setTimestamp] = useState<ITimeStamp>({} as ITimeStamp);
   const [limit, setLimit] = useState<ILimit>({} as ILimit);
   const [offset, setOffset] = useState<IOffset>({} as IOffset);
+  const [playlists, setPlaylists] = useState<ISpotifyResponse>(
+    {} as ISpotifyResponse
+  );
 
   useEffect(() => {
     axios
@@ -110,13 +70,16 @@ const Main: React.FC = () => {
             },
           }
         )
-        .then((res) => console.log(res));
+        .then((res) => {
+          console.log(res)
+          setPlaylists(res.data)
+        });
     }
   }, [token]);
 
-  const showFilter = useCallback(() => {
-    console.table(country);
-  }, [country]);
+  const showFilter = useCallback((date: any) => {
+    console.log(date);
+  }, []);
 
   const logInSpotify = useCallback(() => {
     const clientID = "7779441b6a2042949a197bfcfd94e3fa";
@@ -132,24 +95,40 @@ const Main: React.FC = () => {
       <h1>Spotifood</h1>
 
       {token && (
-        <Filters>
-          <input type="text" />
-          <select name="country" id="country">
-            {country &&
-              country.values?.map((value) => (
-                <option key={value.value} value={value.value}>
-                  {value.name}
-                </option>
+        <>
+          <Filters>
+            <input type="text" />
+            <select name="country" defaultValue="BR"  id="country">
+              {countries &&
+                countries.values?.map((value) => (
+                  <option key={value.value} value={value.value}>
+                    {value.name}
+                  </option>
+                ))}
+            </select>
+            <input type="datetime-local" onChange={showFilter} />
+            <input type="number" defaultValue={5} min={5} max={500} name="count" id="count" />
+          </Filters>
+
+          {playlists.playlists && (
+            <Repositories>
+              {playlists.playlists.items.map((playlist) => (
+                <a href={playlist.external_urls.spotify} target="_blank" key={playlist.id} rel="noopener noreferrer">
+                  <img src={playlist.images[0].url} alt={playlist.name} />
+                  <div>
+                    <strong>{playlist.name}</strong>
+                    <p>{playlist.description}</p>
+                  </div>
+                </a>
               ))}
-          </select>
-          <input type="datetime-local" />
-          <select name="count" id="count"></select>
-          <button onClick={showFilter}>mostrar</button>
-        </Filters>
+            </Repositories>
+          )}
+        </>
       )}
 
-
-      {!token && <LogInButton onClick={logInSpotify}>Continuar com Spotify</LogInButton>}
+      {!token && (
+        <LogInButton onClick={logInSpotify}>Continuar com Spotify</LogInButton>
+      )}
     </Container>
   );
 };
