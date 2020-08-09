@@ -1,6 +1,8 @@
 {
   "main": "index.tsx",
   "scripts": {
+    "start": "next",
+    "deploy": "next build && next export",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
