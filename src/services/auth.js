@@ -5,5 +5,8 @@ export const setSession = item => {
 };
 
 export const getSession = () => {
-  return JSON.parse(localStorage.getItem(KEY));
+  if (localStorage.getItem(KEY)) {
+    return `Bearer ${JSON.parse(localStorage.getItem(KEY)).access_token}`;
+  }
+  return null;
 };

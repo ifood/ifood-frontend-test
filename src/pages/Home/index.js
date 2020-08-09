@@ -15,40 +15,7 @@ import Filters from '../../components/Filters';
 import FeaturedPlaylists from '../../components/FeaturedPlaylists';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import Logo from '../../components/shared/Logo';
-
-const drawerWidth = 250;
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-  },
-  menuButton: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
+import useStyles from './styles';
 
 const Home = props => {
   const { window } = props;
@@ -107,13 +74,11 @@ const Home = props => {
           </Grid>
         </Toolbar>
       </AppBar>
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+      <nav className={classes.drawer}>
         <Hidden smUp implementation="css">
           <Drawer
             container={container}
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{

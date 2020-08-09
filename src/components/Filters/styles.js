@@ -5,12 +5,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     padding: 10,
-    background: '#fff',
-    // [theme.breakpoints.down('sm')]: {
     '& .MuiFormControl-root': {
       marginBottom: '1rem',
     },
-    // },
   },
 }));
 

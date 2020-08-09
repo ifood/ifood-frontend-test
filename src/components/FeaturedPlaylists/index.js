@@ -21,12 +21,11 @@ const FeaturedPlaylists = () => {
 
   useEffect(() => {
     (async () => {
-      API_SPOTIFY.get(
-        '/v1/browse/featured-playlists?timestamp=2020-08-09T14%3A13%3A22&offset=0&limit=20'
-      ).then(response => {
-        SET_SPOTIFY_PLAYLISTS(prevState => response.data.playlists.items);
-        setPlaylists(prevState => response.data.playlists.items);
-      });
+      const result = await API_SPOTIFY.get(
+        '/v1/browse/featured-playlists?locale=pt_BR&country=BR&timestamp=2020-08-09T18:24:00.000Z&limit=10&offset=1'
+      );
+      SET_SPOTIFY_PLAYLISTS(prevState => result.data.playlists.items);
+      setPlaylists(prevState => result.data.playlists.items);
     })();
   }, []);
 

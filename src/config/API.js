@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { getSession } from '../services/auth';
 
-const { access_token } = getSession();
-
 export const API_MOCKY = axios.create({
   baseURL: 'http://www.mocky.io/v2',
   headers: {
@@ -16,6 +14,13 @@ export const API_SPOTIFY = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${access_token}`,
   },
+});
+
+API_SPOTIFY.interceptors.request.use(async config => {
+  const access_token = getSession();
+  if (access_token) {
+    config.headers.Authorization = `${access_token}`;
+  }
+  return config;
 });
