@@ -49,7 +49,7 @@ interface IOffset {
 }
 
 const Main: React.FC = () => {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState<string | null>(null);
   const [locale, setLocale] = useState<IFiltersLists>({} as IFiltersLists);
   const [country, setCountry] = useState<IFiltersLists>({} as IFiltersLists);
   const [timestamp, setTimestamp] = useState<ITimeStamp>({} as ITimeStamp);
@@ -67,7 +67,9 @@ const Main: React.FC = () => {
         setOffset(response.data.filters[4]);
       });
 
-    if (window.location.hash) {
+    setToken(localStorage.getItem("@Spotifood:token"));
+
+    if (!token && window.location.hash) {
       const queryParams = window.location.hash
         .substring(1)
         .split("&")
@@ -128,21 +130,26 @@ const Main: React.FC = () => {
   return (
     <Container>
       <h1>Spotifood</h1>
-      <Filters>
-        <input type="text" />
-        <select name="country" id="country">
-          {country &&
-            country.values?.map((value) => (
-              <option key={value.value} value={value.value}>
-                {value.name}
-              </option>
-            ))}
-        </select>
-        <input type="datetime-local" />
-        <select name="count" id="count"></select>
-        <button onClick={showFilter}>mostrar</button>
-      </Filters>
-      <LogInButton onClick={logInSpotify}>Continuar com Spotify</LogInButton>
+
+      {token && (
+        <Filters>
+          <input type="text" />
+          <select name="country" id="country">
+            {country &&
+              country.values?.map((value) => (
+                <option key={value.value} value={value.value}>
+                  {value.name}
+                </option>
+              ))}
+          </select>
+          <input type="datetime-local" />
+          <select name="count" id="count"></select>
+          <button onClick={showFilter}>mostrar</button>
+        </Filters>
+      )}
+
+
+      {!token && <LogInButton onClick={logInSpotify}>Continuar com Spotify</LogInButton>}
     </Container>
   );
 };
