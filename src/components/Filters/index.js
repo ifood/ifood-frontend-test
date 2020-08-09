@@ -28,7 +28,7 @@ const Filters = () => {
       <FormControl fullWidth>
         <Autocomplete
           id="locale"
-          options={locale}
+          options={locale || []}
           size="small"
           getOptionLabel={option => option.name}
           renderInput={params => (
@@ -40,7 +40,7 @@ const Filters = () => {
       <FormControl fullWidth>
         <Autocomplete
           id="country"
-          options={country}
+          options={country || []}
           size="small"
           getOptionLabel={option => option.name}
           renderInput={params => (
