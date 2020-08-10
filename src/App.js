@@ -1,8 +1,17 @@
 import React from 'react';
-import 'react-perfect-scrollbar/dist/css/styles.css';
-import './App.css';
+import { Provider } from 'react-redux';
+import { store } from './stores';
 import Routes from './pages/routes';
 
-const App = () => <Routes />;
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import './App.css';
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  );
+};
 
 export default App;

@@ -13,24 +13,24 @@ import {
 import useStyles from './styles';
 import { API_SPOTIFY } from '../../config/API';
 import AudiotrackIcon from '@material-ui/icons/Audiotrack';
+import { useSelector, useDispatch } from 'react-redux';
+import { playlistActions } from '../../stores/modules/playlist/actions';
 
 const FeaturedPlaylists = () => {
   const classes = useStyles();
-  const [SPOTIFY_PLAYLISTS, SET_SPOTIFY_PLAYLISTS] = useState([]);
+  const SPOTIFY_PLAYLISTS = useSelector(state => state.playlist);
+  const dispatch = useDispatch();
   const [playlists, setPlaylists] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      const result = await API_SPOTIFY.get(
-        '/v1/browse/featured-playlists?locale=pt_BR&country=BR&timestamp=2020-08-09T18:24:00.000Z&limit=10&offset=1'
-      );
-      SET_SPOTIFY_PLAYLISTS(prevState => result.data.playlists.items);
-      setPlaylists(prevState => result.data.playlists.items);
-    })();
-  }, []);
+    if (!SPOTIFY_PLAYLISTS.success) {
+      dispatch(playlistActions.index());
+    }
+    setPlaylists(prevState => SPOTIFY_PLAYLISTS.data);
+  }, [dispatch, SPOTIFY_PLAYLISTS]);
 
   const onSearch = event => {
-    const filter = SPOTIFY_PLAYLISTS.filter(playlist => {
+    const filter = SPOTIFY_PLAYLISTS.data.filter(playlist => {
       return playlist.name.toLowerCase().indexOf(event.toLowerCase()) >= 0;
     });
     return setPlaylists(prevState => filter);
