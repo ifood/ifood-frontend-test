@@ -6,8 +6,6 @@ import {
   IconButton,
   AppBar,
   Toolbar,
-  makeStyles,
-  useTheme,
   Grid,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,7 +18,6 @@ import useStyles from './styles';
 const Home = props => {
   const { window } = props;
   const classes = useStyles();
-  const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
