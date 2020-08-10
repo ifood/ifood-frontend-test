@@ -1,3 +1,9 @@
+export interface IMockResponse {
+  filters: [
+    IFiltersLists, IFiltersLists, ITimeStamp, ILimit, IOffset,
+  ];
+}
+
 export interface IFiltersLists {
     id: string;
     name: string;

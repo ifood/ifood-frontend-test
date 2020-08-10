@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { shade } from 'polished';
+import { shade,  } from 'polished';
 
 export const Container = styled.div`
   max-width: 960px;
@@ -7,10 +7,6 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-`;
-
-export const Filters = styled.div`
-    padding: 20px;
 `;
 
 export const Repositories = styled.div`
@@ -77,9 +73,10 @@ export const LogInButton = styled.button`
   color: #ffffff;
   font-weight: 500;
   background: #24d15e;
-  transition: background 0.2s;
+  transition: 0.2s;
 
   &:hover {
-    background: ${shade(0.2, "#24d15e")}
+    background: ${shade(0.2, "#24d15e")};
+    transform: scale(1.05);
   }
 `

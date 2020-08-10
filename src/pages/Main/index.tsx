@@ -1,34 +1,34 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
+import { FormHandles } from "@unform/core";
+import { Form } from "@unform/web";
 
-import { Container, Filters, LogInButton, Repositories } from "./styles";
+import { Container, LogInButton, Repositories } from "./styles";
 
-import { IFiltersLists, ILimit, ISpotifyResponse, IOffset, ITimeStamp } from "../../config/interfaces";
+import {
+  IFiltersLists,
+  ILimit,
+  ISpotifyResponse,
+  IOffset,
+  ITimeStamp,
+} from "../../config/interfaces";
+import Filters from "../../components/Filters";
 
 const Main: React.FC = () => {
-  const [token, setToken] = useState<string | null>(null);
-  const [locale, setLocale] = useState<IFiltersLists>({} as IFiltersLists);
-  const [countries, setCountry] = useState<IFiltersLists>({} as IFiltersLists);
-  const [timestamp, setTimestamp] = useState<ITimeStamp>({} as ITimeStamp);
-  const [limit, setLimit] = useState<ILimit>({} as ILimit);
-  const [offset, setOffset] = useState<IOffset>({} as IOffset);
+  const [token, setToken] = useState<string | null>(() =>
+    localStorage.getItem("@Spotifood:token")
+  );
+  const [locale, setLocale] = useState<string>("");
+  const [country, setCountry] = useState<string>("");
+  const [timestamp, setTimestamp] = useState<string>("");
+  const [limit, setLimit] = useState<string>("");
+  const [offset, setOffset] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
   const [playlists, setPlaylists] = useState<ISpotifyResponse>(
     {} as ISpotifyResponse
   );
 
   useEffect(() => {
-    axios
-      .get("http://www.mocky.io/v2/5a25fade2e0000213aa90776")
-      .then((response) => {
-        setLocale(response.data.filters[0]);
-        setCountry(response.data.filters[1]);
-        setTimestamp(response.data.filters[2]);
-        setLimit(response.data.filters[3]);
-        setOffset(response.data.filters[4]);
-      });
-
-    setToken(localStorage.getItem("@Spotifood:token"));
-
     if (!token && window.location.hash) {
       const queryParams = window.location.hash
         .substring(1)
@@ -49,33 +49,48 @@ const Main: React.FC = () => {
         localStorage.setItem("@Spotifood:token", tokenInfo.token);
 
         setToken(tokenInfo.token);
+        window.location.hash = ''
       } else {
         const errorsInfo = {
           error: queryParams[0],
+          state: queryParams[1],
         };
 
         console.log(errorsInfo.error);
+        console.log(errorsInfo.state);
       }
     }
 
     if (token) {
-      axios
-        .get(
-          `https://api.spotify.com/v1/browse/featured-playlists?country=BR&locale=pt_BR&timestamp=2014-10-23T09%3A00%3A00&limit=10&offset=5`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem(
-                "@Spotifood:token"
-              )}`,
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res)
-          setPlaylists(res.data)
-        });
+        axios
+          .get(
+            `https://api.spotify.com/v1/browse/featured-playlists?country=BR&locale=en_AU&timestamp=2014-10-23T09%3A00%3A00&limit=10&offset=5`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem(
+                  "@Spotifood:token"
+                )}`,
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res);
+            setPlaylists(res.data);
+          }).catch(error => {
+            console.log('error', error)
+            localStorage.removeItem('@Spotifood:token')
+            setToken(null)
+          });
     }
   }, [token]);
+
+  useEffect(() => {
+    console.log(search);
+    console.log(country);
+    console.log(timestamp);
+    console.log(limit);
+    console.log(locale);
+  }, [search, country, timestamp, limit, locale]);
 
   const showFilter = useCallback((date: any) => {
     console.log(date);
@@ -96,24 +111,23 @@ const Main: React.FC = () => {
 
       {token && (
         <>
-          <Filters>
-            <input type="text" />
-            <select name="country" defaultValue="BR"  id="country">
-              {countries &&
-                countries.values?.map((value) => (
-                  <option key={value.value} value={value.value}>
-                    {value.name}
-                  </option>
-                ))}
-            </select>
-            <input type="datetime-local" onChange={showFilter} />
-            <input type="number" defaultValue={5} min={5} max={500} name="count" id="count" />
-          </Filters>
+          <Filters
+            handleSearch={setSearch}
+            handleCountry={setCountry}
+            handleDateTime={setTimestamp}
+            handleLimit={setLimit}
+            handleLocale={setLocale}
+          />
 
           {playlists.playlists && (
             <Repositories>
               {playlists.playlists.items.map((playlist) => (
-                <a href={playlist.external_urls.spotify} target="_blank" key={playlist.id} rel="noopener noreferrer">
+                <a
+                  href={playlist.external_urls.spotify}
+                  target="_blank"
+                  key={playlist.id}
+                  rel="noopener noreferrer"
+                >
                   <img src={playlist.images[0].url} alt={playlist.name} />
                   <div>
                     <strong>{playlist.name}</strong>
