@@ -31,7 +31,7 @@ const FeaturedPlaylists = () => {
 
   const onSearch = event => {
     const filter = SPOTIFY_PLAYLISTS.filter(playlist => {
-      return playlist.name.toLowerCase().indexOf(event) >= 0;
+      return playlist.name.toLowerCase().indexOf(event.toLowerCase()) >= 0;
     });
     return setPlaylists(prevState => filter);
   };
