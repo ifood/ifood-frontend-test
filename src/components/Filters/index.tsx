@@ -1,4 +1,4 @@
-import React, { useState, HTMLAttributes, useEffect } from "react";
+import React, { useState, HTMLAttributes, useEffect, useCallback } from "react";
 import axios from "axios";
 
 import { Container } from "./styles";
@@ -10,18 +10,39 @@ import {
 } from "../../config/interfaces";
 
 interface IFiltersProps {
-  handleSearch(value: string): void;
-  handleCountry(value: string): void;
-  handleLocale(value: string): void;
-  handleDateTime(value: string): void;
-  handleLimit(value: string): void;
+  defaultSearch: {
+    search: string;
+    setSearch(value: string): void;
+  };
+  defaultLocale: {
+    locale: string;
+    setLocale(value: string): void;
+  };
+  defaultTime: {
+    timestamp: string;
+    setDateTime(value: string): void;
+  };
+  defaultCountry: {
+    country: string;
+    setCountry(value: string): void;
+  };
+  defaultLimit: {
+    limit: number;
+    setLimit(value: number): void;
+  };
+  defaultOffset: {
+    offset: number;
+    setOffset(value: number): void;
+  }
 }
 
 const Filters: React.FC<IFiltersProps> = ({
-  handleSearch,
-  handleCountry,
-  handleDateTime,
-  handleLimit,
+  defaultTime,
+  defaultCountry,
+  defaultLimit,
+  defaultLocale,
+  defaultOffset,
+  defaultSearch
 }) => {
   const [localeInfo, setLocaleInfo] = useState<IFiltersLists>(
     {} as IFiltersLists
@@ -45,22 +66,57 @@ const Filters: React.FC<IFiltersProps> = ({
         setLimitInfo(response.data.filters[3]);
         setOffsetInfo(response.data.filters[4]);
       });
-  },[]);
+  }, []);
+
+  const handleDateTime = useCallback((date: string) => {
+    console.log(date)
+    const parsedDate = new Date(date).toISOString()
+    defaultTime.setDateTime(parsedDate)
+  },[])
+
+  const handleCountry = useCallback((country: string) => {
+    if(country === 'en_US') {
+      defaultCountry.setCountry('US')
+      defaultLocale.setLocale('en_US')
+    } else {
+      defaultCountry.setCountry(country)
+    }
+  },[])
 
   return (
     <Container>
       <input
         type="text"
-        onChange={(e) => handleSearch(e.currentTarget.value)}
+        value={defaultSearch.search}
+        onChange={(e) => defaultSearch.setSearch(e.currentTarget.value)}
       />
       <select
         name="country"
-        defaultValue="BR"
+        value={defaultCountry.country}
         id="country"
         onChange={(e) => handleCountry(e.currentTarget.value)}
       >
+        <option key="default" value={defaultCountry.country}>
+          País
+        </option>
         {countriesInfo &&
           countriesInfo.values?.map((value) => (
+            <option key={value.value} value={value.value}>
+              {value.name}
+            </option>
+          ))}
+      </select>
+      <select
+        name="Locale"
+        value={defaultLocale.locale}
+        id="country"
+        onChange={(e) => defaultLocale.setLocale(e.currentTarget.value)}
+      >
+        <option key="default" value={defaultLocale.locale}>
+          Idioma
+        </option>
+        {localeInfo &&
+          localeInfo.values?.map((value) => (
             <option key={value.value} value={value.value}>
               {value.name}
             </option>
@@ -69,12 +125,13 @@ const Filters: React.FC<IFiltersProps> = ({
       <input
         type="datetime-local"
         onChange={(e) => handleDateTime(e.currentTarget.value)}
+        value={defaultTime.timestamp}
       />
       <input
         type="number"
-        defaultValue={5}
-        onChange={(e) => handleLimit(e.currentTarget.value)}
-        min={5}
+        value={defaultLimit.limit}
+        onChange={(e) => defaultLimit.setLimit(Number.parseInt(e.currentTarget.value))}
+        min={0}
         max={500}
         name="count"
         id="count"

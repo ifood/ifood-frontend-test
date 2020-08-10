@@ -1,32 +1,36 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
-import { FormHandles } from "@unform/core";
-import { Form } from "@unform/web";
 
-import { Container, LogInButton, Repositories } from "./styles";
+import { Container, Content } from "./styles";
 
 import {
-  IFiltersLists,
-  ILimit,
   ISpotifyResponse,
-  IOffset,
-  ITimeStamp,
+  IPlaylists,
+  ISpotifyRequest,
 } from "../../config/interfaces";
 import Filters from "../../components/Filters";
+import Playlists from "../../components/Playlists";
+import Button from "../../components/Button";
 
 const Main: React.FC = () => {
   const [token, setToken] = useState<string | null>(() =>
     localStorage.getItem("@Spotifood:token")
   );
-  const [locale, setLocale] = useState<string>("");
-  const [country, setCountry] = useState<string>("");
-  const [timestamp, setTimestamp] = useState<string>("");
-  const [limit, setLimit] = useState<string>("");
-  const [offset, setOffset] = useState<string>("");
+  const [locale, setLocale] = useState<string>("pt_BR");
+  const [country, setCountry] = useState<string>("BR");
+  const [timestamp, setTimestamp] = useState<string>(() => {
+    const UTCOffset = new Date().getTimezoneOffset();
+    const dateNow = Date.now() - UTCOffset;
+    const date = new Date(dateNow);
+    return date.toISOString();
+  });
+  const [limit, setLimit] = useState<number>(5);
+  const [offset, setOffset] = useState<number>(1);
   const [search, setSearch] = useState<string>("");
-  const [playlists, setPlaylists] = useState<ISpotifyResponse>(
+  const [spotifyResponse, setSpotifyResponse] = useState<ISpotifyResponse>(
     {} as ISpotifyResponse
   );
+  const [renderPlaylists, setRenderPlaylists] = useState<IPlaylists[]>([]);
 
   useEffect(() => {
     if (!token && window.location.hash) {
@@ -49,7 +53,7 @@ const Main: React.FC = () => {
         localStorage.setItem("@Spotifood:token", tokenInfo.token);
 
         setToken(tokenInfo.token);
-        window.location.hash = ''
+        window.location.hash = "";
       } else {
         const errorsInfo = {
           error: queryParams[0],
@@ -62,39 +66,92 @@ const Main: React.FC = () => {
     }
 
     if (token) {
-        axios
-          .get(
-            `https://api.spotify.com/v1/browse/featured-playlists?country=BR&locale=en_AU&timestamp=2014-10-23T09%3A00%3A00&limit=10&offset=5`,
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem(
-                  "@Spotifood:token"
-                )}`,
-              },
-            }
-          )
-          .then((res) => {
-            console.log(res);
-            setPlaylists(res.data);
-          }).catch(error => {
-            console.log('error', error)
-            localStorage.removeItem('@Spotifood:token')
-            setToken(null)
-          });
+      console.log(timestamp);
+      requestSpotify({ country, timestamp, limit, offset, locale, token })
+        .then((res) => {
+          console.log(res);
+          setSpotifyResponse(res);
+          setRenderPlaylists(res.playlists.items);
+        })
+        .catch((error) => {
+          console.log("error", error);
+          localStorage.removeItem("@Spotifood:token");
+          setToken(null);
+        });
     }
-  }, [token]);
+  }, [token, timestamp]);
 
   useEffect(() => {
-    console.log(search);
-    console.log(country);
-    console.log(timestamp);
-    console.log(limit);
-    console.log(locale);
-  }, [search, country, timestamp, limit, locale]);
+    if (token)
+      requestSpotify({ country, timestamp, limit, offset, locale, token }).then(
+        (res) => {
+          console.log(res);
+          setSpotifyResponse(res);
+          setRenderPlaylists(res.playlists.items);
+        }
+      );
+  }, [country, timestamp, limit, locale]);
+
+  useEffect(() => {
+    if (spotifyResponse.playlists) {
+      setRenderPlaylists(
+        spotifyResponse.playlists.items.filter((playlist) =>
+          playlist.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }
+  }, [search]);
 
   const showFilter = useCallback((date: any) => {
     console.log(date);
   }, []);
+
+  const requestSpotify = useCallback(async (data: ISpotifyRequest): Promise<ISpotifyResponse> => {
+    const { country, limit, locale, offset, timestamp, token } = data;
+    const encodedTimeStamp = encodeURI(timestamp);
+    const uriOffset = offset.toString();
+    const uriLimit = limit.toString();
+
+    try {
+      const response = await axios.get(
+        `https://api.spotify.com/v1/browse/featured-playlists?country=${country}&locale=${locale}&timestamp=${encodedTimeStamp}&limit=${uriLimit}&offset=${uriOffset}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response);
+
+      const parsedResponse: ISpotifyResponse = response.data
+      return parsedResponse;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }, []);
+
+  const handleLoadMore = useCallback(async () => {
+    console.log(spotifyResponse.playlists.next)
+    console.log(spotifyResponse.playlists.total)
+
+    try {
+      if (token && spotifyResponse.playlists) {
+        const response = await axios.get(spotifyResponse.playlists.next, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        const parsedResponse: ISpotifyResponse = response.data
+
+          console.log(parsedResponse.playlists.items)
+          const newRenderPlaylist = renderPlaylists.concat(parsedResponse.playlists.items)
+          console.log(newRenderPlaylist)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }, [spotifyResponse]);
 
   const logInSpotify = useCallback(() => {
     const clientID = "7779441b6a2042949a197bfcfd94e3fa";
@@ -112,36 +169,52 @@ const Main: React.FC = () => {
       {token && (
         <>
           <Filters
-            handleSearch={setSearch}
-            handleCountry={setCountry}
-            handleDateTime={setTimestamp}
-            handleLimit={setLimit}
-            handleLocale={setLocale}
+            defaultTime={{
+              timestamp,
+              setDateTime: setTimestamp,
+            }}
+            defaultCountry={{
+              country,
+              setCountry,
+            }}
+            defaultLimit={{
+              limit,
+              setLimit,
+            }}
+            defaultLocale={{
+              locale,
+              setLocale,
+            }}
+            defaultOffset={{
+              offset,
+              setOffset,
+            }}
+            defaultSearch={{
+              search,
+              setSearch,
+            }}
           />
 
-          {playlists.playlists && (
-            <Repositories>
-              {playlists.playlists.items.map((playlist) => (
-                <a
-                  href={playlist.external_urls.spotify}
-                  target="_blank"
-                  key={playlist.id}
-                  rel="noopener noreferrer"
-                >
-                  <img src={playlist.images[0].url} alt={playlist.name} />
-                  <div>
-                    <strong>{playlist.name}</strong>
-                    <p>{playlist.description}</p>
-                  </div>
-                </a>
-              ))}
-            </Repositories>
+          {spotifyResponse.playlists && (
+            <>
+              <Playlists listItems={renderPlaylists} />
+              <Button onClick={handleLoadMore}>Carregar Mais</Button>
+            </>
           )}
         </>
       )}
 
       {!token && (
-        <LogInButton onClick={logInSpotify}>Continuar com Spotify</LogInButton>
+        <>
+          <Content>
+            <h1>
+              Confira as Playlist que mais fazem sucesso no Spotify em diversos
+              países!
+            </h1>
+            <p>Acesse o Spotifood com sua conta Spotify</p>
+          </Content>
+          <Button onClick={logInSpotify}>Continuar com Spotify</Button>
+        </>
       )}
     </Container>
   );
