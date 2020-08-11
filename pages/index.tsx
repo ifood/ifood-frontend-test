@@ -1,8 +1,8 @@
 import { useState, useReducer, useEffect } from 'react'
 import { Select, DatePicker, InputNumber, List, TimePicker } from 'antd'
-import locale from 'antd/es/date-picker/locale/pt_BR'
 
 import { getPlaylistFilters, FilterTransformed } from '../data/playlistFilter'
+import playlists from '../domain/playlists.json'
 
 const Index = () => {
   const [filters, setFilters] = useState<FilterTransformed>()
@@ -23,6 +23,15 @@ const Index = () => {
         gap: '15px',
       }}
     >
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <img src={'logo.png'} width="50%" />
+      </div>
+
       <label>
         {filters?.locale.name}
         <Select
@@ -48,11 +57,10 @@ const Index = () => {
         <div style={{ display: 'flex' }}>
           <DatePicker
             style={{ width }}
-            locale={locale}
             onChange={onChangeTimestamp(dispatch, setDate)}
             value={date}
           />
-          <TimePicker style={{ width }} locale={locale} />
+          <TimePicker style={{ width }} />
         </div>
       </label>
 
@@ -80,44 +88,20 @@ const Index = () => {
       <List
         itemLayout="vertical"
         size="large"
-        dataSource={[
-          {
-            href: 'https://ant.design',
-            title: `ant design part`,
-            avatar:
-              'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            description:
-              'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-            content:
-              'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-          },
-          {
-            href: 'https://ant.design',
-            title: `ant designrt`,
-            avatar:
-              'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            description:
-              'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-            content:
-              'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-          },
-        ]}
+        dataSource={playlists.playlists.items}
         renderItem={(item) => (
           <List.Item
-            key={item.title}
-            extra={
-              <img
-                width={272}
-                alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-              />
-            }
+            key={item.id}
+            extra={<img width={272} alt="" src={item.images[0].url} />}
           >
             <List.Item.Meta
-              title={<a href={item.href}>{item.title}</a>}
+              title={
+                <a target="_blank" href={item.external_urls.spotify}>
+                  {item.name}
+                </a>
+              }
               description={item.description}
             />
-            {item.content}
           </List.Item>
         )}
       />
