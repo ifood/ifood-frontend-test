@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import 'antd/dist/antd.css'
 
-export default ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
@@ -12,3 +12,5 @@ export default ({ Component, pageProps }) => {
     </>
   )
 }
+
+export default App
