@@ -24,7 +24,6 @@ const FeaturedPlaylists = ({ filters }) => {
   const [filter, setFilter] = useState(filters);
 
   useEffect(() => {
-    console.log(filters);
     if (
       !SPOTIFY_PLAYLISTS.success ||
       JSON.stringify(filter) !== JSON.stringify(filters)

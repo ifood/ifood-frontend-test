@@ -23,7 +23,7 @@ const Home = props => {
     locale: 'pt_BR',
     country: 'BR',
     offset: 1,
-    limit: 9,
+    limit: 6,
     total: 0,
   });
 
@@ -48,11 +48,7 @@ const Home = props => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={classes.appBar}
-        color="transparent"
-        elevation={0}>
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Grid
             container
@@ -61,10 +57,9 @@ const Home = props => {
             alignItems="center">
             <Grid item>
               <IconButton
-                color="inherit"
                 onClick={handleDrawerToggle}
                 className={classes.menuButton}>
-                <MenuIcon />
+                <MenuIcon color="action" />
               </IconButton>
             </Grid>
             <Grid item>
@@ -74,7 +69,7 @@ const Home = props => {
             </Grid>
 
             <Grid item>
-              <IconButton color="inherit">
+              <IconButton color="inherit" disabled>
                 <PersonOutlineIcon />
               </IconButton>
             </Grid>

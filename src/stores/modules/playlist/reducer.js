@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   data: [],
   loading: false,
   success: false,
-  pagination: { offset: 1, limit: 9, total: 0 },
+  pagination: { offset: 1, limit: 6, total: 0 },
 };
 
 export default function playlist(state = INITIAL_STATE, action) {

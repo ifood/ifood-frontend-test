@@ -27,75 +27,119 @@ const Filters = ({ onFilters, filters }) => {
 
   return (
     <div className={classes.root}>
-      <FormControl fullWidth>
-        <Autocomplete
-          id="locale"
-          options={locale || []}
-          size="small"
-          getOptionLabel={option => option.name}
-          renderInput={params => (
-            <TextField
-              {...params}
-              label="Idioma"
-              variant="outlined"
-              color="secondary"
-            />
-          )}
-        />
-      </FormControl>
+      <form>
+        <FormControl fullWidth>
+          <Autocomplete
+            id="locale"
+            disableClearable
+            options={locale || []}
+            size="small"
+            getOptionLabel={option => option.name}
+            onChange={(event, newValue) =>
+              onFilters(
+                Object.assign({
+                  ...filters,
+                  locale: newValue.value,
+                })
+              )
+            }
+            renderInput={params => (
+              <TextField
+                {...params}
+                label="Idioma"
+                variant="outlined"
+                color="secondary"
+              />
+            )}
+          />
+        </FormControl>
 
-      <FormControl fullWidth>
-        <Autocomplete
-          id="country"
-          options={country || []}
-          size="small"
-          getOptionLabel={option => option.name}
-          onChange={(event, newValue) =>
-            onFilters(
-              Object.assign({
-                ...filters,
-                country: newValue.value,
-              })
-            )
-          }
-          renderInput={params => (
-            <TextField
-              {...params}
-              label="País"
-              variant="outlined"
-              color="secondary"
-            />
-          )}
-        />
-      </FormControl>
+        <FormControl fullWidth>
+          <Autocomplete
+            id="country"
+            disableClearable
+            options={country || []}
+            size="small"
+            getOptionLabel={option => option.name}
+            onChange={(event, newValue) =>
+              onFilters(
+                Object.assign({
+                  ...filters,
+                  country: newValue.value,
+                })
+              )
+            }
+            renderInput={params => (
+              <TextField
+                {...params}
+                label="País"
+                variant="outlined"
+                color="secondary"
+              />
+            )}
+          />
+        </FormControl>
 
-      <FormControl fullWidth>
-        <TextField
-          id="timestamp"
-          color="secondary"
-          label="Data e Horário"
-          type="datetime-local"
-          variant="outlined"
-          size="small"
-          fullWidth
-          defaultValue={timestamp}
-          InputLabelProps={{
-            shrink: true,
-            pattern: 'yyyy-MM-ddTHH:mm',
-          }}
-          onChange={event =>
-            onFilters(
-              Object.assign({
-                ...filters,
-                timestamp: format(
-                  new Date(event.target.value),
-                  "yyyy-MM-dd'T'HH:mm:ss"
-                ),
-              })
-            )
-          }
-        />
-      </FormControl>
+        <FormControl fullWidth>
+          <TextField
+            id="timestamp"
+            color="secondary"
+            label="Data e Horário"
+            type="datetime-local"
+            variant="outlined"
+            size="small"
+            fullWidth
+            defaultValue={timestamp}
+            onChange={event =>
+              onFilters(
+                Object.assign({
+                  ...filters,
+                  timestamp: format(
+                    new Date(event.target.value),
+                    "yyyy-MM-dd'T'HH:mm:ss"
+                  ),
+                })
+              )
+            }
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <TextField
+            id="offset"
+            name="offset"
+            label="Página"
+            color="secondary"
+            variant="outlined"
+            size="small"
+            fullWidth
+            type="number"
+            onChange={event =>
+              onFilters(
+                Object.assign({ ...filters, offset: event.target.value || 1 })
+              )
+            }
+          />
+        </FormControl>
+
+        <FormControl fullWidth>
+          <TextField
+            id="limit"
+            name="limit"
+            color="secondary"
+            label="Quantidade"
+            variant="outlined"
+            size="small"
+            fullWidth
+            type="number"
+            inputProps={{ min: 1, max: 50 }}
+            onChange={event =>
+              onFilters(
+                Object.assign({ ...filters, limit: event.target.value || 12 })
+              )
+            }
+          />
+        </FormControl>
+      </form>
     </div>
   );
 };

@@ -13,6 +13,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   appBar: {
+    background: '#fafafa',
+    boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,

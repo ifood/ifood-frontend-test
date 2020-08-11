@@ -1,8 +1,7 @@
 import { all, takeLatest, put } from 'redux-saga/effects';
 import { API_SPOTIFY } from '../../../config/API';
 import Types from '../types';
-
-// import { notify } from '../../../helpers';
+import { removeSession } from '../../../services/auth';
 
 function* index({ payload }) {
   try {
@@ -11,11 +10,10 @@ function* index({ payload }) {
     });
     yield put({ type: Types.playlist.index.SUCCESS, payload: response.data });
   } catch (err) {
-    if (err.response.status !== 401) {
-      //   notify('error', err.response);
+    if (err.response.status === 401) {
       yield put({ type: Types.playlist.FAILURE });
-    } else {
-      yield put({ type: Types.session.signout.REQUEST });
+      yield removeSession();
+      window.location = '/';
     }
   }
 }

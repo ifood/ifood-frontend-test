@@ -10,3 +10,10 @@ export const getSession = () => {
   }
   return null;
 };
+
+export const removeSession = () => {
+  if (localStorage.getItem(KEY)) {
+    return localStorage.removeItem(KEY);
+  }
+  return null;
+};
