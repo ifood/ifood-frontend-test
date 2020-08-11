@@ -1,5 +1,6 @@
 import { useState, useReducer, useEffect } from 'react'
-import { Select, DatePicker, InputNumber, List } from 'antd'
+import { Select, DatePicker, InputNumber, List, TimePicker } from 'antd'
+import locale from 'antd/es/date-picker/locale/pt_BR'
 
 import { getPlaylistFilters, FilterTransformed } from '../data/playlistFilter'
 
@@ -15,42 +16,66 @@ const Index = () => {
   const width = '100%'
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <label>{filters?.locale.name}</label>
-      <Select
-        style={{ width }}
-        onChange={onChangeLocale(dispatch)}
-        value={state.locale}
-        options={filters?.locale.values}
-      />
-      <label>{filters?.country.name}</label>
-      <Select
-        style={{ width }}
-        onChange={onChangeCountry(dispatch)}
-        value={state.country}
-        options={filters?.country.values}
-      />
-      <label>{filters?.timestamp.name}</label>
-      <DatePicker
-        style={{ width }}
-        onChange={onChangeTimestamp(dispatch, setDate)}
-        value={date}
-      />
-      <label>{filters?.limit.name}</label>
-      <InputNumber
-        style={{ width }}
-        onChange={onChangeLimit(dispatch)}
-        value={state.limit}
-        min={filters?.limit.min}
-        max={filters?.limit.max}
-      />
-      <label>{filters?.offset.name}</label>
-      <InputNumber
-        style={{ width }}
-        onChange={onChangeOffset(dispatch)}
-        min={0}
-        value={state.offset}
-      />
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '15px',
+      }}
+    >
+      <label>
+        {filters?.locale.name}
+        <Select
+          style={{ width }}
+          onChange={onChangeLocale(dispatch)}
+          value={state.locale}
+          options={filters?.locale.values}
+        />
+      </label>
+
+      <label>
+        {filters?.country.name}
+        <Select
+          style={{ width }}
+          onChange={onChangeCountry(dispatch)}
+          value={state.country}
+          options={filters?.country.values}
+        />
+      </label>
+
+      <label>
+        {filters?.timestamp.name}
+        <div style={{ display: 'flex' }}>
+          <DatePicker
+            style={{ width }}
+            locale={locale}
+            onChange={onChangeTimestamp(dispatch, setDate)}
+            value={date}
+          />
+          <TimePicker style={{ width }} locale={locale} />
+        </div>
+      </label>
+
+      <label>
+        {filters?.limit.name}
+        <InputNumber
+          style={{ width }}
+          onChange={onChangeLimit(dispatch)}
+          value={state.limit}
+          min={filters?.limit.min}
+          max={filters?.limit.max}
+        />
+      </label>
+
+      <label>
+        {filters?.offset.name}
+        <InputNumber
+          style={{ width }}
+          onChange={onChangeOffset(dispatch)}
+          min={0}
+          value={state.offset}
+        />
+      </label>
 
       <List
         itemLayout="vertical"
