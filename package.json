@@ -6,6 +6,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "antd": "^4.5.3",
     "next": "^9.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

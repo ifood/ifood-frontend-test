@@ -1,3 +1,11 @@
-export default () => {
-  return <p>Hello World!</p>
+import { InputNumber } from 'antd'
+
+const Index = () => {
+  return (
+    <>
+      <InputNumber />
+    </>
+  )
 }
+
+export default Index

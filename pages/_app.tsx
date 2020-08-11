@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import 'antd/dist/antd.css'
 
 export default ({ Component, pageProps }) => {
   return (
