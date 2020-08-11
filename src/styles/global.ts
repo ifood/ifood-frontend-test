@@ -1,4 +1,16 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, keyframes } from "styled-components";
+
+const appearFromTop = keyframes`
+from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0)
+}
+
+`;
 
 export default createGlobalStyle`
   * {
@@ -32,4 +44,10 @@ export default createGlobalStyle`
       cursor: pointer;
   }
 
+  .appear-from-top {
+    animation: ${appearFromTop} 1s;
+  }
+
 `;
+
+

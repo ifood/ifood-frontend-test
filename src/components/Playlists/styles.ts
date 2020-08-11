@@ -1,56 +1,71 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { shade } from "polished";
 
 export const Container = styled.div`
-    margin-top: 80px;
-    max-width: 960px;
+  margin-top: 40px;
+  max-width: 960px;
+  align-self: center;
+`;
+
+export const Playlist = styled.div`
+  background: transparent;
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  padding: 24px;
+  display: block;
+  text-decoration: none;
+
+  border-bottom: 1px solid #ffffff;
+
+  display: flex;
+  align-items: center;
+
+  transition: 0.3s;
+
+  & + div {
+    margin-top: 16px;
+  }
+
+  &:hover {
+    /* transform: translateX(10px); */
+    box-shadow: inset 0 -15px 20px #363636;
+  }
+
+  img {
+    width: 120px;
+    height: 120px;
+  }
+
+  div.info {
+    margin: 0 16px;
+    flex: 1;
 
     a {
-        background: #ffffff;
-        border-radius: 5px;
-        width: 100%;
-        padding: 24px;
-        display: block;
-        text-decoration: none;
-        
-        display: flex;
-        align-items: center;
-        
-        transition: transform 0.2s;
-        
-        & + a {
-            margin-top: 16px;
-        }
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s;
 
-        &:hover {
-            transform: translateX(10px)
-        }
-
-        img {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-        }
-
-        div {
-            margin: 0 16px;
-            flex: 1;
-
-            strong: {
-                font-size: 20px;
-                color: #3d3d4d;
-            }
-
-            p {
-                font-size: 18px;
-                color: #a8a8b3;
-                margin-top: 8px;
-            }
-        }
-
-        svg {
-            margin-left: auto;
-            color: #a8a8b3;
-        }
-
+      &:hover {
+        color: ${shade(0.3, '#ffffff')};
+        text-decoration: underline ${shade(0.3, '#ffffff')};
+      }
     }
+
+    p {
+      color: #a8a8b3;
+      margin-top: 8px;
+    }
+
+    div.bottom {
+      display: flex;
+      width: 100%;
+      margin-top: 8px;
+      justify-content: space-between;
+
+      span {
+        font-size: 16px;
+        color: #a8a8b3;
+      }
+    }
+  }
 `;

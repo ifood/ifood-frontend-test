@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 
-import { Container, Content } from "./styles";
+import { Container, Content, Header } from "./styles";
 
 import {
   ISpotifyResponse,
@@ -106,9 +106,12 @@ const Main: React.FC = () => {
     console.log(date);
   }, []);
 
-  const requestSpotify = useCallback(async (data: ISpotifyRequest): Promise<ISpotifyResponse> => {
+  const requestSpotify = useCallback(async (data: ISpotifyRequest): Promise<
+    ISpotifyResponse
+  > => {
     const { country, limit, locale, offset, timestamp, token } = data;
-    const encodedTimeStamp = encodeURI(timestamp);
+    const parsedDate = new Date(timestamp).toISOString()
+    const encodedTimeStamp = encodeURI(parsedDate);
     const uriOffset = offset.toString();
     const uriLimit = limit.toString();
 
@@ -124,7 +127,7 @@ const Main: React.FC = () => {
 
       console.log(response);
 
-      const parsedResponse: ISpotifyResponse = response.data
+      const parsedResponse: ISpotifyResponse = response.data;
       return parsedResponse;
     } catch (error) {
       throw new Error(error);
@@ -132,8 +135,8 @@ const Main: React.FC = () => {
   }, []);
 
   const handleLoadMore = useCallback(async () => {
-    console.log(spotifyResponse.playlists.next)
-    console.log(spotifyResponse.playlists.total)
+    console.log(spotifyResponse.playlists.next);
+    console.log(spotifyResponse.playlists.total);
 
     try {
       if (token && spotifyResponse.playlists) {
@@ -141,15 +144,17 @@ const Main: React.FC = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        })
-        const parsedResponse: ISpotifyResponse = response.data
+        });
+        const parsedResponse: ISpotifyResponse = response.data;
 
-          console.log(parsedResponse.playlists.items)
-          const newRenderPlaylist = renderPlaylists.concat(parsedResponse.playlists.items)
-          console.log(newRenderPlaylist)
+        console.log(parsedResponse.playlists.items);
+        const newRenderPlaylist = renderPlaylists.concat(
+          parsedResponse.playlists.items
+        );
+        console.log(newRenderPlaylist);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }, [spotifyResponse]);
 
@@ -164,11 +169,21 @@ const Main: React.FC = () => {
 
   return (
     <Container>
-      <h1>Spotifood</h1>
+      <Header>
+        <h1>Spotifood</h1>
+      </Header>
 
+      <Content className="appear-from-top">
+        <h1>
+          Confira as Playlists que mais fazem sucesso no Spotify em diversos
+          países!
+        </h1>
+      </Content>
+      
       {token && (
         <>
           <Filters
+          className="appear-from-top"
             defaultTime={{
               timestamp,
               setDateTime: setTimestamp,
@@ -198,7 +213,7 @@ const Main: React.FC = () => {
           {spotifyResponse.playlists && (
             <>
               <Playlists listItems={renderPlaylists} />
-              <Button onClick={handleLoadMore}>Carregar Mais</Button>
+              <Button className="appear-from-top" onClick={handleLoadMore}>Carregar Mais</Button>
             </>
           )}
         </>
@@ -206,14 +221,8 @@ const Main: React.FC = () => {
 
       {!token && (
         <>
-          <Content>
-            <h1>
-              Confira as Playlist que mais fazem sucesso no Spotify em diversos
-              países!
-            </h1>
-            <p>Acesse o Spotifood com sua conta Spotify</p>
-          </Content>
-          <Button onClick={logInSpotify}>Continuar com Spotify</Button>
+          <p className="subtitle appear-from-top">Acesse o Spotifood com sua conta Spotify.</p>
+          <Button className="appear-from-top" onClick={logInSpotify}>Continuar com Spotify</Button>
         </>
       )}
     </Container>

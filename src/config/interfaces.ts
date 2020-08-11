@@ -65,30 +65,7 @@ export interface ISpotifyResponse {
     next: string;
     previous: string;
     total: number;
-    items: [
-      {
-        id: string;
-        name: string;
-        description: string;
-        owner: {
-          display_name: string;
-          external_urls: {
-            spotify: string;
-          };
-        };
-        images: [
-          {
-            url: string;
-          }
-        ];
-        external_urls: {
-          spotify: string;
-        };
-        tracks: {
-          total: number;
-        };
-      }
-    ];
+    items: IPlaylists[];
   };
 }
 
@@ -96,6 +73,7 @@ export interface IPlaylists {
   id: string;
   name: string;
   description: string;
+  collaborative: boolean;
   owner: {
     display_name: string;
     external_urls: {

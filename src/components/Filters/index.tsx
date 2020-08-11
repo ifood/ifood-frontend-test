@@ -1,7 +1,7 @@
 import React, { useState, HTMLAttributes, useEffect, useCallback } from "react";
 import axios from "axios";
 
-import { Container } from "./styles";
+import { Container, Input, Select } from "./styles";
 import {
   IFiltersLists,
   ITimeStamp,
@@ -9,7 +9,7 @@ import {
   IOffset,
 } from "../../config/interfaces";
 
-interface IFiltersProps {
+interface IFiltersProps extends  HTMLAttributes<HTMLDivElement>{
   defaultSearch: {
     search: string;
     setSearch(value: string): void;
@@ -42,7 +42,8 @@ const Filters: React.FC<IFiltersProps> = ({
   defaultLimit,
   defaultLocale,
   defaultOffset,
-  defaultSearch
+  defaultSearch,
+  ...restProps
 }) => {
   const [localeInfo, setLocaleInfo] = useState<IFiltersLists>(
     {} as IFiltersLists
@@ -55,6 +56,7 @@ const Filters: React.FC<IFiltersProps> = ({
   );
   const [limitInfo, setLimitInfo] = useState<ILimit>({} as ILimit);
   const [offsetInfo, setOffsetInfo] = useState<IOffset>({} as IOffset);
+  
 
   useEffect(() => {
     axios
@@ -84,13 +86,14 @@ const Filters: React.FC<IFiltersProps> = ({
   },[])
 
   return (
-    <Container>
-      <input
+    <Container {...restProps}>
+      <Input
+      placeholder="Filtrar"
         type="text"
         value={defaultSearch.search}
         onChange={(e) => defaultSearch.setSearch(e.currentTarget.value)}
       />
-      <select
+      <Select
         name="country"
         value={defaultCountry.country}
         id="country"
@@ -105,8 +108,8 @@ const Filters: React.FC<IFiltersProps> = ({
               {value.name}
             </option>
           ))}
-      </select>
-      <select
+      </Select>
+      <Select
         name="Locale"
         value={defaultLocale.locale}
         id="country"
@@ -121,17 +124,18 @@ const Filters: React.FC<IFiltersProps> = ({
               {value.name}
             </option>
           ))}
-      </select>
-      <input
+      </Select>
+      <Input
         type="datetime-local"
-        onChange={(e) => handleDateTime(e.currentTarget.value)}
+        onChange={(e) => defaultTime.setDateTime(e.currentTarget.value)}
         value={defaultTime.timestamp}
+        max={Date.now().toLocaleString()}
       />
-      <input
+      <Input
         type="number"
         value={defaultLimit.limit}
         onChange={(e) => defaultLimit.setLimit(Number.parseInt(e.currentTarget.value))}
-        min={0}
+        min={1}
         max={500}
         name="count"
         id="count"
