@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   CssBaseline,
   Drawer,
@@ -18,7 +18,14 @@ import useStyles from './styles';
 const Home = props => {
   const { window } = props;
   const classes = useStyles();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    locale: 'pt_BR',
+    country: 'BR',
+    offset: 1,
+    limit: 9,
+    total: 0,
+  });
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -28,7 +35,10 @@ const Home = props => {
     <div>
       <div className={classes.toolbar} />
       <Logo direction="column" />
-      <Filters />
+      <Filters
+        filters={filters}
+        onFilters={values => setFilters(prevState => values)}
+      />
     </div>
   );
 
@@ -100,7 +110,7 @@ const Home = props => {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <FeaturedPlaylists></FeaturedPlaylists>
+        <FeaturedPlaylists filters={filters} />
       </main>
     </div>
   );

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { TextField, FormControl } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 
@@ -6,7 +8,7 @@ import { API_MOCKY } from '../../config/API';
 import useStyles from '../Filters/styles';
 import { format } from 'date-fns';
 
-const Filters = () => {
+const Filters = ({ onFilters, filters }) => {
   const classes = useStyles();
   const [locale, setLocale] = useState(null);
   const [country, setCountry] = useState(null);
@@ -32,7 +34,12 @@ const Filters = () => {
           size="small"
           getOptionLabel={option => option.name}
           renderInput={params => (
-            <TextField {...params} label="Idioma" variant="outlined" />
+            <TextField
+              {...params}
+              label="Idioma"
+              variant="outlined"
+              color="secondary"
+            />
           )}
         />
       </FormControl>
@@ -43,8 +50,21 @@ const Filters = () => {
           options={country || []}
           size="small"
           getOptionLabel={option => option.name}
+          onChange={(event, newValue) =>
+            onFilters(
+              Object.assign({
+                ...filters,
+                country: newValue.value,
+              })
+            )
+          }
           renderInput={params => (
-            <TextField {...params} label="País" variant="outlined" />
+            <TextField
+              {...params}
+              label="País"
+              variant="outlined"
+              color="secondary"
+            />
           )}
         />
       </FormControl>
@@ -52,6 +72,7 @@ const Filters = () => {
       <FormControl fullWidth>
         <TextField
           id="timestamp"
+          color="secondary"
           label="Data e Horário"
           type="datetime-local"
           variant="outlined"
@@ -60,12 +81,27 @@ const Filters = () => {
           defaultValue={timestamp}
           InputLabelProps={{
             shrink: true,
-            pattern: 'yyyy-MM-ddTHH:mm:ss',
+            pattern: 'yyyy-MM-ddTHH:mm',
           }}
+          onChange={event =>
+            onFilters(
+              Object.assign({
+                ...filters,
+                timestamp: format(
+                  new Date(event.target.value),
+                  "yyyy-MM-dd'T'HH:mm:ss"
+                ),
+              })
+            )
+          }
         />
       </FormControl>
     </div>
   );
+};
+
+Filters.propTypes = {
+  onFilters: PropTypes.func,
 };
 
 export default Filters;

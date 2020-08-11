@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { playlistActions } from '../../stores/modules/playlist/actions';
 
 import {
   Card,
@@ -9,25 +11,30 @@ import {
   TextField,
   Box,
   Icon,
+  CircularProgress,
 } from '@material-ui/core';
 import useStyles from './styles';
-import { API_SPOTIFY } from '../../config/API';
 import AudiotrackIcon from '@material-ui/icons/Audiotrack';
-import { useSelector, useDispatch } from 'react-redux';
-import { playlistActions } from '../../stores/modules/playlist/actions';
 
-const FeaturedPlaylists = () => {
+const FeaturedPlaylists = ({ filters }) => {
   const classes = useStyles();
   const SPOTIFY_PLAYLISTS = useSelector(state => state.playlist);
   const dispatch = useDispatch();
   const [playlists, setPlaylists] = useState([]);
+  const [filter, setFilter] = useState(filters);
 
   useEffect(() => {
-    if (!SPOTIFY_PLAYLISTS.success) {
-      dispatch(playlistActions.index());
+    console.log(filters);
+    if (
+      !SPOTIFY_PLAYLISTS.success ||
+      JSON.stringify(filter) !== JSON.stringify(filters)
+    ) {
+      dispatch(playlistActions.index(filters));
     }
+
     setPlaylists(prevState => SPOTIFY_PLAYLISTS.data);
-  }, [dispatch, SPOTIFY_PLAYLISTS]);
+    setFilter(prevState => filters);
+  }, [dispatch, SPOTIFY_PLAYLISTS, filters, filter]);
 
   const onSearch = event => {
     const filter = SPOTIFY_PLAYLISTS.data.filter(playlist => {
@@ -52,6 +59,7 @@ const FeaturedPlaylists = () => {
         </Grid>
         <Grid item>
           <TextField
+            color="secondary"
             id="search"
             label="Buscar"
             variant="outlined"
@@ -87,7 +95,18 @@ const FeaturedPlaylists = () => {
             </Grid>
           ))}
       </Grid>
-      {playlists.length < 1 && (
+      {/* LOADING */}
+      {SPOTIFY_PLAYLISTS.loading && (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column">
+          <CircularProgress color="secondary" size={64} />
+        </Box>
+      )}
+      {/* PLAYLIST EMPTY */}
+      {SPOTIFY_PLAYLISTS.success && playlists.length < 1 && (
         <Box
           display="flex"
           justifyContent="center"
