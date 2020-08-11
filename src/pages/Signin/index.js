@@ -10,7 +10,7 @@ import {
   RESPONSE_TYPE,
 } from '../../config/SPOTIFY';
 import { useHistory } from 'react-router-dom';
-import { setSession } from '../../services/auth';
+import { setSession, getSession } from '../../services/auth';
 
 const Signin = () => {
   const classes = useStyles();
@@ -33,6 +33,12 @@ const Signin = () => {
     }
   }, [history]);
 
+  useEffect(() => {
+    if (getSession()) {
+      history.push('/home');
+    }
+  }, [history]);
+
   return (
     <div className={classes.root}>
       <Grid container direction="column" justify="center" alignItems="center">
@@ -40,7 +46,9 @@ const Signin = () => {
           <Logo direction="column" />
         </Grid>
         <Grid item>
-          <Typography variant="h6">Seu novo player de música</Typography>
+          <Typography variant="h6">
+            Encontre aqui aquela a playlist ideal para o seu dia.
+          </Typography>
         </Grid>
         <Grid item>
           <Box mt={5}>
