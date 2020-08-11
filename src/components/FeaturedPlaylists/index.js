@@ -31,8 +31,13 @@ const FeaturedPlaylists = ({ filters }) => {
       dispatch(playlistActions.index(filters));
     }
 
+    const interval = setInterval(() => {
+      dispatch(playlistActions.index(filters));
+    }, 30000);
     setPlaylists(prevState => SPOTIFY_PLAYLISTS.data);
     setFilter(prevState => filters);
+
+    return () => clearInterval(interval);
   }, [dispatch, SPOTIFY_PLAYLISTS, filters, filter]);
 
   const onSearch = event => {
