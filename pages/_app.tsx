@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import 'antd/dist/antd.css'
+import './global.css'
 
 const App = ({ Component, pageProps }) => {
   return (
