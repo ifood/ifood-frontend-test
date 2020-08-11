@@ -130,7 +130,7 @@ const Main: React.FC = () => {
       const parsedResponse: ISpotifyResponse = response.data;
       return parsedResponse;
     } catch (error) {
-      throw new Error(error);
+      throw new Error(error.error_description);
     }
   }, []);
 
