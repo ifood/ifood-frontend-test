@@ -1,3 +1,8 @@
+<p align="center"><img src="https://raw.githubusercontent.com/alissonmgsantos/ifood-frontend-test/master/src/assets/ifood_logo.png" height="100" /></p>
+
+<h1 align="center">Challenge iFood</h1>
+<img src="https://raw.githubusercontent.com/alissonmgsantos/ifood-frontend-test/master/src/assets/spotifood.png" />
+
 
 <details><summary>iFood Frontend Test</summary>
 <p>
@@ -12,7 +17,7 @@ Create a web application called Spotifood used to display the preferred playlist
 * The page is composed of two components:
     * One list of featured playlists
     * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-
+    
 * The filter component should be used to filter the elements displayed by the list of featured playlists.
 * The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
 * The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
@@ -35,3 +40,27 @@ Fork this repository and submit your code.
 
 </p>
 </details>
+
+## Objetivo
+Crie um aplicativo da web chamado Spotifood usado para exibir as listas de reprodução preferidas dos clientes do iFood.
+
+## Tecnologias utilizadas
+- Axios
+- API Spotify
+- date-fns
+- immer
+- React
+- React Hooks
+- redux
+- redux-redux
+- react-saga
+- react-router-dom
+
+
+
+ ## Autor
+- [Linkedin](https://www.linkedin.com/in/alissonmgsantos)
+- [Website](http://alissonmgsantos.netlify.com/)
+
+## Desafiante
+- [Website](https://www.ifood.com.br/)
