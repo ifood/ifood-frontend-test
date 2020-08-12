@@ -15,12 +15,17 @@ export const Playlist = styled.div`
   display: block;
   text-decoration: none;
 
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    text-align: center;
+    }
+
   border-bottom: 1px solid #ffffff;
 
   display: flex;
   align-items: center;
 
-  transition: 0.3s;
+  transition: 0.5s;
 
   & + div {
     margin-top: 16px;
@@ -34,6 +39,13 @@ export const Playlist = styled.div`
   img {
     width: 120px;
     height: 120px;
+    transition: 0.5s;
+
+    &:hover {
+      background: #363636;
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
   }
 
   div.info {
@@ -46,8 +58,8 @@ export const Playlist = styled.div`
       transition: color 0.2s;
 
       &:hover {
-        color: ${shade(0.3, '#ffffff')};
-        text-decoration: underline ${shade(0.3, '#ffffff')};
+        color: ${shade(0.3, "#ffffff")};
+        text-decoration: underline ${shade(0.3, "#ffffff")};
       }
     }
 
@@ -59,7 +71,7 @@ export const Playlist = styled.div`
     div.bottom {
       display: flex;
       width: 100%;
-      margin-top: 8px;
+      margin-top: 16px;
       justify-content: space-between;
 
       span {

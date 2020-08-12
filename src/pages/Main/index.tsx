@@ -1,16 +1,19 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import moment from "moment";
 
-import { Container, Content, Header } from "./styles";
+import { Container, Content } from "./styles";
 
 import {
   ISpotifyResponse,
   IPlaylists,
   ISpotifyRequest,
+  ISpotifyUser,
 } from "../../config/interfaces";
 import Filters from "../../components/Filters";
 import Playlists from "../../components/Playlists";
 import Button from "../../components/Button";
+import Header from "../../components/Header";
 
 const Main: React.FC = () => {
   const [token, setToken] = useState<string | null>(() =>
@@ -18,19 +21,23 @@ const Main: React.FC = () => {
   );
   const [locale, setLocale] = useState<string>("pt_BR");
   const [country, setCountry] = useState<string>("BR");
-  const [timestamp, setTimestamp] = useState<string>(() => {
-    const UTCOffset = new Date().getTimezoneOffset();
-    const dateNow = Date.now() - UTCOffset;
-    const date = new Date(dateNow);
-    return date.toISOString();
+  const [time, setTime] = useState<string>(() => {
+    const time = moment().format("hh:mm:ss");
+    return time;
+  });
+  const [date, setDate] = useState<string>(() => {
+    const date = moment().format().split("T")[0];
+    return date;
   });
   const [limit, setLimit] = useState<number>(5);
-  const [offset, setOffset] = useState<number>(1);
+  const [offset, setOffset] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
   const [spotifyResponse, setSpotifyResponse] = useState<ISpotifyResponse>(
     {} as ISpotifyResponse
   );
+  const [spotifyUser, setSpotifyUser] = useState<ISpotifyUser | null>(null);
   const [renderPlaylists, setRenderPlaylists] = useState<IPlaylists[]>([]);
+  const [refresh, setRefresh] = useState<boolean>(false);
 
   useEffect(() => {
     if (!token && window.location.hash) {
@@ -59,15 +66,23 @@ const Main: React.FC = () => {
           error: queryParams[0],
           state: queryParams[1],
         };
-
         console.log(errorsInfo.error);
         console.log(errorsInfo.state);
       }
     }
 
     if (token) {
-      console.log(timestamp);
-      requestSpotify({ country, timestamp, limit, offset, locale, token })
+      console.log(time);
+
+      requestSpotifyPlaylist({
+        country,
+        date,
+        time,
+        limit,
+        offset,
+        locale,
+        token,
+      })
         .then((res) => {
           console.log(res);
           setSpotifyResponse(res);
@@ -75,22 +90,65 @@ const Main: React.FC = () => {
         })
         .catch((error) => {
           console.log("error", error);
-          localStorage.removeItem("@Spotifood:token");
-          setToken(null);
+          logOut();
         });
+
+      requestSpotifyUser(token)
+        .then((response) => {
+          setSpotifyUser(response);
+        })
+        .catch(() => {
+          logOut();
+        });
+
+      setInterval(() => {
+        setRefresh((state) => !state);
+      }, 30000);
     }
-  }, [token, timestamp]);
+  }, []);
 
   useEffect(() => {
-    if (token)
-      requestSpotify({ country, timestamp, limit, offset, locale, token }).then(
-        (res) => {
-          console.log(res);
-          setSpotifyResponse(res);
-          setRenderPlaylists(res.playlists.items);
+    if (token) {
+      requestSpotifyPlaylist({
+        country,
+        date,
+        limit,
+        locale,
+        offset,
+        time: moment().format("hh:mm:ss"),
+        token,
+      })
+        .then((response) => {
+          setSpotifyResponse(response);
+          setRenderPlaylists(response.playlists.items);
+        })
+        .catch(() => {});
+    }
+  }, [refresh]);
+
+  useEffect(() => {
+    async function request() {
+      if (token) {
+        try {
+          const response = await requestSpotifyPlaylist({
+            country,
+            time,
+            date,
+            limit,
+            offset,
+            locale,
+            token,
+          });
+          setSpotifyResponse(response);
+          setRenderPlaylists(response.playlists.items);
+          console.log(response);
+        } catch (error) {
+          // logOut()
         }
-      );
-  }, [country, timestamp, limit, locale]);
+      }
+    }
+    request();
+  }, [country, time, date, limit, locale, token]);
 
   useEffect(() => {
     if (spotifyResponse.playlists) {
@@ -102,44 +160,62 @@ const Main: React.FC = () => {
     }
   }, [search]);
 
-  const showFilter = useCallback((date: any) => {
-    console.log(date);
-  }, []);
-
-  const requestSpotify = useCallback(async (data: ISpotifyRequest): Promise<
-    ISpotifyResponse
+  const requestSpotifyUser = useCallback(async (token: string | null): Promise<
+    ISpotifyUser
   > => {
-    const { country, limit, locale, offset, timestamp, token } = data;
-    const parsedDate = new Date(timestamp).toISOString()
-    const encodedTimeStamp = encodeURI(parsedDate);
-    const uriOffset = offset.toString();
-    const uriLimit = limit.toString();
-
     try {
-      const response = await axios.get(
-        `https://api.spotify.com/v1/browse/featured-playlists?country=${country}&locale=${locale}&timestamp=${encodedTimeStamp}&limit=${uriLimit}&offset=${uriOffset}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get("https://api.spotify.com/v1/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      console.log(response);
-
-      const parsedResponse: ISpotifyResponse = response.data;
+      const parsedResponse: ISpotifyUser = response.data;
       return parsedResponse;
     } catch (error) {
-      throw new Error(error.error_description);
+      throw Error("Algo deu errado");
     }
   }, []);
+
+  const requestSpotifyPlaylist = useCallback(
+    async (data: ISpotifyRequest): Promise<ISpotifyResponse> => {
+      const { country, limit, locale, offset, time, date, token } = data;
+
+      console.log(date + time);
+      const parsedDate = new Date(date + "T" + time).toISOString();
+      console.log(parsedDate);
+      console.log(locale);
+      const encodedTimeStamp = encodeURI(parsedDate);
+      const uriOffset = offset.toString();
+      const uriLimit = limit.toString();
+
+      try {
+        const response = await axios.get(
+          `https://api.spotify.com/v1/browse/featured-playlists?country=${country}&locale=${locale.toString()}&timestamp=${encodedTimeStamp}&limit=${uriLimit}&offset=${uriOffset}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log(response);
+
+        const parsedResponse: ISpotifyResponse = response.data;
+        return parsedResponse;
+      } catch (error) {
+        throw Error("Algo deu errado");
+      }
+    },
+    []
+  );
 
   const handleLoadMore = useCallback(async () => {
     console.log(spotifyResponse.playlists.next);
     console.log(spotifyResponse.playlists.total);
 
     try {
-      if (token && spotifyResponse.playlists) {
+      if (spotifyResponse.playlists) {
         const response = await axios.get(spotifyResponse.playlists.next, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -148,10 +224,26 @@ const Main: React.FC = () => {
         const parsedResponse: ISpotifyResponse = response.data;
 
         console.log(parsedResponse.playlists.items);
-        const newRenderPlaylist = renderPlaylists.concat(
-          parsedResponse.playlists.items
+
+        setSpotifyResponse((state) => {
+          const newState: ISpotifyResponse = {
+            message: state.message,
+            playlists: {
+              ...parsedResponse.playlists,
+              items: state.playlists.items.concat(
+                parsedResponse.playlists.items
+              ),
+            },
+          };
+          return newState;
+        });
+
+        setRenderPlaylists((state) =>
+          state.concat(parsedResponse.playlists.items)
         );
-        console.log(newRenderPlaylist);
+
+        console.log(spotifyResponse.playlists.total);
+        console.log(renderPlaylists.length);
       }
     } catch (error) {
       console.log(error);
@@ -167,26 +259,52 @@ const Main: React.FC = () => {
     window.location.href = fullUrl;
   }, []);
 
+  const logOut = useCallback(() => {
+    localStorage.removeItem("@Spotifood:token");
+    setToken(null);
+    setSpotifyUser(null);
+    window.location.reload();
+  }, []);
+
   return (
     <Container>
-      <Header>
+      <Header user={spotifyUser} logOut={logOut} className="appear-from-top">
         <h1>Spotifood</h1>
+
+        {token && spotifyUser && (
+          <div className="user-info">
+            <img
+              src={spotifyUser.images[0].url}
+              alt={spotifyUser.display_name}
+            />
+            <div>
+              <p>{spotifyUser.display_name}</p>
+              <span onClick={logOut}>sair</span>
+            </div>
+          </div>
+        )}
       </Header>
 
       <Content className="appear-from-top">
-        <h1>
-          Confira as Playlists que mais fazem sucesso no Spotify em diversos
-          países!
-        </h1>
+        {
+          <h1>
+            Confira as Playlists que mais fazem sucesso no Spotify em diversos
+            países!
+          </h1>
+        }
       </Content>
-      
+
       {token && (
         <>
           <Filters
-          className="appear-from-top"
+            className="appear-from-top"
             defaultTime={{
-              timestamp,
-              setDateTime: setTimestamp,
+              time,
+              setTime,
+            }}
+            defaultDate={{
+              date,
+              setDate,
             }}
             defaultCountry={{
               country,
@@ -213,7 +331,13 @@ const Main: React.FC = () => {
           {spotifyResponse.playlists && (
             <>
               <Playlists listItems={renderPlaylists} />
-              <Button className="appear-from-top" onClick={handleLoadMore}>Carregar Mais</Button>
+              {!(
+                renderPlaylists.length === spotifyResponse.playlists.total
+              ) && (
+                <Button className="appear-from-top" onClick={handleLoadMore}>
+                  Carregar Mais
+                </Button>
+              )}
             </>
           )}
         </>
@@ -221,8 +345,12 @@ const Main: React.FC = () => {
 
       {!token && (
         <>
-          <p className="subtitle appear-from-top">Acesse o Spotifood com sua conta Spotify.</p>
-          <Button className="appear-from-top" onClick={logInSpotify}>Continuar com Spotify</Button>
+          <p className="subtitle appear-from-top">
+            Acesse o Spotifood com sua conta Spotify.
+          </p>
+          <Button className="appear-from-top" onClick={logInSpotify}>
+            Continuar com Spotify
+          </Button>
         </>
       )}
     </Container>

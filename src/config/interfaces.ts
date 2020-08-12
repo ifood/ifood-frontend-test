@@ -28,13 +28,11 @@ export interface ITimeStamp {
 export interface ILimit {
   id: string;
   name: string;
-  validation: [
-    {
-      primitiveType: string;
-      min: number;
-      max: number;
-    }
-  ];
+  validation: {
+    primitiveType: string;
+    min: number;
+    max: number;
+  };
 }
 
 export interface IOffset {
@@ -47,13 +45,23 @@ export interface IOffset {
   ];
 }
 
+export interface ISpotifyUser {
+  display_name: string;
+  images: [
+    {
+      url: string;
+    }
+  ]
+}
+
 export interface ISpotifyRequest {
   country: string;
-  timestamp: string;
+  time: string;
+  date: string;
   limit: number;
   offset: number;
   locale: string;
-  token: string;
+  token: string | null;
 }
 
 export interface ISpotifyResponse {

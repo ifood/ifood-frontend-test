@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { shade } from "polished";
 
 export const Container = styled.div`
   max-width: 1280px;
@@ -14,15 +15,14 @@ export const Container = styled.div`
 
     align-self: center;
   }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    padding: 0 16px;
+    }
+  
+
 `;
-
-export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px;
-
-`
 
 export const Content = styled.div`
   margin-top: 80px;
@@ -34,7 +34,4 @@ export const Content = styled.div`
     max-width: 720px;
     /* font-size: 56px; */
   }
-
 `;
-
-
