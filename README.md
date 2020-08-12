@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spotifood by Leonardo Alvarenga
+
+O Spotifood teve como inspiração o aplicativo desktop do Spotify, porém com algumas idéia autorais. O projeto foi construído utilizando o React em conjunto com o TypeScript, foi um desafio interessante, onde além de colocar em prática minhas habilidades, pude aprende novos conceitos e bibliotecas que com certeza me serão úteis no futuro.
+
+## React
+
+Assim como foi dada a dica no Readme do desafio, decidi pelo uso do React por ser o framework web que tenho mais afinidade e por ele permite uma agilidade na criação de interfaces visuais reativas.
+
+## Typescript
+
+Uma das minhas primeiras decisões técnicas no projeto foi utilizar o super-set do JavaScript, para aumentar a produtividade e diminuir os possíveis erros que poderiam ser causados pelas integrações com diferentes APIs. A utilização do TS me possibilitou o uso de interfaces para puxar apenas as informações necessária das APIs.
+
+## Estrutura de pastas
+
+Minha tentativa foi manter o código mais separado o possível, isolado alguns components e funções a partir de suas responsabilidades.
+
+## Estilização
+
+Apesar da possibilidade de poder usar frameworks de css, optei por fazer a estilização do zero, o que na minha opinião me permite ter uma maior liberdade quanto ao visual que eu queria para a aplicação.
+
 
 ## Available Scripts
 
