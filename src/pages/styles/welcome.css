@@ -1,0 +1,18 @@
+.login {
+    background-color:  rgb(240, 76, 42);
+    border-radius: 100px;
+    border-width: 0px;
+    color: white;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    min-height: 50px;
+    min-width: 250px;
+    outline: none;
+}
+
+.login:hover {
+    background-color: rgb(210, 45, 35);
+}
