@@ -23,4 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - **react-loader-spinner** - React styled spinner.
 
+Also check my other repository for a better commit story.
+Open [https://github.com/Lopes-7/spotifood] (https://github.com/Lopes-7/spotifood)
+
 
