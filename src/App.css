@@ -1,0 +1,11 @@
+.App {
+  background-color: rgb(18, 18, 18);
+  color: white;
+  min-height: 100vh;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+span {
+  text-transform: none;
+}
