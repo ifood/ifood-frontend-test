@@ -1,0 +1,10 @@
+.sidebar {
+    background-color: rgb(5,5,5);
+    color: rgb(70,70,70);
+    height: 100vh;
+    width: 235px;
+}
+
+.sidelogo {
+    margin-top: 10px;
+}
