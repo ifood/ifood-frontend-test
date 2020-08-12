@@ -12,7 +12,7 @@ Uma das minhas primeiras decisões técnicas no projeto foi utilizar o super-set
 
 ## Estrutura de pastas
 
-Minha tentativa foi manter o código mais separado o possível, isolado alguns components e funções a partir de suas responsabilidades.
+Minha tentativa foi manter o código mais o separado o possível, isolando alguns componentes e funções a partir de suas responsabilidades.
 
 ## Estilização
 
