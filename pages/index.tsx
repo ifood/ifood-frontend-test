@@ -3,6 +3,7 @@ import { Select, DatePicker, InputNumber, List, TimePicker } from 'antd'
 
 import { getPlaylistFilters, FilterTransformed } from '../data/playlistFilter'
 import playlists from '../domain/playlists.json'
+import locale from '../domain/locale.json'
 
 const Index = () => {
   const [filters, setFilters] = useState<FilterTransformed>()
@@ -57,10 +58,14 @@ const Index = () => {
         <div style={{ display: 'flex' }}>
           <DatePicker
             style={{ width }}
-            onChange={onChangeTimestamp(dispatch, setDate)}
-            value={date}
+            locale={locale as any}
+            onChange={onChangeDate(dispatch, setDate)}
           />
-          <TimePicker style={{ width }} />
+          <TimePicker
+            style={{ width }}
+            locale={locale as any}
+            onChange={onChangeTime(dispatch, setDate)}
+          />
         </div>
       </label>
 
@@ -123,10 +128,18 @@ function onChangeCountry(dispatch: Dispatch) {
   }
 }
 
-function onChangeTimestamp(dispatch: Dispatch, setState: Function) {
+function onChangeDate(dispatch: Dispatch, setState: Function) {
   return (date: any, dateString: string) => {
-    dispatch({ type: 'timestamp', payload: dateString })
-    setState(date)
+    dispatch({ type: 'date', payload: dateString })
+    // setState(date)
+    console.log(date, dateString)
+  }
+}
+
+function onChangeTime(dispatch: Dispatch, setState: Function) {
+  return (date: any, dateString: string) => {
+    dispatch({ type: 'time', payload: dateString })
+    // setState(date)
     console.log(date, dateString)
   }
 }
