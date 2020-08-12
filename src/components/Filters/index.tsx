@@ -4,9 +4,7 @@ import axios from "axios";
 import { Container, Input, Select } from "./styles";
 import {
   IFiltersLists,
-  ITimeStamp,
   ILimit,
-  IOffset,
 } from "../../config/interfaces";
 
 interface IFiltersProps extends HTMLAttributes<HTMLDivElement> {
@@ -56,11 +54,7 @@ const Filters: React.FC<IFiltersProps> = ({
   const [countriesInfo, setCountryInfo] = useState<IFiltersLists>(
     {} as IFiltersLists
   );
-  const [timestampInfo, setTimestampInfo] = useState<ITimeStamp>(
-    {} as ITimeStamp
-  );
   const [limitInfo, setLimitInfo] = useState<ILimit>({} as ILimit);
-  const [offsetInfo, setOffsetInfo] = useState<IOffset>({} as IOffset);
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -69,32 +63,19 @@ const Filters: React.FC<IFiltersProps> = ({
       .then((response) => {
         setLocaleInfo(response.data.filters[0]);
         setCountryInfo(response.data.filters[1]);
-        setTimestampInfo(response.data.filters[2]);
         setLimitInfo(response.data.filters[3]);
-        setOffsetInfo(response.data.filters[4]);
         setIsLoading(false)
       });
   }, []);
 
-  const handleDateTime = useCallback((date: string) => {
-    console.log(date);
-    const parsedDate = new Date(date).toISOString();
-    defaultTime.setTime(parsedDate);
-  }, []);
-
+  // handles the wrong information provided by the mock api
   const handleCountry = useCallback((country: string) => {
     if (country === "en_US") {
       defaultCountry.setCountry("US");
-      defaultLocale.setLocale("en_US");
     } else {
       defaultCountry.setCountry(country);
     }
-  }, []);
-
-  // const handleTime = useCallback((value: string) => {
-  //   console.log(value)
-  //   setTime
-  // },[])
+  }, [defaultCountry]);
 
   return (
     <Container {...restProps}>

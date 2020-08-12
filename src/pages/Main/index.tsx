@@ -42,6 +42,7 @@ const Main: React.FC = () => {
 
   const { addToast } = useToast();
 
+  //first render
   useEffect(() => {
     if (!token && window.location.hash) {
       const queryParams = window.location.hash
@@ -75,8 +76,6 @@ const Main: React.FC = () => {
     }
 
     if (token) {
-      console.log(time);
-
       requestSpotifyPlaylist({
         country,
         date,
@@ -87,7 +86,6 @@ const Main: React.FC = () => {
         token,
       })
         .then((res) => {
-          console.log(res);
           setSpotifyResponse(res);
           setRenderPlaylists(res.playlists.items);
         })
@@ -111,6 +109,8 @@ const Main: React.FC = () => {
     }
   }, []);
 
+
+  //rerender when refresh interval comes
   useEffect(() => {
     if (token) {
       requestSpotifyPlaylist({
@@ -132,6 +132,7 @@ const Main: React.FC = () => {
     }
   }, [refresh]);
 
+  //rerender when any of the filter inputs are changed
   useEffect(() => {
     async function request() {
       if (token) {
@@ -147,7 +148,6 @@ const Main: React.FC = () => {
           });
           setSpotifyResponse(response);
           setRenderPlaylists(response.playlists.items);
-          console.log(response);
         } catch (error) {
           handleErrors()
         }
@@ -156,6 +156,7 @@ const Main: React.FC = () => {
     request();
   }, [country, time, date, limit, locale, token]);
 
+  //rerender at any input on the search filter
   useEffect(() => {
     if (spotifyResponse.playlists) {
       setRenderPlaylists(
@@ -166,6 +167,7 @@ const Main: React.FC = () => {
     }
   }, [search]);
 
+  // make a request to the spotify's user api
   const requestSpotifyUser = useCallback(async (token: string | null): Promise<
     ISpotifyUser
   > => {
@@ -183,14 +185,12 @@ const Main: React.FC = () => {
     }
   }, []);
 
+  // makes a request to the featured playlist spotify's api
   const requestSpotifyPlaylist = useCallback(
     async (data: ISpotifyRequest): Promise<ISpotifyResponse> => {
       const { country, limit, locale, offset, time, date, token } = data;
 
-      console.log(date + time);
       const parsedDate = new Date(date + "T" + time).toISOString();
-      console.log(parsedDate);
-      console.log(locale);
       const encodedTimeStamp = encodeURI(parsedDate);
       const uriOffset = offset.toString();
       const uriLimit = limit.toString();
@@ -205,8 +205,6 @@ const Main: React.FC = () => {
           }
         );
 
-        console.log(response);
-
         const parsedResponse: ISpotifyResponse = response.data;
         return parsedResponse;
       } catch (error) {
@@ -216,6 +214,7 @@ const Main: React.FC = () => {
     []
   );
 
+  // handle the load more button
   const handleLoadMore = useCallback(async () => {
     console.log(spotifyResponse.playlists.next);
     console.log(spotifyResponse.playlists.total);
@@ -247,15 +246,13 @@ const Main: React.FC = () => {
         setRenderPlaylists((state) =>
           state.concat(parsedResponse.playlists.items)
         );
-
-        console.log(spotifyResponse.playlists.total);
-        console.log(renderPlaylists.length);
       }
     } catch (error) {
       handleErrors()
     }
-  }, [spotifyResponse]);
+  }, [spotifyResponse, token ]);
 
+  //handle the logIn button
   const logInSpotify = useCallback(() => {
     const clientID = "7779441b6a2042949a197bfcfd94e3fa";
     const redirectUri = "http://localhost:3000/";
@@ -265,6 +262,7 @@ const Main: React.FC = () => {
     window.location.href = fullUrl;
   }, []);
 
+  // handler logoffs
   const logOut = useCallback(() => {
     localStorage.removeItem("@Spotifood:token");
     setToken(null);
@@ -272,13 +270,14 @@ const Main: React.FC = () => {
     window.location.reload();
   }, []);
 
+  // handler errors calling the toasts
   const handleErrors = useCallback(() => {
     addToast({
       type: "error",
       title: "Encontramos um erro",
       description: 'Ops... algo deu errado, por favor, tente atualizar a página.'
     })
-  },[])
+  },[addToast])
 
   return (
     <Container>
