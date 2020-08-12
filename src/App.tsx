@@ -1,10 +1,13 @@
 import React from "react";
 import GlobalStyle from "./styles/global";
 import Main from "./pages/Main";
+import { ToastProvider } from "./hooks/toast";
 
 const App: React.FC = () => (
   <>
-    <Main />
+    <ToastProvider>
+      <Main />
+    </ToastProvider>
     <GlobalStyle />
   </>
 );

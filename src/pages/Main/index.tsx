@@ -14,6 +14,7 @@ import Filters from "../../components/Filters";
 import Playlists from "../../components/Playlists";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
+import { useToast } from "../../hooks/toast";
 
 const Main: React.FC = () => {
   const [token, setToken] = useState<string | null>(() =>
@@ -38,6 +39,8 @@ const Main: React.FC = () => {
   const [spotifyUser, setSpotifyUser] = useState<ISpotifyUser | null>(null);
   const [renderPlaylists, setRenderPlaylists] = useState<IPlaylists[]>([]);
   const [refresh, setRefresh] = useState<boolean>(false);
+
+  const { addToast } = useToast();
 
   useEffect(() => {
     if (!token && window.location.hash) {
@@ -89,7 +92,7 @@ const Main: React.FC = () => {
           setRenderPlaylists(res.playlists.items);
         })
         .catch((error) => {
-          console.log("error", error);
+          handleErrors();
           logOut();
         });
 
@@ -98,6 +101,7 @@ const Main: React.FC = () => {
           setSpotifyUser(response);
         })
         .catch(() => {
+          handleErrors();
           logOut();
         });
 
@@ -122,7 +126,9 @@ const Main: React.FC = () => {
           setSpotifyResponse(response);
           setRenderPlaylists(response.playlists.items);
         })
-        .catch(() => {});
+        .catch(() => {
+          handleErrors()
+        });
     }
   }, [refresh]);
 
@@ -143,7 +149,7 @@ const Main: React.FC = () => {
           setRenderPlaylists(response.playlists.items);
           console.log(response);
         } catch (error) {
-          // logOut()
+          handleErrors()
         }
       }
     }
@@ -246,7 +252,7 @@ const Main: React.FC = () => {
         console.log(renderPlaylists.length);
       }
     } catch (error) {
-      console.log(error);
+      handleErrors()
     }
   }, [spotifyResponse]);
 
@@ -265,6 +271,14 @@ const Main: React.FC = () => {
     setSpotifyUser(null);
     window.location.reload();
   }, []);
+
+  const handleErrors = useCallback(() => {
+    addToast({
+      type: "error",
+      title: "Encontramos um erro",
+      description: 'Ops... algo deu errado, por favor, tente atualizar a página.'
+    })
+  },[])
 
   return (
     <Container>
