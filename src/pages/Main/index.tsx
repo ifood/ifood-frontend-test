@@ -15,6 +15,7 @@ import Playlists from "../../components/Playlists";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import { useToast } from "../../hooks/toast";
+import { requestSpotifyPlaylist, requestSpotifyUser } from "../../services/spotifyAPI";
 
 const Main: React.FC = () => {
   const [token, setToken] = useState<string | null>(() =>
@@ -167,52 +168,8 @@ const Main: React.FC = () => {
     }
   }, [search]);
 
-  // make a request to the spotify's user api
-  const requestSpotifyUser = useCallback(async (token: string | null): Promise<
-    ISpotifyUser
-  > => {
-    try {
-      const response = await axios.get("https://api.spotify.com/v1/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
 
-      const parsedResponse: ISpotifyUser = response.data;
-      return parsedResponse;
-    } catch (error) {
-      throw Error("Algo deu errado");
-    }
-  }, []);
-
-  // makes a request to the featured playlist spotify's api
-  const requestSpotifyPlaylist = useCallback(
-    async (data: ISpotifyRequest): Promise<ISpotifyResponse> => {
-      const { country, limit, locale, offset, time, date, token } = data;
-
-      const parsedDate = new Date(date + "T" + time).toISOString();
-      const encodedTimeStamp = encodeURI(parsedDate);
-      const uriOffset = offset.toString();
-      const uriLimit = limit.toString();
-
-      try {
-        const response = await axios.get(
-          `https://api.spotify.com/v1/browse/featured-playlists?country=${country}&locale=${locale.toString()}&timestamp=${encodedTimeStamp}&limit=${uriLimit}&offset=${uriOffset}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        const parsedResponse: ISpotifyResponse = response.data;
-        return parsedResponse;
-      } catch (error) {
-        throw Error("Algo deu errado");
-      }
-    },
-    []
-  );
+  
 
   // handle the load more button
   const handleLoadMore = useCallback(async () => {
