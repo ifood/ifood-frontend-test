@@ -1,4 +1,4 @@
-export async function getPlaylistFilters() {
+export async function getPlaylistFilters(): Promise<FilterTransformed> {
   const filters = await fetchFilters()
   return transformFilters(filters)
 }
@@ -45,7 +45,7 @@ function transformOffset(offset: Offset) {
 
 type Filter = [Locale, Country, Timestamp, Limit, Offset]
 
-type FilterTransformed = {
+export type FilterTransformed = {
   locale: Locale
   country: Country
   timestamp: Timestamp
