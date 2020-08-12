@@ -1,0 +1,42 @@
+img {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.desc {
+    color: rgb(180,180,180);
+    font-size: 14px;
+    height: 32px;
+    margin: 10px 8px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-align: left;
+    width: 162.5px;
+}
+
+.p {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-left: 8px;
+    text-align: left;
+}
+
+.playlist {
+    background-color: rgb(39,39,39);
+    border: solid;
+    border-color: rgb(38,38,38);
+    border-width: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    max-height: 256.5px;
+    max-width: 178.5px;
+}
+
+.title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
