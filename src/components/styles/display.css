@@ -1,0 +1,14 @@
+.display {
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+    height: 490px;
+    margin: 10px 25px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.displaytitle {
+    margin: 25px;
+    text-align: left;
+}

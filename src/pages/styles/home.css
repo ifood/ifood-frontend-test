@@ -1,0 +1,8 @@
+.homepage {
+    display: flex
+}
+
+.right {
+    display: block;
+    width: 80%;
+}
