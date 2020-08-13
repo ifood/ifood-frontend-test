@@ -1,17 +1,16 @@
 import { fetchURL } from './fetchURL'
 
-export async function getPlaylistFilters(): Promise<FilterTransformed> {
+export async function getPlaylistFilters(): Promise<Filter> {
   const filters = await fetchFilters()
   return transformFilters(filters)
 }
 
-async function fetchFilters(): Promise<Filter> {
-  const url = 'http://www.mocky.io/v2/5a25fade2e0000213aa90776'
-  const json = await fetchURL(url)
+async function fetchFilters(): Promise<FilterAPI> {
+  const json = await fetchURL('http://www.mocky.io/v2/5a25fade2e0000213aa90776')
   return json.filters
 }
 
-function transformFilters(filters: Filter): FilterTransformed {
+function transformFilters(filters: FilterAPI): Filter {
   const [locale, country, timestamp, limit, offset] = filters
   return {
     locale: transformLocale(locale),
@@ -44,9 +43,9 @@ function transformOffset(offset: Offset) {
   return { name: offset.name }
 }
 
-type Filter = [Locale, Country, Timestamp, Limit, Offset]
+type FilterAPI = [Locale, Country, Timestamp, Limit, Offset]
 
-export type FilterTransformed = {
+export type Filter = {
   locale: Locale
   country: Country
   timestamp: Timestamp

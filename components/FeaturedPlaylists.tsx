@@ -1,4 +1,5 @@
 import { List } from 'antd'
+import { Playlist } from '../data/playlists'
 
 export const FeaturedPlaylists = (props: Props) => {
   return (
@@ -37,12 +38,4 @@ type PlaylistTitleProps = { playlist: Pick<Playlist, 'name' | 'external_urls'> }
 
 type Props = {
   playlists: Playlist[]
-}
-
-type Playlist = {
-  id: string
-  images: { url: string }[]
-  external_urls: { spotify: string }
-  name: string
-  description: string
 }
