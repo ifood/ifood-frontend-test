@@ -3,7 +3,8 @@
   "scripts": {
     "start": "next",
     "deploy": "next build && next export",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "antd": "^4.5.3",
