@@ -6,11 +6,10 @@ import locale from '../public/locale.json'
 import { extractAccessToken } from '../utils/extractAccessToken'
 import { getPlaylistFilters, Filter } from '../data/playlistFilter'
 import { fetchFeaturedPlaylists, Playlist } from '../data/playlists'
-import { InvalidToken } from '../pages/index'
 
 type Props = {
   setPlaylists: (value: Playlist[]) => void
-  setInvalidTokenError: (value: InvalidToken) => void
+  setIsTokenInvalid: (value: boolean) => void
 }
 
 export function FilterPlaylists(props: Props) {
@@ -18,28 +17,26 @@ export function FilterPlaylists(props: Props) {
   const [state, dispatch] = useReducer(reducer, {})
 
   useEffect(() => {
-    getPlaylistFilters().then(setFilters)
-  }, [])
+    if (!filters) {
+      getPlaylistFilters().then(setFilters)
+    }
 
-  useEffect(() => {
     const extractedToken = extractAccessToken(window.location.hash)
-    fetchFeaturedPlaylists(extractedToken)
-      .then(props.setPlaylists)
-      .catch((error) => {
-        props.setInvalidTokenError({ isInvalid: true, message: error.message })
+
+    fetchFeaturedPlaylists(extractedToken, state)
+      .then((playlists) => {
+        props.setPlaylists(playlists)
+        props.setIsTokenInvalid(false)
+      })
+      .catch(() => {
+        props.setIsTokenInvalid(true)
       })
   }, [state.locale, state.country, state.timestamp, state.limit, state.offset])
 
   const width = '100%'
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '15px',
-      }}
-    >
+    <div className="main">
       <label>
         {filters?.locale.name}
         <Select
