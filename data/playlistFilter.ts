@@ -27,7 +27,11 @@ function transformLocale(locale: Locale) {
 }
 
 function transformCountry(country: Country) {
-  const mappedValues = country.values.map(v => ({ label: v.name, value: v.value }))
+  const mappedValues = country.values.map(v => {
+    // Patch for this issue: https://github.com/ifood/ifood-frontend-test/issues/18
+    const value = v.value === 'en_US' ? 'US' : v.value
+    return { label: v.name, value }
+  })
   return { name: country.name, values: mappedValues }
 }
 
