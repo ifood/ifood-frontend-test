@@ -1,4 +1,4 @@
-import { convertObjectParamsToString } from './convertParams'
+import { convertObjectParamsToString } from './queryParams'
 
 test('Add locale param', () => {
   const filter = {
