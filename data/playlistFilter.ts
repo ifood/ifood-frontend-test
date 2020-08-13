@@ -1,3 +1,5 @@
+import { fetchURL } from './fetchURL'
+
 export async function getPlaylistFilters(): Promise<FilterTransformed> {
   const filters = await fetchFilters()
   return transformFilters(filters)
@@ -5,8 +7,7 @@ export async function getPlaylistFilters(): Promise<FilterTransformed> {
 
 async function fetchFilters(): Promise<Filter> {
   const url = 'http://www.mocky.io/v2/5a25fade2e0000213aa90776'
-  const response = await fetch(url)
-  const json = await response.json()
+  const json = await fetchURL(url)
   return json.filters
 }
 
