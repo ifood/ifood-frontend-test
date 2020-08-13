@@ -4,6 +4,7 @@ import { Logo } from '../components/Logo'
 import { FilterPlaylists } from '../components/FilterPlaylists'
 import { FeaturedPlaylists } from '../components/FeaturedPlaylists'
 import { InvalidTokenAlert } from '../components/InvalidTokenAlert'
+import { Divider } from 'antd'
 
 function Index() {
   const [playlists, setPlaylists] = useState([])
@@ -22,6 +23,7 @@ function Index() {
             setIsTokenInvalid={setIsTokenInvalid}
             setMessage={setMessage}
           />
+          <Divider />
           <FeaturedPlaylists message={message} playlists={playlists} />
         </>
       )}
