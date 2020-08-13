@@ -1,12 +1,12 @@
 import { useState, useReducer, useEffect } from 'react'
-import { Select, DatePicker, InputNumber, TimePicker } from 'antd'
+import { Select, DatePicker, InputNumber, TimePicker, Input } from 'antd'
 
 import locale from '../public/locale.json'
 
 import { extractAccessToken } from '../utils/accessToken'
 import { createPlaylistFilter } from '../utils/timestamp'
 import { getPlaylistFilters, Filter } from '../data/playlistFilter'
-import { fetchFeaturedPlaylists, Playlist } from '../data/playlists'
+import { fetchFeaturedPlaylists } from '../data/playlists'
 
 type Props = {
   setPlaylists: (value: Playlist[]) => void
@@ -43,6 +43,7 @@ export function FilterPlaylists(props: Props) {
     state.time,
     state.limit,
     state.offset,
+    state.query,
   ])
 
   const width = '100%'
@@ -50,7 +51,7 @@ export function FilterPlaylists(props: Props) {
   return (
     <div className="main">
       <label>
-        {filters?.locale.name}
+        Idioma
         <Select
           style={{ width }}
           onChange={onChangeLocale(dispatch)}
@@ -105,6 +106,11 @@ export function FilterPlaylists(props: Props) {
           value={state.offset}
         />
       </label>
+
+      <label>
+        Pesquisar por nome
+        <Input style={{ width }} onChange={onChangeQuery(dispatch)} />
+      </label>
     </div>
   )
 }
@@ -145,10 +151,18 @@ function onChangeOffset(dispatch: Dispatch) {
   }
 }
 
-function reducer(state: FilterState, action: Action): FilterState {
+function onChangeQuery(dispatch: Dispatch) {
+  return ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({ type: 'query', payload: target.value })
+  }
+}
+
+function reducer(
+  state: FilterWithDateTime,
+  action: Action
+): FilterWithDateTime {
   const clonedState = { ...state }
   clonedState[action.type] = action.payload
-  console.log(clonedState)
   return clonedState
 }
 
@@ -157,13 +171,4 @@ type Dispatch = (action: Action) => void
 type Action = {
   type: string
   payload: string | number
-}
-
-export type FilterState = {
-  locale?: string
-  country?: string
-  date?: string
-  time?: string
-  limit?: number
-  offset?: number
 }
