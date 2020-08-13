@@ -1,14 +1,17 @@
-import { List } from 'antd'
+import { List, Typography } from 'antd'
 import { Playlist } from '../data/playlists'
 
 export const FeaturedPlaylists = (props: Props) => {
   return (
-    <List
-      itemLayout="vertical"
-      size="large"
-      dataSource={props.playlists}
-      renderItem={RenderItem}
-    />
+    <>
+      <Typography.Title>{props.message}</Typography.Title>
+      <List
+        itemLayout="vertical"
+        size="large"
+        dataSource={props.playlists}
+        renderItem={RenderItem}
+      />
+    </>
   )
 }
 
@@ -37,5 +40,6 @@ function PlaylistTitle({ playlist }: PlaylistTitleProps) {
 type PlaylistTitleProps = { playlist: Pick<Playlist, 'name' | 'external_urls'> }
 
 type Props = {
+  message: string
   playlists: Playlist[]
 }

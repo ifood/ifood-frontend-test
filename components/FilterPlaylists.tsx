@@ -10,6 +10,7 @@ import { fetchFeaturedPlaylists, Playlist } from '../data/playlists'
 type Props = {
   setPlaylists: (value: Playlist[]) => void
   setIsTokenInvalid: (value: boolean) => void
+  setMessage: (value: string) => void
 }
 
 export function FilterPlaylists(props: Props) {
@@ -24,8 +25,10 @@ export function FilterPlaylists(props: Props) {
     const extractedToken = extractAccessToken(window.location.hash)
 
     fetchFeaturedPlaylists(extractedToken, state)
-      .then((playlists) => {
+      .then((response) => {
+        const [message, playlists] = response
         props.setPlaylists(playlists)
+        props.setMessage(message)
         props.setIsTokenInvalid(false)
       })
       .catch(() => {

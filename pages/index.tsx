@@ -7,6 +7,7 @@ import { InvalidTokenAlert } from '../components/InvalidTokenAlert'
 
 function Index() {
   const [playlists, setPlaylists] = useState([])
+  const [message, setMessage] = useState('')
   const [isTokenInvalid, setIsTokenInvalid] = useState(false)
 
   return (
@@ -19,8 +20,9 @@ function Index() {
           <FilterPlaylists
             setPlaylists={setPlaylists}
             setIsTokenInvalid={setIsTokenInvalid}
+            setMessage={setMessage}
           />
-          <FeaturedPlaylists playlists={playlists} />
+          <FeaturedPlaylists message={message} playlists={playlists} />
         </>
       )}
     </div>

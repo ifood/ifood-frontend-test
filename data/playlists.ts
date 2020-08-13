@@ -3,10 +3,10 @@ import { convertObjectParamsToString } from '../utils/convertParams'
 
 const url = 'https://api.spotify.com/v1/browse/featured-playlists?'
 
-export async function fetchFeaturedPlaylists(accessToken: string, filters: any): Promise<Playlist[]> {
+export async function fetchFeaturedPlaylists(accessToken: string, filters: any): Promise<[string, Playlist[]]> {
   const queryParams = convertObjectParamsToString(filters)
   const json = await fetchURL(url + queryParams, { headers: { Authorization: 'Bearer ' + accessToken } })
-  return json.playlists?.items
+  return [json.message, json.playlists?.items]
 }
 
 export type Playlist = {
