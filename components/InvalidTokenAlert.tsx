@@ -2,23 +2,13 @@ import { Alert } from 'antd'
 
 import { LoginSpotify } from './LoginSpotify'
 
-type Props = {
-  message: string
-}
-
-export function InvalidTokenAlert({ message }: Props) {
+export function InvalidTokenAlert() {
   return (
     <Alert
       showIcon
-      type="error"
-      message="Erro"
-      description={
-        <>
-          {message}
-          <br />
-          <LoginSpotify />
-        </>
-      }
+      type="info"
+      message="Atenção"
+      description={<LoginSpotify />}
     />
   )
 }
