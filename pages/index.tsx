@@ -5,35 +5,20 @@ import { FilterPlaylists } from '../components/FilterPlaylists'
 import { FeaturedPlaylists } from '../components/FeaturedPlaylists'
 import { InvalidTokenAlert } from '../components/InvalidTokenAlert'
 
-export type InvalidToken = {
-  isInvalid: boolean
-  message: string
-}
-
 function Index() {
   const [playlists, setPlaylists] = useState([])
-  const [invalidTokenError, setInvalidTokenError] = useState<InvalidToken>({
-    isInvalid: false,
-    message: '',
-  })
+  const [isTokenInvalid, setIsTokenInvalid] = useState(false)
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '15px',
-      }}
-    >
+    <div className="main">
       <Logo />
-
-      {invalidTokenError.isInvalid ? (
-        <InvalidTokenAlert message={invalidTokenError.message} />
+      {isTokenInvalid ? (
+        <InvalidTokenAlert />
       ) : (
         <>
           <FilterPlaylists
             setPlaylists={setPlaylists}
-            setInvalidTokenError={setInvalidTokenError}
+            setIsTokenInvalid={setIsTokenInvalid}
           />
           <FeaturedPlaylists playlists={playlists} />
         </>
