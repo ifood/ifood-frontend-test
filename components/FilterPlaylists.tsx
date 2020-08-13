@@ -3,21 +3,17 @@ import { Select, DatePicker, InputNumber, TimePicker } from 'antd'
 
 import locale from '../public/locale.json'
 
-import { FeaturedPlaylists } from '../components/FeaturedPlaylists'
-
-import { getPlaylistFilters, Filter } from '../data/playlistFilter'
 import { extractAccessToken } from '../utils/extractAccessToken'
-import { fetchFeaturedPlaylists } from '../data/playlists'
+import { getPlaylistFilters, Filter } from '../data/playlistFilter'
+import { fetchFeaturedPlaylists, Playlist } from '../data/playlists'
+import { InvalidToken } from '../pages/index'
 
-type PlaylistFilter = {
-  locale?: string
-  country?: string
-  timestamp?: string
-  limit?: number
-  offset?: number
+type Props = {
+  setPlaylists: (value: Playlist[]) => void
+  setInvalidTokenError: (value: InvalidToken) => void
 }
 
-export function FilterPlaylists() {
+export function FilterPlaylists(props: Props) {
   const [filters, setFilters] = useState<Filter>()
   const [state, dispatch] = useReducer(reducer, {})
 
@@ -27,8 +23,12 @@ export function FilterPlaylists() {
 
   useEffect(() => {
     const extractedToken = extractAccessToken(window.location.hash)
-    // fetchFeaturedPlaylists(extractedToken).then(setPlaylists)
-  }, [state.locale])
+    fetchFeaturedPlaylists(extractedToken)
+      .then(props.setPlaylists)
+      .catch((error) => {
+        props.setInvalidTokenError({ isInvalid: true, message: error.message })
+      })
+  }, [state.locale, state.country, state.timestamp, state.limit, state.offset])
 
   const width = '100%'
 
@@ -96,8 +96,6 @@ export function FilterPlaylists() {
           value={state.offset}
         />
       </label>
-
-      <FeaturedPlaylists playlists={playlists} />
     </div>
   )
 }
@@ -115,16 +113,14 @@ function onChangeCountry(dispatch: Dispatch) {
 }
 
 function onChangeDate(dispatch: Dispatch) {
-  return (date: any, dateString: string) => {
-    dispatch({ type: 'date', payload: dateString })
-    console.log(date, dateString)
+  return (_: any, date: string) => {
+    dispatch({ type: 'date', payload: date })
   }
 }
 
 function onChangeTime(dispatch: Dispatch) {
-  return (date: any, dateString: string) => {
-    dispatch({ type: 'time', payload: dateString })
-    console.log(date, dateString)
+  return (_: any, time: string) => {
+    dispatch({ type: 'time', payload: time })
   }
 }
 
@@ -150,7 +146,7 @@ type Dispatch = (action: Action) => void
 
 type Action = {
   type: string
-  payload: any
+  payload: string | number
 }
 
 type State = {
