@@ -1,4 +1,4 @@
-import { convertObjectParamsToString } from './fetchURL'
+import { convertObjectParamsToString } from './convertParams'
 
 test('Add locale param', () => {
   const filter = {
