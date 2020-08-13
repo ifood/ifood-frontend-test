@@ -1,5 +1,5 @@
 import { fetchURL } from './fetchURL'
-import { convertObjectParamsToString } from '../utils/convertParams'
+import { convertObjectParamsToString } from '../utils/queryParams'
 
 const url = 'https://api.spotify.com/v1/browse/featured-playlists?'
 

@@ -3,7 +3,8 @@ import { Select, DatePicker, InputNumber, TimePicker } from 'antd'
 
 import locale from '../public/locale.json'
 
-import { extractAccessToken } from '../utils/extractAccessToken'
+import { extractAccessToken } from '../utils/accessToken'
+import { createPlaylistFilter } from '../utils/timestamp'
 import { getPlaylistFilters, Filter } from '../data/playlistFilter'
 import { fetchFeaturedPlaylists, Playlist } from '../data/playlists'
 
@@ -23,8 +24,9 @@ export function FilterPlaylists(props: Props) {
     }
 
     const extractedToken = extractAccessToken(window.location.hash)
+    const playlistFilter = createPlaylistFilter(state)
 
-    fetchFeaturedPlaylists(extractedToken, state)
+    fetchFeaturedPlaylists(extractedToken, playlistFilter)
       .then((response) => {
         const [message, playlists] = response
         props.setPlaylists(playlists)
@@ -34,7 +36,14 @@ export function FilterPlaylists(props: Props) {
       .catch(() => {
         props.setIsTokenInvalid(true)
       })
-  }, [state.locale, state.country, state.timestamp, state.limit, state.offset])
+  }, [
+    state.locale,
+    state.country,
+    state.date,
+    state.time,
+    state.limit,
+    state.offset,
+  ])
 
   const width = '100%'
 
@@ -114,31 +123,32 @@ function onChangeCountry(dispatch: Dispatch) {
 
 function onChangeDate(dispatch: Dispatch) {
   return (_: any, date: string) => {
-    dispatch({ type: 'date', payload: date })
+    if (date.length !== 0) dispatch({ type: 'date', payload: date })
   }
 }
 
 function onChangeTime(dispatch: Dispatch) {
   return (_: any, time: string) => {
-    dispatch({ type: 'time', payload: time })
+    if (time.length !== 0) dispatch({ type: 'time', payload: time })
   }
 }
 
 function onChangeLimit(dispatch: Dispatch) {
-  return (value: number) => {
-    dispatch({ type: 'limit', payload: value })
+  return (value: unknown) => {
+    if (typeof value === 'number') dispatch({ type: 'limit', payload: value })
   }
 }
 
 function onChangeOffset(dispatch: Dispatch) {
-  return (value: number) => {
-    dispatch({ type: 'offset', payload: value })
+  return (value: unknown) => {
+    if (typeof value === 'number') dispatch({ type: 'offset', payload: value })
   }
 }
 
-function reducer(state: State, action: Action): State {
+function reducer(state: FilterState, action: Action): FilterState {
   const clonedState = { ...state }
   clonedState[action.type] = action.payload
+  console.log(clonedState)
   return clonedState
 }
 
@@ -149,10 +159,11 @@ type Action = {
   payload: string | number
 }
 
-type State = {
+export type FilterState = {
   locale?: string
   country?: string
-  timestamp?: string
+  date?: string
+  time?: string
   limit?: number
   offset?: number
 }
