@@ -23,6 +23,24 @@ export function FilterPlaylists(props: Props) {
       getPlaylistFilters().then(setFilters)
     }
 
+    getPlaylists()
+  }, [
+    state.locale,
+    state.country,
+    state.date,
+    state.time,
+    state.limit,
+    state.offset,
+    state.query,
+  ])
+
+  useEffect(() => {
+    const thirtySeconds = 30e3
+    const interval = setInterval(getPlaylists, thirtySeconds)
+    return () => clearInterval(interval)
+  }, [])
+
+  function getPlaylists() {
     const extractedToken = extractAccessToken(window.location.hash)
     const playlistFilter = createPlaylistFilter(state)
 
@@ -36,15 +54,7 @@ export function FilterPlaylists(props: Props) {
       .catch(() => {
         props.setIsTokenInvalid(true)
       })
-  }, [
-    state.locale,
-    state.country,
-    state.date,
-    state.time,
-    state.limit,
-    state.offset,
-    state.query,
-  ])
+  }
 
   const width = '100%'
 
