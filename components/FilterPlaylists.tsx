@@ -86,7 +86,7 @@ export function FilterPlaylists(props: Props) {
   }
 
   const width = '100%'
-  const [dateLabel, _, timeLabel] = filters?.timestamp.name.split(' ')
+  const [dateLabel, _, timeLabel] = filters?.timestamp.name.split(' ') || []
 
   return (
     <div className="main">
