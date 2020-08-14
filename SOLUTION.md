@@ -1,86 +1,89 @@
-# Acesse o [Spotifood](https://spotifood.douglasselias.vercel.app) ↗
+# Access [Spotifood](https://spotifood.douglasselias.vercel.app) ↗
 
-## Tecnologias usadas:
+> "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." - Antoine de Saint-Exupery
 
-### [React](https://reactjs.org)
-
-**Obrigatório para o desafio**
-
-React é atualmente uma das mais populares frameworks para desenvolvimento web. Facilita a sincronização entre o estado da aplicação e a interface do usuário.
-
-### [Jest](https://jestjs.io)
-
-Framework simples e poderoso para testes automatizados.
+## Technologies used:
 
 ### [TypeScript](https://www.typescriptlang.org)
 
-Um _superset_ do JavaScript que adiciona tipagem estática, com isso melhora a experiência de desenvolvimento por avisar sobre erros e quais os tipos de argumentos uma função aceita.
+A JavaScript _superset_ that adds static typing, thereby improving the development experience by notifying you of errors and what types of arguments a function accepts.
 
-### [Lodash Debounce](https://lodash.com/docs/4.17.15#debounce)
+### [React](https://reactjs.org)
 
-Uma função para postergar a execução de uma função, especialmente útil em campos de pesquisa que faz uma requisição no servidor.
+**Required for the challenge**
 
-### [Ant Design](https://ant.design)
-
-Componentes bonitos e fáceis de usar
+React is currently one of the most popular frameworks for web development. Facilitates synchronization between the state of the application and the user interface.
 
 ### [Next.js](https://nextjs.org)
 
-Framework para o React que esconde a complexidade de configurar um projeto React do zero e ainda fornece uma boa estrutura para pastas.
+Framework for React that hides the complexity of configuring a React project from scratch and still provides a good folder structure.
+
+### [Ant Design](https://ant.design)
+
+Beautiful and easy to use components.
+
+### [Jest](https://jestjs.io)
+
+Simple and powerful framework for automated testing.
+
+### [Lodash Debounce](https://lodash.com/docs/4.17.15#debounce)
+
+A function to postpone the execution of a function, especially useful in search fields that make a request on the server.
 
 ### [Vercel](https://vercel.com)
 
-Hospedagem simples e rápida para sites.
+Simple and fast hosting for websites.
 
-## Estrutura das pastas
+## Folder structure
 
 ### `/pages`
 
-Pasta obrigatória para o Next.js. Contém a página inicial (`index.tsx`) e outros dois arquivos para configurar a tag `head`.
+Mandatory folder for Next.js. It contains the home page (`index.tsx`) and two other files to configure the `head` tag.
 
-O `index.tsx` tem o estado principal da aplicação. Ele cuida da verificação do usuário logado e renderiza o login ou as playlists.
+`index.tsx` has the main application state. It takes care of checking the logged in user and renders the login or playlists.
 
 ### `/components`
 
-`FeaturedPlaylists.tsx` recebe um _array_ de playlists para exibir o nome, descrição e imagem de capa. Ao clicar no nome abre uma nova aba no Spotify com a playlist selecionada.
+`FeaturedPlaylists.tsx` receives an _array_ of playlists to display the name, description and cover image. Clicking on the name opens a new tab in Spotify with the selected playlist.
 
-`FilterPlaylists.tsx` contém toda lógica para filtragem das playlists. Utiliza o `useReducer` para controlar o estado dos campos de filtros.
-Faz uso do `debounce` na requisição das playlists com tempo de espera baseado no [Limite de Doherty](https://lawsofux.com/doherty-threshold).
+`FilterPlaylists.tsx` contains all logic for filtering playlists. Use `useReducer` to control the state of the filter fields.
 
-Extrai da url o token de acesso e evita fazer requisições que alteram o estado da aplicação caso não tenha o token, evitando assim um vazamento de memória. Para as requisições intervaladas de 30 segundos foi necessário usar o `useRef` para guardar o id do `setInterval` possibilitando o cancelamento da requisição defasada ao alterar um campo de filtro.
+Make use of `debounce` when requesting playlists with waiting time based on [Doherty Threshold](https://lawsofux.com/doherty-threshold).
 
-`InvaliTokenAlert.tsx` exibe um alerta para o usuário realizar o login no Spotify.
+Extract the access token from the url and avoid making requests that change the state of the application if you don't have the token, thus preventing a memory leak. For 30-second interval requests, it was necessary to use `useRef` to store the id of `setInterval`, enabling the cancellation of the outdated request when changing a filter field.
 
-`LoginSpotify.tsx` exibe um link para o usuário realizar o login no Spotify. Cuida também da verificação do ambiente da aplicação para redirecionar a url correta.
+`InvaliTokenAlert.tsx` displays an alert for the user to login to Spotify.
 
-`SpotifoodLogo.tsx` logo feito por mim no [Inkscape](https://inkscape.org), utilizando uma mescla dos logos do Spotify e iFood.
+`LoginSpotify.tsx` displays a link for the user to login to Spotify. It also takes care of checking the application's environment to redirect to the correct url.
+
+`SpotifoodLogo.tsx` logo made by me on [Inkscape](https://inkscape.org), using a mix of Spotify and iFood logos.
 
 ### `/data`
 
-`fetchURL.ts` embrulha o método `fetch` e faz um tratamento de erro simples de código 400 e 401.
+`fetchURL.ts` wraps the `fetch` method and does a simple error handling of code 400 and 401.
 
-`playlistFilter.ts` contém o método para requisição dos valores dos filtros e métodos para transformação desses valores para serem exibidos na interface. Aplica também um _patch_ no [valor do país.](https://github.com/ifood/ifood-frontend-test/issues/18)
+`playlistFilter.ts` contains the method for requesting the values ​​of the filters and methods for transforming these values ​​to be displayed in the interface. It also applies a _patch_ to [country value.](https://github.com/ifood/ifood-frontend-test/issues/18)
 
-`playlists.ts` contém o método para requisição das playlists e um método para filtragem por nome das playlists.
+`playlists.ts` contains the method for requesting playlists and a method for filtering playlists by name.
 
 ### `/utils`
 
-Todos os arquivos nesta pasta contém testes.
+All files in this folder contain tests.
 
-`accessToken.ts` contém o método que extrai o token de acesso de uma url.
+`accessToken.ts` contains the method that extracts the access token from a url.
 
-`queryParams.ts` contém o método que transforma um objeto em _query string_ para ser usado na url.
+`queryParams.ts` contains the method that turns an object into _query string_ to be used in the url.
 
-`timestamp.ts` contém dois métodos para lidar com os dois valores de data e hora da interface e transformar em _timestamp_ para a requisição das playlists.
+`timestamp.ts` contains two methods for handling the date and time values ​​of the interface and turning it into _timestamp_ for requesting playlists.
 
 ### `/.github`
 
-`main.yml` configuração do Github Actions. Executa os testes ao fazer um _push_ na master ou ao fazer um _merge_ na master.
+`main.yml` Github Actions configuration. Run the tests by making a _push_ on the master or by doing a _merge_ on the master.
 
-## Executar o código
+## Run the code
 
-- Clone o repositório.
+- Clone the repository.
 - Execute `npm i` para instalar as dependências.
-- Execute `npm start` para iniciar o servidor de desenvolvimento.
-- Abra no navegador essa url: http://localhost:3000
-- Opcional: Execute `npm test` para ver os testes
+- Run `npm i` to install the dependencies.
+- Open this url in the browser: http://localhost:3000
+- Optional: Run `npm test` to see the tests
