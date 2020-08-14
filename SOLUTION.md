@@ -51,7 +51,7 @@ Extrai da url o token de acesso e evita fazer requisições que alteram o estado
 
 `InvaliTokenAlert.tsx` exibe um alerta para o usuário realizar o login no Spotify.
 
-`LoginSpotify.tsx` exibe um link para o usuário realizar o login no Spotify. Cuida também da verificação do ambiente da aplicação para redirecionar à url correta.
+`LoginSpotify.tsx` exibe um link para o usuário realizar o login no Spotify. Cuida também da verificação do ambiente da aplicação para redirecionar a url correta.
 
 `SpotifoodLogo.tsx` logo feito por mim no [Inkscape](https://inkscape.org), utilizando uma mescla dos logos do Spotify e iFood.
 
@@ -59,7 +59,7 @@ Extrai da url o token de acesso e evita fazer requisições que alteram o estado
 
 `fetchURL.ts` embrulha o método `fetch` e faz um tratamento de erro simples de código 400 e 401.
 
-`playlistFilter.ts` contém o método para requisição dos valores dos filtros e metódos para transformação desses valores para serem exibidos na interface. Aplica também um _patch_ no [valor do país.](https://github.com/ifood/ifood-frontend-test/issues/18)
+`playlistFilter.ts` contém o método para requisição dos valores dos filtros e métodos para transformação desses valores para serem exibidos na interface. Aplica também um _patch_ no [valor do país.](https://github.com/ifood/ifood-frontend-test/issues/18)
 
 `playlists.ts` contém o método para requisição das playlists e um método para filtragem por nome das playlists.
 
