@@ -89,25 +89,27 @@ export function FilterPlaylists(props: Props) {
 
   return (
     <div className="main">
-      <label>
-        Idioma
-        <Select
-          style={{ width }}
-          onChange={onChangeLocale(dispatch)}
-          value={state.locale}
-          options={filters?.locale.values}
-        />
-      </label>
+      <div style={{ display: 'flex' }}>
+        <label>
+          Idioma
+          <Select
+            style={{ width }}
+            onChange={onChangeLocale(dispatch)}
+            value={state.locale}
+            options={filters?.locale.values}
+          />
+        </label>
 
-      <label>
-        {filters?.country.name}
-        <Select
-          style={{ width }}
-          onChange={onChangeCountry(dispatch)}
-          value={state.country}
-          options={filters?.country.values}
-        />
-      </label>
+        <label>
+          {filters?.country.name}
+          <Select
+            style={{ width }}
+            onChange={onChangeCountry(dispatch)}
+            value={state.country}
+            options={filters?.country.values}
+          />
+        </label>
+      </div>
 
       <label>
         {filters?.timestamp.name}
@@ -125,26 +127,28 @@ export function FilterPlaylists(props: Props) {
         </div>
       </label>
 
-      <label>
-        {filters?.limit.name}
-        <InputNumber
-          style={{ width }}
-          onChange={onChangeLimit(dispatch)}
-          value={state.limit}
-          min={filters?.limit.min}
-          max={filters?.limit.max}
-        />
-      </label>
+      <div style={{ display: 'flex' }}>
+        <label>
+          {filters?.limit.name}
+          <InputNumber
+            style={{ width }}
+            onChange={onChangeLimit(dispatch)}
+            value={state.limit}
+            min={filters?.limit.min}
+            max={filters?.limit.max}
+          />
+        </label>
 
-      <label>
-        {filters?.offset.name}
-        <InputNumber
-          style={{ width }}
-          onChange={onChangeOffset(dispatch)}
-          min={0}
-          value={state.offset}
-        />
-      </label>
+        <label>
+          {filters?.offset.name}
+          <InputNumber
+            style={{ width }}
+            onChange={onChangeOffset(dispatch)}
+            min={0}
+            value={state.offset}
+          />
+        </label>
+      </div>
 
       <label>
         Pesquisar por nome

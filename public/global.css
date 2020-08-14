@@ -9,3 +9,7 @@ html {
   flex-direction: column;
   gap: 15px;
 }
+
+label {
+  width: 100%;
+}
