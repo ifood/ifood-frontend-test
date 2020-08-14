@@ -1,5 +1,4 @@
 import { List, Typography } from 'antd'
-import { Playlist } from '../data/playlists'
 
 export const FeaturedPlaylists = (props: Props) => {
   return (
