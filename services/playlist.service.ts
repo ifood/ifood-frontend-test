@@ -1,17 +1,31 @@
 import useSWR from 'swr';
 import { spotifyApi } from './api';
+import { PlaylistInterface } from '../interfaces/playlist.interface';
 
-export function useService(service) {
-  return useSWR(service.key, service.fetcher, {
-    refreshInterval: 0,
-  });
+export interface PlaylistResponse {
+  message: string;
+  playlists: { items: PlaylistInterface[] };
 }
 
 type fetcherParams = {
   limit: number;
 };
 
-async function fetcher(url: string, params?: fetcherParams): Promise<any> {
+type Service = {
+  key: string;
+  fetcher: (params: fetcherParams) => Promise<PlaylistResponse>;
+};
+
+export function useService(service?: Service) {
+  return useSWR(service?.key, service?.fetcher, {
+    refreshInterval: 30000,
+  });
+}
+
+async function fetcher(
+  url: string,
+  params?: fetcherParams,
+): Promise<PlaylistResponse> {
   try {
     const response = await spotifyApi(url, {
       method: 'GET',
@@ -22,16 +36,11 @@ async function fetcher(url: string, params?: fetcherParams): Promise<any> {
       throw new Error(response.data.message);
     }
 
-    return response;
+    return response.data;
   } catch (e) {
     throw new Error(e.response?.data?.message ?? e.message);
   }
 }
-
-type Service = {
-  key: string;
-  fetcher: (...args: any) => Promise<any>;
-};
 
 export const playlistService = {
   featuredPlaylists(params: fetcherParams): Service {
