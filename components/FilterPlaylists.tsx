@@ -15,6 +15,9 @@ type Props = {
   setMessage: (value: string) => void
 }
 
+// Based in this research https://lawsofux.com/doherty-threshold
+const DEBOUNCE_TIME = 400
+
 export function FilterPlaylists(props: Props) {
   const [filters, setFilters] = useState<Filter>()
   const [state, dispatch] = useReducer(reducer, {})
