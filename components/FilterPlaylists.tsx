@@ -20,6 +20,15 @@ export function FilterPlaylists(props: Props) {
   const [state, dispatch] = useReducer(reducer, {})
   const delayedQuery = debounce(getPlaylists, 1500)
 
+  const filterDependencies = [
+    state.locale,
+    state.country,
+    state.date,
+    state.time,
+    state.limit,
+    state.offset,
+  ]
+
   useEffect(() => {
     if (!filters) {
       getPlaylistFilters().then(setFilters)
@@ -47,7 +56,7 @@ export function FilterPlaylists(props: Props) {
       getPlaylists()
     }, thirtySeconds)
     return () => clearInterval(interval)
-  }, [])
+  }, [...filterDependencies, state.query])
 
   function getPlaylists() {
     const extractedToken = extractAccessToken(window.location.hash)
