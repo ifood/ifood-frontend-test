@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from 'react'
+import { useState, useReducer, useEffect, useRef } from 'react'
 import { Select, DatePicker, InputNumber, TimePicker, Input } from 'antd'
 import debounce from 'lodash.debounce'
 
@@ -21,7 +21,8 @@ const DEBOUNCE_TIME = 400
 export function FilterPlaylists(props: Props) {
   const [filters, setFilters] = useState<Filter>()
   const [state, dispatch] = useReducer(reducer, {})
-  const delayedQuery = debounce(getPlaylists, 1500)
+  const delayedQuery = debounce(getPlaylists, DEBOUNCE_TIME)
+  const intervalId = useRef(null)
 
   const filterDependencies = [
     state.locale,
@@ -37,27 +38,23 @@ export function FilterPlaylists(props: Props) {
       getPlaylistFilters().then(setFilters)
     }
 
+    clearInterval(intervalId.current)
     getPlaylists()
-  }, [
-    state.locale,
-    state.country,
-    state.date,
-    state.time,
-    state.limit,
-    state.offset,
-  ])
+  }, filterDependencies)
 
   useEffect(() => {
+    clearInterval(intervalId.current)
     delayedQuery()
 
     return delayedQuery.cancel
   }, [state.query])
 
   useEffect(() => {
-    const thirtySeconds = 30 * 1000
-    const interval = setInterval(() => {
-      getPlaylists()
-    }, thirtySeconds)
+    const thirtySeconds = 30_000
+    const interval = setInterval(getPlaylists, thirtySeconds)
+
+    intervalId.current = interval
+
     return () => clearInterval(interval)
   }, [...filterDependencies, state.query])
 
