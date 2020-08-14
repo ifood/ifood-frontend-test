@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Logo } from '../components/Logo'
+import { SpotifoodLogo } from '../components/SpotifoodLogo'
 import { FilterPlaylists } from '../components/FilterPlaylists'
 import { FeaturedPlaylists } from '../components/FeaturedPlaylists'
 import { InvalidTokenAlert } from '../components/InvalidTokenAlert'
@@ -13,7 +13,7 @@ function Index() {
 
   return (
     <div className="main">
-      <Logo />
+      <SpotifoodLogo />
       {isTokenInvalid ? (
         <InvalidTokenAlert />
       ) : (
