@@ -1,6 +1,6 @@
 import { List, Typography } from 'antd'
 
-export const FeaturedPlaylists = (props: Props) => {
+export function FeaturedPlaylists(props: Props) {
   return (
     <>
       <Typography.Title>{props.message}</Typography.Title>

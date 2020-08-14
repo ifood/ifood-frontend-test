@@ -2,7 +2,7 @@ import Head from 'next/head'
 import 'antd/dist/antd.css'
 import '../public/global.css'
 
-const App = ({ Component, pageProps }) => {
+function App({ Component, pageProps }) {
   return (
     <>
       <Head>
