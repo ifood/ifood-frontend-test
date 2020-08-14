@@ -2,6 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import GlobalStyle from '../styles/global';
+import { AuthProvider } from '../contexts/AuthenticationContext';
 
 export default class MyApp extends App {
   render() {
@@ -18,7 +19,9 @@ export default class MyApp extends App {
           />
         </Head>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </>
     );
   }
