@@ -6,7 +6,7 @@ const style = {
 export function Logo() {
   return (
     <div style={style}>
-      <img src={'logo.png'} width="50%" />
+      <img src={'logo.png'} alt="Spotifood logo" width="50%" />
     </div>
   )
 }
