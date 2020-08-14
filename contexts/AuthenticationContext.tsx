@@ -3,7 +3,11 @@ import { useRouter } from 'next/router';
 import qs from 'qs';
 import Cookie from 'js-cookie';
 
-const AuthContext = createContext({});
+type AuthContextType = {
+  isAuthenticated: boolean;
+};
+
+const AuthContext = createContext<Partial<AuthContextType>>({});
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
