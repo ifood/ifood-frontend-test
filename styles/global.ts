@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   * {
@@ -10,10 +10,11 @@ export default createGlobalStyle`
 
   body{
     -webkit-font-smoothing: antialiased;
+    background-color: #202040;
   }
 
   body, input, button{
-    font: 16px Roboto, sans-serif;
+    font: 16px 'Roboto Slab', sans-serif;
   }
 
   #root{
