@@ -6,7 +6,7 @@ export async function getPlaylistFilters(): Promise<Filter> {
 }
 
 async function fetchFilters(): Promise<FilterAPI> {
-  const json = await fetchURL('http://www.mocky.io/v2/5a25fade2e0000213aa90776')
+  const json = await fetchURL('https://www.mocky.io/v2/5a25fade2e0000213aa90776')
   return json.filters
 }
 
