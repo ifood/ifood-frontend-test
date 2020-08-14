@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Index = () => (
+const IndexPage = () => (
   <div>
-    <h1>iFood Front End Test</h1>
+    <h1>Hello World</h1>
   </div>
 );
 
-export default Index;
+export default IndexPage;
