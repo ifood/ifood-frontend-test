@@ -1,5 +1,6 @@
 import { useState, useReducer, useEffect } from 'react'
 import { Select, DatePicker, InputNumber, TimePicker, Input } from 'antd'
+import debounce from 'lodash.debounce'
 
 import locale from '../public/locale.json'
 
@@ -17,6 +18,7 @@ type Props = {
 export function FilterPlaylists(props: Props) {
   const [filters, setFilters] = useState<Filter>()
   const [state, dispatch] = useReducer(reducer, {})
+  const delayedQuery = debounce(getPlaylists, 1500)
 
   useEffect(() => {
     if (!filters) {
@@ -31,12 +33,19 @@ export function FilterPlaylists(props: Props) {
     state.time,
     state.limit,
     state.offset,
-    state.query,
   ])
 
   useEffect(() => {
-    const thirtySeconds = 30e3
-    const interval = setInterval(getPlaylists, thirtySeconds)
+    delayedQuery()
+
+    return delayedQuery.cancel
+  }, [state.query])
+
+  useEffect(() => {
+    const thirtySeconds = 30 * 1000
+    const interval = setInterval(() => {
+      getPlaylists()
+    }, thirtySeconds)
     return () => clearInterval(interval)
   }, [])
 
