@@ -34,6 +34,12 @@ export function FilterPlaylists(props: Props) {
   ]
 
   useEffect(() => {
+    const extractedToken = extractAccessToken(window.location.hash)
+    if (extractedToken.length === 0) {
+      props.setIsTokenInvalid(true)
+      return
+    }
+
     if (!filters) {
       getPlaylistFilters().then(setFilters)
     }
@@ -60,6 +66,11 @@ export function FilterPlaylists(props: Props) {
 
   function getPlaylists() {
     const extractedToken = extractAccessToken(window.location.hash)
+    if (extractedToken.length === 0) {
+      props.setIsTokenInvalid(true)
+      return
+    }
+
     const playlistFilter = createPlaylistFilter(state)
 
     fetchFeaturedPlaylists(extractedToken, playlistFilter)
