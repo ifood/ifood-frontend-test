@@ -86,10 +86,11 @@ export function FilterPlaylists(props: Props) {
   }
 
   const width = '100%'
+  const [dateLabel, _, timeLabel] = filters?.timestamp.name.split(' ')
 
   return (
     <div className="main">
-      <div style={{ display: 'flex' }}>
+      <div className="input-group">
         <label>
           Idioma
           <Select
@@ -111,23 +112,27 @@ export function FilterPlaylists(props: Props) {
         </label>
       </div>
 
-      <label>
-        {filters?.timestamp.name}
-        <div style={{ display: 'flex' }}>
+      <div className="input-group">
+        <label>
+          {dateLabel}
           <DatePicker
             style={{ width }}
             locale={locale as any}
             onChange={onChangeDate(dispatch)}
           />
+        </label>
+
+        <label>
+          {timeLabel}
           <TimePicker
             style={{ width }}
             locale={locale as any}
             onChange={onChangeTime(dispatch)}
           />
-        </div>
-      </label>
+        </label>
+      </div>
 
-      <div style={{ display: 'flex' }}>
+      <div className="input-group">
         <label>
           {filters?.limit.name}
           <InputNumber

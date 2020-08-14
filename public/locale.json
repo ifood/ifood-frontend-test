@@ -1,7 +1,7 @@
 {
   "lang": {
     "locale": "pt_BR",
-    "placeholder": "Selecione data",
+    "placeholder": "",
     "rangePlaceholder": ["Data inicial", "Data final"],
     "today": "Hoje",
     "now": "Agora",
@@ -30,7 +30,7 @@
     "nextCentury": "Próximo século"
   },
   "timePickerLocale": {
-    "placeholder": "Selecione horário"
+    "placeholder": ""
   },
   "dateFormat": "YYYY-MM-DD",
   "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",

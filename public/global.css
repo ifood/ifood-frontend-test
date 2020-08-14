@@ -13,3 +13,8 @@ html {
 label {
   width: 100%;
 }
+
+.input-group {
+  display: flex;
+  gap: 10px;
+}
