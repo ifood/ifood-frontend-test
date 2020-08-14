@@ -1,4 +1,4 @@
-# Acesse o [Spotifood](https://spotifood.douglasselias.vercel.app) ↗
+# Acesse o [Spotifood](https://spotifood.douglasselias.vercel.app) ↗ (Funciona também no IE 😱)
 
 > "A perfeição não é alcançada quando não há mais nada a ser incluído. A perfeição é alcançada quando não há mais nada a ser retirado." - Antoine de Saint-Exupery
 

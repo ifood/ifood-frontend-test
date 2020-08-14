@@ -1,4 +1,4 @@
-# Access [Spotifood](https://spotifood.douglasselias.vercel.app) ↗
+# Access [Spotifood](https://spotifood.douglasselias.vercel.app) ↗ (Also works in IE 😱)
 
 > "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." - Antoine de Saint-Exupery
 
