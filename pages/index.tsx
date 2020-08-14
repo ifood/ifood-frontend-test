@@ -1,9 +1,7 @@
 import React from 'react';
 
-const IndexPage = () => (
-  <div>
-    <h1>Hello World</h1>
-  </div>
-);
+import LoginForm from '../components/LoginForm';
+
+const IndexPage = () => <LoginForm />;
 
 export default IndexPage;
