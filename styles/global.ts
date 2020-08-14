@@ -11,16 +11,11 @@ export default createGlobalStyle`
   body{
     -webkit-font-smoothing: antialiased;
     background-color: #202040;
+    padding: 2rem;
   }
 
   body, input, button{
     font: 16px 'Roboto Slab', sans-serif;
-  }
-
-  #root{
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 40px 20px;
   }
 
   button{
