@@ -31,4 +31,7 @@ export const ShowcaseContainer = styled.div`
 export const ShowcaseTitle = styled.h1`
   color: #fff;
   font-size: 5rem;
+  @media (max-width: 900px) {
+    font-size: 3rem;
+  }
 `;

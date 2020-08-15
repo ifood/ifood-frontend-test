@@ -8,6 +8,9 @@ export const Toggler = styled.button`
   padding: 10px;
   font-weight: bold;
   margin: 1rem 0;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 export const Container = styled.div`
@@ -15,4 +18,7 @@ export const Container = styled.div`
   width: 100%;
   overflow: hidden;
   transition: all ease 0.2s;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;

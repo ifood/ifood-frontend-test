@@ -6,6 +6,10 @@ export const Container = styled.div`
 
   & + div {
     margin-left: 1rem;
+    @media (max-width: 900px) {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
   }
 
   label {
