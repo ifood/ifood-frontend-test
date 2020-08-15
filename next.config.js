@@ -12,8 +12,8 @@ module.exports = (phase) => {
   const env = {
     CLIENT_ID: process.env.CLIENT_ID,
     REDIRECT_URI: (() => {
-      if (isDev) return 'http://localhost:3000/playlists'
-      if (isProd) return 'https://spotifood.vercel.app/playlists'
+      if (isDev) return process.env.REDIRECT_URI
+      if (isProd) return process.env.REDIRECT_URI
       return 'CALLBACK_URL:not (isDev,isProd && !isStaging,isProd && isStaging)'
     })()
   }
