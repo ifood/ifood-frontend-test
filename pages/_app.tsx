@@ -3,6 +3,7 @@ import App from 'next/app';
 import Head from 'next/head';
 import GlobalStyle from '../styles/global';
 import { AuthProvider } from '../contexts/AuthenticationContext';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default class MyApp extends App {
   render() {
