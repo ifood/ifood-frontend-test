@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useEffect,
   useContext,
+  useRef,
 } from 'react';
 import {
   FeaturedPlaylistsInterface,
@@ -33,7 +34,7 @@ type PlaylistContext = {
   filterByText: (name: string, text: string) => any;
 };
 
-const REFRESH_RATE = 5000;
+const REFRESH_RATE = 30000;
 
 const INITIAL_STATE = {
   featuredPlaylists: null,
@@ -53,6 +54,8 @@ export const PlaylistProvider = contextProps => {
       state,
     };
   }, [state]);
+
+  const interval = useRef<number>();
 
   const changeState = (changedValue, keyValue) => {
     setState(prevState => ({
@@ -140,23 +143,31 @@ export const PlaylistProvider = contextProps => {
   );
 
   useEffect(() => {
-    fetchFilters();
-    fetchFeaturedPlaylists();
-    // setInterval(() => {
-    //   fetchFeaturedPlaylists();
-    // }, REFRESH_RATE);
-  }, [fetchFeaturedPlaylists, fetchFilters]);
-
-  useEffect(() => {
     const filterChoices = state.filterChoices || {};
+    if (interval.current) {
+      clearInterval(interval.current);
+    }
     if (Object.keys(filterChoices).length) {
       const fetchWithParams = async () => {
         await fetchFeaturedPlaylists();
       };
 
-      fetchWithParams();
+      interval.current = setInterval(() => {
+        fetchWithParams();
+      }, REFRESH_RATE);
     }
   }, [fetchFeaturedPlaylists, state.filterChoices]);
+
+  useEffect(() => {
+    if (interval.current) {
+      clearInterval(interval.current);
+    }
+    fetchFilters();
+    fetchFeaturedPlaylists();
+    interval.current = setInterval(() => {
+      fetchFeaturedPlaylists();
+    }, REFRESH_RATE);
+  }, [fetchFeaturedPlaylists, fetchFilters]);
 
   return (
     <PlaylistContext.Provider
@@ -172,8 +183,6 @@ export default function usePlaylist() {
   if (!context) {
     throw new Error('usePlaylist must go inside PlaylistProvider');
   }
-
-  // console.log(context.state);
 
   return {
     ...context.state,
