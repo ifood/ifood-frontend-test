@@ -2,8 +2,8 @@
 
 This is a web application where you can login with you Spotify Account to check the hottest playlists in different countries and dates.
 
-![Login page screenshot](https://imgur.com/QGd8kvr)
-![Playlists page screenshot](https://imgur.com/2d07jQx)
+![Login page screenshot](https://i.imgur.com/QGd8kvr.png)
+![Playlists page screenshot](https://i.imgur.com/2d07jQx.png)
 
 ---
 
