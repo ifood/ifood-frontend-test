@@ -16,9 +16,7 @@ const PlaylistFilters: React.FC = () => {
       <Container
         id="fields_container"
         style={{
-          maxHeight: showFilters
-            ? document?.getElementById('fields_container').scrollHeight
-            : 0,
+          maxHeight: showFilters ? 1000 : 0,
         }}
       >
         <Input
