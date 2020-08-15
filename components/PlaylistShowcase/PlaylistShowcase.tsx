@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShowcaseContainer, ShowcaseTitle } from './styles';
 import { PlaylistInterface } from '../../interfaces/playlist.interface';
+import PlaylistFilters from '../PlaylistFilters/PlaylistFilters';
 
 interface PlaylistShowcaseProps {
   playlists: PlaylistInterface[];
@@ -14,6 +15,7 @@ const PlaylistShowcase: React.FC<PlaylistShowcaseProps> = ({
   return (
     <>
       <ShowcaseTitle>{message}</ShowcaseTitle>
+      <PlaylistFilters />
       <ShowcaseContainer>
         {playlists.map(playlist => (
           <a

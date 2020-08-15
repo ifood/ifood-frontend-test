@@ -12,6 +12,11 @@ export const ShowcaseContainer = styled.div`
   a {
     width: 300px;
     height: 300px;
+    transition: transform ease 0.3s;
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
     @media (max-width: 900px) {
       width: 100%;
       height: auto;
