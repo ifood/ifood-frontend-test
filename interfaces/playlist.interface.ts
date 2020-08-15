@@ -10,3 +10,8 @@ export interface PlaylistInterface {
     spotify: string;
   };
 }
+
+export interface FeaturedPlaylistsInterface {
+  message: string;
+  playlists: { items: PlaylistInterface[] };
+}
