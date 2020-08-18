@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import Input from './Input';
 
-describe.only('Components', () => {
+describe('Components', () => {
   describe('Input', () => {
     it('should render without throwing an error', () => {
       const mockOnChange = jest.fn();
