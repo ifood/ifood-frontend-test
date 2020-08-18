@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import HomePage from './containers/HomePage'
-import NotFoundPage from './containers/NotFoundPage'
-import PlaylistsPage from './containers/PlaylistsPage'
+import HomePage from '../HomePage'
+import NotFoundPage from '../NotFoundPage'
+import PlaylistsPage from '../PlaylistsPage'
 
-import './App.css'
+import './styles.css'
 
 function App() {
   return (

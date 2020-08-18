@@ -15,10 +15,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "npm run lint:eslint -- .",
     "lint:eslint": "eslint --ignore-path .gitignore",
-    "lint:eslint:fix": "eslint --ignore-path .gitignore --fix"
+    "lint:eslint:fix": "eslint --ignore-path .gitignore --fix",
+    "pretest": "npm run test:clean && npm run lint",
+    "test:clean": "rimraf ./coverage",
+    "test": "react-scripts test --coverage --watchAll=false"
   },
   "husky": {
     "hooks": {
@@ -47,6 +50,8 @@
     ]
   },
   "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
