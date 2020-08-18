@@ -8,6 +8,7 @@ import PlaylistsPage from '../PlaylistsPage'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
+import { HOME_PATH } from './urls'
 import './styles.css'
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <div className="App-container">
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/home" component={PlaylistsPage} />
+          <Route path={HOME_PATH} component={PlaylistsPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

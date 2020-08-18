@@ -6,10 +6,18 @@
 
 import React from 'react'
 
+import { FULL_AUTHORIZE_URI } from '../../spotifyAuthorizationConfig'
+import StyledLink from '../../components/StyledLink'
+
 export default function HomePage() {
   return (
-    <h1>
-      Home Page
-    </h1>
+    <div>
+      <StyledLink href={FULL_AUTHORIZE_URI}>
+        Faça Login no Spotify
+      </StyledLink>
+      <div id="xablau">
+
+      </div>
+    </div>
   )
 }
