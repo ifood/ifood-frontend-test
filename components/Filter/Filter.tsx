@@ -40,6 +40,7 @@ const Filter: React.FC<FilterProps> = ({ filter }) => {
 
   return (
     <Input
+      validation={filter.validation}
       id={filter.id}
       name={`filter_${filter.name}`}
       label={filter.name}

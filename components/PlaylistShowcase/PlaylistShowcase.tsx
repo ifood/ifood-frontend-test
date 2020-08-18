@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShowcaseContainer, ShowcaseTitle } from './styles';
+import { ShowcaseContainer, ShowcaseTitle, Description } from './styles';
 import { PlaylistInterface } from '../../interfaces/playlist.interface';
 import PlaylistFilters from '../PlaylistFilters/PlaylistFilters';
 
@@ -24,6 +24,10 @@ const PlaylistShowcase: React.FC<PlaylistShowcaseProps> = ({
             rel="noreferrer"
             key={playlist.id}
           >
+            <Description>
+              <h3>{playlist.name}</h3>
+              <p>{playlist.description}</p>
+            </Description>
             <img src={playlist.images[0].url} alt={playlist.name} />
           </a>
         ))}

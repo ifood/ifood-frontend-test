@@ -7,12 +7,10 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
-  margin-right: 1rem;
+  position: relative;
 
   @media (max-width: 900px) {
     width: 100%;
-    margin-right: 0;
-    margin-bottom: 1rem;
   }
 
   label {
@@ -30,5 +28,13 @@ export const Container = styled.div<ContainerProps>`
     min-width: 120px;
     cursor: pointer;
     width: 100%;
+    border: 2px solid #fff;
+  }
+
+  svg {
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.55rem;
+    stroke: #aaa;
   }
 `;

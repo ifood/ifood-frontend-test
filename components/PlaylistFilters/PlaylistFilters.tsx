@@ -17,12 +17,13 @@ const PlaylistFilters: React.FC = () => {
         id="fields_container"
         style={{
           maxHeight: showFilters ? 1000 : 0,
+          overflow: showFilters ? 'visible' : 'hidden',
         }}
       >
         <Input
           id="name"
           name="filter_name"
-          label="Nome"
+          label="Nome da playlist"
           onChange={filterByText}
         />
         {filterFields.map(filter => (

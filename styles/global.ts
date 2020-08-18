@@ -15,7 +15,7 @@ export default createGlobalStyle`
   }
 
   body, input, button{
-    font: 16px 'Roboto Slab', sans-serif;
+    font: 16px "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
   }
 
   button{

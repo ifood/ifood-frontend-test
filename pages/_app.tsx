@@ -15,7 +15,7 @@ export default class MyApp extends App {
           <title>Spotifood</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
             rel="stylesheet"
           />
         </Head>

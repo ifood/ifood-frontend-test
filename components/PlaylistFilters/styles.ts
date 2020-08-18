@@ -15,6 +15,8 @@ export const Toggler = styled.button`
 
 export const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   overflow: hidden;
   transition: all ease 0.2s;

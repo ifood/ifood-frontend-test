@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+import Tooltip from '../Tooltip/Tooltip';
+
+interface ContainerProps {
+  invalid: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
-
-  & + div {
-    margin-left: 1rem;
-    @media (max-width: 900px) {
-      margin-left: 0;
-      margin-top: 1rem;
-    }
-  }
+  position: relative;
 
   label {
     color: #fff;
@@ -25,5 +24,24 @@ export const Container = styled.div`
     height: 2rem;
     padding: 1rem 0.25rem;
     min-width: 120px;
+    border: 2px solid;
+    border-color: ${props => (props.invalid ? 'red' : 'white')};
+  }
+`;
+
+export const Error = styled(Tooltip)`
+  height: 20px;
+  svg {
+    margin: 0;
+    margin-left: 16px;
+    cursor: pointer;
+  }
+
+  span {
+    background: #ff6363;
+    color: #fff;
+    &::before {
+      border-color: #ff6363 transparent;
+    }
   }
 `;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { ptBR } from 'date-fns/locale';
+import { FiCalendar } from 'react-icons/fi';
 import { Container } from './styles';
 
 interface DateTimeProps {
@@ -22,7 +23,7 @@ const DateTime: React.FC<DateTimeProps> = ({ id, name, onChange }) => {
 
   return (
     <Container className="wrapper-filter-input" active={calendarActive}>
-      <label>Data e Hora:</label>
+      <label>Data e Hora</label>
       <DatePicker
         className="filter-input"
         selected={selectedDate}
@@ -35,6 +36,7 @@ const DateTime: React.FC<DateTimeProps> = ({ id, name, onChange }) => {
         timeIntervals={15}
         dateFormat="Pp"
       />
+      <FiCalendar />
     </Container>
   );
 };
