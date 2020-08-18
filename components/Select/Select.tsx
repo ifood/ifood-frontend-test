@@ -21,7 +21,7 @@ const Select: React.FC<SelectProps> = ({ id, options, name, onChange }) => {
 
   return (
     <Container>
-      <label>{name === 'Locale' ? 'Idioma' : name} </label>
+      <label>{name === 'Locale' ? 'Idioma' : name}</label>
       <select name={`filter_${name}`} onChange={handleChange}>
         <option value="" />
         {options.map(option => (
