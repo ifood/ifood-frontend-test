@@ -73,8 +73,16 @@ const Input: React.FC<InputProps> = ({
         value={inputValue}
         placeholder={placeholder}
         onChange={handleChange}
-        min={(validation?.min && validation.min) || 0}
-        max={(validation?.max && validation.max) || 99}
+        min={
+          validation?.min && validation?.primitiveType === 'INTEGER'
+            ? validation.min || 0
+            : null
+        }
+        max={
+          validation?.max && validation?.primitiveType === 'INTEGER'
+            ? validation.max || 0
+            : null
+        }
         type={validation?.primitiveType === 'INTEGER' ? 'number' : 'text'}
         maxLength={validation?.max && validation.max.toString().length}
       />
@@ -83,8 +91,6 @@ const Input: React.FC<InputProps> = ({
           <FiAlertCircle size={20} color="#ff6363" />
         </Error>
       )}
-      {/* <InvalidAlert message={errorMessage} visible={invalid} /> */}
-      {/* {invalid && <FiAlertCircle color="red" />} */}
     </Container>
   );
 };
