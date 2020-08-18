@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { array, func, string } from 'prop-types'
 import styled from 'styled-components'
+import { colors } from '../assets/styles/default-style'
 
 const Select = ({ id, onChange, options, text }) => {
   const [valueSelected, setValueSelected] = useState('')
@@ -54,6 +55,10 @@ const valueActive = `
 
 const SelectStyle = styled.div`
   position: relative;
+
+  select.filter-select, select.filter-select option {
+    color: ${colors.purple};
+  }
 
   .filter-select {
     cursor: pointer;
