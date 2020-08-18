@@ -1,29 +1,41 @@
-# iFood Frontend Test
+# Spotifood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+![Image of the initial and login page of the project](https://i.imgur.com/Gpn7g1s.png)
 
-## Business rules
+A web application to navigate around the best playlists in Spotify while wait for your order in Ifood. Where you can browse which playlists are hot in any time or navigate through different countries and languages.
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+---
 
-## Hints or Constraints
+## Technologies
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+Those are the technologies used in this project.
 
-## Non functional requirements
+1. [React.js](https://reactjs.org/)
+2. [NextJS](https://nextjs.org/)
+3. [Styled Components](https://www.styled-components.com/docs/basics)
+4. [Axios](https://github.com/axios/axios)
+5. [Eslint](https://eslint.org/)
+6. [JS Cookie](https://github.com/js-cookie/js-cookie)
+7. [Date-fns](https://date-fns.org/)
+8. [React Datepicker](https://reactdatepicker.com/)
+9. [Husky](https://github.com/typicode/husky)
+10. [Lint-staged](https://github.com/okonet/lint-staged)
+11. [Prettier](https://prettier.io/)
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+---
+
+## How to run the project
+
+To run the project on your machine follow the steps below:
+
+1. Open the terminal in your machine and clone the repository using `git clone` or download it
+2. Go to the main folder and install all the dependencies necessary for the project to run with `yarn` or `npm install` 
+3. Now type `yarn dev` or `npm start` to run the project
+4. The application will run in `http://localhost:3000` and enjoy it 🚀
+
+---
+
+## Production
+
+The project its also alive in production, just access the website link: [Spotifood](https://spotifood.vercel.app/)
+
