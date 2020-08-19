@@ -10,18 +10,21 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
 import hashes from '../../utils/getTokenFromHash'
+import PlaylistCard from '../../components/PlaylistCard'
 import { StyledRouterLink } from '../../components/StyledLink'
+import Text from '../../components/Text'
 
 import {
   selectFiltersResource,
   selectFiltersIsLoading,
   selectPlaylistsError,
+  selectPlaylistsResource,
 } from './selectors'
 import {
   fetchFiltersAction,
   fetchPlaylistsAction,
 } from './actions'
-import { ErrorWrapper } from './styles'
+import { ErrorWrapper, PlaylistsWrapper } from './styles'
 
 const INTERVAL_TIME_TO_FETCH_PLAYLISTS = 30000
 
@@ -64,10 +67,30 @@ export function PlaylistsPage(props) {
     </ErrorWrapper>
   )
 
-  const renderFiltersAndPlaylists = () => (
-    <div>
-    </div>
-  )
+  const renderFiltersAndPlaylists = () => {
+    const {
+      playlistResponse: {
+        message,
+        playlists,
+      },
+    } = props
+
+    return playlists ? (
+      <div>
+        <Text bold uppercase big>
+          {message}
+        </Text>
+        <PlaylistsWrapper>
+          {playlists.items.map((playlist) => (
+            <PlaylistCard
+              key={playlist.id}
+              {...playlist}
+            />
+          ))}
+        </PlaylistsWrapper>
+      </div>
+    ) : null
+  }
 
   return (
     <div>
@@ -81,6 +104,7 @@ PlaylistsPage.propTypes = {
   fetchFilters: PropTypes.func.isRequired,
   fetchPlaylists: PropTypes.func.isRequired,
   playlistsError: PropTypes.object,
+  playlistResponse: PropTypes.object.isRequired,
 }
 
 /* istanbul ignore next */
@@ -88,6 +112,7 @@ const mapStateToProps = createStructuredSelector({
   filters: selectFiltersResource,
   filtersIsLoading: selectFiltersIsLoading,
   playlistsError: selectPlaylistsError,
+  playlistResponse: selectPlaylistsResource,
 })
 
 /* istanbul ignore next */
