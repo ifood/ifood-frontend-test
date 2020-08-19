@@ -14,7 +14,6 @@ import { StyledPlaylistCard } from './styles'
 
 export function PlaylistCard(props) {
   const {
-    id,
     images,
     name,
     description,
@@ -22,7 +21,7 @@ export function PlaylistCard(props) {
   const imgUrl = get(images, '[0].url', 'icon512.png')
 
   return (
-    <StyledPlaylistCard key={id}>
+    <StyledPlaylistCard>
       <img src={imgUrl} alt={`${name} Playlist`} />
       <Text semiBold>
         {name}
@@ -35,7 +34,6 @@ export function PlaylistCard(props) {
 }
 
 PlaylistCard.propTypes = {
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   images: PropTypes.array,
   description: PropTypes.string,
