@@ -23,6 +23,8 @@ import {
 } from './actions'
 import { ErrorWrapper } from './styles'
 
+const INTERVAL_TIME_TO_FETCH_PLAYLISTS = 30000
+
 export function PlaylistsPage(props) {
   const {
     fetchFilters,
@@ -32,11 +34,21 @@ export function PlaylistsPage(props) {
   } = props
 
   useEffect(() => {
+    let interval = null
+
     if (hashes.access_token) {
       fetchFilters()
       fetchPlaylists()
+
+      interval = setInterval(() => {
+        fetchPlaylists()
+      }, INTERVAL_TIME_TO_FETCH_PLAYLISTS)
     } else {
       history.replace('/')
+    }
+
+    return () => {
+      clearInterval(interval)
     }
   }, [fetchFilters, fetchPlaylists, history])
 
