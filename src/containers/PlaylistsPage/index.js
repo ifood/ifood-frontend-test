@@ -15,29 +15,33 @@ import {
   selectFiltersResource,
   selectFiltersIsLoading,
 } from './selectors'
-import { fetchFiltersAction } from './actions'
+import {
+  fetchFiltersAction,
+  fetchPlaylistsAction,
+} from './actions'
 
 export function PlaylistsPage(props) {
-  const { fetchFilters, history } = props
+  const { fetchFilters, fetchPlaylists, history } = props
 
   useEffect(() => {
     if (hashes.access_token) {
       fetchFilters()
+      fetchPlaylists()
     } else {
       history.replace('/')
     }
-  }, [fetchFilters, history])
+  }, [fetchFilters, fetchPlaylists, history])
 
   return (
-    <h1>
-      Playlists Page
-    </h1>
+    <div>
+    </div>
   )
 }
 
 PlaylistsPage.propTypes = {
   history: PropTypes.object.isRequired,
   fetchFilters: PropTypes.func.isRequired,
+  fetchPlaylists: PropTypes.func.isRequired,
 }
 
 /* istanbul ignore next */
@@ -50,6 +54,9 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   fetchFilters: () => {
     dispatch(fetchFiltersAction())
+  },
+  fetchPlaylists: () => {
+    dispatch(fetchPlaylistsAction())
   },
 })
 

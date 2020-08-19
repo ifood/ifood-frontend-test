@@ -1,11 +1,14 @@
 import { call, put } from 'redux-saga/effects'
 import sagaHelper from 'redux-saga-testing'
 
-import { GET_FILTERS_API } from '../../App/urls'
+import { GET_FILTERS_API, SPOTIFY_PLAYLISTS_API } from '../../App/urls'
 import request from '../../../utils/request'
 
 import * as actions from '../actions'
-import playlistsPageSaga, { fetchFilters } from '../saga'
+import playlistsPageSaga, {
+  fetchFilters,
+  fetchPlaylists,
+} from '../saga'
 
 describe('playlistsPageSaga Saga', () => {
   describe('playlistsPageSaga', () => {
@@ -46,6 +49,47 @@ describe('playlistsPageSaga Saga', () => {
 
       it('should put failure action', (result) => {
         expect(result).toEqual(put(actions.fetchFiltersFailureAction(error)))
+      })
+
+      it('should end', (result) => {
+        expect(result).toEqual(undefined)
+      })
+    })
+  })
+
+  describe('fetchPlaylists', () => {
+    const action = { filters: { locale: 'pt_BR' } }
+    const requestOptions = { method: 'GET', params: { ...action.filters } }
+
+    describe('success scenario', () => {
+      const it = sagaHelper(fetchPlaylists(action))
+      const response = { message: "Editor's Picks", playlists: [] }
+
+      it('should call api', (result) => {
+        expect(result).toEqual(call(request, SPOTIFY_PLAYLISTS_API, requestOptions))
+        return response
+      })
+
+      it('should put successful action with selected state', (result) => {
+        expect(result).toEqual(put(actions.fetchPlaylistsSuccessAction(response)))
+      })
+
+      it('should end', (result) => {
+        expect(result).toEqual(undefined)
+      })
+    })
+
+    describe('failure scenario', () => {
+      const it = sagaHelper(fetchPlaylists(action))
+      const error = new Error()
+
+      it('should call api', (result) => {
+        expect(result).toEqual(call(request, SPOTIFY_PLAYLISTS_API, requestOptions))
+        return error
+      })
+
+      it('should put failure action with given error', (result) => {
+        expect(result).toEqual(put(actions.fetchPlaylistsFailureAction(error)))
       })
 
       it('should end', (result) => {

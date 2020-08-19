@@ -1,8 +1,4 @@
-import {
-  selectFilters,
-  selectFiltersResource,
-  selectFiltersIsLoading,
-} from '../selectors'
+import * as selectors from '../selectors'
 import { initialState } from '../reducer'
 
 describe('PlaylistsPage selectors', () => {
@@ -11,17 +7,38 @@ describe('PlaylistsPage selectors', () => {
     isLoading: true,
     error: 'error',
   }
-  const mockedState = { filters }
+  const playlists = {
+    resource: { message: "Editor's Pick", playlists: [] },
+    isLoading: true,
+    error: 'error',
+  }
+  const mockedState = { filters, playlists }
 
   it('should return reducer initialState filters if no state was provided', () => {
-    expect(selectFilters({})).toEqual(initialState.filters)
+    expect(selectors.selectFilters({})).toEqual(initialState.filters)
   })
 
-  it('should select filters result state', () => {
-    expect(selectFiltersResource(mockedState)).toEqual([{ id: 'locale' }])
+  it('should select filters resource state', () => {
+    expect(selectors.selectFiltersResource(mockedState)).toEqual([{ id: 'locale' }])
   })
 
   it('should select filters isLoading state', () => {
-    expect(selectFiltersIsLoading(mockedState)).toEqual(true)
+    expect(selectors.selectFiltersIsLoading(mockedState)).toEqual(true)
+  })
+
+  it('should return reducer initialState playlists if no state was provided', () => {
+    expect(selectors.selectPlaylistsDomain({})).toEqual(initialState.playlists)
+  })
+
+  it('should select playlists resource state', () => {
+    expect(selectors.selectPlaylistsResource(mockedState)).toEqual({ message: "Editor's Pick", playlists: [] })
+  })
+
+  it('should select playlists isLoading state', () => {
+    expect(selectors.selectPlaylistsIsLoading(mockedState)).toEqual(true)
+  })
+
+  it('should select playlists error state', () => {
+    expect(selectors.selectPlaylistsError(mockedState)).toEqual('error')
   })
 })
