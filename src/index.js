@@ -2,20 +2,27 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
 import App from './containers/App'
 import playlistsPageReducer from './containers/PlaylistsPage/reducer'
+import playlistsPageSaga from './containers/PlaylistsPage/saga'
 
 import './index.css'
 import * as serviceWorker from './serviceWorker'
 
+const sagaMiddleware = createSagaMiddleware()
+
 /* eslint-disable no-underscore-dangle */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   playlistsPageReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  composeEnhancers(applyMiddleware(sagaMiddleware)),
 )
 /* eslint-enable */
+
+sagaMiddleware.run(playlistsPageSaga)
 
 ReactDOM.render(
   <React.StrictMode>

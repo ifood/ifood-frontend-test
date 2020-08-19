@@ -26,4 +26,26 @@ describe('playlistsPageReducer', () => {
     }
     expect(playlistsPageReducer(state, actions.fetchFiltersAction())).toEqual(expectedResult)
   })
+
+  it('should handle the fetchFiltersSuccessAction correctly', () => {
+    const expectedResult = {
+      filters: {
+        resource: [1],
+        isLoading: false,
+        error: null,
+      },
+    }
+    expect(playlistsPageReducer(state, actions.fetchFiltersSuccessAction({ filters: [1] }))).toEqual(expectedResult)
+  })
+
+  it('should handle the fetchFiltersFailureAction correctly', () => {
+    const expectedResult = {
+      filters: {
+        ...state.filters,
+        isLoading: false,
+        error: 'error',
+      },
+    }
+    expect(playlistsPageReducer(state, actions.fetchFiltersFailureAction('error'))).toEqual(expectedResult)
+  })
 })
