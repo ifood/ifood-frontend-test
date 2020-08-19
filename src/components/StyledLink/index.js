@@ -7,6 +7,7 @@
  */
 
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const LinkStyle = css`
   text-decoration: none;
@@ -40,6 +41,10 @@ export const LinkStyle = css`
 `
 
 const StyledLink = styled.a`
+  ${LinkStyle}
+`
+
+export const StyledRouterLink = styled(Link)`
   ${LinkStyle}
 `
 
