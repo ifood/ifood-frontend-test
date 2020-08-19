@@ -1,16 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+import App from './containers/App'
+import playlistsPageReducer from './containers/PlaylistsPage/reducer'
 
 import './index.css'
-import App from './containers/App'
 import * as serviceWorker from './serviceWorker'
+
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+  playlistsPageReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+)
+/* eslint-enable */
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 )
