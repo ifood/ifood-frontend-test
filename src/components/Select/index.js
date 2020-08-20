@@ -10,11 +10,11 @@ import PropTypes from 'prop-types'
 import { SelectWrapper } from './styles'
 
 function Select(props) {
-  const { options } = props
+  const { id, options } = props
 
   return (
     <SelectWrapper>
-      <select>
+      <select id={id}>
         <option value="">
           Selecione uma opção
         </option>
@@ -36,6 +36,7 @@ Select.defaultProps = {
 }
 
 Select.propTypes = {
+  id: PropTypes.string.isRequired,
   options: PropTypes.array,
 }
 

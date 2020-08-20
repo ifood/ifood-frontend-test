@@ -5,6 +5,7 @@ import Select from '../index'
 
 describe('<Select />', () => {
   const props = {
+    id: 'select-test',
     options: [
       {
         value: 'value1',
