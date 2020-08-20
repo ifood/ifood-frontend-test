@@ -8,6 +8,7 @@ import Input from '../../Input'
 describe('<Filters />', () => {
   const props = {
     filtersList: [],
+    handleFilters: jest.fn(),
   }
   const shallowRender = (localProps = props) => shallow(<Filters {...localProps} />)
 
@@ -64,5 +65,49 @@ describe('<Filters />', () => {
     expect(renderedComponent).toBeTruthy()
     expect(renderedComponent.find('#name').length).toEqual(1)
     expect(renderedComponent.find(Input).at(0).props().type).toEqual('number')
+  })
+
+  describe('onFilterChange', () => {
+    it('should call handleFilters when triggering Input/Select onChange', () => {
+      const localProps = {
+        ...props,
+        filtersValue: {
+          filter2: 'test',
+        },
+        filtersList: [{
+          id: 'input-test',
+        }],
+      }
+      const event = { target: { value: 'value' } }
+      const renderedComponent = shallowRender(localProps)
+      renderedComponent.find(Input).at(0).simulate('change', event, 'input-test')
+      expect(localProps.handleFilters).toHaveBeenCalledWith({
+        filter2: 'test',
+        'input-test': 'value',
+      })
+    })
+
+    it('should call handleFilters with value normalized if filter has validation for DATE_TIME', () => {
+      const localProps = {
+        ...props,
+        filtersValue: {
+          filter2: 'test',
+        },
+        filtersList: [{
+          id: 'input-test',
+          validation: {
+            entityType: 'DATE_TIME',
+          },
+        }],
+      }
+      const dateValue = '2014-10-23T09:00'
+      const event = { target: { value: dateValue } }
+      const renderedComponent = shallowRender(localProps)
+      renderedComponent.find(Input).at(0).simulate('change', event, 'input-test', localProps.filtersList[0].validation)
+      expect(localProps.handleFilters).toHaveBeenCalledWith({
+        filter2: 'test',
+        'input-test': new Date(dateValue).toISOString(),
+      })
+    })
   })
 })

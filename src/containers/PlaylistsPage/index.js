@@ -4,10 +4,12 @@
  *
  */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import isEmpty from 'lodash/isEmpty'
+import isEqual from 'lodash/isEqual'
 
 import hashes from '../../utils/getTokenFromHash'
 import PlaylistCard from '../../components/PlaylistCard'
@@ -36,16 +38,17 @@ export function PlaylistsPage(props) {
     history,
     playlistsError,
   } = props
+  const [filtersValue, setFilters] = useState({})
 
   useEffect(() => {
     let interval = null
 
     if (hashes.access_token) {
       fetchFilters()
-      fetchPlaylists()
+      fetchPlaylists(filtersValue)
 
       interval = setInterval(() => {
-        fetchPlaylists()
+        fetchPlaylists(filtersValue)
       }, INTERVAL_TIME_TO_FETCH_PLAYLISTS)
     } else {
       history.replace('/')
@@ -55,6 +58,20 @@ export function PlaylistsPage(props) {
       clearInterval(interval)
     }
   }, [fetchFilters, fetchPlaylists, history])
+
+  useEffect(() => {
+    if (!isEmpty(filtersValue)) {
+      fetchPlaylists(filtersValue)
+    }
+  }, [filtersValue])
+
+  const handleFiltersChange = (filters) => {
+    const { name, ...rest } = filters
+
+    if (!isEqual(rest, filtersValue)) {
+      setFilters(rest)
+    }
+  }
 
   const renderErrorMessage = () => (
     <ErrorWrapper>
@@ -97,7 +114,11 @@ export function PlaylistsPage(props) {
     <div>
       {playlistsError ? renderErrorMessage() : (
         <div>
-          <Filters filtersList={props.filters} />
+          <Filters
+            filtersList={props.filters}
+            filtersValue={filtersValue}
+            handleFilters={handleFiltersChange}
+          />
           {renderPlaylists()}
         </div>
       )}
@@ -127,8 +148,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchFilters: () => {
     dispatch(fetchFiltersAction())
   },
-  fetchPlaylists: () => {
-    dispatch(fetchPlaylistsAction())
+  fetchPlaylists: (filters) => {
+    dispatch(fetchPlaylistsAction(filters))
   },
 })
 

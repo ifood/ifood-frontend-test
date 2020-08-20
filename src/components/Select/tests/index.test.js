@@ -27,4 +27,15 @@ describe('<Select />', () => {
     expect(renderedComponent.find('option').at(1).props().value).toEqual('value1')
     expect(renderedComponent.find('option').at(2).props().value).toEqual('value2')
   })
+
+  it('should call onChange prop function when triggering select onChange', () => {
+    const localProps = {
+      ...props,
+      onChange: jest.fn(),
+    }
+    const event = { target: { value: '2' } }
+    const renderedComponent = shallowRender(localProps)
+    renderedComponent.find('select').simulate('change', event)
+    expect(localProps.onChange).toHaveBeenCalledWith(event, localProps.id)
+  })
 })

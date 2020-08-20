@@ -14,14 +14,33 @@ import { StyledFilters } from './styles'
 import Input from '../Input'
 
 export function Filters(props) {
-  const { filtersList } = props
+  const { filtersList, handleFilters, filtersValue } = props
+
+  const onFilterChange = ({ target: { value } }, filterId, validation) => {
+    let normalizedValue = value
+    if (validation) {
+      if (validation.entityType === 'DATE_TIME') {
+        // Convert value to UTC time
+        normalizedValue = new Date(value).toISOString()
+      }
+    }
+
+    handleFilters({
+      ...filtersValue,
+      [filterId]: normalizedValue,
+    })
+  }
 
   const renderField = (filter) => {
     const { id, values, validation = {} } = filter
 
     if (values) {
       return (
-        <Select id={id} options={values} />
+        <Select
+          id={id}
+          options={values}
+          onChange={onFilterChange}
+        />
       )
     }
 
@@ -35,7 +54,15 @@ export function Filters(props) {
       inputType = 'number'
     }
 
-    return <Input id={id} type={inputType} {...inputProps} />
+    return (
+      <Input
+        {...inputProps}
+        id={id}
+        type={inputType}
+        onChange={onFilterChange}
+        validation={validation}
+      />
+    )
   }
 
   const renderFilter = (filter) => {
@@ -61,6 +88,8 @@ export function Filters(props) {
 
 Filters.propTypes = {
   filtersList: PropTypes.array.isRequired,
+  handleFilters: PropTypes.func.isRequired,
+  filtersValue: PropTypes.object.isRequired,
 }
 
 export default Filters
