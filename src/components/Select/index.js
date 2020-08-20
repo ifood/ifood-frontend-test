@@ -12,9 +12,9 @@ import { SelectWrapper } from './styles'
 function Select(props) {
   const { id, options, onChange } = props
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = ({ target: { value } }) => {
     if (onChange) {
-      onChange(e, id)
+      onChange(value, id)
     }
   }
 

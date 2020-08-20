@@ -16,16 +16,8 @@ import Input from '../Input'
 export function Filters(props) {
   const { filtersList, handleFilters } = props
 
-  const onFilterChange = ({ target: { value } }, filterId, validation) => {
-    let normalizedValue = value
-    if (validation) {
-      if (validation.entityType === 'DATE_TIME') {
-        // Convert value to UTC time
-        normalizedValue = new Date(value).toISOString()
-      }
-    }
-
-    handleFilters(filterId, normalizedValue)
+  const onFilterChange = (value, filterId) => {
+    handleFilters(filterId, value)
   }
 
   const renderField = (filter) => {

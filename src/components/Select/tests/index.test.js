@@ -36,6 +36,6 @@ describe('<Select />', () => {
     const event = { target: { value: '2' } }
     const renderedComponent = shallowRender(localProps)
     renderedComponent.find('select').simulate('change', event)
-    expect(localProps.onChange).toHaveBeenCalledWith(event, localProps.id)
+    expect(localProps.onChange).toHaveBeenCalledWith('2', localProps.id)
   })
 })

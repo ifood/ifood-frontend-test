@@ -6,6 +6,7 @@
 
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 import { InputWrapper } from './styles'
 import Text from '../Text'
@@ -19,8 +20,8 @@ function Input({
 }) {
   const [validationError, setValidationError] = useState()
 
-  const onChangeHandler = (e) => {
-    const { target: { value } } = e
+  const onChangeHandler = ({ target: { value } }) => {
+    let normalizedValue = value
 
     if (validation) {
       const {
@@ -35,6 +36,14 @@ function Input({
         } else if (max && value > max) {
           error = 'Valor maior que o máximo'
         }
+      } else if (type === 'datetime-local') {
+        console.log(value)
+        const date = moment(value)
+        if (date.isValid()) {
+          normalizedValue = date.toISOString()
+        } else {
+          error = 'Data inválida'
+        }
       }
 
       if (error) {
@@ -46,7 +55,7 @@ function Input({
     }
 
     if (onChange) {
-      onChange(e, id, validation)
+      onChange(normalizedValue, id)
     }
   }
 

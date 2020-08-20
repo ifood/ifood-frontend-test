@@ -75,9 +75,9 @@ describe('<Filters />', () => {
           id: 'input-test',
         }],
       }
-      const event = { target: { value: 'value' } }
       const renderedComponent = shallowRender(localProps)
-      renderedComponent.find(Input).at(0).simulate('change', event, 'input-test')
+
+      renderedComponent.find(Input).at(0).simulate('change', 'value', 'input-test')
       expect(localProps.handleFilters).toHaveBeenCalledWith('input-test', 'value')
     })
 
@@ -92,10 +92,10 @@ describe('<Filters />', () => {
         }],
       }
       const dateValue = '2014-10-23T09:00'
-      const event = { target: { value: dateValue } }
       const renderedComponent = shallowRender(localProps)
-      renderedComponent.find(Input).at(0).simulate('change', event, 'input-test', localProps.filtersList[0].validation)
-      expect(localProps.handleFilters).toHaveBeenCalledWith('input-test', new Date(dateValue).toISOString())
+
+      renderedComponent.find(Input).at(0).simulate('change', dateValue, 'input-test')
+      expect(localProps.handleFilters).toHaveBeenCalledWith('input-test', dateValue)
     })
   })
 })

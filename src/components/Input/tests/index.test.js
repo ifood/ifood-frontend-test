@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import moment from 'moment'
 
 import Input from '../index'
 
@@ -23,7 +24,7 @@ describe('<Input />', () => {
     const event = { target: { value: '2' } }
     const renderedComponent = shallowRender(localProps)
     renderedComponent.find('input').simulate('change', event)
-    expect(localProps.onChange).toHaveBeenCalledWith(event, localProps.id, undefined)
+    expect(localProps.onChange).toHaveBeenCalledWith('2', localProps.id)
   })
 
   it('should validate the number field if has min max in validation property', () => {
@@ -48,6 +49,24 @@ describe('<Input />', () => {
 
     event = { target: { value: 15 } }
     renderedComponent.find('input').simulate('change', event)
-    expect(localProps.onChange).toHaveBeenCalledWith(event, localProps.id, localProps.validation)
+    expect(localProps.onChange).toHaveBeenCalledWith(15, localProps.id)
+  })
+
+  it('should validate the datetime-local field if has validation property', () => {
+    const localProps = {
+      ...props,
+      type: 'datetime-local',
+      validation: {},
+      onChange: jest.fn(),
+    }
+    let event = { target: { value: '2020-XX-12T02:32' } }
+    const renderedComponent = shallowRender(localProps)
+
+    renderedComponent.find('input').simulate('change', event)
+    expect(localProps.onChange).not.toHaveBeenCalled()
+
+    event = { target: { value: '2020-08-12T02:32' } }
+    renderedComponent.find('input').simulate('change', event)
+    expect(localProps.onChange).toHaveBeenCalledWith(moment('2020-08-12T02:32').toISOString(), localProps.id)
   })
 })
