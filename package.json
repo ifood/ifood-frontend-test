@@ -69,5 +69,21 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "redux-saga-testing": "^2.0.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/styles.js",
+      "!src/serviceWorker.js",
+      "!src/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 91,
+        "branches": 82,
+        "functions": 89,
+        "lines": 91
+      }
+    }
   }
 }
