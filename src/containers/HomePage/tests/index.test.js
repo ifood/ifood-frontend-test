@@ -11,5 +11,6 @@ describe('<HomePage />', () => {
 
     expect(renderedComponent).toBeTruthy()
     expect(renderedComponent.find(StyledLink).at(0).props().href).toEqual(FULL_AUTHORIZE_URI)
+    expect(renderedComponent.find('img').at(0).props().src).toEqual('logo.png')
   })
 })

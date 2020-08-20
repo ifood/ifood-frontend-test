@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <StyledHeader>
       <Link to="/">
-        <img src="logo.png" alt="" />
+        <img src="logo.png" alt="Spotifood" />
       </Link>
     </StyledHeader>
   )
