@@ -93,4 +93,12 @@ describe('playlistsPageReducer', () => {
     }
     expect(playlistsPageReducer(state, actions.fetchPlaylistsFailureAction('error'))).toEqual(expectedResult)
   })
+
+  it('should handle the updateFilterValuesAction correctly', () => {
+    const expectedResult = {
+      ...state,
+      filterValues: { filterKey: 'value' },
+    }
+    expect(playlistsPageReducer(state, actions.updateFilterValuesAction('filterKey', 'value'))).toEqual(expectedResult)
+  })
 })

@@ -29,3 +29,5 @@ export const selectPlaylistsError = createSelector(
   selectPlaylistsDomain,
   (substate) => substate.error,
 )
+
+export const selectFilterValues = (state) => state.filterValues || initialState.filterValues

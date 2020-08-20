@@ -71,9 +71,6 @@ describe('<Filters />', () => {
     it('should call handleFilters when triggering Input/Select onChange', () => {
       const localProps = {
         ...props,
-        filtersValue: {
-          filter2: 'test',
-        },
         filtersList: [{
           id: 'input-test',
         }],
@@ -81,18 +78,12 @@ describe('<Filters />', () => {
       const event = { target: { value: 'value' } }
       const renderedComponent = shallowRender(localProps)
       renderedComponent.find(Input).at(0).simulate('change', event, 'input-test')
-      expect(localProps.handleFilters).toHaveBeenCalledWith({
-        filter2: 'test',
-        'input-test': 'value',
-      })
+      expect(localProps.handleFilters).toHaveBeenCalledWith('input-test', 'value')
     })
 
     it('should call handleFilters with value normalized if filter has validation for DATE_TIME', () => {
       const localProps = {
         ...props,
-        filtersValue: {
-          filter2: 'test',
-        },
         filtersList: [{
           id: 'input-test',
           validation: {
@@ -104,10 +95,7 @@ describe('<Filters />', () => {
       const event = { target: { value: dateValue } }
       const renderedComponent = shallowRender(localProps)
       renderedComponent.find(Input).at(0).simulate('change', event, 'input-test', localProps.filtersList[0].validation)
-      expect(localProps.handleFilters).toHaveBeenCalledWith({
-        filter2: 'test',
-        'input-test': new Date(dateValue).toISOString(),
-      })
+      expect(localProps.handleFilters).toHaveBeenCalledWith('input-test', new Date(dateValue).toISOString())
     })
   })
 })

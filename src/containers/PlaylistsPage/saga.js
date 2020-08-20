@@ -1,5 +1,5 @@
 import {
-  all, call, put, takeEvery,
+  all, call, put, takeEvery, select,
 } from 'redux-saga/effects'
 
 import request from '../../utils/request'
@@ -16,6 +16,7 @@ import {
   GET_FILTERS_API,
   SPOTIFY_PLAYLISTS_API,
 } from '../App/urls'
+import { selectFilterValues } from './selectors'
 
 export function* fetchFilters() {
   try {
@@ -27,12 +28,14 @@ export function* fetchFilters() {
   }
 }
 
-export function* fetchPlaylists(action) {
+export function* fetchPlaylists() {
+  const filters = yield select(selectFilterValues)
+
   try {
     const response = yield call(request, SPOTIFY_PLAYLISTS_API, {
       method: 'GET',
       params: {
-        ...action.filters,
+        ...filters,
       },
     })
 

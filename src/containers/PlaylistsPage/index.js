@@ -4,12 +4,10 @@
  *
  */
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import isEmpty from 'lodash/isEmpty'
-import isEqual from 'lodash/isEqual'
 
 import hashes from '../../utils/getTokenFromHash'
 import PlaylistCard from '../../components/PlaylistCard'
@@ -21,10 +19,12 @@ import {
   selectFiltersIsLoading,
   selectPlaylistsError,
   selectPlaylistsResource,
+  selectFilterValues,
 } from './selectors'
 import {
   fetchFiltersAction,
   fetchPlaylistsAction,
+  updateFilterValuesAction,
 } from './actions'
 import { ErrorWrapper, PlaylistsWrapper } from './styles'
 import Filters from '../../components/Filters'
@@ -37,18 +37,17 @@ export function PlaylistsPage(props) {
     fetchPlaylists,
     history,
     playlistsError,
+    filtersValue,
   } = props
-  const [filtersValue, setFilters] = useState({})
 
   useEffect(() => {
     let interval = null
 
     if (hashes.access_token) {
       fetchFilters()
-      fetchPlaylists(filtersValue)
 
       interval = setInterval(() => {
-        fetchPlaylists(filtersValue)
+        fetchPlaylists()
       }, INTERVAL_TIME_TO_FETCH_PLAYLISTS)
     } else {
       history.replace('/')
@@ -57,19 +56,20 @@ export function PlaylistsPage(props) {
     return () => {
       clearInterval(interval)
     }
-  }, [fetchFilters, fetchPlaylists, history])
+  }, [fetchFilters, history, fetchPlaylists])
 
   useEffect(() => {
-    if (!isEmpty(filtersValue)) {
-      fetchPlaylists(filtersValue)
+    if (hashes.access_token) {
+      fetchPlaylists()
     }
-  }, [filtersValue])
+  }, [filtersValue, fetchPlaylists])
 
-  const handleFiltersChange = (filters) => {
-    const { name, ...rest } = filters
-
-    if (!isEqual(rest, filtersValue)) {
-      setFilters(rest)
+  const handleFiltersChange = (filterId, value) => {
+    if (filterId === 'name') {
+      // handle local filter
+    } else {
+      const normalizedValue = value === '' ? undefined : value
+      props.updateFilterValues(filterId, normalizedValue)
     }
   }
 
@@ -116,7 +116,6 @@ export function PlaylistsPage(props) {
         <div>
           <Filters
             filtersList={props.filters}
-            filtersValue={filtersValue}
             handleFilters={handleFiltersChange}
           />
           {renderPlaylists()}
@@ -130,9 +129,11 @@ PlaylistsPage.propTypes = {
   history: PropTypes.object.isRequired,
   fetchFilters: PropTypes.func.isRequired,
   fetchPlaylists: PropTypes.func.isRequired,
+  updateFilterValues: PropTypes.func.isRequired,
   playlistsError: PropTypes.object,
   playlistResponse: PropTypes.object.isRequired,
   filters: PropTypes.array,
+  filtersValue: PropTypes.object,
 }
 
 /* istanbul ignore next */
@@ -141,6 +142,7 @@ const mapStateToProps = createStructuredSelector({
   filtersIsLoading: selectFiltersIsLoading,
   playlistsError: selectPlaylistsError,
   playlistResponse: selectPlaylistsResource,
+  filtersValue: selectFilterValues,
 })
 
 /* istanbul ignore next */
@@ -148,8 +150,11 @@ const mapDispatchToProps = (dispatch) => ({
   fetchFilters: () => {
     dispatch(fetchFiltersAction())
   },
-  fetchPlaylists: (filters) => {
-    dispatch(fetchPlaylistsAction(filters))
+  fetchPlaylists: () => {
+    dispatch(fetchPlaylistsAction())
+  },
+  updateFilterValues: (filterId, value) => {
+    dispatch(updateFilterValuesAction(filterId, value))
   },
 })
 

@@ -7,9 +7,11 @@ import {
   FETCH_PLAYLISTS,
   FETCH_PLAYLISTS_SUCCESS,
   FETCH_PLAYLISTS_FAILURE,
+  UPDATE_FILTER_VALUES,
 } from './actions'
 
 export const initialState = {
+  filterValues: {},
   filters: {
     resource: [],
     isLoading: false,
@@ -57,6 +59,10 @@ const playlistsPageReducer = (state = initialState, action) => produce(state, (d
     case FETCH_PLAYLISTS_FAILURE: {
       draft.playlists.isLoading = false
       draft.playlists.error = action.error
+      break
+    }
+    case UPDATE_FILTER_VALUES: {
+      draft.filterValues[action.filterId] = action.value
       break
     }
   }

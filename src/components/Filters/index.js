@@ -14,7 +14,7 @@ import { StyledFilters } from './styles'
 import Input from '../Input'
 
 export function Filters(props) {
-  const { filtersList, handleFilters, filtersValue } = props
+  const { filtersList, handleFilters } = props
 
   const onFilterChange = ({ target: { value } }, filterId, validation) => {
     let normalizedValue = value
@@ -25,10 +25,7 @@ export function Filters(props) {
       }
     }
 
-    handleFilters({
-      ...filtersValue,
-      [filterId]: normalizedValue,
-    })
+    handleFilters(filterId, normalizedValue)
   }
 
   const renderField = (filter) => {
@@ -89,7 +86,6 @@ export function Filters(props) {
 Filters.propTypes = {
   filtersList: PropTypes.array.isRequired,
   handleFilters: PropTypes.func.isRequired,
-  filtersValue: PropTypes.object.isRequired,
 }
 
 export default Filters

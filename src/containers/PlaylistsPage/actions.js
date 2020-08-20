@@ -4,6 +4,7 @@ export const FETCH_FILTERS_FAILURE = 'containers/PlaylistsPage/FETCH_FILTERS_FAI
 export const FETCH_PLAYLISTS = 'containers/PlaylistsPage/FETCH_PLAYLISTS'
 export const FETCH_PLAYLISTS_SUCCESS = 'containers/PlaylistsPage/FETCH_PLAYLISTS_SUCCESS'
 export const FETCH_PLAYLISTS_FAILURE = 'containers/PlaylistsPage/FETCH_PLAYLISTS_FAILURE'
+export const UPDATE_FILTER_VALUES = 'containers/PlaylistsPage/UPDATE_FILTER_VALUES'
 
 export function fetchFiltersAction() {
   return {
@@ -25,10 +26,9 @@ export function fetchFiltersFailureAction(error) {
   }
 }
 
-export function fetchPlaylistsAction(filters) {
+export function fetchPlaylistsAction() {
   return {
     type: FETCH_PLAYLISTS,
-    filters,
   }
 }
 
@@ -43,5 +43,13 @@ export function fetchPlaylistsFailureAction(error) {
   return {
     type: FETCH_PLAYLISTS_FAILURE,
     error,
+  }
+}
+
+export function updateFilterValuesAction(filterId, value) {
+  return {
+    type: UPDATE_FILTER_VALUES,
+    filterId,
+    value,
   }
 }

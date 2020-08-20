@@ -58,12 +58,14 @@ describe('playlistsPageSaga Saga', () => {
   })
 
   describe('fetchPlaylists', () => {
-    const action = { filters: { locale: 'pt_BR' } }
-    const requestOptions = { method: 'GET', params: { ...action.filters } }
+    const filtersState = { locale: 'pt_BR' }
+    const requestOptions = { method: 'GET', params: { ...filtersState } }
 
     describe('success scenario', () => {
-      const it = sagaHelper(fetchPlaylists(action))
+      const it = sagaHelper(fetchPlaylists())
       const response = { message: "Editor's Picks", playlists: [] }
+
+      it('should select the filters state', () => filtersState)
 
       it('should call api', (result) => {
         expect(result).toEqual(call(request, SPOTIFY_PLAYLISTS_API, requestOptions))
@@ -80,8 +82,10 @@ describe('playlistsPageSaga Saga', () => {
     })
 
     describe('failure scenario', () => {
-      const it = sagaHelper(fetchPlaylists(action))
+      const it = sagaHelper(fetchPlaylists())
       const error = new Error()
+
+      it('should select the filters state', () => filtersState)
 
       it('should call api', (result) => {
         expect(result).toEqual(call(request, SPOTIFY_PLAYLISTS_API, requestOptions))

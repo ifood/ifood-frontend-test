@@ -12,7 +12,8 @@ describe('PlaylistsPage selectors', () => {
     isLoading: true,
     error: 'error',
   }
-  const mockedState = { filters, playlists }
+  const filterValues = { key: 'value' }
+  const mockedState = { filters, playlists, filterValues }
 
   it('should return reducer initialState filters if no state was provided', () => {
     expect(selectors.selectFilters({})).toEqual(initialState.filters)
@@ -40,5 +41,13 @@ describe('PlaylistsPage selectors', () => {
 
   it('should select playlists error state', () => {
     expect(selectors.selectPlaylistsError(mockedState)).toEqual('error')
+  })
+
+  it('should select the filterValues state', () => {
+    expect(selectors.selectFilterValues(mockedState)).toEqual({ key: 'value' })
+  })
+
+  it('should select the initial state filterValues if no state is provided', () => {
+    expect(selectors.selectFilterValues({})).toEqual({})
   })
 })
