@@ -9,10 +9,10 @@ import PropTypes from 'prop-types'
 
 import { InputWrapper } from './styles'
 
-function Input({ type, id }) {
+function Input({ type, id, ...rest }) {
   return (
     <InputWrapper>
-      <input id={id} type={type} autoComplete="off" placeholder=" " />
+      <input {...rest} id={id} type={type} autoComplete="off" placeholder=" " />
     </InputWrapper>
   )
 }

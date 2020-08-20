@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const InputWrapper = styled.div`
   > input {
+    width: 100%;
     font-size: 14px;
     height: 32px;
     background: none;

@@ -25,6 +25,7 @@ import {
   fetchPlaylistsAction,
 } from './actions'
 import { ErrorWrapper, PlaylistsWrapper } from './styles'
+import Filters from '../../components/Filters'
 
 const INTERVAL_TIME_TO_FETCH_PLAYLISTS = 30000
 
@@ -67,7 +68,7 @@ export function PlaylistsPage(props) {
     </ErrorWrapper>
   )
 
-  const renderFiltersAndPlaylists = () => {
+  const renderPlaylists = () => {
     const {
       playlistResponse: {
         message,
@@ -94,7 +95,12 @@ export function PlaylistsPage(props) {
 
   return (
     <div>
-      {playlistsError ? renderErrorMessage() : renderFiltersAndPlaylists()}
+      {playlistsError ? renderErrorMessage() : (
+        <div>
+          <Filters filtersList={props.filters} />
+          {renderPlaylists()}
+        </div>
+      )}
     </div>
   )
 }
@@ -105,6 +111,7 @@ PlaylistsPage.propTypes = {
   fetchPlaylists: PropTypes.func.isRequired,
   playlistsError: PropTypes.object,
   playlistResponse: PropTypes.object.isRequired,
+  filters: PropTypes.array,
 }
 
 /* istanbul ignore next */
