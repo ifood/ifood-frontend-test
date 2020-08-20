@@ -25,4 +25,29 @@ describe('<Input />', () => {
     renderedComponent.find('input').simulate('change', event)
     expect(localProps.onChange).toHaveBeenCalledWith(event, localProps.id, undefined)
   })
+
+  it('should validate the number field if has min max in validation property', () => {
+    const localProps = {
+      ...props,
+      type: 'number',
+      validation: {
+        min: 1,
+        max: 20,
+      },
+      onChange: jest.fn(),
+    }
+    let event = { target: { value: 0 } }
+    const renderedComponent = shallowRender(localProps)
+
+    renderedComponent.find('input').simulate('change', event)
+    expect(localProps.onChange).not.toHaveBeenCalled()
+
+    event = { target: { value: 21 } }
+    renderedComponent.find('input').simulate('change', event)
+    expect(localProps.onChange).not.toHaveBeenCalled()
+
+    event = { target: { value: 15 } }
+    renderedComponent.find('input').simulate('change', event)
+    expect(localProps.onChange).toHaveBeenCalledWith(event, localProps.id, localProps.validation)
+  })
 })

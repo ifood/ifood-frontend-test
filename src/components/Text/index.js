@@ -7,8 +7,8 @@
 
 import styled, { css } from 'styled-components'
 
-export const WhiteText = css`
-  color: #fff;
+export const ErrorText = css`
+  color: #ea1d2c;
 `
 
 export const BoldText = css`
@@ -49,7 +49,7 @@ const Text = styled.p`
   font-size: 1em;
   color: #000000;
 
-  ${(props) => props.white && WhiteText}
+  ${(props) => props.error && ErrorText}
   ${(props) => props.bold && BoldText}
   ${(props) => props.semiBold && SemiBoldText}
   ${(props) => props.light && LightText}

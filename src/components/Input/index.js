@@ -4,10 +4,11 @@
  *
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { InputWrapper } from './styles'
+import Text from '../Text'
 
 function Input({
   id,
@@ -16,7 +17,34 @@ function Input({
   validation,
   ...rest
 }) {
+  const [validationError, setValidationError] = useState()
+
   const onChangeHandler = (e) => {
+    const { target: { value } } = e
+
+    if (validation) {
+      const {
+        min,
+        max,
+      } = validation
+
+      let error = null
+      if (type === 'number') {
+        if (min && value < min) {
+          error = 'Valor menor que o mínimo'
+        } else if (max && value > max) {
+          error = 'Valor maior que o máximo'
+        }
+      }
+
+      if (error) {
+        setValidationError(error)
+        return
+      }
+
+      setValidationError(null)
+    }
+
     if (onChange) {
       onChange(e, id, validation)
     }
@@ -32,6 +60,9 @@ function Input({
         placeholder=" "
         onChange={onChangeHandler}
       />
+      <Text small semiBold error>
+        {validationError}
+      </Text>
     </InputWrapper>
   )
 }
