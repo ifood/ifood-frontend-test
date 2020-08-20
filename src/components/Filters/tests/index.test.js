@@ -1,9 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Filters from '../index'
-import Select from '../../Select'
 import Input from '../../Input'
+import Loader from '../../Loader'
+import Select from '../../Select'
+
+import Filters from '../index'
 
 describe('<Filters />', () => {
   const props = {
@@ -16,6 +18,12 @@ describe('<Filters />', () => {
     const renderedComponent = shallowRender()
     expect(renderedComponent).toBeTruthy()
     expect(renderedComponent.find('#name').length).toEqual(1)
+  })
+
+  it('should render a Loader if isLoading is true', () => {
+    const localProps = { ...props, isLoading: true }
+    const renderedComponent = shallowRender(localProps)
+    expect(renderedComponent.find(Loader).length).toEqual(1)
   })
 
   it('should render a select if there is a filter in the list in `values` property', () => {

@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import PlaylistCard from '../../PlaylistCard'
 
 import Playlists from '../index'
+import Loader from '../../Loader'
 
 describe('<Playlists />', () => {
   const props = {
@@ -15,6 +16,12 @@ describe('<Playlists />', () => {
   it('should render the component correctly', () => {
     const renderedComponent = shallowRender()
     expect(renderedComponent.isEmptyRender()).toBeTruthy()
+  })
+
+  it('should render a Loader if isLoading is true', () => {
+    const localProps = { ...props, isLoading: true }
+    const renderedComponent = shallowRender(localProps)
+    expect(renderedComponent.find(Loader).length).toEqual(1)
   })
 
   it('should render PlaylistCard according to playlistResponse.playlists.items', () => {

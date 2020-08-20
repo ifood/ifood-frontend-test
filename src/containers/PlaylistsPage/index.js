@@ -20,6 +20,7 @@ import {
   selectPlaylistsError,
   selectPlaylistsResource,
   selectFilterValues,
+  selectPlaylistsIsLoading,
 } from './selectors'
 import {
   fetchFiltersAction,
@@ -93,10 +94,12 @@ export function PlaylistsPage(props) {
           <Filters
             filtersList={props.filters}
             handleFilters={handleFiltersChange}
+            isLoading={props.filtersIsLoading}
           />
           <Playlists
             playlistResponse={playlistResponse}
             nameFilter={nameFilter}
+            isLoading={props.playlistsIsLoading}
           />
         </div>
       )}
@@ -111,7 +114,9 @@ PlaylistsPage.propTypes = {
   updateFilterValues: PropTypes.func.isRequired,
   playlistsError: PropTypes.object,
   playlistResponse: PropTypes.object.isRequired,
-  filters: PropTypes.array,
+  playlistsIsLoading: PropTypes.bool.isRequired,
+  filters: PropTypes.array.isRequired,
+  filtersIsLoading: PropTypes.bool.isRequired,
   filtersValue: PropTypes.object,
 }
 
@@ -121,6 +126,7 @@ const mapStateToProps = createStructuredSelector({
   filtersIsLoading: selectFiltersIsLoading,
   playlistsError: selectPlaylistsError,
   playlistResponse: selectPlaylistsResource,
+  playlistsIsLoading: selectPlaylistsIsLoading,
   filtersValue: selectFilterValues,
 })
 

@@ -7,6 +7,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Loader from '../Loader'
 import PlaylistCard from '../PlaylistCard'
 import Text from '../Text'
 
@@ -19,7 +20,12 @@ export function Playlists(props) {
       playlists,
     },
     nameFilter,
+    isLoading,
   } = props
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   if (!playlists) {
     return null
@@ -43,9 +49,15 @@ export function Playlists(props) {
       <Text bold uppercase big>
         {message}
       </Text>
-      <PlaylistsWrapper>
-        {filteredPlaylists.length ? filteredPlaylists : 'Nenhuma playlist encontrada'}
-      </PlaylistsWrapper>
+      {filteredPlaylists.length ? (
+        <PlaylistsWrapper>
+          {filteredPlaylists}
+        </PlaylistsWrapper>
+      ) : (
+        <Text>
+          Nenhuma playlist encontrada
+        </Text>
+      )}
     </div>
   )
 }
@@ -53,6 +65,7 @@ export function Playlists(props) {
 Playlists.propTypes = {
   playlistResponse: PropTypes.object.isRequired,
   nameFilter: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool,
 }
 
 export default Playlists

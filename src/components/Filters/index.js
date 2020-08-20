@@ -7,14 +7,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Input from '../Input'
+import Loader from '../Loader'
 import Select from '../Select'
 import Text from '../Text'
 
 import { StyledFilters } from './styles'
-import Input from '../Input'
 
 export function Filters(props) {
-  const { filtersList, handleFilters } = props
+  const { filtersList, handleFilters, isLoading } = props
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   const onFilterChange = (value, filterId) => {
     handleFilters(filterId, value)
@@ -78,6 +83,7 @@ export function Filters(props) {
 Filters.propTypes = {
   filtersList: PropTypes.array.isRequired,
   handleFilters: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 }
 
 export default Filters
