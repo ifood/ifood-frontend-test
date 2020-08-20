@@ -4,15 +4,15 @@
  *
  */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
 import hashes from '../../utils/getTokenFromHash'
-import PlaylistCard from '../../components/PlaylistCard'
 import { StyledRouterLink } from '../../components/StyledLink'
-import Text from '../../components/Text'
+import Filters from '../../components/Filters'
+import Playlists from '../../components/Playlists'
 
 import {
   selectFiltersResource,
@@ -26,8 +26,7 @@ import {
   fetchPlaylistsAction,
   updateFilterValuesAction,
 } from './actions'
-import { ErrorWrapper, PlaylistsWrapper } from './styles'
-import Filters from '../../components/Filters'
+import { ErrorWrapper } from './styles'
 
 const INTERVAL_TIME_TO_FETCH_PLAYLISTS = 30000
 
@@ -38,7 +37,9 @@ export function PlaylistsPage(props) {
     history,
     playlistsError,
     filtersValue,
+    playlistResponse,
   } = props
+  const [nameFilter, setNameFilter] = useState('')
 
   useEffect(() => {
     let interval = null
@@ -66,7 +67,7 @@ export function PlaylistsPage(props) {
 
   const handleFiltersChange = (filterId, value) => {
     if (filterId === 'name') {
-      // handle local filter
+      setNameFilter(value)
     } else {
       const normalizedValue = value === '' ? undefined : value
       props.updateFilterValues(filterId, normalizedValue)
@@ -85,31 +86,6 @@ export function PlaylistsPage(props) {
     </ErrorWrapper>
   )
 
-  const renderPlaylists = () => {
-    const {
-      playlistResponse: {
-        message,
-        playlists,
-      },
-    } = props
-
-    return playlists ? (
-      <div>
-        <Text bold uppercase big>
-          {message}
-        </Text>
-        <PlaylistsWrapper>
-          {playlists.items.map((playlist) => (
-            <PlaylistCard
-              key={playlist.id}
-              {...playlist}
-            />
-          ))}
-        </PlaylistsWrapper>
-      </div>
-    ) : null
-  }
-
   return (
     <div>
       {playlistsError ? renderErrorMessage() : (
@@ -118,7 +94,10 @@ export function PlaylistsPage(props) {
             filtersList={props.filters}
             handleFilters={handleFiltersChange}
           />
-          {renderPlaylists()}
+          <Playlists
+            playlistResponse={playlistResponse}
+            nameFilter={nameFilter}
+          />
         </div>
       )}
     </div>

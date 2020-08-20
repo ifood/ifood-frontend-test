@@ -2,7 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { StyledRouterLink } from '../../../components/StyledLink'
-import PlaylistCard from '../../../components/PlaylistCard'
+import Filters from '../../../components/Filters'
+import Playlists from '../../../components/Playlists'
 
 import { PlaylistsPage } from '../index'
 import { ErrorWrapper } from '../styles'
@@ -19,6 +20,8 @@ describe('<PlaylistsPage />', () => {
   it('should render the component correctly', () => {
     const renderedComponent = shallowRender()
     expect(renderedComponent).toBeTruthy()
+    expect(renderedComponent.find(Filters).length).toEqual(1)
+    expect(renderedComponent.find(Playlists).length).toEqual(1)
   })
 
   it('should render the component with a link back to home page if there is an error prop', () => {
@@ -30,22 +33,5 @@ describe('<PlaylistsPage />', () => {
     expect(renderedComponent).toBeTruthy()
     expect(renderedComponent.find(ErrorWrapper).length).toEqual(1)
     expect(renderedComponent.find(StyledRouterLink).at(0).props().to).toEqual('/')
-  })
-
-  it('should render PlaylistCard according to playlistResponse.playlists.items', () => {
-    const localProps = {
-      ...props,
-      playlistResponse: {
-        playlists: {
-          items: [
-            { id: 1 },
-            { id: 2 },
-          ],
-        },
-      },
-    }
-    const renderedComponent = shallowRender(localProps)
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.find(PlaylistCard).length).toEqual(2)
   })
 })
