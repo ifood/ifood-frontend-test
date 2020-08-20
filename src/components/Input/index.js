@@ -37,7 +37,6 @@ function Input({
           error = 'Valor maior que o máximo'
         }
       } else if (type === 'datetime-local') {
-        console.log(value)
         const date = moment(value)
         if (date.isValid()) {
           normalizedValue = date.toISOString()
