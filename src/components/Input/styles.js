@@ -12,7 +12,7 @@ export const InputWrapper = styled.div`
     padding: 0;
 
     &:focus {
-      border-bottom-color: #1761B0;
+      border-bottom-color: ${(props) => props.theme.blue};
     }
   }
 `

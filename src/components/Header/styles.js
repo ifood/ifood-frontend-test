@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const StyledHeader = styled.div`
   padding: 12px;
-  background-color: #151515;
+  background-color: ${(props) => props.theme.darkGrey};
   text-align: center;
 
   img {

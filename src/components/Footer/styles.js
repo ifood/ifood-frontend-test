@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
   padding: 8px;
-  background-color: #151515;
-  color: #999;
+  background-color: ${(props) => props.theme.darkGrey};
+  color: ${(props) => props.theme.grey};
   text-align: center;
   font-size: 12px;
   font-weight: bold;

@@ -11,7 +11,7 @@ export const SelectWrapper = styled.div`
     border-bottom: 2px solid;
 
     &:focus {
-      border-bottom-color: #1761B0;
+      border-bottom-color: ${(props) => props.theme.blue};
     }
 
     > options {

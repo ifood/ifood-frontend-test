@@ -14,7 +14,7 @@ export const LinkStyle = css`
   display: inline-block;
   outline: none;
 
-  background: #ea1d2c;
+  background: ${(props) => props.theme.red};
   color: white;
   font-weight: bold;
   font-size: 16px;
@@ -35,7 +35,7 @@ export const LinkStyle = css`
   }
 
   &:disabled {
-    background: #a3a3a3;
+    background: ${(props) => props.theme.disabledColor};
     cursor: not-allowed;
   }
 `

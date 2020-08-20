@@ -8,7 +8,7 @@
 import styled, { css } from 'styled-components'
 
 export const ErrorText = css`
-  color: #ea1d2c;
+  color: ${(props) => props.theme.red};
 `
 
 export const BoldText = css`
@@ -40,14 +40,14 @@ export const UppercaseText = css`
 `
 
 export const UnavailableText = css`
-  color: #8e8e8e;
+  color: ${(props) => props.theme.disabledColor};
 `
 
 const Text = styled.p`
   margin: 0;
 
   font-size: 1em;
-  color: #000000;
+  color: #000;
 
   ${(props) => props.error && ErrorText}
   ${(props) => props.bold && BoldText}
