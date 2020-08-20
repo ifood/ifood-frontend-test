@@ -44,7 +44,7 @@ export function Playlists(props) {
         {message}
       </Text>
       <PlaylistsWrapper>
-        {filteredPlaylists}
+        {filteredPlaylists.length ? filteredPlaylists : 'Nenhuma playlist encontrada'}
       </PlaylistsWrapper>
     </div>
   )

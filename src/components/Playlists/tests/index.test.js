@@ -34,7 +34,7 @@ describe('<Playlists />', () => {
     expect(renderedComponent.find(PlaylistCard).length).toEqual(2)
   })
 
-  it('should render PlaylistCard according to playlistResponse.playlists.items', () => {
+  it('should render filter playlist based on nameFilter prop', () => {
     const localProps = {
       ...props,
       nameFilter: 'me 2',
@@ -51,5 +51,20 @@ describe('<Playlists />', () => {
     expect(renderedComponent).toBeTruthy()
     expect(renderedComponent.find(PlaylistCard).length).toEqual(1)
     expect(renderedComponent.find(PlaylistCard).at(0).props().name).toEqual('Name 2')
+  })
+
+  it('should render custom message when playlists array is empty', () => {
+    const localProps = {
+      ...props,
+      playlistResponse: {
+        playlists: {
+          items: [],
+        },
+      },
+    }
+    const renderedComponent = shallowRender(localProps)
+    expect(renderedComponent).toBeTruthy()
+    expect(renderedComponent.text().includes('Nenhuma playlist encontrada')).toEqual(true)
+    expect(renderedComponent.find(PlaylistCard).length).toEqual(0)
   })
 })
