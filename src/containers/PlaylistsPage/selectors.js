@@ -31,3 +31,18 @@ export const selectPlaylistsError = createSelector(
 )
 
 export const selectFilterValues = (state) => state.filterValues || initialState.filterValues
+
+export const selectNormalizedFilterValues = createSelector(
+  selectFilterValues,
+  (filters) => {
+    const normalizedFilterValues = { ...filters }
+    const page = parseInt(filters.offset, 10)
+
+    if (page) {
+      const limit = parseInt(filters.limit || 0, 10)
+      normalizedFilterValues.offset = limit + page
+    }
+
+    return normalizedFilterValues
+  },
+)

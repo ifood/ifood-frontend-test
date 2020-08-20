@@ -50,4 +50,41 @@ describe('PlaylistsPage selectors', () => {
   it('should select the initial state filterValues if no state is provided', () => {
     expect(selectors.selectFilterValues({})).toEqual({})
   })
+
+  it('should select the filter values with the offset normalized if it has an offset', () => {
+    const localState = {
+      filterValues: {
+        offset: 1,
+        limit: 10,
+      },
+    }
+    expect(selectors.selectNormalizedFilterValues(localState)).toEqual({
+      offset: 11,
+      limit: 10,
+    })
+  })
+
+  it('should select the filter values with the offset normalized if it has an offset and limit is undefined', () => {
+    const localState = {
+      filterValues: {
+        offset: 1,
+      },
+    }
+    expect(selectors.selectNormalizedFilterValues(localState)).toEqual({
+      offset: 1,
+    })
+  })
+
+  it('should select the filter values just like the state if offset is falsy', () => {
+    const localState = {
+      filterValues: {
+        offset: 0,
+        limit: 10,
+      },
+    }
+    expect(selectors.selectNormalizedFilterValues(localState)).toEqual({
+      offset: 0,
+      limit: 10,
+    })
+  })
 })

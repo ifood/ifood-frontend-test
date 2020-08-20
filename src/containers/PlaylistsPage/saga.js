@@ -16,7 +16,7 @@ import {
   GET_FILTERS_API,
   SPOTIFY_PLAYLISTS_API,
 } from '../App/urls'
-import { selectFilterValues } from './selectors'
+import { selectNormalizedFilterValues } from './selectors'
 
 export function* fetchFilters() {
   try {
@@ -29,7 +29,7 @@ export function* fetchFilters() {
 }
 
 export function* fetchPlaylists() {
-  const filters = yield select(selectFilterValues)
+  const filters = yield select(selectNormalizedFilterValues)
 
   try {
     const response = yield call(request, SPOTIFY_PLAYLISTS_API, {
