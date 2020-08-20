@@ -1,0 +1,16 @@
+.App {
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 8px;
+}
+
+.App-container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.App-container > * {
+  padding: 8px;
+}
