@@ -10,5 +10,9 @@ export const InputWrapper = styled.div`
     outline: none;
     border-bottom: 2px solid;
     padding: 0;
+
+    &:focus {
+      border-bottom-color: #1761B0;
+    }
   }
 `
