@@ -14,7 +14,7 @@ function List() {
     useEffect(() => {
         async function fetchData() {
             const response = await getPlaylists();
-            const data = response.data.playlists.items;
+            const data = response.playlists.items;
 
             setList(data);
         }
