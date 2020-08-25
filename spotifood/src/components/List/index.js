@@ -1,30 +1,16 @@
 // Global
-import React, { useState, useEffect, memo } from 'react';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 // Components
 import Card from './Card';
-// Api
-import { getPlaylists } from '../../api'
 // Stylesheets
 import './index.scss';
 
-
-function List() {
-    const [list, setList] = useState();
-
-    useEffect(() => {
-        async function fetchData() {
-            const response = await getPlaylists();
-            const data = response.playlists.items;
-
-            setList(data);
-        }
-
-        fetchData();
-    }, []);
+function List({ data }) {
 
     return(
         <div className='list'>
-            {list && list.map((item, index) => {
+            {data && data.map((item, index) => {
                 return(
                     <Card 
                         key={index}
@@ -38,6 +24,10 @@ function List() {
             })}
         </div>
     );
+}
+
+List.propTypes = {
+    data: PropTypes.array,
 }
 
 export default memo(List);

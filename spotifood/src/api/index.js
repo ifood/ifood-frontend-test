@@ -1,4 +1,5 @@
 const request = require('request');
+// const querystring = require('querystring');
 
 const baseUrl = 'https://api.spotify.com/v1/browse/featured-playlists';
 const client_id = '22cf0dca328b464fbdf9dcf64a184947';
@@ -22,7 +23,7 @@ module.exports = {
      * @returns {Object} data
     */
     async getPlaylists(filters = []) {
-        return new Promise((resolve, reject) => {
+        return await new Promise((resolve, reject) => {
             request.post(authOptions, function(error, response, body) {
                 if (error) {
                     reject(error);
