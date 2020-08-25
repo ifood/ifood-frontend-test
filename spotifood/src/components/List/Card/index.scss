@@ -1,0 +1,42 @@
+.card-playlist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60ch;
+    height: 30vh;
+    padding: 3vh;
+
+    &__image {
+        width: 25ch;
+    }
+
+    &__description {
+        width: 50ch;
+        padding: 5ch;
+
+        &__name {
+            padding-bottom: 0.3vh;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        &__description {
+            font-size: 14px;
+            font-weight: 100;
+            font-style: italic;
+        }
+
+        &__owner {
+            padding-top: 2vh;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        &__tracks {
+            font-size: 16px;
+            font-weight: 300;
+        }
+    }
+
+}
