@@ -1,5 +1,6 @@
+const axios = require('axios').default;
 const request = require('request');
-// const querystring = require('querystring');
+const querystring = require('querystring');
 
 const baseUrl = 'https://api.spotify.com/v1/browse/featured-playlists';
 const client_id = '22cf0dca328b464fbdf9dcf64a184947';
@@ -22,7 +23,7 @@ module.exports = {
      * @param {Array} filters 
      * @returns {Object} data
     */
-    async getPlaylists(filters = []) {
+    async getPlaylists(filters = {}) {
         return await new Promise((resolve, reject) => {
             request.post(authOptions, function(error, response, body) {
                 if (error) {
@@ -37,7 +38,7 @@ module.exports = {
                 // use the access token to access the Spotify Web API
                 const token = body.access_token;
                 const options = {
-                    url: `${baseUrl}?country=BR&limit=10`,
+                    url: `${baseUrl}?${querystring.stringify(filters)}`,
                     headers: {
                         'Authorization': 'Bearer ' + token
                     },
@@ -56,5 +57,10 @@ module.exports = {
         }).catch(err => {
             alert(err);
         })
+    },
+    async getFilters() {
+        const response = await axios.get('http://www.mocky.io/v2/5a25fade2e0000213aa90776');
+        
+        return response.data;
     }
 };
