@@ -16,19 +16,20 @@ class App extends Component {
             list: [],
             visible: false,
             filters: {
-                locale: null,
+                locale: 'pt_BR',
                 country: 'BR',
                 offset: 0,
-                limit: 10,
+                limit: 1,
                 timestamp: format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'),
             }
         }
     }
 
-    onChangeFilter =  field => async (e, target) => {
+    onChangeFilter = field => async (e, target) => {
+        console.log(field);
         const { value } = target || e.target;
         let { filters } = this.state;
-        filters[field] = value;
+        filters[field] = field === 'limit' && (value < 1 || value > 50) ? this.state.filters.limit : value;
         const response = await getPlaylists(filters);
         const data = response.playlists.items;
 
