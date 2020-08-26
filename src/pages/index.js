@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Hello } from '../components';
+import { Playlists } from '../components';
 
 import * as FilterService from '../services/filter';
 import * as PlaylistService from '../services/playlist';
@@ -24,7 +24,7 @@ function IndexPage() {
   }, []);
 
   return (
-    <Hello />
+    <Playlists />
   );
 } 
 

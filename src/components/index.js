@@ -1,5 +1,5 @@
-import Hello from './hello';
+import Playlists from './playlists';
 
 export {
-    Hello,
+    Playlists,
 };
