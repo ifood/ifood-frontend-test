@@ -7,24 +7,34 @@ import * as PlaylistService from '../services/playlist';
 
 function IndexPage() {
   const [filters, setFilters] = useState([]);
-  const [playlist, setPlayList] = useState([]);
+  const [playlists, setPlayLists] = useState([]);
+  const [titlePlaylist, setTitlePlaylist] = useState('');
+
 
   useEffect(() => {
     const getDataFilter = async () => {
       const response = await FilterService.getFilters();
-      setFilters(response.filters);
+      if(response) setFilters(response.filters);
     }
 
     const getDataPlaylist = async () => {
       const response = await PlaylistService.getPlaylist();
-      setPlayList(response.items);
+      if(response) {
+        setTitlePlaylist(response.message);
+        setPlayLists(response.playlists.items);
+      }
     }
+
     getDataFilter();
     getDataPlaylist();
   }, []);
 
   return (
-    <Playlists />
+    <>
+      {playlists.length > 0 &&
+        <Playlists list={playlists} title={titlePlaylist}/>
+      }
+    </>
   );
 } 
 
