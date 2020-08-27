@@ -28,8 +28,10 @@ function App() {
             setList(data);
             setVisible(true);
         }
-
+        
         fetchData();
+        const timer = setInterval(fetchData, 30000);
+        return () => clearInterval(timer);
     }, [filters]);
 
     const onChangeFilter = field => async (e, target) => {
