@@ -36,8 +36,11 @@ function playlist(state = INITIAL_STATE, action) {
             const term = action.term;
             return {
                 ...state,
-                term,
-                data: filterData(state.data, term),
+                filter: {
+                    ...state.filter,
+                    term,
+                    data: filterData(state.data, term),
+                }
             }
         default:
             return state;

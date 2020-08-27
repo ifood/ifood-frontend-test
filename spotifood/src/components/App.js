@@ -8,7 +8,7 @@ import Filters from './Filters';
 // Api
 import { getPlaylists } from '../api';
 // Redux
-import { list } from '../redux/actions/playslist.action';
+import { list, search as searchAction } from '../redux/actions/playslist.action';
 // Stylesheets
 import './App.scss';
 
@@ -21,9 +21,9 @@ const App = () => {
         timestamp: format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'),
     });
     const [visible, setVisible] = useState(false);
+    const [search, setSearch] = useState('');
+    
     const dispatch = useDispatch();
-
-
     useEffect(() => {
         async function fetchData() {
             const response = await getPlaylists(filters);
@@ -57,12 +57,27 @@ const App = () => {
         setFilters(filters);
     }
 
+    const callSearch = term => dispatch(searchAction(term));
+
+    const onChangeSearch = (e, { value }) => {
+        setSearch(value);
+        callSearch(value);
+    }
+
     const lists = useSelector(state => state.filter.data);
 
     return(
         <div className='page'>
-            <Filters visible={visible} onChange={onChangeFilter} filters={filters} />
-            <List data={lists} />
+            <Filters 
+                visible={visible} 
+                filters={filters} 
+                search={search} 
+                onChange={onChangeFilter} 
+                onSearch={onChangeSearch} 
+            />
+            <List 
+                data={lists} 
+            />
         </div>
     );
 }

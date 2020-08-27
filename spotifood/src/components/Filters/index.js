@@ -5,7 +5,7 @@ import { Input, Dropdown } from 'semantic-ui-react'
 // Api
 import { getFilters } from '../../api';
 
-const Filters = ({ visible, onChange, filters }) => {
+const Filters = ({ visible, filters, onChange, onSearch, search }) => {
     const [locale, setLocale] = useState();
     const [countrys, setCountrys] = useState();
 
@@ -35,6 +35,14 @@ const Filters = ({ visible, onChange, filters }) => {
     return(
         <div className='header'>
             {visible && <div className='filters'>
+                <Input
+                    label='Buscar'
+                    placeholder='Buscar'
+                    type='text'
+                    icon='search'
+                    value={search}
+                    onChange={onSearch}
+                />
                 <Dropdown
                     options={localeValues}
                     onChange={onChange('locale')}
