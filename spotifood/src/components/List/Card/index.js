@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Stylesheets
 import './index.scss';
 
-function Card({ name, imageUrl, owner, description, tracks, index }) {
+const Card = ({ name, imageUrl, owner, description, tracks, index }) => {
     return (
         <div className='card-playlist' key={index}>
             <img

@@ -5,7 +5,7 @@ import { Input, Dropdown } from 'semantic-ui-react'
 // Api
 import { getFilters } from '../../api';
 
-function Filters({ visible, onChange, filters }) {
+const Filters = ({ visible, onChange, filters }) => {
     const [locale, setLocale] = useState();
     const [countrys, setCountrys] = useState();
 
@@ -23,8 +23,6 @@ function Filters({ visible, onChange, filters }) {
 
     const localeValues = locale ? locale.values.map((local, index) => ({ text: local.name, value: local.value, key: index })) : null;
     const countryValues = countrys ? countrys.values.map((country, index) => ({ text: country.name, value: country.value, key: index })) : null; // tratar erro pra US
-
-    console.log(countryValues);
 
     const {
         timestamp,

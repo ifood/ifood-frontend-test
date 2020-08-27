@@ -6,7 +6,7 @@ import Card from './Card';
 // Stylesheets
 import './index.scss';
 
-function List({ data }) {
+const List = ({ data }) => {
 
     return(
         <div className='list'>

@@ -1,15 +1,18 @@
 // Global
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { format } from 'date-fns'
 // Components
 import List from './List';
 import Filters from './Filters';
 // Api
 import { getPlaylists } from '../api';
+// Redux
+import { list } from '../redux/actions/playslist.action';
 // Stylesheets
 import './App.scss';
 
-function App() {
+const App = () => {
     const [filters, setFilters] = useState({
         locale: 'pt_BR',
         country: 'BR',
@@ -17,22 +20,23 @@ function App() {
         limit: 20,
         timestamp: format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'),
     });
-    const [list, setList] = useState([]);
     const [visible, setVisible] = useState(false);
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         async function fetchData() {
             const response = await getPlaylists(filters);
             const data = response.playlists.items;
 
-            setList(data);
+            dispatch(list(data));
             setVisible(true);
         }
         
         fetchData();
         const timer = setInterval(fetchData, 30000);
         return () => clearInterval(timer);
-    }, [filters]);
+    }, [filters, dispatch]);
 
     const onChangeFilter = field => async (e, target) => {
         const { value } = target || e.target;
@@ -48,15 +52,17 @@ function App() {
         const response = await getPlaylists(filters);
         const data = response.playlists.items;
 
+        dispatch(list(data));
         setVisible(true);
-        setList(data);
         setFilters(filters);
     }
- 
+
+    const lists = useSelector(state => state.filter.data);
+
     return(
         <div className='page'>
             <Filters visible={visible} onChange={onChangeFilter} filters={filters} />
-            <List data={list} />
+            <List data={lists} />
         </div>
     );
 }
