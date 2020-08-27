@@ -13,3 +13,22 @@ export function toSearchableString(str) {
 export function isEmpty(array) {
     return !array || array.length === 0;
 }
+
+/**
+ * Mount a query string params
+ * @param {Object} params 
+ * @returns {String} query string
+ */
+export function mountQueryString(params) {
+    if (params) {
+        let queryString = '';
+        Object.keys(params).forEach(p => {
+            if (params[p]) {
+                queryString += `${!queryString.length ? '?' : '&'}${p}=${params[p]}`;
+            }
+        });
+        return queryString;
+    } else {
+        return '';
+    }
+};

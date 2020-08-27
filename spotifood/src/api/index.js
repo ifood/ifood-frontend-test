@@ -1,6 +1,8 @@
 // Global
 const axios = require('axios').default;
 const request = require('request');
+// Utils
+const { mountQueryString } = require('../utils');
 
 const baseUrl = 'https://api.spotify.com/v1/browse/featured-playlists';
 const client_id = '22cf0dca328b464fbdf9dcf64a184947';
@@ -16,21 +18,6 @@ const authOptions = {
     },
     json: true,
 }
-
-const mountQueryString = params => {
-    if (params) {
-        let queryString = '';
-        Object.keys(params).forEach(p => {
-            if (params[p]) {
-                queryString += `${!queryString.length ? '?' : '&'}${p}=${params[p]}`;
-            }
-        });
-        return queryString;
-    } else {
-        return '';
-    }
-};
-
 
 module.exports = {
     /**
@@ -70,7 +57,7 @@ module.exports = {
                 });
             }
         }).catch(err => {
-            alert(err);
+            throw new Error(err.message);
         })
     },
     /**

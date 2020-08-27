@@ -15,8 +15,8 @@ const Card = ({ name, imageUrl, owner, description, tracks, index }) => {
             <div className='card-playlist__description'>
                 <div className='card-playlist__description__name'>{name}</div>
                 <div className='card-playlist__description__description'>{description}</div>
-                <div className='card-playlist__description__owner'>Creator: {owner}</div>
-                <div className='card-playlist__description__tracks'>Tracks: {tracks}</div>
+                <div className='card-playlist__description__owner'>Criador: {owner}</div>
+                <div className='card-playlist__description__tracks'>Trilhas: {tracks}</div>
             </div>
         </div>
     );

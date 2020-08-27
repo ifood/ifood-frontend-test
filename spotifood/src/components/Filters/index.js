@@ -1,5 +1,6 @@
 // Global
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 // Components
 import { Input, Dropdown } from 'semantic-ui-react'
 // Api
@@ -83,6 +84,13 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
             </div>
         </div>
     );
-}
+};
+
+Filters.propTypes = {
+    filters: PropTypes.array,
+    search: PropTypes.string,
+    onChange: PropTypes.func,
+    onSearch: PropTypes.func,
+};
 
 export default Filters;
