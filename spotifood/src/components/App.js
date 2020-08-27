@@ -19,7 +19,7 @@ class App extends Component {
                 locale: 'pt_BR',
                 country: 'BR',
                 offset: 0,
-                limit: 1,
+                limit: 20,
                 timestamp: format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'),
             }
         }
@@ -29,10 +29,17 @@ class App extends Component {
         console.log(field);
         const { value } = target || e.target;
         let { filters } = this.state;
-        filters[field] = field === 'limit' && (value < 1 || value > 50) ? this.state.filters.limit : value;
+
+        if (field === 'limit') {
+            filters[field] = field === 'limit' && (value < 1 || value > 50) ? this.state.filters.limit : value;
+        } else if ('offset') {
+            filters[field] = field === 'offset' && value < 0 ? this.state.filters.offset : value;
+        } else {
+            filters[field] = value;
+        }
+
         const response = await getPlaylists(filters);
         const data = response.playlists.items;
-
         this.setState({ filters, list: data, visible: true });
     }
 
