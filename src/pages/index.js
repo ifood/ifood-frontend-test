@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Playlists } from '../components';
+import { Playlists, Filter } from '../components';
 
 import * as FilterService from '../services/filter';
 import * as PlaylistService from '../services/playlist';
@@ -12,26 +12,27 @@ function IndexPage() {
 
 
   useEffect(() => {
-    const getDataFilter = async () => {
+    const _getDataFilter = async () => {
       const response = await FilterService.getFilters();
-      if(response) setFilters(response.filters);
+      setFilters(response.filters);
     }
 
-    const getDataPlaylist = async () => {
+    const _getDataPlaylist = async () => {
       const response = await PlaylistService.getPlaylist();
-      if(response) {
-        setTitlePlaylist(response.message);
-        setPlayLists(response.playlists.items);
-      }
+      setTitlePlaylist(response.message);
+      setPlayLists(response.playlists.items);
     }
 
-    getDataFilter();
-    getDataPlaylist();
+    _getDataFilter();
+    _getDataPlaylist();
   }, []);
 
   return (
     <>
-      {playlists.length > 0 &&
+      {filters.length > 0 &&
+        <Filter elements={filters} />
+      }
+      {playlists.length > 0 && titlePlaylist &&
         <Playlists list={playlists} title={titlePlaylist}/>
       }
     </>
