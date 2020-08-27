@@ -63,7 +63,7 @@ const App = () => {
         callSearch(value);
     }
 
-    const lists = useSelector(state => state.filter.data);
+    const lists = useSelector(state => state.playlist.filter.data);
 
     return(
         <div className='page'>
