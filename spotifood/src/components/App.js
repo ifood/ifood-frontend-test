@@ -9,6 +9,8 @@ import Filters from './Filters';
 import { getPlaylists } from '../api';
 // Redux
 import { list, search as searchAction } from '../redux/actions/playslist.action';
+// Utils
+import { isEmpty } from '../utils';
 // Stylesheets
 import './App.scss';
 
@@ -20,7 +22,6 @@ const App = () => {
         limit: 20,
         timestamp: format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'),
     });
-    const [visible, setVisible] = useState(false);
     const [search, setSearch] = useState('');
     
     const dispatch = useDispatch();
@@ -30,7 +31,6 @@ const App = () => {
             const data = response.playlists.items;
 
             dispatch(list(data));
-            setVisible(true);
         }
         
         fetchData();
@@ -53,7 +53,6 @@ const App = () => {
         const data = response.playlists.items;
 
         dispatch(list(data));
-        setVisible(true);
         setFilters(filters);
     }
 
@@ -69,15 +68,12 @@ const App = () => {
     return(
         <div className='page'>
             <Filters 
-                visible={visible} 
                 filters={filters} 
                 search={search} 
                 onChange={onChangeFilter} 
                 onSearch={onChangeSearch} 
             />
-            <List 
-                data={lists} 
-            />
+            {!isEmpty(lists) ? <List data={lists} /> : <div>Nenhuma playlist encontrada</div>}
         </div>
     );
 }

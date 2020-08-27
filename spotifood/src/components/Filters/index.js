@@ -5,7 +5,7 @@ import { Input, Dropdown } from 'semantic-ui-react'
 // Api
 import { getFilters } from '../../api';
 
-const Filters = ({ visible, filters, onChange, onSearch, search }) => {
+const Filters = ({ filters, onChange, onSearch, search }) => {
     const [locale, setLocale] = useState();
     const [countrys, setCountrys] = useState();
 
@@ -34,7 +34,7 @@ const Filters = ({ visible, filters, onChange, onSearch, search }) => {
 
     return(
         <div className='header'>
-            {visible && <div className='filters'>
+            <div className='filters'>
                 <Input
                     label='Buscar'
                     placeholder='Buscar'
@@ -80,7 +80,7 @@ const Filters = ({ visible, filters, onChange, onSearch, search }) => {
                     value={offset}
                     onChange={onChange('offset')}
                 />
-            </div>}
+            </div>
         </div>
     );
 }

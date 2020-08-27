@@ -5,3 +5,11 @@
 export function toSearchableString(str) {
     return str ? str.trim().toLowerCase() : '';
 }
+
+/**
+ * define if array is empty
+ * @param {Array} array 
+ */
+export function isEmpty(array) {
+    return !array || array.length === 0;
+}

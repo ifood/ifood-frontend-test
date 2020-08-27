@@ -10,7 +10,7 @@ const List = ({ data }) => {
 
     return(
         <div className='list'>
-            {data && data.map((item, index) => {
+            {data.map((item, index) => {
                 return(
                     <Card 
                         key={index}

@@ -6,15 +6,13 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 // Store
 import store from './redux/store';
-// Style
+// Stylesheet
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 
