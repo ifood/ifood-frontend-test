@@ -87,7 +87,7 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
 };
 
 Filters.propTypes = {
-    filters: PropTypes.array,
+    filters: PropTypes.object,
     search: PropTypes.string,
     onChange: PropTypes.func,
     onSearch: PropTypes.func,

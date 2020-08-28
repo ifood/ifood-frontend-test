@@ -1,5 +1,5 @@
 // Global
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { format } from 'date-fns'
 // Components
@@ -16,23 +16,17 @@ import './App.scss';
 
 const App = () => {
     const [filters, setFilters] = useState({
-        locale: 'pt_BR',
+        locale: "pt_BR",
         country: 'BR',
         offset: 0,
         limit: 20,
         timestamp: format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'),
     });
     const [search, setSearch] = useState('');
-
-    const updateTimesamp = useCallback(date => {
-        filters['timestamp'] = format(date, 'yyyy-MM-dd') + 'T' + format(date, 'HH:mm:ss');
-        setFilters(filters);
-    }, [filters]);
     
     const dispatch = useDispatch();
     useEffect(() => {
         async function fetchData() {
-            updateTimesamp(new Date());
             const response = await getPlaylists(filters);
             const data = response.playlists.items;
 
@@ -42,7 +36,7 @@ const App = () => {
         fetchData();
         const timer = setInterval(fetchData, 30000);
         return () => clearInterval(timer);
-    }, [filters, dispatch, updateTimesamp]);
+    }, [filters, dispatch]);
 
     const onChangeFilter = field => async (e, target) => {
         const { value } = target || e.target;
@@ -66,7 +60,7 @@ const App = () => {
 
     const onChangeSearch = (e, { value }) => {
         setSearch(value);
-        callSearch(search);
+        callSearch(value);
     }
 
     const lists = useSelector(state => state.playlist.filter.data);
