@@ -6,7 +6,7 @@ import { Input, Dropdown } from 'semantic-ui-react'
 // Api
 import { getFilters } from '../../api';
 
-const Filters = ({ filters, onChange, onSearch, search }) => {
+const Filters = ({ filters, errors, search, onChange, onSearch }) => {
     const [locale, setLocale] = useState();
     const [countrys, setCountrys] = useState();
 
@@ -23,15 +23,7 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
     }, []);
 
     const localeValues = locale ? locale.values.map((local, index) => ({ text: local.name, value: local.value, key: index })) : null;
-    const countryValues = countrys ? countrys.values.map((country, index) => ({ text: country.name, value: country.value, key: index })) : null; // tratar erro pra US
-
-    const {
-        timestamp,
-        locale: localeState,
-        country: countryState,
-        limit,
-        offset,
-    } = filters;
+    const countryValues = countrys ? countrys.values.map((country, index) => ({ text: country.name, value: country.value, key: index })) : null;
 
     return(
         <div className='header'>
@@ -47,7 +39,8 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
                 <Dropdown
                     options={localeValues}
                     onChange={onChange('locale')}
-                    value={localeState}
+                    value={filters['locale']}
+                    error={errors['localeError']}
                     placeholder='Locale'
                     selection
                     fluid
@@ -55,7 +48,8 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
                 <Dropdown
                     options={countryValues}
                     onChange={onChange('country')}
-                    value={countryState}
+                    value={filters['country']}
+                    error={errors['countryError']}
                     placeholder='País'
                     selection
                     fluid
@@ -64,13 +58,15 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
                     label='Data e Horário'
                     type='datetime-local'
                     step='1'
-                    value={timestamp}
+                    value={filters['timestamp']}
+                    error={errors['timestampError']}
                     onChange={onChange('timestamp')}
                 />
                 <Input
                     label='Quantidade'
                     type='number'
-                    value={limit}
+                    value={filters['limit']}
+                    error={errors['limitError']}
                     onChange={onChange('limit')}
                     min={1}
                     max={50}
@@ -78,7 +74,8 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
                 <Input
                     label='Página'
                     type='number'
-                    value={offset}
+                    value={filters['offset']}
+                    error={errors['offsetError']}
                     onChange={onChange('offset')}
                 />
             </div>
@@ -88,6 +85,7 @@ const Filters = ({ filters, onChange, onSearch, search }) => {
 
 Filters.propTypes = {
     filters: PropTypes.object,
+    errors: PropTypes.object,
     search: PropTypes.string,
     onChange: PropTypes.func,
     onSearch: PropTypes.func,

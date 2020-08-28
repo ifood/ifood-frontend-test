@@ -1,5 +1,5 @@
 // Global
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { format } from 'date-fns'
 // Components
@@ -10,50 +10,80 @@ import { getPlaylists } from '../api';
 // Redux
 import { list, search as searchAction } from '../redux/actions/playslist.action';
 // Utils
-import { isEmpty } from '../utils';
+import { isEmpty, isValid } from '../utils';
 // Stylesheets
 import './App.scss';
 
 const App = () => {
-    const [filters, setFilters] = useState({
-        locale: "pt_BR",
-        country: 'BR',
-        offset: 0,
-        limit: 20,
-        timestamp: format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'),
-    });
+    const [locale, setLocale] = useState('pt_BR');
+    const [country, setCountry] = useState('BR');
+    const [timestamp, setTimestamp] = useState(format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'));
+    const [limit, setLimit] = useState(20);
+    const [offset, setOffset] = useState(0);
     const [search, setSearch] = useState('');
+
+    const [localeError, setLocaleError] = useState(false);
+    const [countryError, setCountryError] = useState(false);
+    const [timestampError, setTimestampError] = useState(false);
+    const [limitError, setLimitError] = useState(false);
+    const [offsetError, setOffsetError] = useState(false);
     
     const dispatch = useDispatch();
-    useEffect(() => {
-        async function fetchData() {
-            const response = await getPlaylists(filters);
+    const fetchData = useCallback(async () => {
+        if (!localeError && !limitError && !timestampError && !countryError && !offsetError) {
+            const response = await getPlaylists({ locale, country, timestamp, limit, offset });
             const data = response.playlists.items;
 
             dispatch(list(data));
         }
-        
+    }, [localeError, limitError, timestampError, countryError, offsetError, locale, country, timestamp, limit, offset, dispatch]);
+
+    useEffect(() => {
         fetchData();
         const timer = setInterval(fetchData, 30000);
         return () => clearInterval(timer);
-    }, [filters, dispatch]);
+    }, [fetchData]);
 
     const onChangeFilter = field => async (e, target) => {
         const { value } = target || e.target;
+        console.log('oi kkkk');
 
-        if (field === 'limit') {
-            filters[field] = field === 'limit' && (value < 1 || value > 50) ? filters.limit : value;
-        } else if ('offset') {
-            filters[field] = field === 'offset' && value < 0 ? filters.offset : value;
+        if (isValid(field, value)){
+            if (field === 'locale') {
+                setLocale(value);
+                setLocaleError(false);
+            } else if (field === 'country') {
+                setCountry(value);
+                setCountryError(false);
+            } else if (field === 'timestamp') {
+                setTimestamp(value);
+                setTimestampError(false);
+            } else if (field === 'limit') {
+                setLimit(value);
+                setLimitError(false);
+            } else if (field === 'offset') {
+                setOffset(value);
+                setOffsetError(false);
+            }
+            fetchData();
         } else {
-            filters[field] = value;
+            if (field === 'locale') {
+                setLocale(value);
+                setLocaleError(true);
+            } else if (field === 'country') {
+                setCountry(value);
+                setCountryError(true);
+            } else if (field === 'timestamp') {
+                setTimestamp(value);
+                setTimestampError(true);
+            } else if (field === 'limit') {
+                setLimit(value);
+                setLimitError(true);
+            } else if (field === 'offset') {
+                setOffset(value);
+                setOffsetError(true);
+            }
         }
-
-        const response = await getPlaylists(filters);
-        const data = response.playlists.items;
-
-        dispatch(list(data));
-        setFilters(filters);
     }
 
     const callSearch = term => dispatch(searchAction(term));
@@ -64,13 +94,13 @@ const App = () => {
     }
 
     const lists = useSelector(state => state.playlist.filter.data);
-
     return(
         <div className='page'>
             <Filters 
-                filters={filters} 
+                filters={{ locale, country, timestamp, limit, offset }}
+                errors={{ localeError, countryError, timestampError, limitError, offsetError }}
                 search={search} 
-                onChange={onChangeFilter} 
+                onChange={onChangeFilter}
                 onSearch={onChangeSearch} 
             />
             {!isEmpty(lists) ? <List data={lists} /> : <div>Nenhuma playlist encontrada</div>}

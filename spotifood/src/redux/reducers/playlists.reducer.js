@@ -6,8 +6,7 @@ const filterByTerm = (item, term) => toSearchableString(item).includes(toSearcha
 
 const filterData = (data, term) => {
     const result = data.filter(item => {
-        const playlistName = item.name ? filterByTerm(item.name, term) : false;
-        return filterByTerm(item.name, term) || playlistName;
+        return item.name ? filterByTerm(item.name, term) : false;
     });
 
     return result;
