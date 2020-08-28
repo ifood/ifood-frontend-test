@@ -22,7 +22,7 @@ const App = () => {
     const [limit, setLimit] = useState(20);
     const [offset, setOffset] = useState(1);
     const [search, setSearch] = useState('');
-    const [count, setCount] = React.useState(0);
+    const [count, setCount] = useState(0);
 
     const [localeError, setLocaleError] = useState(false);
     const [countryError, setCountryError] = useState(false);
