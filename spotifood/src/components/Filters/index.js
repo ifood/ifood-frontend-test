@@ -77,6 +77,7 @@ const Filters = ({ filters, errors, search, onChange, onSearch }) => {
                     value={filters['offset']}
                     error={errors['offsetError']}
                     onChange={onChange('offset')}
+                    min={1}
                 />
             </div>
         </div>

@@ -1,6 +1,7 @@
 // Global
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useInterval } from 'use-interval';
 import { format } from 'date-fns'
 // Components
 import List from './List';
@@ -19,8 +20,9 @@ const App = () => {
     const [country, setCountry] = useState('BR');
     const [timestamp, setTimestamp] = useState(format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'));
     const [limit, setLimit] = useState(20);
-    const [offset, setOffset] = useState(0);
+    const [offset, setOffset] = useState(1);
     const [search, setSearch] = useState('');
+    const [count, setCount] = React.useState(0);
 
     const [localeError, setLocaleError] = useState(false);
     const [countryError, setCountryError] = useState(false);
@@ -31,22 +33,28 @@ const App = () => {
     const dispatch = useDispatch();
     const fetchData = useCallback(async () => {
         if (!localeError && !limitError && !timestampError && !countryError && !offsetError) {
-            const response = await getPlaylists({ locale, country, timestamp, limit, offset });
+            const response = await getPlaylists({ locale, country, timestamp, limit, offset: (offset - 1) });
             const data = response.playlists.items;
 
             dispatch(list(data));
         }
     }, [localeError, limitError, timestampError, countryError, offsetError, locale, country, timestamp, limit, offset, dispatch]);
 
+    useInterval(() => {
+        if (count === 0) {
+            fetchData();
+        }
+        setCount(count + 1);
+    }, 1000);
+    
     useEffect(() => {
-        fetchData();
-        const timer = setInterval(fetchData, 30000);
-        return () => clearInterval(timer);
-    }, [fetchData]);
+        if (count === 30) {
+            setCount(0);
+        }
+    }, [count]);
 
     const onChangeFilter = field => async (e, target) => {
         const { value } = target || e.target;
-        console.log('oi kkkk');
 
         if (isValid(field, value)){
             if (field === 'locale') {
@@ -65,7 +73,7 @@ const App = () => {
                 setOffset(value);
                 setOffsetError(false);
             }
-            fetchData();
+            setCount(0);
         } else {
             if (field === 'locale') {
                 setLocale(value);

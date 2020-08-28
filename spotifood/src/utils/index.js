@@ -47,15 +47,15 @@ export function mountQueryString(params) {
 export function isValid(field, value) {
     switch(field) {
         case 'limit': 
-            return (typeof value === 'number') && (value < 1 && value > 50);
+            return value > 1 && value <= 50;
         case 'offset': 
-            return typeof value === 'number' && value > 0;
+            return value >= 0;
         case 'timestamp':
             return isValidDate(new Date(value));
         case 'locale':
-            return typeof value === 'string' && localeRegexTest(value)
+            return localeRegexTest(value)
         case 'country':
-            return typeof value === 'string' && countryRegexTest(value) && byIso(value);
+            return countryRegexTest(value) && byIso(value);
         default:
             return true;
     }
