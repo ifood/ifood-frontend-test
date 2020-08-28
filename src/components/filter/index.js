@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+
+import * as FilterService from '../../services/filter';
 
 import * as S from './styles';
 
-function Filter({ setFilteredPlaylist, playlists }) {
-    const findPlaylist = (term) => {
+function Filter({ playlists, setFilteredPlaylist }) {
+    const [filters, setFilters] = useState([]);
+
+    useEffect(() => {
+        const _getDataFilter = async () => {
+          const response = await FilterService.getFilters();
+          setFilters(response.filters);
+        }
+
+        _getDataFilter();
+    }, []);
+
+    const findPlaylist = (termToFind) => {
         const foundItem = playlists.filter((playlist) =>
-            playlist.name.toLowerCase().includes(term.toLowerCase())
+            playlist.name.toLowerCase().includes(termToFind.toLowerCase())
         );
         setFilteredPlaylist(foundItem);
     }

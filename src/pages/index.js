@@ -2,21 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { Playlists, Filter } from '../components';
 
-import * as FilterService from '../services/filter';
 import * as PlaylistService from '../services/playlist';
 
 function IndexPage() {
-  const [filters, setFilters] = useState([]);
   const [playlists, setPlayLists] = useState([]);
   const [titlePlaylist, setTitlePlaylist] = useState('');
   const [filteredPlaylist, setFilteredPlaylist] = useState([]);
 
   useEffect(() => {
-    const _getDataFilter = async () => {
-      const response = await FilterService.getFilters();
-      setFilters(response.filters);
-    }
-
     const _getDataPlaylist = async () => {
       const response = await PlaylistService.getPlaylist();
       setTitlePlaylist(response.message);
@@ -24,7 +17,6 @@ function IndexPage() {
       setFilteredPlaylist(response.playlists.items);
     }
 
-    _getDataFilter();
     _getDataPlaylist();
   }, []);
 
