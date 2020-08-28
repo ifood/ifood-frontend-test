@@ -4,12 +4,12 @@ const headers = {
     'Authorization': 'Bearer @ToDo: Insert OAuth Token'
 };
 
-const getPlaylist = async () => (
+const getPlaylist = async (parameters = '') => (
     (await axios.get(
-        'https://api.spotify.com/v1/browse/featured-playlists', { headers: headers }
+        `https://api.spotify.com/v1/browse/featured-playlists` + parameters, { headers: headers }
     )).data
 );
-  
-export{
-    getPlaylist
+
+export {
+    getPlaylist,
 } 
