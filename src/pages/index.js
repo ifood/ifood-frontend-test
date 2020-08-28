@@ -28,21 +28,10 @@ function IndexPage() {
     _getDataPlaylist();
   }, []);
 
-  const findPlaylist = (term) => {
-    const foundItem = playlists.filter((playlist) =>
-      playlist.name.toLowerCase().includes(term.toLowerCase())
-    );
-    setFilteredPlaylist(foundItem);
-  }
-
-  const handleChange = (event) => {
-    findPlaylist(event.target.value);
-  };
-
   return (
     <>
-      {filters.length > 0 &&
-        <Filter elements={filters} handleChange={handleChange} />
+      {filteredPlaylist.length > 0 &&
+        <Filter setFilteredPlaylist={setFilteredPlaylist} playlists={playlists} />
       }
       {playlists.length > 0 && titlePlaylist &&
         <Playlists list={filteredPlaylist} title={titlePlaylist} />
