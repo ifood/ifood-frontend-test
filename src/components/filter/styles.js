@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Menu = styled.div`
-  display: flex;
-  flex-direction: collunm;
 `;
 
 export const Search = styled.input`
@@ -12,4 +10,16 @@ export const Search = styled.input`
   padding: 5px;
   text-align: center;
   width: 100%;
+`;
+
+export const Filter = styled.div`
+`;
+
+export const Name = styled.p`
+`;
+
+export const Select = styled.select`
+`;
+
+export const Option = styled.option`
 `;

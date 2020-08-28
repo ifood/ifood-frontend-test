@@ -8,22 +8,28 @@ function IndexPage() {
   const [playlists, setPlayLists] = useState([]);
   const [titlePlaylist, setTitlePlaylist] = useState('');
   const [filteredPlaylist, setFilteredPlaylist] = useState([]);
+  const [parameters, setParameters] = useState('?');
 
   useEffect(() => {
-    const _getDataPlaylist = async () => {
-      const response = await PlaylistService.getPlaylist();
-      setTitlePlaylist(response.message);
-      setPlayLists(response.playlists.items);
-      setFilteredPlaylist(response.playlists.items);
-    }
+    _getDataPlaylist(parameters);
+  }, [parameters]);
 
-    _getDataPlaylist();
-  }, []);
+  const _getDataPlaylist = async (parameters) => {
+    const response = await PlaylistService.getPlaylist(parameters);
+    setTitlePlaylist(response.message);
+    setPlayLists(response.playlists.items);
+    setFilteredPlaylist(response.playlists.items);
+  }
 
   return (
     <>
       {playlists.length > 0 &&
-        <Filter setFilteredPlaylist={setFilteredPlaylist} playlists={playlists} />
+        <Filter 
+          parameters={parameters}
+          playlists={playlists}
+          setFilteredPlaylist={setFilteredPlaylist} 
+          setParameters={setParameters}
+        />
       }
       {playlists.length > 0 && titlePlaylist &&
         <Playlists list={filteredPlaylist} title={titlePlaylist} />

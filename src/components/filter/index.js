@@ -5,7 +5,7 @@ import * as FilterService from '../../services/filter';
 
 import * as S from './styles';
 
-function Filter({ playlists, setFilteredPlaylist }) {
+function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
     const [filters, setFilters] = useState([]);
 
     useEffect(() => {
@@ -17,15 +17,23 @@ function Filter({ playlists, setFilteredPlaylist }) {
         _getDataFilter();
     }, []);
 
-    const findPlaylist = (termToFind) => {
+    const _findPlaylist = (termToFind) => {
         const foundItem = playlists.filter((playlist) =>
             playlist.name.toLowerCase().includes(termToFind.toLowerCase())
         );
         setFilteredPlaylist(foundItem);
     }
 
-    const handleChange = (event) => {
-        findPlaylist(event.target.value);
+    const _handleChange = (event) => {
+        _findPlaylist(event.target.value);
+    };
+
+    const _mountParam = (event) => {
+        _concatParams(`&`+ event.target.id + `=` + event.target.value);
+    };
+
+    const _concatParams = (result) => {
+        setParameters(parameters.concat(result));
     };
 
     return (
@@ -33,17 +41,30 @@ function Filter({ playlists, setFilteredPlaylist }) {
             <S.Search 
                 id="search" 
                 name="search" 
-                onChange={handleChange}
+                onChange={_handleChange}
                 placeholder="O que você deseja ouvir?"
                 type="search" 
             />
+            {filters.length > 0 && filters.map((item) => item.values && (
+                <S.Filter key={item.id}>
+                    <S.Name>{item.name}</S.Name>
+                    <S.Select id={item.id} onChange={_mountParam} defaultValue="Selecionar">
+                        <S.Option value="Selecionar" disabled hidden>Selecionar</S.Option>
+                        {item.values.map((option) => (
+                            <S.Option key={option.value} value={option.value}>{option.name}</S.Option>
+                        ))}
+                    </S.Select>
+                </S.Filter>
+            ))}
         </S.Menu>
     );
 }
 
 Filter.propTypes = {
+    parameters: PropTypes.string.isRequired,
     playlists: PropTypes.array.isRequired,
     setFilteredPlaylist: PropTypes.func.isRequired,
+    setParameters: PropTypes.func.isRequired,
 };
 
 export default Filter;
