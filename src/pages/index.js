@@ -30,7 +30,7 @@ function IndexPage() {
 
   return (
     <>
-      {filteredPlaylist.length > 0 &&
+      {playlists.length > 0 &&
         <Filter setFilteredPlaylist={setFilteredPlaylist} playlists={playlists} />
       }
       {playlists.length > 0 && titlePlaylist &&
