@@ -32,7 +32,14 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
     };
 
     const mountParam = (event) => {
-        setParameters(`${parameters}&${event.target.id}=${event.target.value}`);
+        let property = event.target.id;
+        let value = event.target.value;
+
+        if(parameters.includes(property)) {
+            return setParameters(parameters.replace(/[a-z]*=(\w+)/g, `${property}=${value}`));
+        }
+
+        setParameters(`${parameters}&${property}=${value}`);
     };
 
     const resetParameters = () => {
@@ -64,7 +71,7 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
 
                     {item.validation && (
                         <Input
-                            defaultValue={item.id !== 'timestamp' ? '1' : null}
+                            defaultValue={item.id !== 'timestamp' ? 1 : null}
                             id={item.id}
                             max={item.validation.max}
                             min={item.validation.min}

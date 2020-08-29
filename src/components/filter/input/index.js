@@ -27,7 +27,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-    min: '0',
+    min: 0,
 };
 
 export default Input;
