@@ -52,7 +52,7 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
             {filters.length > 0 && filters.map((item) => (
                 <S.Filter key={item.id}>
                     <S.Name>{item.name}</S.Name>
-                    
+
                     {item.values && (
                         <Select 
                             defaultValue="Selecionar"
@@ -64,11 +64,12 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
 
                     {item.validation && (
                         <Input
+                            defaultValue={item.id !== 'timestamp' ? '1' : null}
                             id={item.id}
                             max={item.validation.max}
                             min={item.validation.min}
+                            mountParam={mountParam}
                             type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
-                            defaultValue={item.id !== 'timestamp' ? '1' : null}
                         />
                     )}
                 </S.Filter>
