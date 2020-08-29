@@ -18,7 +18,12 @@ Select.propTypes = {
     defaultValue: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     mountParam: PropTypes.func.isRequired,
-    values: PropTypes.array.isRequired,
+    values: PropTypes.arrayOf(
+        PropTypes.shape({
+          value: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
 };
 
 export default Select;
