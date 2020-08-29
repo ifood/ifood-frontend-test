@@ -49,30 +49,30 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
                 type="search" 
             />
 
-            {filters.length > 0 && filters.map((item) => item.values && (
+            {filters.length > 0 && filters.map((item) => (
                 <S.Filter key={item.id}>
                     <S.Name>{item.name}</S.Name>
-                    <Select 
-                        defaultValue="Selecionar"
-                        id={item.id}
-                        mountParam={mountParam}
-                        values={item.values}
-                    />
+                    
+                    {item.values && (
+                        <Select 
+                            defaultValue="Selecionar"
+                            id={item.id}
+                            mountParam={mountParam}
+                            values={item.values}
+                        />
+                    )}
+
+                    {item.validation && (
+                        <Input
+                            id={item.id}
+                            max={item.validation.max}
+                            min={item.validation.min}
+                            type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
+                            defaultValue={item.id !== 'timestamp' ? '1' : null}
+                        />
+                    )}
                 </S.Filter>
             ))}
-
-            {filters.length > 0 && filters.map((item) => item.validation && (
-                <S.Filter key={item.id}>
-                    <S.Name>{item.name}</S.Name>
-                    <Input
-                        id={item.id}
-                        max={item.validation.max}
-                        min={item.validation.min}
-                        type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
-                        defaultValue={item.id !== 'timestamp' ? '1' : null}
-                    />
-                </S.Filter>
-            ))} 
             <S.ResetButton onClick={resetParameters}>Resetar Filtros</S.ResetButton>
         </S.Menu>
     );
