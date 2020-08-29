@@ -18,7 +18,7 @@ function Input({ defaultValue, id, max, min, mountParam, type }) {
 }
 
 Input.propTypes = {
-    defaultValue: PropTypes.string,
+    defaultValue: PropTypes.number,
     id: PropTypes.string.isRequired,
     max: PropTypes.number,
     min: PropTypes.number,
