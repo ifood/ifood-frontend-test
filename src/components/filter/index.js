@@ -5,6 +5,8 @@ import * as FilterService from '../../services/filter';
 
 import * as S from './styles';
 
+import Select from './select';
+
 function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
     const [filters, setFilters] = useState([]);
 
@@ -28,7 +30,7 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
         _findPlaylist(event.target.value);
     };
 
-    const _mountParam = (event) => {
+    const mountParam = (event) => {
         setParameters(`${parameters}&${event.target.id}=${event.target.value}`);
     };
 
@@ -44,12 +46,12 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
             {filters.length > 0 && filters.map((item) => item.values && (
                 <S.Filter key={item.id}>
                     <S.Name>{item.name}</S.Name>
-                    <S.Select id={item.id} onChange={_mountParam} defaultValue="Selecionar">
-                        <S.Option value="Selecionar" disabled hidden>Selecionar</S.Option>
-                        {item.values.map((option) => (
-                            <S.Option key={option.value} value={option.value}>{option.name}</S.Option>
-                        ))}
-                    </S.Select>
+                    <Select 
+                        id={item.id}
+                        mountParam={mountParam}
+                        defaultValue="Selecionar"
+                        values={item.values}
+                    />
                 </S.Filter>
             ))}
         </S.Menu>

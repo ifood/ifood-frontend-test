@@ -17,9 +17,3 @@ export const Filter = styled.div`
 
 export const Name = styled.p`
 `;
-
-export const Select = styled.select`
-`;
-
-export const Option = styled.option`
-`;
