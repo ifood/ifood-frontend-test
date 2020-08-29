@@ -29,11 +29,7 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
     };
 
     const _mountParam = (event) => {
-        _concatParams(`&`+ event.target.id + `=` + event.target.value);
-    };
-
-    const _concatParams = (result) => {
-        setParameters(parameters.concat(result));
+        setParameters(`${parameters}&${event.target.id}=${event.target.value}`);
     };
 
     return (
