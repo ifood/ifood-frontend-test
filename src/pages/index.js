@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Playlists, Filter } from '../components';
+import { Filter, Playlists } from '../components';
 
 import * as PlaylistService from '../services/playlist';
 
@@ -9,13 +9,27 @@ function IndexPage() {
   const [titlePlaylist, setTitlePlaylist] = useState('');
   const [filteredPlaylist, setFilteredPlaylist] = useState([]);
   const [parameters, setParameters] = useState('?');
+  const [mustUpdate, setMustUpdate] = useState(false);
 
   useEffect(() => {
     _getDataPlaylist(parameters);
-  }, [parameters]);
+    _startTimeout();
+  }, [parameters, mustUpdate]);
 
   const _getDataPlaylist = async (parameters) => {
     const response = await PlaylistService.getPlaylist(parameters);
+
+    if(JSON.stringify(playlists) === JSON.stringify(response.playlists.items)) return;
+    _setInfos(response);
+  }
+
+  const _startTimeout = () => {
+    setTimeout(() => {
+      setMustUpdate(!mustUpdate);
+    }, 30000)
+  }
+
+  const _setInfos = (response) => {
     setTitlePlaylist(response.message);
     setPlayLists(response.playlists.items);
     setFilteredPlaylist(response.playlists.items);
