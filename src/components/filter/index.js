@@ -35,6 +35,10 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
         setParameters(`${parameters}&${event.target.id}=${event.target.value}`);
     };
 
+    const resetParameters = () => {
+        setParameters(`?`);
+    };
+
     return (
         <S.Menu>
             <S.Search 
@@ -65,10 +69,11 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
                         max={item.validation.max}
                         min={item.validation.min}
                         type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
-                        defaultValue={item.id === 'timestamp' ? null : '1'}
+                        defaultValue={item.id !== 'timestamp' ? '1' : null}
                     />
                 </S.Filter>
             ))} 
+            <S.ResetButton onClick={resetParameters}>Resetar Filtros</S.ResetButton>
         </S.Menu>
     );
 }

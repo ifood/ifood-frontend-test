@@ -17,3 +17,6 @@ export const Filter = styled.div`
 
 export const Name = styled.p`
 `;
+
+export const ResetButton = styled.button`
+`;

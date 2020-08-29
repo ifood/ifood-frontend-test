@@ -10,6 +10,7 @@ function Input({ defaultValue, id, max, min, type }) {
             id={id}
             max={max}
             min={min}
+            name={id}
             type={type}
         />
     );
