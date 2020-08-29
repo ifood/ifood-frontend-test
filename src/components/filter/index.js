@@ -6,6 +6,7 @@ import * as FilterService from '../../services/filter';
 import * as S from './styles';
 
 import Select from './select';
+import Input from './input';
 
 function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
     const [filters, setFilters] = useState([]);
@@ -43,17 +44,31 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
                 placeholder="O que você deseja ouvir?"
                 type="search" 
             />
+
             {filters.length > 0 && filters.map((item) => item.values && (
                 <S.Filter key={item.id}>
                     <S.Name>{item.name}</S.Name>
                     <Select 
+                        defaultValue="Selecionar"
                         id={item.id}
                         mountParam={mountParam}
-                        defaultValue="Selecionar"
                         values={item.values}
                     />
                 </S.Filter>
             ))}
+
+            {filters.length > 0 && filters.map((item) => item.validation && (
+                <S.Filter key={item.id}>
+                    <S.Name>{item.name}</S.Name>
+                    <Input
+                        id={item.id}
+                        max={item.validation.max}
+                        min={item.validation.min || '0'}
+                        type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
+                        defaultValue={item.id === 'timestamp' ? null : '1'}
+                    />
+                </S.Filter>
+            ))} 
         </S.Menu>
     );
 }
