@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // Components
-import { Input, Dropdown } from 'semantic-ui-react'
+import { Input, Dropdown, Grid } from 'semantic-ui-react'
 // Api
 import { getFilters } from '../../api';
 
@@ -26,61 +26,79 @@ const Filters = ({ filters, errors, search, onChange, onSearch }) => {
     const countryValues = countrys ? countrys.values.map((country, index) => ({ text: country.name, value: country.value, key: index })) : null;
 
     return(
-        <div className='header'>
-            <div className='filters'>
-                <Input
-                    label='Buscar'
-                    placeholder='Buscar'
-                    type='text'
-                    icon='search'
-                    value={search}
-                    onChange={onSearch}
-                />
-                <Dropdown
-                    options={localeValues}
-                    onChange={onChange('locale')}
-                    value={filters['locale']}
-                    error={errors['localeError']}
-                    placeholder='Locale'
-                    selection
-                    fluid
-                />
-                <Dropdown
-                    options={countryValues}
-                    onChange={onChange('country')}
-                    value={filters['country']}
-                    error={errors['countryError']}
-                    placeholder='País'
-                    selection
-                    fluid
-                />
-                <Input
-                    label='Data e Horário'
-                    type='datetime-local'
-                    step='1'
-                    value={filters['timestamp']}
-                    error={errors['timestampError']}
-                    onChange={onChange('timestamp')}
-                />
-                <Input
-                    label='Quantidade'
-                    type='number'
-                    value={filters['limit']}
-                    error={errors['limitError']}
-                    onChange={onChange('limit')}
-                    min={1}
-                    max={50}
-                />
-                <Input
-                    label='Página'
-                    type='number'
-                    value={filters['offset']}
-                    error={errors['offsetError']}
-                    onChange={onChange('offset')}
-                    min={1}
-                />
-            </div>
-        </div>
+        <Grid>
+            <Grid.Row columns='1' stretched style={{ padding: '1rem ', top: '1rem' }}>
+                <Grid.Column stretched>
+                    <Input
+                        placeholder='Buscar'
+                        type='text'
+                        icon='search'
+                        value={search}
+                        onChange={onSearch}
+                    />
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns='2' style={{ padding: '1rem 1rem 0 1rem' }}>
+                <Grid.Column>
+                    <Dropdown
+                        options={localeValues}
+                        onChange={onChange('locale')}
+                        value={filters['locale']}
+                        error={errors['localeError']}
+                        placeholder='Locale'
+                        selection
+                        fluid
+                    />
+                </Grid.Column>
+                <Grid.Column>
+                    <Dropdown
+                        options={countryValues}
+                        onChange={onChange('country')}
+                        value={filters['country']}
+                        error={errors['countryError']}
+                        placeholder='País'
+                        selection
+                        fluid
+                    />
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns='1' style={{ padding: '1rem 1rem 0 1rem' }}>
+                <Grid.Column stretched width='16'>
+                    <Input
+                        type='datetime-local'
+                        step='1'
+                        value={filters['timestamp']}
+                        error={errors['timestampError']}
+                        onChange={onChange('timestamp')}
+                    />
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns='2' style={{ padding: '1rem 1rem 0 1rem' }}>
+                <Grid.Column width='8' stretched>
+                    <label>Página</label>
+                    <Input
+                        // label='Página'
+                        type='number'
+                        value={filters['offset']}
+                        error={errors['offsetError']}
+                        onChange={onChange('offset')}
+                        min={1}
+                    />
+                </Grid.Column>
+                <Grid.Column width='8' stretched>
+                    <label>Quantidade</label>
+                    <Input
+                        // label='Itens'
+                        type='number'
+                        value={filters['limit']}
+                        error={errors['limitError']}
+                        onChange={onChange('limit')}
+                        min={1}
+                        max={50}
+                    />
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
     );
 };
 

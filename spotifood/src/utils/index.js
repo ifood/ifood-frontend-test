@@ -46,10 +46,12 @@ export function mountQueryString(params) {
  */
 export function isValid(field, value) {
     switch(field) {
-        case 'limit': 
-            return value > 1 && value <= 50;
+        case 'limit':
+            value = parseInt(value);
+            return value >= 1 && value <= 50;
         case 'offset': 
-            return value >= 0;
+            value = parseInt(value)
+            return value >= 1;
         case 'timestamp':
             return isValidDate(new Date(value));
         case 'locale':

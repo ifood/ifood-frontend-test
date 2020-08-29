@@ -111,7 +111,7 @@ const App = () => {
                 onChange={onChangeFilter}
                 onSearch={onChangeSearch} 
             />
-            {!isEmpty(lists) ? <List data={lists} /> : <div>Nenhuma playlist encontrada</div>}
+            {!isEmpty(lists) ? <List data={lists} /> : <div style={{ marginTop: '3rem' }}>Nenhuma playlist encontrada</div>}
         </div>
     );
 }

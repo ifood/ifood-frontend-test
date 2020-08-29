@@ -23,11 +23,12 @@ const INITIAL_STATE ={
 function playlist(state = INITIAL_STATE, action) {
     switch(action.type) {
         case `${TEMPLATE_NAME}_LIST`:
-            const data = [...action.data]; 
+            const data = action.data; 
             return { 
                 ...state, 
                 data,
                 filter: {
+                    ...state.filter,
                     data: filterData(data, state.filter.term),
                 }
             }
