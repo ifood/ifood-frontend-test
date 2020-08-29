@@ -63,7 +63,7 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
                     <Input
                         id={item.id}
                         max={item.validation.max}
-                        min={item.validation.min || '0'}
+                        min={item.validation.min}
                         type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
                         defaultValue={item.id === 'timestamp' ? null : '1'}
                     />
