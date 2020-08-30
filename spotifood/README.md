@@ -1,68 +1,77 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spotifood
 
-## Available Scripts
+This application was developed in response to the test for the frontend developer position at ifood.
 
-In the project directory, you can run:
+The requirements are described in [ifood-frontend-test](https://github.com/ifood/ifood-frontend-test).
 
-### `yarn start`
+## Acessibility
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+As a way to make the site more accessible, the following features were implemented:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [VLibras](https://www.vlibras.gov.br/), a plugin for translating the page into Libras;
+- Dark Mode;
+- Change font size;
 
-### `yarn test`
+## Runnig Application
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ```yarn install```, to install dependencies;
+- ```yarn start```, to run app;
+- ```yarn build```, to run build for deploy application;
 
-### `yarn build`
+## Architecture
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This app was developed with React Functional components with React Hooks.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+For structures was used:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **ReactJs**, lib frontend for develop application;
+- **SASS**, to create styles;
+- **Redux**, to manage the state of the application;
+- **React Hooks**, to manage the life cycle of components;
+- **React Router DOM**, to manage routers;
+- **React Router Redux**, to manage state of routers;
+- **Semantic UI React**, lib of frontend components; 
+- **Axios**, to fetch routes with promises; 
 
-### `yarn eject`
+## Folder Structure
+The folder structure is defined from the src folder which is the baseUrl.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+src
+  ├ api
+  | └ index.js
+  ├ components
+  | ├ Filters
+  | |   ├ index.js 
+  | |   └ index.scss
+  | ├ List
+  | |   ├ Card
+  | |   |   ├ index.js 
+  | |   |   └ index.scss
+  | |   ├ index.js 
+  | |   └ index.scss
+  | ├ NotFounded
+  | |   ├ index.js 
+  | |   └ index.scss
+  | ├ App.js
+  | └ App.scss
+  ├ redux
+  | ├ actions
+  | |   └ playlists.action.js
+  | ├ reducers
+  | |   ├ index.js 
+  | |   └ playlists.reducer.js
+  | └ store.js
+  ├ utils
+  | ├ index.js
+  | └ regex.js
+  └ index.js
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Problems found
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+When using Spotify's WEB-API I had problems with the return of locale and limit filters. I tried to use different types of authentication to solve it, but apparently the problem is with the API.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- ```locale``` does not return different objects in the request;
+- ```limit``` does not return more than 10 elements in the request;
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
