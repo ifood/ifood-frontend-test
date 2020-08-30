@@ -6,7 +6,7 @@ import { format } from 'date-fns'
 // Components
 import List from './List';
 import Filters from './Filters';
-import { Loader } from 'semantic-ui-react';
+import { Loader, Button } from 'semantic-ui-react';
 // Api
 import { getPlaylists } from '../api';
 // Redux
@@ -24,6 +24,7 @@ const App = () => {
     const [offset, setOffset] = useState(1);
     const [search, setSearch] = useState('');
     const [count, setCount] = useState(0);
+    let [fontSize, setFontSize] = useState(100);
 
     const [localeError, setLocaleError] = useState(false);
     const [countryError, setCountryError] = useState(false);
@@ -103,13 +104,49 @@ const App = () => {
         callSearch(value);
     }
 
+    const changeFontSize = action => () => {
+        const body = document.querySelector('body');
+        
+        if (action === 'increase') {
+            if (fontSize < 120) {
+                fontSize = fontSize + 10;
+                setFontSize(fontSize);
+                body.style.fontSize = fontSize + '%';
+            }
+        } else {
+            if (fontSize > 100) {
+                fontSize = fontSize - 10;
+                setFontSize(fontSize);
+                body.style.fontSize = fontSize + '%';
+            }
+        }
+    }
+
     const lists = useSelector(state => state.playlist.filter.data);
     const loading = useSelector(state => state.playlist.loading);
     return(
         <div className='page'>
-            <h1 className='title'>
-                Spotifood
-            </h1>
+            <div className='header'>
+                <h1 className='title'>
+                    Spotifood
+                </h1>
+                <div className='font-size'>
+                    <Button 
+                        className='font-size__button'
+                        size='mini'
+                        onClick={changeFontSize('increase')}
+                    >
+                        <span className='font-size__button-text'>+ A</span>
+                    </Button>
+                    <Button
+                        className='font-size__button'
+                        size='mini'
+                        onClick={changeFontSize('decrease')}
+                    >
+                        <span className='font-size__button-text'>- A</span>
+                    </Button>
+                </div>
+            </div>
             <Filters 
                 filters={{ locale, country, timestamp, limit, offset }}
                 errors={{ localeError, countryError, timestampError, limitError, offsetError }}
@@ -119,11 +156,11 @@ const App = () => {
             />
             {!isEmpty(lists) 
             ? <List data={lists} /> 
-            : <div style={{ marginTop: '3rem' }}>
+            : <div className='empty-list'>
                 <Loader active={loading} size='massive' className='loader' />
                 {!loading && 'Nenhuma playlist encontrada'}
             </div>}
-        </div>
+            </div>
     );
 }
 

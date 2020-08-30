@@ -14,28 +14,22 @@
 
     &__description {
         width: 50ch;
-        padding: 3ch;
+        padding: 2ch;
 
         &__name {
             padding-bottom: 0.3vh;
-            font-size: 18px;
+            font-size: 1.3em;
             font-weight: 500;
-        }
-
-        &__description {
-            font-size: 13px;
-            font-weight: 100;
-            font-style: italic;
         }
 
         &__owner {
             padding-top: 2vh;
-            font-size: 16px;
+            font-size: 1.1em;
             font-weight: 300;
         }
 
         &__tracks {
-            font-size: 16spx;
+            font-size: 1em;
             font-weight: 300;
         }
     }
@@ -79,13 +73,13 @@
     }
 }
 
-@media (max-width: 312px) {
+@media (max-width: 320px) {
     .card-playlist {
-        width: 45vh;
-        height: 16vh;
+        width: 52vh;
+        height: 17vh;
 
         &__image {
-            height: 16vh;
+            height: 17vh;
         }
     }
 }

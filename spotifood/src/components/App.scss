@@ -5,9 +5,32 @@
     justify-content: center;
     align-items: center;
 
-    .title {
-        font-size: 4rem;
-        margin: 1rem;
+    .header {
+        width: 100%;
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            margin: 1rem;
+        }
+
+        .font-size {
+            float: right;
+
+            &__button {
+                background-color: #e8e8e8;
+                padding: 0.5rem;
+                margin-right: 0.6rem;
+                &-text {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .empty-list {
+        margin-top: 3rem;
     }
 
     .ui.inverted.dimmer .ui.massive.loader, .ui.massive.loader {
