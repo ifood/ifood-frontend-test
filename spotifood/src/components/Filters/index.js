@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Components
 import { Input, Dropdown, Grid } from 'semantic-ui-react'
 // Api
-import { getFilters } from 'api/index';
+import { getFilters } from 'api';
 
 const Filters = ({ filters, errors, search, onChange, onSearch }) => {
     const [locale, setLocale] = useState();
