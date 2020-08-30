@@ -2,11 +2,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useInterval } from 'use-interval';
+import useDarkMode from 'use-dark-mode'
 import { format } from 'date-fns'
 // Components
 import List from './List';
 import Filters from './Filters';
-import { Loader, Button } from 'semantic-ui-react';
+import { Loader, Button, Icon, Label } from 'semantic-ui-react';
 // Api
 import { getPlaylists } from '../api';
 // Redux
@@ -124,27 +125,32 @@ const App = () => {
 
     const lists = useSelector(state => state.playlist.filter.data);
     const loading = useSelector(state => state.playlist.loading);
+    const darkMode = useDarkMode(false);
     return(
         <div className='page'>
             <div className='header'>
                 <h1 className='title'>
                     Spotifood
                 </h1>
-                <div className='font-size'>
+                <div className='acessibility-container'>
                     <Button 
-                        className='font-size__button'
+                        className='acessibility-container__button'
                         size='mini'
                         onClick={changeFontSize('increase')}
                     >
-                        <span className='font-size__button-text'>+ A</span>
+                        <span className='acessibility-container__button-text'>+ A</span>
                     </Button>
                     <Button
-                        className='font-size__button'
+                        className='acessibility-container__button'
                         size='mini'
                         onClick={changeFontSize('decrease')}
                     >
-                        <span className='font-size__button-text'>- A</span>
+                        <span className='acessibility-container__button-text'>- A</span>
                     </Button>
+                    
+                    <Label className='acessibility-container__dark-mode' onClick={darkMode.toggle}>
+                        <Icon name={darkMode.value ? 'lightbulb' : 'lightbulb outline'} />
+                    </Label>
                 </div>
             </div>
             <Filters 

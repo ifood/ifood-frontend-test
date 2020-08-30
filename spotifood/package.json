@@ -18,6 +18,7 @@
     "redux": "^4.0.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.2.1",
+    "use-dark-mode": "^2.3.1",
     "use-interval": "^1.2.1"
   },
   "scripts": {

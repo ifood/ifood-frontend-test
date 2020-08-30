@@ -1,3 +1,13 @@
+body.light-mode {
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+body.dark-mode {
+    background-color: #1a1919;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
 .page {
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -15,7 +25,7 @@
             margin: 1rem;
         }
 
-        .font-size {
+        .acessibility-container {
             float: right;
 
             &__button {
@@ -25,6 +35,17 @@
                 &-text {
                     font-size: 1rem;
                 }
+            }
+
+            &__dark-mode {
+                width: 22.5%;
+                padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+                cursor: pointer;
+                font-size: 1.1rem;
+            }
+
+            &__dark-mode:hover {
+                background-color: #cacbcd;
             }
         }
     }
