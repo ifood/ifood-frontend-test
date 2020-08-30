@@ -21,7 +21,7 @@ const App = () => {
     const [locale, setLocale] = useState('pt_BR');
     const [country, setCountry] = useState('BR');
     const [timestamp, setTimestamp] = useState(format(new Date(), 'yyyy-MM-dd') + 'T' + format(new Date(), 'HH:mm:ss'));
-    const [limit, setLimit] = useState(20);
+    const [limit, setLimit] = useState(10);
     const [offset, setOffset] = useState(1);
     const [search, setSearch] = useState('');
     const [count, setCount] = useState(0);
@@ -163,7 +163,7 @@ const App = () => {
             {!isEmpty(lists) 
             ? <List data={lists} /> 
             : <div className='empty-list'>
-                <Loader active={loading} size='massive' className='loader' />
+                <Loader active={loading} size='massive' inverted={darkMode.value} className='loader' />
                 {!loading && 'Nenhuma playlist encontrada'}
             </div>}
             </div>
