@@ -1,0 +1,60 @@
+body.light-mode {
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+body.dark-mode {
+    background-color: #1a1919;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+.page {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .header {
+        width: 100%;
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            margin: 1rem;
+        }
+
+        .acessibility-container {
+            float: right;
+
+            &__button {
+                background-color: #e8e8e8;
+                padding: 0.5rem;
+                margin-right: 0.6rem;
+                &-text {
+                    font-size: 1rem;
+                }
+            }
+
+            &__dark-mode {
+                width: 22.5%;
+                padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+                cursor: pointer;
+                font-size: 1.1rem;
+            }
+
+            &__dark-mode:hover {
+                background-color: #cacbcd;
+            }
+        }
+    }
+
+    .empty-list {
+        margin-top: 3rem;
+    }
+
+    .ui.inverted.dimmer .ui.massive.loader, .ui.massive.loader {
+        margin-top: 8rem;
+    }
+}
