@@ -2,7 +2,7 @@
 import { isValid as isValidDate } from 'date-fns';
 import { byIso } from 'country-code-lookup'
 // Regex
-import { localeRegexTest, countryRegexTest } from './regex';
+import { localeRegexTest, countryRegexTest, timeRegexTest } from './regex';
 
 /**
  * Function to define a string in a pattern to be used in all search inputs.
@@ -53,6 +53,10 @@ export function isValid(field, value) {
             value = parseInt(value)
             return value >= 1;
         case 'timestamp':
+            const time = value.split('T')[1];
+            if (!timeRegexTest(time)) {
+                return false;
+            }
             return isValidDate(new Date(value));
         case 'locale':
             return localeRegexTest(value)

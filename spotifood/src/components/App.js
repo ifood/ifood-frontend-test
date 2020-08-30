@@ -6,10 +6,11 @@ import { format } from 'date-fns'
 // Components
 import List from './List';
 import Filters from './Filters';
+import { Loader } from 'semantic-ui-react';
 // Api
 import { getPlaylists } from '../api';
 // Redux
-import { list, search as searchAction } from '../redux/actions/playslist.action';
+import { list, peding, search as searchAction } from '../redux/actions/playslist.action';
 // Utils
 import { isEmpty, isValid } from '../utils';
 // Stylesheets
@@ -33,6 +34,7 @@ const App = () => {
     const dispatch = useDispatch();
     const fetchData = useCallback(async () => {
         if (!localeError && !limitError && !timestampError && !countryError && !offsetError) {
+            dispatch(peding());
             const response = await getPlaylists({ locale, country, timestamp, limit, offset: (offset - 1) });
             const data = response.playlists.items;
 
@@ -102,8 +104,12 @@ const App = () => {
     }
 
     const lists = useSelector(state => state.playlist.filter.data);
+    const loading = useSelector(state => state.playlist.loading);
     return(
         <div className='page'>
+            <h1 className='title'>
+                Spotifood
+            </h1>
             <Filters 
                 filters={{ locale, country, timestamp, limit, offset }}
                 errors={{ localeError, countryError, timestampError, limitError, offsetError }}
@@ -111,7 +117,12 @@ const App = () => {
                 onChange={onChangeFilter}
                 onSearch={onChangeSearch} 
             />
-            {!isEmpty(lists) ? <List data={lists} /> : <div style={{ marginTop: '3rem' }}>Nenhuma playlist encontrada</div>}
+            {!isEmpty(lists) 
+            ? <List data={lists} /> 
+            : <div style={{ marginTop: '3rem' }}>
+                <Loader active={loading} size='massive' className='loader' />
+                {!loading && 'Nenhuma playlist encontrada'}
+            </div>}
         </div>
     );
 }

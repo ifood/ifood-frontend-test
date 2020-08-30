@@ -68,9 +68,9 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 347px) {
     .card-playlist {
-        width: 46vh;
+        width: 48vh;
         height: 18vh;
 
         &__image {
@@ -79,7 +79,18 @@
     }
 }
 
-@media (max-width: 330px) {
+@media (max-width: 312px) {
+    .card-playlist {
+        width: 45vh;
+        height: 16vh;
+
+        &__image {
+            height: 16vh;
+        }
+    }
+}
+
+@media (max-width: 300px) {
     .card-playlist {
         width: 43vh;
         height: 14vh;

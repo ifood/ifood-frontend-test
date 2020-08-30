@@ -14,6 +14,7 @@ const filterData = (data, term) => {
 
 const INITIAL_STATE ={
     data: [],
+    loading: false,
     filter: {
         data: [],
         term: '',
@@ -25,11 +26,20 @@ function playlist(state = INITIAL_STATE, action) {
         case `${TEMPLATE_NAME}_LIST`:
             const data = action.data; 
             return { 
-                ...state, 
+                ...state,
+                loading: false,
                 data,
                 filter: {
                     ...state.filter,
                     data: filterData(data, state.filter.term),
+                }
+            }
+        case `${TEMPLATE_NAME}_LIST_PEDING`:
+            return { 
+                ...state,
+                loading: true,
+                filter: {
+                    ...state.filter,
                 }
             }
         case `${TEMPLATE_NAME}_SEARCH`:

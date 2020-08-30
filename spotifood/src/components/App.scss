@@ -4,4 +4,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .title {
+        font-size: 4rem;
+        margin: 1rem;
+    }
+
+    .ui.inverted.dimmer .ui.massive.loader, .ui.massive.loader {
+        margin-top: 8rem;
+    }
 }

@@ -77,7 +77,6 @@ const Filters = ({ filters, errors, search, onChange, onSearch }) => {
                 <Grid.Column width='8' stretched>
                     <label>Página</label>
                     <Input
-                        // label='Página'
                         type='number'
                         value={filters['offset']}
                         error={errors['offsetError']}
@@ -88,7 +87,6 @@ const Filters = ({ filters, errors, search, onChange, onSearch }) => {
                 <Grid.Column width='8' stretched>
                     <label>Quantidade</label>
                     <Input
-                        // label='Itens'
                         type='number'
                         value={filters['limit']}
                         error={errors['limitError']}

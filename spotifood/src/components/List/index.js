@@ -28,6 +28,7 @@ const List = ({ data }) => {
 
 List.propTypes = {
     data: PropTypes.array,
+    loading: PropTypes.bool,
 }
 
 export default memo(List);
