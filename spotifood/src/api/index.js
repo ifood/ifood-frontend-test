@@ -19,54 +19,53 @@ const authOptions = {
     json: true,
 }
 
-module.exports = {
-    /**
+/**
+ * get filters list in mocky.io
+ * @returns {Array} filters
+ */
+export const getFilters = async () => {
+    const response = await axios.get('http://www.mocky.io/v2/5a25fade2e0000213aa90776');
+    
+    return response.data;
+};
+
+/**
      * get playlists with filters
      * @param {Array} filters 
      * @returns {Object} data
     */
-    async getPlaylists(filters = {}) {
-        return await new Promise((resolve, reject) => {
-            request.post(authOptions, function(error, response, body) {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve({ response, body });
-                }
-            });
-        }).then(data => {
-            const { response, body } = data;
-            if (response.statusCode === 200) {
-                // use the access token to access the Spotify Web API
-                const token = body.access_token;
-                const options = {
-                    url: `${baseUrl}${mountQueryString(filters)}`,
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    },
-                    json: true
-                };
-                return new Promise((resolve, reject) => {
-                    request.get(options, function(error, response, body) {
-                        if (error) {
-                            reject(error);
-                        } else {
-                            resolve(body);
-                        }
-                    });
-                });
+export const getPlaylists = async (filters = {}) => {
+    return await new Promise((resolve, reject) => {
+        request.post(authOptions, function(error, response, body) {
+            if (error) {
+                reject(error);
+            } else {
+                resolve({ response, body });
             }
-        }).catch(err => {
-            throw new Error(err.message);
-        })
-    },
-    /**
-     * get filters list in mocky.io
-     * @returns {Array} filters
-     */
-    async getFilters() {
-        const response = await axios.get('http://www.mocky.io/v2/5a25fade2e0000213aa90776');
-        
-        return response.data;
-    }
+        });
+    }).then(data => {
+        const { response, body } = data;
+        if (response.statusCode === 200) {
+            // use the access token to access the Spotify Web API
+            const token = body.access_token;
+            const options = {
+                url: `${baseUrl}${mountQueryString(filters)}`,
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                json: true
+            };
+            return new Promise((resolve, reject) => {
+                request.get(options, function(error, response, body) {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(body);
+                    }
+                });
+            });
+        }
+    }).catch(err => {
+        throw new Error(err.message);
+    })
 };
