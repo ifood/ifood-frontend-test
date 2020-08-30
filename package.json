@@ -12,7 +12,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "yarn clean && jest"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -23,6 +23,11 @@
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
+    "jest": "^26.4.2",
+    "prettier": "2.0.5",
+    "react-test-renderer": "^16.13.1"
   }
 }
