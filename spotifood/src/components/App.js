@@ -9,11 +9,11 @@ import List from './List';
 import Filters from './Filters';
 import { Loader, Button, Icon, Label } from 'semantic-ui-react';
 // Api
-import { getPlaylists } from '../api';
+import { getPlaylists } from 'api';
 // Redux
-import { list, peding, search as searchAction } from '../redux/actions/playslist.action';
+import { list, peding, search as searchAction } from 'redux/actions/playslist.action';
 // Utils
-import { isEmpty, isValid } from '../utils';
+import { isEmpty, isValid } from 'utils';
 // Stylesheets
 import './App.scss';
 
