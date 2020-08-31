@@ -73,9 +73,31 @@
     }
 }
 
+@media (max-width: 342px) {
+    .card-playlist {
+        width: 46vh;
+        height: 18vh;
+
+        &__image {
+            height: 18vh;
+        }
+    }
+}
+
+@media (max-width: 337px) {
+    .card-playlist {
+        width: 44vh;
+        height: 18vh;
+
+        &__image {
+            height: 18vh;
+        }
+    }
+}
+
 @media (max-width: 320px) {
     .card-playlist {
-        width: 52vh;
+        width: 43vh;
         height: 17vh;
 
         &__image {
