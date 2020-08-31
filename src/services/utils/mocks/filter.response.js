@@ -84,7 +84,7 @@ const filterResponseMock = [
 			"primitiveType": "INTEGER"
 		}
 	}
-]
+];
 
 export { 
 	filterResponseMock
