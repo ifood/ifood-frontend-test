@@ -1,0 +1,118 @@
+.card-playlist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 52vh;
+    height: 30vh;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+    &__image {
+        height: 30vh;
+    }
+
+    &__description {
+        width: 50ch;
+        padding: 2ch;
+
+        &__name {
+            padding-bottom: 0.3vh;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        &__owner {
+            padding-top: 2vh;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        &__tracks {
+            font-size: 1em;
+            font-weight: 300;
+        }
+    }
+
+}
+
+.card-playlist:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+@media (max-width: 380px) {
+    .card-playlist {
+        width: 50vh;
+        height: 25vh;
+
+        &__image {
+            height: 25vh;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .card-playlist {
+        width: 48vh;
+        height: 20vh;
+
+        &__image {
+            height: 20vh;
+        }
+    }
+}
+
+@media (max-width: 347px) {
+    .card-playlist {
+        width: 48vh;
+        height: 18vh;
+
+        &__image {
+            height: 18vh;
+        }
+    }
+}
+
+@media (max-width: 342px) {
+    .card-playlist {
+        width: 46vh;
+        height: 18vh;
+
+        &__image {
+            height: 18vh;
+        }
+    }
+}
+
+@media (max-width: 337px) {
+    .card-playlist {
+        width: 44vh;
+        height: 18vh;
+
+        &__image {
+            height: 18vh;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .card-playlist {
+        width: 43vh;
+        height: 17vh;
+
+        &__image {
+            height: 17vh;
+        }
+    }
+}
+
+@media (max-width: 300px) {
+    .card-playlist {
+        width: 43vh;
+        height: 14vh;
+
+        &__image {
+            height: 14vh;
+        }
+    }
+}

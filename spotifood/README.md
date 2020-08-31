@@ -70,7 +70,8 @@ src
 
 ## Problems found
 
-When using Spotify's WEB-API I had problems with the return of ```locale``` and ```limit``` filters. I tried to use different types of authentication to solve it, but apparently the problem is with the API.
+When using Spotify's WEB-API I had problems with the return of locale and limit filters. I tried to use different types of authentication to solve it, but apparently the problem is with the API.
 
 - ```locale``` does not return different objects in the request;
 - ```limit``` does not return more than 10 elements in the request;
+
