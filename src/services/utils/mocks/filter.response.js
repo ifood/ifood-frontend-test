@@ -86,4 +86,6 @@ const filterResponseMock = [
 	}
 ]
 
-export default filterResponseMock;
+export { 
+	filterResponseMock
+}

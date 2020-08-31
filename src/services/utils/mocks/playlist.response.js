@@ -338,5 +338,6 @@ const playlistResponseMocks = {
     "total" : 10
 };
 
-export default playlistResponseMocks;
-
+export {
+  playlistResponseMocks
+};
