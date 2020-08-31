@@ -1,23 +1,19 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react'
+import Header from './components/layouts/Header'
+import LandingPage from './container/LandingPage'
+import Button from './components/common/Button'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/'><Header button = {<Button/>} headersize='cover'/></Route>
+        <Route path='/playlists'> <LandingPage icon={<Icon className='arrow down' color='orange' size="big"/>} /> </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

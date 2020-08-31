@@ -1,0 +1,253 @@
+.header {
+    height: 55vh;
+    background-color: $color-primary;;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.6),
+        rgba($color-primary-dark, 2)),
+        url(../../images/music6.jpg);
+    background-size: cover;
+    background-position: right;
+    position: relative;
+
+    @include respond(phone) {
+        background-position: bottom;
+    }
+
+    &__text-box {
+        position: absolute;
+        color: white;
+        top: 40%;
+        left: 70%;
+        text-align: center;
+
+        &__spotifood{
+            color: rgb(247, 168, 23);
+        }
+
+        @include respond(phone) {
+            top: 40% !important;
+            left: 19% !important;
+        }
+
+        @include respond(tab-land) {
+            top: 40%;
+            left: 60%;
+          }
+      }
+    
+    &__login-btn{
+        background-color: $orange;
+        border: none;
+        padding: 10px;
+        color: white;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        position: relative;
+        top: 15px;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+.main-container{
+    width: 100% !important;
+    position: relative;
+}
+
+.playlists-container{
+    position: relative;
+    width: 70%;
+    top: -22rem;
+    left: 160px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include respond(phone) {
+        width: 100%;
+        top: 2rem;
+        left: 0;
+    }
+
+    @include respond(tab-port) {
+        width: 60%;
+    }
+}
+
+.playlist-card:first-child{
+    position: relative;
+    margin-top: 1rem !important;
+}
+
+.playlist-card:last-child{
+   height: 50%;;
+}
+
+.playlist-card{
+    margin-left: 1rem !important;
+    cursor: pointer;
+    @include respond(phone) {
+        width: 95% !important;
+        margin-left: 0.5rem !important;
+    }
+
+    @include respond(tab-port) {
+        width: 80% !important;
+    }
+
+    &__playlist-content{
+        padding: 2rem !important;
+        position: absolute;
+        color: rgb(228, 224, 224);
+        font-weight: 300;
+        transition: all .5s;
+        align-content: center;
+        left: 8%;
+        opacity: 0;
+        backface-visibility: hidden
+    }
+
+    &:hover &__playlist-content{
+        opacity: 1 !important;
+        transform: translate(0%, 40%);
+        align-content: center;
+
+        @include respond(phone) {
+            transform: translate(0%, 10%);
+        }
+    }
+    &:hover &__playlist-image{
+        filter: blur(4px) brightness(30%) !important;
+    }
+    
+}
+
+.playlist-name {
+    color: rgb(247, 168, 23);
+}
+
+.tracks{
+    color: rgb(247, 168, 23); 
+}
+
+.italic{
+    font-style: italic;
+}
+
+.quote{
+    font-size: 1.1rem;
+    @include respond(phone) {
+        text-align: center;
+    }
+}
+
+.cover{
+    height: 100vh;
+}
+
+.plyalist-filters {
+    position: relative;
+    width: 25%;
+    top: 2.5rem;
+    left: 1rem;
+    border: 1px solid #ccc;
+    padding: 2rem;
+
+    @include respond(phone) {
+        width: 95%;
+        margin-left: -0.4rem;
+    }
+
+    @include respond(tab-landt) {
+        width: 95%;
+    }
+}
+
+.filter-dropdown {
+    &:not(:first-child){
+        margin-top: 1.5rem;
+    }
+    color: gray !important;
+}
+
+.filter-dropdown::-webkit-input-placeholder{
+    color: gray !important;
+}
+
+.search-input-container {
+    position: relative;
+    width: 50%;
+    top: 2rem;
+    left: 33%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    @include respond(phone) {
+        width: 95%;
+        left: 1rem;
+    }
+}
+
+.search-input{
+    width: 85% !important;
+}
+
+.footer {
+    background-color: $color-grey-dark-3 !important;
+    padding: 10rem 0 !important;
+    font-size: 1.4rem !important;
+    color: $color-grey-light-1 !important;
+    padding: 5rem 0 !important;
+    display: flex;
+    justify-content: space-around;
+    margin-top: -190px;
+
+    @include respond(phone) {
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+
+    &__title{
+        width: 100% !important;
+
+        &__align-text{
+            text-align: center;
+            color: orange;
+        }
+    }
+
+    &__center-columns{
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    &__copyright{
+        font-size: 1.1rem;
+
+        @include respond(phone) {
+            margin-top: 2rem;
+            text-align: center;
+        }
+    }
+}
+
+.margin-left{
+    margin-left: 12px;
+}
+
+.filter-limit {
+    position: relative;
+    color: gray;
+    padding: 9px;
+    width: 100%;
+    border: 1px solid rgb(204, 204, 204);
+    outline: none;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+
+    &::-webkit-input-placeholder {
+        color: gray;
+    }
+}

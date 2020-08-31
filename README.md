@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is Spotifood application.<br />
+It retrieves playlists from spotify API.
 
-## Available Scripts
+## Get started
 
-In the project directory, you can run:
+### `Clone the repository`
+
+`git clone https://github.com/Joe-Joseph/ifood-frontend-test.git`<br />
+cd into the root directory of the appliaction.
+
+### `npm install`
+
+Install dependencies
 
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3006](http://localhost:3006) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The page will reload if you make edits.
 
-### `npm test`
+### `Pattern and architecture details`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I used containers and components pattern where I fetch all the data inside the container and pass them to components via props.
 
-### `npm run build`
+ - React <br/>
+    I choose react as it was recommended. Beside that, it is a popular and powerfull libraly for building single page web applications.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ - Redux <br/>
+    I used Redux for managing my application state, even if it was not really necessary.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+ - semantic_ui_react <br/>
+    It is very good libraly for react application, and it has a very good documentation I used some components from their.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ - SASS <br/>
+    Sass is a preprocessor scripting language that is compiled into Cascading Style Sheets.
+    Sass makes life easier as it allows us to nest our css selector the same way our html are nested.
+    it also helps to write functions in css and declare reusable varibales.
