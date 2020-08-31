@@ -1,0 +1,58 @@
+.header {
+    height: 70vh;
+    background-color: $color-primary;;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.6),
+        rgba($color-primary-dark, 2)),
+        url(../../images/music6.jpg);
+    background-size: cover;
+    background-position: right;
+    position: relative;
+
+    @include respond(phone) {
+        background-position: bottom;
+        // width: 23.6rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        color: white;
+        top: 40%;
+        left: 70%;
+        text-align: center;
+
+        @include respond(phone) {
+            top: 60% !important;
+            left: 19% !important;
+        }
+
+        @include respond(tab-land) {
+            top: 40%;
+            left: 60%;
+          }
+      }
+}
+
+.menu-item{
+    color: white !important;
+}
+
+.playlists-container{
+    position: relative;
+    left: 6%;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.playlist-content{
+    padding: 2rem !important;
+}
+
+.playlist-card{
+    // box-sizing: border-box;
+    display: inline-block !important;
+    margin-left: 1rem !important;
+}
