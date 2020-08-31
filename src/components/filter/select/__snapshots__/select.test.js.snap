@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Component should to be match Snapshot 1`] = `
+<select
+  className="sc-AxjAm fDEmJb"
+  defaultValue="Click"
+  id="id-test"
+  onChange={[MockFunction]}
+>
+  <option
+    className="sc-AxirZ dqVvws"
+    disabled={true}
+    hidden={true}
+    value="Click"
+  >
+    Click
+  </option>
+  <option
+    className="sc-AxirZ dqVvws"
+    value="en_AU"
+  >
+    en_AU
+  </option>
+  <option
+    className="sc-AxirZ dqVvws"
+    value="de_DE"
+  >
+    de_DE 
+  </option>
+  <option
+    className="sc-AxirZ dqVvws"
+    value="pt_BR"
+  >
+    pt_BR
+  </option>
+  <option
+    className="sc-AxirZ dqVvws"
+    value="fr_FR"
+  >
+    fr_FR
+  </option>
+  <option
+    className="sc-AxirZ dqVvws"
+    value="en_US"
+  >
+    en_US
+  </option>
+  <option
+    className="sc-AxirZ dqVvws"
+    value="es_AR"
+  >
+    es_AR
+  </option>
+</select>
+`;
