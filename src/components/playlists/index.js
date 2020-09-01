@@ -11,10 +11,11 @@ function Playlists({ list, title }) {
             <S.Text>{title}</S.Text>
             {list.map((item) => (
                 <Card 
-                    key={item.id}
-                    title={item.name}
+                    background={item.images[0].url}
                     description={item.description}
                     href={item.external_urls.spotify}
+                    key={item.id}
+                    title={item.name}
                 />
             ))}
         </S.Container>

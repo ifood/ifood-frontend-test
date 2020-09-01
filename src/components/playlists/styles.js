@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: block;
+  text-align: center;
 `;
 
 export const Text = styled.h2`
-  font-size: 14px;
+  font-family: Arial;
+  font-size: 24px;
 `;
 
 export const Title = styled.p`
