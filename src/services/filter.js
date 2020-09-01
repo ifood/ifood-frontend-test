@@ -6,6 +6,8 @@ export const getFilters = async () => {
   const result = await axios.get(FILTER_API, {
     headers: {
       "Access-Control-Allow-Origin": "*",
+      Origin: "http://localhost:3000",
+      Referer: "http://localhost:3000/",
     },
   });
   return result.data;
