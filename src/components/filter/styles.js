@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Menu = styled.div`
+  margin-top: 60px;
 `;
 
 export const Search = styled.input`
@@ -8,14 +9,26 @@ export const Search = styled.input`
   margin: 10px 0;
   outline: none;
   padding: 5px;
+  position: fixed;
   text-align: center;
-  width: 100%;
+  top: 10px;
+  width: calc(100vw - 30px);
+`;
+
+export const Filters = styled.section`
+  align-items: center;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
 `;
 
 export const Filter = styled.div`
 `;
 
 export const Name = styled.p`
+  margin: 0 0 5px;
 `;
 
 export const ResetButton = styled.button`

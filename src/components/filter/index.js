@@ -35,7 +35,9 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
         let property = event.target.id;
         let value = event.target.value;
 
-        if(parameters.includes(property)) {
+        if (property === 'timestamp') value = value.concat(":00");
+        
+        if (parameters.includes(property)) {
             return setParameters(parameters.replace(/[a-z]*=(\w+)/g, `${property}=${value}`));
         }
 
@@ -56,32 +58,33 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
                 type="search" 
             />
 
-            {filters.length > 0 && filters.map((item) => (
-                <S.Filter key={item.id}>
-                    <S.Name>{item.name}</S.Name>
+            <S.Filters>
+                {filters.length > 0 && filters.map((item) => (
+                    <S.Filter key={item.id}>
+                        <S.Name>{item.name}</S.Name>
 
-                    {item.values && (
-                        <Select 
-                            defaultValue="Selecionar"
-                            id={item.id}
-                            mountParam={mountParam}
-                            values={item.values}
-                        />
-                    )}
+                        {item.values && (
+                            <Select 
+                                defaultValue="Selecionar"
+                                id={item.id}
+                                mountParam={mountParam}
+                                values={item.values}
+                            />
+                        )}
 
-                    {item.validation && (
-                        <Input
-                            defaultValue={item.id !== 'timestamp' ? 1 : null}
-                            id={item.id}
-                            max={item.validation.max}
-                            min={item.validation.min}
-                            mountParam={mountParam}
-                            type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
-                        />
-                    )}
-                </S.Filter>
-            ))}
-            <S.ResetButton onClick={resetParameters}>Resetar Filtros</S.ResetButton>
+                        {item.validation && (
+                            <Input
+                                defaultValue={item.id !== 'timestamp' ? 1 : null}
+                                id={item.id}
+                                max={item.validation.max}
+                                min={item.validation.min}
+                                mountParam={mountParam}
+                                type={item.validation.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
+                            />
+                        )}
+                    </S.Filter>
+                ))}
+            </S.Filters>
         </S.Menu>
     );
 }
