@@ -43,4 +43,9 @@ export const Name = styled.p`
 `;
 
 export const ResetButton = styled.button`
+  cursor: pointer;
+  border-radius: 20px;
+  bottom: 40px;
+  padding: 15px 10px;
+  position: absolute;
 `;

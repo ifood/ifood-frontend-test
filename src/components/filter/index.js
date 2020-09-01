@@ -85,6 +85,7 @@ function Filter({ parameters, playlists, setFilteredPlaylist, setParameters }) {
                     </S.Filter>
                 ))}
             </S.Filters>
+            <S.ResetButton onClick={resetParameters}>Resetar Filtros</S.ResetButton>
         </S.Menu>
     );
 }
