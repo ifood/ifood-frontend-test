@@ -1,0 +1,45 @@
+{
+  "author": "Lucas Anderson Lima",
+  "name": "spotifood",
+  "description": "iFood Frontend Test",
+  "private": true,
+  "version": "0.1.0",
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "yarn clean && jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "axios": "^0.20.0",
+    "gatsby": "^2.24.47",
+    "gatsby-plugin-react-helmet": "^3.3.10",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "npm:@hot-loader/react-dom",
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-links": "^6.0.21",
+    "@storybook/react": "^6.0.21",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
+    "jest": "^26.4.2",
+    "prettier": "2.0.5",
+    "react-is": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
+  }
+}
