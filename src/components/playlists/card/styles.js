@@ -1,20 +1,25 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    border: 1px solid #000;
-    font-size: 14px;
-    margin: 10px;
-    padding: 10px;
-`;
-
-export const Title = styled.p`
-  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin: 10px;
+  text-align: center;
+  width: 175px;
 `;
 
 export const Description = styled.p`
   font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 175px;
 `;
 
-export const Anchor = styled.a`
-  color: #4a4a4a;
+
+export const Banner = styled.img`
+  border-radius: 15px 0 20px 10px;
+  height: 165px;
+  width: 165px;
 `;

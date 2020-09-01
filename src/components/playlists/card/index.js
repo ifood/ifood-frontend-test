@@ -4,21 +4,24 @@ import PropTypes from 'prop-types';
 import * as S from './styles';
 
 function Card({
-    title,
+    background,
     description,
-    href
+    href,
  }) {
+    const _openPlaylist = () => (
+        window.open(href, '_blank')
+    );
+
     return (
-        <S.Container>
-            <S.Title>{ title }</S.Title>
+        <S.Container onClick={_openPlaylist}>
+            <S.Banner src={background} />
             <S.Description>{ description }</S.Description>
-            <S.Anchor href={href} target="_blank">Click</S.Anchor>
         </S.Container>
     );
 }
 
 Card.propTypes = {
-    title: PropTypes.string.isRequired,
+    background: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
 };
