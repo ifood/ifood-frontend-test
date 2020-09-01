@@ -18,7 +18,7 @@ export const Search = styled.input`
 
 export const Filters = styled.section`
   align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #fff;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -38,6 +38,7 @@ export const Filter = styled.div`
 `;
 
 export const Name = styled.p`
+  color: #fff;
   margin: 0 0 5px;
 `;
 
