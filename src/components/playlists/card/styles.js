@@ -18,6 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Description = styled.p`
+  color: #fff;
   font-size: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
