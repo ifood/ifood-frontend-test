@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Filter, Playlists } from '../components';
+import Layout from '../layout';
 
 import * as PlaylistService from '../services/playlist';
 
@@ -36,7 +37,7 @@ function IndexPage() {
   }
 
   return (
-    <>
+    <Layout>
       {playlists.length > 0 &&
         <Filter 
           parameters={parameters}
@@ -48,7 +49,7 @@ function IndexPage() {
       {playlists.length > 0 && titlePlaylist &&
         <Playlists list={filteredPlaylist} title={titlePlaylist} />
       }
-    </>
+    </Layout>
   );
 } 
 
