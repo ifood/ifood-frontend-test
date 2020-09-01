@@ -8,7 +8,6 @@ export default {
     title: 'Components/Select',
     component: Select,
     argTypes: {
-      backgroundColor: { control: 'color' },
       defaultValue: 'Click',
       id: 'id-test',
       values: filterResponseMock[0].values

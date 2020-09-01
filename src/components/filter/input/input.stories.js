@@ -6,7 +6,6 @@ export default {
     title: 'Components/Input',
     component: Input,
     argTypes: {
-      backgroundColor: { control: 'color' },
       id: 'id-test',
       type: 'text'
     },
@@ -16,9 +15,9 @@ const Template = (args) => <Input {...args} />;
 
 export const DefaultText = Template.bind({});
 DefaultText.args = {
-    defaultValue: 'Default Value',
-    id: 'id-test',
-    type: 'text'
+  defaultValue: 'Default Value',
+  id: 'id-test',
+  type: 'text'
 };
 
 export const DefaultNumber = Template.bind({});

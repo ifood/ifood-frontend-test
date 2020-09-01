@@ -8,7 +8,6 @@ export default {
     title: 'Components/Filter',
     component: Filter,
     argTypes: {
-      backgroundColor: { control: 'color' },
       parameters: '?',
       playlists: playlistResponseMocks
     },
