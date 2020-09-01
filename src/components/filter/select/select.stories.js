@@ -2,7 +2,7 @@ import React from 'react';
 
 import Select from '.';
 
-import { selectDateResponse } from '../../../services/utils/mocks/filter.response';
+import { filterResponseMock } from '../../../services/utils/mocks/filter.response';
 
 export default {
     title: 'Components/Select',
@@ -11,7 +11,7 @@ export default {
       backgroundColor: { control: 'color' },
       defaultValue: 'Click',
       id: 'id-test',
-      values: selectDateResponse[0].values
+      values: filterResponseMock[0].values
     },
 };
 
@@ -21,5 +21,5 @@ export const Default = Template.bind({});
 Default.args = {
   defaultValue: 'Click',
   id: 'id-test',
-  values: selectDateResponse[0].values
+  values: filterResponseMock[0].values
 };
