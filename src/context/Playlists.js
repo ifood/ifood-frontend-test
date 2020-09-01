@@ -4,16 +4,22 @@ import { getFeaturePlaylists } from "../services/spotify";
 export const PlaylistsStateContext = React.createContext();
 export const PlaylistsDispatchContext = React.createContext();
 
-//usar arrowfunctions
-
 const initialState = {
   featuredPlaylist: {},
+  loading: false,
+  error: "",
 };
 
 function playlistsReducer(state = initialState, action) {
   switch (action.type) {
-    case "load": {
+    case "LOADING": {
+      return { ...state, loading: action.payload };
+    }
+    case "LOAD": {
       return { featuredPlaylist: action.payload };
+    }
+    case "ERROR": {
+      return { ...state, error: action.payload };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -33,12 +39,19 @@ function PlaylistsProvider({ children }) {
 }
 
 async function loadPlaylists(dispatch, selectedFilters) {
-  try {
-    const featuredPlaylist = await getFeaturePlaylists(selectedFilters);
-    dispatch({ type: "load", payload: featuredPlaylist });
-  } catch (error) {
-    // dispatch({ type: "fail update", error });
-  }
+  getFeaturePlaylists(selectedFilters)
+    .then((data) => {
+      console.log(data);
+      dispatch({ type: "LOAD", payload: data.data });
+      dispatch({ type: "LOADING", payload: false });
+    })
+    .catch((error) => {
+      dispatch({ type: "LOADING", payload: false });
+      dispatch({
+        type: "ERROR",
+        payload: error?.response?.data?.error?.message,
+      });
+    });
 }
 
 export { PlaylistsProvider, loadPlaylists };

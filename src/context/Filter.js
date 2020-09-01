@@ -6,10 +6,14 @@ export const FilterDispatchContext = React.createContext();
 const initialState = {
   filters: [],
   selectedFilters: [],
+  loading: false,
 };
 
 function FilterReducer(state = initialState, action) {
   switch (action.type) {
+    case "LOADING": {
+      return { ...state, loading: action.payload };
+    }
     case "LOAD": {
       return { ...state, filters: action.payload.filters };
     }
@@ -42,8 +46,10 @@ function FilterProvider({ children }) {
 
 async function loadFilter(dispatch) {
   try {
+    dispatch({ type: "LOADING", payload: true });
     const filters = await getFilters();
     dispatch({ type: "LOAD", payload: filters });
+    dispatch({ type: "LOADING", payload: false });
   } catch (error) {
     // dispatch({ type: "fail update", error });
   }

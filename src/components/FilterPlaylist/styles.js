@@ -10,7 +10,7 @@ const show = keyframes`
   to {
     transform: scale(1);
     opacity: 1;
-      z-index:2;
+    z-index:2;
   }
 `;
 
@@ -29,6 +29,7 @@ const hide = keyframes`
 export const Container = styled.div`
   position: fixed;
   width: 40rem;
+  min-height: 20rem;
   background: #222934;
   right: 0;
   color: #fff;

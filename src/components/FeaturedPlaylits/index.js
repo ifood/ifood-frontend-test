@@ -17,9 +17,13 @@ import {
   PLaylistImage,
   PlayerImage,
 } from "./styles";
+import Loading from "../Loading";
+import Error from "../Error";
 
 const FeaturedPlaylits = () => {
-  const { featuredPlaylist } = useContext(PlaylistsStateContext);
+  const { featuredPlaylist, loading, error } = useContext(
+    PlaylistsStateContext
+  );
   const dispatch = useContext(PlaylistsDispatchContext);
   const [name, setName] = useState("");
 
@@ -34,6 +38,7 @@ const FeaturedPlaylits = () => {
   }, [selectedFilters, dispatch]);
 
   useEffect(() => {
+    dispatch({ type: "LOADING", payload: true });
     loadPlaylists(dispatch, selectedFilters);
   }, [selectedFilters, dispatch]);
 
@@ -47,33 +52,45 @@ const FeaturedPlaylits = () => {
     );
   };
 
-  // console.log(featuredPlaylist);
+  console.log(error);
   return (
     <Container>
-      <Title>{featuredPlaylist?.message}</Title>
-      <FilterByName
-        type="text"
-        placeholder="Filtrar por nome..."
-        onChange={(event) => setName(event.target.value)}
-      />
-      <Playlists>
-        {playlistsByName(name) &&
-          playlistsByName(name).map((playlist) => (
-            <Playlist key={playlist?.id}>
-              <a
-                href={playlist.external_urls.spotify}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <PLaylistImage
-                  src={playlist.images[0].url}
-                  alt={`${playlist.name} playlist image`}
-                />
-                <PlayerImage src={AlbumPlay} alt="player icon" />
-              </a>
-            </Playlist>
-          ))}
-      </Playlists>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {error && error !== "" ? (
+            <Error message={error} />
+          ) : (
+            <div>
+              <Title>{featuredPlaylist?.message}</Title>
+              <FilterByName
+                type="text"
+                placeholder="Filtrar por nome..."
+                onChange={(event) => setName(event.target.value)}
+              />
+              <Playlists>
+                {playlistsByName(name) &&
+                  playlistsByName(name).map((playlist) => (
+                    <Playlist key={playlist?.id}>
+                      <a
+                        href={playlist.external_urls.spotify}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <PLaylistImage
+                          src={playlist.images[0].url}
+                          alt={`${playlist.name} playlist image`}
+                        />
+                        <PlayerImage src={AlbumPlay} alt="player icon" />
+                      </a>
+                    </Playlist>
+                  ))}
+              </Playlists>
+            </div>
+          )}
+        </>
+      )}
     </Container>
   );
 };

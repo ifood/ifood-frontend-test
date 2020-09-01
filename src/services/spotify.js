@@ -53,11 +53,11 @@ export const getFeaturePlaylists = async (filters) => {
   const { access_token } = await getToken();
   const query = getQuery(filters);
 
-  const result = await axios.get(`${FEATURED_PLAYLISTS_API}${query}`, {
+  return axios.get(`${FEATURED_PLAYLISTS_API}${query}`, {
     headers: {
       Authorization: "Bearer " + access_token,
     },
   });
 
-  return result.data;
+  // return result.data;
 };

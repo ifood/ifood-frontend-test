@@ -32,6 +32,8 @@ export const FilterByName = styled.input`
   outline: none;
   margin: 0 auto;
   margin-bottom: 2rem;
+  display: flex;
+  justify-self: center;
 
   @media(max-width: 450px){
     width: 100%;
