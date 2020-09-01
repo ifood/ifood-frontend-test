@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { desktop, mobile } from '../../services/utils/styles/media-queries';
 
 export const Menu = styled.div`
   margin-top: 60px;
@@ -22,6 +23,15 @@ export const Filters = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
+
+  ${mobile} {
+    align-items: normal;
+    flex-direction: column;
+  }
+
+  ${desktop} {
+    flex-direction: row;
+  }
 `;
 
 export const Filter = styled.div`
