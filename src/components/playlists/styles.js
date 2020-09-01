@@ -6,6 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.h2`
+  color: #fff;
   font-family: Arial;
   font-size: 24px;
 `;
