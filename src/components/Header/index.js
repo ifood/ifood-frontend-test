@@ -16,9 +16,11 @@ const Header = () => {
         </Brand>
 
         <FilterButton
+          aria-label={isVisible ? "Fechar Filtro" : "Abrir Filtro"}
           src={filter}
           alt="filter image"
           role="button"
+          tabIndex="0"
           title="Filtro"
           onClick={() => setIsVisible(!isVisible)}
           active={isVisible}

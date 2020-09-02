@@ -52,7 +52,6 @@ const FeaturedPlaylits = () => {
     );
   };
 
-  console.log(error);
   return (
     <Container>
       {loading ? (
@@ -67,6 +66,7 @@ const FeaturedPlaylits = () => {
               <FilterByName
                 type="text"
                 placeholder="Filtrar por nome..."
+                aria-label="playlistName"
                 onChange={(event) => setName(event.target.value)}
               />
               <Playlists>

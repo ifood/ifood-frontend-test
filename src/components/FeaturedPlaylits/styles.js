@@ -11,7 +11,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-size: 3rem;
   text-align: center;
   font-weight: 900;

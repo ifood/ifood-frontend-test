@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   color: #ffffff;
-  font-size: 6rem;
+  font-size: 4.4rem;
   padding-bottom: 2rem;
 `;
 
@@ -21,6 +21,6 @@ export const Text = styled.p`
 `;
 
 export const ErrorMessage = styled.span`
-  color: #333943;
+  color: ${(props) => (props.color ? props.color : "#333943")};
   font-size: 2rem;
 `;

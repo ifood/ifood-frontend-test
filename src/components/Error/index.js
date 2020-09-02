@@ -2,14 +2,16 @@ import React from "react";
 
 import { Container, Title, Text, ErrorMessage } from "./styles";
 
-const Error = ({ message }) => {
+const Error = ({ message, color }) => {
   return (
-    <Container>
+    <Container role="alert" aria-live="assertive">
       <div>
-        <Title>Sorry :(</Title>
+        <Title aria-label="Desculpe. icone com carinha triste">
+          Desculpe :(
+        </Title>
         <Text>
-          Looks like something went wrong:{" "}
-          <ErrorMessage>{message}</ErrorMessage>
+          Encontramos um erro <br />
+          <ErrorMessage color={color}>{message}</ErrorMessage>
         </Text>
       </div>
     </Container>

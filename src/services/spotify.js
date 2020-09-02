@@ -58,6 +58,4 @@ export const getFeaturePlaylists = async (filters) => {
       Authorization: "Bearer " + access_token,
     },
   });
-
-  // return result.data;
 };

@@ -2,11 +2,13 @@ import React from "react";
 import { getFilters } from "../services/filter";
 export const FilterStateContext = React.createContext();
 export const FilterDispatchContext = React.createContext();
+export const errorMessage = "Não foi possível carregar os campos de filtro!";
 
 const initialState = {
   filters: [],
-  selectedFilters: [],
+  selectedFilters: [{ locale: "pt_BR" }],
   loading: false,
+  error: "",
 };
 
 function FilterReducer(state = initialState, action) {
@@ -18,7 +20,6 @@ function FilterReducer(state = initialState, action) {
       return { ...state, filters: action.payload.filters };
     }
     case "UPDATE_SELECTED_FILTER": {
-      console.log(action.payload);
       return {
         ...state,
         selectedFilters: {
@@ -26,6 +27,9 @@ function FilterReducer(state = initialState, action) {
           ...action.payload,
         },
       };
+    }
+    case "ERROR": {
+      return { ...state, error: action.payload };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -48,10 +52,15 @@ async function loadFilter(dispatch) {
   try {
     dispatch({ type: "LOADING", payload: true });
     const filters = await getFilters();
+
     dispatch({ type: "LOAD", payload: filters });
     dispatch({ type: "LOADING", payload: false });
   } catch (error) {
-    // dispatch({ type: "fail update", error });
+    dispatch({ type: "LOADING", payload: false });
+    dispatch({
+      type: "ERROR",
+      payload: errorMessage,
+    });
   }
 }
 

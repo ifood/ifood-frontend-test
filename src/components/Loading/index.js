@@ -4,7 +4,7 @@ import { Spinner, BounceOne, BounceTwo, BounceThree } from "./styles";
 
 const Loading = () => {
   return (
-    <Spinner>
+    <Spinner data-testid="loading">
       <BounceOne />
       <BounceTwo />
       <BounceThree />

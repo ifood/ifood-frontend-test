@@ -41,7 +41,6 @@ function PlaylistsProvider({ children }) {
 async function loadPlaylists(dispatch, selectedFilters) {
   getFeaturePlaylists(selectedFilters)
     .then((data) => {
-      console.log(data);
       dispatch({ type: "LOAD", payload: data.data });
       dispatch({ type: "LOADING", payload: false });
     })
