@@ -1,3 +1,5 @@
+![Spotifood CI](https://github.com/willanysilva/ifood-frontend-test/workflows/Spotifood%20CI/badge.svg)
+
 # iFood Frontend Test
 
 Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
