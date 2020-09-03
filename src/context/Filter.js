@@ -1,12 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
+import moment from "moment";
+
 import { getFilters } from "../services/filter";
 export const FilterStateContext = React.createContext();
 export const FilterDispatchContext = React.createContext();
 export const errorMessage = "Não foi possível carregar os campos de filtro!";
 
+const now = moment().format("YYYY-MM-DDTHH:mm:ss");
+
 const initialState = {
   filters: [],
-  selectedFilters: [{ locale: "pt_BR" }],
+  selectedFilters: {
+    country: "BR",
+    limit: "50",
+    locale: "pt_BR",
+    offset: "1",
+    timestamp: now,
+  },
   loading: false,
   error: "",
 };
@@ -47,6 +58,10 @@ function FilterProvider({ children }) {
     </FilterStateContext.Provider>
   );
 }
+
+FilterProvider.propTypes = {
+  children: PropTypes.node,
+};
 
 async function loadFilter(dispatch) {
   try {

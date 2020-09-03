@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import {
   loadFilter,
   FilterStateContext,
@@ -14,7 +15,7 @@ import { Container, Header, Title, XIcon, Fields } from "./styles";
 import Loading from "../Loading";
 import Error from "../Error";
 
-export default function FilterPlaylist({ active, setIsVisible }) {
+const FilterPlaylist = ({ active, setIsVisible }) => {
   const { filters, selectedFilters, loading, error } = useContext(
     FilterStateContext
   );
@@ -55,37 +56,46 @@ export default function FilterPlaylist({ active, setIsVisible }) {
           {error && error !== "" ? (
             <Error message={errorMessage} color="#bf75b3" />
           ) : (
-            <Fields>
-              <Select field={locale} value={selectedFilters?.locale} />
+            selectedFilters && (
+              <Fields>
+                <Select field={locale} value={selectedFilters.locale} />
 
-              <Select field={country} value={selectedFilters?.country} />
+                <Select field={country} value={selectedFilters.country} />
 
-              <Input
-                field={timestamp}
-                type="datetime-local"
-                value={selectedFilters?.timestamp}
-                step="1"
-                place
-                holder="yyyy-mm-ddThh:mm:ss"
-              />
+                <Input
+                  field={timestamp}
+                  type="datetime-local"
+                  value={selectedFilters.timestamp}
+                  step="1"
+                  place
+                  holder="yyyy-mm-ddThh:mm:ss"
+                />
 
-              <Input
-                field={limit}
-                type="number"
-                min={limit?.validation?.min}
-                max={limit?.validation?.max}
-                value={selectedFilters?.limit}
-              />
+                <Input
+                  field={limit}
+                  type="number"
+                  min={limit && limit.validation.min}
+                  max={limit && limit.validation.max}
+                  value={selectedFilters.limit}
+                />
 
-              <Input
-                field={offset}
-                type="number"
-                value={selectedFilters?.offset}
-              />
-            </Fields>
+                <Input
+                  field={offset}
+                  type="number"
+                  value={selectedFilters.offset}
+                />
+              </Fields>
+            )
           )}
         </>
       )}
     </Container>
   );
-}
+};
+
+FilterPlaylist.propTypes = {
+  active: PropTypes.bool,
+  setIsVisible: PropTypes.func,
+};
+
+export default FilterPlaylist;

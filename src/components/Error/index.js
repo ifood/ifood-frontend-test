@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { Container, Title, Text, ErrorMessage } from "./styles";
 
@@ -16,6 +17,11 @@ const Error = ({ message, color }) => {
       </div>
     </Container>
   );
+};
+
+Error.propTypes = {
+  message: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default Error;

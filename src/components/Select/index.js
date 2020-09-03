@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { FilterDispatchContext } from "../../context/Filter";
 
 import { Container, SelectField, Label } from "./styles";
@@ -31,6 +32,11 @@ const Select = ({ field, value }) => {
       )}
     </Container>
   );
+};
+
+Select.propTypes = {
+  field: PropTypes.object,
+  value: PropTypes.string,
 };
 
 export default Select;

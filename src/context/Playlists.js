@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { getFeaturePlaylists } from "../services/spotify";
 
 export const PlaylistsStateContext = React.createContext();
@@ -38,6 +39,10 @@ function PlaylistsProvider({ children }) {
   );
 }
 
+PlaylistsProvider.propTypes = {
+  children: PropTypes.node,
+};
+
 async function loadPlaylists(dispatch, selectedFilters) {
   getFeaturePlaylists(selectedFilters)
     .then((data) => {
@@ -48,7 +53,7 @@ async function loadPlaylists(dispatch, selectedFilters) {
       dispatch({ type: "LOADING", payload: false });
       dispatch({
         type: "ERROR",
-        payload: error?.response?.data?.error?.message,
+        payload: error.response.data.error.message,
       });
     });
 }

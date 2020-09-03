@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { FilterDispatchContext } from "../../context/Filter";
 
 import { Container, Label, InputField } from "./styles";
@@ -26,6 +27,12 @@ const Input = ({ field, type, value, ...rest }) => {
       )}
     </Container>
   );
+};
+
+Input.propTypes = {
+  field: PropTypes.object,
+  type: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default Input;

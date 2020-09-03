@@ -61,33 +61,35 @@ const FeaturedPlaylits = () => {
           {error && error !== "" ? (
             <Error message={error} />
           ) : (
-            <div>
-              <Title>{featuredPlaylist?.message}</Title>
-              <FilterByName
-                type="text"
-                placeholder="Filtrar por nome..."
-                aria-label="playlistName"
-                onChange={(event) => setName(event.target.value)}
-              />
-              <Playlists>
-                {playlistsByName(name) &&
-                  playlistsByName(name).map((playlist) => (
-                    <Playlist key={playlist?.id}>
-                      <a
-                        href={playlist.external_urls.spotify}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <PLaylistImage
-                          src={playlist.images[0].url}
-                          alt={`${playlist.name} playlist image`}
-                        />
-                        <PlayerImage src={AlbumPlay} alt="player icon" />
-                      </a>
-                    </Playlist>
-                  ))}
-              </Playlists>
-            </div>
+            featuredPlaylist && (
+              <div>
+                <Title>{featuredPlaylist.message}</Title>
+                <FilterByName
+                  type="text"
+                  placeholder="Filtrar por nome..."
+                  aria-label="playlistName"
+                  onChange={(event) => setName(event.target.value)}
+                />
+                <Playlists>
+                  {playlistsByName(name) &&
+                    playlistsByName(name).map((playlist) => (
+                      <Playlist key={playlist.id}>
+                        <a
+                          href={playlist.external_urls.spotify}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <PLaylistImage
+                            src={playlist.images[0].url}
+                            alt={`${playlist.name} playlist image`}
+                          />
+                          <PlayerImage src={AlbumPlay} alt="player icon" />
+                        </a>
+                      </Playlist>
+                    ))}
+                </Playlists>
+              </div>
+            )
           )}
         </>
       )}
