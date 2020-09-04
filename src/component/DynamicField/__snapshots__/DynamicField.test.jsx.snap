@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DynamicField /> snapshot 1`] = `
+<Memo(DynamicField)
+  metadata={
+    Object {
+      "id": "limit",
+      "name": "Quantidade",
+      "validation": Object {
+        "max": 50,
+        "min": 1,
+        "primitiveType": "INTEGER",
+      },
+    }
+  }
+>
+  <Field
+    fieldId="limit"
+    label="Quantidade"
+  >
+    <FormField>
+      <div
+        className="field"
+      >
+        <label
+          htmlFor="limit"
+        >
+          Quantidade
+        </label>
+        <input
+          id="limit"
+          max={50}
+          min={1}
+          onChange={[Function]}
+          placeholder="Quantidade"
+          type="number"
+          value=""
+        />
+      </div>
+    </FormField>
+  </Field>
+</Memo(DynamicField)>
+`;

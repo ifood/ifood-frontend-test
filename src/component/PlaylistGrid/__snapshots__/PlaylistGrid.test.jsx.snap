@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistGrid /> snapshot with items 1`] = `
+<Memo(PlaylistGrid)
+  items={
+    Array [
+      Object {
+        "id": "id",
+      },
+    ]
+  }
+  title="Grid"
+>
+  <Memo(Grid)
+    itemRenderer={[Function]}
+    items={
+      Array [
+        Object {
+          "id": "id",
+        },
+      ]
+    }
+    title="Grid"
+  >
+    <h1>
+      Grid
+    </h1>
+    <styled.div
+      columnMinWidth="200px"
+    >
+      <div
+        className="sc-AxirZ dTTMwR"
+      >
+        <Playlist
+          key="id"
+          playlist={
+            Object {
+              "id": "id",
+            }
+          }
+        >
+          <Styled(Card)
+            fluid={true}
+            onClick={[Function]}
+          >
+            <Card
+              className="sc-AxjAm ihGEoy"
+              fluid={true}
+              onClick={[Function]}
+            >
+              <a
+                className="ui fluid card sc-AxjAm ihGEoy"
+                onClick={[Function]}
+              >
+                <Image
+                  as="img"
+                  src="DefaultPlaylistImage.jpg"
+                  ui={false}
+                  wrapped={true}
+                >
+                  <div
+                    className="image"
+                  >
+                    <img
+                      src="DefaultPlaylistImage.jpg"
+                    />
+                  </div>
+                </Image>
+                <CardContent>
+                  <div
+                    className="content"
+                  >
+                    <CardHeader>
+                      <div
+                        className="header"
+                      />
+                    </CardHeader>
+                    <CardDescription>
+                      <div
+                        className="description"
+                      >
+                        <span
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                        />
+                      </div>
+                    </CardDescription>
+                  </div>
+                </CardContent>
+              </a>
+            </Card>
+          </Styled(Card)>
+        </Playlist>
+      </div>
+    </styled.div>
+  </Memo(Grid)>
+</Memo(PlaylistGrid)>
+`;
+
+exports[`<PlaylistGrid /> snapshot without items 1`] = `
+<Memo(PlaylistGrid)>
+  <Info
+    icon="search"
+    info="intl::choose.filters.message"
+    title="intl::no.playlist"
+  >
+    <Segment
+      placeholder={true}
+    >
+      <div
+        className="ui placeholder segment"
+      >
+        <Header
+          icon={true}
+        >
+          <div
+            className="ui icon header"
+          >
+            <Icon
+              as="i"
+              name="search"
+            >
+              <i
+                aria-hidden="true"
+                className="search icon"
+                onClick={[Function]}
+              />
+            </Icon>
+            intl::no.playlist
+          </div>
+        </Header>
+        <SegmentInline>
+          <div
+            className="inline"
+          >
+            intl::choose.filters.message
+          </div>
+        </SegmentInline>
+      </div>
+    </Segment>
+  </Info>
+</Memo(PlaylistGrid)>
+`;

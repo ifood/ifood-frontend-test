@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Info /> snapshot 1`] = `
+<Info
+  icon="content"
+  info="Some important info"
+  title="Info title"
+>
+  <Segment
+    placeholder={true}
+  >
+    <div
+      className="ui placeholder segment"
+    >
+      <Header
+        icon={true}
+      >
+        <div
+          className="ui icon header"
+        >
+          <Icon
+            as="i"
+            name="content"
+          >
+            <i
+              aria-hidden="true"
+              className="content icon"
+              onClick={[Function]}
+            />
+          </Icon>
+          Info title
+        </div>
+      </Header>
+      <SegmentInline>
+        <div
+          className="inline"
+        >
+          Some important info
+        </div>
+      </SegmentInline>
+    </div>
+  </Segment>
+</Info>
+`;

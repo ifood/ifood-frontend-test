@@ -1,0 +1,488 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter /> snapshot 1`] = `
+<Memo(Filter)
+  filter={
+    Object {
+      "age": "50",
+      "number": "1",
+    }
+  }
+  metadata={
+    Array [
+      Object {
+        "id": "number",
+        "name": "Number",
+        "validation": Object {
+          "primitiveType": "INTEGER",
+        },
+      },
+    ]
+  }
+>
+  <styled.div>
+    <div
+      className="sc-AxiKw dddXJj"
+    >
+      <Styled(Input)
+        icon={true}
+        placeholder="intl::search"
+      >
+        <Input
+          className="sc-AxhUy hdEpwk"
+          icon={true}
+          placeholder="intl::search"
+          type="text"
+        >
+          <div
+            className="ui icon input sc-AxhUy hdEpwk"
+          >
+            <input
+              key=".0"
+              onChange={[Function]}
+              placeholder="intl::search"
+              type="text"
+            />
+            <Icon
+              as="i"
+              key=".1"
+              name="search"
+            >
+              <i
+                aria-hidden="true"
+                className="search icon"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </Input>
+      </Styled(Input)>
+      <styled.div>
+        <div
+          className="sc-AxhCb eZZuqN"
+        >
+          <Button
+            as="button"
+            basic={true}
+            circular={true}
+            icon="filter"
+            onClick={[Function]}
+          >
+            <Ref
+              innerRef={
+                Object {
+                  "current": <button
+                    class="ui basic circular icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="filter icon"
+                    />
+                  </button>,
+                }
+              }
+            >
+              <RefFindNode
+                innerRef={
+                  Object {
+                    "current": <button
+                      class="ui basic circular icon button"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="filter icon"
+                      />
+                    </button>,
+                  }
+                }
+              >
+                <button
+                  className="ui basic circular icon button"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    as="i"
+                    name="filter"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="filter icon"
+                      onClick={[Function]}
+                    />
+                  </Icon>
+                </button>
+              </RefFindNode>
+            </Ref>
+          </Button>
+          <FilterModal
+            filter={
+              Object {
+                "age": "50",
+                "number": "1",
+              }
+            }
+            metadata={
+              Array [
+                Object {
+                  "id": "number",
+                  "name": "Number",
+                  "validation": Object {
+                    "primitiveType": "INTEGER",
+                  },
+                },
+              ]
+            }
+            onClose={[Function]}
+            onSubmit={[Function]}
+            open={false}
+          >
+            <Modal
+              centered={false}
+              closeOnDimmerClick={true}
+              closeOnDocumentClick={false}
+              dimmer={true}
+              eventPool="Modal"
+              onClose={[Function]}
+              open={false}
+              size="tiny"
+            >
+              <Portal
+                closeOnDocumentClick={false}
+                closeOnEscape={true}
+                eventPool="Modal"
+                mountNode={<body />}
+                onClose={[Function]}
+                onMount={[Function]}
+                onOpen={[Function]}
+                onUnmount={[Function]}
+                open={false}
+                openOnTriggerClick={true}
+              />
+            </Modal>
+          </FilterModal>
+        </div>
+      </styled.div>
+    </div>
+  </styled.div>
+  <TagList
+    formatter={[Function]}
+    items={
+      Array [
+        Object {
+          "field": "Number",
+          "id": "number",
+          "value": "1",
+        },
+        Object {
+          "field": "age",
+          "id": "age",
+          "value": "50",
+        },
+      ]
+    }
+    onDeleteTag={[Function]}
+    title="intl::filters"
+  >
+    <span>
+      intl::filters
+      :
+    </span>
+    <styled.div>
+      <div
+        className="sc-AxirZ jNiLqD"
+      >
+        <Tag
+          field="Number"
+          id="number"
+          key="number"
+          onDelete={[Function]}
+          value="1"
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm jjomar"
+            >
+              <Button
+                as="div"
+                labelPosition="left"
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <div
+                        class="ui left labeled button"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="ui basic label"
+                        >
+                          Number
+                          : 
+                          1
+                        </div>
+                        <button
+                          class="ui icon button"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="remove icon"
+                          />
+                        </button>
+                      </div>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <div
+                          class="ui left labeled button"
+                          role="button"
+                          tabindex="0"
+                        >
+                          <div
+                            class="ui basic label"
+                          >
+                            Number
+                            : 
+                            1
+                          </div>
+                          <button
+                            class="ui icon button"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="remove icon"
+                            />
+                          </button>
+                        </div>,
+                      }
+                    }
+                  >
+                    <div
+                      className="ui left labeled button"
+                      onClick={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <Label
+                        basic={true}
+                      >
+                        <div
+                          className="ui basic label"
+                          onClick={[Function]}
+                        >
+                          Number
+                          : 
+                          1
+                        </div>
+                      </Label>
+                      <Button
+                        as="button"
+                        icon={true}
+                        onClick={[Function]}
+                      >
+                        <Ref
+                          innerRef={
+                            Object {
+                              "current": <button
+                                class="ui icon button"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="remove icon"
+                                />
+                              </button>,
+                            }
+                          }
+                        >
+                          <RefFindNode
+                            innerRef={
+                              Object {
+                                "current": <button
+                                  class="ui icon button"
+                                >
+                                  <i
+                                    aria-hidden="true"
+                                    class="remove icon"
+                                  />
+                                </button>,
+                              }
+                            }
+                          >
+                            <button
+                              className="ui icon button"
+                              onClick={[Function]}
+                            >
+                              <Icon
+                                as="i"
+                                name="remove"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="remove icon"
+                                  onClick={[Function]}
+                                />
+                              </Icon>
+                            </button>
+                          </RefFindNode>
+                        </Ref>
+                      </Button>
+                    </div>
+                  </RefFindNode>
+                </Ref>
+              </Button>
+            </div>
+          </styled.div>
+        </Tag>
+        <Tag
+          field="age"
+          id="age"
+          key="age"
+          onDelete={[Function]}
+          value="50"
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm jjomar"
+            >
+              <Button
+                as="div"
+                labelPosition="left"
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <div
+                        class="ui left labeled button"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="ui basic label"
+                        >
+                          age
+                          : 
+                          50
+                        </div>
+                        <button
+                          class="ui icon button"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="remove icon"
+                          />
+                        </button>
+                      </div>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <div
+                          class="ui left labeled button"
+                          role="button"
+                          tabindex="0"
+                        >
+                          <div
+                            class="ui basic label"
+                          >
+                            age
+                            : 
+                            50
+                          </div>
+                          <button
+                            class="ui icon button"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="remove icon"
+                            />
+                          </button>
+                        </div>,
+                      }
+                    }
+                  >
+                    <div
+                      className="ui left labeled button"
+                      onClick={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <Label
+                        basic={true}
+                      >
+                        <div
+                          className="ui basic label"
+                          onClick={[Function]}
+                        >
+                          age
+                          : 
+                          50
+                        </div>
+                      </Label>
+                      <Button
+                        as="button"
+                        icon={true}
+                        onClick={[Function]}
+                      >
+                        <Ref
+                          innerRef={
+                            Object {
+                              "current": <button
+                                class="ui icon button"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="remove icon"
+                                />
+                              </button>,
+                            }
+                          }
+                        >
+                          <RefFindNode
+                            innerRef={
+                              Object {
+                                "current": <button
+                                  class="ui icon button"
+                                >
+                                  <i
+                                    aria-hidden="true"
+                                    class="remove icon"
+                                  />
+                                </button>,
+                              }
+                            }
+                          >
+                            <button
+                              className="ui icon button"
+                              onClick={[Function]}
+                            >
+                              <Icon
+                                as="i"
+                                name="remove"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="remove icon"
+                                  onClick={[Function]}
+                                />
+                              </Icon>
+                            </button>
+                          </RefFindNode>
+                        </Ref>
+                      </Button>
+                    </div>
+                  </RefFindNode>
+                </Ref>
+              </Button>
+            </div>
+          </styled.div>
+        </Tag>
+      </div>
+    </styled.div>
+  </TagList>
+</Memo(Filter)>
+`;

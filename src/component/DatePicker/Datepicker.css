@@ -1,0 +1,4 @@
+/* This is needed because react-datepicker does not suporte styling */
+.datepicker--fluid {
+  width: 100%;
+}

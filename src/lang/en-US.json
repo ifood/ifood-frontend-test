@@ -1,0 +1,20 @@
+{
+  "search": "Search",
+  "filter": "Filter",
+  "filters": "Filters",
+  "loading": "Loading",
+  "cancel": "Cancel",
+  "filter.submit": "Submit",
+  "playlists": "Playlists",
+  "featured.playlists": "Featured playlists",
+  "login.on.spotify": "Login on Spotify",
+  "login.message": "Hello, log in with your Spotify account to access amazing Playlists.",
+  "playlist.tracks": "{n} {n, plural, one {track} other {tracks}}",
+  "time": "Time",
+  "datetime.placeholder": "ex: 12/22/2020, 12:00 AM",
+  "no.playlist": "No Playlist found",
+  "choose.filters.message": "Choose new filters to find amazing playlists",
+  "ops": "Ops!",
+  "disclaimer": "Spotifood is not a real brand and has no commercial purposes, all of its content belongs to Spotify. The creation and use of the brand are limited to this app, which has the sole purpose of being a technical test",
+  "disclaimer.data": "We don't store any Spotify data"
+}

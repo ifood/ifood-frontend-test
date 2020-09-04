@@ -1,0 +1,20 @@
+{
+  "search": "Pesquisa",
+  "filter": "Filtro",
+  "filters": "Filtros",
+  "loading": "Carregando",
+  "cancel": "Cancelar",
+  "filter.submit": "Filtrar",
+  "playlists": "Playlists",
+  "featured.playlists": "Playlists em destaque",
+  "login.on.spotify": "Faça login no Spotify",
+  "login.message": "Olá, faça login com sua conta do Spotify para acessar Playlists incríveis.",
+  "playlist.tracks": "{n} {n, plural, one {música} other {músicas}}",
+  "time": "Horário",
+  "datetime.placeholder": "ex: 22/12/2020, 00:00",
+  "no.playlist": "Nenhuma Playlist encontrada",
+  "choose.filters.message": "Escolha novos filtros para encontrar playlists incríveis",
+  "ops": "Ops!",
+  "disclaimer": "Spotifood não é uma marca real e não possui fins comerciais, todo seu conteúdo pertence ao Spotify. A criação e uso da marca limita-se à esse app, que tem como única finalidade ser um teste técnico",
+  "disclaimer.data": "Não armazenamos dados do Spotify"
+}

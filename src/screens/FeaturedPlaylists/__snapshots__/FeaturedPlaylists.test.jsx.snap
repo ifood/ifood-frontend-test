@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FeaturedPlaylists /> snapshot 1`] = `
+<FeaturedPlaylists>
+  <styled.div>
+    <div
+      className="sc-fzokOt kuOybX"
+    >
+      <Header>
+        <styled.header>
+          <header
+            className="sc-fznyAO Wnbwo"
+          >
+            <styled.h1>
+              <h1
+                className="sc-fznKkj bTYONO"
+              >
+                <styled.img
+                  alt="Spotifood logo"
+                  src="logo.png"
+                >
+                  <img
+                    alt="Spotifood logo"
+                    className="sc-fznZeY fDeeBe"
+                    src="logo.png"
+                  />
+                </styled.img>
+              </h1>
+            </styled.h1>
+          </header>
+        </styled.header>
+      </Header>
+      <styled.main>
+        <main
+          className="sc-Axmtr iTXiqD"
+        >
+          <Memo(Filter)
+            filter={null}
+            metadata={Array []}
+            onFilter={[Function]}
+            onTextChange={[Function]}
+          >
+            <styled.div>
+              <div
+                className="sc-AxhUy eBYwie"
+              >
+                <Styled(Input)
+                  icon={true}
+                  placeholder="intl::search"
+                >
+                  <Input
+                    className="sc-AxheI jlkZqc"
+                    icon={true}
+                    placeholder="intl::search"
+                    type="text"
+                  >
+                    <div
+                      className="ui icon input sc-AxheI jlkZqc"
+                    >
+                      <input
+                        key=".0"
+                        onChange={[Function]}
+                        placeholder="intl::search"
+                        type="text"
+                      />
+                      <Icon
+                        as="i"
+                        key=".1"
+                        name="search"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="search icon"
+                          onClick={[Function]}
+                        />
+                      </Icon>
+                    </div>
+                  </Input>
+                </Styled(Input)>
+                <styled.div>
+                  <div
+                    className="sc-AxgMl jCkrga"
+                  >
+                    <Button
+                      as="button"
+                      basic={true}
+                      circular={true}
+                      icon="filter"
+                      onClick={[Function]}
+                    >
+                      <Ref
+                        innerRef={
+                          Object {
+                            "current": <button
+                              class="ui basic circular icon button"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="filter icon"
+                              />
+                            </button>,
+                          }
+                        }
+                      >
+                        <RefFindNode
+                          innerRef={
+                            Object {
+                              "current": <button
+                                class="ui basic circular icon button"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="filter icon"
+                                />
+                              </button>,
+                            }
+                          }
+                        >
+                          <button
+                            className="ui basic circular icon button"
+                            onClick={[Function]}
+                          >
+                            <Icon
+                              as="i"
+                              name="filter"
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="filter icon"
+                                onClick={[Function]}
+                              />
+                            </Icon>
+                          </button>
+                        </RefFindNode>
+                      </Ref>
+                    </Button>
+                    <FilterModal
+                      filter={null}
+                      metadata={Array []}
+                      onClose={[Function]}
+                      onSubmit={[Function]}
+                      open={false}
+                    >
+                      <Modal
+                        centered={false}
+                        closeOnDimmerClick={true}
+                        closeOnDocumentClick={false}
+                        dimmer={true}
+                        eventPool="Modal"
+                        onClose={[Function]}
+                        open={false}
+                        size="tiny"
+                      >
+                        <Portal
+                          closeOnDocumentClick={false}
+                          closeOnEscape={true}
+                          eventPool="Modal"
+                          mountNode={<body />}
+                          onClose={[Function]}
+                          onMount={[Function]}
+                          onOpen={[Function]}
+                          onUnmount={[Function]}
+                          open={false}
+                          openOnTriggerClick={true}
+                        />
+                      </Modal>
+                    </FilterModal>
+                  </div>
+                </styled.div>
+              </div>
+            </styled.div>
+            <TagList
+              formatter={[Function]}
+              items={null}
+              onDeleteTag={[Function]}
+              title="intl::filters"
+            />
+          </Memo(Filter)>
+          <Loading>
+            <Dimmer
+              active={true}
+              inverted={true}
+            >
+              <DimmerInner
+                active={true}
+                inverted={true}
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <div
+                        class="ui active transition visible inverted dimmer"
+                        style="display: flex;"
+                      >
+                        <div
+                          class="content"
+                        >
+                          <div
+                            class="ui inverted text loader"
+                          />
+                        </div>
+                      </div>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <div
+                          class="ui active transition visible inverted dimmer"
+                          style="display: flex;"
+                        >
+                          <div
+                            class="content"
+                          >
+                            <div
+                              class="ui inverted text loader"
+                            />
+                          </div>
+                        </div>,
+                      }
+                    }
+                  >
+                    <div
+                      className="ui active transition visible inverted dimmer"
+                      onClick={[Function]}
+                    >
+                      <div
+                        className="content"
+                      >
+                        <Loader
+                          inverted={true}
+                        >
+                          <div
+                            className="ui inverted text loader"
+                          >
+                            <FormattedMessage
+                              id="loading"
+                            />
+                          </div>
+                        </Loader>
+                      </div>
+                    </div>
+                  </RefFindNode>
+                </Ref>
+              </DimmerInner>
+            </Dimmer>
+          </Loading>
+        </main>
+      </styled.main>
+      <Footer>
+        <styled.footer>
+          <footer
+            className="sc-AxmLO eyYpJA"
+          >
+            <styled.div>
+              <div
+                className="sc-fzozJi cBaOqJ"
+              >
+                <styled.div>
+                  <div
+                    className="sc-fzoLsD eCAhqh"
+                  >
+                    <styled.img
+                      alt="Spotifood logo"
+                      src="logo-icon.png"
+                    >
+                      <img
+                        alt="Spotifood logo"
+                        className="sc-fzpans kgyVqc"
+                        src="logo-icon.png"
+                      />
+                    </styled.img>
+                  </div>
+                </styled.div>
+                <styled.div>
+                  <div
+                    className="sc-fzplWN bEKLLk"
+                  >
+                    <p>
+                      <FormattedMessage
+                        id="disclaimer"
+                      />
+                    </p>
+                    <p>
+                      <FormattedMessage
+                        id="disclaimer.data"
+                      />
+                    </p>
+                  </div>
+                </styled.div>
+              </div>
+            </styled.div>
+          </footer>
+        </styled.footer>
+      </Footer>
+    </div>
+  </styled.div>
+</FeaturedPlaylists>
+`;

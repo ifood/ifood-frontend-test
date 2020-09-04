@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DynamicForm /> snapshot 1`] = `
+<DynamicForm
+  metadata={
+    Array [
+      Object {
+        "id": "limit",
+        "name": "Quantidade",
+        "validation": Object {
+          "max": 50,
+          "min": 1,
+          "primitiveType": "INTEGER",
+        },
+      },
+    ]
+  }
+>
+  <Form
+    as="form"
+    onSubmit={[Function]}
+  >
+    <form
+      className="ui form"
+      onSubmit={[Function]}
+    >
+      <Memo(DynamicField)
+        key="limit"
+        metadata={
+          Object {
+            "id": "limit",
+            "name": "Quantidade",
+            "validation": Object {
+              "max": 50,
+              "min": 1,
+              "primitiveType": "INTEGER",
+            },
+          }
+        }
+        onChange={[Function]}
+      >
+        <Field
+          fieldId="limit"
+          label="Quantidade"
+        >
+          <FormField>
+            <div
+              className="field"
+            >
+              <label
+                htmlFor="limit"
+              >
+                Quantidade
+              </label>
+              <input
+                id="limit"
+                max={50}
+                min={1}
+                onChange={[Function]}
+                placeholder="Quantidade"
+                type="number"
+                value=""
+              />
+            </div>
+          </FormField>
+        </Field>
+      </Memo(DynamicField)>
+    </form>
+  </Form>
+</DynamicForm>
+`;

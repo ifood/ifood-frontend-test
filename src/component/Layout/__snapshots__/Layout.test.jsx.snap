@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout <Content /> snapshot 1`] = `
+<styled.main>
+  <main
+    className="sc-AxjAm fXQrjm"
+  />
+</styled.main>
+`;
+
+exports[`Layout <Footer /> snapshot 1`] = `
+<Footer>
+  <styled.footer>
+    <footer
+      className="sc-AxirZ fubAkb"
+    >
+      <styled.div>
+        <div
+          className="sc-AxiKw gXIALH"
+        >
+          <styled.div>
+            <div
+              className="sc-AxhCb czsoeF"
+            >
+              <styled.img
+                alt="Spotifood logo"
+                src="logo-icon.png"
+              >
+                <img
+                  alt="Spotifood logo"
+                  className="sc-AxhUy iSppPB"
+                  src="logo-icon.png"
+                />
+              </styled.img>
+            </div>
+          </styled.div>
+          <styled.div>
+            <div
+              className="sc-AxgMl jtMlQa"
+            >
+              <p>
+                <FormattedMessage
+                  id="disclaimer"
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  id="disclaimer.data"
+                />
+              </p>
+            </div>
+          </styled.div>
+        </div>
+      </styled.div>
+    </footer>
+  </styled.footer>
+</Footer>
+`;
+
+exports[`Layout <Header /> snapshot 1`] = `
+<Header>
+  <styled.header>
+    <header
+      className="sc-AxheI czbqkM"
+    >
+      <styled.h1>
+        <h1
+          className="sc-Axmtr bMWiiE"
+        >
+          <styled.img
+            alt="Spotifood logo"
+            src="logo.png"
+          >
+            <img
+              alt="Spotifood logo"
+              className="sc-AxmLO inXKjp"
+              src="logo.png"
+            />
+          </styled.img>
+        </h1>
+      </styled.h1>
+    </header>
+  </styled.header>
+</Header>
+`;
+
+exports[`Layout <LayoutContainer /> snapshot 1`] = `
+<styled.div>
+  <div
+    className="sc-fzozJi jFicpa"
+  />
+</styled.div>
+`;

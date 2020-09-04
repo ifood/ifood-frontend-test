@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> snapshot 1`] = `
+<App>
+  <Provider
+    value={null}
+  >
+    <div>
+      <IntlProvider
+        locale="en-US"
+        messages={
+          Object {
+            "cancel": "Cancel",
+            "choose.filters.message": "Choose new filters to find amazing playlists",
+            "datetime.placeholder": "ex: 12/22/2020, 12:00 AM",
+            "disclaimer": "Spotifood is not a real brand and has no commercial purposes, all of its content belongs to Spotify. The creation and use of the brand are limited to this app, which has the sole purpose of being a technical test",
+            "disclaimer.data": "We don't store any Spotify data",
+            "featured.playlists": "Featured playlists",
+            "filter": "Filter",
+            "filter.submit": "Submit",
+            "filters": "Filters",
+            "loading": "Loading",
+            "login.message": "Hello, log in with your Spotify account to access amazing Playlists.",
+            "login.on.spotify": "Login on Spotify",
+            "no.playlist": "No Playlist found",
+            "ops": "Ops!",
+            "playlist.tracks": "{n} {n, plural, one {track} other {tracks}}",
+            "playlists": "Playlists",
+            "search": "Search",
+            "time": "Time",
+          }
+        }
+      >
+        <div>
+          <BrowserRouter>
+            <Router
+              history={
+                Object {
+                  "action": "POP",
+                  "block": [Function],
+                  "createHref": [Function],
+                  "go": [Function],
+                  "goBack": [Function],
+                  "goForward": [Function],
+                  "length": 1,
+                  "listen": [Function],
+                  "location": Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  },
+                  "push": [Function],
+                  "replace": [Function],
+                }
+              }
+            >
+              <Routes>
+                <Switch>
+                  <AuthRoute
+                    computedMatch={
+                      Object {
+                        "isExact": true,
+                        "params": Object {},
+                        "path": "/",
+                        "url": "/",
+                      }
+                    }
+                    fallbackRoute={<Login />}
+                    location={
+                      Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      }
+                    }
+                    path="/"
+                  >
+                    <Route
+                      computedMatch={
+                        Object {
+                          "isExact": true,
+                          "params": Object {},
+                          "path": "/",
+                          "url": "/",
+                        }
+                      }
+                      location={
+                        Object {
+                          "hash": "",
+                          "pathname": "/",
+                          "search": "",
+                          "state": undefined,
+                        }
+                      }
+                      path="/"
+                      render={[Function]}
+                    >
+                      <Login>
+                        <styled.div>
+                          <div
+                            className="sc-fzokOt kuOybX"
+                          >
+                            <Header>
+                              <styled.header>
+                                <header
+                                  className="sc-fznyAO Wnbwo"
+                                >
+                                  <styled.h1>
+                                    <h1
+                                      className="sc-fznKkj bTYONO"
+                                    >
+                                      <styled.img
+                                        alt="Spotifood logo"
+                                        src="logo.png"
+                                      >
+                                        <img
+                                          alt="Spotifood logo"
+                                          className="sc-fznZeY fDeeBe"
+                                          src="logo.png"
+                                        />
+                                      </styled.img>
+                                    </h1>
+                                  </styled.h1>
+                                </header>
+                              </styled.header>
+                            </Header>
+                            <styled.main>
+                              <main
+                                className="sc-Axmtr iTXiqD"
+                              >
+                                <styled.div>
+                                  <div
+                                    className="sc-fzoyAV edtBRg"
+                                  >
+                                    <styled.div>
+                                      <div
+                                        className="sc-fzoLag hQENTN"
+                                      >
+                                        <styled.img
+                                          alt="spotifood banner"
+                                          src="banner.png"
+                                        >
+                                          <img
+                                            alt="spotifood banner"
+                                            className="sc-fzqNJr kNMDef"
+                                            src="banner.png"
+                                          />
+                                        </styled.img>
+                                      </div>
+                                    </styled.div>
+                                    <styled.div>
+                                      <div
+                                        className="sc-fzoXzr iCUpsj"
+                                      >
+                                        <styled.h2>
+                                          <h2
+                                            className="sc-fzqBZW fLhnQf"
+                                          >
+                                            <FormattedMessage
+                                              id="login.message"
+                                            />
+                                          </h2>
+                                        </styled.h2>
+                                        <Button
+                                          as="button"
+                                          color="red"
+                                          onClick={[Function]}
+                                        >
+                                          <Ref
+                                            innerRef={
+                                              Object {
+                                                "current": <button
+                                                  class="ui red button"
+                                                />,
+                                              }
+                                            }
+                                          >
+                                            <RefFindNode
+                                              innerRef={
+                                                Object {
+                                                  "current": <button
+                                                    class="ui red button"
+                                                  />,
+                                                }
+                                              }
+                                            >
+                                              <button
+                                                className="ui red button"
+                                                onClick={[Function]}
+                                              >
+                                                <FormattedMessage
+                                                  id="login.on.spotify"
+                                                />
+                                              </button>
+                                            </RefFindNode>
+                                          </Ref>
+                                        </Button>
+                                      </div>
+                                    </styled.div>
+                                  </div>
+                                </styled.div>
+                              </main>
+                            </styled.main>
+                            <Footer>
+                              <styled.footer>
+                                <footer
+                                  className="sc-AxmLO eyYpJA"
+                                >
+                                  <styled.div>
+                                    <div
+                                      className="sc-fzozJi cBaOqJ"
+                                    >
+                                      <styled.div>
+                                        <div
+                                          className="sc-fzoLsD eCAhqh"
+                                        >
+                                          <styled.img
+                                            alt="Spotifood logo"
+                                            src="logo-icon.png"
+                                          >
+                                            <img
+                                              alt="Spotifood logo"
+                                              className="sc-fzpans kgyVqc"
+                                              src="logo-icon.png"
+                                            />
+                                          </styled.img>
+                                        </div>
+                                      </styled.div>
+                                      <styled.div>
+                                        <div
+                                          className="sc-fzplWN bEKLLk"
+                                        >
+                                          <p>
+                                            <FormattedMessage
+                                              id="disclaimer"
+                                            />
+                                          </p>
+                                          <p>
+                                            <FormattedMessage
+                                              id="disclaimer.data"
+                                            />
+                                          </p>
+                                        </div>
+                                      </styled.div>
+                                    </div>
+                                  </styled.div>
+                                </footer>
+                              </styled.footer>
+                            </Footer>
+                          </div>
+                        </styled.div>
+                      </Login>
+                    </Route>
+                  </AuthRoute>
+                </Switch>
+              </Routes>
+            </Router>
+          </BrowserRouter>
+        </div>
+      </IntlProvider>
+    </div>
+  </Provider>
+</App>
+`;

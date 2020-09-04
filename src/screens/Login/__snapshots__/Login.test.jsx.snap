@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> snapshot 1`] = `
+<Login>
+  <styled.div>
+    <div
+      className="sc-fzozJi jFicpa"
+    >
+      <Header>
+        <styled.header>
+          <header
+            className="sc-AxheI czbqkM"
+          >
+            <styled.h1>
+              <h1
+                className="sc-Axmtr bMWiiE"
+              >
+                <styled.img
+                  alt="Spotifood logo"
+                  src="logo.png"
+                >
+                  <img
+                    alt="Spotifood logo"
+                    className="sc-AxmLO inXKjp"
+                    src="logo.png"
+                  />
+                </styled.img>
+              </h1>
+            </styled.h1>
+          </header>
+        </styled.header>
+      </Header>
+      <styled.main>
+        <main
+          className="sc-AxjAm fXQrjm"
+        >
+          <styled.div>
+            <div
+              className="sc-fzplWN cRLXzY"
+            >
+              <styled.div>
+                <div
+                  className="sc-fznyAO BdKOh"
+                >
+                  <styled.img
+                    alt="spotifood banner"
+                    src="banner.png"
+                  >
+                    <img
+                      alt="spotifood banner"
+                      className="sc-fzpans gxoOtY"
+                      src="banner.png"
+                    />
+                  </styled.img>
+                </div>
+              </styled.div>
+              <styled.div>
+                <div
+                  className="sc-fznKkj jJMjos"
+                >
+                  <styled.h2>
+                    <h2
+                      className="sc-fzoLsD cnfpvJ"
+                    >
+                      <FormattedMessage
+                        id="login.message"
+                      />
+                    </h2>
+                  </styled.h2>
+                  <Button
+                    as="button"
+                    color="red"
+                    onClick={[Function]}
+                  >
+                    <Ref
+                      innerRef={
+                        Object {
+                          "current": <button
+                            class="ui red button"
+                          />,
+                        }
+                      }
+                    >
+                      <RefFindNode
+                        innerRef={
+                          Object {
+                            "current": <button
+                              class="ui red button"
+                            />,
+                          }
+                        }
+                      >
+                        <button
+                          className="ui red button"
+                          onClick={[Function]}
+                        >
+                          <FormattedMessage
+                            id="login.on.spotify"
+                          />
+                        </button>
+                      </RefFindNode>
+                    </Ref>
+                  </Button>
+                </div>
+              </styled.div>
+            </div>
+          </styled.div>
+        </main>
+      </styled.main>
+      <Footer>
+        <styled.footer>
+          <footer
+            className="sc-AxirZ fubAkb"
+          >
+            <styled.div>
+              <div
+                className="sc-AxiKw gXIALH"
+              >
+                <styled.div>
+                  <div
+                    className="sc-AxhCb czsoeF"
+                  >
+                    <styled.img
+                      alt="Spotifood logo"
+                      src="logo-icon.png"
+                    >
+                      <img
+                        alt="Spotifood logo"
+                        className="sc-AxhUy iSppPB"
+                        src="logo-icon.png"
+                      />
+                    </styled.img>
+                  </div>
+                </styled.div>
+                <styled.div>
+                  <div
+                    className="sc-AxgMl jtMlQa"
+                  >
+                    <p>
+                      <FormattedMessage
+                        id="disclaimer"
+                      />
+                    </p>
+                    <p>
+                      <FormattedMessage
+                        id="disclaimer.data"
+                      />
+                    </p>
+                  </div>
+                </styled.div>
+              </div>
+            </styled.div>
+          </footer>
+        </styled.footer>
+      </Footer>
+    </div>
+  </styled.div>
+</Login>
+`;

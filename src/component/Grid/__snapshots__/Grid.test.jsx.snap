@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid /> snapshot 1`] = `
+<Memo(Grid)
+  itemRenderer={[Function]}
+  items={
+    Array [
+      Object {
+        "description": "Item 1",
+        "id": 1,
+      },
+      Object {
+        "description": "Item 2",
+        "id": 2,
+      },
+    ]
+  }
+  title="Grid title"
+>
+  <h1>
+    Grid title
+  </h1>
+  <styled.div
+    columnMinWidth="200px"
+  >
+    <div
+      className="sc-AxjAm eeWsGe"
+    />
+  </styled.div>
+</Memo(Grid)>
+`;

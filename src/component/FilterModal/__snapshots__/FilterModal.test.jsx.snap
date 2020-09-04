@@ -1,0 +1,823 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterModal /> snapshot 1`] = `
+<FilterModal
+  open={true}
+>
+  <Modal
+    centered={false}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    eventPool="Modal"
+    onClose={[Function]}
+    open={true}
+    size="tiny"
+  >
+    <Portal
+      closeOnDocumentClick={false}
+      closeOnEscape={true}
+      eventPool="Modal"
+      mountNode={
+        <body
+          class="dimmable dimmed"
+        >
+          <div
+            class="ui top aligned page modals dimmer transition visible active"
+            style="display: flex;"
+          >
+            <div
+              class="ui tiny modal transition visible active"
+            >
+              <div
+                class="header"
+              />
+              <div
+                class="content"
+              >
+                <form
+                  class="ui form"
+                  id="filterForm"
+                >
+                  <div
+                    class="field"
+                  >
+                    <label
+                      for="number"
+                    >
+                      Number
+                    </label>
+                    <input
+                      id="number"
+                      placeholder="Number"
+                      type="number"
+                      value=""
+                    />
+                  </div>
+                </form>
+              </div>
+              <div
+                class="actions"
+              >
+                <button
+                  class="ui black button"
+                  id="modalFilter-cancel"
+                />
+                <button
+                  class="ui red button"
+                  form="filterForm"
+                  type="submit"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="ui top aligned page modals dimmer transition visible active"
+            style="display: flex;"
+          >
+            <div
+              class="ui tiny modal transition visible active"
+            >
+              <div
+                class="header"
+              />
+              <div
+                class="content"
+              />
+              <div
+                class="actions"
+              >
+                <button
+                  class="ui black button"
+                  id="modalFilter-cancel"
+                />
+                <button
+                  class="ui red button"
+                  form="filterForm"
+                  type="submit"
+                />
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+      onClose={[Function]}
+      onMount={[Function]}
+      onOpen={[Function]}
+      onUnmount={[Function]}
+      open={true}
+      openOnTriggerClick={true}
+    >
+      <PortalInner
+        innerRef={
+          Object {
+            "current": <div
+              class="ui top aligned page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                />
+                <div
+                  class="content"
+                />
+                <div
+                  class="actions"
+                >
+                  <button
+                    class="ui black button"
+                    id="modalFilter-cancel"
+                  />
+                  <button
+                    class="ui red button"
+                    form="filterForm"
+                    type="submit"
+                  />
+                </div>
+              </div>
+            </div>,
+          }
+        }
+        mountNode={
+          <body
+            class="dimmable dimmed"
+          >
+            <div
+              class="ui top aligned page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                />
+                <div
+                  class="content"
+                >
+                  <form
+                    class="ui form"
+                    id="filterForm"
+                  >
+                    <div
+                      class="field"
+                    >
+                      <label
+                        for="number"
+                      >
+                        Number
+                      </label>
+                      <input
+                        id="number"
+                        placeholder="Number"
+                        type="number"
+                        value=""
+                      />
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="actions"
+                >
+                  <button
+                    class="ui black button"
+                    id="modalFilter-cancel"
+                  />
+                  <button
+                    class="ui red button"
+                    form="filterForm"
+                    type="submit"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="ui top aligned page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                />
+                <div
+                  class="content"
+                />
+                <div
+                  class="actions"
+                >
+                  <button
+                    class="ui black button"
+                    id="modalFilter-cancel"
+                  />
+                  <button
+                    class="ui red button"
+                    form="filterForm"
+                    type="submit"
+                  />
+                </div>
+              </div>
+            </div>
+          </body>
+        }
+        onMount={[Function]}
+        onUnmount={[Function]}
+      >
+        <Portal
+          containerInfo={
+            <body
+              class="dimmable dimmed"
+            >
+              <div
+                class="ui top aligned page modals dimmer transition visible active"
+                style="display: flex;"
+              >
+                <div
+                  class="ui tiny modal transition visible active"
+                >
+                  <div
+                    class="header"
+                  />
+                  <div
+                    class="content"
+                  >
+                    <form
+                      class="ui form"
+                      id="filterForm"
+                    >
+                      <div
+                        class="field"
+                      >
+                        <label
+                          for="number"
+                        >
+                          Number
+                        </label>
+                        <input
+                          id="number"
+                          placeholder="Number"
+                          type="number"
+                          value=""
+                        />
+                      </div>
+                    </form>
+                  </div>
+                  <div
+                    class="actions"
+                  >
+                    <button
+                      class="ui black button"
+                      id="modalFilter-cancel"
+                    />
+                    <button
+                      class="ui red button"
+                      form="filterForm"
+                      type="submit"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui top aligned page modals dimmer transition visible active"
+                style="display: flex;"
+              >
+                <div
+                  class="ui tiny modal transition visible active"
+                >
+                  <div
+                    class="header"
+                  />
+                  <div
+                    class="content"
+                  />
+                  <div
+                    class="actions"
+                  >
+                    <button
+                      class="ui black button"
+                      id="modalFilter-cancel"
+                    />
+                    <button
+                      class="ui red button"
+                      form="filterForm"
+                      type="submit"
+                    />
+                  </div>
+                </div>
+              </div>
+            </body>
+          }
+        >
+          <Ref
+            innerRef={[Function]}
+          >
+            <RefFindNode
+              innerRef={[Function]}
+            >
+              <Ref
+                innerRef={
+                  Object {
+                    "current": <div
+                      class="ui top aligned page modals dimmer transition visible active"
+                      style="display: flex;"
+                    >
+                      <div
+                        class="ui tiny modal transition visible active"
+                      >
+                        <div
+                          class="header"
+                        />
+                        <div
+                          class="content"
+                        />
+                        <div
+                          class="actions"
+                        >
+                          <button
+                            class="ui black button"
+                            id="modalFilter-cancel"
+                          />
+                          <button
+                            class="ui red button"
+                            form="filterForm"
+                            type="submit"
+                          />
+                        </div>
+                      </div>
+                    </div>,
+                  }
+                }
+              >
+                <RefFindNode
+                  innerRef={
+                    Object {
+                      "current": <div
+                        class="ui top aligned page modals dimmer transition visible active"
+                        style="display: flex;"
+                      >
+                        <div
+                          class="ui tiny modal transition visible active"
+                        >
+                          <div
+                            class="header"
+                          />
+                          <div
+                            class="content"
+                          />
+                          <div
+                            class="actions"
+                          >
+                            <button
+                              class="ui black button"
+                              id="modalFilter-cancel"
+                            />
+                            <button
+                              class="ui red button"
+                              form="filterForm"
+                              type="submit"
+                            />
+                          </div>
+                        </div>
+                      </div>,
+                    }
+                  }
+                >
+                  <ModalDimmer
+                    blurring={false}
+                    centered={false}
+                    inverted={false}
+                    mountNode={
+                      <body
+                        class="dimmable dimmed"
+                      >
+                        <div
+                          class="ui top aligned page modals dimmer transition visible active"
+                          style="display: flex;"
+                        >
+                          <div
+                            class="ui tiny modal transition visible active"
+                          >
+                            <div
+                              class="header"
+                            />
+                            <div
+                              class="content"
+                            >
+                              <form
+                                class="ui form"
+                                id="filterForm"
+                              >
+                                <div
+                                  class="field"
+                                >
+                                  <label
+                                    for="number"
+                                  >
+                                    Number
+                                  </label>
+                                  <input
+                                    id="number"
+                                    placeholder="Number"
+                                    type="number"
+                                    value=""
+                                  />
+                                </div>
+                              </form>
+                            </div>
+                            <div
+                              class="actions"
+                            >
+                              <button
+                                class="ui black button"
+                                id="modalFilter-cancel"
+                              />
+                              <button
+                                class="ui red button"
+                                form="filterForm"
+                                type="submit"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="ui top aligned page modals dimmer transition visible active"
+                          style="display: flex;"
+                        >
+                          <div
+                            class="ui tiny modal transition visible active"
+                          >
+                            <div
+                              class="header"
+                            />
+                            <div
+                              class="content"
+                            />
+                            <div
+                              class="actions"
+                            >
+                              <button
+                                class="ui black button"
+                                id="modalFilter-cancel"
+                              />
+                              <button
+                                class="ui red button"
+                                form="filterForm"
+                                type="submit"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </body>
+                    }
+                    scrolling={false}
+                  >
+                    <Ref
+                      innerRef={
+                        Object {
+                          "current": <div
+                            class="ui top aligned page modals dimmer transition visible active"
+                            style="display: flex;"
+                          >
+                            <div
+                              class="ui tiny modal transition visible active"
+                            >
+                              <div
+                                class="header"
+                              />
+                              <div
+                                class="content"
+                              />
+                              <div
+                                class="actions"
+                              >
+                                <button
+                                  class="ui black button"
+                                  id="modalFilter-cancel"
+                                />
+                                <button
+                                  class="ui red button"
+                                  form="filterForm"
+                                  type="submit"
+                                />
+                              </div>
+                            </div>
+                          </div>,
+                        }
+                      }
+                    >
+                      <RefFindNode
+                        innerRef={
+                          Object {
+                            "current": <div
+                              class="ui top aligned page modals dimmer transition visible active"
+                              style="display: flex;"
+                            >
+                              <div
+                                class="ui tiny modal transition visible active"
+                              >
+                                <div
+                                  class="header"
+                                />
+                                <div
+                                  class="content"
+                                />
+                                <div
+                                  class="actions"
+                                >
+                                  <button
+                                    class="ui black button"
+                                    id="modalFilter-cancel"
+                                  />
+                                  <button
+                                    class="ui red button"
+                                    form="filterForm"
+                                    type="submit"
+                                  />
+                                </div>
+                              </div>
+                            </div>,
+                          }
+                        }
+                      >
+                        <div
+                          className="ui top aligned page modals dimmer transition visible active"
+                        >
+                          <Ref
+                            innerRef={
+                              Object {
+                                "current": <div
+                                  class="ui tiny modal transition visible active"
+                                >
+                                  <div
+                                    class="header"
+                                  />
+                                  <div
+                                    class="content"
+                                  />
+                                  <div
+                                    class="actions"
+                                  >
+                                    <button
+                                      class="ui black button"
+                                      id="modalFilter-cancel"
+                                    />
+                                    <button
+                                      class="ui red button"
+                                      form="filterForm"
+                                      type="submit"
+                                    />
+                                  </div>
+                                </div>,
+                              }
+                            }
+                          >
+                            <RefFindNode
+                              innerRef={
+                                Object {
+                                  "current": <div
+                                    class="ui tiny modal transition visible active"
+                                  >
+                                    <div
+                                      class="header"
+                                    />
+                                    <div
+                                      class="content"
+                                    />
+                                    <div
+                                      class="actions"
+                                    >
+                                      <button
+                                        class="ui black button"
+                                        id="modalFilter-cancel"
+                                      />
+                                      <button
+                                        class="ui red button"
+                                        form="filterForm"
+                                        type="submit"
+                                      />
+                                    </div>
+                                  </div>,
+                                }
+                              }
+                            >
+                              <div
+                                className="ui tiny modal transition visible active"
+                                style={Object {}}
+                              >
+                                <ModalHeader>
+                                  <div
+                                    className="header"
+                                  >
+                                    <FormattedMessage
+                                      id="filter"
+                                    />
+                                  </div>
+                                </ModalHeader>
+                                <ModalContent>
+                                  <div
+                                    className="content"
+                                  >
+                                    <DynamicForm
+                                      id="filterForm"
+                                      onSubmit={[Function]}
+                                    />
+                                  </div>
+                                </ModalContent>
+                                <ModalActions>
+                                  <div
+                                    className="actions"
+                                  >
+                                    <Button
+                                      as="button"
+                                      color="black"
+                                      id="modalFilter-cancel"
+                                      onClick={[Function]}
+                                    >
+                                      <Ref
+                                        innerRef={
+                                          Object {
+                                            "current": <button
+                                              class="ui black button"
+                                              id="modalFilter-cancel"
+                                            />,
+                                          }
+                                        }
+                                      >
+                                        <RefFindNode
+                                          innerRef={
+                                            Object {
+                                              "current": <button
+                                                class="ui black button"
+                                                id="modalFilter-cancel"
+                                              />,
+                                            }
+                                          }
+                                        >
+                                          <button
+                                            className="ui black button"
+                                            id="modalFilter-cancel"
+                                            onClick={[Function]}
+                                          >
+                                            <FormattedMessage
+                                              id="cancel"
+                                            />
+                                          </button>
+                                        </RefFindNode>
+                                      </Ref>
+                                    </Button>
+                                    <Button
+                                      as="button"
+                                      color="red"
+                                      form="filterForm"
+                                      type="submit"
+                                    >
+                                      <Ref
+                                        innerRef={
+                                          Object {
+                                            "current": <button
+                                              class="ui red button"
+                                              form="filterForm"
+                                              type="submit"
+                                            />,
+                                          }
+                                        }
+                                      >
+                                        <RefFindNode
+                                          innerRef={
+                                            Object {
+                                              "current": <button
+                                                class="ui red button"
+                                                form="filterForm"
+                                                type="submit"
+                                              />,
+                                            }
+                                          }
+                                        >
+                                          <button
+                                            className="ui red button"
+                                            form="filterForm"
+                                            onClick={[Function]}
+                                            type="submit"
+                                          >
+                                            <FormattedMessage
+                                              id="filter.submit"
+                                            />
+                                          </button>
+                                        </RefFindNode>
+                                      </Ref>
+                                    </Button>
+                                  </div>
+                                </ModalActions>
+                              </div>
+                            </RefFindNode>
+                          </Ref>
+                        </div>
+                      </RefFindNode>
+                    </Ref>
+                  </ModalDimmer>
+                </RefFindNode>
+              </Ref>
+            </RefFindNode>
+          </Ref>
+        </Portal>
+      </PortalInner>
+      <EventStack
+        name="mouseleave"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui top aligned page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                />
+                <div
+                  class="content"
+                />
+                <div
+                  class="actions"
+                >
+                  <button
+                    class="ui black button"
+                    id="modalFilter-cancel"
+                  />
+                  <button
+                    class="ui red button"
+                    form="filterForm"
+                    type="submit"
+                  />
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mouseenter"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui top aligned page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                />
+                <div
+                  class="content"
+                />
+                <div
+                  class="actions"
+                >
+                  <button
+                    class="ui black button"
+                    id="modalFilter-cancel"
+                  />
+                  <button
+                    class="ui red button"
+                    form="filterForm"
+                    type="submit"
+                  />
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mousedown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="click"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="keydown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+    </Portal>
+  </Modal>
+</FilterModal>
+`;

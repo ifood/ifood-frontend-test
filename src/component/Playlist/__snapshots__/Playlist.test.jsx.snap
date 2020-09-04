@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Playlist /> snapshot 1`] = `
+<Playlist
+  playlist={
+    Object {
+      "description": "Listen to all the tracks you've been missing. Cover: Lady Gaga",
+      "external_urls": Object {
+        "spotify": "https://not-a-spotify-url",
+      },
+      "images": Array [
+        Object {
+          "url": "https://not-a-imagem-url",
+        },
+      ],
+      "name": "Hit Rewind",
+      "owner": Object {
+        "display_name": "Spotify",
+      },
+      "tracks": Object {
+        "total": 75,
+      },
+    }
+  }
+>
+  <Styled(Card)
+    fluid={true}
+    onClick={[Function]}
+  >
+    <Card
+      className="sc-AxjAm ihGEoy"
+      fluid={true}
+      onClick={[Function]}
+    >
+      <a
+        className="ui fluid card sc-AxjAm ihGEoy"
+        onClick={[Function]}
+      >
+        <Image
+          as="img"
+          src="https://not-a-imagem-url"
+          ui={false}
+          wrapped={true}
+        >
+          <div
+            className="image"
+          >
+            <img
+              src="https://not-a-imagem-url"
+            />
+          </div>
+        </Image>
+        <CardContent>
+          <div
+            className="content"
+          >
+            <CardHeader>
+              <div
+                className="header"
+              >
+                Hit Rewind
+              </div>
+            </CardHeader>
+            <CardMeta>
+              <div
+                className="meta"
+              >
+                <span>
+                  <FormattedMessage
+                    id="playlist.tracks"
+                    values={
+                      Object {
+                        "n": 75,
+                      }
+                    }
+                  />
+                </span>
+              </div>
+            </CardMeta>
+            <CardDescription>
+              <div
+                className="description"
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Listen to all the tracks you've been missing. Cover: Lady Gaga",
+                    }
+                  }
+                />
+              </div>
+            </CardDescription>
+          </div>
+        </CardContent>
+        <CardContent
+          extra={true}
+        >
+          <div
+            className="extra content"
+          >
+            <Icon
+              as="i"
+              name="user"
+            >
+              <i
+                aria-hidden="true"
+                className="user icon"
+                onClick={[Function]}
+              />
+            </Icon>
+            Spotify
+          </div>
+        </CardContent>
+      </a>
+    </Card>
+  </Styled(Card)>
+</Playlist>
+`;

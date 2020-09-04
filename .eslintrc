@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": ["jsx-a11y", "prettier"],
+  "rules": {
+    "react/forbid-prop-types": 0,
+    "react/require-default-props": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-props-no-spreading": 0
+  },
+  "overrides": [
+    {
+      "files": ["*.test.js", "*.test.jsx"],
+      "rules": {
+        "no-unused-expressions": "off",
+        "no-undef": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Field /> snapshot 1`] = `
+<Field
+  fieldId="id"
+  label="Field label"
+>
+  <FormField>
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="id"
+      >
+        Field label
+      </label>
+      <input />
+    </div>
+  </FormField>
+</Field>
+`;

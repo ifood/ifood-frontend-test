@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tag /> snapshot 1`] = `
+<Tag
+  field="field"
+  value="value"
+>
+  <styled.div>
+    <div
+      className="sc-AxjAm jjomar"
+    >
+      <Button
+        as="div"
+        labelPosition="left"
+      >
+        <Ref
+          innerRef={
+            Object {
+              "current": <div
+                class="ui left labeled button"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="ui basic label"
+                >
+                  field
+                  : 
+                  value
+                </div>
+                <button
+                  class="ui icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="remove icon"
+                  />
+                </button>
+              </div>,
+            }
+          }
+        >
+          <RefFindNode
+            innerRef={
+              Object {
+                "current": <div
+                  class="ui left labeled button"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="ui basic label"
+                  >
+                    field
+                    : 
+                    value
+                  </div>
+                  <button
+                    class="ui icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="remove icon"
+                    />
+                  </button>
+                </div>,
+              }
+            }
+          >
+            <div
+              className="ui left labeled button"
+              onClick={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <Label
+                basic={true}
+              >
+                <div
+                  className="ui basic label"
+                  onClick={[Function]}
+                >
+                  field
+                  : 
+                  value
+                </div>
+              </Label>
+              <Button
+                as="button"
+                icon={true}
+                onClick={[Function]}
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <button
+                        class="ui icon button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="remove icon"
+                        />
+                      </button>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <button
+                          class="ui icon button"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="remove icon"
+                          />
+                        </button>,
+                      }
+                    }
+                  >
+                    <button
+                      className="ui icon button"
+                      onClick={[Function]}
+                    >
+                      <Icon
+                        as="i"
+                        name="remove"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="remove icon"
+                          onClick={[Function]}
+                        />
+                      </Icon>
+                    </button>
+                  </RefFindNode>
+                </Ref>
+              </Button>
+            </div>
+          </RefFindNode>
+        </Ref>
+      </Button>
+    </div>
+  </styled.div>
+</Tag>
+`;

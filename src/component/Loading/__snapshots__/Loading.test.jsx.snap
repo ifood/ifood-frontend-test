@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loading /> snapshot 1`] = `
+<Loading>
+  <Dimmer
+    active={true}
+    inverted={true}
+  >
+    <DimmerInner
+      active={true}
+      inverted={true}
+    >
+      <Ref
+        innerRef={
+          Object {
+            "current": <div
+              class="ui active transition visible inverted dimmer"
+              style="display: flex;"
+            >
+              <div
+                class="content"
+              >
+                <div
+                  class="ui inverted text loader"
+                />
+              </div>
+            </div>,
+          }
+        }
+      >
+        <RefFindNode
+          innerRef={
+            Object {
+              "current": <div
+                class="ui active transition visible inverted dimmer"
+                style="display: flex;"
+              >
+                <div
+                  class="content"
+                >
+                  <div
+                    class="ui inverted text loader"
+                  />
+                </div>
+              </div>,
+            }
+          }
+        >
+          <div
+            className="ui active transition visible inverted dimmer"
+            onClick={[Function]}
+          >
+            <div
+              className="content"
+            >
+              <Loader
+                inverted={true}
+              >
+                <div
+                  className="ui inverted text loader"
+                >
+                  <FormattedMessage
+                    id="loading"
+                  />
+                </div>
+              </Loader>
+            </div>
+          </div>
+        </RefFindNode>
+      </Ref>
+    </DimmerInner>
+  </Dimmer>
+</Loading>
+`;
