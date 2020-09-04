@@ -1,19 +1,192 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FeaturedPlaylists /> snapshot 1`] = `
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.c7 {
+  width: 55px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c4 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+.c8 {
+  background: #151515;
+  min-height: 150px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+.c9 {
+  width: 100%;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c10 {
+  margin-bottom: 20px;
+}
+
+.c11 {
+  width: 50px;
+}
+
+.c1 {
+  background: #ea1d2c;
+  height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c2 {
+  width: 100%;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  width: 120px;
+}
+
+.c0 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@media (min-width:415px) {
+  .c4 {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px 0;
+  }
+}
+
+@media (min-width:710px) {
+  .c9 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:710px) {
+  .c12 {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width:415px) {
+  .c2 {
+    width: 80%;
+    max-width: 1200px;
+    padding: 0;
+  }
+}
+
 <FeaturedPlaylists>
   <styled.div>
     <div
-      className="sc-fzqBZW ipbYhy"
+      className="c0"
     >
       <Header>
         <styled.header>
           <header
-            className="sc-fznKkj lfPylV"
+            className="c1"
           >
             <styled.h1>
               <h1
-                className="sc-fznZeY kbIVGi"
+                className="c2"
               >
                 <styled.img
                   alt="Spotifood logo"
@@ -21,7 +194,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                 >
                   <img
                     alt="Spotifood logo"
-                    className="sc-fzokOt llqEFR"
+                    className="c3"
                     src="logo.png"
                   />
                 </styled.img>
@@ -32,7 +205,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
       </Header>
       <styled.main>
         <main
-          className="sc-AxmLO bdGGKO"
+          className="c4"
         >
           <Memo(Filter)
             filter={null}
@@ -42,20 +215,20 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
           >
             <styled.div>
               <div
-                className="sc-AxgMl jFdgEo"
+                className="c5"
               >
                 <Styled(Input)
                   icon={true}
                   placeholder="intl::search"
                 >
                   <Input
-                    className="sc-Axmtr dThYIv"
+                    className="c6"
                     icon={true}
                     placeholder="intl::search"
                     type="text"
                   >
                     <div
-                      className="ui icon input sc-Axmtr dThYIv"
+                      className="ui icon input c6"
                     >
                       <input
                         key=".0"
@@ -79,7 +252,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                 </Styled(Input)>
                 <styled.div>
                   <div
-                    className="sc-AxheI jmTTPM"
+                    className="c7"
                   >
                     <Button
                       as="button"
@@ -91,7 +264,23 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                       <Ref
                         innerRef={
                           Object {
-                            "current": <button
+                            "current": @media (min-width:415px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:415px) {
+
+}
+
+<button
                               class="ui basic circular icon button"
                             >
                               <i
@@ -155,7 +344,25 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                           closeOnDocumentClick={false}
                           closeOnEscape={true}
                           eventPool="Modal"
-                          mountNode={<body />}
+                          mountNode={
+                            @media (min-width:415px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:415px) {
+
+}
+
+<body />
+                          }
                           onClose={[Function]}
                           onMount={[Function]}
                           onOpen={[Function]}
@@ -188,7 +395,23 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                 <Ref
                   innerRef={
                     Object {
-                      "current": <div
+                      "current": @media (min-width:415px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:415px) {
+
+}
+
+<div
                         class="ui active transition visible inverted dimmer"
                         style="display: flex;"
                       >
@@ -251,15 +474,15 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
       <Footer>
         <styled.footer>
           <footer
-            className="sc-fzozJi ixBtCB"
+            className="c8"
           >
             <styled.div>
               <div
-                className="sc-fzoLsD dSybVf"
+                className="c9"
               >
                 <styled.div>
                   <div
-                    className="sc-fzpans bzPxPR"
+                    className="c10"
                   >
                     <styled.img
                       alt="Spotifood logo"
@@ -267,7 +490,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                     >
                       <img
                         alt="Spotifood logo"
-                        className="sc-fzplWN hdFbkJ"
+                        className="c11"
                         src="logo-icon.png"
                       />
                     </styled.img>
@@ -275,7 +498,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                 </styled.div>
                 <styled.div>
                   <div
-                    className="sc-fznyAO idjYWI"
+                    className="c12"
                   >
                     <p>
                       <FormattedMessage

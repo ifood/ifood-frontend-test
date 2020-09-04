@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Grid /> snapshot 1`] = `
+.c0 {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(200px,1fr) );
+  gap: 1em;
+}
+
 <Memo(Grid)
   itemRenderer={[Function]}
   items={
@@ -24,7 +30,7 @@ exports[`<Grid /> snapshot 1`] = `
     columnMinWidth="200px"
   >
     <div
-      className="sc-AxjAm eeWsGe"
+      className="c0"
     />
   </styled.div>
 </Memo(Grid)>

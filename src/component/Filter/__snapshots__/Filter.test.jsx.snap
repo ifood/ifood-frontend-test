@@ -1,6 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Filter /> snapshot 1`] = `
+.c4 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 5px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.c2 {
+  width: 55px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
 <Memo(Filter)
   filter={
     Object {
@@ -22,20 +73,20 @@ exports[`<Filter /> snapshot 1`] = `
 >
   <styled.div>
     <div
-      className="sc-AxiKw dddXJj"
+      className="c0"
     >
       <Styled(Input)
         icon={true}
         placeholder="intl::search"
       >
         <Input
-          className="sc-AxhUy hdEpwk"
+          className="c1"
           icon={true}
           placeholder="intl::search"
           type="text"
         >
           <div
-            className="ui icon input sc-AxhUy hdEpwk"
+            className="ui icon input c1"
           >
             <input
               key=".0"
@@ -59,7 +110,7 @@ exports[`<Filter /> snapshot 1`] = `
       </Styled(Input)>
       <styled.div>
         <div
-          className="sc-AxhCb eZZuqN"
+          className="c2"
         >
           <Button
             as="button"
@@ -189,7 +240,7 @@ exports[`<Filter /> snapshot 1`] = `
     </span>
     <styled.div>
       <div
-        className="sc-AxirZ jNiLqD"
+        className="c3"
       >
         <Tag
           field="Number"
@@ -200,7 +251,7 @@ exports[`<Filter /> snapshot 1`] = `
         >
           <styled.div>
             <div
-              className="sc-AxjAm jjomar"
+              className="c4"
             >
               <Button
                 as="div"
@@ -345,7 +396,7 @@ exports[`<Filter /> snapshot 1`] = `
         >
           <styled.div>
             <div
-              className="sc-AxjAm jjomar"
+              className="c4"
             >
               <Button
                 as="div"

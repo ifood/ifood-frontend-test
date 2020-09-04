@@ -1,19 +1,225 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Login /> snapshot 1`] = `
+.c4 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+.c10 {
+  background: #151515;
+  min-height: 150px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+.c11 {
+  width: 100%;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c12 {
+  margin-bottom: 20px;
+}
+
+.c13 {
+  width: 50px;
+}
+
+.c1 {
+  background: #ea1d2c;
+  height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c2 {
+  width: 100%;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  width: 120px;
+}
+
+.c0 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c9 {
+  text-align: center;
+}
+
+.c7 {
+  width: 100%;
+  object-fit: cover;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c6 {
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+  display: none;
+}
+
+.c8 {
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 10px;
+}
+
+@media (min-width:415px) {
+  .c4 {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px 0;
+  }
+}
+
+@media (min-width:710px) {
+  .c11 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:710px) {
+  .c14 {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width:415px) {
+  .c2 {
+    width: 80%;
+    max-width: 1200px;
+    padding: 0;
+  }
+}
+
+@media (min-width:710px) {
+  .c6 {
+    display: initial;
+  }
+}
+
+@media (min-width:710px) {
+  .c8 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+  }
+}
+
 <Login>
   <styled.div>
     <div
-      className="sc-fzozJi jFicpa"
+      className="c0"
     >
       <Header>
         <styled.header>
           <header
-            className="sc-AxheI czbqkM"
+            className="c1"
           >
             <styled.h1>
               <h1
-                className="sc-Axmtr bMWiiE"
+                className="c2"
               >
                 <styled.img
                   alt="Spotifood logo"
@@ -21,7 +227,7 @@ exports[`<Login /> snapshot 1`] = `
                 >
                   <img
                     alt="Spotifood logo"
-                    className="sc-AxmLO inXKjp"
+                    className="c3"
                     src="logo.png"
                   />
                 </styled.img>
@@ -32,15 +238,15 @@ exports[`<Login /> snapshot 1`] = `
       </Header>
       <styled.main>
         <main
-          className="sc-AxjAm fXQrjm"
+          className="c4"
         >
           <styled.div>
             <div
-              className="sc-fzplWN cRLXzY"
+              className="c5"
             >
               <styled.div>
                 <div
-                  className="sc-fznyAO BdKOh"
+                  className="c6"
                 >
                   <styled.img
                     alt="spotifood banner"
@@ -48,7 +254,7 @@ exports[`<Login /> snapshot 1`] = `
                   >
                     <img
                       alt="spotifood banner"
-                      className="sc-fzpans gxoOtY"
+                      className="c7"
                       src="banner.png"
                     />
                   </styled.img>
@@ -56,11 +262,11 @@ exports[`<Login /> snapshot 1`] = `
               </styled.div>
               <styled.div>
                 <div
-                  className="sc-fznKkj jJMjos"
+                  className="c8"
                 >
                   <styled.h2>
                     <h2
-                      className="sc-fzoLsD cnfpvJ"
+                      className="c9"
                     >
                       <FormattedMessage
                         id="login.message"
@@ -75,7 +281,31 @@ exports[`<Login /> snapshot 1`] = `
                     <Ref
                       innerRef={
                         Object {
-                          "current": <button
+                          "current": @media (min-width:415px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:415px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+@media (min-width:710px) {
+
+}
+
+<button
                             class="ui red button"
                           />,
                         }
@@ -110,15 +340,15 @@ exports[`<Login /> snapshot 1`] = `
       <Footer>
         <styled.footer>
           <footer
-            className="sc-AxirZ fubAkb"
+            className="c10"
           >
             <styled.div>
               <div
-                className="sc-AxiKw gXIALH"
+                className="c11"
               >
                 <styled.div>
                   <div
-                    className="sc-AxhCb czsoeF"
+                    className="c12"
                   >
                     <styled.img
                       alt="Spotifood logo"
@@ -126,7 +356,7 @@ exports[`<Login /> snapshot 1`] = `
                     >
                       <img
                         alt="Spotifood logo"
-                        className="sc-AxhUy iSppPB"
+                        className="c13"
                         src="logo-icon.png"
                       />
                     </styled.img>
@@ -134,7 +364,7 @@ exports[`<Login /> snapshot 1`] = `
                 </styled.div>
                 <styled.div>
                   <div
-                    className="sc-AxgMl jtMlQa"
+                    className="c14"
                   >
                     <p>
                       <FormattedMessage

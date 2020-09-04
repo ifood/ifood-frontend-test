@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PlaylistGrid /> snapshot with items 1`] = `
+.c1.ui.card {
+  margin: 0;
+}
+
+.c2 {
+  object-fit: cover;
+}
+
+.c0 {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(200px,1fr) );
+  gap: 1em;
+}
+
 <Memo(PlaylistGrid)
   items={
     Array [
@@ -29,7 +43,7 @@ exports[`<PlaylistGrid /> snapshot with items 1`] = `
       columnMinWidth="200px"
     >
       <div
-        className="sc-AxiKw ixJNhB"
+        className="c0"
       >
         <Playlist
           key="id"
@@ -44,12 +58,12 @@ exports[`<PlaylistGrid /> snapshot with items 1`] = `
             onClick={[Function]}
           >
             <Card
-              className="sc-AxjAm ihGEoy"
+              className="c1"
               fluid={true}
               onClick={[Function]}
             >
               <a
-                className="ui fluid card sc-AxjAm ihGEoy"
+                className="ui fluid card c1"
                 onClick={[Function]}
               >
                 <Styled(Image)
@@ -59,13 +73,13 @@ exports[`<PlaylistGrid /> snapshot with items 1`] = `
                 >
                   <Image
                     as="img"
-                    className="sc-AxirZ fGQfeF"
+                    className="c2"
                     src="DefaultPlaylistImage.jpg"
                     ui={false}
                     wrapped={true}
                   >
                     <div
-                      className="image sc-AxirZ fGQfeF"
+                      className="image c2"
                     >
                       <img
                         src="DefaultPlaylistImage.jpg"

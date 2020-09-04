@@ -1,6 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TagList /> snapshot 1`] = `
+.c1 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 5px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
 <TagList
   items={
     Array [
@@ -20,7 +37,7 @@ exports[`<TagList /> snapshot 1`] = `
   </span>
   <styled.div>
     <div
-      className="sc-AxirZ jNiLqD"
+      className="c0"
     >
       <Tag
         field="field"
@@ -31,7 +48,7 @@ exports[`<TagList /> snapshot 1`] = `
       >
         <styled.div>
           <div
-            className="sc-AxjAm jjomar"
+            className="c1"
           >
             <Button
               as="div"

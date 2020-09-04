@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Playlist /> snapshot 1`] = `
+.c0.ui.card {
+  margin: 0;
+}
+
+.c1 {
+  object-fit: cover;
+}
+
 <Playlist
   playlist={
     Object {
@@ -28,12 +36,12 @@ exports[`<Playlist /> snapshot 1`] = `
     onClick={[Function]}
   >
     <Card
-      className="sc-AxjAm ihGEoy"
+      className="c0"
       fluid={true}
       onClick={[Function]}
     >
       <a
-        className="ui fluid card sc-AxjAm ihGEoy"
+        className="ui fluid card c0"
         onClick={[Function]}
       >
         <Styled(Image)
@@ -43,13 +51,13 @@ exports[`<Playlist /> snapshot 1`] = `
         >
           <Image
             as="img"
-            className="sc-AxirZ fGQfeF"
+            className="c1"
             src="https://not-a-imagem-url"
             ui={false}
             wrapped={true}
           >
             <div
-              className="image sc-AxirZ fGQfeF"
+              className="image c1"
             >
               <img
                 src="https://not-a-imagem-url"

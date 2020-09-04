@@ -1,26 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Layout <Content /> snapshot 1`] = `
+.c0 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+@media (min-width:415px) {
+  .c0 {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px 0;
+  }
+}
+
 <styled.main>
   <main
-    className="sc-AxjAm fXQrjm"
+    className="c0"
   />
 </styled.main>
 `;
 
 exports[`Layout <Footer /> snapshot 1`] = `
+.c0 {
+  background: #151515;
+  min-height: 150px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  margin-bottom: 20px;
+}
+
+.c3 {
+  width: 50px;
+}
+
+@media (min-width:710px) {
+  .c1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:710px) {
+  .c4 {
+    padding: 0 20px;
+  }
+}
+
 <Footer>
   <styled.footer>
     <footer
-      className="sc-AxirZ fubAkb"
+      className="c0"
     >
       <styled.div>
         <div
-          className="sc-AxiKw gXIALH"
+          className="c1"
         >
           <styled.div>
             <div
-              className="sc-AxhCb czsoeF"
+              className="c2"
             >
               <styled.img
                 alt="Spotifood logo"
@@ -28,7 +115,7 @@ exports[`Layout <Footer /> snapshot 1`] = `
               >
                 <img
                   alt="Spotifood logo"
-                  className="sc-AxhUy iSppPB"
+                  className="c3"
                   src="logo-icon.png"
                 />
               </styled.img>
@@ -36,7 +123,7 @@ exports[`Layout <Footer /> snapshot 1`] = `
           </styled.div>
           <styled.div>
             <div
-              className="sc-AxgMl jtMlQa"
+              className="c4"
             >
               <p>
                 <FormattedMessage
@@ -58,14 +145,55 @@ exports[`Layout <Footer /> snapshot 1`] = `
 `;
 
 exports[`Layout <Header /> snapshot 1`] = `
+.c0 {
+  background: #ea1d2c;
+  height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c1 {
+  width: 100%;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  width: 120px;
+}
+
+@media (min-width:415px) {
+  .c1 {
+    width: 80%;
+    max-width: 1200px;
+    padding: 0;
+  }
+}
+
 <Header>
   <styled.header>
     <header
-      className="sc-AxheI czbqkM"
+      className="c0"
     >
       <styled.h1>
         <h1
-          className="sc-Axmtr bMWiiE"
+          className="c1"
         >
           <styled.img
             alt="Spotifood logo"
@@ -73,7 +201,7 @@ exports[`Layout <Header /> snapshot 1`] = `
           >
             <img
               alt="Spotifood logo"
-              className="sc-AxmLO inXKjp"
+              className="c2"
               src="logo.png"
             />
           </styled.img>
@@ -85,9 +213,20 @@ exports[`Layout <Header /> snapshot 1`] = `
 `;
 
 exports[`Layout <LayoutContainer /> snapshot 1`] = `
+.c0 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 <styled.div>
   <div
-    className="sc-fzozJi jFicpa"
+    className="c0"
   />
 </styled.div>
 `;
