@@ -36,20 +36,27 @@ exports[`<Playlist /> snapshot 1`] = `
         className="ui fluid card sc-AxjAm ihGEoy"
         onClick={[Function]}
       >
-        <Image
-          as="img"
+        <Styled(Image)
           src="https://not-a-imagem-url"
           ui={false}
           wrapped={true}
         >
-          <div
-            className="image"
+          <Image
+            as="img"
+            className="sc-AxirZ fGQfeF"
+            src="https://not-a-imagem-url"
+            ui={false}
+            wrapped={true}
           >
-            <img
-              src="https://not-a-imagem-url"
-            />
-          </div>
-        </Image>
+            <div
+              className="image sc-AxirZ fGQfeF"
+            >
+              <img
+                src="https://not-a-imagem-url"
+              />
+            </div>
+          </Image>
+        </Styled(Image)>
         <CardContent>
           <div
             className="content"

@@ -29,7 +29,7 @@ exports[`<PlaylistGrid /> snapshot with items 1`] = `
       columnMinWidth="200px"
     >
       <div
-        className="sc-AxirZ dTTMwR"
+        className="sc-AxiKw ixJNhB"
       >
         <Playlist
           key="id"
@@ -52,20 +52,27 @@ exports[`<PlaylistGrid /> snapshot with items 1`] = `
                 className="ui fluid card sc-AxjAm ihGEoy"
                 onClick={[Function]}
               >
-                <Image
-                  as="img"
+                <Styled(Image)
                   src="DefaultPlaylistImage.jpg"
                   ui={false}
                   wrapped={true}
                 >
-                  <div
-                    className="image"
+                  <Image
+                    as="img"
+                    className="sc-AxirZ fGQfeF"
+                    src="DefaultPlaylistImage.jpg"
+                    ui={false}
+                    wrapped={true}
                   >
-                    <img
-                      src="DefaultPlaylistImage.jpg"
-                    />
-                  </div>
-                </Image>
+                    <div
+                      className="image sc-AxirZ fGQfeF"
+                    >
+                      <img
+                        src="DefaultPlaylistImage.jpg"
+                      />
+                    </div>
+                  </Image>
+                </Styled(Image)>
                 <CardContent>
                   <div
                     className="content"

@@ -77,7 +77,7 @@ describe('<Playlist />', () => {
 
   it('should render a standard image if playlist has no images', () => {
     const { images, ...noImagesPlaylist } = MyPlaylist;
-    const playlist = shallow(<Playlist playlist={noImagesPlaylist} />);
+    const playlist = mount(<Playlist playlist={noImagesPlaylist} />);
     const image = playlist.find(Image);
     expect(image.props().src).to.be.equal(DefaultPlaylistImage);
   });

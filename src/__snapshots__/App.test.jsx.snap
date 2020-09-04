@@ -100,16 +100,16 @@ exports[`<App /> snapshot 1`] = `
                       <Login>
                         <styled.div>
                           <div
-                            className="sc-fzokOt kuOybX"
+                            className="sc-fzqBZW ipbYhy"
                           >
                             <Header>
                               <styled.header>
                                 <header
-                                  className="sc-fznyAO Wnbwo"
+                                  className="sc-fznKkj lfPylV"
                                 >
                                   <styled.h1>
                                     <h1
-                                      className="sc-fznKkj bTYONO"
+                                      className="sc-fznZeY kbIVGi"
                                     >
                                       <styled.img
                                         alt="Spotifood logo"
@@ -117,7 +117,7 @@ exports[`<App /> snapshot 1`] = `
                                       >
                                         <img
                                           alt="Spotifood logo"
-                                          className="sc-fznZeY fDeeBe"
+                                          className="sc-fzokOt llqEFR"
                                           src="logo.png"
                                         />
                                       </styled.img>
@@ -128,15 +128,15 @@ exports[`<App /> snapshot 1`] = `
                             </Header>
                             <styled.main>
                               <main
-                                className="sc-Axmtr iTXiqD"
+                                className="sc-AxmLO bdGGKO"
                               >
                                 <styled.div>
                                   <div
-                                    className="sc-fzoyAV edtBRg"
+                                    className="sc-fzoLag cVoaIU"
                                   >
                                     <styled.div>
                                       <div
-                                        className="sc-fzoLag hQENTN"
+                                        className="sc-fzoXzr gFmAEj"
                                       >
                                         <styled.img
                                           alt="spotifood banner"
@@ -144,7 +144,7 @@ exports[`<App /> snapshot 1`] = `
                                         >
                                           <img
                                             alt="spotifood banner"
-                                            className="sc-fzqNJr kNMDef"
+                                            className="sc-fzoyAV jmIzDp"
                                             src="banner.png"
                                           />
                                         </styled.img>
@@ -152,11 +152,11 @@ exports[`<App /> snapshot 1`] = `
                                     </styled.div>
                                     <styled.div>
                                       <div
-                                        className="sc-fzoXzr iCUpsj"
+                                        className="sc-fzpjYC jvcZLQ"
                                       >
                                         <styled.h2>
                                           <h2
-                                            className="sc-fzqBZW fLhnQf"
+                                            className="sc-fzqNJr bYnXfq"
                                           >
                                             <FormattedMessage
                                               id="login.message"
@@ -206,15 +206,15 @@ exports[`<App /> snapshot 1`] = `
                             <Footer>
                               <styled.footer>
                                 <footer
-                                  className="sc-AxmLO eyYpJA"
+                                  className="sc-fzozJi ixBtCB"
                                 >
                                   <styled.div>
                                     <div
-                                      className="sc-fzozJi cBaOqJ"
+                                      className="sc-fzoLsD dSybVf"
                                     >
                                       <styled.div>
                                         <div
-                                          className="sc-fzoLsD eCAhqh"
+                                          className="sc-fzpans bzPxPR"
                                         >
                                           <styled.img
                                             alt="Spotifood logo"
@@ -222,7 +222,7 @@ exports[`<App /> snapshot 1`] = `
                                           >
                                             <img
                                               alt="Spotifood logo"
-                                              className="sc-fzpans kgyVqc"
+                                              className="sc-fzplWN hdFbkJ"
                                               src="logo-icon.png"
                                             />
                                           </styled.img>
@@ -230,7 +230,7 @@ exports[`<App /> snapshot 1`] = `
                                       </styled.div>
                                       <styled.div>
                                         <div
-                                          className="sc-fzplWN bEKLLk"
+                                          className="sc-fznyAO idjYWI"
                                         >
                                           <p>
                                             <FormattedMessage

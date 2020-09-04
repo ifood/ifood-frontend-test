@@ -4,8 +4,6 @@ We love food and music
 
 ![Spotifood](Spotifood.PNG)
 
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -28,16 +26,15 @@ Launches the test runner in the interactive watch mode.
 
 Builds the app for production to the `build` folder
 
-
-
 ## Technologies
+
 - [React](https://reactjs.org/)
-- UI Components 
+- UI Components
   - [Semantic UI React](https://react.semantic-ui.com)
   - [React Datepicker](https://reactdatepicker.com/)
 - I18n
   - [Format.JS](https://formatjs.io/)
-  - [date-fns](https://date-fns.org/)  
+  - [date-fns](https://date-fns.org/)
 - [axios](https://github.com/axios/axios)
 - [React Router](https://reactrouter.com/)
 - [styled-components](https://styled-components.com/)
@@ -47,8 +44,6 @@ Builds the app for production to the `build` folder
   - Test assertion - [Chai](https://www.chaijs.com/)
   - Eslint base config - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
   - Code formatter - [prettier](https://prettier.io/)
-
-
 
 ## Environment variable
 
@@ -62,12 +57,11 @@ Spotify **redirect_uri**, this is actually the app's URI
 
 > these variables have default values for the development environment
 
-## Know Issues
+## Known Issues
 
 - [findDOMNode is deprecated in StrictMode](https://github.com/Semantic-Org/Semantic-UI-React/issues/3810)
 - FIlter by country USA does not work
 - Session is not kept between tabs
-
 
 ## What comes next?
 
@@ -75,5 +69,4 @@ Spotify **redirect_uri**, this is actually the app's URI
 - Keep session between tabs
 - Change Semantic UI theme properly
 - Add support to change the application language, currently the browser language is used
-
-
+- CI/CD configuration

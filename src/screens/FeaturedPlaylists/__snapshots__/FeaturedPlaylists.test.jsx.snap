@@ -4,16 +4,16 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
 <FeaturedPlaylists>
   <styled.div>
     <div
-      className="sc-fzokOt kuOybX"
+      className="sc-fzqBZW ipbYhy"
     >
       <Header>
         <styled.header>
           <header
-            className="sc-fznyAO Wnbwo"
+            className="sc-fznKkj lfPylV"
           >
             <styled.h1>
               <h1
-                className="sc-fznKkj bTYONO"
+                className="sc-fznZeY kbIVGi"
               >
                 <styled.img
                   alt="Spotifood logo"
@@ -21,7 +21,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                 >
                   <img
                     alt="Spotifood logo"
-                    className="sc-fznZeY fDeeBe"
+                    className="sc-fzokOt llqEFR"
                     src="logo.png"
                   />
                 </styled.img>
@@ -32,7 +32,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
       </Header>
       <styled.main>
         <main
-          className="sc-Axmtr iTXiqD"
+          className="sc-AxmLO bdGGKO"
         >
           <Memo(Filter)
             filter={null}
@@ -42,20 +42,20 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
           >
             <styled.div>
               <div
-                className="sc-AxhUy eBYwie"
+                className="sc-AxgMl jFdgEo"
               >
                 <Styled(Input)
                   icon={true}
                   placeholder="intl::search"
                 >
                   <Input
-                    className="sc-AxheI jlkZqc"
+                    className="sc-Axmtr dThYIv"
                     icon={true}
                     placeholder="intl::search"
                     type="text"
                   >
                     <div
-                      className="ui icon input sc-AxheI jlkZqc"
+                      className="ui icon input sc-Axmtr dThYIv"
                     >
                       <input
                         key=".0"
@@ -79,7 +79,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                 </Styled(Input)>
                 <styled.div>
                   <div
-                    className="sc-AxgMl jCkrga"
+                    className="sc-AxheI jmTTPM"
                   >
                     <Button
                       as="button"
@@ -251,15 +251,15 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
       <Footer>
         <styled.footer>
           <footer
-            className="sc-AxmLO eyYpJA"
+            className="sc-fzozJi ixBtCB"
           >
             <styled.div>
               <div
-                className="sc-fzozJi cBaOqJ"
+                className="sc-fzoLsD dSybVf"
               >
                 <styled.div>
                   <div
-                    className="sc-fzoLsD eCAhqh"
+                    className="sc-fzpans bzPxPR"
                   >
                     <styled.img
                       alt="Spotifood logo"
@@ -267,7 +267,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                     >
                       <img
                         alt="Spotifood logo"
-                        className="sc-fzpans kgyVqc"
+                        className="sc-fzplWN hdFbkJ"
                         src="logo-icon.png"
                       />
                     </styled.img>
@@ -275,7 +275,7 @@ exports[`<FeaturedPlaylists /> snapshot 1`] = `
                 </styled.div>
                 <styled.div>
                   <div
-                    className="sc-fzplWN bEKLLk"
+                    className="sc-fznyAO idjYWI"
                   >
                     <p>
                       <FormattedMessage
