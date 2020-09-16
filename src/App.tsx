@@ -1,13 +1,17 @@
 import React from 'react';
 
+import { ThemeProvider } from '@material-ui/core/styles';
+
+import Routes from './routes';
+
+import theme from './theme';
+
 import './assets/styles/resets.css';
 
-import Login from './pages/Login';
-
-function App() {
-  return (
-    <Login />
-  );
-}
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <Routes />
+  </ThemeProvider>
+);
 
 export default App;
