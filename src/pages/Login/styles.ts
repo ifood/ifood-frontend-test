@@ -24,7 +24,7 @@ const MusicalPhrase = styled.div`
 
 const LoginToContinue = styled.div`
   font-size: 18px;
-  margin-top: 16px;
+  margin: 16px 0 56px;
 `;
 
 export { Container, MusicalPhrase, LoginToContinue };
