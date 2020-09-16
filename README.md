@@ -9,7 +9,7 @@ Ifood's customers playlists 🎶.
 ```sh
 $ git clone https://github.com/mariocsantos/spotifood.git
 $ cd spotifood
-$ yarn install
+$ yarn
 
 $ yarn start
 ```
