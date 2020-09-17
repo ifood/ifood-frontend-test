@@ -6,11 +6,15 @@ import Routes from './routes';
 
 import theme from './theme';
 
+import { AuthProvider } from './hooks/auth';
+
 import './assets/styles/resets.css';
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <Routes />
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   </ThemeProvider>
 );
 

@@ -1,13 +1,14 @@
 import React from 'react';
 
+import { useAuth } from '../hooks/auth';
+
 import Loading from '../components/Loading';
 
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 
 const Routes: React.FC = () => {
-  const isAuthenticated = false;
-  const loading = false;
+  const { loading, isAuthenticated } = useAuth();
 
   if (loading) {
     return <Loading />;
