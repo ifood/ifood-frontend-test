@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 
 import config from '../config';
 
-const { spotifyUrl } = config;
+const { spotifyAccountUrl } = config;
 
 interface GetAccessTokenData {
   access_token: string;
@@ -17,7 +17,7 @@ interface RefreshAccessTokenData {
 }
 
 class Spotify {
-  static urlApiToken = `${spotifyUrl}/api/token`;
+  static urlApiToken = `${spotifyAccountUrl}/api/token`;
 
   static createBasicAuthenticationHeader(): string {
     const { clientId, clientSecret } = config;
