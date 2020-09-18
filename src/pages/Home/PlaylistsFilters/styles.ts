@@ -1,4 +1,3 @@
-import { makeStyles } from '@material-ui/core';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -6,10 +5,4 @@ const Form = styled.form`
   height: 100%;
 `;
 
-const useStyles = makeStyles(() => ({
-  filterField: {
-    marginBottom: 16,
-  },
-}));
-
-export { Form, useStyles };
+export default Form;

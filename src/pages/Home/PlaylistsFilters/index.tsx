@@ -6,8 +6,9 @@ import PlaylistsFiltersApi from '../../../services/playlistFilters';
 
 import FilterField, { FilterFieldProps } from '../../../components/FilterField';
 import Drawer from '../../../components/Drawer';
+import Logo from '../../../components/Logo';
 
-import { Form } from './styles';
+import Form from './styles';
 
 interface PlaylistsFiltersProps {
   mobileOpen: boolean;
@@ -39,6 +40,8 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
     <Drawer mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}>
       {loading && <LinearProgress />}
       <Form noValidate autoComplete="off">
+        <Logo width="180px" color="red" />
+
         {filters?.map((filter: FilterFieldProps) => (
           <FilterField key={filter.id} {...filter} value={undefined} />
         ))}

@@ -5,13 +5,13 @@ import MaterialFormControl from '@material-ui/core/FormControl';
 
 const TextField = withStyles({
   root: {
-    marginBottom: 24,
+    marginTop: 24,
   },
 })(MaterialTextField);
 
 const FormControl = withStyles({
   root: {
-    marginBottom: 24,
+    marginTop: 24,
   },
 })(MaterialFormControl);
 
