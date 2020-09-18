@@ -27,6 +27,7 @@
     ],
     "rules": {
         "react/prop-types": "off",
-        "@typescript-eslint/naming-convention": "off"
+        "@typescript-eslint/naming-convention": "off",
+        "react/jsx-props-no-spreading": ["error", {"custom": "ignore"}]
     }
 }
