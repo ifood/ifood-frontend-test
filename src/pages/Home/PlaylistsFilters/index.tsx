@@ -1,4 +1,9 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, {
+  useState,
+  useEffect,
+  memo,
+  useCallback,
+} from 'react';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
@@ -28,7 +33,7 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
 
   const { filter, setFilter } = useFeaturedPlaylist();
 
-  const getFilters = async () => {
+  const getFilters = useCallback(async () => {
     setLoading(true);
 
     try {
@@ -39,7 +44,7 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
     } finally {
       setLoading(false);
     }
-  };
+  }, [enqueueSnackbar]);
 
   const handleChange = (id: string, value: string | number) => {
     const newFilter = {
@@ -74,7 +79,7 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
 
   useEffect(() => {
     getFilters();
-  }, []);
+  }, [getFilters]);
 
   return (
     <Drawer mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}>
