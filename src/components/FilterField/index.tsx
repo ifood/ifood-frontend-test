@@ -33,7 +33,18 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
   const isShrink = id === 'timestamp' || undefined;
 
   const handleSelectChange = ({ target }: React.ChangeEvent<{ value: unknown }>) => {
-    const value = target.value as string;
+    let value = target.value as string;
+
+    const max = validation?.max;
+    const min = validation?.min;
+
+    if (max && Number(value) > max) {
+      value = max.toString();
+    }
+
+    if (value && min && Number(value) < min) {
+      value = min.toString();
+    }
 
     setFieldValue(value);
     onChange(value);
@@ -109,7 +120,7 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
       }}
       InputProps={{
         inputProps: {
-          min: validation?.min || 1,
+          min: validation?.min,
           max: validation?.max,
         },
       }}
