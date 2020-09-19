@@ -9,6 +9,7 @@ import Drawer from '../../../components/Drawer';
 import Logo from '../../../components/Logo';
 
 import Form from './styles';
+import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
 
 interface PlaylistsFiltersProps {
   mobileOpen: boolean;
@@ -17,19 +18,30 @@ interface PlaylistsFiltersProps {
 
 const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobileOpen }) => {
   const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState([] as FilterFieldProps[]);
+  const [filtersField, setFiltersField] = useState([] as FilterFieldProps[]);
+
+  const { filter, setFilter } = useFeaturedPlaylist();
 
   const getFilters = async () => {
     setLoading(true);
 
     try {
       const filtersData = await PlaylistsFiltersApi.get();
-      setFilters(filtersData);
+      setFiltersField(filtersData);
     } catch (error) {
       // show error
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleChange = (id: string, value: string | number) => {
+    const newFilter = {
+      ...filter,
+      [id]: value,
+    };
+
+    setFilter(newFilter);
   };
 
   useEffect(() => {
@@ -42,8 +54,12 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
       <Form noValidate autoComplete="off">
         <Logo width="180px" color="red" />
 
-        {filters?.map((filter: FilterFieldProps) => (
-          <FilterField key={filter.id} {...filter} value={undefined} />
+        {filtersField?.map((filterField: FilterFieldProps) => (
+          <FilterField
+            key={filterField.id}
+            {...filterField}
+            onChange={(value) => handleChange(filterField.id, value)}
+          />
         ))}
       </Form>
     </Drawer>

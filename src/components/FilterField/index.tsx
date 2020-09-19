@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,7 +16,6 @@ export interface FilterFieldProps {
     min?: number;
     max?: number;
   },
-  value: string | number | null | undefined;
   onChange?: (value: string) => void;
 }
 
@@ -24,12 +23,25 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
   const {
     id,
     name,
-    value,
     values,
     validation,
+    onChange,
   } = props;
 
+  const [fieldValue, setFieldValue] = useState('');
+
   const isShrink = id === 'timestamp' || undefined;
+
+  const handleSelectChange = ({ target }: React.ChangeEvent<{ value: unknown }>) => {
+    const value = target.value as string;
+    setFieldValue(value);
+
+    if (!onChange) {
+      return;
+    }
+
+    onChange(value);
+  };
 
   const getTextFieldType = () => {
     if (validation?.primitiveType === 'INTEGER') {
@@ -51,10 +63,11 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
         </InputLabel>
         <Select
           labelId={`${id}-label`}
-          value={value}
+          value={fieldValue}
           label={name}
+          onChange={handleSelectChange}
         >
-          <MenuItem value={undefined}>Selecione</MenuItem>
+          <MenuItem value="">Selecione</MenuItem>
           {values?.map((selectValue) => (
             <MenuItem value={selectValue.value} key={selectValue.value}>
               {selectValue.name}
@@ -69,15 +82,15 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
       variant="outlined"
       fullWidth
       label={name}
-      value={value}
       type={getTextFieldType()}
-      defaultValue={null}
+      value={fieldValue}
+      onChange={handleSelectChange}
       InputLabelProps={{
         shrink: isShrink,
       }}
       InputProps={{
         inputProps: {
-          min: validation?.min,
+          min: validation?.min || 1,
           max: validation?.max,
         },
       }}
