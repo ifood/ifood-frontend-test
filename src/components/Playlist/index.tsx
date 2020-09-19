@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 
 import { PlaylistItem } from '../../services/spotify';
 
@@ -11,15 +11,24 @@ import {
   Description,
 } from './styles';
 
-const Playlist: React.FC<PlaylistItem> = ({
-  name, description, images, external_urls,
-}) => {
+const Playlist: React.FC<PlaylistItem> = (props) => {
+  const {
+    name,
+    description,
+    images,
+    external_urls,
+  } = props;
+
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const [image] = images;
   const { spotify } = external_urls;
 
+  const handleImageLoad = () => setImageLoaded(true);
+
   return (
-    <Container href={spotify} target="_blank">
-      <Image src={image?.url} alt={name} />
+    <Container href={spotify} target="_blank" loaded={imageLoaded}>
+      <Image src={image?.url} alt={name} onLoad={handleImageLoad} loaded={imageLoaded} />
       <Info>
         <InfoText>
           <Name>{name}</Name>

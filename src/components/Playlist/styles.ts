@@ -1,15 +1,45 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const Container = styled.a`
+interface ShimmerProps {
+  loaded: boolean;
+}
+
+const shimmerAnimation = keyframes`
+  to {
+    left: 100%;
+    transform: translateX(0);
+  }
+`;
+
+const Container = styled.a<ShimmerProps>`
   position: relative;
   display: block;
   border-radius: 14px;
   overflow: hidden;
+  min-height: 130px;
+
+  background-color: rgba(0, 0, 0, .1);
+
+  &::before {
+    content: '';
+    
+    display: ${({ loaded }) => (loaded ? 'none' : 'block')};
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 48px;
+    background-color: rgba(255, 255, 255, .24);
+    animation: ${shimmerAnimation} 500ms linear infinite;
+    transform: translateX(-100%);
+  }
 `;
 
-const Image = styled.img`
+const Image = styled.img<ShimmerProps>`
   max-width: 100%;
-  display: block;
+  display: ${({ loaded }) => (loaded ? 'block' : 'none')};
 `;
 
 const InfoText = styled.div`
