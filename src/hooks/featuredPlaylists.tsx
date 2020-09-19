@@ -68,6 +68,12 @@ const FeaturedPlaylistProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     getFeaturedPlaylists();
+
+    const playlistsTimer = setInterval(() => {
+      getFeaturedPlaylists();
+    }, 30000);
+
+    return () => clearInterval(playlistsTimer);
   }, [getFeaturedPlaylists]);
 
   return (
