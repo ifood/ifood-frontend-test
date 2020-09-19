@@ -9,20 +9,19 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
 
 import { Container, FilterButton, Input } from './styles';
+import { useAuth } from '../../../hooks/auth';
 
 interface PlaylistsSearchProps {
   setMobileOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const PlaylistsSearch: React.FC<PlaylistsSearchProps> = ({ setMobileOpen }) => {
+  const { logoff } = useAuth();
   const { setSearch } = useFeaturedPlaylist();
 
   const handleMobileOpenClick = () => setMobileOpen(true);
 
   const handleSearchChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>) => {
     setSearch(target.value);
-  };
-
-  const handleLogoff = () => {
   };
 
   return (
@@ -42,7 +41,7 @@ const PlaylistsSearch: React.FC<PlaylistsSearchProps> = ({ setMobileOpen }) => {
       <Tooltip title="Sair" aria-label="Sair">
         <IconButton
           aria-label="Logoff"
-          onClick={handleLogoff}
+          onClick={logoff}
         >
           <ExitToApp />
         </IconButton>

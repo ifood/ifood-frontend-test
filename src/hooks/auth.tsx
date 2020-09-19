@@ -10,6 +10,7 @@ import Spotify from '../services/spotify';
 interface AuthContextData {
   loading: boolean;
   isAuthenticated: boolean;
+  logoff: () => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -17,6 +18,14 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const AuthProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const logoff = () => {
+    localStorage.removeItem('@Spotifood:AccessToken');
+    localStorage.removeItem('@Spotifood:RefreshToken');
+    localStorage.removeItem('@Spotifood:TokenType');
+
+    setIsAuthenticated(false);
+  };
 
   const hasToken = () => !!localStorage.getItem('@Spotifood:RefreshToken');
 
@@ -44,36 +53,40 @@ const AuthProvider: React.FC = ({ children }) => {
       localStorage.setItem('@Spotifood:TokenType', tokenType);
       setIsAuthenticated(true);
     } catch (error) {
-      localStorage.remove('@Spotifood:AccessToken');
-      localStorage.remove('@Spotifood:RefreshToken');
-      localStorage.remove('@Spotifood:TokenType');
-      // show error
-    } finally {
-      setLoading(false);
+      throw Error('Não conseguimos validar seu acesso, tente refazer o login.');
     }
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
+    const validateAccess = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
 
-    setLoading(true);
+      setLoading(true);
 
-    if (code) {
-      getAccessToken(code);
-      return;
-    }
+      try {
+        if (code) {
+          await getAccessToken(code);
+          return;
+        }
 
-    if (hasToken()) {
-      refreshToken();
-      return;
-    }
+        if (hasToken()) {
+          await refreshToken();
+          return;
+        }
+      } catch ({ message }) {
+        logoff();
+        // show snackbar
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    setLoading(false);
+    validateAccess();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ loading, isAuthenticated }}>
+    <AuthContext.Provider value={{ loading, isAuthenticated, logoff }}>
       {children}
     </AuthContext.Provider>
   );
