@@ -57,10 +57,12 @@ class Spotify {
   }
 
   static async getAccessToken(code: string): Promise<Token> {
+    const { origin, pathname } = window.location;
+
     const params = {
       grant_type: 'authorization_code',
       code,
-      redirect_uri: 'http://localhost:3000/',
+      redirect_uri: `${origin}${pathname}`,
     };
 
     const queryString = new URLSearchParams(params).toString();
