@@ -21,7 +21,7 @@ export interface FeaturedPlaylistFilter {
 export interface PlaylistItem {
   id: string;
   description: string;
-  href: string;
+  external_urls: { spotify: string };
   images: { url: string }[];
   name: string;
 }

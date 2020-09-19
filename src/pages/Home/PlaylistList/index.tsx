@@ -4,13 +4,15 @@ import Playlist from '../../../components/Playlist';
 
 import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
 
+import Container from './styles';
+
 const PlaylistList = () => {
   const { playlists } = useFeaturedPlaylist();
 
   return (
-    <div>
+    <Container>
       {playlists.map((playlist: any) => <Playlist key={playlist.id} {...playlist} />)}
-    </div>
+    </Container>
   );
 };
 

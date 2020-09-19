@@ -5,4 +5,8 @@ const Container = styled.div`
   display: flex;
 `;
 
-export { Container };
+const Main = styled.main`
+  flex: 1;
+`;
+
+export { Container, Main };

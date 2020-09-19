@@ -5,7 +5,7 @@ import { FeaturedPlaylistProvider } from '../../hooks/featuredPlaylists';
 import PlaylistsFilters from './PlaylistsFilters';
 import PlaylistList from './PlaylistList';
 
-import { Container } from './styles';
+import { Container, Main } from './styles';
 
 const Home = () => {
   const [mobileOpenDrawer, setMobileOpenDrawer] = useState(false);
@@ -17,9 +17,9 @@ const Home = () => {
           mobileOpen={mobileOpenDrawer}
           setMobileOpen={setMobileOpenDrawer}
         />
-        <div style={{ marginLeft: '16px' }}>
+        <Main style={{ flex: 1 }}>
           <PlaylistList />
-        </div>
+        </Main>
       </Container>
     </FeaturedPlaylistProvider>
   );
