@@ -58,7 +58,7 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
   if (values?.length) {
     return (
       <FormControl fullWidth variant="outlined">
-        <InputLabel id={`${id}-label`}>
+        <InputLabel id={`${id}-label`} color="secondary">
           {name}
         </InputLabel>
         <Select
@@ -66,6 +66,7 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
           value={fieldValue}
           label={name}
           onChange={handleSelectChange}
+          color="secondary"
         >
           <MenuItem value="">Selecione</MenuItem>
           {values?.map((selectValue) => (
@@ -79,6 +80,7 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
   }
   return (
     <TextField
+      color="secondary"
       variant="outlined"
       fullWidth
       label={name}
