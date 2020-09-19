@@ -4,7 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 
-import { FormControl, TextField } from './styles';
+import { FormControl, TextField, DateTimePicker } from './styles';
 
 export interface FilterFieldProps {
   id: string;
@@ -16,7 +16,7 @@ export interface FilterFieldProps {
     min?: number;
     max?: number;
   },
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
 }
 
 const FilterField: React.FC<FilterFieldProps> = (props) => {
@@ -34,22 +34,21 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
 
   const handleSelectChange = ({ target }: React.ChangeEvent<{ value: unknown }>) => {
     const value = target.value as string;
+
     setFieldValue(value);
-
-    if (!onChange) {
-      return;
-    }
-
     onChange(value);
+  };
+
+  const handleDateTimePickerChange = (date: any) => {
+    const formattedDate = date?.format('yyyy-MM-DDTHH:mm:ss');
+
+    setFieldValue(formattedDate);
+    onChange(formattedDate);
   };
 
   const getTextFieldType = () => {
     if (validation?.primitiveType === 'INTEGER') {
       return 'number';
-    }
-
-    if (validation?.entityType === 'DATE_TIME') {
-      return 'datetime-local';
     }
 
     return 'text';
@@ -78,6 +77,24 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
       </FormControl>
     );
   }
+
+  if (validation?.entityType === 'DATE_TIME') {
+    return (
+      <DateTimePicker
+        clearable
+        color="secondary"
+        inputVariant="outlined"
+        fullWidth
+        label={name}
+        format="DD-MM-yyyy HH:mm:ss"
+        clearLabel="Limpar"
+        cancelLabel="Cancelar"
+        value={fieldValue || null}
+        onChange={handleDateTimePickerChange}
+      />
+    );
+  }
+
   return (
     <TextField
       color="secondary"
