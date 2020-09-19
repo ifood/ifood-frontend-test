@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 import Playlist from '../../../components/Playlist';
 
 import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
@@ -7,12 +9,15 @@ import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
 import Container from './styles';
 
 const PlaylistList = () => {
-  const { playlists } = useFeaturedPlaylist();
+  const { playlists, loading } = useFeaturedPlaylist();
 
   return (
-    <Container>
-      {playlists.map((playlist: any) => <Playlist key={playlist.id} {...playlist} />)}
-    </Container>
+    <>
+      {loading && <LinearProgress />}
+      <Container>
+        {playlists.map((playlist: any) => <Playlist key={playlist.id} {...playlist} />)}
+      </Container>
+    </>
   );
 };
 
