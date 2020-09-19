@@ -6,10 +6,24 @@ import Playlist from '../../../components/Playlist';
 
 import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
 
-import Container from './styles';
+import { Container, EmptyState } from './styles';
 
 const PlaylistList = () => {
   const { playlists, loading } = useFeaturedPlaylist();
+
+  const getEmptyState = () => {
+    if (loading || playlists?.length) {
+      return null;
+    }
+
+    return (
+      <EmptyState>
+        Não encontramos nenhuma playlist.
+        <br />
+        <span role="img" aria-label="Envergonhado">😬</span>
+      </EmptyState>
+    );
+  };
 
   return (
     <>
@@ -17,6 +31,7 @@ const PlaylistList = () => {
       <Container>
         {playlists.map((playlist: any) => <Playlist key={playlist.id} {...playlist} />)}
       </Container>
+      {getEmptyState()}
     </>
   );
 };

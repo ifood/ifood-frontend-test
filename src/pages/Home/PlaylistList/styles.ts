@@ -13,4 +13,13 @@ const Container = styled.div`
   }
 `;
 
-export default Container;
+const EmptyState = styled.div`
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 100;
+`;
+
+export { Container, EmptyState };
