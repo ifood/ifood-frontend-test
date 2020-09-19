@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 
-const Playlist: React.FC<any> = ({ name }) => (
+import { PlaylistItem } from '../../services/spotify';
+
+const Playlist: React.FC<PlaylistItem> = ({ name }) => (
   <div>
     {name}
   </div>

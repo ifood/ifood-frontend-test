@@ -16,7 +16,21 @@ export interface FeaturedPlaylistFilter {
   timestamp?: string;
   limit?: number;
   offset?: number;
+}
 
+export interface PlaylistItem {
+  id: string;
+  description: string;
+  href: string;
+  images: { url: string }[];
+  name: string;
+}
+
+export interface PlaylistResponse {
+  items: PlaylistItem[];
+  next: string | null;
+  previous: string | null;
+  total: number;
 }
 
 class Spotify {
@@ -93,7 +107,7 @@ class Spotify {
     return Spotify.token;
   }
 
-  static async getFeaturedPlaylists(filter: FeaturedPlaylistFilter) {
+  static async getFeaturedPlaylists(filter: FeaturedPlaylistFilter): Promise<PlaylistResponse> {
     const { tokenType, accessToken } = Spotify.token;
 
     const searchParams = new URLSearchParams();

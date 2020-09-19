@@ -6,11 +6,11 @@ import React, {
   useCallback,
 } from 'react';
 
-import Spotify, { FeaturedPlaylistFilter } from '../services/spotify';
+import Spotify, { FeaturedPlaylistFilter, PlaylistItem } from '../services/spotify';
 
 interface FeaturedPlaylistContextData {
   loading: boolean;
-  playlists: any;
+  playlists: PlaylistItem[];
   search: string;
   filter: FeaturedPlaylistFilter;
   setSearch: (filter: string) => void;
@@ -28,7 +28,7 @@ const FeaturedPlaylistProvider: React.FC = ({ children }) => {
 
   const [search, setSearch] = useState('');
 
-  const [playlists, setPlaylists] = useState([]);
+  const [playlists, setPlaylists] = useState([] as PlaylistItem[]);
 
   const getFeaturedPlaylists = useCallback(async () => {
     setLoading(true);
@@ -44,7 +44,9 @@ const FeaturedPlaylistProvider: React.FC = ({ children }) => {
     }
   }, [filter]);
 
-  const filteredPlaylists = playlists.filter(({ name }: any) => name.includes(search.trim()));
+  const filteredPlaylists = playlists.filter(
+    ({ name }: PlaylistItem) => name.includes(search.trim()),
+  );
 
   useEffect(() => {
     getFeaturedPlaylists();
