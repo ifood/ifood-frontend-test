@@ -2,14 +2,17 @@ import React, { useState, useEffect, memo } from 'react';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import { useSnackbar } from 'notistack';
+
 import PlaylistsFiltersApi from '../../../services/playlistFilters';
 
 import FilterField, { FilterFieldProps } from '../../../components/FilterField';
 import Drawer from '../../../components/Drawer';
 import Logo from '../../../components/Logo';
 
-import Form from './styles';
 import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
+
+import { Form, EmptyState } from './styles';
 
 interface PlaylistsFiltersProps {
   mobileOpen: boolean;
@@ -17,7 +20,10 @@ interface PlaylistsFiltersProps {
 }
 
 const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobileOpen }) => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [loading, setLoading] = useState(false);
+
   const [filtersField, setFiltersField] = useState([] as FilterFieldProps[]);
 
   const { filter, setFilter } = useFeaturedPlaylist();
@@ -28,8 +34,8 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
     try {
       const filtersData = await PlaylistsFiltersApi.get();
       setFiltersField(filtersData);
-    } catch (error) {
-      // show error
+    } catch (_) {
+      enqueueSnackbar('Ops! Não conseguimos buscar os filtros', { variant: 'error' });
     } finally {
       setLoading(false);
     }
@@ -44,6 +50,28 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
     setFilter(newFilter);
   };
 
+  const getEmptyState = () => {
+    if (loading || filtersField?.length) {
+      return null;
+    }
+
+    return (
+      <EmptyState>
+        Nenhum filtro encontrado.
+      </EmptyState>
+    );
+  };
+
+  const mapFiltersField = () => (
+    filtersField?.map((filterField: FilterFieldProps) => (
+      <FilterField
+        key={filterField.id}
+        {...filterField}
+        onChange={(value) => handleChange(filterField.id, value)}
+      />
+    ))
+  );
+
   useEffect(() => {
     getFilters();
   }, []);
@@ -54,13 +82,9 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
       <Form noValidate autoComplete="off">
         <Logo width="180px" color="red" />
 
-        {filtersField?.map((filterField: FilterFieldProps) => (
-          <FilterField
-            key={filterField.id}
-            {...filterField}
-            onChange={(value) => handleChange(filterField.id, value)}
-          />
-        ))}
+        {getEmptyState()}
+
+        {mapFiltersField()}
       </Form>
     </Drawer>
   );
