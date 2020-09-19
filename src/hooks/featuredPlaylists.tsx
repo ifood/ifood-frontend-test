@@ -6,7 +6,11 @@ import React, {
   useCallback,
 } from 'react';
 
+import { useSnackbar } from 'notistack';
+
 import Spotify, { FeaturedPlaylistFilter, PlaylistItem } from '../services/spotify';
+
+import { useAuth } from './auth';
 
 interface FeaturedPlaylistContextData {
   loading: boolean;
@@ -21,6 +25,9 @@ const FeaturedPlaylistContext = createContext<FeaturedPlaylistContextData>(
 );
 
 const FeaturedPlaylistProvider: React.FC = ({ children }) => {
+  const { enqueueSnackbar } = useSnackbar();
+  const { logoff } = useAuth();
+
   const [loading, setLoading] = useState(false);
 
   const [filter, setFilter] = useState({} as FeaturedPlaylistFilter);
@@ -35,13 +42,25 @@ const FeaturedPlaylistProvider: React.FC = ({ children }) => {
     try {
       const { items } = await Spotify.getFeaturedPlaylists(filter);
       setPlaylists(items);
-    } catch (error) {
+    } catch ({ response: { status } }) {
       setPlaylists([]);
-      // show error
+
+      switch (status) {
+        case 400:
+          enqueueSnackbar('Ops! Não conseguimos buscar as playlists, com o filtro informado.');
+          break;
+        case 401:
+          enqueueSnackbar('Não conseguimos validar seu acesso, tente refazer o login.', { variant: 'error' });
+          logoff();
+          break;
+        default:
+          enqueueSnackbar('Desculpe! Não conseguimos buscar as playlists.', { variant: 'error' });
+          break;
+      }
     } finally {
       setLoading(false);
     }
-  }, [filter]);
+  }, [filter, enqueueSnackbar, logoff]);
 
   const filteredPlaylists = playlists.filter(
     ({ name }: PlaylistItem) => name.toLowerCase().includes(search.toLowerCase().trim()),
