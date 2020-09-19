@@ -30,8 +30,6 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
 
   const [fieldValue, setFieldValue] = useState('');
 
-  const isShrink = id === 'timestamp' || undefined;
-
   const handleSelectChange = ({ target }: React.ChangeEvent<{ value: unknown }>) => {
     let value = target.value as string;
 
@@ -67,7 +65,7 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
 
   if (values?.length) {
     return (
-      <FormControl fullWidth variant="outlined">
+      <FormControl fullWidth variant="outlined" data-testid="select">
         <InputLabel id={`${id}-label`} color="secondary">
           {name}
         </InputLabel>
@@ -92,6 +90,7 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
   if (validation?.entityType === 'DATE_TIME') {
     return (
       <DateTimePicker
+        data-testid="date-time-picker"
         clearable
         color="secondary"
         inputVariant="outlined"
@@ -108,6 +107,7 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
 
   return (
     <TextField
+      data-testid="text-field"
       color="secondary"
       variant="outlined"
       fullWidth
@@ -115,9 +115,6 @@ const FilterField: React.FC<FilterFieldProps> = (props) => {
       type={getTextFieldType()}
       value={fieldValue}
       onChange={handleSelectChange}
-      InputLabelProps={{
-        shrink: isShrink,
-      }}
       InputProps={{
         inputProps: {
           min: validation?.min,
