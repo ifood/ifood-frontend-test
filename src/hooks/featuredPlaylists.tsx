@@ -11,7 +11,6 @@ import Spotify, { FeaturedPlaylistFilter, PlaylistItem } from '../services/spoti
 interface FeaturedPlaylistContextData {
   loading: boolean;
   playlists: PlaylistItem[];
-  search: string;
   filter: FeaturedPlaylistFilter;
   setSearch: (filter: string) => void;
   setFilter: (filter: FeaturedPlaylistFilter) => void;
@@ -45,7 +44,7 @@ const FeaturedPlaylistProvider: React.FC = ({ children }) => {
   }, [filter]);
 
   const filteredPlaylists = playlists.filter(
-    ({ name }: PlaylistItem) => name.includes(search.trim()),
+    ({ name }: PlaylistItem) => name.toLowerCase().includes(search.toLowerCase().trim()),
   );
 
   useEffect(() => {
@@ -58,7 +57,6 @@ const FeaturedPlaylistProvider: React.FC = ({ children }) => {
       filter,
       setFilter,
       playlists: filteredPlaylists,
-      search,
       setSearch,
     }}
     >
