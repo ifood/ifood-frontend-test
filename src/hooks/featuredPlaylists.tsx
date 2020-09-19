@@ -2,15 +2,11 @@ import React, {
   createContext,
   useState,
   useContext,
+  useEffect,
+  useCallback,
 } from 'react';
 
-interface FeaturedPlaylistFilter {
-  locale: string;
-  country: string;
-  timestamp: string;
-  limit: number;
-  offset: number;
-}
+import Spotify, { FeaturedPlaylistFilter } from '../services/spotify';
 
 interface FeaturedPlaylistContextData {
   loading: boolean;
@@ -25,6 +21,14 @@ const FeaturedPlaylistContext = createContext<FeaturedPlaylistContextData>(
 const FeaturedPlaylistProvider: React.FC = ({ children }) => {
   const [loading] = useState(false);
   const [filter, setFilter] = useState({} as FeaturedPlaylistFilter);
+
+  const getFeaturedPlaylists = useCallback(async () => {
+    Spotify.getFeaturedPlaylists(filter);
+  }, [filter]);
+
+  useEffect(() => {
+    getFeaturedPlaylists();
+  }, [getFeaturedPlaylists]);
 
   return (
     <FeaturedPlaylistContext.Provider value={{ loading, filter, setFilter }}>

@@ -22,11 +22,11 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const getAccessToken = async (code: string) => {
     try {
-      const { access_token, refresh_token, token_type } = await Spotify.getAccessToken(code);
+      const { accessToken, refreshToken, tokenType } = await Spotify.getAccessToken(code);
 
-      localStorage.setItem('@Spotifood:AccessToken', access_token);
-      localStorage.setItem('@Spotifood:RefreshToken', refresh_token);
-      localStorage.setItem('@Spotifood:TokenType', token_type);
+      localStorage.setItem('@Spotifood:AccessToken', accessToken);
+      localStorage.setItem('@Spotifood:RefreshToken', refreshToken);
+      localStorage.setItem('@Spotifood:TokenType', tokenType);
 
       window.location.href = '/';
     } catch (error) {
@@ -38,10 +38,10 @@ const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@Spotifood:RefreshToken');
 
     try {
-      const { access_token, token_type } = await Spotify.refreshToken(token as string);
+      const { accessToken, tokenType } = await Spotify.refreshAccessToken(token as string);
 
-      localStorage.setItem('@Spotifood:AccessToken', access_token);
-      localStorage.setItem('@Spotifood:TokenType', token_type);
+      localStorage.setItem('@Spotifood:AccessToken', accessToken);
+      localStorage.setItem('@Spotifood:TokenType', tokenType);
       setIsAuthenticated(true);
     } catch (error) {
       localStorage.remove('@Spotifood:AccessToken');
