@@ -5,6 +5,8 @@ import React, {
   useContext,
 } from 'react';
 
+import { useSnackbar } from 'notistack';
+
 import Spotify from '../services/spotify';
 
 interface AuthContextData {
@@ -16,6 +18,8 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -36,10 +40,9 @@ const AuthProvider: React.FC = ({ children }) => {
       localStorage.setItem('@Spotifood:AccessToken', accessToken);
       localStorage.setItem('@Spotifood:RefreshToken', refreshToken);
       localStorage.setItem('@Spotifood:TokenType', tokenType);
-
       window.location.href = '/';
     } catch (error) {
-      // show error
+      throw new Error('Ops! Não conseguimos fazer o login com sua conta do Spotify.');
     }
   };
 
@@ -53,7 +56,7 @@ const AuthProvider: React.FC = ({ children }) => {
       localStorage.setItem('@Spotifood:TokenType', tokenType);
       setIsAuthenticated(true);
     } catch (error) {
-      throw Error('Não conseguimos validar seu acesso, tente refazer o login.');
+      throw new Error('Não conseguimos validar seu acesso, tente refazer o login.');
     }
   };
 
@@ -61,10 +64,15 @@ const AuthProvider: React.FC = ({ children }) => {
     const validateAccess = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
+      const spotifyError = urlParams.get('error');
 
       setLoading(true);
 
       try {
+        if (spotifyError) {
+          enqueueSnackbar('Ops! Não conseguimos fazer o login com sua conta do Spotify.', { variant: 'error' });
+        }
+
         if (code) {
           await getAccessToken(code);
           return;
@@ -75,15 +83,15 @@ const AuthProvider: React.FC = ({ children }) => {
           return;
         }
       } catch ({ message }) {
+        enqueueSnackbar(message, { variant: 'error' });
         logoff();
-        // show snackbar
       } finally {
         setLoading(false);
       }
     };
 
     validateAccess();
-  }, []);
+  }, [enqueueSnackbar]);
 
   return (
     <AuthContext.Provider value={{ loading, isAuthenticated, logoff }}>
