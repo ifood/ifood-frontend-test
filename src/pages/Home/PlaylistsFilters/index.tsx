@@ -70,6 +70,7 @@ const PlaylistsFilters: React.FC<PlaylistsFiltersProps> = ({ mobileOpen, setMobi
   const mapFiltersField = () => (
     filtersField?.map((filterField: FilterFieldProps) => (
       <FilterField
+        data-testeid="filter-item"
         key={filterField.id}
         {...filterField}
         onChange={(value) => handleChange(filterField.id, value)}
