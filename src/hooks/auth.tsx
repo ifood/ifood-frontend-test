@@ -80,7 +80,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
         if (hasToken()) {
           await refreshToken();
-          return;
         }
       } catch ({ message }) {
         enqueueSnackbar(message, { variant: 'error' });
