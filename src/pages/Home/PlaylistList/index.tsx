@@ -29,7 +29,7 @@ const PlaylistList = () => {
     <>
       {loading && <LinearProgress />}
       <Container>
-        {playlists.map((playlist: any) => <Playlist key={playlist.id} {...playlist} />)}
+        {playlists.map((playlist: any) => <Playlist data-testeid="playlist-item" key={playlist.id} {...playlist} />)}
       </Container>
       {getEmptyState()}
     </>
