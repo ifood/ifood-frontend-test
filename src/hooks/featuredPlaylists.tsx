@@ -77,13 +77,14 @@ const FeaturedPlaylistProvider: React.FC = ({ children }) => {
   }, [getFeaturedPlaylists]);
 
   return (
-    <FeaturedPlaylistContext.Provider value={{
-      loading,
-      filter,
-      setFilter,
-      playlists: filteredPlaylists,
-      setSearch,
-    }}
+    <FeaturedPlaylistContext.Provider
+      value={{
+        loading,
+        filter,
+        setFilter,
+        playlists: filteredPlaylists,
+        setSearch,
+      }}
     >
       {children}
     </FeaturedPlaylistContext.Provider>

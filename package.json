@@ -9,6 +9,7 @@
     "@material-ui/pickers": "^3.2.10",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
+    "@testing-library/react-hooks": "^3.4.1",
     "@testing-library/user-event": "^7.1.2",
     "@types/enzyme": "^3.10.6",
     "@types/enzyme-adapter-react-16": "^1.0.6",
@@ -57,6 +58,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "react-test-renderer": "^16.9.0"
   }
 }
