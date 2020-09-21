@@ -6,7 +6,7 @@ Ifood's customers playlists.
 
 ## Demo  
 
-Versão de teste em: [Spotifood](http://spotifoood.herokuapp.com/)
+[Here 😋](http://spotifoood.herokuapp.com/)
 
 ## The project
 
