@@ -4,6 +4,10 @@ Ifood's customers playlists.
 
 ![Spotifood](https://i.imgur.com/oAWV4j3.png)
 
+## Demo  
+
+Versão de teste em: [Spotifood](http://spotifoood.herokuapp.com/)
+
 ## The project
 
 ### Main technologies
