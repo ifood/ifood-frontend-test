@@ -1,29 +1,94 @@
-# iFood Frontend Test
+# Spotifood 🍕 + 🎶
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+Ifood's customers playlists.
 
-## Business rules
+![Spotifood](https://i.imgur.com/oAWV4j3.png)
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+## Demo  
 
-## Hints or Constraints
+[Here 😋](http://spotifoood.herokuapp.com/)
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+## The project
 
-## Non functional requirements
+### Main technologies
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+- React
+- Typescript
+- Material UI
+- Styled components
+- Eslint
+- Jest
+
+### Patterns
+
+- Airbnb - as code style guide
+- Material Design - as principles of design
+- Notion - to manage tasks
+
+### Tools
+
+- Adobe XD
+- VSCode
+- Notion
+
+### Project structure
+
+![Project structure](https://i.imgur.com/9UODju5.png)
+
+- **public** - Static files;
+
+- **src** - Our source code;
+
+    - **assets** - Images, Global styles
+    - **components** - Reutilizable componets
+    - **config** - Constants variables and environments config
+    - **hooks** - Shares values around the app
+    - **pages** - Browser pages;
+    - **routes** - Config the app navigation;
+    - **services** - Calls external services;
+    - **theme** - Application colors;
+
+
+
+### Running the app
+
+***Note***: You need [Node.js](https://nodejs.org/en/) in your machine.
+
+```sh
+$ git clone https://github.com/mariocsantos/spotifood.git
+$ cd spotifood
+$ yarn
+```
+Before running, let's set our environment, create a **.env** file, with bellow values.
+```sh
+REACT_APP_CLIENT_ID=64b87046508647a783ce1f7e587213ea
+REACT_APP_CLIENT_SECRET=5264ca34ed68421aaad28b4e462869e6
+```
+
+**REACT_APP_CLIENT_ID** Spotify client id.
+
+**REACT_APP_CLIENT_SECRET** Spotify client secret.
+
+To get Spotify credentials, [see documentantion](https://developer.spotify.com/web-api/get-list-featured-playlists/).
+
+Now, just run:
+```sh
+yarn start
+```
+Done 😍.
+
+### Tests
+To run tests, just execute.
+
+```sh
+yarn start
+```
+
+### Build
+To generate build production.
+
+```sh
+yarn build
+```
+
+By Mario Santos ❤️.
