@@ -1,5 +1,17 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig, AxiosStatic } from 'axios';
 
-const http = axios;
+export class HttpService {
+  private http: AxiosStatic;
+
+  constructor() {
+    this.http = axios;
+  }
+
+  post(url: string, queryString: string, header: AxiosRequestConfig) {
+    return this.http.post(url, queryString, header);
+  }
+}
+
+const http = new HttpService();
 
 export default http;

@@ -9,16 +9,14 @@ import { SnackbarProvider } from 'notistack';
 import { AuthProvider } from "./providers";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider>
-        <GlobalStyle />
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </SnackbarProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
+  <ThemeProvider theme={ theme }>
+    <SnackbarProvider>
+      <GlobalStyle/>
+      <AuthProvider>
+        <App/>
+      </AuthProvider>
+    </SnackbarProvider>
+  </ThemeProvider>,
   document.getElementById('root')
 );
 
