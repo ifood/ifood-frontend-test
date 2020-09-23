@@ -11,6 +11,7 @@ import persistReducers from './persistReducer'
 
 import playlist, { playlistSaga } from './modules/playlist'
 import user, { userSaga } from './modules/user'
+import filter, { filterSaga } from './modules/filter'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -22,6 +23,7 @@ const middleware = [
 const reducers = combineReducers({
   playlist,
   user,
+  filter,
 })
 
 const store = configureStore({
@@ -32,8 +34,7 @@ const store = configureStore({
 const persistor = persistStore(store)
 
 const rootSaga = function* () {
-  yield all([playlistSaga()])
-  yield all([userSaga()])
+  yield all([playlistSaga(), userSaga(), filterSaga()])
 }
 
 sagaMiddleware.run(rootSaga)

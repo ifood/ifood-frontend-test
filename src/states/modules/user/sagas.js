@@ -14,5 +14,5 @@ function setToken({ payload }) {
 
   if (token) {
     spotifyApi.defaults.headers.common['Authorization'] = `Bearer ${token}`
-  } // IMPROVE: rehydrate interception not working
+  }
 }

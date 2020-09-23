@@ -1,4 +1,4 @@
-import { call, put, takeEvery, select } from 'redux-saga/effects'
+import { call, put, takeEvery } from 'redux-saga/effects'
 
 import spotifyApi from 'services/api'
 
@@ -8,19 +8,12 @@ export default function* rootSaga() {
   yield takeEvery(getPlaylistRequest, allPlaylists)
 }
 
-function* allPlaylists() {
+function* allPlaylists({ payload }) {
   try {
-    const { user } = yield select()
-    const config = {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    }
-
+    const { country = 'SE', limit = 10 } = payload
     const { data } = yield call(
       spotifyApi.get,
-      '/browse/featured-playlists?country=SE&limit=10',
-      config
+      `/browse/featured-playlists?country=${country}&limit=${limit}`
     )
 
     yield put(getPlaylistSuccess(data))
