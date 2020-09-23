@@ -41,7 +41,7 @@ export const MessageBeforeLogin = styled.h2`
 `;
 
 export const LoginToContinue = styled.h2`
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   font-weight: 100;
 `;

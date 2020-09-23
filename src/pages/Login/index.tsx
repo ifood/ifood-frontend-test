@@ -7,17 +7,19 @@ import {
   LoginLogo,
   LoginLogoContainer,
   LoginToContinue,
-  MessageBeforeLogin, SignupLink
+  MessageBeforeLogin,
+  SignupLink
 } from "./styles";
 import spotifood_logo_with_name
   from '../../assets/img/svg/spotifood_logo_with_name.svg';
 import useSpotifyAccountUrl from "../../hooks/useSpotifyAccountUrl";
-import { Link } from "../../assets/styles/Link";
+import config from "../../config";
 
 
 const LoginPage: React.FC = () => {
 
   const spotifyAccountUrl = useSpotifyAccountUrl();
+  const { spotifySignupAccountUrl } = config;
 
   const handleButtonLogin = (): void => {
     window.location.href = spotifyAccountUrl;
@@ -30,11 +32,10 @@ const LoginPage: React.FC = () => {
           <LoginLogo src={ spotifood_logo_with_name } alt="logo Site"/>
         </LoginLogoContainer>
         <LoginButtonContainer>
-          <MessageBeforeLogin>Opa, sabemos que está com fome por musica, porém a
-            partir daqui você deve realizar o login com sua conta do spotify.</MessageBeforeLogin>
+          <MessageBeforeLogin>Hello, we know you are hungry for music, but from
+            here you must login with your spotify account.</MessageBeforeLogin>
 
-          <LoginToContinue>Logue com sua conta do Spotify clicando no botão
-            abaixo.</LoginToContinue>
+          <LoginToContinue>Click on the link below to login.</LoginToContinue>
 
           <LoginButton
             size="large"
@@ -42,10 +43,10 @@ const LoginPage: React.FC = () => {
             color="primary"
             onClick={ handleButtonLogin }
           >
-            Clique aqui para logar.
+            Click here to sign in
           </LoginButton>
-          <SignupLink href="https://www.spotify.com/br/signup/" target="_blank">
-            Não possui conta no Spotify? Clique aqui e crie já a sua.
+          <SignupLink href={ spotifySignupAccountUrl } target="_blank">
+            Don't have a Spotify account? Click here and sign up now
           </SignupLink>
         </LoginButtonContainer>
       </LoginContainer>
