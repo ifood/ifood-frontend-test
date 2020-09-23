@@ -11,12 +11,16 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "add": "^2.0.6",
+    "axios": "^0.20.0",
+    "notistack": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "styled-components": "^5.2.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yarn": "^1.22.5"
   },
   "scripts": {
     "start": "react-scripts start",
