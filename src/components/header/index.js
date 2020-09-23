@@ -8,7 +8,6 @@ const Header = () => (
     <Search>
       <input placeholder='Search' />
     </Search>
-    <div />
   </Container>
 )
 

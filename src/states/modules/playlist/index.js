@@ -18,6 +18,7 @@ const { actions, reducer } = createSlice({
       extend(state, {
         loading: false,
         playlists: selectAllPlaylists(payload.playlists),
+        error: null,
       }),
     getPlaylistFailure: (state, { payload }) =>
       extend(state, { loading: false, error: payload }),
