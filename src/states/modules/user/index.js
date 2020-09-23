@@ -16,12 +16,8 @@ const { actions, reducer } = createSlice({
     getUserRequest: (state) => extend(state, { loading: true }), // TODO: get user info, if time
     getUserSuccess: (state) => extend(state, { loading: false }),
     getUserFailure: (state) => extend(state, { loading: false }),
-    setToken: (state, { payload }) => {
-      // spotifyApi.defaults.headers.common = {
-      //   Authorization: `Bearer ${payload.token}`,
-      // }
-      extend(state, { token: payload.token, signed: true })
-    },
+    setToken: (state, { payload }) =>
+      extend(state, { token: payload.token, signed: true }),
   },
 })
 

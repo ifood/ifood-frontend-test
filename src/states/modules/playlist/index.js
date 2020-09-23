@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import extend from 'lodash/extend'
 
+import { selectAllPlaylists } from './selectors'
+
 const initialState = {
   loading: false,
   playlists: [],
@@ -12,8 +14,13 @@ const { actions, reducer } = createSlice({
   initialState,
   reducers: {
     getPlaylistRequest: (state) => extend(state, { loading: true }),
-    getPlaylistSuccess: (state) => extend(state, { loading: false }),
-    getPlaylistFailure: (state) => extend(state, { loading: false }),
+    getPlaylistSuccess: (state, { payload }) =>
+      extend(state, {
+        loading: false,
+        playlists: selectAllPlaylists(payload.playlists),
+      }),
+    getPlaylistFailure: (state, { payload }) =>
+      extend(state, { loading: false, error: payload }),
   },
 })
 

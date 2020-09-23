@@ -9,11 +9,9 @@ const Login = () => {
   const dispatch = useDispatch()
   const { access_token: accessToken } = useQueryString()
 
-  // console.log(accessToken)
-
   useEffect(() => {
     if (accessToken) {
-      dispatch(setToken({ token: accessToken })) // TODO: get token from queryString URL
+      dispatch(setToken({ token: accessToken }))
     }
   }, [dispatch, accessToken])
 
