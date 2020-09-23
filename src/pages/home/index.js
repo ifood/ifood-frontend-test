@@ -1,5 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
-const Home = () => <h1>Home</h1>
+import Header from 'components/header'
+
+import { getPlaylistRequest } from 'states/modules/playlist'
+
+const Home = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getPlaylistRequest())
+  }, [dispatch])
+
+  return <Header />
+}
 
 export default Home
