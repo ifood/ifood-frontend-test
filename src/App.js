@@ -1,7 +1,19 @@
 import React from 'react'
 
+import { PlaylistProvider } from '~/contexts'
+
+import Home from '~/pages/Home'
+
+import GlobalStyle from '~/assets/styles/GlobalStyles'
+
 function App() {
-  return <h1>Hello World</h1>
+  return (
+    <PlaylistProvider>
+      <GlobalStyle />
+
+      <Home />
+    </PlaylistProvider>
+  )
 }
 
 export default App
