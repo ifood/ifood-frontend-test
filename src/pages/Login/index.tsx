@@ -1,10 +1,13 @@
 import React from "react";
 import { Background } from "../../assets/styles";
 import {
+  LoginButton,
   LoginButtonContainer,
   LoginContainer,
   LoginLogo,
-  LoginLogoContainer, LoginToContinue, MessageBeforeLogin
+  LoginLogoContainer,
+  LoginToContinue,
+  MessageBeforeLogin
 } from "./styles";
 import spotifood_logo_with_name
   from '../../assets/img/svg/spotifood_logo_with_name.svg';
@@ -21,7 +24,11 @@ const LoginPage: React.FC = () => {
           <MessageBeforeLogin>Opa, sabemos que está com fome por musica, porém a
             partir daqui você deve realizar seu login.</MessageBeforeLogin>
 
-          <LoginToContinue>Logue com sua conta do Spotify Clicando no botão abaixo.</LoginToContinue>
+          <LoginToContinue>Logue com sua conta do Spotify clicando no botão abaixo.</LoginToContinue>
+
+          <LoginButton size="large" variant="contained" color="primary">
+            Clique aqui para logar.
+          </LoginButton>
         </LoginButtonContainer>
       </LoginContainer>
     </Background>
