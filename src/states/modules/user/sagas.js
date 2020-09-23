@@ -1,13 +1,27 @@
-import { takeEvery } from 'redux-saga/effects'
+import { takeLatest } from 'redux-saga/effects'
 
-import {
-  getUserRequest,
-  // getUserSuccess,
-  // getUserFailure
-} from '.'
+import { spotifyApi } from 'services/api'
+
+import { REHYDRATE } from 'redux-persist/lib/constants'
+
+// import {
+//   getUserRequest,
+// getUserSuccess,
+// getUserFailure
+// } from '.'
 
 export default function* rootSaga() {
-  yield takeEvery(getUserRequest, getUserSaga)
+  yield takeLatest(REHYDRATE, setTokenSaga)
 }
 
-function* getUserSaga() {}
+export function setTokenSaga({ payload }) {
+  if (!payload) return
+
+  console.log(payload)
+
+  const { token } = payload.user
+
+  if (token) {
+    spotifyApi.defaults.headers['Authorization'] = `Bearer ${token}`
+  }
+}

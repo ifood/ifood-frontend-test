@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import extend from 'lodash/extend'
 
+import { spotifyApi } from 'services/api'
+
 const initialState = {
   loading: false,
   error: null,
@@ -17,8 +19,8 @@ const { actions, reducer } = createSlice({
     getUserSuccess: (state) => extend(state, { loading: false }),
     getUserFailure: (state) => extend(state, { loading: false }),
     setToken: (state, { payload }) => {
-      console.log(payload.token) // TODO: set token to localstorage
-      return extend(state, { token: payload.token, signed: true })
+      spotifyApi.defaults.headers['Authorization'] = `Bearer ${payload.token}`
+      extend(state, { token: payload.token, signed: true })
     },
   },
 })

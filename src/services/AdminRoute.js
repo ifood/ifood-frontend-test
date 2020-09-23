@@ -2,21 +2,23 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
+import { store } from 'states/store'
+
 export default function RouteWrapper({
   component: Component,
   isPrivate = false,
   ...rest
 }) {
-  const token = localStorage.getItem('token')
+  const { signed } = store.getState().user
 
-  if (!token && isPrivate) {
+  if (!signed && isPrivate) {
     window.location.replace(
       `${process.env.REACT_APP_SPOTIFY_AUTH_URL}/login`,
       '_self'
     )
   }
 
-  if (token && !isPrivate) {
+  if (signed && !isPrivate) {
     return <Redirect to='/' />
   }
 

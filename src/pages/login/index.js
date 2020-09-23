@@ -3,12 +3,19 @@ import { useDispatch } from 'react-redux'
 
 import { setToken } from 'states/modules/user'
 
+import { useQueryString } from 'hooks'
+
 const Login = () => {
   const dispatch = useDispatch()
+  const { access_token: accessToken } = useQueryString()
+
+  // console.log(accessToken)
 
   useEffect(() => {
-    dispatch(setToken({ token: 'test' })) // TODO: get token from queryString URL
-  }, [dispatch])
+    if (accessToken) {
+      dispatch(setToken({ token: accessToken })) // TODO: get token from queryString URL
+    }
+  }, [dispatch, accessToken])
 
   return <h1>Login</h1>
 }

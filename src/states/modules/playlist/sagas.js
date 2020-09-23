@@ -12,7 +12,7 @@ function* allPlaylists() {
   try {
     const { data } = yield call(
       spotifyApi.get,
-      '/browse/featured-playlists?country=SE&limit=2'
+      '/featured-playlists?country=SE&limit=2'
     )
     console.log(data)
     yield put(getPlaylistSuccess(data))
