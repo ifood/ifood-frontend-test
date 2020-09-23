@@ -8,7 +8,7 @@ export default (reducers) => {
       key: 'spotifood',
       storage,
       whitelist: ['user'],
-      transforms: [createFilter('user', ['token', 'signed'])],
+      transforms: [createFilter('user', ['token', 'signed', 'user'])],
     },
     reducers
   )
