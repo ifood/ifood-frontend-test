@@ -3,6 +3,8 @@
 Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
 - A page that lists the featured playlists at Spotify according to some criteria.
 
+[App link](https://c2d-spotifood.netlify.app/).
+
 ## Business rules
 
 - The page is composed of two components:
