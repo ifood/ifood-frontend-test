@@ -1,2 +1,2 @@
-export * from './Background/styles';
-export * from './Button/styles';
+export * from './Background';
+export * from './Button';

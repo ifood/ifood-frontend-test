@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "../../assets/styles";
+import { Link } from "../../assets/styles/Link";
 
 export const LoginContainer = styled.div`
   width: 100vw;
@@ -19,7 +20,7 @@ export const LoginLogoContainer = styled.section`
 `;
 
 export const LoginLogo = styled.img`
-  width: 15%;
+  width: 200px;
   margin: 0 auto;
 `;
 
@@ -43,10 +44,13 @@ export const LoginToContinue = styled.h2`
   font-size: 16px;
   text-align: center;
   font-weight: 100;
-  margin-bottom: 20px;
-
 `;
 
 export const LoginButton = styled(Button)`
   width: 325px;
+  margin: 20px 0 !important;
+`;
+
+export const SignupLink = styled(Link)`
+  margin-top: 10px;
 `;

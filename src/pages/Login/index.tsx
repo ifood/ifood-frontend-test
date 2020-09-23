@@ -7,13 +7,22 @@ import {
   LoginLogo,
   LoginLogoContainer,
   LoginToContinue,
-  MessageBeforeLogin
+  MessageBeforeLogin, SignupLink
 } from "./styles";
 import spotifood_logo_with_name
   from '../../assets/img/svg/spotifood_logo_with_name.svg';
+import useSpotifyAccountUrl from "../../hooks/useSpotifyAccountUrl";
+import { Link } from "../../assets/styles/Link";
 
 
 const LoginPage: React.FC = () => {
+
+  const spotifyAccountUrl = useSpotifyAccountUrl();
+
+  const handleButtonLogin = (): void => {
+    window.location.href = spotifyAccountUrl;
+  }
+
   return (
     <Background>
       <LoginContainer>
@@ -22,13 +31,22 @@ const LoginPage: React.FC = () => {
         </LoginLogoContainer>
         <LoginButtonContainer>
           <MessageBeforeLogin>Opa, sabemos que está com fome por musica, porém a
-            partir daqui você deve realizar seu login.</MessageBeforeLogin>
+            partir daqui você deve realizar o login com sua conta do spotify.</MessageBeforeLogin>
 
-          <LoginToContinue>Logue com sua conta do Spotify clicando no botão abaixo.</LoginToContinue>
+          <LoginToContinue>Logue com sua conta do Spotify clicando no botão
+            abaixo.</LoginToContinue>
 
-          <LoginButton size="large" variant="contained" color="primary">
+          <LoginButton
+            size="large"
+            variant="contained"
+            color="primary"
+            onClick={ handleButtonLogin }
+          >
             Clique aqui para logar.
           </LoginButton>
+          <SignupLink href="https://www.spotify.com/br/signup/" target="_blank">
+            Não possui conta no Spotify? Clique aqui e crie já a sua.
+          </SignupLink>
         </LoginButtonContainer>
       </LoginContainer>
     </Background>
