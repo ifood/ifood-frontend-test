@@ -6,10 +6,7 @@ import { selectAllFilters } from './selectors'
 const initialState = {
   loading: false,
   filters: [],
-  country: '',
-  locale: '',
-  limit: '',
-  timeStamp: new Date(),
+  currentFilters: { country: '', locale: '', limit: '', timeStamp: new Date() },
   error: null,
 }
 
@@ -25,10 +22,17 @@ const { actions, reducer } = createSlice({
       }),
     getFilterFailure: (state, { payload }) =>
       extend(state, { loading: false, error: payload }),
+    setFilter: (state, { payload }) =>
+      extend(state, extend(state.currentFilters, { ...payload })),
   },
 })
 
-export const { getFilterRequest, getFilterSuccess, getFilterFailure } = actions
+export const {
+  getFilterRequest,
+  getFilterSuccess,
+  getFilterFailure,
+  setFilter,
+} = actions
 
 export { default as filterSaga } from './sagas'
 

@@ -14,7 +14,7 @@ const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getPlaylistRequest({}))
+    dispatch(getPlaylistRequest())
     dispatch(getFilterRequest())
   }, [dispatch])
 

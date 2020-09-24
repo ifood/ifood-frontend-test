@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { getPlaylistRequest } from 'states/modules/playlist'
+import { setFilter } from 'states/modules/filter'
 
 const List = ({ values, onClick }) => {
   return (
@@ -25,13 +28,21 @@ List.defaultProps = {
 }
 
 const ListProvider = ({ id }) => {
+  const dispatch = useDispatch()
+
   const { filters } = useSelector(({ filter }) => filter)
 
   const currentFilter = filters.find((filter) => filter.id === id)
 
-  const handleClick = (value) => {
-    console.log(value)
+  const handleClick = async (value) => {
+    const payload = payloadFactory(id, value)
+
+    await dispatch(setFilter(payload))
+
+    await dispatch(getPlaylistRequest())
   }
+
+  const payloadFactory = (key, value) => ({ [key]: value })
 
   return <List values={currentFilter.values} onClick={handleClick} />
 }

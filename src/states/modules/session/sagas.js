@@ -32,7 +32,7 @@ function* refreshTokenSaga() {
       ] = `Bearer ${data.access_token}`
     }
 
-    yield put(getPlaylistRequest({}))
+    yield put(getPlaylistRequest())
     yield put(refreshTokenSuccess(data))
   } catch (error) {
     yield put(refreshTokenFailure(error.toString()))

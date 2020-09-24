@@ -1,4 +1,5 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { extend } from 'lodash'
+import { call, put, takeEvery, select } from 'redux-saga/effects'
 
 import spotifyApi from 'services/api'
 
@@ -8,16 +9,28 @@ export default function* rootSaga() {
   yield takeEvery(getPlaylistRequest, allPlaylists)
 }
 
-function* allPlaylists({ payload }) {
+function* allPlaylists() {
   try {
-    const { country = 'SE', limit = 10 } = payload
-    const { data } = yield call(
-      spotifyApi.get,
-      `/browse/featured-playlists?country=${country}&limit=${limit}`
-    )
+    const { filter: { country, locale, limit } = {} } = yield select()
+
+    console.log(country, locale, limit)
+
+    const params = {}
+    paramsFactory(params, ['country', country])
+    paramsFactory(params, ['locale', locale])
+    paramsFactory(params, ['limit', limit])
+
+    const { data } = yield call(spotifyApi.get, `/browse/featured-playlists`, {
+      params,
+    })
 
     yield put(getPlaylistSuccess(data))
   } catch (error) {
     yield put(getPlaylistFailure(error.toString()))
   }
+}
+
+function paramsFactory(object, [key, value]) {
+  if (value) return extend(object, { [key]: value })
+  return object
 }
