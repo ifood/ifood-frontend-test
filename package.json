@@ -25,6 +25,11 @@
     "react-scripts": "3.4.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^3.4.1",
+    "@testing-library/user-event": "^12.1.6",
+    "@types/jest": "^26.0.14",
     "@types/lodash": "^4.14.161",
     "@types/luxon": "^1.25.0",
     "@types/node": "^12.0.0",
