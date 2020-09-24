@@ -49,7 +49,6 @@ const Filters: React.FC = () => {
           description: 'We found an error while fetching playlist, try again',
           type: 'error',
         });
-        console.warn(error);
       }
     }
 
