@@ -1,7 +1,8 @@
-import { extend } from 'lodash'
 import { call, put, takeEvery, select } from 'redux-saga/effects'
 
 import spotifyApi from 'services/api'
+
+import { paramsFactory } from 'utils'
 
 import { getPlaylistRequest, getPlaylistSuccess, getPlaylistFailure } from '.'
 
@@ -29,9 +30,4 @@ function* allPlaylists() {
   } catch (error) {
     yield put(getPlaylistFailure(error.toString()))
   }
-}
-
-function paramsFactory(object, [key, value]) {
-  if (value) return extend(object, { [key]: value })
-  return object
 }

@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
 
+import { payloadFactory } from 'utils'
+
 const List = ({ values, onClick }) => {
   return (
     <ul>
@@ -45,8 +47,6 @@ const ListProvider = ({ id }) => {
 
     await dispatch(getPlaylistRequest())
   }
-
-  const payloadFactory = (key, value) => ({ [key]: value })
 
   return <List values={renderFilter.values} onClick={handleClick} />
 }
