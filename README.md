@@ -23,8 +23,9 @@ executar comando **yarn dev**
    "access_token": "NgCXRKc...MzYjw",
    "token_type": "bearer",
    "expires_in": 3600,
-}```
+}
+```
 
 - Copiar o conteúdo do access_token
 
-- Color no arquivo **api** dentro de **Authorization**
+- Colar no arquivo [API](src/services/api.ts)
