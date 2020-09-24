@@ -6,6 +6,7 @@ import { selectAllPlaylists } from './selectors'
 const initialState = {
   loading: false,
   playlists: [],
+  total: 0,
   error: null,
 }
 
@@ -18,6 +19,7 @@ const { actions, reducer } = createSlice({
       extend(state, {
         loading: false,
         playlists: selectAllPlaylists(payload.playlists),
+        total: payload.playlists.total,
         error: null,
       }),
     getPlaylistFailure: (state, { payload }) =>

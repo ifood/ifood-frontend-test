@@ -13,13 +13,14 @@ export default function* rootSaga() {
 function* allPlaylists() {
   try {
     const {
-      filter: { country, locale, limit, timestamp } = {},
+      filter: { country, locale, limit, offset, timestamp } = {},
     } = yield select()
 
     const params = {}
     paramsFactory(params, ['country', country])
     paramsFactory(params, ['locale', locale])
     paramsFactory(params, ['limit', limit])
+    paramsFactory(params, ['offset', offset])
     paramsFactory(params, ['timestamp', timestamp])
 
     const { data } = yield call(spotifyApi.get, `/browse/featured-playlists`, {

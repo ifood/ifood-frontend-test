@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { limitsFactory } from 'utils'
+import { limitsFactory, offsetFactory, payloadFactory } from 'utils'
 
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
@@ -37,16 +37,34 @@ Select.defaultProps = {
 const SelectProvider = ({ id }) => {
   const dispatch = useDispatch()
 
+  const [options, setOptions] = useState([])
+
   const { filters, currentFilters } = useSelector(({ filter }) => filter)
+  const { total } = useSelector(({ playlist }) => playlist)
 
   const renderFilter = filters.find((filter) => filter.id === id)
 
-  const options = limitsFactory(renderFilter.validation.max)
+  useEffect(() => {
+    if (id === 'limit') {
+      const limits = limitsFactory(renderFilter.validation.max)
+      setOptions(limits)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (id === 'offset') {
+      const totalOffset = Math.ceil(total / currentFilters.limit)
+      const offset = offsetFactory(totalOffset)
+      setOptions(offset)
+    }
+  }, [total, currentFilters.limit])
 
   const handleChange = async (e) => {
     const { value } = e.target
 
-    await dispatch(setFilter({ limit: value }))
+    const payload = payloadFactory(id, value)
+
+    await dispatch(setFilter(payload))
 
     await dispatch(getPlaylistRequest())
   }
