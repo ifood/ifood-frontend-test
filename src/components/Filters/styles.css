@@ -1,0 +1,18 @@
+.modal-filter.modal-dialog .modal-content {
+  padding: 10px;
+  text-align: left;
+  border-radius: 10px;
+  background: var(--text);
+}
+.modal-filter.modal-dialog .modal-content .modal-body {
+  padding: 0;
+}
+.modal-filter .form-control:hover,
+.modal-filter .form-control:focus,
+.modal-filter .react-select__control--is-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 1px var(--primary);
+}
+.modal-filter form svg path {
+  fill: var(--primary);
+}
