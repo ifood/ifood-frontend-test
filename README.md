@@ -11,13 +11,10 @@ Executar o comando **yarn install**
 
 # Rodar projeto
 
-executar comando **yarn start**
-
-**Em caso de erro, executar os seguintes passos**
 - Requisições na API do Spotify requer um token, só que ele possui duração de uma hora, como não conseguir atualizar o token automaticamente, vai ser necessário gerar um novo.
 - Parar gerar um token, rodar o comando:
-**curl -X "POST" -H "Authorization: Basic YTQ0NWE2MWIwNzY0NGEwNmE2MzIzNzAyYzgyMWFjNDY6YWNkNDQ2MWNjMzVlNGE1YzgwNDU0Y2FkYmQxZDU3NWI=" -d grant_type=client_credentials https://accounts.spotify.com/api/token
-**
+**curl -X "POST" -H "Authorization: Basic YTQ0NWE2MWIwNzY0NGEwNmE2MzIzNzAyYzgyMWFjNDY6YWNkNDQ2MWNjMzVlNGE1YzgwNDU0Y2FkYmQxZDU3NWI=" -d grant_type=client_credentials https://accounts.spotify.com/api/token**
+
 - O comando retorna um JSON como a estrutura abaixo:
 ```json
 {
@@ -30,3 +27,13 @@ executar comando **yarn start**
 - Copiar o conteúdo do access_token
 
 - Colar no arquivo [API](src/services/api.ts) como valor de **Authorization**
+
+## Ferramentas utilizadas
+
+- Typescript
+- Date-fns
+- Styled-components
+- axios
+- polished
+- react-springs
+- uuidv4
