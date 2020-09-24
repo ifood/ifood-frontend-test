@@ -1,51 +1,39 @@
 import SpotifyService from "../SpotifyService";
 import { UserToken } from "../../interfaces";
-import { StorageService } from "../StorageService";
+import StorageService from "../StorageService";
 
-export default class AuthService {
+class AuthService {
 
-  private static AUTH_SERVICE_STORAGE_NAME = '@SpotifyAccess:Tokens';
+  private AUTH_SERVICE_STORAGE_NAME = '@SpotifyAccess:Tokens';
+  private clientCode: string;
 
-  static async getAccessCode(): Promise<UserToken> {
-    const code = await this.getAuthorizationDataCode();
-    return await SpotifyService.getUserAccessCodeByClientCode(code);
+  constructor() {
+    this.clientCode = '';
   }
 
-  private static async getAuthorizationDataCode(): Promise<string> {
+  hasSuccessClientSignIn(): boolean {
     const urlParams = new URLSearchParams(window.location.search);
 
-    const code = urlParams.get('code');
-    const error = urlParams.get('error');
+    this.clientCode = urlParams.get('code') || '';
 
-    return new Promise(((resolve, reject) => {
-      if (error) {
-        return reject(error);
-      }
-
-      if (code) {
-        resolve(code);
-      }
-
-      if (this.hasRefreshToken) {
-        this.refreshToken();
-      }
-    }))
+    return !!this.clientCode;
   }
 
-  static get hasRefreshToken(): boolean {
-    return !!this.userRefreshToken;
+  async getUserAuthorization() {
+    const result = await SpotifyService.getUserAccessCodeByClientCode(this.clientCode);
+    this.setUserTokenOnStorage(result);
   }
 
-  private static get userRefreshToken(): string | undefined {
+  get hasAccessToken(): boolean {
     const userToken = this.getUserToken();
-    return userToken?.refreshToken;
+    return !!userToken?.accessToken;
   }
 
-  private static getUserToken(): UserToken | null {
+  private getUserToken(): UserToken | null {
     return StorageService.getObjectItem(this.AUTH_SERVICE_STORAGE_NAME);
   }
 
-  private static async refreshToken() {
+  async refreshToken() {
     const refreshToken = this.userRefreshToken;
     const result = await SpotifyService.refreshUserAccessToken(refreshToken!!);
 
@@ -57,11 +45,20 @@ export default class AuthService {
     });
   }
 
-  static setUserTokenOnStorage(userToken: UserToken): void {
+  private get userRefreshToken(): string | undefined {
+    const userToken = this.getUserToken();
+    return userToken?.refreshToken;
+  }
+
+  setUserTokenOnStorage(userToken: UserToken): void {
     StorageService.setObjectItem<UserToken>(this.AUTH_SERVICE_STORAGE_NAME, userToken);
   }
 
-  static removeUserTokenFromStorage(): void {
+  removeUserTokenFromStorage(): void {
     StorageService.removeItem(this.AUTH_SERVICE_STORAGE_NAME)
   }
 }
+
+const AuthServiceInstance = new AuthService();
+
+export default AuthServiceInstance as AuthService;

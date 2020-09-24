@@ -7,11 +7,10 @@ import { AuthContextProps } from "../../interfaces/AuthContext";
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 const AuthProvider: React.FC = ({ children }) => {
-
   const { enqueueSnackbar } = useSnackbar();
 
   const isAuthenticated = (): boolean => {
-    return AuthService.hasRefreshToken;
+    return AuthService.hasAccessToken;
   }
 
   const logout = (): void => {
@@ -20,17 +19,23 @@ const AuthProvider: React.FC = ({ children }) => {
 
   useLayoutEffect(() => {
     const getAccessCode = async () => {
-      await AuthService.getAccessCode()
-        .then(result => {
-          AuthService.setUserTokenOnStorage(result);
-          enqueueSnackbar("Yay! SignIn successfully :)", { variant: 'success' })
-          window.location.href = "/playlists"
-        })
-        .catch(() => {
-          enqueueSnackbar(
-            "Outch! Sorry dude, but it's not a possible make signin with your Spotify account. :(",
-            { variant: 'error' });
-        });
+      try {
+        if (AuthService.hasSuccessClientSignIn()) {
+          await AuthService.getUserAuthorization();
+          enqueueSnackbar('Yay! Sign In has make successfully', { variant: 'success' })
+          window.location.href = '/playlists';
+          return;
+        }
+
+        if (AuthService.hasAccessToken) {
+          await AuthService.refreshToken();
+        }
+
+      } catch (error) {
+        enqueueSnackbar(
+          'Outch! Sorry dude, but it\'s not a possible make signin with your Spotify account. :(',
+          { variant: 'error' })
+      }
     }
 
     getAccessCode();

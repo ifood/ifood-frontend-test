@@ -1,18 +1,18 @@
-export class StorageService {
+class StorageService {
 
-  static getItem(key: string): string | null {
+  getItem(key: string): string | null {
     return localStorage.getItem(key);
   }
 
-  static setItem(key: string, value: string): void {
+  setItem(key: string, value: string): void {
     localStorage.setItem(key, value);
   }
 
-  static setObjectItem<T>(key: string, value: T): void {
+  setObjectItem<T>(key: string, value: T): void {
     this.setItem(key, JSON.stringify(value));
   }
 
-  static getObjectItem<T>(key: string): T | null {
+  getObjectItem<T>(key: string): T | null {
     const value = this.getItem(key);
 
     if (value) {
@@ -22,7 +22,11 @@ export class StorageService {
     return null;
   }
 
-  static removeItem(key: string): void {
+  removeItem(key: string): void {
     localStorage.removeItem(key);
   }
 }
+
+const StorageServiceInstance = new StorageService();
+
+export default StorageServiceInstance as StorageService;
