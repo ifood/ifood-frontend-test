@@ -20,7 +20,7 @@ const Login = () => {
       dispatch(setToken({ token: accessToken, refreshToken }))
       history.push('/')
     }
-  }, [dispatch, history, accessToken])
+  }, [dispatch, history, accessToken, refreshToken])
 
   return <h1>Login</h1>
 }

@@ -10,6 +10,8 @@ import {
   setToken,
 } from '.'
 
+import { getPlaylistRequest } from '../playlist/index'
+
 export default function* rootSaga() {
   yield takeLatest(REHYDRATE, setTokenSaga)
   yield takeEvery(setToken, setNewTokenSaga)
@@ -30,6 +32,7 @@ function* refreshTokenSaga() {
       ] = `Bearer ${data.access_token}`
     }
 
+    yield put(getPlaylistRequest({}))
     yield put(refreshTokenSuccess(data))
   } catch (error) {
     yield put(refreshTokenFailure(error.toString()))
