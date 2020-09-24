@@ -1,15 +1,23 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { mocked } from 'ts-jest/utils';
 import { App } from '../App';
 import { AppProvider } from '../contexts/AppContext';
-import * as useAuth from '../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
+
+jest.mock('../hooks/useAuth');
+const useAuthMocked = mocked(useAuth, true);
 
 describe('App', () => {
+  beforeEach(() => {
+    useAuthMocked.mockClear();
+  });
+
   test('renders the app (unauthorized)', () => {
-    const spyUseAuth = jest.spyOn(useAuth, 'useAuth').mockImplementation(() => ({
+    useAuthMocked.mockImplementation(() => ({
       auth: null,
-      login: () => undefined,
-      logout: () => undefined,
+      login: jest.fn(),
+      logout: jest.fn(),
     }));
 
     render(<App />, { wrapper: AppProvider });
@@ -20,14 +28,14 @@ describe('App', () => {
     const title = screen.getByText(/spotifood/i);
     expect(title).toBeInTheDocument();
 
-    expect(spyUseAuth).toHaveBeenCalled();
+    expect(useAuthMocked).toHaveBeenCalled();
   });
 
   test('renders the app (authorized)', () => {
-    const spyUseAuth = jest.spyOn(useAuth, 'useAuth').mockImplementation(() => ({
+    useAuthMocked.mockImplementation(() => ({
       auth: { token: '123' },
-      login: () => undefined,
-      logout: () => undefined,
+      login: jest.fn(),
+      logout: jest.fn(),
     }));
 
     render(<App />, { wrapper: AppProvider });
@@ -35,32 +43,32 @@ describe('App', () => {
     const title = screen.getByText(/spotifood/i);
     expect(title).toBeInTheDocument();
 
-    expect(spyUseAuth).toHaveBeenCalled();
+    expect(useAuthMocked).toHaveBeenCalledTimes(2);
   });
 
   test('matches the snapshot (app unauthorized)', () => {
-    const spyUseAuth = jest.spyOn(useAuth, 'useAuth').mockImplementation(() => ({
+    useAuthMocked.mockImplementation(() => ({
       auth: null,
-      login: () => undefined,
-      logout: () => undefined,
+      login: jest.fn(),
+      logout: jest.fn(),
     }));
 
     const { baseElement } = render(<App />, { wrapper: AppProvider });
     expect(baseElement).toMatchSnapshot();
 
-    expect(spyUseAuth).toHaveBeenCalled();
+    expect(useAuthMocked).toHaveBeenCalled();
   });
 
   test('matches the snapshot (app authorized)', () => {
-    const spyUseAuth = jest.spyOn(useAuth, 'useAuth').mockImplementation(() => ({
+    useAuthMocked.mockImplementation(() => ({
       auth: { token: '123' },
-      login: () => undefined,
-      logout: () => undefined,
+      login: jest.fn(),
+      logout: jest.fn(),
     }));
 
     const { baseElement } = render(<App />, { wrapper: AppProvider });
     expect(baseElement).toMatchSnapshot();
 
-    expect(spyUseAuth).toHaveBeenCalled();
+    expect(useAuthMocked).toHaveBeenCalled();
   });
 });
