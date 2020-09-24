@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 import React, { useCallback, useEffect, useState } from 'react';
+import { format } from 'date-fns';
 import axios from 'axios';
 
 import { usePlaylist } from '../../hooks/playlists';
@@ -21,7 +22,9 @@ const Filters: React.FC = () => {
   const [selectedLocale, setSelectedLocale] = useState<string | undefined>(
     undefined,
   );
-  const [timestamp, setTimestamp] = useState<string | undefined>(undefined);
+  const [timestamp, setTimestamp] = useState<string>(
+    format(new Date(), "yyyy-MM-dd'T'HH:mm:ss"),
+  );
   const [limit, setLimit] = useState('');
   const [offset, setOffset] = useState('');
 
@@ -146,7 +149,7 @@ const Filters: React.FC = () => {
         <input
           type="text"
           name="offset"
-          placeholder="Offset"
+          placeholder="Page"
           value={offset}
           onChange={e => {
             const { value } = e.target;
