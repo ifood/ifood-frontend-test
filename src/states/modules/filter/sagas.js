@@ -4,16 +4,15 @@ import { filterApi } from 'services/api'
 
 import { getFilterRequest, getFilterSuccess, getFilterFailure } from '.'
 
+import { filterParam } from 'constant'
+
 export default function* rootSaga() {
   yield takeEvery(getFilterRequest, allFilters)
 }
 
-const filterParam = '5a25fade2e0000213aa90776'
-
 function* allFilters() {
   try {
     const { data } = yield call(filterApi.get, `/${filterParam}`)
-
     yield put(getFilterSuccess(data))
   } catch (error) {
     yield put(getFilterFailure(error.toString()))
