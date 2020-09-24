@@ -22,12 +22,7 @@ describe('App', () => {
 
     render(<App />, { wrapper: AppProvider });
 
-    const loginButton = screen.getByText(/login/i);
-    expect(loginButton).toBeInTheDocument();
-
-    const title = screen.getByText(/spotifood/i);
-    expect(title).toBeInTheDocument();
-
+    expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
     expect(useAuthMocked).toHaveBeenCalled();
   });
 
@@ -40,10 +35,8 @@ describe('App', () => {
 
     render(<App />, { wrapper: AppProvider });
 
-    const title = screen.getByText(/spotifood/i);
-    expect(title).toBeInTheDocument();
-
-    expect(useAuthMocked).toHaveBeenCalledTimes(2);
+    expect(screen.getByRole('button', { name: /logout/i })).toBeInTheDocument();
+    expect(useAuthMocked).toHaveBeenCalled();
   });
 
   test('matches the snapshot (app unauthorized)', () => {
@@ -55,8 +48,6 @@ describe('App', () => {
 
     const { baseElement } = render(<App />, { wrapper: AppProvider });
     expect(baseElement).toMatchSnapshot();
-
-    expect(useAuthMocked).toHaveBeenCalled();
   });
 
   test('matches the snapshot (app authorized)', () => {
@@ -68,7 +59,5 @@ describe('App', () => {
 
     const { baseElement } = render(<App />, { wrapper: AppProvider });
     expect(baseElement).toMatchSnapshot();
-
-    expect(useAuthMocked).toHaveBeenCalled();
   });
 });

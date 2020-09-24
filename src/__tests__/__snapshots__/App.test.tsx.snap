@@ -10,7 +10,7 @@ exports[`App matches the snapshot (app authorized) 1`] = `
         class="MuiToolbar-root MuiToolbar-dense MuiToolbar-gutters"
       >
         <h2
-          class="MuiTypography-root makeStyles-title-16 MuiTypography-h2"
+          class="MuiTypography-root Header-title-16 MuiTypography-h2"
         >
           Spotifood
         </h2>
@@ -34,10 +34,10 @@ exports[`App matches the snapshot (app authorized) 1`] = `
       class="MuiContainer-root MuiContainer-disableGutters MuiContainer-maxWidthMd"
     >
       <div
-        class="MuiPaper-root makeStyles-container-18 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root Filter-container-18 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="makeStyles-search-19"
+          class="Filter-search-19"
         >
           <div
             class="MuiFormControl-root MuiTextField-root"
@@ -122,7 +122,7 @@ exports[`App matches the snapshot (app authorized) 1`] = `
               class="MuiCollapse-wrapperInner"
             >
               <div
-                class="makeStyles-indicator-22"
+                class="Filter-indicator-22"
               >
                 <div
                   class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
@@ -149,7 +149,7 @@ exports[`App matches the snapshot (app authorized) 1`] = `
         </div>
       </div>
       <div
-        class="makeStyles-indicator-17"
+        class="FeaturedPlaylists-indicator-17"
       >
         <div
           class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
@@ -183,10 +183,10 @@ exports[`App matches the snapshot (app unauthorized) 1`] = `
       class="MuiContainer-root MuiContainer-disableGutters MuiContainer-maxWidthMd"
     >
       <div
-        class="makeStyles-container-14"
+        class="Login-container-14"
       >
         <h2
-          class="MuiTypography-root makeStyles-title-15 MuiTypography-h2"
+          class="MuiTypography-root Login-title-15 MuiTypography-h2"
         >
           Spotifood
         </h2>
