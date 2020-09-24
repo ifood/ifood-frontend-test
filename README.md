@@ -30,5 +30,3 @@ executar comando **yarn start**
 - Copiar o conteúdo do access_token
 
 - Colar no arquivo [API](src/services/api.ts) como valor de **Authorization**
-
-# Bibliotecas utilizadas
