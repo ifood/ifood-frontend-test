@@ -1,9 +1,18 @@
-import React from 'react';
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import { useTheme } from "./Hooks/themes";
+import Routes from "./Routes";
+import GlobalStyles from "./Styles/GlobalStyles";
 
 const App: React.FC = () => {
-  return ( 
-    <h1>SpotIfood</h1>
-  )
-}
+  const { theme } = useTheme();
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Routes />
+    </ThemeProvider>
+  );
+};
 
 export default App;

@@ -6,11 +6,11 @@ export default {
             second: '#1ED760',
             third: '#15883E',
 
-            white: '#FFF',
-            black: '#000',
+            white: '#000',
+            black: '#FFF',
             gray: '#BFBFBF',
 
             on: '#000',
-            off: '#F5F3F4',
+            off: '#DA5D69',
         },
 };
