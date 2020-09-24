@@ -9,7 +9,7 @@ export default function RouteWrapper({
   isPrivate = false,
   ...rest
 }) {
-  const { signed } = store.getState().user
+  const { signed } = store.getState().session
 
   if (!signed && isPrivate) {
     window.location.replace(

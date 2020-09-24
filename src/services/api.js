@@ -8,6 +8,10 @@ const filterApi = axios.create({
   baseURL: process.env.REACT_APP_FILTER_API_URL,
 })
 
-export { spotifyApi, filterApi }
+const refreshTokenApi = axios.create({
+  baseURL: process.env.REACT_APP_SPOTIFY_AUTH_URL,
+})
+
+export { spotifyApi, filterApi, refreshTokenApi }
 
 export default spotifyApi

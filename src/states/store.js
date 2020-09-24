@@ -10,7 +10,7 @@ import { persistStore } from 'redux-persist'
 import persistReducers from './persistReducer'
 
 import playlist, { playlistSaga } from './modules/playlist'
-import user, { userSaga } from './modules/user'
+import session, { sessionSaga } from './modules/session'
 import filter, { filterSaga } from './modules/filter'
 
 const sagaMiddleware = createSagaMiddleware()
@@ -22,7 +22,7 @@ const middleware = [
 
 const reducers = combineReducers({
   playlist,
-  user,
+  session,
   filter,
 })
 
@@ -34,7 +34,7 @@ const store = configureStore({
 const persistor = persistStore(store)
 
 const rootSaga = function* () {
-  yield all([playlistSaga(), userSaga(), filterSaga()])
+  yield all([playlistSaga(), sessionSaga(), filterSaga()])
 }
 
 sagaMiddleware.run(rootSaga)
