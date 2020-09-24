@@ -1,7 +1,7 @@
 import React from "react";
 import { Background } from "../../assets/styles";
 
-const HomePage: React.FC = () => {
+const PlayListsPage: React.FC = () => {
 
   return (
     <Background>
@@ -10,4 +10,4 @@ const HomePage: React.FC = () => {
   )
 }
 
-export default HomePage;
+export default PlayListsPage;

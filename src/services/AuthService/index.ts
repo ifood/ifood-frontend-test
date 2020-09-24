@@ -32,12 +32,12 @@ export default class AuthService {
     }))
   }
 
-  private static get hasRefreshToken(): boolean {
+  static get hasRefreshToken(): boolean {
     return !!this.userRefreshToken;
   }
 
   private static get userRefreshToken(): string | undefined {
-    let userToken = this.getUserToken();
+    const userToken = this.getUserToken();
     return userToken?.refreshToken;
   }
 
