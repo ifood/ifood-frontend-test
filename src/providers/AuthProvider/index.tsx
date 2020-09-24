@@ -1,13 +1,16 @@
-import React, { createContext, useLayoutEffect } from "react";
+import React, { createContext, useLayoutEffect, useState } from "react";
 import AuthService from "../../services/AuthService";
 
 import { useSnackbar } from 'notistack';
 import { AuthContextProps } from "../../interfaces/AuthContext";
+import FullscreenLoader from "../../components/FullscreenLoader";
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 const AuthProvider: React.FC = ({ children }) => {
   const { enqueueSnackbar } = useSnackbar();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const isAuthenticated = (): boolean => {
     return AuthService.hasAccessToken;
@@ -21,6 +24,7 @@ const AuthProvider: React.FC = ({ children }) => {
     const getAccessCode = async () => {
       try {
         if (AuthService.hasSuccessClientSignIn()) {
+          setIsLoading(true);
           await AuthService.getUserAuthorization();
           enqueueSnackbar('Yay! Sign In has make successfully', { variant: 'success' })
           window.location.href = '/playlists';
@@ -38,12 +42,13 @@ const AuthProvider: React.FC = ({ children }) => {
       }
     }
 
-    getAccessCode();
+    getAccessCode().finally(() => setIsLoading(false));
   }, [enqueueSnackbar])
 
 
   return (
-    <AuthContext.Provider value={ { isAuthenticated, logout } }>
+    <AuthContext.Provider value={ { isAuthenticated, logout, isLoading } }>
+      <FullscreenLoader showLoading={ isLoading }/>
       { children }
     </AuthContext.Provider>
   )

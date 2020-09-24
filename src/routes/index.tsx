@@ -10,14 +10,14 @@ type RouteProps = {
   key: string;
   path: string;
   exact: boolean;
-  isAuthenticated: () => boolean;
+  isAuthenticated?: boolean;
 }
 
 const PrivateRoute: React.FC<RouteProps> = ({ component, isAuthenticated, ...rest }) => {
 
   const renderComponent = () => {
     return (
-      isAuthenticated()
+      isAuthenticated
         ? <Route { ...rest } component={ component }/>
         : <Redirect
           to="/"
@@ -28,17 +28,43 @@ const PrivateRoute: React.FC<RouteProps> = ({ component, isAuthenticated, ...res
   return renderComponent();
 }
 
+const PublicRoute: React.FC<RouteProps> = (
+  {
+    component,
+    isAuthenticated,
+    path,
+    ...rest
+  }
+) => {
+
+  const renderComponent = () => {
+    return (
+      isAuthenticated
+        ? <Redirect
+          from={ path }
+          to="/playlists"
+        />
+        : <Route { ...rest } component={ component }/>
+    )
+  }
+
+  return renderComponent();
+}
+
 const Routes = (): JSX.Element => {
   const { isAuthenticated } = useAuthentication();
+
+  const userIsAuthenticated = isAuthenticated();
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route
+        <PublicRoute
           key="sign-in"
           path="/"
           exact
           component={ LoginPage }
+          isAuthenticated={ userIsAuthenticated }
         />
 
         <PrivateRoute
@@ -46,7 +72,7 @@ const Routes = (): JSX.Element => {
           path="/playlists"
           exact
           component={ PlayListsPage }
-          isAuthenticated={ isAuthenticated }
+          isAuthenticated={ userIsAuthenticated }
         />
 
         <Redirect

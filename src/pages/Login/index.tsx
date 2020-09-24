@@ -14,6 +14,7 @@ import spotifood_logo_with_name
   from '../../assets/img/svg/spotifood_logo_with_name.svg';
 import useSpotifyAccountUrl from "../../hooks/useSpotifyAccountUrl";
 import config from "../../config";
+import FullscreenLoader from "../../components/FullscreenLoader";
 
 const LoginPage: React.FC = () => {
 
