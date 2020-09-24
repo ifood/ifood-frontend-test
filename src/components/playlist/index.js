@@ -27,7 +27,9 @@ PlaylistElement.defaultProps = {
 }
 
 const PlaylistProvider = () => {
-  const { playlists } = useSelector(({ playlist }) => playlist)
+  const { playlists, loading } = useSelector(({ playlist }) => playlist)
+
+  if (loading) return <h1>loading...</h1>
 
   return (
     <Wrapper>

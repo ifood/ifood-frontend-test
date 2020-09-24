@@ -3,13 +3,14 @@ import { useSelector } from 'react-redux'
 
 import DatePicker from 'components/datePicker'
 import List from 'components/list'
+import Select from 'components/select'
 
 const filterMap = new Map([
   ['locale', List],
   ['country', List],
   ['timestamp', DatePicker],
-  ['limit', List],
-  ['offset', List],
+  ['limit', Select],
+  ['offset', Select],
 ])
 
 const FilterProvider = () => {

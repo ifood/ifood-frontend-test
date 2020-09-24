@@ -6,7 +6,7 @@ import { selectAllFilters } from './selectors'
 const initialState = {
   loading: false,
   filters: [],
-  currentFilters: { country: '', locale: '', limit: '', timeStamp: new Date() },
+  currentFilters: { country: '', locale: '', limit: '', timestamp: null },
   error: null,
 }
 
