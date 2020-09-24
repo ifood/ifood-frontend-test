@@ -13,8 +13,6 @@ function* allPlaylists() {
   try {
     const { filter: { country, locale, limit } = {} } = yield select()
 
-    console.log(country, locale, limit)
-
     const params = {}
     paramsFactory(params, ['country', country])
     paramsFactory(params, ['locale', locale])

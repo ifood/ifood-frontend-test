@@ -30,11 +30,15 @@ List.defaultProps = {
 const ListProvider = ({ id }) => {
   const dispatch = useDispatch()
 
-  const { filters } = useSelector(({ filter }) => filter)
+  const { filters, currentFilters } = useSelector(({ filter }) => filter)
 
-  const currentFilter = filters.find((filter) => filter.id === id)
+  const renderFilter = filters.find((filter) => filter.id === id)
 
   const handleClick = async (value) => {
+    const filterAlreadySelected = currentFilters[id] === value
+
+    if (filterAlreadySelected) return
+
     const payload = payloadFactory(id, value)
 
     await dispatch(setFilter(payload))
@@ -44,7 +48,7 @@ const ListProvider = ({ id }) => {
 
   const payloadFactory = (key, value) => ({ [key]: value })
 
-  return <List values={currentFilter.values} onClick={handleClick} />
+  return <List values={renderFilter.values} onClick={handleClick} />
 }
 
 ListProvider.propTypes = {
