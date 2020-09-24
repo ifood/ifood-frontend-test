@@ -12,6 +12,7 @@ export default createGlobalStyle`
     --border-light: rgba(255, 255, 255, 0.22);
     --black-rgba: rgba(0, 0, 0, 0.4);
     --blue-rgba: rgba(54, 141, 255, 0.1);
+    --red-rgba: rgba(194, 18, 31, 0.1);
   }
   * {
     margin: 0;

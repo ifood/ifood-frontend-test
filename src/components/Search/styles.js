@@ -60,8 +60,8 @@ const Wrapper = styled.div`
     animation: showSearch 800ms;
 
     &:focus {
-      border-color: var(--blue-rgba) !important;
-      box-shadow: 0 0 0 0.2rem var(--blue-rgba) !important;
+      border-color: var(--red-rgba) !important;
+      box-shadow: 0 0 0 0.2rem var(--red-rgba) !important;
     }
   }
 

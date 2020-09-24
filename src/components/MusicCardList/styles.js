@@ -16,7 +16,7 @@ const keyframes = css`
 `
 
 const Card = styled.div`
-  margin-top: 40px;
+  margin-top: 25px;
 `
 
 const Wrapper = styled.div`
@@ -108,6 +108,11 @@ const Description = styled.p`
   margin-top: 5px;
   color: var(--white);
   font-size: 1rem;
+
+  &.playlist-not-found {
+    margin: 0;
+    color: var(--primary);
+  }
 `
 
 export { Card, Wrapper, Link, Image, Details, Name, Description }

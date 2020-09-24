@@ -29,26 +29,32 @@ export default function MusicCardList() {
           <Col>
             <Card>
               {!!filterPlaylistName(playlistSearchName) &&
-                filterPlaylistName(playlistSearchName).map((item, key) => (
-                  <Wrapper key={key}>
-                    <Link
-                      href={item.external_urls.spotify}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item.images.map((image, key) => (
-                        <Image key={key} src={image.url} />
-                      ))}
+                (filterPlaylistName(playlistSearchName).length > 0 ? (
+                  filterPlaylistName(playlistSearchName).map((item, key) => (
+                    <Wrapper key={key}>
+                      <Link
+                        href={item.external_urls.spotify}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.images.map((image, key) => (
+                          <Image key={key} src={image.url} />
+                        ))}
 
-                      <Details className="details-row">
-                        <FontAwesomeIcon icon={faPlayCircle} size="3x" />
+                        <Details className="details-row">
+                          <FontAwesomeIcon icon={faPlayCircle} size="3x" />
 
-                        <Name>{item.name}</Name>
+                          <Name>{item.name}</Name>
 
-                        <Description>{item.description}</Description>
-                      </Details>
-                    </Link>
-                  </Wrapper>
+                          <Description>{item.description}</Description>
+                        </Details>
+                      </Link>
+                    </Wrapper>
+                  ))
+                ) : (
+                  <Description className="playlist-not-found">
+                    Não foi encontrado nenhuma playlist.
+                  </Description>
                 ))}
             </Card>
           </Col>
