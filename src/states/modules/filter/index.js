@@ -6,6 +6,10 @@ import { selectAllFilters } from './selectors'
 const initialState = {
   loading: false,
   filters: [],
+  country: '',
+  locale: '',
+  limit: '',
+  timeStamp: new Date(),
   error: null,
 }
 

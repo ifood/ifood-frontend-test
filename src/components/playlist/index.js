@@ -4,37 +4,26 @@ import { useSelector } from 'react-redux'
 
 import { Wrapper, Container, Image, Title } from './styles'
 
-const PlaylistElement = ({ name, collaborative, image, link }) => (
+const PlaylistElement = ({ name, collaborative, image }) => (
   <Container>
-    <Image src={image.url} alt={name} />
+    <Image src={image} alt={name} />
     <Title>{name}</Title>
     <p>
       {collaborative ? 'Colaborative Playlist' : 'Non collaborative playlist'}
     </p>
-    <a href={link}>Ver detalhes {'>'}</a>
   </Container>
 )
 
 PlaylistElement.propTypes = {
   name: PropTypes.string,
   collaborative: PropTypes.bool,
-  image: PropTypes.objectOf({
-    height: PropTypes.number,
-    width: PropTypes.number,
-    url: PropTypes.string,
-  }),
-  link: PropTypes.string,
+  image: PropTypes.string,
 }
 
 PlaylistElement.defaultProps = {
   name: '',
   collaborative: false,
-  image: {
-    height: 0,
-    width: 0,
-    url: '/',
-  },
-  link: '',
+  image: '/',
 }
 
 const PlaylistProvider = () => {
@@ -43,7 +32,7 @@ const PlaylistProvider = () => {
   return (
     <Wrapper>
       {playlists.map((playlist) => {
-        const { id, name, collaborative, image, link } = playlist
+        const { id, name, collaborative, image } = playlist
 
         return (
           <PlaylistElement
@@ -51,7 +40,6 @@ const PlaylistProvider = () => {
             name={name}
             collaborative={collaborative}
             image={image}
-            link={link}
           />
         )
       })}
