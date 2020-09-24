@@ -11,9 +11,9 @@ interface PlaylistsProps {
 export const Playlists: React.FC<PlaylistsProps> = ({ playlists }) => {
   const classes = useStyles();
   return (
-    <Grid className={classes.container} container>
+    <Grid className={classes.container} container role="list">
       {playlists.map((playlist) => (
-        <Grid className={classes.item} item xs={6} sm={4} md={3} key={playlist.id}>
+        <Grid className={classes.item} item xs={6} sm={4} md={3} key={playlist.id} role="listitem">
           <PlaylistsItem playlist={playlist} />
         </Grid>
       ))}
