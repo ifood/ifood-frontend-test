@@ -1,29 +1,44 @@
-# iFood Frontend Test
+# Introdução
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+Esse é um projeto que foi feito para o teste de front-end do ifood. O app é uma página web que chama Spotifood, que consome a API do Spotify para listar as playlists preferidas dos clientes do ifood e podendo ser filtradas para melhor busca.
 
-## Business rules
+## Solução
+Para construir a página da web, foi utilizado React e utlizando o template de Typescript do create-react-app na versão 16.13.1, utilização dos hooks pra ter uma performace melhor e styled components pra uma melhor componentizacao do CSS e dos elementos da tela.
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+# Rodar projeto localmente
 
-## Hints or Constraints
+- Clonar repositório com o comando **https://github.com/JonasTeixeira42/ifood-frontend-test.git**
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+- Entrar na pasta com o comando **cd cd ifood-frontend-test**
 
-## Non functional requirements
+- Instalar aplicação com o comando **yarn install**
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+- Requisições na API do Spotify requer um token, só que ele possui duração de uma hora, como não conseguir atualizar o token automaticamente, vai ser necessário gerar um novo.
+
+- Parar gerar um token, rodar o comando:
+**curl -X "POST" -H "Authorization: Basic YTQ0NWE2MWIwNzY0NGEwNmE2MzIzNzAyYzgyMWFjNDY6YWNkNDQ2MWNjMzVlNGE1YzgwNDU0Y2FkYmQxZDU3NWI=" -d grant_type=client_credentials https://accounts.spotify.com/api/token**
+
+- O comando retorna um JSON como a estrutura abaixo:
+```json
+{
+   "access_token": "NgCXRKc...MzYjw",
+   "token_type": "bearer",
+   "expires_in": 3600,
+}
+```
+
+- Copiar o conteúdo do access_token
+
+- Colar no arquivo [API](src/services/api.ts) como valor de **Authorization**
+
+- Rodar projeto com o comando **yarn start**
+
+## Ferramentas utilizadas
+
+- Typescript
+- Date-fns
+- Styled-components
+- axios
+- polished
+- react-springs
+- uuidv4
