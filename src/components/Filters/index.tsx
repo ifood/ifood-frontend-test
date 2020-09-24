@@ -44,12 +44,17 @@ const Filters: React.FC = () => {
         setCountrys([...filters[1].values]);
         setLocales([...filters[0].values]);
       } catch (error) {
+        addToast({
+          title: "Cant't fetch any playlists",
+          description: 'We found an error while fetching playlist, try again',
+          type: 'error',
+        });
         console.warn(error);
       }
     }
 
     loadFilters();
-  }, []);
+  }, [addToast]);
 
   useEffect(() => {
     function getPLaylists() {

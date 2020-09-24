@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useContext, useState, useCallback } from 'react';
 
+import { useToast } from './toast';
+
 import api from '../services/api';
 
 interface PlaylistImage {
@@ -40,6 +42,7 @@ const PlaylistContext = createContext<PlaylistContextData>(
 const PlaylistProvider: React.FC = ({ children }) => {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [filteredPlaylists, setFilteredPlaylists] = useState<Playlist[]>([]);
+  const { addToast } = useToast();
 
   const loadPlaylists = useCallback(
     async ({ country, locale, timestamp, limit, offset }: FilterParams) => {
@@ -57,10 +60,14 @@ const PlaylistProvider: React.FC = ({ children }) => {
         setPlaylists(response.data.playlists.items);
         setFilteredPlaylists(response.data.playlists.items);
       } catch (error) {
-        throw new Error(error);
+        addToast({
+          title: "Cant't fetch any playlists",
+          description: 'We found an error while fetching playlists, try again',
+          type: 'error',
+        });
       }
     },
-    [],
+    [addToast],
   );
 
   const filterByName = useCallback(
