@@ -18,7 +18,8 @@ executar comando **yarn dev**
 - Parar gerar um token, rodar o comando **curl -X "POST" -H "Authorization: Basic YTQ0NWE2MWIwNzY0NGEwNmE2MzIzNzAyYzgyMWFjNDY6YWNkNDQ2MWNjMzVlNGE1YzgwNDU0Y2FkYmQxZDU3NWI=" -d grant_type=client_credentials https://accounts.spotify.com/api/token
 **
 - O comando retorna um JSON como a estrutura abaixo:
-```json {
+```json
+{
    "access_token": "NgCXRKc...MzYjw",
    "token_type": "bearer",
    "expires_in": 3600,
