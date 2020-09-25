@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "lint": "eslint --fix src/**/*.{ts,tsx}"
@@ -22,13 +22,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-query": "^2.23.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
     "@testing-library/react-hooks": "^3.4.1",
-    "@testing-library/user-event": "^12.1.6",
+    "@testing-library/user-event": "^10.4.1",
     "@types/jest": "^26.0.14",
     "@types/lodash": "^4.14.161",
     "@types/luxon": "^1.25.0",
@@ -36,8 +36,10 @@
     "@types/qs": "^6.9.5",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/testing-library__user-event": "^4.2.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-typescript-prettier": "^3.1.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "prettier": "^2.0.5",
     "ts-jest": "^26.4.0",
     "typescript": "^3.9.7"
