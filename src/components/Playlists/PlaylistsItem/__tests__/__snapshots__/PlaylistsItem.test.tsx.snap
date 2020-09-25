@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaylistsItem matches the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <a
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiCardActionArea-root"
+        href="http://localhost/url"
+        tabindex="0"
+      >
+        <img
+          class="MuiCardMedia-root PlaylistsItem-image-1 MuiCardMedia-media MuiCardMedia-img"
+          src="image1"
+          title="Imagem playlist"
+        />
+        <div
+          class="MuiCardContent-root"
+        >
+          <p
+            class="MuiTypography-root PlaylistsItem-name-2 MuiTypography-body1 MuiTypography-noWrap"
+          >
+            Playlist name
+          </p>
+          <span
+            class="MuiTypography-root PlaylistsItem-description-3 MuiTypography-caption MuiTypography-colorTextSecondary"
+          >
+            Playlist description
+          </span>
+        </div>
+        <span
+          class="MuiCardActionArea-focusHighlight"
+        />
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </a>
+    </div>
+  </div>
+</body>
+`;
