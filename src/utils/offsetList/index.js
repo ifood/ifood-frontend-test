@@ -1,4 +1,4 @@
-const offsetFactory = (end = 1) => {
+const offsetList = (end = 1) => {
   let temp = 0
   const offsetArray = []
   while (temp < end) {
@@ -8,4 +8,4 @@ const offsetFactory = (end = 1) => {
   return offsetArray
 }
 
-export default offsetFactory
+export default offsetList

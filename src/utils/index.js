@@ -1,6 +1,6 @@
-import limitsFactory from './limitsFactory'
 import paramsFactory from './paramsFactory'
 import payloadFactory from './payloadFactory'
-import offsetFactory from './offsetFactory'
+import limitsList from './limitsList'
+import offsetList from './offsetList'
 
-export { limitsFactory, paramsFactory, payloadFactory, offsetFactory }
+export { limitsList, paramsFactory, payloadFactory, offsetList }

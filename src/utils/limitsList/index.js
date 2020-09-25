@@ -1,4 +1,4 @@
-const limitsFactory = (end = 20) => {
+const limitsList = (end = 20) => {
   let temp = 0
   const limitsArray = []
   while (temp < end) {
@@ -8,4 +8,4 @@ const limitsFactory = (end = 20) => {
   return limitsArray
 }
 
-export default limitsFactory
+export default limitsList

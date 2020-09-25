@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { limitsFactory, offsetFactory, payloadFactory } from 'utils'
+import { limitsList, offsetList, payloadFactory } from 'utils'
 
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
 
-const Select = ({ label, options, onChange, selected }) => (
+const Select = ({ label, options, onChange }) => (
   <>
     <span>{label}</span>
-    <select onChange={onChange}>
+    <select onChange={onChange} defaultValue='default'>
+      <option value='default'>{label}</option>
       {options.map((option) => (
-        <option key={option} value={option} selected={option === selected}>
+        <option key={option} value={option}>
           {option}
         </option>
       ))}
@@ -22,7 +23,6 @@ const Select = ({ label, options, onChange, selected }) => (
 
 Select.propTypes = {
   label: PropTypes.string,
-  selected: PropTypes.number,
   options: PropTypes.array,
   onChange: PropTypes.func,
 }
@@ -31,7 +31,6 @@ Select.defaultProps = {
   label: '',
   options: [],
   onChange: () => null,
-  selected: 20,
 }
 
 const SelectProvider = ({ id }) => {
@@ -46,18 +45,18 @@ const SelectProvider = ({ id }) => {
 
   useEffect(() => {
     if (id === 'limit') {
-      const limits = limitsFactory(renderFilter.validation.max)
+      const limits = limitsList(renderFilter.validation.max)
       setOptions(limits)
     }
-  }, [])
+  }, [id, renderFilter.validation.max])
 
   useEffect(() => {
     if (id === 'offset') {
       const totalOffset = Math.ceil(total / currentFilters.limit)
-      const offset = offsetFactory(totalOffset)
+      const offset = offsetList(totalOffset)
       setOptions(offset)
     }
-  }, [total, currentFilters.limit])
+  }, [id, total, currentFilters.limit])
 
   const handleChange = async (e) => {
     const { value } = e.target
@@ -74,7 +73,6 @@ const SelectProvider = ({ id }) => {
       label={renderFilter.name}
       options={options}
       onChange={handleChange}
-      selected={currentFilters[id]}
     />
   )
 }
