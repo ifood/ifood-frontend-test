@@ -30,10 +30,9 @@ export const FeaturedPlaylists: React.FC = () => {
     setParams(filters);
   }, []);
 
-  const handleSearch = useCallback(
-    debounce((text: string) => setSearch(text), 400),
-    []
-  );
+  const handleSearch = useMemo(() => {
+    return debounce((text: string) => setSearch(text), 400);
+  }, []);
 
   return (
     <>

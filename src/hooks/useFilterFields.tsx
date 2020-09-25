@@ -71,14 +71,14 @@ export const useFilterFields = () => {
   );
 
   const validateFilterField = useCallback(
-    (id: string, value: any): string | undefined => {
+    (id: string, value: string | null): string | undefined => {
       const filterField = filterFields?.find((field) => field.id === id);
       if (filterField?.validation) {
         const { min, max } = filterField.validation;
-        if (min !== undefined && value && value < min) {
+        if (min !== undefined && value && Number(value) < min) {
           return `Valor menor que o mínimo (${min})`;
         }
-        if (max !== undefined && value && value > max) {
+        if (max !== undefined && value && Number(value) > max) {
           return `Valor maior que o máximo (${max})`;
         }
       }

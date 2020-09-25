@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "lint": "eslint --fix src/**/*.{ts,tsx}"
@@ -22,7 +22,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-query": "^2.23.0",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^4.0.0-next.77"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -37,15 +37,18 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/testing-library__user-event": "^4.2.0",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-typescript-prettier": "^3.1.0",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "eslint-config-airbnb-typescript": "^10.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2",
     "prettier": "^2.0.5",
     "ts-jest": "^26.4.0",
     "typescript": "^3.9.7"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

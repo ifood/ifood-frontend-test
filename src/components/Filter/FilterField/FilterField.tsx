@@ -18,8 +18,8 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   error,
   onChange,
 }) => {
-  const fieldSize = 'small' as 'small';
-  const fieldVariant = 'outlined' as 'outlined';
+  const fieldSize = 'small' as const;
+  const fieldVariant = 'outlined' as const;
 
   const commonProps = {
     id: filterField.id,
@@ -40,11 +40,18 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   const dateTimePickerProps: DateTimePickerProps = {
     ...commonProps,
     inputVariant: fieldVariant,
-    onChange: (element) => onChange(element ? element.toISO() : null),
+    onChange: (element) => onChange(element ? element.toJSDate().toISOString() : null),
   };
 
   if (filterField.type === 'datetime') {
-    return <DateTimePicker {...dateTimePickerProps} ampm={false} format="dd/MM/yyyy HH:mm" />;
+    return (
+      <DateTimePicker
+        {...dateTimePickerProps}
+        ampm={false}
+        format="dd/MM/yyyy HH:mm"
+        DialogProps={{ PaperProps: { 'aria-label': 'Date Time Picker' } }}
+      />
+    );
   }
 
   if (filterField.type === 'select') {

@@ -17,7 +17,7 @@ const getFilterFieldInitialValue = (filterField: FilterField) => {
   return filterField.type === 'datetime' ? null : '';
 };
 
-interface Filter {
+interface FilterItem {
   filterField: FilterField;
   value: string | null;
   error?: string;
@@ -30,7 +30,7 @@ interface FilterProps {
 
 export const Filter: React.FC<FilterProps> = ({ onFilter, onSearch }) => {
   const classes = useStyles();
-  const [filters, setFilters] = useState<Filter[]>([]);
+  const [filters, setFilters] = useState<FilterItem[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
   const { filterFields, isLoading, isSuccess, isError, validateFilterField } = useFilterFields();
 
