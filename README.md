@@ -4,7 +4,7 @@ Create a web application called Spotifood used to display the preferred playlist
 
 - A page that lists the featured playlists at Spotify according to some criteria.
 
-[App link](https://c2d-spotifood.netlify.app/).
+[**Application link**](https://c2d-spotifood.netlify.app/).
 
 ## Business rules
 
