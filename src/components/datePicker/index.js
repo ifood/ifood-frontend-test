@@ -7,6 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
 
+import { Container, Title } from './styles'
+
 const DatePickerProvider = () => {
   const dispatch = useDispatch()
 
@@ -25,10 +27,15 @@ const DatePickerProvider = () => {
   }
 
   return (
-    <>
-      <span>{renderFilter.name}:</span>
-      <DatePicker selected={currentFilters.timestamp} onChange={handleChange} />
-    </>
+    <Container>
+      <Title>{renderFilter.name}</Title>
+      <DatePicker
+        selected={currentFilters.timestamp}
+        placeholderText='dd/mm/aaaa'
+        // locale='pt-BR'
+        onChange={handleChange}
+      />
+    </Container>
   )
 }
 

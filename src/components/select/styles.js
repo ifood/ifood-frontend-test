@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { colors } from 'styles'
 
 export const Container = styled.div`
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   margin-top: 25px;
@@ -15,6 +16,7 @@ export const Title = styled.span`
   letter-spacing: 1.11px;
   font-weight: 300;
 `
+
 export const Dropdown = styled.select`
   appearance: none;
   background-color: transparent;
@@ -33,4 +35,7 @@ export const Dropdown = styled.select`
   }
 `
 
-export const Option = styled.option``
+export const Option = styled.option`
+  font-size: 13px;
+  line-height: 32px;
+`
