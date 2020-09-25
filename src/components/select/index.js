@@ -7,18 +7,20 @@ import { limitsList, offsetList, payloadFactory } from 'utils'
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
 
+import { Title, Dropdown, Option, Container } from './styles'
+
 const Select = ({ label, options, onChange }) => (
-  <>
-    <span>{label}</span>
-    <select onChange={onChange} defaultValue='default'>
-      <option value='default'>{label}</option>
+  <Container>
+    <Title>{label}</Title>
+    <Dropdown onChange={onChange} defaultValue='default'>
+      <Option value='default'>{label}</Option>
       {options.map((option) => (
-        <option key={option} value={option}>
+        <Option key={option} value={option}>
           {option}
-        </option>
+        </Option>
       ))}
-    </select>
-  </>
+    </Dropdown>
+  </Container>
 )
 
 Select.propTypes = {
