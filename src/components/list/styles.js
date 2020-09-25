@@ -15,9 +15,12 @@ export const Nav = styled.ul`
 export const Item = styled.li`
   display: flex;
   align-items: center;
+  padding: 0 25px;
 
   font-size: 13px;
   line-height: 32px;
+
+  border-left: ${(prop) => prop.selected && `3px solid ${colors.green}`};
 
   cursor: pointer;
 
@@ -27,6 +30,7 @@ export const Item = styled.li`
 `
 
 export const Title = styled.span`
+  padding: 0 25px;
   font-size: 11px;
   text-transform: uppercase;
   line-height: 22px;

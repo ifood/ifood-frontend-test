@@ -5,6 +5,7 @@ import { colors } from 'styles'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 25px;
   margin-top: 25px;
   input {
     cursor: pointer;

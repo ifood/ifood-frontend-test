@@ -4,6 +4,7 @@ import { colors } from 'styles'
 
 export const Container = styled.div`
   cursor: pointer;
+  padding: 0 25px;
   display: flex;
   flex-direction: column;
   margin-top: 25px;

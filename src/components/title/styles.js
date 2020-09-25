@@ -12,4 +12,5 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   font-size: 13px;
+  padding: 25px 25px 0;
 `

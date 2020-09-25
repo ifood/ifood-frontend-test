@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-import { colors } from 'styles'
-
 export const Container = styled.div`
   display: flex;
-  width: 200px;
+  flex: 1 0 21%;
+  max-width: 400px;
   flex-direction: column;
-  background-color: ${colors.grayDark};
+  margin: 10px;
+  padding: 5px;
 `

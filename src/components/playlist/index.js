@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 
+import Skeleton from '../playlistSkeleton'
+
 import { containedString } from 'utils'
 
 import { Wrapper, Container, Image, Title } from './styles'
@@ -32,24 +34,32 @@ const PlaylistProvider = () => {
   const { playlists, loading } = useSelector(({ playlist }) => playlist)
   const { currentFilters: { name } = {} } = useSelector(({ filter }) => filter)
 
-  if (loading) return <h1>loading...</h1>
-
   return (
     <Wrapper>
-      {playlists
-        .filter((playlist) => containedString(playlist.name, name))
-        .map((playlist) => {
-          const { id, name, collaborative, image } = playlist
+      {!loading ? (
+        playlists
+          .filter((playlist) => containedString(playlist.name, name))
+          .map((playlist) => {
+            const { id, name, collaborative, image } = playlist
 
-          return (
-            <PlaylistElement
-              key={id}
-              name={name}
-              collaborative={collaborative}
-              image={image}
-            />
-          )
-        })}
+            return (
+              <PlaylistElement
+                key={id}
+                name={name}
+                collaborative={collaborative}
+                image={image}
+              />
+            )
+          })
+      ) : (
+        <>
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </>
+      )}
     </Wrapper>
   )
 }

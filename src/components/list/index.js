@@ -9,12 +9,16 @@ import { payloadFactory } from 'utils'
 
 import { Item, Nav, Title } from './styles'
 
-const List = ({ values, onClick, title }) => {
+const List = ({ values, onClick, title, selected }) => {
   return (
     <Nav>
       <Title>{title}</Title>
       {values.map((elem, index) => (
-        <Item key={index} onClick={() => onClick(elem.value)}>
+        <Item
+          key={index}
+          onClick={() => onClick(elem.value)}
+          selected={selected === elem.value}
+        >
           {elem.name}
         </Item>
       ))}
@@ -26,12 +30,14 @@ List.propTypes = {
   values: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func,
   title: PropTypes.string,
+  selected: PropTypes.string,
 }
 
 List.defaultProps = {
   values: [{}],
   onClick: () => null,
   title: '',
+  selected: '',
 }
 
 const ListProvider = ({ id }) => {
@@ -53,7 +59,14 @@ const ListProvider = ({ id }) => {
     await dispatch(getPlaylistRequest())
   }
 
-  return <List values={renderFilter.values} onClick={handleClick} title={id} />
+  return (
+    <List
+      values={renderFilter.values}
+      onClick={handleClick}
+      title={id}
+      selected={currentFilters[id]}
+    />
+  )
 }
 
 ListProvider.propTypes = {
