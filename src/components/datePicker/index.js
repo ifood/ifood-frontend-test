@@ -31,8 +31,9 @@ const DatePickerProvider = () => {
       <Title>{renderFilter.name}</Title>
       <DatePicker
         selected={currentFilters.timestamp}
+        dateFormat='dd/MM/yyyy'
         placeholderText='dd/mm/aaaa'
-        // locale='pt-BR'
+        locale='pt-br'
         onChange={handleChange}
       />
     </Container>
