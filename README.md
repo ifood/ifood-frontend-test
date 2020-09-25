@@ -1,6 +1,7 @@
 # iFood Frontend Test
 
 Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
+
 - A page that lists the featured playlists at Spotify according to some criteria.
 
 [App link](https://c2d-spotifood.netlify.app/).
@@ -31,7 +32,16 @@ Fork this repository and submit your code.
 
 ## Architecture
 
-[...]
+Main libraries:
+
+- React
+- React Query
+- React Testing Library
+- Material UI
+- Axios
+- Typescript
+
+All React components are using React Hooks.
 
 ## Available Scripts
 
@@ -48,3 +58,11 @@ Run the tests.
 ### `npm run build`
 
 Builds the app for production to the `build` folder.
+
+### `npm run format`
+
+Formats the code using Prettier.
+
+### `npm run lint`
+
+Applies the Airbnb style guides using ESLint.
