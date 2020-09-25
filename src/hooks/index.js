@@ -1,3 +1,4 @@
 import useQueryString from './useQueryString'
+import useDebounce from './useDebounce'
 
-export { useQueryString }
+export { useQueryString, useDebounce }

@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   filters: [],
   currentFilters: {
+    name: '',
     country: '',
     locale: '',
     limit: 20,

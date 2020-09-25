@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { Container, Title, Search } from './styles'
+import Search from 'components/search'
+
+import { Container, Title } from './styles'
 
 const Header = () => (
   <Container>
     <Title>Spotifood</Title>
-    <Search>
-      <input placeholder='Search' />
-    </Search>
+    <Search />
   </Container>
 )
 
