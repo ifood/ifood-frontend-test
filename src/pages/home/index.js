@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import Header from 'components/header'
 import Playlist from 'components/playlist'
-import Filter from 'components/filter'
+import Sidebar from 'components/sidebar'
+import Search from 'components/search'
 
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { getFilterRequest } from 'states/modules/filter'
@@ -12,7 +12,7 @@ import { useInterval } from 'hooks'
 
 import { refreshDelay } from 'constant'
 
-import { Container } from './styles'
+import { Container, Wrapper } from './styles'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -30,9 +30,11 @@ const Home = () => {
 
   return (
     <Container>
-      <Header />
-      <Filter />
-      <Playlist />
+      <Sidebar />
+      <Wrapper>
+        <Search />
+        <Playlist />
+      </Wrapper>
     </Container>
   )
 }

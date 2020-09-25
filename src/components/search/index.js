@@ -32,7 +32,7 @@ const SearchProvider = () => {
   }
   useEffect(() => {
     dispatch(setFilter({ name: value }))
-  }, [value])
+  }, [dispatch, value])
 
   return <SearchElement onChange={handleChange} />
 }

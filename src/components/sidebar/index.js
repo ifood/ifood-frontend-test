@@ -1,5 +1,15 @@
 import React from 'react'
 
-const SideBar = () => <div>SideBar</div>
+import Filter from '../filter'
+import Title from 'components/title'
+
+import { Container } from './styles'
+
+const SideBar = () => (
+  <Container>
+    <Title />
+    <Filter />
+  </Container>
+)
 
 export default SideBar

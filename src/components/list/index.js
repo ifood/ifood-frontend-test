@@ -7,26 +7,31 @@ import { setFilter } from 'states/modules/filter'
 
 import { payloadFactory } from 'utils'
 
-const List = ({ values, onClick }) => {
+import { Item, Nav, Title } from './styles'
+
+const List = ({ values, onClick, title }) => {
   return (
-    <ul>
+    <Nav>
+      <Title>{title}</Title>
       {values.map((elem, index) => (
-        <li key={index} onClick={() => onClick(elem.value)}>
+        <Item key={index} onClick={() => onClick(elem.value)}>
           {elem.name}
-        </li>
+        </Item>
       ))}
-    </ul>
+    </Nav>
   )
 }
 
 List.propTypes = {
   values: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func,
+  title: PropTypes.string,
 }
 
 List.defaultProps = {
   values: [{}],
   onClick: () => null,
+  title: '',
 }
 
 const ListProvider = ({ id }) => {
@@ -48,7 +53,7 @@ const ListProvider = ({ id }) => {
     await dispatch(getPlaylistRequest())
   }
 
-  return <List values={renderFilter.values} onClick={handleClick} />
+  return <List values={renderFilter.values} onClick={handleClick} title={id} />
 }
 
 ListProvider.propTypes = {
