@@ -43,6 +43,8 @@ Main libraries:
 
 All React components are using React Hooks.
 
+The authorization flow for the Spotify API is [Implicit Grant Flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow) and it was developed based on this [Spotify example](https://github.com/spotify/web-api-auth-examples/blob/master/implicit_grant/public/index.html).
+
 ## Available Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
