@@ -9,11 +9,10 @@ import { setFilter } from 'states/modules/filter'
 
 import { Title, Dropdown, Option, Container } from './styles'
 
-const Select = ({ label, options, onChange }) => (
+const Select = ({ label, options, onChange, value }) => (
   <Container>
     <Title>{label}</Title>
-    <Dropdown onChange={onChange} defaultValue='default'>
-      <Option value='default'>{label}</Option>
+    <Dropdown onChange={onChange} value={value}>
       {options.map((option) => (
         <Option key={option} value={option}>
           {option}
@@ -25,12 +24,14 @@ const Select = ({ label, options, onChange }) => (
 
 Select.propTypes = {
   label: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   options: PropTypes.array,
   onChange: PropTypes.func,
 }
 
 Select.defaultProps = {
   label: '',
+  value: '',
   options: [],
   onChange: () => null,
 }
@@ -70,11 +71,15 @@ const SelectProvider = ({ id }) => {
     await dispatch(getPlaylistRequest())
   }
 
+  const value = id === 'limit' ? currentFilters.limit : currentFilters.offset
+
   return (
     <Select
       label={renderFilter.name}
       options={options}
       onChange={handleChange}
+      defaultValue={value}
+      value={value}
     />
   )
 }
