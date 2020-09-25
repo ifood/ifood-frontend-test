@@ -4,11 +4,11 @@ exports[`Playlists matches the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="MuiGrid-root Playlists-container-6 MuiGrid-container"
+      class="MuiGrid-root Playlists-container-1 MuiGrid-container"
       role="list"
     >
       <div
-        class="MuiGrid-root Playlists-item-7 MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
+        class="MuiGrid-root Playlists-item-2 MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
         role="listitem"
       >
         <div
@@ -21,7 +21,7 @@ exports[`Playlists matches the snapshot 1`] = `
             tabindex="0"
           >
             <img
-              class="MuiCardMedia-root PlaylistsItem-image-8 MuiCardMedia-media MuiCardMedia-img"
+              class="MuiCardMedia-root PlaylistsItem-image-3 MuiCardMedia-media MuiCardMedia-img"
               src="image1"
               title="Imagem playlist"
             />
@@ -29,12 +29,12 @@ exports[`Playlists matches the snapshot 1`] = `
               class="MuiCardContent-root"
             >
               <p
-                class="MuiTypography-root PlaylistsItem-name-9 MuiTypography-body1 MuiTypography-noWrap"
+                class="MuiTypography-root PlaylistsItem-name-4 MuiTypography-body1 MuiTypography-noWrap"
               >
                 Playlist 1
               </p>
               <span
-                class="MuiTypography-root PlaylistsItem-description-10 MuiTypography-caption MuiTypography-colorTextSecondary"
+                class="MuiTypography-root PlaylistsItem-description-5 MuiTypography-caption MuiTypography-colorTextSecondary"
               >
                 Playlist 1
               </span>
@@ -49,7 +49,7 @@ exports[`Playlists matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiGrid-root Playlists-item-7 MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
+        class="MuiGrid-root Playlists-item-2 MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
         role="listitem"
       >
         <div
@@ -62,7 +62,7 @@ exports[`Playlists matches the snapshot 1`] = `
             tabindex="0"
           >
             <img
-              class="MuiCardMedia-root PlaylistsItem-image-8 MuiCardMedia-media MuiCardMedia-img"
+              class="MuiCardMedia-root PlaylistsItem-image-3 MuiCardMedia-media MuiCardMedia-img"
               src="image2"
               title="Imagem playlist"
             />
@@ -70,12 +70,12 @@ exports[`Playlists matches the snapshot 1`] = `
               class="MuiCardContent-root"
             >
               <p
-                class="MuiTypography-root PlaylistsItem-name-9 MuiTypography-body1 MuiTypography-noWrap"
+                class="MuiTypography-root PlaylistsItem-name-4 MuiTypography-body1 MuiTypography-noWrap"
               >
                 Playlist 2
               </p>
               <span
-                class="MuiTypography-root PlaylistsItem-description-10 MuiTypography-caption MuiTypography-colorTextSecondary"
+                class="MuiTypography-root PlaylistsItem-description-5 MuiTypography-caption MuiTypography-colorTextSecondary"
               >
                 Playlist 2
               </span>
@@ -90,7 +90,7 @@ exports[`Playlists matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiGrid-root Playlists-item-7 MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
+        class="MuiGrid-root Playlists-item-2 MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
         role="listitem"
       >
         <div
@@ -103,7 +103,7 @@ exports[`Playlists matches the snapshot 1`] = `
             tabindex="0"
           >
             <img
-              class="MuiCardMedia-root PlaylistsItem-image-8 MuiCardMedia-media MuiCardMedia-img"
+              class="MuiCardMedia-root PlaylistsItem-image-3 MuiCardMedia-media MuiCardMedia-img"
               src="image3"
               title="Imagem playlist"
             />
@@ -111,12 +111,12 @@ exports[`Playlists matches the snapshot 1`] = `
               class="MuiCardContent-root"
             >
               <p
-                class="MuiTypography-root PlaylistsItem-name-9 MuiTypography-body1 MuiTypography-noWrap"
+                class="MuiTypography-root PlaylistsItem-name-4 MuiTypography-body1 MuiTypography-noWrap"
               >
                 Playlist 3
               </p>
               <span
-                class="MuiTypography-root PlaylistsItem-description-10 MuiTypography-caption MuiTypography-colorTextSecondary"
+                class="MuiTypography-root PlaylistsItem-description-5 MuiTypography-caption MuiTypography-colorTextSecondary"
               >
                 Playlist 3
               </span>

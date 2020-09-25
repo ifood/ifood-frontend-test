@@ -4,10 +4,10 @@ exports[`Login matches the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="Login-container-5"
+      class="Login-container-1"
     >
       <h2
-        class="MuiTypography-root Login-title-6 MuiTypography-h2"
+        class="MuiTypography-root Login-title-2 MuiTypography-h2"
       >
         Spotifood
       </h2>

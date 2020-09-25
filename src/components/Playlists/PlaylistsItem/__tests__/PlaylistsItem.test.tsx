@@ -12,6 +12,11 @@ const playlist = {
 };
 
 describe('PlaylistsItem', () => {
+  test('matches the snapshot', () => {
+    const { baseElement } = render(<PlaylistsItem playlist={playlist} />, { wrapper: AppProvider });
+    expect(baseElement).toMatchSnapshot();
+  });
+
   test('renders the playlists item', () => {
     render(<PlaylistsItem playlist={playlist} />, { wrapper: AppProvider });
 
@@ -23,10 +28,5 @@ describe('PlaylistsItem', () => {
 
     expect(screen.getByText(/playlist name/i)).toBeInTheDocument();
     expect(screen.getByText(/playlist description/i)).toBeInTheDocument();
-  });
-
-  test('matches the snapshot', () => {
-    const { baseElement } = render(<PlaylistsItem playlist={playlist} />, { wrapper: AppProvider });
-    expect(baseElement).toMatchSnapshot();
   });
 });

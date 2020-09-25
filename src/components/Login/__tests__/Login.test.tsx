@@ -14,6 +14,17 @@ describe('Login', () => {
     useAuthMocked.mockClear();
   });
 
+  test('matches the snapshot', () => {
+    useAuthMocked.mockImplementation(() => ({
+      auth: null,
+      login: jest.fn(),
+      logout: jest.fn(),
+    }));
+
+    const { baseElement } = render(<Login />, { wrapper: AppProvider });
+    expect(baseElement).toMatchSnapshot();
+  });
+
   test('renders the login', () => {
     useAuthMocked.mockImplementation(() => ({
       auth: null,
@@ -39,16 +50,5 @@ describe('Login', () => {
 
     userEvent.click(screen.getByRole('button', { name: /login/i }));
     expect(login).toHaveBeenCalled();
-  });
-
-  test('matches the snapshot', () => {
-    useAuthMocked.mockImplementation(() => ({
-      auth: null,
-      login: jest.fn(),
-      logout: jest.fn(),
-    }));
-
-    const { baseElement } = render(<Login />, { wrapper: AppProvider });
-    expect(baseElement).toMatchSnapshot();
   });
 });

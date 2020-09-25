@@ -4,10 +4,10 @@ exports[`Filter matches the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="MuiPaper-root Filter-container-82 MuiPaper-elevation1 MuiPaper-rounded"
+      class="MuiPaper-root Filter-container-1 MuiPaper-elevation1 MuiPaper-rounded"
     >
       <div
-        class="Filter-search-83"
+        class="Filter-search-2"
       >
         <div
           class="MuiFormControl-root MuiTextField-root"
@@ -38,11 +38,11 @@ exports[`Filter matches the snapshot 1`] = `
             />
             <fieldset
               aria-hidden="true"
-              class="PrivateNotchedOutline-root-87 MuiOutlinedInput-notchedOutline"
+              class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
               style="padding-left: 8px;"
             >
               <legend
-                class="PrivateNotchedOutline-legend-88"
+                class="PrivateNotchedOutline-legend-7"
                 style="width: 0.01px;"
               >
                 <span>
@@ -92,7 +92,7 @@ exports[`Filter matches the snapshot 1`] = `
             class="MuiCollapse-wrapperInner"
           >
             <div
-              class="MuiGrid-root Filter-filters-84 MuiGrid-container MuiGrid-spacing-xs-2"
+              class="MuiGrid-root Filter-filters-3 MuiGrid-container MuiGrid-spacing-xs-2"
             >
               <div
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
@@ -141,10 +141,10 @@ exports[`Filter matches the snapshot 1`] = `
                     </svg>
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-87 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-89"
+                        class="PrivateNotchedOutline-legendLabelled-8"
                       >
                         <span>
                           Locale
@@ -201,10 +201,10 @@ exports[`Filter matches the snapshot 1`] = `
                     </svg>
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-87 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-89"
+                        class="PrivateNotchedOutline-legendLabelled-8"
                       >
                         <span>
                           País
@@ -242,10 +242,10 @@ exports[`Filter matches the snapshot 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-87 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-89"
+                        class="PrivateNotchedOutline-legendLabelled-8"
                       >
                         <span>
                           Data e Horário
@@ -283,10 +283,10 @@ exports[`Filter matches the snapshot 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-87 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-89"
+                        class="PrivateNotchedOutline-legendLabelled-8"
                       >
                         <span>
                           Quantidade
@@ -322,10 +322,10 @@ exports[`Filter matches the snapshot 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-87 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-89"
+                        class="PrivateNotchedOutline-legendLabelled-8"
                       >
                         <span>
                           Página
@@ -339,7 +339,7 @@ exports[`Filter matches the snapshot 1`] = `
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
               >
                 <div
-                  class="Filter-actions-85"
+                  class="Filter-actions-4"
                 >
                   <button
                     class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"

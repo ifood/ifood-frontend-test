@@ -10,7 +10,7 @@ exports[`Header matches the snapshot 1`] = `
         class="MuiToolbar-root MuiToolbar-dense MuiToolbar-gutters"
       >
         <h2
-          class="MuiTypography-root Header-title-3 MuiTypography-h2"
+          class="MuiTypography-root Header-title-1 MuiTypography-h2"
         >
           Spotifood
         </h2>

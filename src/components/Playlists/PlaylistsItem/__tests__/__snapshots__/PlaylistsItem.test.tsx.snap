@@ -13,7 +13,7 @@ exports[`PlaylistsItem matches the snapshot 1`] = `
         tabindex="0"
       >
         <img
-          class="MuiCardMedia-root PlaylistsItem-image-4 MuiCardMedia-media MuiCardMedia-img"
+          class="MuiCardMedia-root PlaylistsItem-image-1 MuiCardMedia-media MuiCardMedia-img"
           src="image1"
           title="Imagem playlist"
         />
@@ -21,12 +21,12 @@ exports[`PlaylistsItem matches the snapshot 1`] = `
           class="MuiCardContent-root"
         >
           <p
-            class="MuiTypography-root PlaylistsItem-name-5 MuiTypography-body1 MuiTypography-noWrap"
+            class="MuiTypography-root PlaylistsItem-name-2 MuiTypography-body1 MuiTypography-noWrap"
           >
             Playlist name
           </p>
           <span
-            class="MuiTypography-root PlaylistsItem-description-6 MuiTypography-caption MuiTypography-colorTextSecondary"
+            class="MuiTypography-root PlaylistsItem-description-3 MuiTypography-caption MuiTypography-colorTextSecondary"
           >
             Playlist description
           </span>

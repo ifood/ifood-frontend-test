@@ -28,15 +28,15 @@ const playlists = [
 ];
 
 describe('Playlists', () => {
+  test('matches the snapshot', () => {
+    const { baseElement } = render(<Playlists playlists={playlists} />, { wrapper: AppProvider });
+    expect(baseElement).toMatchSnapshot();
+  });
+
   test('renders the playlists', () => {
     render(<Playlists playlists={playlists} />, { wrapper: AppProvider });
 
     expect(screen.getByRole('list')).toBeInTheDocument();
     expect(screen.getAllByRole('listitem')).toHaveLength(3);
-  });
-
-  test('matches the snapshot', () => {
-    const { baseElement } = render(<Playlists playlists={playlists} />, { wrapper: AppProvider });
-    expect(baseElement).toMatchSnapshot();
   });
 });

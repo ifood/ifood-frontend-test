@@ -14,6 +14,17 @@ describe('Header', () => {
     useAuthMocked.mockClear();
   });
 
+  test('matches the snapshot', () => {
+    useAuthMocked.mockImplementation(() => ({
+      auth: { token: '123' },
+      login: jest.fn(),
+      logout: jest.fn(),
+    }));
+
+    const { baseElement } = render(<Header />, { wrapper: AppProvider });
+    expect(baseElement).toMatchSnapshot();
+  });
+
   test('renders the header', () => {
     useAuthMocked.mockImplementation(() => ({
       auth: { token: '123' },
@@ -39,16 +50,5 @@ describe('Header', () => {
 
     userEvent.click(screen.getByRole('button', { name: /logout/i }));
     expect(logout).toHaveBeenCalled();
-  });
-
-  test('matches the snapshot', () => {
-    useAuthMocked.mockImplementation(() => ({
-      auth: { token: '123' },
-      login: jest.fn(),
-      logout: jest.fn(),
-    }));
-
-    const { baseElement } = render(<Header />, { wrapper: AppProvider });
-    expect(baseElement).toMatchSnapshot();
   });
 });

@@ -51,6 +51,21 @@ describe('Filter', () => {
     useFilterFieldsMocked.mockClear();
   });
 
+  test('matches the snapshot', () => {
+    useFilterFieldsMocked.mockImplementation(() => ({
+      filterFields,
+      isLoading: false,
+      isSuccess: true,
+      isError: false,
+      validateFilterField: jest.fn(),
+    }));
+
+    const { baseElement } = render(<Filter onFilter={jest.fn()} onSearch={jest.fn()} />, {
+      wrapper: AppProvider,
+    });
+    expect(baseElement).toMatchSnapshot();
+  });
+
   test('renders the filter', () => {
     useFilterFieldsMocked.mockImplementation(() => ({
       filterFields: undefined,
@@ -202,7 +217,7 @@ describe('Filter', () => {
     expect(screen.getByRole('button', { name: /filtrar/i })).toBeDisabled();
   });
 
-  test('matches the snapshot', () => {
+  test('searches playlists', () => {
     useFilterFieldsMocked.mockImplementation(() => ({
       filterFields,
       isLoading: false,
@@ -211,9 +226,10 @@ describe('Filter', () => {
       validateFilterField: jest.fn(),
     }));
 
-    const { baseElement } = render(<Filter onFilter={jest.fn()} onSearch={jest.fn()} />, {
-      wrapper: AppProvider,
-    });
-    expect(baseElement).toMatchSnapshot();
+    const onSearch = jest.fn();
+    render(<Filter onFilter={jest.fn()} onSearch={onSearch} />, { wrapper: AppProvider });
+
+    userEvent.type(screen.getByRole('textbox'), 'search text');
+    expect(onSearch).toHaveBeenCalledWith('search text');
   });
 });
