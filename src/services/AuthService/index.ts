@@ -1,10 +1,13 @@
-import SpotifyService from "../SpotifyService";
 import { UserToken } from "../../interfaces";
 import StorageService from "../StorageService";
+import config from "../../config";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
+import HttpService from "../HttpService";
 
 class AuthService {
+  private SPOTIFY_URL_TOKEN = `${ config.spotifyAccountUrl }/api/token`;
 
-  private AUTH_SERVICE_STORAGE_NAME = '@SpotifyAccess:Tokens';
+  private AUTH_SERVICE_STORAGE_NAME = '@SpotifyAccess:Access';
   private clientCode: string;
 
   constructor() {
@@ -13,15 +16,64 @@ class AuthService {
 
   hasSuccessClientSignIn(): boolean {
     const urlParams = new URLSearchParams(window.location.search);
-
     this.clientCode = urlParams.get('code') || '';
-
     return !!this.clientCode;
   }
 
   async getUserAuthorization() {
-    const result = await SpotifyService.getUserAccessCodeByClientCode(this.clientCode);
+    const { origin, pathname } = window.location;
+    const redirect_uri = `${ origin }${ pathname }`;
+    const grant_type = 'authorization_code';
+
+    const queryParams = {
+      grant_type,
+      code: this.clientCode,
+      redirect_uri,
+    };
+
+    const queryString = new URLSearchParams(queryParams).toString();
+    const response = await this.sendRequest(queryString);
+    const result = this.getRequestResult(response);
     this.setUserTokenOnStorage(result);
+  }
+
+  private async sendRequest(queryString: string) {
+    return await HttpService.post(
+      this.SPOTIFY_URL_TOKEN,
+      queryString,
+      this.createAccessTokenHeader()
+    );
+  }
+
+  private createAccessTokenHeader(): AxiosRequestConfig {
+    return {
+      headers: {
+        Authorization: this.createAuthenticationHeader(),
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    }
+  }
+
+  private createAuthenticationHeader(): string {
+    const { spotifyClientId, spotifyClientSecret } = config;
+    const token = btoa(`${ spotifyClientId }:${ spotifyClientSecret }`);
+    return `Basic ${ token }`;
+  }
+
+  private getRequestResult(result: AxiosResponse) {
+    const { access_token, token_type, refresh_token, scope, expires_in } = result.data;
+
+    return {
+      accessToken: access_token,
+      tokenType: token_type,
+      refreshToken: refresh_token,
+      scope,
+      expiresIn: expires_in
+    };
+  }
+
+  private setUserTokenOnStorage(userToken: UserToken): void {
+    StorageService.setObjectItem<UserToken>(this.AUTH_SERVICE_STORAGE_NAME, userToken);
   }
 
   get hasAccessToken(): boolean {
@@ -29,15 +81,13 @@ class AuthService {
     return !!userToken?.accessToken;
   }
 
-  private getUserToken(): UserToken | null {
+  getUserToken(): UserToken | null {
     return StorageService.getObjectItem(this.AUTH_SERVICE_STORAGE_NAME);
   }
 
   async refreshToken() {
-    const refreshToken = this.userRefreshToken;
-    const result = await SpotifyService.refreshUserAccessToken(refreshToken!!);
-
     const userToken = this.getUserToken();
+    const result = await this.refreshUserAccessToken(userToken?.refreshToken!!);
 
     this.setUserTokenOnStorage({
       ...result,
@@ -45,13 +95,15 @@ class AuthService {
     });
   }
 
-  private get userRefreshToken(): string | undefined {
-    const userToken = this.getUserToken();
-    return userToken?.refreshToken;
-  }
+  private async refreshUserAccessToken(refreshToken: string) {
+    const params = {
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken
+    }
 
-  setUserTokenOnStorage(userToken: UserToken): void {
-    StorageService.setObjectItem<UserToken>(this.AUTH_SERVICE_STORAGE_NAME, userToken);
+    const queryString = new URLSearchParams(params).toString();
+    const result = await this.sendRequest(queryString)
+    return this.getRequestResult(result);
   }
 
   removeUserTokenFromStorage(): void {

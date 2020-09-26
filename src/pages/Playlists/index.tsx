@@ -1,12 +1,16 @@
 import React from "react";
-import { Background } from "../../assets/styles";
+import Header from "../../components/Header";
+import useUserInfo from "../../hooks/useUserInfo";
+import { PlaylistContainer } from "./styles";
 
 const PlayListsPage: React.FC = () => {
 
+  const userInfo = useUserInfo();
+
   return (
-    <Background>
-      <h1>Hello World</h1>
-    </Background>
+    <PlaylistContainer>
+      <Header userInfo={ userInfo! }/>
+    </PlaylistContainer>
   )
 }
 

@@ -4,6 +4,7 @@ import AuthService from "../../services/AuthService";
 import { useSnackbar } from 'notistack';
 import { AuthContextProps } from "../../interfaces/AuthContext";
 import FullscreenLoader from "../../components/FullscreenLoader";
+import UserService from "../../services/UserService";
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
@@ -18,36 +19,38 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const logout = (): void => {
     AuthService.removeUserTokenFromStorage();
+    window.location.href = '/';
   }
 
   useLayoutEffect(() => {
     const getAccessCode = async () => {
-      try {
-        if (AuthService.hasSuccessClientSignIn()) {
-          setIsLoading(true);
-          await AuthService.getUserAuthorization();
-          enqueueSnackbar('Yay! Sign In has make successfully', { variant: 'success' })
-          window.location.href = '/playlists';
-          return;
-        }
+      if (AuthService.hasSuccessClientSignIn()) {
+        setIsLoading(true);
+        await AuthService.getUserAuthorization();
+        await UserService.getUserInfo();
+        enqueueSnackbar('Yay! Sign In has make successfully', { variant: 'success' });
+        window.location.href = '/playlists';
+        return;
+      }
 
-        if (AuthService.hasAccessToken) {
-          await AuthService.refreshToken();
-        }
-
-      } catch (error) {
-        enqueueSnackbar(
-          'Outch! Sorry dude, but it\'s not a possible make signin with your Spotify account. :(',
-          { variant: 'error' })
+      if (AuthService.hasAccessToken) {
+        await AuthService.refreshToken();
       }
     }
 
-    getAccessCode().finally(() => setIsLoading(false));
+    getAccessCode()
+      .catch(() => {
+        enqueueSnackbar(
+          'Outch! Sorry dude, but it\'s not a possible make signin with your Spotify account. :(',
+          { variant: 'error' })
+      })
+      .finally(() => setIsLoading(false));
   }, [enqueueSnackbar])
 
 
   return (
-    <AuthContext.Provider value={ { isAuthenticated, logout, isLoading } }>
+    <AuthContext.Provider
+      value={ { isAuthenticated, logout, isLoading } }>
       <FullscreenLoader showLoading={ isLoading }/>
       { children }
     </AuthContext.Provider>

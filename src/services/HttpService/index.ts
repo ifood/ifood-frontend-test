@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosStatic } from 'axios';
 
-export class HttpService {
+class HttpService {
   private http: AxiosStatic;
 
   constructor() {
@@ -10,8 +10,13 @@ export class HttpService {
   post(url: string, queryString: string, header: AxiosRequestConfig) {
     return this.http.post(url, queryString, header);
   }
+
+  get(url: string, header: AxiosRequestConfig) {
+    return this.http.get(url, header);
+  }
+
 }
 
-const http = new HttpService();
+const HttpInstance = new HttpService();
 
-export default http;
+export default HttpInstance as HttpService;
