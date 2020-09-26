@@ -1,6 +1,6 @@
 # iFood Frontend Test
 
-A application proposed by iFood as a  where you can login with Spotify Account to check a variaty of playlists in different countries, langages and dates.
+A application proposed by iFood where you can login with Spotify Account to check a variaty of playlists in different countries, langages and dates.
 
 <details>
 
