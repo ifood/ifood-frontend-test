@@ -17,13 +17,13 @@ const filterMap = new Map([
 const FilterProvider = () => {
   const { filters, loading } = useSelector(({ filter }) => filter)
 
+  if (loading) return <Skeleton />
+
   return filters.map((filter) => {
     const { id: filterId } = filter
     const Filter = filterMap.get(filterId)
 
-    return (
-      <>{!loading ? <Filter key={filterId} id={filterId} /> : <Skeleton />}</>
-    )
+    return <Filter key={filterId} id={filterId} />
   })
 }
 
