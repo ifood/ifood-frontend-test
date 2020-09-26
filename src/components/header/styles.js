@@ -18,6 +18,7 @@ export const Container = styled.div`
 
 export const Button = styled.img`
   width: 15px;
+  cursor: pointer;
   @media (min-width: 800px) {
     display: none;
   }

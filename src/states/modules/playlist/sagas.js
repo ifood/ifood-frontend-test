@@ -1,8 +1,10 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects'
+import { toast } from 'react-toastify'
 
 import spotifyApi from 'services/api'
 
 import { paramsFactory } from 'utils'
+import { genericError } from 'constant'
 
 import { getPlaylistRequest, getPlaylistSuccess, getPlaylistFailure } from '.'
 
@@ -29,6 +31,7 @@ function* allPlaylists() {
 
     yield put(getPlaylistSuccess(data))
   } catch (error) {
+    toast.dark(genericError)
     yield put(getPlaylistFailure(error.toString()))
   }
 }

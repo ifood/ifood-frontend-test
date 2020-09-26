@@ -43,7 +43,7 @@ PlaylistElement.defaultProps = {
 const PlaylistProvider = () => {
   const dispatch = useDispatch()
 
-  const { playlists, loading } = useSelector(({ playlist }) => playlist)
+  const { playlists, loading, error } = useSelector(({ playlist }) => playlist)
   const { currentFilters: { name } = {}, hide } = useSelector(
     ({ filter }) => filter
   )
@@ -57,6 +57,8 @@ const PlaylistProvider = () => {
   const filteredPlaylist = playlists.filter((playlist) =>
     containedString(playlist.name, name)
   )
+
+  if (error) return <NotFound>No results found.</NotFound>
 
   if (!filteredPlaylist.length && !loading && name)
     return <NotFound>No results found for {`"${name}"`}</NotFound>
