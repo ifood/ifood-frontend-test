@@ -65,7 +65,7 @@ export const SearcherWrapper = styled.div`
 	}
 `;
 
-export const SearcherInput = styled.div`
+export const SearcherInput = styled.input`
 	width: 260px;
 	padding: 10px;
 	border-radius: 0px 0px 16px 16px;

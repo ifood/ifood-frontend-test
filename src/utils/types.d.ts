@@ -6,17 +6,17 @@ export interface Values {
 export interface ValidateTimestamp {
 	typeEntity: number;
 	pattern: number;
-	typePrimative: string;
+	primitiveType: string;
 }
 
 export interface ValidateLimit {
 	max: number;
 	min: number;
-	typePrimative: string;
+	primitiveType: string;
 }
 
 export interface ValidateOffset {
-	primativeType: string;
+	primitiveType: string;
 }
 
 export interface ArrayOfValues {
@@ -45,6 +45,7 @@ export interface ArrayOfValidateOffset {
 
 export interface FilterOptionsProps {
 	filters: [
+		ArrayOfValues[],
 		ArrayOfValues[],
 		ArrayOfValidateTimestamp,
 		ArrayOfValidateLimit,

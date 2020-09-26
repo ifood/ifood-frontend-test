@@ -13,10 +13,12 @@ import reducer, { initialState } from '../../store';
 function Home () {
 	const [playlists, setPlaylists] = useState<ItemsProps[] | undefined>([]);
 	const [featuredPlaylist, setFeaturedPlaylist] = useState<FeaturedPlaylistStateProps | null | undefined>(null);
+
 	const [filterOptions, setFilterOptions] = useState<FilterOptionsProps | null>(null);
-	const [isFilterOpen, setFilterOpen] = useState(false);
-	const [search, setSearch] = useState('');
 	const [filterData, setFilterData] = useReducer(reducer, initialState);
+	const [isFilterOpen, setFilterOpen] = useState(false);
+
+	const [search, setSearch] = useState('');
 	const navigate = useNavigate();
 
 	useEffect(() => {(async () => {
@@ -31,8 +33,8 @@ function Home () {
 				const { data } = await SPOTIFY_API.get('/browse/featured-playlists', {
 					params: filterData,
 				});
-				setFeaturedPlaylist(data);
 
+				setFeaturedPlaylist(data);
 				const newPlaylists = data.playlists.items.map((playlist: ItemsProps) => {
 					return {
 						...playlist,
@@ -48,10 +50,8 @@ function Home () {
 				console.warn(error);
 			}
 		};
-
 		getApiSpotify();
 		const interval = setInterval(() => getApiSpotify(), 30000);
-
 		return () => clearInterval(interval);
 	}, [filterData, navigate]);
 
@@ -90,7 +90,7 @@ function Home () {
 				<SearcherWrapper>
 					<SearcherInput
             placeholder="Buscar por nome"
-            onChange={(e) => setSearch((e.target as HTMLInputElement).value)}
+            onChange={(e) => setSearch(e.target.value)}
           />
 					<ButtonFilter onClick={() => setFilterOpen(!isFilterOpen)}>
 						<FilterIcon />

@@ -29,7 +29,7 @@ function reducer (state: FilterValueProps, action: TypeAction) {
 		case 'limit':
 			return {
 				...state,
-				timestamp: action.payload,
+				limit: action.payload,
 			};
 		case 'offset':
 			return {

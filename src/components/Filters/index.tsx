@@ -15,16 +15,25 @@ function Filters ({ setFilterData, filterData, filterOptions }: FiltersProps) {
 	return (
 		<FormWrapper>
 			<InputWrapper>
+				<label>País</label>
+				<Select
+					value={filterData.country}
+					options={mapValues(1, filterOptions) || []}
+					onChange={(e) => setFilterData({	type: 'country', payload: e.target.value	})}
+				/>
+			</InputWrapper>
+
+			<InputWrapper>
 				<label>Idioma</label>
 				<Select
 					value={filterData.locale}
-					options={mapValues(1, filterOptions) || []}
+					options={mapValues(0, filterOptions) || []}
 					onChange={(e) => setFilterData({ type: 'locale', payload: e.target.value	})}
 				/>
 			</InputWrapper>
 
 			<InputWrapper>
-				<label>Data/Hora</label>
+				<label>Data e Hora</label>
 				<Input
 					value={filterData.timestamp || timestamp}
 					type="datetime-local"
@@ -37,10 +46,10 @@ function Filters ({ setFilterData, filterData, filterOptions }: FiltersProps) {
 				<Input
 					value={filterData.limit}
 					type={filterOptions?.filters[3].validation.primitiveType}
-					min={filterOptions?.filters[3].validation.min}
 					max={filterOptions?.filters[3].validation.max}
-					onChange={(e) => setFilterData({ type: 'limit', payload: Number(e.target.value)	})}
-				/>
+					min={filterOptions?.filters[3].validation.min}
+					onChange={(e) => setFilterData({ type: 'limit', payload: Number(e.target.value) }) }
+      />
 			</InputWrapper>
 
 			<InputWrapper>
