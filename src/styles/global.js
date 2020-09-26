@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   body {
+    height: 100%;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     background: ${colors.gray};

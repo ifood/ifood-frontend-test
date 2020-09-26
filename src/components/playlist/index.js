@@ -1,32 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import ReactHtmlParser from 'react-html-parser'
 
 import Skeleton from '../playlistSkeleton'
 
 import { containedString } from 'utils'
 
-import { Wrapper, Container, Image, Title } from './styles'
+import {
+  Wrapper,
+  Container,
+  Image,
+  Title,
+  Description,
+  NotFound,
+} from './styles'
 
-const PlaylistElement = ({ name, collaborative, image }) => (
+const PlaylistElement = ({ name, description, image }) => (
   <Container>
     <Image src={image} alt={name} />
     <Title>{name}</Title>
-    <p>
-      {collaborative ? 'Colaborative Playlist' : 'Non collaborative playlist'}
-    </p>
+    <Description>{ReactHtmlParser(description)}</Description>
   </Container>
 )
 
 PlaylistElement.propTypes = {
   name: PropTypes.string,
-  collaborative: PropTypes.bool,
+  description: PropTypes.string,
   image: PropTypes.string,
 }
 
 PlaylistElement.defaultProps = {
   name: '',
-  collaborative: false,
+  description: '',
   image: '/',
 }
 
@@ -34,23 +40,24 @@ const PlaylistProvider = () => {
   const { playlists, loading } = useSelector(({ playlist }) => playlist)
   const { currentFilters: { name } = {} } = useSelector(({ filter }) => filter)
 
+  const filteredPlaylist = playlists.filter((playlist) =>
+    containedString(playlist.name, name)
+  )
+
+  if (!filteredPlaylist.length && !loading)
+    return <NotFound>No results found for {`"${name}"`}</NotFound>
+
   return (
     <Wrapper>
       {!loading ? (
-        playlists
-          .filter((playlist) => containedString(playlist.name, name))
-          .map((playlist) => {
-            const { id, name, collaborative, image } = playlist
-
-            return (
-              <PlaylistElement
-                key={id}
-                name={name}
-                collaborative={collaborative}
-                image={image}
-              />
-            )
-          })
+        filteredPlaylist.map((playlist) => (
+          <PlaylistElement
+            key={playlist.id}
+            name={playlist.name}
+            description={playlist.description}
+            image={playlist.image}
+          />
+        ))
       ) : (
         <>
           <Skeleton />

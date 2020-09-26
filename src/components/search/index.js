@@ -6,12 +6,14 @@ import { useDebounce } from 'hooks'
 
 import { setFilter } from 'states/modules/filter'
 
-import { Search } from './styles'
+import { Search, Container, Input } from './styles'
 
 const SearchElement = ({ onChange }) => (
-  <Search>
-    <input placeholder='Search' onChange={onChange} />
-  </Search>
+  <Container>
+    <Search>
+      <Input placeholder='Search' onChange={onChange} />
+    </Search>
+  </Container>
 )
 
 SearchElement.propTypes = {
