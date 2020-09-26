@@ -11,6 +11,7 @@ const {
 
 const api = axios.create({
   baseURL: REACT_APP_SPOTIFY_API_URL,
+  timeout: 1500,
 });
 
 api.interceptors.request.use((config) => {

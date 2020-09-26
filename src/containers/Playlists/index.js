@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAxios from 'axios-hooks';
 
+import FormInput from '../../components/FormInput';
 import { useStateValue } from '../../stores';
 
 const Playlists = () => {
@@ -20,7 +21,7 @@ const Playlists = () => {
     return () => clearInterval(interval);
   }, [refetchPlaylists, filters]);
 
-  const handleSearchInput = (e) => setSearch(e.target.value);
+  const handleSearchInput = ({ value }) => setSearch(value);
 
   const getPlaylistsFiltered = () => {
     return data.playlists.items.filter((item) => {
@@ -34,7 +35,12 @@ const Playlists = () => {
         <strong>Playlists:</strong>
       </p>
 
-      <input type="text" placeholder="Search" onChange={handleSearchInput} />
+      <FormInput
+        id="search"
+        value={search}
+        placeholder="Search playlist"
+        onChange={handleSearchInput}
+      />
 
       {data && (
         <ul>

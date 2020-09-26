@@ -14,11 +14,9 @@ class Auth {
     if (stored === 'null' || !stored) return;
 
     const credentials = JSON.parse(atob(stored));
-    if (this.checkCredentials(credentials)) {
-      this.accessToken = credentials.accessToken;
-      this.tokenType = credentials.tokenType;
-      this.expiresAt = credentials.expiresAt;
-    }
+    this.accessToken = credentials.accessToken;
+    this.tokenType = credentials.tokenType;
+    this.expiresAt = credentials.expiresAt;
   }
 
   checkCredentials(credentials) {
