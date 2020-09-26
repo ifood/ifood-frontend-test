@@ -14,7 +14,7 @@ const initialState = {
     offset: 1,
     timestamp: null,
   },
-  hidden: false,
+  hidden: true,
   error: null,
 }
 
@@ -32,7 +32,7 @@ const { actions, reducer } = createSlice({
       extend(state, { loading: false, error: payload }),
     setFilter: (state, { payload }) =>
       extend(state, extend(state.currentFilters, { ...payload })),
-    toggleSidebar: (state) => extend(state, { toggle: !state.hidden }),
+    toggleSidebar: (state) => extend(state, { hidden: !state.hidden }),
   },
 })
 
@@ -41,6 +41,7 @@ export const {
   getFilterSuccess,
   getFilterFailure,
   setFilter,
+  toggleSidebar,
 } = actions
 
 export { default as filterSaga } from './sagas'

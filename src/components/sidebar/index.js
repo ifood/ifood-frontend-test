@@ -1,15 +1,19 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
-import Filter from '../filter'
+import Filter from 'components/filter'
 import Title from 'components/title'
 
 import { Container } from './styles'
 
-const SideBar = () => (
-  <Container>
-    <Title />
-    <Filter />
-  </Container>
-)
+const SideBar = () => {
+  const { hidden } = useSelector(({ filter }) => filter)
 
-export default forwardRef(SideBar)
+  return (
+    <Container hidden={hidden}>
+      <Title />
+      <Filter />
+    </Container>
+  )
+}
+export default SideBar

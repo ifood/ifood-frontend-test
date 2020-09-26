@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import Playlist from 'components/playlist'
 import Sidebar from 'components/sidebar'
-import Search from 'components/search'
+import Header from 'components/header'
 
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { getFilterRequest } from 'states/modules/filter'
@@ -32,7 +32,7 @@ const Home = () => {
     <Container>
       <Sidebar />
       <Wrapper>
-        <Search />
+        <Header />
         <Playlist />
       </Wrapper>
     </Container>

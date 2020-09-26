@@ -30,6 +30,9 @@ const PlaylistSkeleton = () => (
     <SkeletonElement />
     <SkeletonElement />
     <SkeletonElement />
+    <SkeletonElement />
+    <SkeletonElement />
+    <SkeletonElement />
   </>
 )
 
