@@ -18,7 +18,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin: 10px;
   padding: 5px;
-  opacity: ${(props) => (props.hidden ? 1 : 0.4)};
+  opacity: ${(props) => (props.hide ? 1 : 0.4)};
 `
 
 export const Image = styled.img`

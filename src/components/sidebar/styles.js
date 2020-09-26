@@ -7,9 +7,8 @@ export const Container = styled.div`
   min-width: 200px;
   flex-direction: column;
   background-color: ${colors.grayDark};
-  padding-bottom: 15px;
   @media (max-width: 800px) {
-    display: ${(props) => (props.hidden ? 'none' : 'flex')};
+    display: ${(props) => (props.hide ? 'none' : 'flex')};
     overflow-y: scroll;
   }
 `

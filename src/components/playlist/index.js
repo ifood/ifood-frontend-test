@@ -18,8 +18,8 @@ import {
   NotFound,
 } from './styles'
 
-const PlaylistElement = ({ name, description, image, hidden }) => (
-  <Container hidden={hidden}>
+const PlaylistElement = ({ name, description, image, hide }) => (
+  <Container hide={hide}>
     <Image src={image} alt={name} />
     <Title>{name}</Title>
     <Description>{ReactHtmlParser(description)}</Description>
@@ -30,25 +30,26 @@ PlaylistElement.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-  hidden: PropTypes.bool,
+  hide: PropTypes.bool,
 }
 
 PlaylistElement.defaultProps = {
   name: '',
   description: '',
   image: '/',
-  hidden: false,
+  hide: false,
 }
 
 const PlaylistProvider = () => {
   const dispatch = useDispatch()
+
   const { playlists, loading } = useSelector(({ playlist }) => playlist)
-  const { currentFilters: { name } = {}, hidden } = useSelector(
+  const { currentFilters: { name } = {}, hide } = useSelector(
     ({ filter }) => filter
   )
 
   const handleHideSidebar = () => {
-    if (!hidden) {
+    if (!hide) {
       dispatch(toggleSidebar())
     }
   }
@@ -57,7 +58,7 @@ const PlaylistProvider = () => {
     containedString(playlist.name, name)
   )
 
-  if (!filteredPlaylist.length && !loading)
+  if (!filteredPlaylist.length && !loading && name)
     return <NotFound>No results found for {`"${name}"`}</NotFound>
 
   return (
@@ -69,7 +70,7 @@ const PlaylistProvider = () => {
             name={playlist.name}
             description={playlist.description}
             image={playlist.image}
-            hidden={hidden}
+            hide={hide}
           />
         ))
       ) : (

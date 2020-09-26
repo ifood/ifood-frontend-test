@@ -7,10 +7,10 @@ import Title from 'components/title'
 import { Container } from './styles'
 
 const SideBar = () => {
-  const { hidden } = useSelector(({ filter }) => filter)
+  const { hide } = useSelector(({ filter }) => filter)
 
   return (
-    <Container hidden={hidden}>
+    <Container hide={hide}>
       <Title />
       <Filter />
     </Container>

@@ -29,7 +29,7 @@ export const Float = styled.div`
   }
 `
 export const Search = styled.div`
-  display: ${(props) => (props.hidden ? 'flex' : 'none')};
+  display: ${(props) => (props.hide ? 'flex' : 'none')};
   align-items: center;
   border-radius: 12px;
   width: 300px;

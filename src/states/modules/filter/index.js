@@ -14,7 +14,7 @@ const initialState = {
     offset: 1,
     timestamp: null,
   },
-  hidden: true,
+  hide: true,
   error: null,
 }
 
@@ -32,7 +32,7 @@ const { actions, reducer } = createSlice({
       extend(state, { loading: false, error: payload }),
     setFilter: (state, { payload }) =>
       extend(state, extend(state.currentFilters, { ...payload })),
-    toggleSidebar: (state) => extend(state, { hidden: !state.hidden }),
+    toggleSidebar: (state) => extend(state, { hide: !state.hide }),
   },
 })
 

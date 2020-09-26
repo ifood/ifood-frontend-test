@@ -10,10 +10,10 @@ import hamburguer from 'assets/images/hamburguer.svg'
 
 import { Search, Container, Input, Button, Float } from './styles'
 
-const Header = ({ onClick, onChange, hidden }) => (
+const Header = ({ onClick, onChange, hide }) => (
   <Container>
     <Button src={hamburguer} onClick={onClick} />
-    <Search hidden={hidden}>
+    <Search hide={hide}>
       <Input placeholder='Search' onChange={onChange} />
     </Search>
     <Float />
@@ -23,19 +23,19 @@ const Header = ({ onClick, onChange, hidden }) => (
 Header.propTypes = {
   onChange: PropTypes.func,
   onClick: PropTypes.func,
-  hidden: PropTypes.bool,
+  hide: PropTypes.bool,
 }
 
-Header.propTypes = {
+Header.defaultProps = {
   onChange: () => null,
   onClick: () => null,
-  hidden: false,
+  hide: false,
 }
 
 const HeaderProvider = () => {
   const dispatch = useDispatch()
 
-  const { hidden } = useSelector(({ filter }) => filter)
+  const { hide } = useSelector(({ filter }) => filter)
 
   const [value, setValue] = useDebounce(500, '')
 
@@ -53,9 +53,7 @@ const HeaderProvider = () => {
     dispatch(toggleSidebar())
   }
 
-  return (
-    <Header onChange={handleChange} onClick={handleClick} hidden={hidden} />
-  )
+  return <Header onChange={handleChange} onClick={handleClick} hide={hide} />
 }
 
 export { Header }
