@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { CircularProgress } from "@material-ui/core";
 
 export const LoaderContainer = styled.div`
   display: flex;
@@ -13,7 +12,3 @@ export const LoaderContainer = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-
-export const Loader = styled(CircularProgress)`
-  margin-top: 30px;
-`

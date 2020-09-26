@@ -1,5 +1,6 @@
 import React from "react";
-import { Loader, LoaderContainer } from "./styles";
+import { LoaderContainer } from "./styles";
+import { CircularProgress } from "@material-ui/core";
 
 type LoaderProps = {
   showLoading: boolean;
@@ -11,7 +12,7 @@ const FullscreenLoader: React.FC<LoaderProps> = ({ showLoading }) => {
     if (showLoading) {
       return (
         <LoaderContainer>
-          <Loader size={ 150 }/>
+          <CircularProgress size={ 150 }/>
         </LoaderContainer>
       )
     }

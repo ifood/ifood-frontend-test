@@ -1,16 +1,16 @@
 import React from "react";
-import Header from "../../components/Header";
-import useUserInfo from "../../hooks/useUserInfo";
-import { PlaylistContainer } from "./styles";
+import Layout from "../../components/Layout";
+import PlayListInput from "./components/PlaylistInput";
+import { PlayListContainer } from "./styles";
 
-const PlayListsPage: React.FC = () => {
-
-  const userInfo = useUserInfo();
+const PlayListsPage = () => {
 
   return (
-    <PlaylistContainer>
-      <Header userInfo={ userInfo! }/>
-    </PlaylistContainer>
+    <Layout>
+      <PlayListContainer id='container'>
+        <PlayListInput/>
+      </PlayListContainer>
+    </Layout>
   )
 }
 

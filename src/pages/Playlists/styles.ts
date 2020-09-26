@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-import { Background } from "../../assets/styles/Background";
+import styled from "styled-components";
 
-export const PlaylistContainer = styled(Background)`
-`
-
+export const PlayListContainer = styled.div`
+  height: 70vh;
+`;
