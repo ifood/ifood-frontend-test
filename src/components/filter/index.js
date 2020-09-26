@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import DatePicker from 'components/datePicker'
 import List from 'components/list'
 import Select from 'components/select'
-import Skeleton from 'components/filterSkeleton'
+import Skeleton from './components/skeleton'
 
 const filterMap = new Map([
   ['locale', List],

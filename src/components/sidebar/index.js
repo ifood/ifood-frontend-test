@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 import Filter from '../filter'
 import Title from 'components/title'
@@ -12,4 +12,4 @@ const SideBar = () => (
   </Container>
 )
 
-export default SideBar
+export default forwardRef(SideBar)

@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   padding: 25px;
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
 `
 
 export const Container = styled.div`

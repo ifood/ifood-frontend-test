@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import ReactHtmlParser from 'react-html-parser'
 
-import Skeleton from '../playlistSkeleton'
+import Skeleton from './components/skeleton'
 
 import { containedString } from 'utils'
 

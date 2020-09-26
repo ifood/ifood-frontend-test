@@ -7,4 +7,7 @@ export const Container = styled.div`
   width: 200px;
   flex-direction: column;
   background-color: ${colors.grayDark};
+  @media (max-width: 800px) {
+    display: none;
+  }
 `
