@@ -10,23 +10,22 @@ const Auth = ({ location }) => {
   const auth = useContext(AuthContext);
 
   useEffect(() => {
-    const hash = getHashParams();
     const {
       access_token: accessToken,
       token_type: tokenType,
       expires_in: expiresIn,
-    } = hash;
+    } = getHashParams();
 
-    if (accessToken && tokenType && expiresIn) {
-      auth.setSession({
-        accessToken,
-        tokenType,
-        expiresIn,
-      });
+    if (!accessToken || !tokenType || !expiresIn) {
+      toast.error('An error ocurred! Try login again!');
       history.push('/');
     }
 
-    toast.error('An error ocurred! Try login again!');
+    auth.setSession({
+      accessToken,
+      tokenType,
+      expiresIn,
+    });
     history.push('/');
   }, [location, history, auth]);
 

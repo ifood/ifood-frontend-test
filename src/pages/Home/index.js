@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
 
 import Login from '../../containers/Login';
+import Filters from '../../containers/Filters';
+import Playlists from '../../containers/Playlists';
 
 import { AuthContext } from '../../services/auth';
+
+import { StateProvider } from '../../stores';
+import { filtersDefault, filtersReducer } from '../../stores/reducers/filters';
 
 const Home = () => {
   const auth = useContext(AuthContext);
@@ -10,9 +15,10 @@ const Home = () => {
   if (!auth.isAuthenticated()) return <Login />;
 
   return (
-    <>
-      <p>Home page</p>
-    </>
+    <StateProvider initialState={filtersDefault} reducer={filtersReducer}>
+      <Filters />
+      <Playlists />
+    </StateProvider>
   );
 };
 
