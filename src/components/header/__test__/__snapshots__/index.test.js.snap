@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> Snapshot testing Playlist 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdnylx cBvgHG"
+  >
+    <img
+      class="sc-gtssRu eYzPLv"
+      data-testid="header-button"
+      src="hamburguer.svg"
+    />
+    <div
+      class="sc-hKFyIo kpVxPh"
+    >
+      <input
+        class="sc-eCApGN iNUwnw"
+        placeholder="Search"
+      />
+    </div>
+    <div
+      class="sc-dlnjPT cyyyKE"
+    />
+  </div>
+</DocumentFragment>
+`;

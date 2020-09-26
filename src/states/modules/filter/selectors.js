@@ -6,7 +6,7 @@ export const selectAllFilters = (payload) =>
   payload.filters.map((filter) => {
     if (filter.id === 'locale') {
       filter.values.map((value) =>
-        extend(value, { name: localeName(value.name) })
+        extend(value, { name: localeName(value.value) })
       )
     }
     if (filter.id === 'country') {

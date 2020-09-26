@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterSkeleton /> Snapshot testing Filter Skeleton 1`] = `
+<DocumentFragment>
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+    style="width: 150px; height: 30px; margin: 6px;"
+  />
+</DocumentFragment>
+`;

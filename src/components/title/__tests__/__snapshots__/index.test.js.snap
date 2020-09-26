@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title /> Snapshot testing title 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gtssRu isSALT"
+  >
+    <h1
+      class="sc-bdnylx iqyJEx"
+    >
+      Spotifood
+    </h1>
+  </div>
+</DocumentFragment>
+`;

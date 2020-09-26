@@ -34,6 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "react-scripts test --colors --coverage",
     "eject": "react-scripts eject",
     "lint:check": "eslint . --ext=js,jsx",
     "lint:fix": "eslint . --ext=js,jsx --fix"

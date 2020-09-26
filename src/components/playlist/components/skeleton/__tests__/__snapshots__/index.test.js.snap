@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistSkeleton /> Snapshot testing Playlist Skeleton 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+  <div
+    class="sc-bdnylx caBlwu"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-wave"
+      style="width: 250px; height: 250px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 250px; height: 40px; margin-bottom: 6px;"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-wave"
+      style="width: 150px; height: 30px;"
+    />
+  </div>
+</DocumentFragment>
+`;

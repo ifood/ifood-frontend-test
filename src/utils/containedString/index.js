@@ -1,4 +1,4 @@
 const containedString = (string, substring) =>
-  string.toLowerCase().includes(substring.toLowerCase())
+  string.toLowerCase().trim().includes(substring.toLowerCase().trim())
 
 export default containedString

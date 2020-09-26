@@ -19,7 +19,7 @@ import {
 } from './styles'
 
 const PlaylistElement = ({ name, description, image, hide }) => (
-  <Container hide={hide}>
+  <Container hide={hide} data-testid='playlist-container'>
     <Image src={image} alt={name} />
     <Title>{name}</Title>
     <Description>{ReactHtmlParser(description)}</Description>
@@ -82,6 +82,6 @@ const PlaylistProvider = () => {
   )
 }
 
-export { PlaylistElement }
+export { PlaylistElement, PlaylistProvider }
 
 export default PlaylistProvider

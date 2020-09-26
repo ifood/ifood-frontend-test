@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> Should be able to render without errors 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdnylx eEAbop"
+  >
+    <span
+      class="sc-gtssRu glsxeV"
+    />
+    <select
+      class="sc-dlnjPT jYLMeW"
+      data-testid="select-container"
+    >
+      <option
+        class="sc-hKFyIo iNvzEJ"
+        value="5"
+      >
+        5
+      </option>
+      <option
+        class="sc-hKFyIo iNvzEJ"
+        value="10"
+      >
+        10
+      </option>
+      <option
+        class="sc-hKFyIo iNvzEJ"
+        value="15"
+      >
+        15
+      </option>
+      <option
+        class="sc-hKFyIo iNvzEJ"
+        value="20"
+      >
+        20
+      </option>
+      <option
+        class="sc-hKFyIo iNvzEJ"
+        value="30"
+      >
+        30
+      </option>
+    </select>
+  </div>
+</DocumentFragment>
+`;

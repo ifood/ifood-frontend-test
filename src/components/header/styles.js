@@ -12,7 +12,7 @@ export const Container = styled.div`
   padding: 25px;
   @media (max-width: 800px) {
     padding: 15px;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 `
 

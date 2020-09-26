@@ -11,7 +11,7 @@ import { Item, Nav, Title } from './styles'
 
 const List = ({ values, onClick, title, selected }) => {
   return (
-    <Nav>
+    <Nav data-testid='list-container'>
       <Title>{title}</Title>
       {values.map((elem, index) => (
         <Item
@@ -73,6 +73,6 @@ ListProvider.propTypes = {
   id: PropTypes.string.isRequired,
 }
 
-export { List }
+export { List, ListProvider }
 
 export default ListProvider

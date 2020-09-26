@@ -12,7 +12,7 @@ import { Search, Container, Input, Button, Float } from './styles'
 
 const Header = ({ onClick, onChange, hide }) => (
   <Container>
-    <Button src={hamburguer} onClick={onClick} />
+    <Button src={hamburguer} onClick={onClick} data-testId='header-button' />
     <Search hide={hide}>
       <Input placeholder='Search' onChange={onChange} />
     </Search>
@@ -56,5 +56,5 @@ const HeaderProvider = () => {
   return <Header onChange={handleChange} onClick={handleClick} hide={hide} />
 }
 
-export { Header }
+export { Header, HeaderProvider }
 export default HeaderProvider

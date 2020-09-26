@@ -12,7 +12,7 @@ import { Title, Dropdown, Option, Container } from './styles'
 const Select = ({ label, options, onChange, value }) => (
   <Container>
     <Title>{label}</Title>
-    <Dropdown onChange={onChange} value={value}>
+    <Dropdown onChange={onChange} value={value} data-testid='select-container'>
       {options.map((option) => (
         <Option key={option} value={option}>
           {option}
@@ -78,7 +78,6 @@ const SelectProvider = ({ id }) => {
       label={renderFilter.name}
       options={options}
       onChange={handleChange}
-      defaultValue={value}
       value={value}
     />
   )
