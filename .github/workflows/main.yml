@@ -19,4 +19,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn install --pure-lockfile
     - run: yarn lint:check
-    - run: yarn test:ci
+    - run: yarn test
