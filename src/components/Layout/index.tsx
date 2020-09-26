@@ -1,9 +1,12 @@
 import React, { memo, useLayoutEffect, useState } from "react";
 import useUserInfo from "../../hooks/useUserInfo";
 import Header from "../Header";
-import PlayListFilters from "../../pages/Playlists/components/PlaylistFilters";
+import PlayListFilters from "../Sidebar";
 import { Background } from "../../assets/styles/Background";
 import { Content } from "./styled";
+import { LinearProgress } from "@material-ui/core";
+import { Container } from "../../pages/Playlists/styles";
+import useFilters from "../../hooks/useFilters";
 
 type Props = {
   children: JSX.Element
@@ -11,6 +14,7 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
   const userInfo = useUserInfo();
+  const { isLoading } = useFilters();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -33,6 +37,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <Background>
       <Header userInfo={ userInfo! } openSidebar={ openSidebar }/>
+      { isLoading && (<LinearProgress color="secondary"/>) }
       <Content>
         <PlayListFilters isOpen={ isOpen }/>
         { children }

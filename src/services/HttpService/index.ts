@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosStatic } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosStatic } from 'axios';
 
 class HttpService {
   private http: AxiosStatic;
@@ -11,7 +11,7 @@ class HttpService {
     return this.http.post(url, queryString, header);
   }
 
-  get(url: string, header: AxiosRequestConfig) {
+  get<T>(url: string, header?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.http.get(url, header);
   }
 

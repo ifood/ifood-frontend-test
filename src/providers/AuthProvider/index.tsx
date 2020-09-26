@@ -2,7 +2,7 @@ import React, { createContext, useLayoutEffect, useState } from "react";
 import AuthService from "../../services/AuthService";
 
 import { useSnackbar } from 'notistack';
-import { AuthContextProps } from "../../interfaces/AuthContext";
+import { AuthContextProps } from "../../interfaces";
 import FullscreenLoader from "../../components/FullscreenLoader";
 import UserService from "../../services/UserService";
 

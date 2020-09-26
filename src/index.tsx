@@ -7,13 +7,16 @@ import GlobalStyle from "./theme/globalStyles";
 import { ThemeProvider } from '@material-ui/core/styles';
 import { SnackbarProvider } from 'notistack';
 import { AuthProvider } from "./providers";
+import { FilterProvider } from "./providers/FiltersProvider";
 
 ReactDOM.render(
   <ThemeProvider theme={ theme }>
     <SnackbarProvider>
       <GlobalStyle/>
       <AuthProvider>
-        <App/>
+        <FilterProvider>
+          <App/>
+        </FilterProvider>
       </AuthProvider>
     </SnackbarProvider>
   </ThemeProvider>,

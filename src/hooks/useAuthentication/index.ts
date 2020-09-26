@@ -1,6 +1,6 @@
-import { AuthContextProps } from "../../interfaces/AuthContext";
+import { AuthContextProps } from "../../interfaces";
 import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
+import { AuthContext } from "../../providers";
 
 export default function useAuthentication(): AuthContextProps {
   const context = useContext(AuthContext);

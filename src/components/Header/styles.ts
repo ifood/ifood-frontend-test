@@ -14,7 +14,7 @@ export const CustomToolbar = styled(Toolbar)`
 
 `;
 export const ToolbarBrand = styled.img`
-  width: 200px;
+  width: 140px;
   margin-bottom: 5px;
 `;
 

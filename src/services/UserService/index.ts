@@ -17,7 +17,7 @@ class UserService {
       }
     }
 
-    const result = await HttpService.get(this.SPOTIFY_USER_INFO_URL, header);
+    const result = await HttpService.get<any>(this.SPOTIFY_USER_INFO_URL, header);
 
     const { data } = result;
 
