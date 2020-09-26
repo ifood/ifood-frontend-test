@@ -1,7 +1,10 @@
 import { takeEvery, takeLatest, call, put, select } from 'redux-saga/effects'
 import { REHYDRATE } from 'redux-persist/lib/constants'
+import { toast } from 'react-toastify'
 
 import { spotifyApi, refreshTokenApi } from 'services/api'
+
+import { genericError } from 'constant'
 
 import {
   refreshTokenRequest,
@@ -35,6 +38,7 @@ function* refreshTokenSaga() {
     yield put(getPlaylistRequest())
     yield put(refreshTokenSuccess(data))
   } catch (error) {
+    toast.dark(genericError)
     yield put(refreshTokenFailure(error.toString()))
   }
 }
