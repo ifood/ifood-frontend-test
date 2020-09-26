@@ -31,10 +31,12 @@ const DatePickerProvider = () => {
       <Title>{renderFilter.name}</Title>
       <DatePicker
         selected={currentFilters.timestamp}
-        dateFormat='dd/MM/yyyy'
-        placeholderText='dd/mm/aaaa'
+        dateFormat='dd/MM/yyyy HH:mm'
+        placeholderText='dd/mm/aaaa hh:mm'
         locale='pt-br'
         onChange={handleChange}
+        showTimeSelect
+        timeFormat='HH:mm'
       />
     </Container>
   )
