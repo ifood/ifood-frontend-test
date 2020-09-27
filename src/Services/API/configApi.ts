@@ -1,9 +1,5 @@
-const configApi = {
-    clientId: `1ff02f4e067e408fa2d3e5d6e8aad1a5`,
-    clientSecret: '9ff3f396274347029e4af019c436c0fe',
-    spotifyAccountUrl: 'https://accounts.spotify.com',
-    spotifyApi: 'https://api.spotify.com/v1',
-    filtersApi: 'http://www.mocky.io/v2/5a25fade2e0000213aa90776',
-};
+export const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
+export const CLIENT_ID = '1ff02f4e067e408fa2d3e5d6e8aad1a5';
+export const REDIRECT_URI = 'http://localhost:3000/';
+export const SCOPES = ['user-read-email'];
 
-export default configApi;

@@ -1,11 +1,14 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
+import { BrowserRouter, Route } from "react-router-dom";
 
-import { AuthProvider } from "./Hooks/auth";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./Styles/GlobalStyles";
+
+import AppProvider from "./Hooks";
 import { useTheme } from "./Hooks/themes";
 
-import Routes from "./Routes";
-import GlobalStyles from "./Styles/GlobalStyles";
+import Playlists from "./Pages/PlaylistsHome";
+
 
 const App: React.FC = () => {
   const { theme } = useTheme();
@@ -13,9 +16,11 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <AuthProvider>
-        <Routes />
-      </AuthProvider>
+      <BrowserRouter>
+        <AppProvider>
+          <Route path="/" exact component={Playlists} />
+        </AppProvider>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
