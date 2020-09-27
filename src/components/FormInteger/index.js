@@ -1,9 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StatefulInput } from 'baseui/input';
+import { debounce } from 'lodash';
 
-const FormInteger = ({ id, value, placeholder, validation, onChange }) => {
+const FormInteger = ({
+  id,
+  value,
+  placeholder,
+  validation,
+  debounceTime,
+  onChange,
+}) => {
   const { min, max } = validation;
+  let debouncedFn;
+
+  const handleChange = (e) => {
+    e.persist();
+
+    if (!debouncedFn) {
+      debouncedFn = debounce(
+        () => onChange({ field: id, value: e.target.value }),
+        debounceTime,
+      );
+    }
+    debouncedFn();
+  };
+
   return (
     <StatefulInput
       id={id}
@@ -12,7 +34,7 @@ const FormInteger = ({ id, value, placeholder, validation, onChange }) => {
       max={max}
       value={value}
       placeholder={placeholder}
-      onChange={(e) => onChange({ field: id, value: e.target.value })}
+      onChange={handleChange}
     />
   );
 };
@@ -22,6 +44,7 @@ FormInteger.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   validation: PropTypes.shape({ min: PropTypes.number, max: PropTypes.number }),
+  debounceTime: PropTypes.number,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -32,6 +55,7 @@ FormInteger.defaultProps = {
     min: 0,
     max: 100,
   },
+  debounceTime: 0,
 };
 
 export default FormInteger;

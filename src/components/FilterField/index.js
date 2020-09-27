@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 import { FormControl } from 'baseui/form-control';
 
 import FormSelect from '../FormSelect';
+import FormInput from '../FormInput';
 import FormInteger from '../FormInteger';
 import FormDatepicker from '../FormDatepicker';
 
-const FilterField = ({ field, value, onChange }) => {
+const FilterField = ({ field, onChange }) => {
   const fieldsTypes = {
     locale: FormSelect,
     country: FormSelect,
     timestamp: FormDatepicker,
     limit: FormInteger,
     offset: FormInteger,
+
+    default: FormInput,
   };
 
-  const CustomField = fieldsTypes[field.id];
+  const CustomField = fieldsTypes[field.id] || fieldsTypes.default;
 
   return (
     <FormControl label={() => field.name}>
@@ -23,7 +26,7 @@ const FilterField = ({ field, value, onChange }) => {
         id={field.id}
         options={field.values}
         validation={field.validation}
-        value={value}
+        debounceTime={450}
         onChange={onChange}
       />
     </FormControl>
@@ -32,12 +35,7 @@ const FilterField = ({ field, value, onChange }) => {
 
 FilterField.propTypes = {
   field: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-};
-
-FilterField.defaultProps = {
-  value: '',
 };
 
 export default FilterField;

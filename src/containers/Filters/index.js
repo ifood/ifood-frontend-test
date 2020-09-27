@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import FilterField from '../../components/FilterField';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import { Wrapper } from './styles';
 
 import { getFilters } from '../../services/filter';
@@ -36,15 +37,21 @@ const Filters = () => {
           <strong>Filter by:</strong>
         </p>
         <div className="row">
-          {fields.map((field) => (
-            <div key={field.id} className="col-lg-4">
-              <FilterField
-                field={field}
-                value={filters[field.id]}
-                onChange={handleFieldChange}
-              />
+          {!fields.length && (
+            <div className="col-12 d-flex justify-content-center">
+              <LoadingSpinner />
             </div>
-          ))}
+          )}
+          {fields &&
+            fields.map((field) => (
+              <div key={field.id} className="col-lg-4">
+                <FilterField
+                  field={field}
+                  value={filters[field.id]}
+                  onChange={handleFieldChange}
+                />
+              </div>
+            ))}
         </div>
       </Wrapper>
     </div>

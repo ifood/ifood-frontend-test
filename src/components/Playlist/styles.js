@@ -35,7 +35,7 @@ export const PlaylistWrapper = styled.div`
     text-align: center;
   }
 
-  .Playlist__Owner {
+  .Playlist__Description {
     font-size: ${typography.body.action};
     color: ${colors.muted.m4};
     font-weight: 400;

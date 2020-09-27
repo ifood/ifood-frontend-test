@@ -12,9 +12,7 @@ const Playlist = ({ data, onClick }) => (
       }}
     />
     <p className="Playlist__Name">{data.name}</p>
-    <p className="Playlist__Owner">
-      {data.owner.display_name ? data.owner.display_name : data.owner.id}
-    </p>
+    <p className="Playlist__Description">{data.tracks.total} tracks</p>
   </PlaylistWrapper>
 );
 
