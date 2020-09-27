@@ -1,18 +1,13 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 import { useAuth } from "../Hooks/auth";
-
-import AppRoutes from "./app.routes";
-import AuthRoutes from "./auth.routes";
+import Login from "../Pages/Login";
+import Playlists from "../Pages/Playlists";
 
 const Routes: React.FC = () => {
   const { isAuthenticated } = useAuth();
 
-  return (
-    <BrowserRouter>
-      {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
-    </BrowserRouter>
-  );
+  return isAuthenticated ? <Playlists /> : <Login />;
+  
 };
 
 export default Routes;

@@ -1,19 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { AuthProvider } from "./Hooks/auth";
 import { ThemeProvider } from "./Hooks/themes";
-// import App from "./App";
-import Login from "./Pages/Login";
-import GlobalStyles from "./Styles/GlobalStyles";
+import App from "./App";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <GlobalStyles />
-        <Login />
-      </AuthProvider>
+    <ThemeProvider>   
+        <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

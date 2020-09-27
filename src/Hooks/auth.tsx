@@ -56,24 +56,24 @@ const AuthProvider: React.FC = ({ children }) => {
       const code = urlParams.get("code");
       const spotifyError = urlParams.get("error");
 
-      try {
-        if (spotifyError) {
-          throw new Error(
-            "Tentamos.... mas não conseguimos fazer o login com sua conta do Spotify."
-          );
-        }
+        try {
+            if (spotifyError) {
+                throw new Error(
+                    "Tentamos.... mas não conseguimos fazer o login com sua conta do Spotify."
+                );
+            }
 
-        if (code) {
-          await getAccessToken(code);
-          return;
-        }
+            if (code) {
+                await getAccessToken(code);
+                return;
+            }
 
-        if (hasToken()) {
-          await refreshToken();
+            if (hasToken()) {
+                await refreshToken();
+            }
+        } catch (error) {
+            return
         }
-      } catch ({ message }) {
-        throw new Error(message);
-      }
     };
 
     validateAccess();

@@ -23,7 +23,7 @@ export interface IPlaylistItem {
     id: string;
     description: string;
     external_urls: { spotify: string };
-    image: { url: string }[];
+    images: { url: string }[];
     name: string;
     display_name?: string;
 }
