@@ -5,7 +5,6 @@ import PlayListFilters from "../Sidebar";
 import { Background } from "../../assets/styles/Background";
 import { Content } from "./styled";
 import { LinearProgress } from "@material-ui/core";
-import { Container } from "../../pages/Playlists/styles";
 import useFilters from "../../hooks/useFilters";
 
 type Props = {

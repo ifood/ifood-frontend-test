@@ -8,15 +8,20 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { SnackbarProvider } from 'notistack';
 import { AuthProvider } from "./providers";
 import { FilterProvider } from "./providers/FiltersProvider";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+
+import MomentUtils from '@date-io/moment';
 
 ReactDOM.render(
   <ThemeProvider theme={ theme }>
     <SnackbarProvider>
       <GlobalStyle/>
       <AuthProvider>
-        <FilterProvider>
-          <App/>
-        </FilterProvider>
+        <MuiPickersUtilsProvider utils={ MomentUtils }>
+          <FilterProvider>
+            <App/>
+          </FilterProvider>
+        </MuiPickersUtilsProvider>
       </AuthProvider>
     </SnackbarProvider>
   </ThemeProvider>,
