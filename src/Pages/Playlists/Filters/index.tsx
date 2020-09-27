@@ -1,53 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect, memo, useCallback } from "react";
 
-import IconButton from '@material-ui/core/IconButton';
+import FilterService from "../../../Services/filterService";
+import { useFeaturedPlaylist } from "../../../Hooks/playlistsHook";
 
-import MenuIcon from '@material-ui/icons/MenuOutlined';
-import ExitToApp from '@material-ui/icons/ExitToAppOutlined';
-import Tooltip from '@material-ui/core/Tooltip';
+import Filters, { IFilterProps } from "../../../Components/Filters";
 
-import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
+import { Form, EmptyState } from "./styles";
 
-import { Container, FilterButton, Input } from './styles';
-import { useAuth } from '../../../hooks/auth';
+const PlaylistFilters: React.FC = () => {
+  const [filtersField, setFiltersField] = useState([] as IFilterProps[]);
 
-interface PlaylistsSearchProps {
-  setMobileOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const PlaylistsSearch: React.FC<PlaylistsSearchProps> = ({ setMobileOpen }) => {
-  const { logoff } = useAuth();
-  const { setSearch } = useFeaturedPlaylist();
+  const { filter, setFilter } = useFeaturedPlaylist();
 
-  const handleMobileOpenClick = () => setMobileOpen(true);
+  const getFilters = useCallback(async () => {
+    try {
+      const filtersData = await FilterService.get();
+      setFiltersField(filtersData);
+    } catch (error) {
+      alert("Ops! Não conseguimos buscar os filtros");
+    }
+  }, []);
 
-  const handleSearchChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setSearch(target.value);
+  const handleChange = (id: string, value: string | number) => {
+    const newFilter = {
+      ...filter,
+      [id]: value,
+    };
+
+    setFilter(newFilter);
   };
 
-  return (
-    <Container>
-      <Tooltip title="Filtros" aria-label="Filtros">
-        <FilterButton onClick={handleMobileOpenClick}>
-          <MenuIcon />
-        </FilterButton>
-      </Tooltip>
+  const getEmptyState = () => {
+    if (filtersField?.length) {
+      return null;
+    }
 
-      <Input
-        onChange={handleSearchChange}
-        placeholder="Buscar por nome..."
-        inputProps={{ 'aria-label': 'Buscar por nome' }}
+    return <EmptyState>Nenhum filtro encontrado.</EmptyState>;
+  };
+
+  const mapFiltersField = () =>
+    filtersField?.map((filterField: IFilterProps) => (
+      <Filters
+        data-testeid="filter-item"
+        key={filterField.id}
+        {...filterField}
+        onChange={(value) => handleChange(filterField.id, value)}
       />
+    ));
 
-      <Tooltip title="Sair" aria-label="Sair">
-        <IconButton
-          aria-label="Logoff"
-          onClick={logoff}
-        >
-          <ExitToApp />
-        </IconButton>
-      </Tooltip>
-    </Container>
+  useEffect(() => {
+    getFilters();
+  }, [getFilters]);
+
+  return (
+    <Form noValidate autoComplete="off">
+      {getEmptyState()}
+
+      {mapFiltersField()}
+    </Form>
   );
 };
 
-export default PlaylistsSearch;
+export default memo(PlaylistFilters);

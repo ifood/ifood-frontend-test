@@ -3,9 +3,9 @@ import InputBase from '@material-ui/core/InputBase';
 
 import styled from 'styled-components';
 
-const FilterButton = styled(IconButton)``;
+export const FilterButton = styled(IconButton)``;
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   align-items: center;
 
@@ -23,9 +23,8 @@ const Container = styled.div`
   }
 `;
 
-const Input = styled(InputBase)`
+export const Input = styled(InputBase)`
   flex: 1;
   margin: 0 8px;
 `;
 
-export { Container, FilterButton, Input };

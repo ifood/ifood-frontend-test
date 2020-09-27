@@ -1,47 +1,29 @@
 import React from "react";
-import LayoutPage from "../../Components/LayoutPage";
 
-import { Container } from "./styles";
+import { FeaturedPlaylistProvider } from "../../Hooks/playlistsHook";
+
+import LayoutPage from "../../Components/LayoutPage";
+import Search from "./Search";
+import Lists from "./Lists";
+import PlaylistFilters from "./Filters";
+
+import { Container, Main } from "./styles";
 
 const Playlists: React.FC = () => {
   return (
     <LayoutPage>
-      <Container>
-        <h1>Playlists</h1>
-      </Container>
+      <FeaturedPlaylistProvider>
+        <Container>
+          <PlaylistFilters />
+          <Main>
+            <Search />
+            <Lists />
+            <h1>Playlists</h1>
+          </Main>
+        </Container>
+      </FeaturedPlaylistProvider>
     </LayoutPage>
   );
 };
 
 export default Playlists;
-
-import React, { useState } from 'react';
-
-import { FeaturedPlaylistProvider } from '../../hooks/featuredPlaylists';
-
-import PlaylistsFilters from './PlaylistsFilters';
-import PlaylistsSearch from './PlaylistsSearch';
-import PlaylistList from './PlaylistList';
-
-import { Container, Main } from './styles';
-
-const Home = () => {
-  const [mobileOpenDrawer, setMobileOpenDrawer] = useState(false);
-
-  return (
-    <FeaturedPlaylistProvider>
-      <Container>
-        <PlaylistsFilters
-          mobileOpen={mobileOpenDrawer}
-          setMobileOpen={setMobileOpenDrawer}
-        />
-        <Main>
-          <PlaylistsSearch setMobileOpen={setMobileOpenDrawer} />
-          <PlaylistList />
-        </Main>
-      </Container>
-    </FeaturedPlaylistProvider>
-  );
-};
-
-export default Home;

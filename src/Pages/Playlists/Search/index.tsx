@@ -1,24 +1,18 @@
 import React from 'react';
 
 import IconButton from '@material-ui/core/IconButton';
-
 import MenuIcon from '@material-ui/icons/MenuOutlined';
 import ExitToApp from '@material-ui/icons/ExitToAppOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
+import { useFeaturedPlaylist } from '../../../Hooks/playlistsHook';
+import { useAuth } from '../../../Hooks/auth';
 
 import { Container, FilterButton, Input } from './styles';
-import { useAuth } from '../../../hooks/auth';
 
-interface PlaylistsSearchProps {
-  setMobileOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const PlaylistsSearch: React.FC<PlaylistsSearchProps> = ({ setMobileOpen }) => {
-  const { logoff } = useAuth();
+const Search: React.FC = () => {
+  const { signOut } = useAuth();
   const { setSearch } = useFeaturedPlaylist();
-
-  const handleMobileOpenClick = () => setMobileOpen(true);
 
   const handleSearchChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>) => {
     setSearch(target.value);
@@ -27,21 +21,21 @@ const PlaylistsSearch: React.FC<PlaylistsSearchProps> = ({ setMobileOpen }) => {
   return (
     <Container>
       <Tooltip title="Filtros" aria-label="Filtros">
-        <FilterButton onClick={handleMobileOpenClick}>
+        <FilterButton >
           <MenuIcon />
         </FilterButton>
       </Tooltip>
 
       <Input
         onChange={handleSearchChange}
-        placeholder="Buscar por nome..."
-        inputProps={{ 'aria-label': 'Buscar por nome' }}
+        placeholder="Busque por nome, música ou gênero...."
+        inputProps={{ 'aria-label': 'Buscar por nome, música ou gênero' }}
       />
 
-      <Tooltip title="Sair" aria-label="Sair">
+      <Tooltip title="SignOut" aria-label="SignOut">
         <IconButton
-          aria-label="Logoff"
-          onClick={logoff}
+          aria-label="SignOut"
+          onClick={signOut}
         >
           <ExitToApp />
         </IconButton>
@@ -50,4 +44,4 @@ const PlaylistsSearch: React.FC<PlaylistsSearchProps> = ({ setMobileOpen }) => {
   );
 };
 
-export default PlaylistsSearch;
+export default Search;

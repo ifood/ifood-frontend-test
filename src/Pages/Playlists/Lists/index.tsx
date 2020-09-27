@@ -2,17 +2,17 @@ import React from 'react';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import Playlist from '../../../components/Playlist';
+import PlaylistCards from '../PlaylistCards';
 
-import { useFeaturedPlaylist } from '../../../hooks/featuredPlaylists';
+import { useFeaturedPlaylist } from '../../../Hooks/playlistsHook';
 
 import { Container, EmptyState } from './styles';
 
-const PlaylistList = () => {
-  const { playlists, loading } = useFeaturedPlaylist();
+const Lists = () => {
+  const { playlists } = useFeaturedPlaylist();
 
   const getEmptyState = () => {
-    if (loading || playlists?.length) {
+    if (playlists?.length) {
       return null;
     }
 
@@ -27,13 +27,13 @@ const PlaylistList = () => {
 
   return (
     <>
-      {loading && <LinearProgress />}
+      <LinearProgress />
       <Container>
-        {playlists.map((playlist: any) => <Playlist data-testeid="playlist-item" key={playlist.id} {...playlist} />)}
+        {playlists.map((playlist: any) => <PlaylistCards data-testeid="playlist-item" key={playlist.id} {...playlist} />)}
       </Container>
       {getEmptyState()}
     </>
   );
 };
 
-export default PlaylistList;
+export default Lists;

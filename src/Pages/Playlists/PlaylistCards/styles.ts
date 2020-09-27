@@ -1,17 +1,17 @@
 import styled, { keyframes } from 'styled-components';
 
-interface ShimmerProps {
+interface IShimmerProps {
   loaded: boolean;
 }
 
-const shimmerAnimation = keyframes`
+export const shimmerAnimation = keyframes`
   to {
     left: 100%;
     transform: translateX(0);
   }
 `;
 
-const Container = styled.a<ShimmerProps>`
+export const Container = styled.a<IShimmerProps>`
   position: relative;
   display: block;
   border-radius: 14px;
@@ -37,12 +37,12 @@ const Container = styled.a<ShimmerProps>`
   }
 `;
 
-const Image = styled.img<ShimmerProps>`
+export const Image = styled.img<IShimmerProps>`
   max-width: 100%;
   display: ${({ loaded }) => (loaded ? 'block' : 'none')};
 `;
 
-const InfoText = styled.div`
+export const InfoText = styled.div`
   color: #ffffff;
   opacity: 0;
   z-index: 2;
@@ -50,7 +50,7 @@ const InfoText = styled.div`
   padding: 16px;
 `;
 
-const Info = styled.div`
+export const Info = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -87,11 +87,11 @@ const Info = styled.div`
   }
 `;
 
-const Name = styled.div`
+export const Name = styled.div`
   font-size: 16px;
 `;
 
-const Description = styled.div`
+export const Description = styled.div`
   font-size: 12px;
   margin-top: 6px;
   
@@ -103,11 +103,3 @@ const Description = styled.div`
   -webkit-line-clamp: 2;
 `;
 
-export {
-  Container,
-  Image,
-  Info,
-  InfoText,
-  Name,
-  Description,
-};

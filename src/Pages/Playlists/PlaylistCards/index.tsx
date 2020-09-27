@@ -1,23 +1,11 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState } from "react";
 
-import { IPlaylistItem } from '../../../Services/spotifyService';
+import { IPlaylistItem } from "../../../Services/spotifyService";
 
-import {
-  Container,
-  Image,
-  Info,
-  InfoText,
-  Name,
-  Description,
-} from './styles'
+import { Container, Image, Info, InfoText, Name, Description } from "./styles";
 
-const Playlist: React.FC<IPlaylistItem> = (props) => {
-  const {
-    name,
-    description,
-    images,
-    external_urls,
-  } = props;
+const PlaylistCards: React.FC<IPlaylistItem> = (props) => {
+  const { name, description, images, external_urls } = props;
 
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -28,7 +16,12 @@ const Playlist: React.FC<IPlaylistItem> = (props) => {
 
   return (
     <Container href={spotify} target="_blank" loaded={imageLoaded}>
-      <Image src={image?.url} alt={name} onLoad={handleImageLoad} loaded={imageLoaded} />
+      <Image
+        src={image?.url}
+        alt={name}
+        onLoad={handleImageLoad}
+        loaded={imageLoaded}
+      />
       <Info>
         <InfoText>
           <Name>{name}</Name>
@@ -39,4 +32,4 @@ const Playlist: React.FC<IPlaylistItem> = (props) => {
   );
 };
 
-export default memo(Playlist);
+export default memo(PlaylistCards);
