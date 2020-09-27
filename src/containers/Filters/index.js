@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { toast } from 'react-toastify';
+import { useIntl, FormattedMessage } from 'react-intl';
 
 import FilterField from '../../components/FilterField';
 import LoadingSpinner from '../../components/LoadingSpinner';
@@ -12,17 +13,26 @@ import { useStateValue } from '../../stores';
 import { getFiltersIntl } from '../../utils/filters';
 
 const Filters = () => {
+  const intl = useIntl();
   const [{ filters }, dispatch] = useStateValue();
   const [fields, setFields] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchFilters = async () => {
-      const response = await getFilters();
-      setFields(getFiltersIntl(response, messages));
+      try {
+        setLoading(true);
+        const response = await getFilters();
+        setFields(getFiltersIntl(response, messages));
+      } catch (error) {
+        toast.error(intl.formatMessage(messages.errors.unknown));
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchFilters();
-  }, []);
+  }, [intl]);
 
   const handleFieldChange = ({ field, value }) => {
     const values = {};
@@ -42,7 +52,7 @@ const Filters = () => {
           </strong>
         </p>
         <div className="row">
-          {!fields.length && (
+          {loading && (
             <div className="col-12 d-flex justify-content-center">
               <LoadingSpinner />
             </div>

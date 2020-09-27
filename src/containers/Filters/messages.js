@@ -28,6 +28,13 @@ const messages = {
       defaultMessage: 'Offset',
     },
   },
+
+  errors: {
+    unknown: {
+      id: 'filters.error.unknown',
+      defaultMessage: 'An error occurred while loading the filters.',
+    },
+  },
 };
 
 export default defineMessage(messages);

@@ -8,6 +8,7 @@ import { Wrapper } from './styles';
 import messages from './messages';
 
 import { useStateValue } from '../../stores';
+import { getValidFilters } from '../../utils/filters';
 import { spacing, colors } from '../../styles/theme';
 
 const Playlists = () => {
@@ -20,7 +21,7 @@ const Playlists = () => {
 
   useEffect(() => {
     const updatePlaylists = async () => {
-      await refetchPlaylists({ params: filters });
+      await refetchPlaylists({ params: getValidFilters(filters) });
     };
     updatePlaylists();
 

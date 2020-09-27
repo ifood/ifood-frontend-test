@@ -9,6 +9,7 @@
   "filters.fields.timestamp": "Data e Horário",
   "filters.fields.limit": "Quantidade",
   "filters.fields.offset": "Página",
+  "filters.error.unknown": "Ocorreu um erro ao carregar os filtros.",
 
   "playlists.search": "Buscar playlist",
 

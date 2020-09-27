@@ -18,3 +18,15 @@ export const getFiltersIntl = (filters, messages) => {
     return filter;
   });
 };
+
+export const getValidFilters = (filters) => {
+  const result = {};
+
+  Object.keys(filters).forEach((key) => {
+    if (filters[key].length) {
+      result[key] = filters[key];
+    }
+  });
+
+  return result;
+};

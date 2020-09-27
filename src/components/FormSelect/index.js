@@ -28,7 +28,7 @@ const FormSelect = ({
       onChange={(params) =>
         onChange({
           field: id,
-          value: params.value[0].id || '',
+          value: params.value.length ? params.value[0].id : '',
         })
       }
     />
@@ -47,7 +47,7 @@ FormSelect.propTypes = {
 FormSelect.defaultProps = {
   value: '',
   placeholder: '',
-  clearable: false,
+  clearable: true,
 };
 
 export default FormSelect;
