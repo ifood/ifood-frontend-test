@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { FormControl, TextField, DateTimePicker, Select, InputLabel, MenuItem } from './styles';
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+
+import { FormControl, TextField, DateTimePicker } from "./styles";
 
 export interface IFilterProps {
   id: string;
   name: string;
-  values?: { value: string; name: string; }[];
+  values?: { value: string; name: string }[];
   validation?: {
-    primitiveType?: 'STRING' | 'INTEGER';
-    entityType?: 'DATE_TIME';
+    primitiveType?: "STRING" | "INTEGER";
+    entityType?: "DATE_TIME";
     min?: number;
     max?: number;
-  },
+  };
   onChange: (value: string) => void;
 }
 
 const Filters: React.FC<IFilterProps> = (props) => {
-  const {
-    id,
-    name,
-    values,
-    validation,
-    onChange,
-  } = props;
+  const { id, name, values, validation, onChange } = props;
 
-  const [fieldValues, setFieldValues] = useState('');
+  const [fieldValue, setFieldValue] = useState("");
 
-  const handleSelectChange = ({ target }: React.ChangeEvent<{ value: unknown }>) => {
+  const handleSelectChange = ({
+    target,
+  }: React.ChangeEvent<{ value: unknown }>) => {
     let value = target.value as string;
 
     const max = validation?.max;
@@ -40,34 +40,34 @@ const Filters: React.FC<IFilterProps> = (props) => {
       value = min.toString();
     }
 
-    setFieldValues(value);
+    setFieldValue(value);
     onChange(value);
   };
 
   const handleDateTimePickerChange = (date: any) => {
-    const formattedDate = date?.format('yyyy-MM-DDTHH:mm:ss');
+    const formattedDate = date?.format("yyyy-MM-DDTHH:mm:ss");
 
-    setFieldValues(formattedDate);
+    setFieldValue(formattedDate);
     onChange(formattedDate);
   };
 
   const getText = () => {
-    if (validation?.primitiveType === 'INTEGER') {
-      return 'number';
+    if (validation?.primitiveType === "INTEGER") {
+      return "number";
     }
 
-    return 'text';
+    return "text";
   };
 
   if (values?.length) {
     return (
-      <FormControl>
+      <FormControl fullWidth variant="outlined" data-testid="select">
         <InputLabel id={`${id}-label`} color="secondary">
           {name}
         </InputLabel>
         <Select
           labelId={`${id}-label`}
-          value={fieldValues}
+          value={fieldValue}
           label={name}
           onChange={handleSelectChange}
           color="secondary"
@@ -83,15 +83,19 @@ const Filters: React.FC<IFilterProps> = (props) => {
     );
   }
 
-  if (validation?.entityType === 'DATE_TIME') {
+  if (validation?.entityType === "DATE_TIME") {
     return (
       <DateTimePicker
-        data-testid="date-time-picker"  
+        data-testid="date-time-picker"
+        clearable
+        color="secondary"
+        inputVariant="outlined"
+        fullWidth
         label={name}
         format="DD-MM-yyyy HH:mm:ss"
         clearLabel="Limpar"
         cancelLabel="Cancelar"
-        value={fieldValues || null}
+        value={fieldValue || null}
         onChange={handleDateTimePickerChange}
       />
     );
@@ -105,7 +109,7 @@ const Filters: React.FC<IFilterProps> = (props) => {
       fullWidth
       label={name}
       type={getText()}
-      value={fieldValues}
+      value={fieldValue}
       onChange={handleSelectChange}
       InputProps={{
         inputProps: {
