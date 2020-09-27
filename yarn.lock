@@ -1074,6 +1074,40 @@
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
 
+"@formatjs/ecma402-abstract@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.2.2.tgz#4810bdbd696d3805c535fd0620b7c8f45ab3164f"
+
+"@formatjs/intl-displaynames@^3.3.9":
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-3.3.9.tgz#18eeb39aa05d4a8b064e520725f9178d0c3f8c50"
+  dependencies:
+    "@formatjs/ecma402-abstract" "^1.2.2"
+
+"@formatjs/intl-listformat@^4.2.7":
+  version "4.2.7"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-4.2.7.tgz#bcccfee92c69e661d4da51567540aa39fef9ceae"
+  dependencies:
+    "@formatjs/ecma402-abstract" "^1.2.2"
+
+"@formatjs/intl-relativetimeformat@^7.2.7":
+  version "7.2.7"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-relativetimeformat/-/intl-relativetimeformat-7.2.7.tgz#dce72ebafb1ca0bf14673fab3b1aad145e1abac6"
+  dependencies:
+    "@formatjs/ecma402-abstract" "^1.2.2"
+
+"@formatjs/intl@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.3.3.tgz#d59997b7ef832e7c47e8ca50861ff7ff7461d56c"
+  dependencies:
+    "@formatjs/ecma402-abstract" "^1.2.2"
+    "@formatjs/intl-displaynames" "^3.3.9"
+    "@formatjs/intl-listformat" "^4.2.7"
+    "@formatjs/intl-relativetimeformat" "^7.2.7"
+    fast-memoize "^2.5.2"
+    intl-messageformat "^9.3.8"
+    intl-messageformat-parser "^6.0.7"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -1463,6 +1497,13 @@
   dependencies:
     "@types/minimatch" "*"
     "@types/node" "*"
+
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.3"
@@ -4270,6 +4311,10 @@ fast-levenshtein@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
+fast-memoize@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/fast-memoize/-/fast-memoize-2.5.2.tgz#79e3bb6a4ec867ea40ba0e7146816f6cdce9b57e"
+
 faye-websocket@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.10.0.tgz#4e492f8d04dfb6f89003507f6edbf2d501e7c6f4"
@@ -4792,7 +4837,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0:
+hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   dependencies:
@@ -5107,6 +5152,19 @@ internal-slot@^1.0.2:
     es-abstract "^1.17.0-next.1"
     has "^1.0.3"
     side-channel "^1.0.2"
+
+intl-messageformat-parser@^6.0.7:
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-6.0.7.tgz#de57a03466e1441b7cbfd99a02ace108745ef133"
+  dependencies:
+    "@formatjs/ecma402-abstract" "^1.2.2"
+
+intl-messageformat@^9.3.8:
+  version "9.3.8"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.3.8.tgz#561f31800cc3ced5dada6c991a0dd0233931850f"
+  dependencies:
+    fast-memoize "^2.5.2"
+    intl-messageformat-parser "^6.0.7"
 
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
@@ -8010,6 +8068,22 @@ react-input-mask@^2.0.4:
     invariant "^2.2.4"
     warning "^4.0.2"
 
+react-intl@^5.8.3:
+  version "5.8.3"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.8.3.tgz#2018aca11a49d2d1b0f602e0dda653a47bf59dfb"
+  dependencies:
+    "@formatjs/ecma402-abstract" "^1.2.2"
+    "@formatjs/intl" "^1.3.3"
+    "@formatjs/intl-displaynames" "^3.3.9"
+    "@formatjs/intl-listformat" "^4.2.7"
+    "@formatjs/intl-relativetimeformat" "^7.2.7"
+    "@types/hoist-non-react-statics" "^3.3.1"
+    fast-memoize "^2.5.2"
+    hoist-non-react-statics "^3.3.2"
+    intl-messageformat "^9.3.8"
+    intl-messageformat-parser "^6.0.7"
+    shallow-equal "^1.2.1"
+
 react-is@^16.12.0, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -8728,6 +8802,10 @@ shallow-clone@^3.0.0:
   resolved "https://registry.yarnpkg.com/shallow-clone/-/shallow-clone-3.0.1.tgz#8f2981ad92531f55035b01fb230769a40e02efa3"
   dependencies:
     kind-of "^6.0.2"
+
+shallow-equal@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/shallow-equal/-/shallow-equal-1.2.1.tgz#4c16abfa56043aa20d050324efa68940b0da79da"
 
 shallowequal@^1.1.0:
   version "1.1.0"

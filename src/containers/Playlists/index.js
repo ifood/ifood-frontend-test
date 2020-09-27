@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useAxios from 'axios-hooks';
+import { useIntl } from 'react-intl';
 
 import FormInput from '../../components/FormInput';
 import Playlist from '../../components/Playlist';
 import { Wrapper } from './styles';
+import messages from './messages';
 
 import { useStateValue } from '../../stores';
 import { spacing, colors } from '../../styles/theme';
@@ -12,6 +14,7 @@ const Playlists = () => {
   const [{ data }, refetchPlaylists] = useAxios('/featured-playlists', {
     manual: true,
   });
+  const intl = useIntl();
   const [{ filters }] = useStateValue();
   const [search, setSearch] = useState('');
 
@@ -39,7 +42,7 @@ const Playlists = () => {
         <FormInput
           id="search"
           value={search}
-          placeholder="Search playlist"
+          placeholder={intl.formatMessage(messages.search)}
           clearable
           onChange={handleSearchInput}
           backgroundColor={colors.base.white}

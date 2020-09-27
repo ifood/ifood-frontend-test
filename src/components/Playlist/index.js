@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import { PlaylistWrapper } from './styles';
+import messages from './messages';
 
 const Playlist = ({ data, onClick }) => (
   <PlaylistWrapper onClick={onClick}>
@@ -12,7 +14,9 @@ const Playlist = ({ data, onClick }) => (
       }}
     />
     <p className="Playlist__Name">{data.name}</p>
-    <p className="Playlist__Description">{data.tracks.total} tracks</p>
+    <p className="Playlist__Description">
+      {data.tracks.total} <FormattedMessage {...messages.tracks} />
+    </p>
   </PlaylistWrapper>
 );
 

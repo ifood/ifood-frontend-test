@@ -1,0 +1,20 @@
+{
+  "auth.loginButton": "Entrar com Spotify",
+  "auth.validating": "Validando autenticação do Spotify...",
+  "auth.error.unknown": "Não foi possível realizar o login. Por favor, tente novamente.",
+
+  "filters.title": "Filtrar por:",
+  "filters.fields.locale": "Localidade",
+  "filters.fields.country": "País",
+  "filters.fields.timestamp": "Data e Horário",
+  "filters.fields.limit": "Quantidade",
+  "filters.fields.offset": "Página",
+
+  "playlists.search": "Buscar playlist",
+
+  "playlist.tracks": "músicas",
+
+  "notFound.error": "Erro",
+  "notFound.errorMessage": "Ocorreu algum erro. Por favor, tente novamente.",
+  "notFound.backButton": "Voltar ao início"
+}

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import FilterField from '../../components/FilterField';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { Wrapper } from './styles';
+import messages from './messages';
 
 import { getFilters } from '../../services/filter';
 import { UPDATE } from '../../stores/reducers/filters';
 import { useStateValue } from '../../stores';
+import { getFiltersIntl } from '../../utils/filters';
 
 const Filters = () => {
   const [{ filters }, dispatch] = useStateValue();
@@ -15,7 +18,7 @@ const Filters = () => {
   useEffect(() => {
     const fetchFilters = async () => {
       const response = await getFilters();
-      setFields(response);
+      setFields(getFiltersIntl(response, messages));
     };
 
     fetchFilters();
@@ -34,7 +37,9 @@ const Filters = () => {
     <div className="container">
       <Wrapper>
         <p>
-          <strong>Filter by:</strong>
+          <strong>
+            <FormattedMessage {...messages.title} />
+          </strong>
         </p>
         <div className="row">
           {!fields.length && (
