@@ -25,7 +25,8 @@ const FilterField = ({ field, onChange }) => {
       <CustomField
         id={field.id}
         options={field.values}
-        validation={field.validation}
+        min={field.validation && field.validation.min}
+        max={field.validation && field.validation.max}
         debounceTime={450}
         onChange={onChange}
       />
