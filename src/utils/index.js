@@ -6,6 +6,7 @@ import containedString from './containedString'
 import localeName from './localeName'
 import countryMap from './countryName'
 import countryFilter from './countryFilter'
+import getErrorMessage from './getErrorMessage'
 
 export {
   limitsList,
@@ -16,4 +17,5 @@ export {
   localeName,
   countryMap,
   countryFilter,
+  getErrorMessage,
 }

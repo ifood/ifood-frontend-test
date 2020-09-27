@@ -23,6 +23,7 @@ spotifyApi.interceptors.response.use(
     if (unauthorized.includes(error.response.status)) {
       store.dispatch(refreshTokenRequest()) // TODO: max requests, for case we have an invalid token
     }
+    return Promise.reject(error)
   }
 )
 

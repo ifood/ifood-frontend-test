@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 
 import { spotifyApi, refreshTokenApi } from 'services/api'
 
-import { genericError } from 'constant'
+import { getErrorMessage } from 'utils'
 
 import {
   refreshTokenRequest,
@@ -38,7 +38,9 @@ function* refreshTokenSaga() {
     yield put(getPlaylistRequest())
     yield put(refreshTokenSuccess(data))
   } catch (error) {
-    toast.dark(genericError)
+    const errorMessage = getErrorMessage(error)
+    toast.dark(errorMessage)
+
     yield put(refreshTokenFailure(error.toString()))
   }
 }

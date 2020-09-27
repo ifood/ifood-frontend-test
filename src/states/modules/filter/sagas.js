@@ -5,7 +5,9 @@ import { filterApi } from 'services/api'
 
 import { getFilterRequest, getFilterSuccess, getFilterFailure } from '.'
 
-import { filterParam, genericError } from 'constant'
+import { filterParam } from 'constant'
+
+import { getErrorMessage } from 'utils'
 
 export default function* rootSaga() {
   yield takeEvery(getFilterRequest, allFilters)
@@ -16,7 +18,8 @@ function* allFilters() {
     const { data } = yield call(filterApi.get, `/${filterParam}`)
     yield put(getFilterSuccess(data))
   } catch (error) {
-    toast.dark(genericError)
+    const errorMessage = getErrorMessage(error)
+    toast.dark(errorMessage)
     yield put(getFilterFailure(error.toString()))
   }
 }

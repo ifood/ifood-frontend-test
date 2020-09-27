@@ -12,7 +12,7 @@ import { Search, Container, Input, Button, Float } from './styles'
 
 const Header = ({ onClick, onChange, hide }) => (
   <Container>
-    <Button src={hamburguer} onClick={onClick} data-testId='header-button' />
+    <Button src={hamburguer} onClick={onClick} data-testid='header-button' />
     <Search hide={hide}>
       <Input placeholder='Search' onChange={onChange} />
     </Search>

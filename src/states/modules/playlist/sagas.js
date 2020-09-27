@@ -3,8 +3,7 @@ import { toast } from 'react-toastify'
 
 import spotifyApi from 'services/api'
 
-import { paramsFactory } from 'utils'
-import { genericError } from 'constant'
+import { paramsFactory, getErrorMessage } from 'utils'
 
 import { getPlaylistRequest, getPlaylistSuccess, getPlaylistFailure } from '.'
 
@@ -31,7 +30,9 @@ function* allPlaylists() {
 
     yield put(getPlaylistSuccess(data))
   } catch (error) {
-    toast.dark(genericError)
+    const errorMessage = getErrorMessage(error)
+    toast.dark(errorMessage)
+
     yield put(getPlaylistFailure(error.toString()))
   }
 }
