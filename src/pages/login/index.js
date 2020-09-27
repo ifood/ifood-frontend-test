@@ -29,7 +29,7 @@ const Login = () => {
         '_self'
       )
     }
-  }, [dispatch, history, accessToken, refreshToken])
+  }, [])
 
   return (
     <Container>
