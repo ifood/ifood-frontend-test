@@ -1,7 +1,8 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 
 import Select from "react-select";
-import DatePicker from "react-datepicker";
+// import DatePicker from 'react-datepicker';
+import ReactDatePicker from 'react-datepicker'
 
 import { useFilter } from '../../../Hooks/playlistsHook';
 
@@ -95,7 +96,7 @@ const PlaylistFilter: React.FC = () => {
         />
       </FormItem>
       <FormItem>
-        <DatePicker
+        <ReactDatePicker
           showTimeInput
           name={dateTime.id}
           placeholderText={dateTime.name}

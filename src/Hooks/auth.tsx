@@ -1,24 +1,24 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import getToken from "../Utils/getToken";
-import authenticateService from "../Services/authenticateService";
+import getToken from '../Utils/getToken';
+import authenticate from '../Services/authenticateService';
 
-interface IAuthContext {
+interface AuthContextData {
   token?: string | null;
 }
 
-interface IAuthProviderProps {
+interface AuthProviderProps {
   children: React.ReactNode;
 }
 
-const AuthContext = createContext<IAuthContext>({} as IAuthContext);
+const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-const AuthProvider: React.FC<IAuthProviderProps> = ({
+const AuthProvider: React.FC<AuthProviderProps> = ({
   children,
-}: IAuthProviderProps) => {
+}: AuthProviderProps) => {
   const [token, setToken] = useState(() => {
-    const storedToken = localStorage.getItem("@spotifood:token");
+    const storedToken = localStorage.getItem('@Spotifood:token');
 
     if (storedToken) {
       return storedToken;
@@ -31,34 +31,36 @@ const AuthProvider: React.FC<IAuthProviderProps> = ({
 
   useEffect(() => {
     if (!token) {
-      const { accessToken, expiresIn } = getToken(location.hash);
+      const { accessToken, expiresIn } = getToken(
+        location.hash,
+      );
 
       if (accessToken) {
         const expiresAt = new Date();
         expiresAt.setSeconds(expiresAt.getSeconds() + expiresIn);
 
-        localStorage.setItem("@spotifood:token", accessToken);
-        localStorage.setItem("@spotifood:expiresAt", expiresAt.toString());
+        localStorage.setItem('@Spotifood:token', accessToken);
+        localStorage.setItem('@Spotifood:expiresAt', expiresAt.toString());
 
         setToken(accessToken);
       }
     } else {
       const currentDate = new Date();
-      const expiresAt = localStorage.getItem("@spotifood:expiresAt");
+      const expiresAt = localStorage.getItem('@Spotifood:expiresAt');
 
       if (
         expiresAt &&
         currentDate.getTime() > Date.parse(expiresAt.toString())
       ) {
-        localStorage.removeItem("@spotifood:token");
-        localStorage.removeItem("@spotifood:expiresAt");
+        localStorage.removeItem('@Spotifood:token');
+        localStorage.removeItem('@Spotifood:expiresAt');
 
-        authenticateService();
+        authenticate();
       }
     }
 
-    if (window.location.hash !== "") {
-      window.location.hash = "";
+    if (window.location.hash !== '') {
+      window.location.hash = '';
     }
   }, [token, location]);
 
@@ -67,11 +69,11 @@ const AuthProvider: React.FC<IAuthProviderProps> = ({
   );
 };
 
-function useAuth(): IAuthContext {
+function useAuth(): AuthContextData {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
 
   return context;

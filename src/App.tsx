@@ -7,8 +7,8 @@ import GlobalStyles from "./Styles/GlobalStyles";
 import AppProvider from "./Hooks";
 import { useTheme } from "./Hooks/themes";
 
-import Playlists from "./Pages/PlaylistsHome";
-
+import PlaylistsHome from "./Pages/PlaylistsHome";
+import LayoutPage from "./Components/LayoutPage";
 
 const App: React.FC = () => {
   const { theme } = useTheme();
@@ -16,11 +16,13 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <BrowserRouter>
-        <AppProvider>
-          <Route path="/" exact component={Playlists} />
-        </AppProvider>
-      </BrowserRouter>
+      <LayoutPage>
+        <BrowserRouter>
+          <AppProvider>
+            <Route path="/" exact component={PlaylistsHome} />
+          </AppProvider>
+        </BrowserRouter>
+      </LayoutPage>
     </ThemeProvider>
   );
 };

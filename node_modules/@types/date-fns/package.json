@@ -1,0 +1,14 @@
+{
+    "name": "@types/date-fns",
+    "version": "2.6.0",
+    "typings": null,
+    "description": "Stub TypeScript definitions entry for date-fns, which provides its own types definitions",
+    "main": "",
+    "scripts": {},
+    "author": "",
+    "repository": "https://github.com/date-fns/date-fns",
+    "license": "MIT",
+    "dependencies": {
+        "date-fns": "*"
+    }
+}

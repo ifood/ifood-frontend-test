@@ -17,7 +17,6 @@ import {
 } from "../../Services/spotifyService";
 import authenticate from "../../Services/authenticateService";
 
-import LayoutPage from "../../Components/LayoutPage";
 import {
   Container,
   Content,
@@ -96,7 +95,7 @@ const PlaylistsHome: React.FC = () => {
         )}
 
         {token && (
-          <LayoutPage>
+          <>
             <SearchNameForm>
               <FiSearch size={20} />
               <input
@@ -107,7 +106,7 @@ const PlaylistsHome: React.FC = () => {
 
             <PlaylistFilter />
             {items && <PlaylistCards items={items} />}
-          </LayoutPage>
+          </>
         )}
       </Content>
     </Container>
