@@ -7,6 +7,7 @@ const {
   REACT_APP_SPOTIFY_API_URL,
   REACT_APP_SPOTIFY_CLIENT_ID,
   REACT_APP_SPOTIFY_REDIRECT_URI,
+  REACT_APP_SPOTIFY_AUTHORIZE_URL,
 } = process.env;
 
 const api = axios.create({
@@ -46,7 +47,7 @@ api.interceptors.response.use(
 
 const getSpotifyURL = () => {
   const scopes = 'user-read-email';
-  return `https://accounts.spotify.com/authorize?client_id=${REACT_APP_SPOTIFY_CLIENT_ID}&scope=${encodeURIComponent(
+  return `${REACT_APP_SPOTIFY_AUTHORIZE_URL}?client_id=${REACT_APP_SPOTIFY_CLIENT_ID}&scope=${encodeURIComponent(
     scopes,
   )}&redirect_uri=${encodeURIComponent(
     REACT_APP_SPOTIFY_REDIRECT_URI,
