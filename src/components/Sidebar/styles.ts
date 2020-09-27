@@ -36,6 +36,10 @@ export const AdvancedSearchTitle = styled.h3`
 export const SidebarLogoContainer = styled.div`
   display: flex;
   justify-items: center;
+
+  @media screen and (mix-width: 768px) {
+    display: none;
+  }
 `;
 
 export const SidebarLogo = styled.img`

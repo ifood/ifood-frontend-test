@@ -19,13 +19,13 @@ export type Props = {
 }
 
 const FilterInput: React.FC<Props> = ({
-  id,
-  name,
-  values,
-  validation,
-  onChange,
-  pattern
-}) => {
+                                        id,
+                                        name,
+                                        values,
+                                        validation,
+                                        onChange,
+                                        pattern
+                                      }) => {
 
   const [filterValue, setFilterValue] = useState('');
 
@@ -49,27 +49,26 @@ const FilterInput: React.FC<Props> = ({
     onChange(formattedDate);
   };
 
-  const getTextFieldType = () => validation?.primitiveType === 'STRING' ? 'text': 'number;';
+  const getTextFieldType = () => validation?.primitiveType === 'STRING' ? 'text' : 'number;';
 
   if (values?.length) {
     return (
-      <MaterialFormControl fullWidth variant="outlined" data-testid="select">
-        <InputLabel id={`${id}-label`} color="secondary">
-          {name}
+      <MaterialFormControl fullWidth variant="outlined">
+        <InputLabel id={ id }>
+          { name }
         </InputLabel>
         <Select
-          labelId={`${id}-label`}
-          value={filterValue}
-          label={name}
-          onChange={handleInputSelectChange}
-          color="secondary"
+          labelId={ id }
+          label={ name }
+          value={ filterValue }
+          onChange={ handleInputSelectChange }
         >
           <MenuItem value="">Selecione</MenuItem>
-          {values?.map((selectValue) => (
-            <MenuItem value={selectValue.value} key={selectValue.value}>
-              {selectValue.name}
+          { values?.map((value) => (
+            <MenuItem value={ value.value } key={ value.value }>
+              { value.name }
             </MenuItem>
-          ))}
+          )) }
         </Select>
       </MaterialFormControl>
     );
@@ -78,34 +77,32 @@ const FilterInput: React.FC<Props> = ({
   if (validation?.entityType === 'DATE_TIME') {
     return (
       <MaterialDateTimePicker
-        clearable
-        color="secondary"
+        label={ name }
         inputVariant="outlined"
+        value={ filterValue || null }
         fullWidth
-        label={name}
-        format="DD-MM-yyyy HH:mm:ss"
+        format="DD/MM/yyyy HH:mm:ss"
+        clearable
         clearLabel="Limpar"
         cancelLabel="Cancelar"
-        value={filterValue || null}
-        onChange={handleInputSelectDatePickerType}
+        onChange={ handleInputSelectDatePickerType }
       />
     );
   }
 
   return (
     <MaterialTextField
-      color="secondary"
-      variant="outlined"
+      label={ name }
+      value={ filterValue }
       fullWidth
-      label={name}
-      type={getTextFieldType()}
-      value={filterValue}
-      onChange={handleInputSelectChange}
-      InputProps={{
+      type={ getTextFieldType() }
+      variant="outlined"
+      onChange={ handleInputSelectChange }
+      InputProps={ {
         inputProps: {
           min: validation?.min,
         },
-      }}
+      } }
     />
   );
 }

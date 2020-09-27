@@ -1,4 +1,9 @@
-import React, { createContext, useLayoutEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useLayoutEffect,
+  useState
+} from "react";
 import { Filter, FilterContextProps } from "../../interfaces";
 import FilterService from "../../services/FilterService";
 import { useSnackbar } from 'notistack';
@@ -15,9 +20,9 @@ const FilterProvider: React.FC = ({ children }) => {
   const [quantity, setQuantity] = useState<Filter>({});
   const [page, setPage] = useState<Filter>({});
 
-  const getFilters = async (): Promise<any> => {
+  const getFilters = useCallback(async (): Promise<any> => {
     return await FilterService.getFilters();
-  };
+  }, []);
 
   useLayoutEffect(() => {
     const setFilters = async () => {
