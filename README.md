@@ -1,10 +1,30 @@
-# iFood Frontend Test
+# Spotifood
+
+Web application used to display the preferred playlists from iFood's customers.
+
+## Built With
+
+- [React](https://pt-br.reactjs.org/)
+- [Base Web UI](https://baseweb.design/)
+- [Bootstrap](https://getbootstrap.com/docs/)
+- [Axios](https://github.com/axios/axios)
+- [Spotify API](https://developer.spotify.com/documentation/web-api/)
+
+To maintain consistent code, this project uses [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) as a linter and formatter.
+
+## Preview
+
+![Preview](/public/screenshot.png)
+
+**[View Live Preview](https://spotifood-adrcav.netlify.app)**
+
+## Challenge
+
+### iFood Frontend Test
 
 Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
 
 - A page that lists the featured playlists at Spotify according to some criteria.
-
-## Challenge
 
 ### Business rules
 
