@@ -14,3 +14,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+a:hover,
+a:visited,
+a:link {
+  text-decoration: none;
+}

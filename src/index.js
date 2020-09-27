@@ -17,7 +17,7 @@ const engine = new Styletron();
 ReactDOM.render(
   <StyletronProvider value={engine}>
     <BaseProvider theme={LightTheme}>
-      <IconContext.Provider>
+      <IconContext.Provider value={{ size: '1em' }}>
         <ToastContainer position="bottom-center" />
         <App />
       </IconContext.Provider>

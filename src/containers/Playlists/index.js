@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import useAxios from 'axios-hooks';
 
 import FormInput from '../../components/FormInput';
+import Playlist from '../../components/Playlist';
+import { Wrapper } from './styles';
+
 import { useStateValue } from '../../stores';
+import { spacing, colors } from '../../styles/theme';
 
 const Playlists = () => {
   const [{ data }, refetchPlaylists] = useAxios('/featured-playlists', {
@@ -30,26 +34,38 @@ const Playlists = () => {
   };
 
   return (
-    <>
-      <p>
-        <strong>Playlists:</strong>
-      </p>
+    <div className="container">
+      <Wrapper>
+        <FormInput
+          id="search"
+          value={search}
+          placeholder="Search playlist"
+          clearable
+          onChange={handleSearchInput}
+          backgroundColor={colors.base.white}
+        />
 
-      <FormInput
-        id="search"
-        value={search}
-        placeholder="Search playlist"
-        onChange={handleSearchInput}
-      />
-
-      {data && (
-        <ul>
-          {getPlaylistsFiltered().map((playlist) => (
-            <li key={playlist.id}>{playlist.name}</li>
-          ))}
-        </ul>
-      )}
-    </>
+        {data && (
+          <div className="row">
+            {getPlaylistsFiltered().map((playlist) => (
+              <div
+                key={playlist.id}
+                className="col-md-6 col-lg-4 col-xl-3"
+                style={{ marginTop: spacing.s3 }}
+              >
+                <a
+                  href={playlist.external_urls.spotify}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Playlist data={playlist} />
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </Wrapper>
+    </div>
   );
 };
 

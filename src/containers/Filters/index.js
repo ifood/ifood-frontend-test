@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import FilterField from '../../components/FilterField';
+import { Wrapper } from './styles';
 
 import { getFilters } from '../../services/filter';
 import { UPDATE } from '../../stores/reducers/filters';
@@ -29,19 +30,24 @@ const Filters = () => {
   };
 
   return (
-    <>
-      <p>
-        <strong>Filters container</strong>
-      </p>
-      {fields.map((field) => (
-        <FilterField
-          key={field.id}
-          field={field}
-          value={filters[field.id]}
-          onChange={handleFieldChange}
-        />
-      ))}
-    </>
+    <div className="container">
+      <Wrapper>
+        <p>
+          <strong>Filter by:</strong>
+        </p>
+        <div className="row">
+          {fields.map((field) => (
+            <div key={field.id} className="col-lg-4">
+              <FilterField
+                field={field}
+                value={filters[field.id]}
+                onChange={handleFieldChange}
+              />
+            </div>
+          ))}
+        </div>
+      </Wrapper>
+    </div>
   );
 };
 

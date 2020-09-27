@@ -2,6 +2,9 @@ import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import LayoutTemplate from '../../templates/LayoutTemplate';
+import LoadingSpinner from '../../components/LoadingSpinner';
+
 import { AuthContext } from '../../services/auth';
 import { getHashParams } from '../../utils/params';
 
@@ -30,9 +33,10 @@ const Auth = ({ location }) => {
   }, [location, history, auth]);
 
   return (
-    <>
-      <p>Validating Spotify authentication...</p>
-    </>
+    <LayoutTemplate>
+      <LoadingSpinner />
+      <p style={{ marginTop: '1rem' }}>Validating Spotify authentication...</p>
+    </LayoutTemplate>
   );
 };
 

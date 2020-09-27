@@ -13,6 +13,7 @@ export const colors = {
   },
   base: {
     white: '#FFFFFF',
+    light: '#F5F3F4',
     dark: '#222222',
   },
   muted: {

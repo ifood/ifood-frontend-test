@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 
+import LayoutTemplate from '../../templates/LayoutTemplate';
 import Login from '../../containers/Login';
 import Filters from '../../containers/Filters';
 import Playlists from '../../containers/Playlists';
@@ -15,10 +16,12 @@ const Home = () => {
   if (!auth.isAuthenticated()) return <Login />;
 
   return (
-    <StateProvider initialState={filtersDefault} reducer={filtersReducer}>
-      <Filters />
-      <Playlists />
-    </StateProvider>
+    <LayoutTemplate>
+      <StateProvider initialState={filtersDefault} reducer={filtersReducer}>
+        <Filters />
+        <Playlists />
+      </StateProvider>
+    </LayoutTemplate>
   );
 };
 
