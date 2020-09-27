@@ -18,14 +18,15 @@ export type Props = {
   pattern?: string;
 }
 
-const FilterInput: React.FC<Props> = ({
-                                        id,
-                                        name,
-                                        values,
-                                        validation,
-                                        onChange,
-                                        pattern
-                                      }) => {
+const FilterInput: React.FC<Props> = (
+  {
+    id,
+    name,
+    values,
+    validation,
+    onChange,
+    pattern
+  }) => {
 
   const [filterValue, setFilterValue] = useState('');
 
@@ -33,9 +34,14 @@ const FilterInput: React.FC<Props> = ({
     let value = event.target.value as string;
 
     const min = validation?.min;
+    const max = validation?.max;
 
     if (value && min && Number(value) < min) {
       value = min.toString();
+    }
+
+    if (max && Number(value) > max) {
+      value = max.toString();
     }
 
     setFilterValue(value);
@@ -49,7 +55,7 @@ const FilterInput: React.FC<Props> = ({
     onChange(formattedDate);
   };
 
-  const getTextFieldType = () => validation?.primitiveType === 'STRING' ? 'text' : 'number;';
+  const getTextFieldType = () => validation?.primitiveType === 'STRING' ? 'text' : 'number';
 
   if (values?.length) {
     return (

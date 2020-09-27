@@ -11,6 +11,7 @@ import { FilterProvider } from "./providers/FiltersProvider";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 import MomentUtils from '@date-io/moment';
+import { PlaylistProvider } from "./providers/PlaylistProvider";
 
 ReactDOM.render(
   <ThemeProvider theme={ theme }>
@@ -19,7 +20,9 @@ ReactDOM.render(
       <AuthProvider>
         <MuiPickersUtilsProvider utils={ MomentUtils }>
           <FilterProvider>
-            <App/>
+            <PlaylistProvider>
+              <App/>
+            </PlaylistProvider>
           </FilterProvider>
         </MuiPickersUtilsProvider>
       </AuthProvider>

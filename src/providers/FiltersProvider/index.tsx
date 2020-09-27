@@ -27,7 +27,6 @@ const FilterProvider: React.FC = ({ children }) => {
   useLayoutEffect(() => {
     const setFilters = async () => {
       const filters = await getFilters();
-      console.log(filters);
       setLocales(filters[0]);
       setCountries(filters[1]);
       setTimestamp(filters[2]);

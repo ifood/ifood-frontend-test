@@ -10,6 +10,7 @@ export interface Validation {
   entityType: string;
   pattern: string;
   min?: number;
+  max?: number;
 }
 
 export interface Filter {
@@ -27,4 +28,12 @@ export interface FilterContextProps {
   page: Filter;
   isLoading: boolean;
   setIsLoading: Dispatch<SetStateAction<boolean>>
+}
+
+export interface FilterParams {
+  locale?: string;
+  country?: string;
+  timestamp?: string;
+  limit?: number;
+  offset?: number;
 }
