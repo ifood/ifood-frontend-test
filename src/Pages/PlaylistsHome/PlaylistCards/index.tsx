@@ -1,35 +1,28 @@
-import React, { memo, useState } from "react";
+import React from "react";
 
 import { IPlaylistItem } from "../../../Services/spotifyService";
 
-import { Container, Image, Info, InfoText, Name, Description } from "./styles";
+import { Container} from "./styles";
 
-const PlaylistCards: React.FC<IPlaylistItem> = (props) => {
-  const { name, description, images, external_urls } = props;
+interface IPlaylistProps {
+  items: IPlaylistItem[];
+}
 
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  const [image] = images;
-  const { spotify } = external_urls;
-
-  const handleImageLoad = () => setImageLoaded(true);
-
+const PlaylistCards: React.FC<IPlaylistProps> = ({ items }: IPlaylistProps) => {
   return (
-    <Container href={spotify} target="_blank" loaded={imageLoaded}>
-      <Image
-        src={image?.url}
-        alt={name}
-        onLoad={handleImageLoad}
-        loaded={imageLoaded}
-      />
-      <Info>
-        <InfoText>
-          <Name>{name}</Name>
-          <Description>{description}</Description>
-        </InfoText>
-      </Info>
+    <Container>
+      {items.map(item => (
+        <a key={item.id} href={item.external_urls.spotify}>
+          <img src={item.images[0].url} alt={item.name} />
+
+          <div>
+            <strong>{item.name}</strong>
+            <p>{item.description}</p>
+          </div>
+        </a>
+      ))}
     </Container>
   );
 };
 
-export default memo(PlaylistCards);
+export default PlaylistCards;

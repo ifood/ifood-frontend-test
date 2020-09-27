@@ -3,7 +3,7 @@ import {
     CLIENT_ID,
     REDIRECT_URI,
     SCOPES,
-  } from '../constants/apiConfig';
+  } from '../Services/API/configApi';
   
   const authenticate = (): void => {
     const authenticateUri = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join(
