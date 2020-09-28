@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  app:
+    container_name: spotifood_web
+    build:
+      context: .
+      dockerfile: .docker/node/Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:80'
+    environment:
+      - NODE_ENV=development

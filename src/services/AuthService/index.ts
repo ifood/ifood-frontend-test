@@ -23,6 +23,7 @@ class AuthService {
   async getUserAuthorization() {
     const { origin, pathname } = window.location;
     const redirect_uri = `${ origin }${ pathname }`;
+    console.log(redirect_uri);
     const grant_type = 'authorization_code';
 
     const queryParams = {
