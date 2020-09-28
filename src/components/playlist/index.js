@@ -19,8 +19,8 @@ import {
 } from './styles'
 
 const PlaylistElement = ({ name, description, image, hide, onClick }) => (
-  <Container hide={hide} data-testid='playlist-container' onClick={onClick}>
-    <Image src={image} alt={name} />
+  <Container hide={hide} data-testid='playlist-container'>
+    <Image src={image} alt={name} onClick={onClick} />
     <Title>{name}</Title>
     <Description>{ReactHtmlParser(description)}</Description>
   </Container>

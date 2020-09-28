@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -10,6 +11,28 @@ import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
 
 import { Container, Title, RemoveIcon, Header } from './styles'
+
+const DatePickerElement = ({ selected, onChange }) => (
+  <DatePicker
+    selected={selected}
+    onChange={onChange}
+    dateFormat='dd/MM/yyyy HH:mm'
+    placeholderText='dd/mm/aaaa hh:mm'
+    locale='pt-br'
+    showTimeSelect
+    timeFormat='HH:mm'
+  />
+)
+
+DatePickerElement.propTypes = {
+  selected: PropTypes.instanceOf(Date),
+  onChange: PropTypes.func,
+}
+
+DatePickerElement.defaultProps = {
+  selected: null,
+  onChange: () => null,
+}
 
 const DatePickerProvider = () => {
   const dispatch = useDispatch()
@@ -44,17 +67,14 @@ const DatePickerProvider = () => {
           <RemoveIcon src={remove} onClick={handleRemove} />
         )}
       </Header>
-      <DatePicker
+      <DatePickerElement
         selected={currentFilters.date}
-        dateFormat='dd/MM/yyyy HH:mm'
-        placeholderText='dd/mm/aaaa hh:mm'
-        locale='pt-br'
         onChange={handleChange}
-        showTimeSelect
-        timeFormat='HH:mm'
       />
     </Container>
   )
 }
+
+export { DatePickerElement, DatePickerProvider }
 
 export default DatePickerProvider

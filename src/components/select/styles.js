@@ -16,6 +16,7 @@ export const Title = styled.span`
   line-height: 22px;
   letter-spacing: 1.11px;
   font-weight: 300;
+  color: ${colors.grayLight};
 `
 
 export const Dropdown = styled.select`
