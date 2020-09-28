@@ -1,0 +1,61 @@
+@import '../../variables';
+
+.playlist {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: $background-gradient;
+  flex-direction: row;
+
+  &__info {
+    min-width: 200px;
+    height: 100%;
+    background-color: $background-color-playlist-info;
+    display: none;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+
+    &__logo {
+      margin-top: 50px;
+      margin-left: 60px;
+    }
+
+    &__playlist {
+      margin-top: 40px;
+      margin-right: 0;
+      align-self: center;
+    }
+  }
+
+  &__content {
+    display: flex;
+    margin: 60px 30px 0;
+    flex-direction: column;
+    width: 100%;
+
+    @media (min-width: 768px) {
+      margin: 60px 40px 0;
+    }
+
+    &__backNavigation {
+      margin-bottom: 40px;
+      min-height: 35px;
+    }
+
+    &__tracks {
+      display: flex;
+      padding-right: 15px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 100%;
+    }
+  }
+
+  &__profile {
+    align-self: flex-start;
+    margin-top: 50px;
+  }
+}

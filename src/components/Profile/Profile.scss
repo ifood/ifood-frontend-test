@@ -1,0 +1,55 @@
+@import '../../variables';
+
+.profile {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+
+  span {
+    color: $primary-text-color;
+  }
+
+  &__avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+  }
+
+  &__informations {
+    display: flex;
+    flex-direction: column;
+
+    &__name {
+      font-weight: 500;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    &__account {
+      margin-top: 5px;
+      font-size: 11px;
+      text-align: center;
+    }
+  }
+
+  &--minimal {
+    flex-direction: row;
+
+    &__avatar {
+      height: 60px;
+      width: 60px;
+    }
+
+    &__informations {
+      margin-left: 10px;
+
+      &__name {
+        margin-top: 0;
+      }
+    }
+  }
+}
