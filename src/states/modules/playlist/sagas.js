@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import spotifyApi from 'services/api'
 
-import { paramsFactory, getErrorMessage } from 'utils'
+import { paramsFactory, getErrorMessage, getOffset } from 'utils'
 
 import { getPlaylistRequest, getPlaylistSuccess, getPlaylistFailure } from '.'
 
@@ -14,15 +14,15 @@ export default function* rootSaga() {
 function* allPlaylists() {
   try {
     const {
-      filter: { country, locale, limit, offset, timestamp } = {},
+      filter: { country, locale, limit, page, date } = {},
     } = yield select()
 
     const params = {}
     paramsFactory(params, ['country', country])
     paramsFactory(params, ['locale', locale])
     paramsFactory(params, ['limit', limit])
-    paramsFactory(params, ['offset', offset])
-    paramsFactory(params, ['timestamp', timestamp])
+    paramsFactory(params, ['offset', getOffset(page, limit)])
+    paramsFactory(params, ['timestamp', date])
 
     const { data } = yield call(spotifyApi.get, `/browse/featured-playlists`, {
       params,

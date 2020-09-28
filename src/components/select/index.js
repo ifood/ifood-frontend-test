@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { limitsList, offsetList, payloadFactory } from 'utils'
+import { limitsList, pageList, payloadFactory } from 'utils'
 
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
@@ -55,23 +55,28 @@ const SelectProvider = ({ id }) => {
 
   useEffect(() => {
     if (id === 'offset') {
-      const totalOffset = Math.ceil(total / currentFilters.limit)
-      const offset = offsetList(totalOffset)
-      setOptions(offset)
+      const totalPages = Math.ceil(total / currentFilters.limit)
+      const pages = pageList(totalPages)
+      setOptions(pages)
     }
   }, [id, total, currentFilters.limit])
 
   const handleChange = async (e) => {
     const { value } = e.target
 
-    const payload = payloadFactory(id, value)
+    const payloadKey = id === 'offset' ? 'page' : id
+
+    const payload = payloadFactory(payloadKey, value)
 
     await dispatch(setFilter(payload))
+    if (id === 'limit') {
+      await dispatch(setFilter({ page: 1 }))
+    }
 
     await dispatch(getPlaylistRequest())
   }
 
-  const value = id === 'limit' ? currentFilters.limit : currentFilters.offset
+  const value = id === 'limit' ? currentFilters.limit : currentFilters.page
 
   return (
     <Select

@@ -1,7 +1,7 @@
 import getErrorMessage from './index'
 
 describe('getErrorMessage Function', () => {
-  it('Should me able to crete a limit list', () => {
+  it('Should be able to crete a limit list', () => {
     const mockedError = {
       response: {
         status: 400,

@@ -1,7 +1,7 @@
 import countryName from './index'
 
 describe('countryName Function', () => {
-  it('Should me able to rename every country names', () => {
+  it('Should be able to rename every country names', () => {
     const au = 'Australia'
     const br = 'Brasil'
     const de = 'Alemanhã'

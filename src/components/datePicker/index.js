@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
+import remove from 'assets/images/remove.svg'
+
 import { getPlaylistRequest } from 'states/modules/playlist'
 import { setFilter } from 'states/modules/filter'
 
-import { Container, Title } from './styles'
+import { Container, Title, RemoveIcon, Header } from './styles'
 
 const DatePickerProvider = () => {
   const dispatch = useDispatch()
@@ -17,20 +19,33 @@ const DatePickerProvider = () => {
   const renderFilter = filters.find((filter) => filter.id === 'timestamp')
 
   const handleChange = async (e) => {
-    const filterAlreadySelected = currentFilters.timestamp === e
+    const filterAlreadySelected = currentFilters.date === e
 
     if (filterAlreadySelected) return
 
-    await dispatch(setFilter({ timestamp: e }))
+    await dispatch(setFilter({ date: e }))
+
+    await dispatch(getPlaylistRequest())
+  }
+
+  const handleRemove = async () => {
+    if (!currentFilters.date) return
+
+    await dispatch(setFilter({ date: null }))
 
     await dispatch(getPlaylistRequest())
   }
 
   return (
     <Container>
-      <Title>{renderFilter.name}</Title>
+      <Header>
+        <Title>{renderFilter.name}</Title>
+        {currentFilters.date && (
+          <RemoveIcon src={remove} onClick={handleRemove} />
+        )}
+      </Header>
       <DatePicker
-        selected={currentFilters.timestamp}
+        selected={currentFilters.date}
         dateFormat='dd/MM/yyyy HH:mm'
         placeholderText='dd/mm/aaaa hh:mm'
         locale='pt-br'
