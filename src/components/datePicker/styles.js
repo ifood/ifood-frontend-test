@@ -15,8 +15,9 @@ export const Container = styled.div`
     background: transparent;
     font-size: 13px;
     line-height: 32px;
+    color: ${colors.grayLight};
     &:hover {
-      color: #fff;
+      color: ${colors.white};
     }
   }
 `
@@ -27,4 +28,16 @@ export const Title = styled.span`
   line-height: 22px;
   letter-spacing: 1.11px;
   font-weight: 300;
+`
+
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`
+
+export const RemoveIcon = styled.img`
+  width: 15px;
+  cursor: pointer;
 `

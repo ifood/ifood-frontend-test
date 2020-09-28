@@ -25,7 +25,7 @@ export const Item = styled.li`
   cursor: pointer;
 
   &:hover {
-    color: #fff;
+    color: ${colors.white};
   }
 `
 

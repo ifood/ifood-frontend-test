@@ -32,11 +32,12 @@ export const Dropdown = styled.select`
   color: ${colors.grayLight};
 
   &:hover {
-    color: #fff;
+    color: ${colors.white};
   }
 `
 
 export const Option = styled.option`
   font-size: 13px;
   line-height: 32px;
+  color: ${colors.black};
 `

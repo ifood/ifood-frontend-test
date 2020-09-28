@@ -49,7 +49,7 @@ describe('payloadFactory Function', () => {
     },
   ]
 
-  it('Should me able to crete objects with pairs key/value', () => {
+  it('Should be able to crete objects with pairs key/value', () => {
     expect(selectAllPlaylists(mockedPayload)).toEqual(mockedResult)
 
     expect(selectAllPlaylists(mockedPayload)).not.toEqual(mockedFalseResult)

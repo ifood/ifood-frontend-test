@@ -9,35 +9,35 @@ exports[`<Select /> Should be able to render without errors 1`] = `
       class="sc-gtssRu glsxeV"
     />
     <select
-      class="sc-dlnjPT jYLMeW"
+      class="sc-dlnjPT kSoqVB"
       data-testid="select-container"
     >
       <option
-        class="sc-hKFyIo iNvzEJ"
+        class="sc-hKFyIo jWrmIL"
         value="5"
       >
         5
       </option>
       <option
-        class="sc-hKFyIo iNvzEJ"
+        class="sc-hKFyIo jWrmIL"
         value="10"
       >
         10
       </option>
       <option
-        class="sc-hKFyIo iNvzEJ"
+        class="sc-hKFyIo jWrmIL"
         value="15"
       >
         15
       </option>
       <option
-        class="sc-hKFyIo iNvzEJ"
+        class="sc-hKFyIo jWrmIL"
         value="20"
       >
         20
       </option>
       <option
-        class="sc-hKFyIo iNvzEJ"
+        class="sc-hKFyIo jWrmIL"
         value="30"
       >
         30

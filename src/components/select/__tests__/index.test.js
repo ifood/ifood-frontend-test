@@ -30,7 +30,7 @@ describe('<Select />', () => {
             locale: '',
             limit: 20,
             offset: 1,
-            timestamp: null,
+            date: null,
           },
         },
         playlist: {
