@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../components/Layout";
 import PlayListInput from "./components/PlaylistInput";
 import { PlayListContainer } from "./styles";
+import { usePlaylists } from "../../hooks/usePlaylists";
 
-const PlayListsPage = () => {
+const PlayListsPage: React.FC = () => {
+
+  const { playlists } = usePlaylists();
+
+  useEffect(() =>{
+    console.log(playlists);
+  }, [playlists]);
 
   return (
     <Layout>

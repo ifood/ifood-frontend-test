@@ -36,7 +36,7 @@ const FilterProvider: React.FC = ({ children }) => {
 
     setFilters()
       .catch(() => enqueueSnackbar('Outch! Sorry dude, it\'s not a possible load de filter. Try again'));
-  }, [enqueueSnackbar])
+  }, [enqueueSnackbar, getFilters])
 
   return (
     <FilterContext.Provider value={ {

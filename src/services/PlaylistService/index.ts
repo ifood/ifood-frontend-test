@@ -10,11 +10,25 @@ class PlaylistService {
   private SPOTIFY_API = `${spotifyApiUrl}/browse/featured-playlists`;
 
   async getPlaylists(filters: FilterParams) {
-
     const { tokenType, accessToken } = AuthService.getUserToken()!;
     const Authorization = `${tokenType} ${ accessToken }`;
 
-    const url = `${this.SPOTIFY_API}`;
+    const searchParams = new URLSearchParams();
+
+    Object.keys(filters).forEach((key) => {
+      const filterRecord = filters as Record<string, string>;
+
+      const value = filterRecord[key];
+
+      if (!value) {
+        return;
+      }
+
+      searchParams.append(key, filterRecord[key]);
+    });
+
+    const url = `${this.SPOTIFY_API}?${searchParams.toString()}`;
+    console.log(url);
 
     const options: AxiosRequestConfig = {
       headers: {

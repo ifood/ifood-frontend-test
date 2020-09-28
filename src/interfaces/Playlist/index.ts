@@ -16,17 +16,10 @@ export interface Playlist {
   name: string;
 }
 
-export interface PlaylistContextData {
+export interface PlaylistContextProps {
   isLoading?: boolean;
   playlists?: Playlist[];
   filter?: FilterParams;
   setSearch?: (filter: string) => void;
   setFilter?: (filter: FilterParams) => void;
-}
-
-export interface PlaylistResponse {
-  items: Playlist[];
-  next: string;
-  previous: string;
-  total: number;
 }

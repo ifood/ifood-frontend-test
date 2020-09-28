@@ -1,19 +1,18 @@
 import React, {
   createContext,
   useCallback,
-  useEffect,
   useLayoutEffect,
   useState
 } from 'react';
 
 import { useSnackbar } from 'notistack';
-import { Playlist, PlaylistContextData } from "../../interfaces/Playlist";
+import { Playlist, PlaylistContextProps } from "../../interfaces/Playlist";
 import useAuthentication from "../../hooks/useAuthentication";
 import useFilters from "../../hooks/useFilters";
 import { FilterParams } from "../../interfaces/Filter";
 import PlaylistService from '../../services/PlaylistService';
 
-const PlaylistContext = createContext<PlaylistContextData>({});
+const PlaylistContext = createContext<PlaylistContextProps>({});
 
 const PlaylistProvider: React.FC = ({ children }) => {
   const { enqueueSnackbar } = useSnackbar();
@@ -22,29 +21,39 @@ const PlaylistProvider: React.FC = ({ children }) => {
 
   const { setIsLoading } = useFilters();
 
+  const [search, setSearch] = useState('');
+
   const [filter, setFilter] = useState<FilterParams>({});
 
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
 
   const getPlaylists = useCallback(async () => {
     setIsLoading(true);
-    const { items } = await PlaylistService.getPlaylists(filter)
-      .catch(({ response: { status } }) => {
-        if (status === 400) {
-          enqueueSnackbar('Outch! We don\'t can search for playlist with that\'s filters.');
-        }
+    try {
+      const result = await PlaylistService.getPlaylists(filter);
+      setPlaylists(result.items);
+    } catch ({ response: { status } }) {
+      if (status === 400) {
+        enqueueSnackbar('Outch! We don\'t can search for playlist with that\'s filters.', { variant: 'error' });
+        return;
+      }
 
-        if (status === 401) {
-          enqueueSnackbar('Outch! Token has expired', { variant: 'error' });
-          logout();
-        }
+      if (status === 401) {
+        enqueueSnackbar('Outch! Token has expired', { variant: 'error' });
+        logout();
+        return;
+      }
 
-        enqueueSnackbar('Outch! Outch! We don\'t can search for playlist.', { variant: 'error' });
-      })
-      .finally(() => setIsLoading(false));
+      enqueueSnackbar('Outch! Outch! We don\'t can search for playlist.', { variant: 'error' });
+    } finally {
+      setIsLoading(false);
+    }
 
-    setPlaylists(items);
   }, [enqueueSnackbar, filter, logout, setIsLoading]);
+
+  const filterPlaylists = playlists.filter(
+    ({ name }: Playlist) => name.toLowerCase().includes(search.toLowerCase())
+  );
 
   useLayoutEffect(() => {
     if (!isAuthenticated()) {
@@ -65,7 +74,8 @@ const PlaylistProvider: React.FC = ({ children }) => {
       value={ {
         filter,
         setFilter,
-        playlists
+        playlists: filterPlaylists,
+        setSearch
       } }
     >
       { children }
