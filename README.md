@@ -27,3 +27,17 @@ As this application will be a worldwide success, it must be prepared to be acces
 We **strongly recommend** using React to build the application.
 Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
 Fork this repository and submit your code.
+
+# Spotifood Playlist
+
+[Live Preview]()
+
+## Built with
+
+- [Create React App](https://create-react-app.dev/) - Set up a modern web app by running one command.
+- [React router](https://reacttraining.com/react-router/) - Declarative routing for React.
+- [TypeScript](https://www.typescriptlang.org) - TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+- [Sass](https://sass-lang.com/) - CSS with superpowers.
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
+
+[BEM](http://getbem.com) standard was used in CSS.
