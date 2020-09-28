@@ -8,16 +8,21 @@ export const Form = styled.form`
   flex-direction: column;
 
   > button {
-    background-color: #1db954;
+    background-color: ${props => props.theme.colors.second};
+    margin-top: 15px;
     border: none;
-    border-radius: 0.3rem;
-    color: #fff;
-    font-weight: bold;
-    height: 2.4rem;
-    margin-top: 1rem;
+    border-radius: 4px;
     width: 100%;
+    height: 40px;
+    color: ${props => props.theme.colors.white};
+font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
     transition: background-color 0.2s;
 
+&:hover{
+  background-color: ${props => props.theme.colors.third};
+}
 
   }
 
@@ -40,28 +45,29 @@ export const FormItem = styled.div`
   }
 
   .react-select__control {
-    border-radius: 0.3rem;
-    height: 2.4rem;
+    border-radius: 4px;
+    border: 2px solid ${props => props.theme.colors.third};
+    height: 40px;
     width: 100%;
 
     .react-select__value-container {
       padding: 0 0.5rem;
 
       .react-select__placeholder {
-        color: #a8a8b3;
-        font-size: 0.9rem;
+        color: ${props => props.theme.colors.gray};
+        font-size: 15px;
       }
 
       input {
-        color: #3a3a3a;
-        font-size: 0.9rem;
+        color: ${props => props.theme.colors.gray};
+        font-size: 15px;
       }
     }
   }
 
   .react-select__menu {
     .react-select__option {
-      color: #3a3a3a;
+      color: ${props => props.theme.colors.gray};
     }
   }
 
@@ -70,15 +76,15 @@ export const FormItem = styled.div`
   }
 
   > input, .react-datepicker-wrapper input {
-    border: 2px solid transparent;
-    border-radius: 0.3rem;
-    font-size: 0.9rem;
-    height: 2.4rem;
+    border: 2px solid ${props => props.theme.colors.third};
+    border-radius: 4px;
+    font-size: 15px;
+    height: 40px;
     padding: 0 0.5rem;
     width: 100%;
 
     &::placeholder {
-      color: #a8a8b3;
+      color: ${props => props.theme.colors.gray};
     }
   }
 

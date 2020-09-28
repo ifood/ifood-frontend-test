@@ -100,7 +100,7 @@ const PlaylistsHome: React.FC = () => {
               <FiSearch size={20} />
               <input
                 onChange={handleSearchPlaylistByName}
-                placeholder="Pesquisar por nome..."
+                placeholder="Procure por nome da playlist..."
               />
             </SearchNameForm>
 

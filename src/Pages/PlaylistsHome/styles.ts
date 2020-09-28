@@ -26,8 +26,8 @@ export const Content = styled.div`
 export const SearchNameForm = styled.div`
   align-items: center;
   background-color: #fff;
-  border: 2px solid #fff;
-  border-radius: 0.3rem;
+  border: 2px solid ${props => props.theme.colors.third};
+  border-radius: 4px;
   display: flex;
   padding: 0 1rem;
   margin-bottom: 2.5rem;
@@ -38,13 +38,13 @@ export const SearchNameForm = styled.div`
 
   input {
     border: none;
-    color: #3a3a3a;
+    color: ${props => props.theme.colors.gray};
     flex: 1;
-    height: 2.8rem;
+    height: 40px;
     padding: 0 1rem;
 
     &::placeholder {
-      color: #a8a8b3;
+      color: ${props => props.theme.colors.gray};;
     }
   }
 `;

@@ -2,14 +2,20 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin: 3rem 0;
+  width: 100%;
+  ;`
+
+export const Content = styled.div`
+width: 80%;
+margin: 0 auto;
 
   a {
     display: flex;
     align-items: center;
 
-    background-color: #303030;
+    background-color: ${props => props.theme.colors.third};
     border-radius: 0.7rem;
-    color: #fff;
+    color: ${props => props.theme.colors.white} ;
     padding: 1rem;
     text-decoration: none;
     transition: transform 0.2s;
@@ -19,7 +25,7 @@ export const Container = styled.div`
     }
 
     &:hover {
-      transform: translateX(0.8rem);
+      transform: translateX(0.5rem);
     }
 
     img {
@@ -40,9 +46,16 @@ export const Container = styled.div`
       }
 
       p {
-        color: #c2c2c2;
+        color: ${props => props.theme.colors.gray};
         line-height: 1.3rem;
       }
     }
   }
+
+
+@media(max-width:500px){
+  width: 100%;
+}
 `;
+
+

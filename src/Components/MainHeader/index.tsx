@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { Container, Profile, Welcome, Message } from "./styles";
+
+import { Container, Profile, Welcome, Message} from "./styles";
 
 import emojis from "../../Utils/emojis";
 
