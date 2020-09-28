@@ -14,7 +14,6 @@ export const Content = styled.div`
 
 export const SidebarMobileContainer = styled.div`
   position: absolute;
-  background: rgba(0, 0 , 0, 0.8);
   width: 100vw;
   height: 100vh;
   z-index: 999;

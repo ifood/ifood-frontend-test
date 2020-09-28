@@ -13,9 +13,8 @@ type Props = {
 const PlaylistList: React.FC<Props> = ({ playlists }) => {
 
   const builderPlaylists = () => {
-    console.log(playlists);
     return playlists.map((playlist, index) => {
-      const { images, description } = playlist;
+      const { images, name } = playlist;
       const { url } = images[0];
 
       return (
@@ -23,8 +22,9 @@ const PlaylistList: React.FC<Props> = ({ playlists }) => {
           key={ index }
         >
           <PlaylistCardImage src={ url }/>
-          {/*<PlaylistCardDescription dangerouslySetInnerHTML={{ __html: description}}>*/}
-          {/*</PlaylistCardDescription>*/}
+          <PlaylistCardDescription>
+            { name }
+          </PlaylistCardDescription>
         </PlaylistCard>
       )
     });

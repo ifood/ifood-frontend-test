@@ -15,7 +15,7 @@ const PlayListsPage: React.FC = () => {
         <PlaylistContainer>
           <PlaylistInput/>
           <PlaylistCardListContainer>
-            <PlaylistList playlists={ playlists }/>
+            <PlaylistList playlists={ playlists } />
           </PlaylistCardListContainer>
         </PlaylistContainer>
       </>

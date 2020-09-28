@@ -28,7 +28,6 @@ class PlaylistService {
     });
 
     const url = `${this.SPOTIFY_API}?${searchParams.toString()}`;
-    console.log(url);
 
     const options: AxiosRequestConfig = {
       headers: {
