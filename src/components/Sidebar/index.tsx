@@ -7,7 +7,7 @@ import {
 } from "./styles";
 import useFilters from "../../hooks/useFilters";
 import { makeStyles } from "@material-ui/core/styles";
-import FilterInput from "../FilterInput";
+import FilterInput from "./components/FilterInput";
 import brand from "../../assets/img/svg/spotifood_logo_aside_red.svg";
 import { usePlaylists } from "../../hooks/usePlaylists";
 
