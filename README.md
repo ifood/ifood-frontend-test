@@ -2,8 +2,7 @@
 
 This project was part of the selection process for front-end developer at Ifood.
 
-If you want to see the application already running in production click on the link
-<a href="https://eduardo-drozda-spotifood.netlify.app/" target="_blank">https://eduardo-drozda-spotifood.netlify.app/!</a>
+If you want to see the application already running in production click on the link [aqui](https://eduardo-drozda-spotifood.netlify.app/)
 
 # Table of contents
 
