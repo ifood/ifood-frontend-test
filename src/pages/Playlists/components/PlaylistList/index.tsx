@@ -10,15 +10,18 @@ const PlaylistList: React.FC<Props> = ({ playlists }) => {
 
   const builderPlaylists = () => {
     return playlists.map((playlist, index) => {
-      const { images, name } = playlist;
+      const { images, name, external_urls } = playlist;
       const { url: imageUrl } = images[0];
+      const { spotify } = external_urls;
 
       return (
-        <PlaylistCard
-          name={ name }
-          key={ index }
-          imageUrl={ imageUrl }
-        />
+        <div key={ index }>
+          <PlaylistCard
+            name={ name }
+            imageUrl={ imageUrl }
+            playlistUrl={ spotify }
+          />
+        </div>
       )
     });
   }

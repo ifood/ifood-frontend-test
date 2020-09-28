@@ -6,20 +6,26 @@ import {
 } from "./styles";
 
 type Props = {
-  key: number;
   imageUrl: string;
   name: string;
+  playlistUrl: string;
 }
 
-const PlaylistCard = ({ key, imageUrl, name }: Props) => (
-  <PlaylistCardContainer
-    key={ key }
-  >
-    <PlaylistCardImage src={ imageUrl }/>
-    <PlaylistCardDescription>
-      { name }
-    </PlaylistCardDescription>
-  </PlaylistCardContainer>
-);
+const PlaylistCard = ({ imageUrl, name, playlistUrl }: Props) => {
+
+  const openPlaylist = () => {
+    window.open(playlistUrl, '_blank');
+  };
+
+  return  (
+    <PlaylistCardContainer onClick={openPlaylist}
+    >
+      <PlaylistCardImage src={ imageUrl }/>
+      <PlaylistCardDescription>
+        { name }
+      </PlaylistCardDescription>
+    </PlaylistCardContainer>
+  );
+}
 
 export default memo(PlaylistCard);
