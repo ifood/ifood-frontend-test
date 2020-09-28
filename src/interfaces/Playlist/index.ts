@@ -17,9 +17,8 @@ export interface Playlist {
 }
 
 export interface PlaylistContextProps {
-  isLoading?: boolean;
-  playlists?: Playlist[];
-  filter?: FilterParams;
-  setSearch?: (filter: string) => void;
-  setFilter?: (filter: FilterParams) => void;
+  playlists: Playlist[];
+  filter: FilterParams;
+  setFilter: (filter: FilterParams) => void;
+  setSearch: (filter: string) => void;
 }

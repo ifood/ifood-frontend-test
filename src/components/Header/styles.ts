@@ -8,7 +8,7 @@ export const CustomToolbar = styled(Toolbar)`
   width: 90%;
   margin: 0 auto;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 990px) {
     width: 95%;
   }
 

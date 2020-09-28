@@ -10,7 +10,7 @@ class FilterService {
   private FILTER_API_URL = config.playlistFiltersApi;
 
   async getFilters() {
-    const response = await HttpService.get<FilterResponse>(
+    const response = await HttpService.get(
       this.FILTER_API_URL!,
     );
 

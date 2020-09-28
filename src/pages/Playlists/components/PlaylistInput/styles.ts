@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const PlaylistInputContainer = styled.div`
-  width: 58vw;
+  width: 59vw;
 
-   @media screen and (max-width: 768px) {
-     width: 85vw;
+   @media screen and (max-width: 990px) {
+     width: 100%;
    }
 `;

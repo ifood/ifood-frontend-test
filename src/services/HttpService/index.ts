@@ -11,7 +11,7 @@ class HttpService {
     return this.http.post(url, queryString, header);
   }
 
-  get<T>(url: string, header?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  get(url: string, header?: AxiosRequestConfig): Promise<AxiosResponse> {
     return this.http.get(url, header);
   }
 

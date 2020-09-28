@@ -36,7 +36,7 @@ class PlaylistService {
       }
     }
 
-    const response = await HttpService.get<any>(url, options);
+    const response = await HttpService.get(url, options);
 
     return response.data.playlists;
   }

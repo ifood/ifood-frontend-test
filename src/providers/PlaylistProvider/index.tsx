@@ -12,7 +12,7 @@ import useFilters from "../../hooks/useFilters";
 import { FilterParams } from "../../interfaces/Filter";
 import PlaylistService from '../../services/PlaylistService';
 
-const PlaylistContext = createContext<PlaylistContextProps>({});
+const PlaylistContext = createContext<PlaylistContextProps>({} as PlaylistContextProps);
 
 const PlaylistProvider: React.FC = ({ children }) => {
   const { enqueueSnackbar } = useSnackbar();

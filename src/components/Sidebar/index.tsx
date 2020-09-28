@@ -31,7 +31,6 @@ const Sidebar: React.FC<Props> = ({ isOpen }) => {
 
   const handleChange = (id: string, value: string | number) => {
     if (setFilter) {
-
       const newFilter = {
         ...filter,
         [id]: value,

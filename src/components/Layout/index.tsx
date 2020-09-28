@@ -3,7 +3,7 @@ import useUserInfo from "../../hooks/useUserInfo";
 import Header from "../Header";
 import PlayListFilters from "../Sidebar";
 import { Background } from "../../assets/styles/Background";
-import { Content } from "./styled";
+import { Content, SidebarMobileContainer } from "./styles";
 import { LinearProgress } from "@material-ui/core";
 import useFilters from "../../hooks/useFilters";
 
@@ -28,13 +28,16 @@ const Layout: React.FC<Props> = ({ children }) => {
   useLayoutEffect(() => {
     const addPlaylistListener = () => {
       const playListContainer = document.getElementById('container');
-      playListContainer!.addEventListener('click', closeSidebar);
+      if (playListContainer) {
+        playListContainer!.addEventListener('click', closeSidebar);
+      }
     }
     addPlaylistListener();
   }, [isOpen])
 
   return (
     <Background>
+      { isOpen && (<SidebarMobileContainer id="container"/>) }
       <Header userInfo={ userInfo! } openSidebar={ openSidebar }/>
       { isLoading && (<LinearProgress color="secondary"/>) }
       <Content>

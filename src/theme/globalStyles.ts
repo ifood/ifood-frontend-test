@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-size: 1.2rem;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
    *, *:before, *:after {

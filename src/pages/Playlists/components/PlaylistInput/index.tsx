@@ -17,9 +17,7 @@ const PlaylistInput: React.FC = () => {
   const { setSearch } = usePlaylists();
 
   const handleChange = useCallback(({ target }: ChangeEvent<HTMLTextAreaElement>) => {
-    if (setSearch) {
-      setSearch(target.value);
-    }
+    setSearch(target.value);
   }, [setSearch]);
 
   return (
@@ -30,7 +28,7 @@ const PlaylistInput: React.FC = () => {
         label="Insert your favorite playlist"
         variant="outlined"
         size="small"
-        onChange={handleChange}
+        onChange={ handleChange }
       />
     </PlaylistInputContainer>
   );

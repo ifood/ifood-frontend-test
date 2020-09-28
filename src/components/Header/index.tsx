@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ userInfo, openSidebar }) => {
   const { logout } = useAuthentication();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const [showMenuIcon, setShowMenuIcon] = useState<boolean>(window.innerWidth <= 768);
+  const [showMenuIcon, setShowMenuIcon] = useState<boolean>(window.innerWidth <= 990);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ userInfo, openSidebar }) => {
 
   const avatarLogoBrandListener = useCallback(() => {
     window.addEventListener('resize', () => {
-      setShowMenuIcon(window.innerWidth <= 768);
+      setShowMenuIcon(window.innerWidth <= 990);
     })
   }, [setShowMenuIcon]);
 
