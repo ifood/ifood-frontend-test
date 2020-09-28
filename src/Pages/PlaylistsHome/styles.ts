@@ -8,19 +8,10 @@ interface IContentLogin {
 
 export const Container = styled.div`
   min-height: 100vh;
-  display: flex;
 
-  @media (min-width: 500px) {
-    justify-content: start;
-    text-align: left;
-  }
 `;
 
 export const Content = styled.div`
-  height: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem;
 `;
 
 export const SearchNameForm = styled.div`
@@ -59,6 +50,10 @@ top: 0;
 position: relative;
 height: 100vh;
 align-items: center;
+
+@media(max-width:500px){
+  text-align:center;
+}
 
 `;
 
@@ -110,7 +105,7 @@ color: black;
 transition: background .3s;
 
 &:hover{
-    background-image: linear-gradient(#EA1D2C, #1ED760);
+    background-image: linear-gradient(to right, #1ED760, #EA1D2C);
     color: white;
 }
 

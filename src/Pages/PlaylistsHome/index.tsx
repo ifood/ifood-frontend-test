@@ -28,6 +28,7 @@ import {
 } from "./styles";
 import PlaylistFilter from "./PlaylistFilters";
 import PlaylistCards from "./PlaylistCards";
+import LayoutPage from "../../Components/LayoutPage";
 
 const PlaylistsHome: React.FC = () => {
   const [initialItems, setInitialItems] = useState<IPlaylistItem[]>([]);
@@ -95,7 +96,7 @@ const PlaylistsHome: React.FC = () => {
         )}
 
         {token && (
-          <>
+          <LayoutPage>
             <SearchNameForm>
               <FiSearch size={20} />
               <input
@@ -103,10 +104,9 @@ const PlaylistsHome: React.FC = () => {
                 placeholder="Procure por nome da playlist..."
               />
             </SearchNameForm>
-
             <PlaylistFilter />
             {items && <PlaylistCards items={items} />}
-          </>
+          </LayoutPage>
         )}
       </Content>
     </Container>
