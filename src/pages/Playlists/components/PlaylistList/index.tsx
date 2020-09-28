@@ -1,10 +1,6 @@
 import React, { memo } from "react";
 import { Playlist } from "../../../../interfaces/Playlist";
-import {
-  PlaylistCard,
-  PlaylistCardDescription,
-  PlaylistCardImage
-} from "./styles";
+import PlaylistCard from "../PlaylistCard";
 
 type Props = {
   playlists: Playlist[];
@@ -15,17 +11,14 @@ const PlaylistList: React.FC<Props> = ({ playlists }) => {
   const builderPlaylists = () => {
     return playlists.map((playlist, index) => {
       const { images, name } = playlist;
-      const { url } = images[0];
+      const { url: imageUrl } = images[0];
 
       return (
         <PlaylistCard
+          name={ name }
           key={ index }
-        >
-          <PlaylistCardImage src={ url }/>
-          <PlaylistCardDescription>
-            { name }
-          </PlaylistCardDescription>
-        </PlaylistCard>
+          imageUrl={ imageUrl }
+        />
       )
     });
   }

@@ -2,7 +2,7 @@ import React, { memo, useLayoutEffect, useState } from "react";
 import useUserInfo from "../../hooks/useUserInfo";
 import Header from "../Header";
 import PlayListFilters from "../Sidebar";
-import { Background } from "../../assets/styles/Background";
+import { Background } from "../../styles/Background";
 import { Content, SidebarMobileContainer } from "./styles";
 import { LinearProgress } from "@material-ui/core";
 import useFilters from "../../hooks/useFilters";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Background } from "../../assets/styles";
+import { Background } from "../../styles";
 import {
   LoginButton,
   LoginButtonContainer,

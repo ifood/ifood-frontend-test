@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Button } from "../../assets/styles";
-import { Link } from "../../assets/styles/Link";
+import { Button } from "../../styles";
+import { Link } from "../../styles/Link";
 
 export const LoginContainer = styled.div`
   width: 100vw;

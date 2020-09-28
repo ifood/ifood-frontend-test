@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../../../../theme/theme";
 
-export const PlaylistCard = styled.div`
+export const PlaylistCardContainer = styled.div`
   margin-top: 20px;
   position: relative;
 `;
@@ -37,5 +37,4 @@ export const PlaylistCardDescription = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;
