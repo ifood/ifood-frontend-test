@@ -1,0 +1,50 @@
+import styled from "styled-components";
+
+type PlaylistFiltersContainerProps = {
+  isOpen: boolean;
+}
+
+export const SidebarContainer = styled.aside<PlaylistFiltersContainerProps>`
+  width: 350px;
+  margin-right: 30px;
+  height: 75vh;
+  padding: 20px;
+
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+  @media screen and (max-width: 990px) {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    transition: all 0.3s;
+    height: 540px;
+    width: 60%;
+    transform: ${ ({ isOpen }) => isOpen ? 'translate(0, 0)' : 'translate(-400px, -600px)' };
+  }
+`;
+
+export const AdvancedSearchTitle = styled.h3`
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+`;
+
+export const SidebarLogoContainer = styled.div`
+  display: flex;
+  justify-items: center;
+
+  @media screen and (mix-width: 990px) {
+    display: none;
+  }
+`;
+
+export const SidebarLogo = styled.img`
+  width: 140px;
+  margin-bottom: 10px;
+  margin: 10px auto;
+`;
