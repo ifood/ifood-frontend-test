@@ -57,7 +57,7 @@ const PlaylistProvider = () => {
   }
 
   const handleClickPlaylist = (playlistLink) => {
-    window.location.replace(playlistLink)
+    window.open(playlistLink, '_blank')
   }
 
   const filteredPlaylist = playlists.filter((playlist) =>
