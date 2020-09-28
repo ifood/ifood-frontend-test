@@ -14,20 +14,20 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  cursor: pointer;
   flex: 0 1 calc(20% - 20px);
   flex-direction: column;
   margin: 10px;
   padding: 5px;
   opacity: ${(props) => (props.hide ? 1 : 0.4)};
-  :hover {
-    opacity: 0.7;
-  }
 `
 
 export const Image = styled.img`
+  cursor: pointer;
   width: 250px;
   margin-bottom: 10px;
+  :hover {
+    opacity: 0.7;
+  }
 `
 
 export const Title = styled.h1`

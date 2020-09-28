@@ -3,12 +3,12 @@
 exports[`<Playlist /> Snapshot testing Playlist 1`] = `
 <DocumentFragment>
   <div
-    class="sc-dlnjPT dRUOtx"
+    class="sc-dlnjPT gedplC"
     data-testid="playlist-container"
   >
     <img
       alt="mocked mocked"
-      class="sc-hKFyIo beZTwB"
+      class="sc-hKFyIo jJzsPK"
       src="/"
     />
     <h1

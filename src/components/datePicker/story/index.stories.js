@@ -1,20 +1,19 @@
 import React from 'react'
 
 import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 
-import Title from 'components/title'
+import { DatePickerElement } from '../index'
 
 import { colors } from 'styles'
 
-const stories = storiesOf('Title', module)
-
-stories.add('default', () => (
+storiesOf('DatePicker', module).add('default', () => (
   <div
     style={{
       backgroundColor: `${colors.grayDark}`,
       width: '200px',
     }}
   >
-    <Title />
+    <DatePickerElement onChange={action('clicked')} />
   </div>
 ))

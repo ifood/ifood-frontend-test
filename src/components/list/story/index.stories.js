@@ -2,15 +2,23 @@ import React from 'react'
 
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
+import { withKnobs, text } from '@storybook/addon-knobs'
 
 import { List } from 'components/list'
 
 import { colors } from 'styles'
 
-storiesOf('List', module).add('default', () => {
+const stories = storiesOf('List', module)
+stories.addDecorator(withKnobs)
+
+stories.add('default', () => {
+  const title = text('title', 'locale')
   const values = [
-    { id: 'locale', name: 'locale', values: [{ value: 'pt_BR' }] },
-    { id: 'locale', name: 'locale', values: [{ value: 'en_US' }] },
+    { id: 'locale', name: 'Brasil' },
+    { id: 'locale', name: 'USA' },
+    { id: 'locale', name: 'Russia' },
+    { id: 'locale', name: 'Frace' },
+    { id: 'locale', name: 'Portugal' },
   ]
   return (
     <div
@@ -19,7 +27,7 @@ storiesOf('List', module).add('default', () => {
         width: '200px',
       }}
     >
-      <List title='locale' values={values} onClick={action('clicked')} />
+      <List title={title} values={values} onClick={action('clicked')} />
     </div>
   )
 })
