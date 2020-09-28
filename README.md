@@ -1,6 +1,8 @@
 # Spotifdood.
 
-This project was part of the selection process for front-end developer at Ifood
+This project was part of the selection process for front-end developer at Ifood.
+
+If you want to see the application already running in production click on the link [aqui](https://eduardo-drozda-spotifood.netlify.app/)
 
 # Table of contents
 
@@ -214,15 +216,3 @@ Open the browser and access http://localhost:3000
 
     1. Write tests for all application components;
     2. Write snapshot for all application components;
- 
-
-
-
-
-
-
-
-
-
-
-
