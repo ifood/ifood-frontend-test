@@ -10,12 +10,11 @@ This project was part of the selection process for front-end developer at Ifood
 - [Development dependencies](#development-dependencies)
 - [Getting Started](#getting-Started)
 - [Starting the web application](#starting-the-web-application)
+- [Things I wish I had done](#things-i-wish-i-had-done)
 
 # Development language
 
-Project made with ReactJS.
-
-The architecture and components are below.
+The project was developed using the ReactJS library with Typescript.
 
 # Architecture Folder
 
