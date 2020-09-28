@@ -1,0 +1,19 @@
+@import '../../variables';
+
+.button {
+  color: $button-text-color;
+  background-color: $highlight-color;
+  border-width: 0;
+  outline: none;
+  border-radius: 50px;
+  height: auto;
+  width: auto;
+  padding: 25px;
+  font-weight: 500;
+  font-size: 22px;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    font-size: 32px;
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../variables';
+
+.playlistItems {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+
+  &__nameAndTime {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__name {
+      color: $primary-text-color;
+      font-weight: bold;
+
+      &::before {
+        display: inline-block;
+        vertical-align: sub;
+        width: 20px;
+        content: "\2022";
+        color: $highlight-color;
+        font-size: 30px;
+        font-weight: bold;
+      }
+    }
+
+    &__time {
+      color: $secondary-text-color;
+      font-weight: 500;
+    }
+  }
+
+  &__artist {
+    color: $secondary-text-color;
+    font-size: 10px;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+}

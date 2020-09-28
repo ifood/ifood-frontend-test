@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link component Renders with children 1`] = `ShallowWrapper {}`;
+
+exports[`Link component Renders with classname 1`] = `ShallowWrapper {}`;
+
+exports[`Link component Renders without crashing 1`] = `ShallowWrapper {}`;

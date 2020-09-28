@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component Renders with classname 1`] = `ShallowWrapper {}`;
+
+exports[`Button component Renders without crashing 1`] = `ShallowWrapper {}`;

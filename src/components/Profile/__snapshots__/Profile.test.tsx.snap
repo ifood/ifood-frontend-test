@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile component Render in minimal format 1`] = `ShallowWrapper {}`;
+
+exports[`Profile component Renders without crashing 1`] = `ShallowWrapper {}`;

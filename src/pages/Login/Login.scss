@@ -1,0 +1,52 @@
+@import '../../variables';
+
+.login {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: $background-color;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    background-color: $highlight-color;
+  }
+
+  &__title {
+    margin: 0 auto 50px;
+    color: $primary-text-color;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.2;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    &__description {
+      display: flex;
+      align-items: center;
+      flex-flow: column wrap;
+
+      span {
+        display: block;
+      }
+    }
+  }
+}
+
+.login-loading {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color;
+}
