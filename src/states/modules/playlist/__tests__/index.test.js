@@ -14,7 +14,9 @@ describe('payloadFactory Function', () => {
         owner: {
           spotify: 'mocked Owner',
         },
-        href: '/href',
+        external_urls: {
+          spotify: '/href',
+        },
         description: 'mocked description',
         collaborative: 'mocked collaborative',
       },

@@ -4,7 +4,7 @@ export const selectAllPlaylists = (payload) =>
     name: playlist.name,
     image: playlist.images[0]?.url,
     author: playlist.owner.spotify,
-    link: playlist.href,
+    link: playlist.external_urls?.spotify,
     description: playlist.description,
     collaborative: playlist.collaborative,
   }))
