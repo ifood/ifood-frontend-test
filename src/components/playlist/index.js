@@ -18,8 +18,8 @@ import {
   NotFound,
 } from './styles'
 
-const PlaylistElement = ({ name, description, image, hide }) => (
-  <Container hide={hide} data-testid='playlist-container'>
+const PlaylistElement = ({ name, description, image, hide, onClick }) => (
+  <Container hide={hide} data-testid='playlist-container' onClick={onClick}>
     <Image src={image} alt={name} />
     <Title>{name}</Title>
     <Description>{ReactHtmlParser(description)}</Description>
@@ -31,6 +31,7 @@ PlaylistElement.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   hide: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 PlaylistElement.defaultProps = {
@@ -38,6 +39,7 @@ PlaylistElement.defaultProps = {
   description: '',
   image: '/',
   hide: false,
+  onClick: () => null,
 }
 
 const PlaylistProvider = () => {
@@ -52,6 +54,10 @@ const PlaylistProvider = () => {
     if (!hide) {
       dispatch(toggleSidebar())
     }
+  }
+
+  const handleClickPlaylist = (playlistLink) => {
+    window.location.replace(playlistLink)
   }
 
   const filteredPlaylist = playlists.filter((playlist) =>
@@ -73,6 +79,7 @@ const PlaylistProvider = () => {
             description={playlist.description}
             image={playlist.image}
             hide={hide}
+            onClick={() => handleClickPlaylist(playlist.link)}
           />
         ))
       ) : (

@@ -47,10 +47,14 @@ const ListProvider = ({ id }) => {
 
   const renderFilter = filters.find((filter) => filter.id === id)
 
-  const handleClick = async (value) => {
-    const filterAlreadySelected = currentFilters[id] === value
+  const handleClick = async (filter) => {
+    const filterAlreadySelected = currentFilters[id] === filter
 
-    if (filterAlreadySelected) return
+    let value = filter
+
+    if (filterAlreadySelected) {
+      value = ''
+    }
 
     const payload = payloadFactory(id, value)
 
