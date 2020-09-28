@@ -5,10 +5,11 @@ This project was part of the selection process for front-end developer at Ifood
 # Table of contents
 
 - [Development Language](#development-language)
-- [Dependencies](#Dependencies)
-- [Development dependencies](#Development-dependencies)
-- [Getting Started](#Getting-Started)
-- [Starting the web application](#Starting-the-web-application)
+- [Architecture Folder](#architecture-folder)
+- [Dependencies](#dependencies)
+- [Development dependencies](#development-dependencies)
+- [Getting Started](#getting-Started)
+- [Starting the web application](#starting-the-web-application)
 
 # Development language
 
@@ -18,11 +19,7 @@ The architecture and components are below.
 
 # Architecture Folder
 
-The architecture folder of the files followed the standards the:
-
-# Architecture
-
-The architecture of the files followed the standards the:
+Below is a drawing of how the structure was developed.
 
 ```bash
 Spotifood
@@ -151,12 +148,80 @@ Spotifood
 ├── README.md
 ├── tsconfig.json
 ├── yarn.lock
-├── config-overrides.js
-├── jsconfig.js
-├── package.json
-├── README.md
 └── yarn.lock
 ```
+
+# Dependencies
+
+- [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
+- [Material UI](https://material-ui.com/pt/)
+- [Styled Components](https://github.com/styled-components/styled-components)
+- [Axios](https://github.com/axios/axios)
+- [Moment](https://momentjs.com/)
+- [Notistack](https://iamhosseindhv.com/notistack)
+- [Typescript](https://www.typescriptlang.org/)
+- [Yarn](https://yarnpkg.com/)
+
+# Development dependencies
+
+- [Enzyme](https://github.com/enzymejs/enzyme)
+- [React Test Renderer](https://pt-br.reactjs.org/docs/test-renderer.html)
+
+# Getting Started
+
+After cloning the project, run the command, at the root of the project.
+
+```console
+cp .env.example .env
+```
+
+Inside the .env file you just generated there are two properties with empty fields.
+
+> REACT_APP_SPOTIFY_CLIENT_ID=
+  REACT_APP_SPOTIFY_CLIENT_SECRET=
+
+Insert the client_id and client_secret of your spotify application.
+
+Example:
+
+> REACT_APP_SPOTIFY_CLIENT_ID=838bdb488eb442f09cca8bd4c2fab061
+  REACT_APP_SPOTIFY_CLIENT_SECRET=8d487cd2f8b6483383773136a062bf79
+
+# Starting the web application
+
+There are two ways to upload the project, with Docker and without Docker;
+
+### With Docker
+
+```bash
+# Inside terminal run
+docker-compose up
+
+```
+
+### Without Docker
+
+```bash
+# Inside terminal run
+yarn install or only Yarn
+
+# After install all dependencies run
+yarn start
+```
+
+Open the browser and access http://localhost:3000
+
+# Things I wish I had done
+
+    1. Write tests for all application components;
+    2. Write snapshot for all application components;
+ 
+
+
+
+
+
+
 
 
 
