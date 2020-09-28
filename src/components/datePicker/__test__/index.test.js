@@ -19,7 +19,7 @@ describe('<DatePicker />', () => {
         filter: {
           filters: [{ id: 'timestamp', name: 'Data e Horário' }],
           currentFilters: {
-            timestamp: null,
+            date: null,
           },
           hide: true,
         },

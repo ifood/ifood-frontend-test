@@ -1,7 +1,7 @@
 import paramsFactory from './index'
 
 describe('paramsFactory Function', () => {
-  it('Should me able to append key/values pairs to an object', () => {
+  it('Should be able to append key/values pairs to an object', () => {
     expect(paramsFactory({}, ['test', 'mock'])).toEqual({ test: 'mock' })
     expect(paramsFactory({ test: 'mock' }, ['new', 'mock2'])).toEqual({
       test: 'mock',
