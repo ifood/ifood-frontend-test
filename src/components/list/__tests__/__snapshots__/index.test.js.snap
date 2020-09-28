@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> Snapshot testing List 1`] = `
+<DocumentFragment>
+  <ul
+    class="sc-bdnylx kwNexU"
+    data-testid="list-container"
+  >
+    <span
+      class="sc-dlnjPT gjEzGg"
+    />
+    <li
+      class="sc-gtssRu iTaLNK"
+    >
+      mocked
+    </li>
+  </ul>
+</DocumentFragment>
+`;

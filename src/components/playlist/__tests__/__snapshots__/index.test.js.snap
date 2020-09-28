@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Playlist /> Snapshot testing Playlist 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dlnjPT gedplC"
+    data-testid="playlist-container"
+  >
+    <img
+      alt="mocked mocked"
+      class="sc-hKFyIo jJzsPK"
+      src="/"
+    />
+    <h1
+      class="sc-eCApGN dxliyU"
+    >
+      mocked mocked
+    </h1>
+    <h2
+      class="sc-jSFkmK fMtTlC"
+    >
+      <a>
+        Mocked description
+      </a>
+    </h2>
+  </div>
+</DocumentFragment>
+`;

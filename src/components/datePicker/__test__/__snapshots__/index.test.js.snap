@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DatePicker /> Snapshot testing DatePicker 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdnylx guQDsZ"
+  >
+    <div
+      class="sc-dlnjPT iveObs"
+    >
+      <span
+        class="sc-gtssRu glsxeV"
+      >
+        Data e Horário
+      </span>
+    </div>
+    <div
+      class="react-datepicker-wrapper"
+    >
+      <div
+        class="react-datepicker__input-container"
+      >
+        <input
+          class=""
+          placeholder="dd/mm/aaaa hh:mm"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
