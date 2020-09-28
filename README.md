@@ -1,29 +1,85 @@
-# iFood Frontend Test
+# Spotifood :notes:
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+This application was developed in response to the test for the Frontend developer position at Ifood.
 
-## Business rules
+The requirements are described in [ifood-frontend-test](https://github.com/ifood/ifood-frontend-test).
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+## Running
 
-## Hints or Constraints
+:small_blue_diamond: yarn - to install dependencies;
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+:small_blue_diamond: yarn start - to run app;
 
-## Non functional requirements
+:small_blue_diamond: yarn build - to run build for deploy app.
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+## Architecture
+
+This app was developed with React Functional components with React Hooks.
+For structures was used:
+
+:small_blue_diamond: **ReactJs**
+:small_blue_diamond: **StyledComponents**
+:small_blue_diamond: **React-icons**
+:small_blue_diamond: **Date-picker**
+:small_blue_diamond: **React Hooks**
+:small_blue_diamond: **React Router DOM**
+:small_blue_diamond: **Axios**
+
+## Folder Structure
+
+The folder structure is defined from the src folder which is the baseUrl.
+
+ ```
+src
+  ├ assets
+  | └ background-spotifood.jpg
+  | └ icon.svg
+  ├ Components
+  | ├ Content
+  | |   ├ index.tsx
+  | |   └ styles.ts
+  | ├ LayoutPage
+  | |   ├ index.tsx
+  | |   └ styles.ts
+  | ├ MainHeader
+  | |   ├ index.tsx
+  | |   └ styles.ts
+  ├ Hookes
+  | ├ auth.tsx
+  | ├ index.tsx
+  | ├ playlistsHook.tsx
+  | └  themes.tsx  
+  ├ Pages
+  | ├ PlaylistsHome
+  | |  ├ PlaylistCards
+  | |  |    ├ index.tsx
+  | |  |    └ styles.ts
+  | |  ├ PlaylistFilters
+  | |  |    ├ index.tsx
+  | |  |    └ styles.ts
+  | ├ index.tsx
+  | └ styles.ts
+  ├ Services
+  | ├ API
+  | |  └ configApi.ts
+  | ├ authenticateService.ts
+  | ├ filterService.ts
+  | └ spotifyService.ts
+  ├ Styles
+  | ├ Themes
+  | |  ├ ifood.ts
+  | |  └ spotify.ts
+  | ├ GlobalStyles.ts
+  | └ styled.d.ts
+  ├ Utils
+  | ├ applyMask.ts
+  | ├ emojis.ts
+  | └ getToken.ts
+  |App.tsx
+  |index.tsx
+  └ reactapp-env.d.ts
+  ```
+
+## Enjoy :headphones:
+
+https://spotifood-gmenezes.netlify.app
