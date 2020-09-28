@@ -1,29 +1,164 @@
-# iFood Frontend Test
+# Spotifdood.
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+This project was part of the selection process for front-end developer at Ifood
 
-## Business rules
+# Table of contents
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+- [Development Language](#development-language)
+- [Dependencies](#Dependencies)
+- [Development dependencies](#Development-dependencies)
+- [Getting Started](#Getting-Started)
+- [Starting the web application](#Starting-the-web-application)
 
-## Hints or Constraints
+# Development language
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+Project made with ReactJS.
 
-## Non functional requirements
+The architecture and components are below.
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+# Architecture Folder
+
+The architecture folder of the files followed the standards the:
+
+# Architecture
+
+The architecture of the files followed the standards the:
+
+```bash
+Spotifood
+├── .docker/
+│   ├── nginx
+|       └── nginx.conf
+│   ├── node
+|       └── Dockerfile
+├── public/
+│   ├── index.html
+│   ├── favico.ico
+├── src/
+│   ├── assets/
+│   │   └── img/
+│   │       └── svg/
+|   |           └── spotifood_logo.svg
+|   |           └── spotifood_logo_aside_red.svg
+|   |           └── spotifood_logo_aside_white.svg
+|   |           └── spotifood_logo_with_name.svg
+│   ├── components/
+│   │   └── FullscreenLoader/
+│   │       └── index.tsx
+│   │       └── styles.ts
+│   │   └── inputs/
+│   │       └── DatePickerInput/
+|   |           └── index.tsx
+│   │       └── SelectInput/
+|   |           └── index.tsx
+│   │       └── TextInput/
+|   |           └── index.tsx
+│   │   └── Layout/
+│   │       └── index.tsx
+│   │       └── styles.ts
+│   │   └── Sidebar/
+│   │       └── components/
+|   |           └── FilterInput
+|   |               └── FilterInput.test.tsx
+|   |               └── index.tsx
+│   ├── config/
+│   │    └── index.ts
+│   ├── hooks/
+│   │   └── useAuthentication/
+|   |       └── index.ts
+│   │   └── useFilters/
+|   |       └── index.ts
+│   │   └── usePlaylists/
+|   |       └── index.ts
+│   │   └── useSpotifyAccountUrl/
+|   |       └── index.ts
+│   │   └── useUserInfo/
+|   |       └── index.ts
+│   ├── interfaces/
+│   │   └── Auth/
+|   |       └── index.ts
+│   │   └── Filter/
+|   |       └── index.ts
+│   │   └── Playlist/
+|   |       └── index.ts
+│   │   └── Token/
+|   |       └── index.ts
+│   │   └── User/
+|   |       └── index.ts
+│   │   └── index.ts/
+│   ├── pages/
+│   │   └── Login/
+│   │       └── index.tsx
+│   │       └── styles.ts
+│   │   └── Playlist/
+│   │       └── components/
+|   |           └── PlaylistCard
+|   |               └── index.tsx
+|   |               └── styles.ts
+|   |           └── PlaylistInput
+|   |               └── index.tsx
+|   |               └── styles.ts
+|   |           └── PlaylistList
+|   |               └── index.tsx
+│   │       └── index.tsx
+│   ├── providers/
+│   │   └── AuthProvider/
+│   │       └── index.tsx
+│   │   └── FiltersProvider/
+│   │       └── index.tsx
+│   │   └── PlaylistProvider/
+│   │       └── index.tsx
+│   │   └── index.tsx
+│   ├── routes/
+│   │   └── index.ts
+│   ├── services/
+│   │   └── AuthService/
+│   │       └── index.tsx
+│   │   └── FilterService/
+│   │       └── index.tsx
+│   │   └── HttpService/
+│   │       └── index.tsx
+│   │   └── PlaylistService/
+│   │       └── index.tsx
+│   │   └── StorageService/
+│   │       └── index.tsx
+│   │   └── UserService/
+│   │       └── index.tsx
+│   ├── styles/
+│   │   └── Background/
+│   │       └── index.ts
+│   │   └── Buttom/
+│   │       └── index.ts
+│   │   └── Link/
+│   │       └── index.ts
+│   │   └── Loader/
+│   │       └── index.ts
+│   │   └── index.ts
+│   ├── theme/
+│   │   └── globalStyles.ts/
+│   │   └── theme.ts/
+│   ├── App.tsx
+│   ├── index.tsx
+│   ├── react-app-env.d.ts
+│   ├── setupTests.ts
+├── .dockerignore
+├── .editorconfig
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+├── netify.toml
+├── package.json
+├── README.md
+├── tsconfig.json
+├── yarn.lock
+├── config-overrides.js
+├── jsconfig.js
+├── package.json
+├── README.md
+└── yarn.lock
+```
+
+
+
+
+
