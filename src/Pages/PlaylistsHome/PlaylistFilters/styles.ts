@@ -6,6 +6,7 @@ export const Form = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 0 auto;
 
   > button {
     background-color: ${props => props.theme.colors.second};

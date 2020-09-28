@@ -6,7 +6,7 @@ export const Container = styled.div`
   ;`
 
 export const Content = styled.div`
-width: 80%;
+width: 60%;
 margin: 0 auto;
 
   a {
