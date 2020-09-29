@@ -1,0 +1,40 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.landing-page {
+  $big_title: 6rem;
+  $medium_title: 3rem;
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-color;
+  .landing-page__content {
+    max-width: 700px;
+    text-align: center;
+    background-color: white;
+    border-radius: .25rem;
+    padding: 2rem;
+    .landing-page__logo {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+    .landing-page__title {
+      color: $primary-color;
+      font-size: $medium_title;
+      line-height: $medium_title;
+      margin-bottom: 2rem;
+      @include lg-min {
+        font-size: $big_title;
+        line-height: $big_title;
+      }
+    }
+    .landing-page__subtitle {
+      font-size: $font-base;
+      color: $grey;
+      margin-bottom: 1rem;
+    }
+  }
+}
