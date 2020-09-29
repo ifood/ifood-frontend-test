@@ -27,3 +27,10 @@ As this application will be a worldwide success, it must be prepared to be acces
 We **strongly recommend** using React to build the application.
 Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
 Fork this repository and submit your code.
+
+
+(ATTENTION)
+
+You will need to run npm install to install the dependencies
+
+You will need to add an .env file with REACT_APP_SPOTIFY_CLIENT_ID = 0ea460875f264befb944160945ea6c91 inside it
