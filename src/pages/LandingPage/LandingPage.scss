@@ -12,7 +12,10 @@
   align-items: center;
   background-color: $primary-color;
   .landing-page__content {
-    max-width: 700px;
+    @include md-min {
+      max-width: 700px;
+    }
+    width: 90%;
     text-align: center;
     background-color: white;
     border-radius: .25rem;
