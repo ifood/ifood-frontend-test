@@ -3,7 +3,7 @@ import { css } from "styled-components";
 /**
  * FONTS
  */
-export const PRIMARY_FONT = "";
+export const PRIMARY_FONT = "'Inter', sans-serif";
 
 /**
  * SIZES
