@@ -41,10 +41,6 @@ export const LoginTitle = styled.h1`
   `}
 `;
 
-export const LoginTitleDetail = styled.span`
-  font-weight: bold;
-`;
-
 export const LoginDescription = styled.p`
   line-height: 35px;
   color: ${C.LIGHT};
