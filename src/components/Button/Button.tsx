@@ -7,11 +7,13 @@ import { classesFromObject } from '../../helpers/helpers';
 interface IButton {
   className?: string;
   label: string;
+  onClick: () => void;
 }
 
 const Button = ({
   className: classNameProp = '',
-  label
+  label,
+  onClick,
 }: IButton) => {
   const classes = {
     'button-component': true,
@@ -20,7 +22,7 @@ const Button = ({
   const className = classesFromObject(classes, classNameProp);
 
   return (
-    <button className={className} title={label} >
+    <button className={className} title={label} onClick={onClick} >
       {label}
     </button>
   );
