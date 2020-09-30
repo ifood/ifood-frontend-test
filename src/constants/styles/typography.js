@@ -9,7 +9,7 @@ export const PRIMARY_FONT = "'Inter', sans-serif";
  * SIZES
  */
 
-const SIZES = {
+export const SIZES = {
   xl: "80px",
   lg: "32px",
   md: "22px",

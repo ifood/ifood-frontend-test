@@ -12,6 +12,7 @@ export const PRIMARY_COLOR_DARK = "#A11614";
 
 export const GREY = "#909090";
 export const GREY_LIGHT = "#F7F7F7";
+export const GREY_LIGHTER = "#DEDEDE";
 export const GREY_DARK = "#040404";
 
 /**
