@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spacer/> renders correcly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdnylx qzprR"
+    sizes="[object Object]"
+  />
+</DocumentFragment>
+`;
