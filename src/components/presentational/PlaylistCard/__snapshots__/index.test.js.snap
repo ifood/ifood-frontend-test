@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistCard/> renders correcly 1`] = `
+<DocumentFragment>
+  <a
+    class="sc-gtssRu dLECrO"
+    href="any_link"
+    target="_blank"
+  >
+    <div
+      class="sc-dlnjPT HfNBu"
+    >
+      <img
+        alt="Today's Hitss"
+        src="any_url"
+      />
+    </div>
+    <div
+      class="sc-hKFyIo hQOELo"
+    >
+      <div
+        class="sc-eCApGN bvuXSf"
+      >
+        <h2
+          class="sc-iCoHVE hDdhGb"
+        >
+          Today's Hitss
+        </h2>
+        <p
+          class="sc-jSFkmK fxJhem"
+        >
+          by 
+          <span
+            class="sc-gKAblj hnBNSm"
+          >
+            Spotify
+          </span>
+        </p>
+      </div>
+      <span
+        class="sc-bdnylx bxgaUg"
+      >
+        Listen on spotify
+      </span>
+    </div>
+  </a>
+</DocumentFragment>
+`;
