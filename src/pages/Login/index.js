@@ -3,11 +3,15 @@ import Button from "components/presentational/Button";
 import Wrapper from "components/presentational/Wrapper";
 import Spacer from "components/presentational/Spacer";
 
+import parser from "html-react-parser";
+
+import { loginData } from "constants/data/pages/login";
+
 import * as S from "./styled";
 
 const Login = () => {
-  const test = () => {
-    console.log("oi");
+  const buttonFunction = () => {
+    return true;
   };
 
   return (
@@ -15,19 +19,18 @@ const Login = () => {
       <Wrapper>
         <S.LoginSection>
           <S.LoginContent>
-            <S.LoginTitle>
-              Where music meets <S.LoginTitleDetail>iFood</S.LoginTitleDetail>
-            </S.LoginTitle>
+            <S.LoginTitle>{parser(loginData.title)}</S.LoginTitle>
 
             <Spacer sizes={{ desktop: "md" }} />
-            <S.LoginDescription>
-              Discover new songs from our featured playlists while your order is
-              on the way
-            </S.LoginDescription>
+
+            <S.LoginDescription>{loginData.description}</S.LoginDescription>
 
             <Spacer sizes={{ desktop: "xl" }} />
 
-            <Button label="start now" onClick={() => test()} />
+            <Button
+              label={loginData.ctaLabel}
+              onClick={() => buttonFunction()}
+            />
           </S.LoginContent>
         </S.LoginSection>
       </Wrapper>
