@@ -3,7 +3,7 @@
 exports[`<Field /> renders correcly 1`] = `
 <DocumentFragment>
   <input
-    class="sc-bdnylx ebfsqH"
+    class="sc-bdnylx kufWaU"
     placeholder="Digite seu texto"
   />
 </DocumentFragment>
