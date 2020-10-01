@@ -1,0 +1,28 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+.playlist-filter {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 1rem;
+  padding: 1.25rem 2rem;
+  margin: 0 auto;
+  max-width: 500px;
+  @include xs {
+    max-width: 100%;
+  }
+  input,
+  select {
+    width: 100%;
+    border: 1px solid $grey-light;
+    background-color: white;
+    color: $grey;
+    font-size: 1rem;
+    outline: none;
+    overflow: hidden;
+    padding: .425rem .8rem;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

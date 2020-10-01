@@ -12,3 +12,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+}

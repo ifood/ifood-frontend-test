@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
-import { SpotifyServiceAuth } from '../services/Login.service';
+import { SpotifyServiceAuth } from '../services/login.service';
 
 const useLogin = () => {
-
   const goToLogin = useCallback(() => {
     const login = SpotifyServiceAuth.authorization();
     window.location.href = login;
@@ -26,12 +25,9 @@ const useLogin = () => {
       localStorage.setItem('SpotifyToken', token);
       return true;
     } else {
-      SpotifyServiceAuth.logout();
       return false;
     }
-
   }, []);
-
 
   return {
     goToLogin,

@@ -31,9 +31,7 @@ class SpotifyService {
 
       return user.data;
     } catch (e) {
-      if (e.response.status === '401') {
-        SpotifyServiceAuth.logout();
-      }
+      SpotifyServiceAuth.logout();
     }
   }
 

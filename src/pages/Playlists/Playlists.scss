@@ -1,0 +1,10 @@
+@import '../../assets/styles/variables';
+
+.playlists {
+  .playlists-topbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid $grey-light;
+  }
+}

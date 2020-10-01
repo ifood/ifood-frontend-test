@@ -10,10 +10,10 @@ const LandingPage = ({ history }: RouteComponentProps) => {
   const { goToLogin, hasToken } = useLogin();
 
   useEffect(() => {
-    const a = hasToken();
+    const token = hasToken();
 
-    if (a) history.push('/playlists');
-  }, [hasToken]);
+    if (token) history.push('/playlists');
+  }, [hasToken, history]);
 
   return (
     <div className="landing-page">
