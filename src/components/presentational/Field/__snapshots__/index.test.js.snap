@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Field /> renders correcly 1`] = `
+<DocumentFragment>
+  <input
+    class="sc-bdnylx ebfsqH"
+    placeholder="Digite seu texto"
+  />
+</DocumentFragment>
+`;
