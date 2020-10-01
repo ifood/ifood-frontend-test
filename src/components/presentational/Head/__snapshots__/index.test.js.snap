@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Head/> renders correcly 1`] = `
+<DocumentFragment>
+  <header
+    class="sc-gtssRu Usrn"
+  >
+    <div
+      class="sc-bdnylx cNZMtW"
+    >
+      <div
+        class="sc-dlnjPT gjuKFn"
+      >
+        <h1
+          class="sc-hKFyIo gIJbbs"
+        >
+          Spotifood
+        </h1>
+        <p
+          class="sc-eCApGN hKpdGl"
+        >
+          Where music meets iFood
+        </p>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;
