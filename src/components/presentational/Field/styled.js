@@ -15,6 +15,7 @@ export const Field = styled.input`
   font-size: ${T.SIZES.sm};
   font-family: ${T.PRIMARY_FONT};
   width: 100%;
+  border-radius: 5px;
 
   &::placeholder {
     color: inherit;
