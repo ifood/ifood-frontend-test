@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { MOCKY_FILTERS } from '../config.json';
 
 export const getFilters = async () => {
   try {
-    const filters = await axios.get('https://run.mocky.io/v3/7caca51a-d998-4919-ad8e-080600d74707');
+    const filters = await axios.get(MOCKY_FILTERS);
 
     return filters.data.filters;
   } catch (e) {

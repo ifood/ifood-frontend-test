@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiAlertOctagon } from 'react-icons/fi';
 import useFilters from '../../hooks/useFilters';
 
 import './Playlists.scss';
@@ -35,23 +36,32 @@ const Playlists = () => {
         {loadingPlaylists ? (
           <Loader />
         ) : (
-          <div className="playlists-content">
-            {playlists.map((playlist: IPlaylists) => {
-              const { images, external_urls, name, id, description } = playlist;
-              const { url: imageUrl } = images[0];
-              const { spotify } = external_urls;
+          <>
+            {!playlists.length && (
+              <div className="not-found">
+                <FiAlertOctagon />
+                <p className="not-found__title">Nenhuma playlist encontrada :(</p>
+                <span className="not-found__subtitle">Tente buscar com outro termo</span>
+              </div>
+            )}
+            <div className="playlists-content">
+              {playlists.map((playlist: IPlaylists) => {
+                const { images, external_urls, name, id, description } = playlist;
+                const { url: imageUrl } = images[0];
+                const { spotify } = external_urls;
 
-              return (
-                <Playlist
-                  key={id}
-                  name={name}
-                  imageUrl={imageUrl}
-                  spotify={spotify}
-                  description={description}
-                />
-              )
-            })}
-          </div>
+                return (
+                  <Playlist
+                    key={id}
+                    name={name}
+                    imageUrl={imageUrl}
+                    spotify={spotify}
+                    description={description}
+                  />
+                )
+              })}
+            </div>
+          </>
         )}
       </div>
     </>

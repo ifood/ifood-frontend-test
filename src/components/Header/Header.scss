@@ -4,6 +4,11 @@
 .header {
   border-bottom: 1px solid rgba($grey-light, .4);
   padding: .5rem 0;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
   @include lg-max {
     padding: .5rem;
   }

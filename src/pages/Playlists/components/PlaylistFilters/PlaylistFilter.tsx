@@ -10,7 +10,7 @@ const PlaylistFilter = ({ filters, loading, onChangeFilters, onChangeInputFilter
 
   return (
     <div className="playlist-filter">
-      <input placeholder="Pesquisar..." onChange={(ev) => onSearch(ev.target.value)} ></input>
+      <input placeholder="Busque pelo nome..." onChange={(ev) => onSearch(ev.target.value)} ></input>
       {filters.map((f: IFilters) => (
         <div className="playlist-filter__item" key={f.id}>
           {f.values ? (
