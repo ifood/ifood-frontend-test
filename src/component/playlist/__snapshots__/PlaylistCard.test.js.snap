@@ -1,0 +1,734 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistCard /> snapshot 1`] = `
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 8px;
+}
+
+.c0 {
+  font-weight: 700;
+}
+
+<PlaylistCard
+  playlist={
+    Object {
+      "description": "Description test",
+      "external_urls": Object {
+        "spotify": "https://href-test",
+      },
+      "href": "https://hrf-test",
+      "id": "1HJ38ZSXZ123SA",
+      "images": Array [
+        Object {
+          "url": "https://img-test",
+        },
+      ],
+      "name": "PlaylistTest",
+      "owner": Object {
+        "display_name": "Spotify",
+        "external_urls": Object {
+          "spotify": "https://open.spotify.com/user/spotify",
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+      },
+      "tracks": Object {
+        "total": 62,
+      },
+      "type": "playlist",
+    }
+  }
+>
+  <WithStyles(ForwardRef(Card))
+    key="1HJ38ZSXZ123SA"
+    onClick={[Function]}
+  >
+    <ForwardRef(Card)
+      classes={
+        Object {
+          "root": "MuiCard-root",
+        }
+      }
+      onClick={[Function]}
+    >
+      <WithStyles(ForwardRef(Paper))
+        className="MuiCard-root"
+        elevation={1}
+        onClick={[Function]}
+      >
+        <ForwardRef(Paper)
+          className="MuiCard-root"
+          classes={
+            Object {
+              "elevation0": "MuiPaper-elevation0",
+              "elevation1": "MuiPaper-elevation1",
+              "elevation10": "MuiPaper-elevation10",
+              "elevation11": "MuiPaper-elevation11",
+              "elevation12": "MuiPaper-elevation12",
+              "elevation13": "MuiPaper-elevation13",
+              "elevation14": "MuiPaper-elevation14",
+              "elevation15": "MuiPaper-elevation15",
+              "elevation16": "MuiPaper-elevation16",
+              "elevation17": "MuiPaper-elevation17",
+              "elevation18": "MuiPaper-elevation18",
+              "elevation19": "MuiPaper-elevation19",
+              "elevation2": "MuiPaper-elevation2",
+              "elevation20": "MuiPaper-elevation20",
+              "elevation21": "MuiPaper-elevation21",
+              "elevation22": "MuiPaper-elevation22",
+              "elevation23": "MuiPaper-elevation23",
+              "elevation24": "MuiPaper-elevation24",
+              "elevation3": "MuiPaper-elevation3",
+              "elevation4": "MuiPaper-elevation4",
+              "elevation5": "MuiPaper-elevation5",
+              "elevation6": "MuiPaper-elevation6",
+              "elevation7": "MuiPaper-elevation7",
+              "elevation8": "MuiPaper-elevation8",
+              "elevation9": "MuiPaper-elevation9",
+              "outlined": "MuiPaper-outlined",
+              "root": "MuiPaper-root",
+              "rounded": "MuiPaper-rounded",
+            }
+          }
+          elevation={1}
+          onClick={[Function]}
+        >
+          <div
+            className="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+            onClick={[Function]}
+          >
+            <WithStyles(ForwardRef(CardActionArea))
+              onClick={[Function]}
+            >
+              <ForwardRef(CardActionArea)
+                classes={
+                  Object {
+                    "focusHighlight": "MuiCardActionArea-focusHighlight",
+                    "focusVisible": "Mui-focusVisible",
+                    "root": "MuiCardActionArea-root",
+                  }
+                }
+                onClick={[Function]}
+              >
+                <WithStyles(ForwardRef(ButtonBase))
+                  className="MuiCardActionArea-root"
+                  focusVisibleClassName="Mui-focusVisible"
+                  onClick={[Function]}
+                >
+                  <ForwardRef(ButtonBase)
+                    className="MuiCardActionArea-root"
+                    classes={
+                      Object {
+                        "disabled": "Mui-disabled",
+                        "focusVisible": "Mui-focusVisible",
+                        "root": "MuiButtonBase-root",
+                      }
+                    }
+                    focusVisibleClassName="Mui-focusVisible"
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="MuiButtonBase-root MuiCardActionArea-root"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      type="button"
+                    >
+                      <WithStyles(ForwardRef(CardMedia))
+                        alt="PlaylistTest"
+                        component="img"
+                        image="https://img-test"
+                        title="PlaylistTest"
+                      >
+                        <ForwardRef(CardMedia)
+                          alt="PlaylistTest"
+                          classes={
+                            Object {
+                              "img": "MuiCardMedia-img",
+                              "media": "MuiCardMedia-media",
+                              "root": "MuiCardMedia-root",
+                            }
+                          }
+                          component="img"
+                          image="https://img-test"
+                          title="PlaylistTest"
+                        >
+                          <img
+                            alt="PlaylistTest"
+                            className="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img"
+                            src="https://img-test"
+                            title="PlaylistTest"
+                          />
+                        </ForwardRef(CardMedia)>
+                      </WithStyles(ForwardRef(CardMedia))>
+                      <WithStyles(ForwardRef(CardContent))>
+                        <ForwardRef(CardContent)
+                          classes={
+                            Object {
+                              "root": "MuiCardContent-root",
+                            }
+                          }
+                        >
+                          <div
+                            className="MuiCardContent-root"
+                          >
+                            <WithStyles(ForwardRef(Tooltip))
+                              aria-label="description"
+                              title="PlaylistTest"
+                            >
+                              <ForwardRef(Tooltip)
+                                aria-label="description"
+                                classes={
+                                  Object {
+                                    "arrow": "MuiTooltip-arrow",
+                                    "popper": "MuiTooltip-popper",
+                                    "popperArrow": "MuiTooltip-popperArrow",
+                                    "popperInteractive": "MuiTooltip-popperInteractive",
+                                    "tooltip": "MuiTooltip-tooltip",
+                                    "tooltipArrow": "MuiTooltip-tooltipArrow",
+                                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                                    "touch": "MuiTooltip-touch",
+                                  }
+                                }
+                                title="PlaylistTest"
+                              >
+                                <WithStyles(ForwardRef(Typography))
+                                  aria-describedby={null}
+                                  aria-label="description"
+                                  className=""
+                                  noWrap={true}
+                                  onBlur={[Function]}
+                                  onFocus={[Function]}
+                                  onMouseLeave={[Function]}
+                                  onMouseOver={[Function]}
+                                  onTouchEnd={[Function]}
+                                  onTouchStart={[Function]}
+                                  title="PlaylistTest"
+                                  variant="h5"
+                                >
+                                  <ForwardRef(Typography)
+                                    aria-describedby={null}
+                                    aria-label="description"
+                                    className=""
+                                    classes={
+                                      Object {
+                                        "alignCenter": "MuiTypography-alignCenter",
+                                        "alignJustify": "MuiTypography-alignJustify",
+                                        "alignLeft": "MuiTypography-alignLeft",
+                                        "alignRight": "MuiTypography-alignRight",
+                                        "body1": "MuiTypography-body1",
+                                        "body2": "MuiTypography-body2",
+                                        "button": "MuiTypography-button",
+                                        "caption": "MuiTypography-caption",
+                                        "colorError": "MuiTypography-colorError",
+                                        "colorInherit": "MuiTypography-colorInherit",
+                                        "colorPrimary": "MuiTypography-colorPrimary",
+                                        "colorSecondary": "MuiTypography-colorSecondary",
+                                        "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                        "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                        "displayBlock": "MuiTypography-displayBlock",
+                                        "displayInline": "MuiTypography-displayInline",
+                                        "gutterBottom": "MuiTypography-gutterBottom",
+                                        "h1": "MuiTypography-h1",
+                                        "h2": "MuiTypography-h2",
+                                        "h3": "MuiTypography-h3",
+                                        "h4": "MuiTypography-h4",
+                                        "h5": "MuiTypography-h5",
+                                        "h6": "MuiTypography-h6",
+                                        "noWrap": "MuiTypography-noWrap",
+                                        "overline": "MuiTypography-overline",
+                                        "paragraph": "MuiTypography-paragraph",
+                                        "root": "MuiTypography-root",
+                                        "srOnly": "MuiTypography-srOnly",
+                                        "subtitle1": "MuiTypography-subtitle1",
+                                        "subtitle2": "MuiTypography-subtitle2",
+                                      }
+                                    }
+                                    noWrap={true}
+                                    onBlur={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onMouseOver={[Function]}
+                                    onTouchEnd={[Function]}
+                                    onTouchStart={[Function]}
+                                    title="PlaylistTest"
+                                    variant="h5"
+                                  >
+                                    <h5
+                                      aria-describedby={null}
+                                      aria-label="description"
+                                      className="MuiTypography-root MuiTypography-h5 MuiTypography-noWrap"
+                                      onBlur={[Function]}
+                                      onFocus={[Function]}
+                                      onMouseLeave={[Function]}
+                                      onMouseOver={[Function]}
+                                      onTouchEnd={[Function]}
+                                      onTouchStart={[Function]}
+                                      title="PlaylistTest"
+                                    >
+                                      <styled.span>
+                                        <span
+                                          className="c0"
+                                        >
+                                          PlaylistTest
+                                        </span>
+                                      </styled.span>
+                                    </h5>
+                                  </ForwardRef(Typography)>
+                                </WithStyles(ForwardRef(Typography))>
+                                <ForwardRef(Popper)
+                                  anchorEl={
+                                    .c0 {
+  font-weight: 700;
+}
+
+<h5
+                                      aria-label="description"
+                                      class="MuiTypography-root MuiTypography-h5 MuiTypography-noWrap"
+                                      title="PlaylistTest"
+                                    >
+                                      <span
+                                        class="c0"
+                                      >
+                                        PlaylistTest
+                                      </span>
+                                    </h5>
+                                  }
+                                  className="MuiTooltip-popper"
+                                  id={null}
+                                  open={false}
+                                  placement="bottom"
+                                  popperOptions={
+                                    Object {
+                                      "modifiers": Object {
+                                        "arrow": Object {
+                                          "element": null,
+                                          "enabled": false,
+                                        },
+                                      },
+                                    }
+                                  }
+                                  transition={true}
+                                />
+                              </ForwardRef(Tooltip)>
+                            </WithStyles(ForwardRef(Tooltip))>
+                            <WithStyles(ForwardRef(Typography))
+                              gutterBottom={true}
+                              variant="caption"
+                            >
+                              <ForwardRef(Typography)
+                                classes={
+                                  Object {
+                                    "alignCenter": "MuiTypography-alignCenter",
+                                    "alignJustify": "MuiTypography-alignJustify",
+                                    "alignLeft": "MuiTypography-alignLeft",
+                                    "alignRight": "MuiTypography-alignRight",
+                                    "body1": "MuiTypography-body1",
+                                    "body2": "MuiTypography-body2",
+                                    "button": "MuiTypography-button",
+                                    "caption": "MuiTypography-caption",
+                                    "colorError": "MuiTypography-colorError",
+                                    "colorInherit": "MuiTypography-colorInherit",
+                                    "colorPrimary": "MuiTypography-colorPrimary",
+                                    "colorSecondary": "MuiTypography-colorSecondary",
+                                    "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                    "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                    "displayBlock": "MuiTypography-displayBlock",
+                                    "displayInline": "MuiTypography-displayInline",
+                                    "gutterBottom": "MuiTypography-gutterBottom",
+                                    "h1": "MuiTypography-h1",
+                                    "h2": "MuiTypography-h2",
+                                    "h3": "MuiTypography-h3",
+                                    "h4": "MuiTypography-h4",
+                                    "h5": "MuiTypography-h5",
+                                    "h6": "MuiTypography-h6",
+                                    "noWrap": "MuiTypography-noWrap",
+                                    "overline": "MuiTypography-overline",
+                                    "paragraph": "MuiTypography-paragraph",
+                                    "root": "MuiTypography-root",
+                                    "srOnly": "MuiTypography-srOnly",
+                                    "subtitle1": "MuiTypography-subtitle1",
+                                    "subtitle2": "MuiTypography-subtitle2",
+                                  }
+                                }
+                                gutterBottom={true}
+                                variant="caption"
+                              >
+                                <span
+                                  className="MuiTypography-root MuiTypography-caption MuiTypography-gutterBottom"
+                                >
+                                  62 tracks
+                                </span>
+                              </ForwardRef(Typography)>
+                            </WithStyles(ForwardRef(Typography))>
+                            <WithStyles(ForwardRef(Tooltip))
+                              aria-label="description"
+                              title={
+                                <span
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "Description test",
+                                    }
+                                  }
+                                />
+                              }
+                            >
+                              <ForwardRef(Tooltip)
+                                aria-label="description"
+                                classes={
+                                  Object {
+                                    "arrow": "MuiTooltip-arrow",
+                                    "popper": "MuiTooltip-popper",
+                                    "popperArrow": "MuiTooltip-popperArrow",
+                                    "popperInteractive": "MuiTooltip-popperInteractive",
+                                    "tooltip": "MuiTooltip-tooltip",
+                                    "tooltipArrow": "MuiTooltip-tooltipArrow",
+                                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                                    "touch": "MuiTooltip-touch",
+                                  }
+                                }
+                                title={
+                                  <span
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "Description test",
+                                      }
+                                    }
+                                  />
+                                }
+                              >
+                                <WithStyles(ForwardRef(Typography))
+                                  aria-describedby={null}
+                                  aria-label="description"
+                                  className=""
+                                  color="textSecondary"
+                                  gutterBottom={true}
+                                  noWrap={true}
+                                  onBlur={[Function]}
+                                  onFocus={[Function]}
+                                  onMouseLeave={[Function]}
+                                  onMouseOver={[Function]}
+                                  onTouchEnd={[Function]}
+                                  onTouchStart={[Function]}
+                                  title={null}
+                                  variant="subtitle2"
+                                >
+                                  <ForwardRef(Typography)
+                                    aria-describedby={null}
+                                    aria-label="description"
+                                    className=""
+                                    classes={
+                                      Object {
+                                        "alignCenter": "MuiTypography-alignCenter",
+                                        "alignJustify": "MuiTypography-alignJustify",
+                                        "alignLeft": "MuiTypography-alignLeft",
+                                        "alignRight": "MuiTypography-alignRight",
+                                        "body1": "MuiTypography-body1",
+                                        "body2": "MuiTypography-body2",
+                                        "button": "MuiTypography-button",
+                                        "caption": "MuiTypography-caption",
+                                        "colorError": "MuiTypography-colorError",
+                                        "colorInherit": "MuiTypography-colorInherit",
+                                        "colorPrimary": "MuiTypography-colorPrimary",
+                                        "colorSecondary": "MuiTypography-colorSecondary",
+                                        "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                        "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                        "displayBlock": "MuiTypography-displayBlock",
+                                        "displayInline": "MuiTypography-displayInline",
+                                        "gutterBottom": "MuiTypography-gutterBottom",
+                                        "h1": "MuiTypography-h1",
+                                        "h2": "MuiTypography-h2",
+                                        "h3": "MuiTypography-h3",
+                                        "h4": "MuiTypography-h4",
+                                        "h5": "MuiTypography-h5",
+                                        "h6": "MuiTypography-h6",
+                                        "noWrap": "MuiTypography-noWrap",
+                                        "overline": "MuiTypography-overline",
+                                        "paragraph": "MuiTypography-paragraph",
+                                        "root": "MuiTypography-root",
+                                        "srOnly": "MuiTypography-srOnly",
+                                        "subtitle1": "MuiTypography-subtitle1",
+                                        "subtitle2": "MuiTypography-subtitle2",
+                                      }
+                                    }
+                                    color="textSecondary"
+                                    gutterBottom={true}
+                                    noWrap={true}
+                                    onBlur={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onMouseOver={[Function]}
+                                    onTouchEnd={[Function]}
+                                    onTouchStart={[Function]}
+                                    title={null}
+                                    variant="subtitle2"
+                                  >
+                                    <h6
+                                      aria-describedby={null}
+                                      aria-label="description"
+                                      className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary MuiTypography-noWrap MuiTypography-gutterBottom"
+                                      onBlur={[Function]}
+                                      onFocus={[Function]}
+                                      onMouseLeave={[Function]}
+                                      onMouseOver={[Function]}
+                                      onTouchEnd={[Function]}
+                                      onTouchStart={[Function]}
+                                      title={null}
+                                    >
+                                      <span
+                                        dangerouslySetInnerHTML={
+                                          Object {
+                                            "__html": "Description test",
+                                          }
+                                        }
+                                      />
+                                    </h6>
+                                  </ForwardRef(Typography)>
+                                </WithStyles(ForwardRef(Typography))>
+                                <ForwardRef(Popper)
+                                  anchorEl={
+                                    <h6
+                                      aria-label="description"
+                                      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary MuiTypography-noWrap MuiTypography-gutterBottom"
+                                    >
+                                      <span>
+                                        Description test
+                                      </span>
+                                    </h6>
+                                  }
+                                  className="MuiTooltip-popper"
+                                  id={null}
+                                  open={false}
+                                  placement="bottom"
+                                  popperOptions={
+                                    Object {
+                                      "modifiers": Object {
+                                        "arrow": Object {
+                                          "element": null,
+                                          "enabled": false,
+                                        },
+                                      },
+                                    }
+                                  }
+                                  transition={true}
+                                />
+                              </ForwardRef(Tooltip)>
+                            </WithStyles(ForwardRef(Tooltip))>
+                          </div>
+                        </ForwardRef(CardContent)>
+                      </WithStyles(ForwardRef(CardContent))>
+                      <WithStyles(ForwardRef(Divider))
+                        light={true}
+                      >
+                        <ForwardRef(Divider)
+                          classes={
+                            Object {
+                              "absolute": "MuiDivider-absolute",
+                              "flexItem": "MuiDivider-flexItem",
+                              "inset": "MuiDivider-inset",
+                              "light": "MuiDivider-light",
+                              "middle": "MuiDivider-middle",
+                              "root": "MuiDivider-root",
+                              "vertical": "MuiDivider-vertical",
+                            }
+                          }
+                          light={true}
+                        >
+                          <hr
+                            className="MuiDivider-root MuiDivider-light"
+                          />
+                        </ForwardRef(Divider)>
+                      </WithStyles(ForwardRef(Divider))>
+                      <WithStyles(ForwardRef(CardActions))>
+                        <ForwardRef(CardActions)
+                          classes={
+                            Object {
+                              "root": "MuiCardActions-root",
+                              "spacing": "MuiCardActions-spacing",
+                            }
+                          }
+                        >
+                          <div
+                            className="MuiCardActions-root MuiCardActions-spacing"
+                          >
+                            <styled.div>
+                              <div
+                                className="c1"
+                              >
+                                <ForwardRef
+                                  color="secondary"
+                                  style={
+                                    Object {
+                                      "paddingRight": "8px",
+                                    }
+                                  }
+                                >
+                                  <WithStyles(ForwardRef(SvgIcon))
+                                    color="secondary"
+                                    style={
+                                      Object {
+                                        "paddingRight": "8px",
+                                      }
+                                    }
+                                  >
+                                    <ForwardRef(SvgIcon)
+                                      classes={
+                                        Object {
+                                          "colorAction": "MuiSvgIcon-colorAction",
+                                          "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                          "colorError": "MuiSvgIcon-colorError",
+                                          "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                          "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                          "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                          "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                          "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                          "root": "MuiSvgIcon-root",
+                                        }
+                                      }
+                                      color="secondary"
+                                      style={
+                                        Object {
+                                          "paddingRight": "8px",
+                                        }
+                                      }
+                                    >
+                                      <svg
+                                        aria-hidden={true}
+                                        className="MuiSvgIcon-root MuiSvgIcon-colorSecondary"
+                                        focusable="false"
+                                        style={
+                                          Object {
+                                            "paddingRight": "8px",
+                                          }
+                                        }
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                        />
+                                      </svg>
+                                    </ForwardRef(SvgIcon)>
+                                  </WithStyles(ForwardRef(SvgIcon))>
+                                </ForwardRef>
+                                <WithStyles(ForwardRef(Typography))
+                                  color="textSecondary"
+                                  variant="subtitle2"
+                                >
+                                  <ForwardRef(Typography)
+                                    classes={
+                                      Object {
+                                        "alignCenter": "MuiTypography-alignCenter",
+                                        "alignJustify": "MuiTypography-alignJustify",
+                                        "alignLeft": "MuiTypography-alignLeft",
+                                        "alignRight": "MuiTypography-alignRight",
+                                        "body1": "MuiTypography-body1",
+                                        "body2": "MuiTypography-body2",
+                                        "button": "MuiTypography-button",
+                                        "caption": "MuiTypography-caption",
+                                        "colorError": "MuiTypography-colorError",
+                                        "colorInherit": "MuiTypography-colorInherit",
+                                        "colorPrimary": "MuiTypography-colorPrimary",
+                                        "colorSecondary": "MuiTypography-colorSecondary",
+                                        "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                        "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                        "displayBlock": "MuiTypography-displayBlock",
+                                        "displayInline": "MuiTypography-displayInline",
+                                        "gutterBottom": "MuiTypography-gutterBottom",
+                                        "h1": "MuiTypography-h1",
+                                        "h2": "MuiTypography-h2",
+                                        "h3": "MuiTypography-h3",
+                                        "h4": "MuiTypography-h4",
+                                        "h5": "MuiTypography-h5",
+                                        "h6": "MuiTypography-h6",
+                                        "noWrap": "MuiTypography-noWrap",
+                                        "overline": "MuiTypography-overline",
+                                        "paragraph": "MuiTypography-paragraph",
+                                        "root": "MuiTypography-root",
+                                        "srOnly": "MuiTypography-srOnly",
+                                        "subtitle1": "MuiTypography-subtitle1",
+                                        "subtitle2": "MuiTypography-subtitle2",
+                                      }
+                                    }
+                                    color="textSecondary"
+                                    variant="subtitle2"
+                                  >
+                                    <h6
+                                      className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+                                    >
+                                      Spotify
+                                    </h6>
+                                  </ForwardRef(Typography)>
+                                </WithStyles(ForwardRef(Typography))>
+                              </div>
+                            </styled.div>
+                          </div>
+                        </ForwardRef(CardActions)>
+                      </WithStyles(ForwardRef(CardActions))>
+                      <span
+                        className="MuiCardActionArea-focusHighlight"
+                      />
+                      <WithStyles(memo)
+                        center={false}
+                      >
+                        <ForwardRef(TouchRipple)
+                          center={false}
+                          classes={
+                            Object {
+                              "child": "MuiTouchRipple-child",
+                              "childLeaving": "MuiTouchRipple-childLeaving",
+                              "childPulsate": "MuiTouchRipple-childPulsate",
+                              "ripple": "MuiTouchRipple-ripple",
+                              "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                              "rippleVisible": "MuiTouchRipple-rippleVisible",
+                              "root": "MuiTouchRipple-root",
+                            }
+                          }
+                        >
+                          <span
+                            className="MuiTouchRipple-root"
+                          >
+                            <TransitionGroup
+                              childFactory={[Function]}
+                              component={null}
+                              exit={true}
+                            />
+                          </span>
+                        </ForwardRef(TouchRipple)>
+                      </WithStyles(memo)>
+                    </button>
+                  </ForwardRef(ButtonBase)>
+                </WithStyles(ForwardRef(ButtonBase))>
+              </ForwardRef(CardActionArea)>
+            </WithStyles(ForwardRef(CardActionArea))>
+          </div>
+        </ForwardRef(Paper)>
+      </WithStyles(ForwardRef(Paper))>
+    </ForwardRef(Card)>
+  </WithStyles(ForwardRef(Card))>
+</PlaylistCard>
+`;
