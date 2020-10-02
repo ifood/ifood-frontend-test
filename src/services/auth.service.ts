@@ -6,6 +6,7 @@ interface IGetPlaylist {
   timestamp: string;
   limit: number;
   offset: number;
+  country: string;
 }
 class SpotifyService {
   private token = '';
@@ -47,10 +48,10 @@ class SpotifyService {
     window.location.href = '/';
   }
 
-  public async getPlaylists({ locale, timestamp, limit, offset }: IGetPlaylist) {
+  public async getPlaylists({ locale, timestamp, limit, offset, country }: IGetPlaylist) {
     const authEndpoint = 'https://api.spotify.com/v1';
     try {
-      const qs = `locale=${locale}&timestamp=${timestamp}&limit=${limit}&offset=${offset}`;
+      const qs = `locale=${locale}&timestamp=${timestamp}&limit=${limit}&offset=${offset}&country=${country}`;
 
       const playlist = await axios.get(`
         ${authEndpoint}/browse/featured-playlists?${qs}`, {

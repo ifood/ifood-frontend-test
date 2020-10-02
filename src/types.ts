@@ -7,6 +7,8 @@ export interface IFilters {
   }],
   validation?: {
     primitiveType: string;
+    min: number;
+    max: number;
     entityType: string;
     pattern: string;
   }

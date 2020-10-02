@@ -7,18 +7,23 @@ import PlaylistFilter from './components/PlaylistFilters/PlaylistFilter';
 import Header from '../../components/Header/Header';
 import { IPlaylists } from '../../types';
 import Playlist from './components/Playlist/Playlist';
-import usePlaylists from '../../hooks/usePlaylists';
+import useSearch from '../../hooks/useSearch';
 
 const Playlists = () => {
   const filters = useFilters();
-  const playlists = usePlaylists();
+  const { handleFilters, playlists, onSearch  } = useSearch();
 
   return (
     <>
       <Header />
       <div className="playlists container">
         <div className="playlists-topbar">
-          <PlaylistFilter filters={filters} />
+          <PlaylistFilter
+            filters={filters}
+            onChangeFilters={handleFilters}
+            onChangeInputFilters={handleFilters}
+            onSearch={onSearch}
+          />
         </div>
         <div className="playlists-content">
           {playlists.map((playlist: IPlaylists) => {
