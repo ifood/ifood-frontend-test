@@ -56,7 +56,6 @@ const useSearch = () => {
         break;
       case 'limit':
         if (value > 50 || !value) {
-          //error
           setLimit(12);
         } else {
           setLimit(value);

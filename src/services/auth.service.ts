@@ -1,6 +1,11 @@
 import axios from 'axios';
-
-
+import {
+  AUTH_ENDPOINT,
+  CLIENT_ID,
+  REDIRECT_URI,
+  SCOPES,
+  API_SPOTIFY
+} from '../config.json';
 interface IGetPlaylist {
   locale: string;
   timestamp: string;
@@ -12,10 +17,10 @@ class SpotifyService {
   private token = '';
 
   public authorization() {
-    const client_id = '5697d492033e48e8bbf0f1a30c52d907'; // Your client id
-    const redirect_uri = 'http://localhost:3000'; // Your redirect uri
-    const authEndpoint = 'https://accounts.spotify.com';
-    const scopes = 'user-read-private user-read-email playlist-read-collaborative';
+    const client_id = CLIENT_ID; // Your client id
+    const redirect_uri = REDIRECT_URI; // Your redirect uri
+    const authEndpoint = AUTH_ENDPOINT;
+    const scopes = SCOPES;
 
     return `${authEndpoint}/authorize?response_type=token&client_id=${client_id}&scope=${scopes}&redirect_uri=${redirect_uri}`;
   }
@@ -29,9 +34,8 @@ class SpotifyService {
   }
 
   public async getUser() {
-    const authEndpoint = 'https://api.spotify.com/v1';
     try {
-      const user = await axios.get(`${authEndpoint}/me`, {
+      const user = await axios.get(`${API_SPOTIFY}/me`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -49,12 +53,11 @@ class SpotifyService {
   }
 
   public async getPlaylists({ locale, timestamp, limit, offset, country }: IGetPlaylist) {
-    const authEndpoint = 'https://api.spotify.com/v1';
     try {
       const qs = `locale=${locale}&timestamp=${timestamp}&limit=${limit}&offset=${offset}&country=${country}`;
 
       const playlist = await axios.get(`
-        ${authEndpoint}/browse/featured-playlists?${qs}`, {
+        ${API_SPOTIFY}/browse/featured-playlists?${qs}`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }

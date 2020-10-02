@@ -12,7 +12,12 @@ import Loader from '../../components/Loader/Loader';
 
 const Playlists = () => {
   const { filters, loading: loadingFilters } = useFilters();
-  const { handleFilters, playlists, onSearch, loading: loadingPlaylists  } = useSearch();
+  const {
+    handleFilters,
+    playlists,
+    onSearch,
+    loading: loadingPlaylists
+  } = useSearch();
 
   return (
     <>
