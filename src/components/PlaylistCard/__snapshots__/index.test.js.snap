@@ -3,12 +3,12 @@
 exports[`<PlaylistCard/> renders correcly 1`] = `
 <DocumentFragment>
   <a
-    class="sc-gtssRu dLECrO"
+    class="sc-gtssRu hTbsDS"
     href="any_link"
     target="_blank"
   >
     <div
-      class="sc-dlnjPT HfNBu"
+      class="sc-dlnjPT cDEBPx"
     >
       <img
         alt="Today's Hitss"
