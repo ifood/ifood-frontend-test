@@ -8,10 +8,11 @@ import Header from '../../components/Header/Header';
 import { IPlaylists } from '../../types';
 import Playlist from './components/Playlist/Playlist';
 import useSearch from '../../hooks/useSearch';
+import Loader from '../../components/Loader/Loader';
 
 const Playlists = () => {
-  const filters = useFilters();
-  const { handleFilters, playlists, onSearch  } = useSearch();
+  const { filters, loading: loadingFilters } = useFilters();
+  const { handleFilters, playlists, onSearch, loading: loadingPlaylists  } = useSearch();
 
   return (
     <>
@@ -20,28 +21,33 @@ const Playlists = () => {
         <div className="playlists-topbar">
           <PlaylistFilter
             filters={filters}
+            loading={loadingFilters}
             onChangeFilters={handleFilters}
             onChangeInputFilters={handleFilters}
             onSearch={onSearch}
           />
         </div>
-        <div className="playlists-content">
-          {playlists.map((playlist: IPlaylists) => {
-            const { images, external_urls, name, id, description } = playlist;
-            const { url: imageUrl } = images[0];
-            const { spotify } = external_urls;
+        {loadingPlaylists ? (
+          <Loader />
+        ) : (
+          <div className="playlists-content">
+            {playlists.map((playlist: IPlaylists) => {
+              const { images, external_urls, name, id, description } = playlist;
+              const { url: imageUrl } = images[0];
+              const { spotify } = external_urls;
 
-            return (
-              <Playlist
-                key={id}
-                name={name}
-                imageUrl={imageUrl}
-                spotify={spotify}
-                description={description}
-              />
-            )
-          })}
-        </div>
+              return (
+                <Playlist
+                  key={id}
+                  name={name}
+                  imageUrl={imageUrl}
+                  spotify={spotify}
+                  description={description}
+                />
+              )
+            })}
+          </div>
+        )}
       </div>
     </>
   )

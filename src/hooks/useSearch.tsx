@@ -2,6 +2,7 @@ import moment from "moment";
 import { useCallback, useEffect, useState } from "react";
 import { SpotifyServiceAuth } from "../services/auth.service";
 import { IPlaylists } from "../types";
+import Swal from 'sweetalert2';
 
 const useSearch = () => {
   const [playlists, setPlaylists] = useState<IPlaylists[]>([]);
@@ -10,8 +11,10 @@ const useSearch = () => {
   const [locale, setLocale] = useState('');
   const [country, setCountry] = useState('BR');
   const [timestamp, setTimestamp] = useState(moment().format());
+  const [loading, setLoading] = useState(false);
 
   const getFeaturedPlaylist = useCallback(async (limit, offset, locale, country, timestamp) => {
+    setLoading(true);
     try {
       const featuredPlaylists = await SpotifyServiceAuth.getPlaylists({
         limit,
@@ -23,8 +26,12 @@ const useSearch = () => {
 
       setPlaylists(featuredPlaylists);
     } catch (e) {
-
+      Swal.fire({
+        text: 'Error to get playlists, try again...',
+        icon: 'error',
+      });
     }
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -87,6 +94,7 @@ const useSearch = () => {
     playlists,
     onSearch,
     handleFilters,
+    loading
   }
 };
 

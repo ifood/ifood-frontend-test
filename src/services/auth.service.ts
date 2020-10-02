@@ -62,7 +62,7 @@ class SpotifyService {
 
       return playlist.data.playlists.items;
     } catch (e) {
-
+      throw e;
     }
   }
 }

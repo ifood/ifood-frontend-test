@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { SpotifyServiceAuth } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 const useLogin = () => {
   const goToLogin = useCallback(() => {
@@ -12,7 +13,10 @@ const useLogin = () => {
       const user = await SpotifyServiceAuth.getUser();
       return user;
     } catch (e) {
-
+      Swal.fire({
+        text: 'Error to login, try again...',
+        icon: 'error',
+      });
     }
   }, []);
 

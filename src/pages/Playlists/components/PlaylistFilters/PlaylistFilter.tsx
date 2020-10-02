@@ -1,8 +1,13 @@
 import React from 'react';
+import Loader from '../../../../components/Loader/Loader';
 import { IFilters } from '../../../../types';
 import './PlaylistFilter.scss';
 
-const PlaylistFilter = ({ filters, onChangeFilters, onChangeInputFilters, onSearch }: any) => {
+const PlaylistFilter = ({ filters, loading, onChangeFilters, onChangeInputFilters, onSearch }: any) => {
+  if (loading) {
+    return <Loader />
+  }
+
   return (
     <div className="playlist-filter">
       <input placeholder="Pesquisar..." onChange={(ev) => onSearch(ev.target.value)} ></input>
@@ -20,7 +25,7 @@ const PlaylistFilter = ({ filters, onChangeFilters, onChangeInputFilters, onSear
               placeholder={f.name}
               type={f.validation?.primitiveType === 'INTEGER' ? 'number' : 'datetime-local'}
               max={f.validation?.primitiveType === 'INTEGER' ? f.validation?.max : ''}
-              min={f.validation?.primitiveType === 'INTEGER' ? f.validation?.min : ''}
+              min={f.validation?.primitiveType === 'INTEGER' ? f.validation?.min || 1 : ''}
               onChange={(ev) => onChangeInputFilters(f.id, ev.target.value)}
             />
           )}
