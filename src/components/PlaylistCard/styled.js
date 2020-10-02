@@ -20,7 +20,6 @@ export const PlaylistCard = styled.a`
   width: 100%;
   max-width: 300px;
   display: block;
-  margin: 100px;
   position: relative;
   top: 0;
   transition: 300ms ease all;
@@ -40,6 +39,8 @@ export const PlaylistCard = styled.a`
 export const PlaylistCardImage = styled.div`
   img {
     display: block;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 `;
 
