@@ -1,7 +1,17 @@
 import React from "react";
 
+import Head from "components/Head";
+import Filters from "containers/Filters";
+import PlaylistsList from "containers/PlaylistsList";
+
 const Playlists = () => {
-  return <h1>Playlists page</h1>;
+  return (
+    <>
+      <Head />
+      <Filters />
+      <PlaylistsList />
+    </>
+  );
 };
 
 export default Playlists;
