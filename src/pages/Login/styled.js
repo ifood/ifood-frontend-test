@@ -5,7 +5,7 @@ import * as C from "constants/styles/colors";
 import * as T from "constants/styles/typography";
 
 export const Login = styled.div`
-  background: ${C.PRIMARY_COLOR_DARK} url("/banner__login.png") bottom
+  background: ${C.PRIMARY_COLOR_DARK} url("/images/banner__login.png") bottom
     right/contain no-repeat;
 
   ${media.lessThan("large")`
