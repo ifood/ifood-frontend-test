@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+
+interface IGetPlaylist {
+  locale: string;
+  timestamp: string;
+  limit: number;
+  offset: number;
+}
 class SpotifyService {
   private token = '';
 
@@ -40,10 +47,13 @@ class SpotifyService {
     window.location.href = '/';
   }
 
-  public async getPlaylists() {
+  public async getPlaylists({ locale, timestamp, limit, offset }: IGetPlaylist) {
     const authEndpoint = 'https://api.spotify.com/v1';
     try {
-      const playlist = await axios.get(`${authEndpoint}/browse/featured-playlists`, {
+      const qs = `locale=${locale}&timestamp=${timestamp}&limit=${limit}&offset=${offset}`;
+
+      const playlist = await axios.get(`
+        ${authEndpoint}/browse/featured-playlists?${qs}`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
