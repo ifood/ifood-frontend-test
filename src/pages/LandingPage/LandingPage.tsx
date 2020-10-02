@@ -23,7 +23,7 @@ const LandingPage = ({ history }: RouteComponentProps) => {
           Escutar muda tudo
         </h1>
         <h2 className="landing-page__subtitle">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Acesse com sua conta no spotify e confira as playlists.
         </h2>
         <Button label="Acessar" className="default" onClick={goToLogin} />
       </div>

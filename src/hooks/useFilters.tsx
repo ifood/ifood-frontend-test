@@ -15,7 +15,7 @@ const useFilters = () => {
       setFilters(filtersData);
     } catch (e) {
       Swal.fire({
-        text: 'Error to get filters, try again...',
+        text: 'Erro ao carregar filtros, tente novamente...',
         icon: 'error',
       });
     }

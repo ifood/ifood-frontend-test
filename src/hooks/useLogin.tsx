@@ -14,7 +14,7 @@ const useLogin = () => {
       return user;
     } catch (e) {
       Swal.fire({
-        text: 'Error to login, try again...',
+        text: 'Erro ao fazer o login, tente novamente...',
         icon: 'error',
       });
     }

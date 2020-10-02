@@ -27,7 +27,7 @@ const useSearch = () => {
       setPlaylists(featuredPlaylists);
     } catch (e) {
       Swal.fire({
-        text: 'Error to get playlists, try again...',
+        text: 'Erro ao buscar playlists, tente novamente...',
         icon: 'error',
       });
     }
