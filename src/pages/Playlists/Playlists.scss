@@ -7,4 +7,12 @@
     width: 100%;
     border-bottom: 1px solid $grey-light;
   }
+
+  .playlists-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 3rem;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
 }

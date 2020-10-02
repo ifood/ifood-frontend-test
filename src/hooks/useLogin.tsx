@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { SpotifyServiceAuth } from '../services/login.service';
+import { SpotifyServiceAuth } from '../services/auth.service';
 
 const useLogin = () => {
   const goToLogin = useCallback(() => {

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Redirect, RouteComponentProps } from 'react-route
 import './App.scss';
 
 import LandingPage from '../pages/LandingPage/LandingPage';
-import { SpotifyServiceAuth } from '../services/login.service';
+import { SpotifyServiceAuth } from '../services/auth.service';
 import Playlists from '../pages/Playlists/Playlists';
 
 const PrivateRoute = ({ Component, path }: { Component: React.FC<RouteComponentProps>, path: string }) => (

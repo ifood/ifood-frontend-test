@@ -35,9 +35,24 @@ class SpotifyService {
     }
   }
 
-  public async logout() {
+  public logout() {
     localStorage.removeItem('SpotifyToken');
     window.location.href = '/';
+  }
+
+  public async getPlaylists() {
+    const authEndpoint = 'https://api.spotify.com/v1';
+    try {
+      const playlist = await axios.get(`${authEndpoint}/browse/featured-playlists`, {
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      });
+
+      return playlist.data.playlists.items;
+    } catch (e) {
+
+    }
   }
 }
 
