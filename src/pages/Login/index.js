@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "components/presentational/Button";
-import Wrapper from "components/presentational/Wrapper";
-import Spacer from "components/presentational/Spacer";
+import Button from "components/Button";
+import Wrapper from "components/Wrapper";
+import Spacer from "components/Spacer";
 
 import parser from "html-react-parser";
 

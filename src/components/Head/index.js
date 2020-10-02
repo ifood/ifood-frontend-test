@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import parser from "html-react-parser";
 
-import Wrapper from "components/presentational/Wrapper";
+import Wrapper from "components/Wrapper";
 
 import { headData } from "constants/data/components/Head";
 

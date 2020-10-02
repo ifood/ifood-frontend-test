@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 
-import Button from "components/presentational/Button/index";
+import Button from "components/Button/index";
 import Wrapper from "./index";
 
 test("<Wrapper/> renders correcly", () => {
