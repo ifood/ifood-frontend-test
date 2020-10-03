@@ -8,7 +8,7 @@ test("<Spacer/> renders correcly", () => {
     sizes: { desktop: "xl", mobile: "sm" },
   };
 
-  const component = <Wrapper {...props} />;
+  const component = <Wrapper sizes={props.sizes} />;
   const { asFragment } = render(component);
   expect(asFragment(component)).toMatchSnapshot();
 });

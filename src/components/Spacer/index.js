@@ -13,7 +13,7 @@ Spacer.propTypes = {
   sizes: PropTypes.shape({
     desktop: PropTypes.oneOf(spacingOptions),
     mobile: PropTypes.oneOf(spacingOptions),
-  }),
+  }).isRequired,
 };
 
 export default Spacer;

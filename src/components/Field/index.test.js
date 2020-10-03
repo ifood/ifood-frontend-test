@@ -8,7 +8,7 @@ test("<Field /> renders correcly", () => {
     placeholder: "Digite seu texto",
   };
 
-  const component = <Field {...props} />;
+  const component = <Field placeholder={props.placeholder} />;
   const { asFragment } = render(component);
   expect(asFragment(component)).toMatchSnapshot();
 });

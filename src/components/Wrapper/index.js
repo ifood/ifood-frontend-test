@@ -12,7 +12,7 @@ Wrapper.defaultProps = {
 };
 
 Wrapper.propTypes = {
-  childrren: PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default Wrapper;

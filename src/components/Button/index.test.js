@@ -13,7 +13,7 @@ test("<Button/> renders correcly", () => {
     onClick: () => anyFunction(),
   };
 
-  const component = <Button {...props} />;
+  const component = <Button label={props.label} onClick={props.onClick} />;
   const { asFragment } = render(component);
   expect(asFragment(component)).toMatchSnapshot();
 });

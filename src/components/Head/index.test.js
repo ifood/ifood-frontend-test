@@ -9,7 +9,7 @@ test("<Head/> renders correcly", () => {
     tagline: "Where music meets iFood",
   };
 
-  const component = <Head {...props} />;
+  const component = <Head title={props.title} tagline={props.tagline} />;
   const { asFragment } = render(component);
   expect(asFragment(component)).toMatchSnapshot();
 });

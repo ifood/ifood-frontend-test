@@ -12,7 +12,15 @@ test("<PlaylistCard/> renders correcly", () => {
     label: "Listen on spotify",
   };
 
-  const component = <PlaylistCard {...props} />;
+  const component = (
+    <PlaylistCard
+      link={props.link}
+      image={props.image}
+      title={props.title}
+      author={props.author}
+      label={props.label}
+    />
+  );
   const { asFragment } = render(component);
   expect(asFragment(component)).toMatchSnapshot();
 });
