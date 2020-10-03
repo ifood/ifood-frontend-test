@@ -53,8 +53,6 @@ function FilterForm(props) {
   );
 }
 
-// locale=pt_BR&country=BR&limit=1&offset=1&timestamp=2020-10-06T03%3A00%3A00.000Z
-
 FilterForm.defaultProps = {
   filters: [],
 };

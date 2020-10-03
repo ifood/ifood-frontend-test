@@ -101,7 +101,7 @@ function PlaylistGrid(props) {
           <FilterContainer>
             <TextField
               id="local-filter"
-              label="Filter"
+              label="Search playlist"
               variant="filled"
               onChange={handleChangeTextFilter}
               fullWidth

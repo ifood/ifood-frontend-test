@@ -1,4 +1,4 @@
-import { SPOTIFY_TOKEN } from "../Constants";
+import { SPOTIFY_TOKEN } from '../Constants';
 
 function getToken() {
   return localStorage.getItem(SPOTIFY_TOKEN);
