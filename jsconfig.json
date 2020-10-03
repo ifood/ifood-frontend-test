@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "jsx": "react",
+    "baseUrl": "./"
   },
-  "include": ["src"]
+  "include": ["src/**/*", "stories/**/*"]
 }
