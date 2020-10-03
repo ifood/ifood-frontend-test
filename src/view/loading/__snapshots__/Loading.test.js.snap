@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loading /> snapshot 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+<Loading>
+  <styled.div>
+    <div
+      className="c0"
+    >
+      <WithStyles(ForwardRef(CircularProgress))>
+        <ForwardRef(CircularProgress)
+          classes={
+            Object {
+              "circle": "MuiCircularProgress-circle",
+              "circleDisableShrink": "MuiCircularProgress-circleDisableShrink",
+              "circleIndeterminate": "MuiCircularProgress-circleIndeterminate",
+              "circleStatic": "MuiCircularProgress-circleStatic",
+              "colorPrimary": "MuiCircularProgress-colorPrimary",
+              "colorSecondary": "MuiCircularProgress-colorSecondary",
+              "indeterminate": "MuiCircularProgress-indeterminate",
+              "root": "MuiCircularProgress-root",
+              "static": "MuiCircularProgress-static",
+              "svg": "MuiCircularProgress-svg",
+            }
+          }
+        >
+          <div
+            className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+            role="progressbar"
+            style={
+              Object {
+                "height": 40,
+                "width": 40,
+              }
+            }
+          >
+            <svg
+              className="MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                cx={44}
+                cy={44}
+                fill="none"
+                r={20.2}
+                strokeWidth={3.6}
+                style={Object {}}
+              />
+            </svg>
+          </div>
+        </ForwardRef(CircularProgress)>
+      </WithStyles(ForwardRef(CircularProgress))>
+      <WithStyles(ForwardRef(Typography))
+        color="textSecondary"
+      >
+        <ForwardRef(Typography)
+          classes={
+            Object {
+              "alignCenter": "MuiTypography-alignCenter",
+              "alignJustify": "MuiTypography-alignJustify",
+              "alignLeft": "MuiTypography-alignLeft",
+              "alignRight": "MuiTypography-alignRight",
+              "body1": "MuiTypography-body1",
+              "body2": "MuiTypography-body2",
+              "button": "MuiTypography-button",
+              "caption": "MuiTypography-caption",
+              "colorError": "MuiTypography-colorError",
+              "colorInherit": "MuiTypography-colorInherit",
+              "colorPrimary": "MuiTypography-colorPrimary",
+              "colorSecondary": "MuiTypography-colorSecondary",
+              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+              "displayBlock": "MuiTypography-displayBlock",
+              "displayInline": "MuiTypography-displayInline",
+              "gutterBottom": "MuiTypography-gutterBottom",
+              "h1": "MuiTypography-h1",
+              "h2": "MuiTypography-h2",
+              "h3": "MuiTypography-h3",
+              "h4": "MuiTypography-h4",
+              "h5": "MuiTypography-h5",
+              "h6": "MuiTypography-h6",
+              "noWrap": "MuiTypography-noWrap",
+              "overline": "MuiTypography-overline",
+              "paragraph": "MuiTypography-paragraph",
+              "root": "MuiTypography-root",
+              "srOnly": "MuiTypography-srOnly",
+              "subtitle1": "MuiTypography-subtitle1",
+              "subtitle2": "MuiTypography-subtitle2",
+            }
+          }
+          color="textSecondary"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Loading...
+          </p>
+        </ForwardRef(Typography)>
+      </WithStyles(ForwardRef(Typography))>
+    </div>
+  </styled.div>
+</Loading>
+`;

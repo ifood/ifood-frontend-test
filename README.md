@@ -1,29 +1,69 @@
-# iFood Frontend Test
+# SPOTIFOOD
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+All your favorite music inside one app.<br>
+Listen to comfy music while eating ♪
 
-## Business rules
+Demo can be acessed here: [capeleto-spotifood](https://capeleto-spotifood.netlify.app)
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+This project was created using [create-react-app](https://github.com/facebook/create-react-app)
 
-## Hints or Constraints
+## Available scripts
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+`npm start` or `yarn start`
 
-## Non functional requirements
+Runs the app in development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+The page will automatically reload if you make changes to the code.<br>
+You will see the build errors and lint warnings in the console.
+
+`npm test` or `yarn test`
+
+Runs the test watcher in an interactive mode.<br>
+
+[You can read more about testing here](https://facebook.github.io/create-react-app/docs/running-tests)
+
+`npm run build` or `yarn build`
+
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.<br>
+The build is minified and the filenames include the hashes.<br>
+
+## Technologies
+
+- [React](https://reactjs.org/)
+- [styled-components](https://styled-components.com/)
+- Material UI
+  - [Core](https://material-ui.com/)
+  - [Picker](https://material-ui-pickers.dev/)
+  - [Icons](https://material-ui.com/components/icons/#icons)
+- [date-fns](https://date-fns.org/)
+- [@date-io](https://github.com/dmtrKovalenko/date-io)
+  - date-fns
+- [Axios](https://github.com/axios/axios)
+- [Jest](https://jestjs.io/)
+- [Enzyme](https://enzymejs.github.io/enzyme/)
+- [Chai](https://www.chaijs.com/)
+- [EsLint config](https://www.npmjs.com/package/eslint-config-airbnb)
+- [Prettier](https://prettier.io/)
+
+## Variables
+
+You should configure your own variables.
+
+##### if you want to create more variables check [here](https://create-react-app.dev/docs/adding-custom-environment-variables/)
+
+`REACT_APP_SPOTIFY_ID`
+
+Spotify app public client id, you can create one following this [guide](https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app)
+
+`REACT_APP_REDIRECT_URL`
+
+You must specify which redirect url spotify can use, to set up it you can follow this [guide](https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app)
+
+## To be implemented
+
+- I18N
+- L10N
+- Session controller
+- More tests
