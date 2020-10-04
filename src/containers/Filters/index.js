@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Loader from "components/Loader";
@@ -16,7 +16,9 @@ import * as S from "./styled";
 
 const Filters = () => {
   const [fields, setFields] = useState([]);
+  const [dataStart, setDataStart] = useState(new Date());
   const [params, setParams] = useState(false);
+  const [limitSize, setLimitSize] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -35,19 +37,47 @@ const Filters = () => {
       });
   }, []);
 
-  const handleInputChange = (e, id) => {
-    const { value } = e.target;
+  const updateParams = useCallback((id, value) => {
+    const filter = {
+      [id]: value,
+    };
 
-    if (value !== "") {
-      const filter = {
-        [id]: value,
-      };
+    setParams((prevState) => {
+      return { ...prevState, ...filter };
+    });
+  }, []);
 
-      setParams((prevState) => {
-        return { ...prevState, ...filter };
-      });
-    }
-  };
+  const handleInputChange = useCallback(
+    (e, id) => {
+      const { value } = e.target;
+
+      if (id === "limit" && (Number(value) > 50 || Number(value) < 1)) {
+        return setLimitSize(true);
+      }
+
+      setLimitSize(false);
+
+      if (id === "country" && value === "en_US") {
+        return updateParams(id, "US");
+      }
+
+      if (value !== "") {
+        return updateParams(id, value);
+      }
+    },
+    [updateParams]
+  );
+
+  const handleDateChange = useCallback(
+    (date, id) => {
+      const convertedDate = date.toISOString();
+
+      updateParams(id, convertedDate);
+
+      setDataStart(date);
+    },
+    [updateParams]
+  );
 
   useEffectUpdate(() => {
     if (token) {
@@ -58,20 +88,38 @@ const Filters = () => {
         .then((data) => {
           dispatch(updatePlaylists(data));
         })
-        .catch(() => {});
+        .catch(() => {
+          console.log("tentou filtrar e deu erro");
+        });
     }
   }, [params]);
+
+  const fieldsSize = useMemo(() => {
+    return fields.length === 0;
+  }, [fields]);
 
   return (
     <S.Filters>
       <S.FiltersTitle>Browse in our playlists</S.FiltersTitle>
 
       <S.FiltersBox>
-        {fields.length <= 0 && <Loader />}
+        {fieldsSize && <Loader />}
+
+        {limitSize && (
+          <S.FiltersValidation>
+            Erro: Por favor digite um número entre 1 e 50 para o campo de
+            quantidade
+          </S.FiltersValidation>
+        )}
 
         {fields.map((item) => (
           <S.FiltersItem key={item.id}>
-            {getFilterField(item, (e) => handleInputChange(e, item.id))}
+            {getFilterField(
+              item,
+              (e) => handleInputChange(e, item.id),
+              (date) => handleDateChange(date, item.id),
+              dataStart
+            )}
           </S.FiltersItem>
         ))}
       </S.FiltersBox>
