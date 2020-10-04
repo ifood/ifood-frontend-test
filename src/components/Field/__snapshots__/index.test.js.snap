@@ -6,6 +6,7 @@ exports[`<Field /> renders correcly 1`] = `
     class="sc-bdnylx kufWaU"
     placeholder=""
     type="text"
+    value="DEFAULT"
   />
 </DocumentFragment>
 `;
