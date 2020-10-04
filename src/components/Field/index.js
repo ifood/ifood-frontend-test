@@ -5,10 +5,18 @@ import * as S from "./styled";
 
 const Field = ({ as, type, options, onChange, inputName }) => {
   return (
-    <S.Field as={as} placeholder={inputName} type={type} onChange={onChange}>
+    <S.Field
+      as={as}
+      placeholder={inputName}
+      type={type}
+      onChange={onChange}
+      defaultValue="DEFAULT"
+    >
       {options && options.length >= 0 && (
         <>
-          <option value="">{inputName}</option>
+          <option value="DEFAULT" disabled>
+            {inputName}
+          </option>
 
           {options.map(({ value, name }) => (
             <option key={value} value={value}>
