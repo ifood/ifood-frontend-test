@@ -4,8 +4,10 @@ import { render } from "@testing-library/react";
 import DateField from "./index";
 
 test("<DateField /> renders correcly", () => {
+  const mockedDate = new Date(2017, 11, 10);
+
   const props = {
-    dataStart: new Date(),
+    dataStart: mockedDate,
     onCalendarChange: () => {},
   };
 
