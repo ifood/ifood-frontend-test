@@ -6,6 +6,9 @@ export default function playlists(state = [], action) {
     case "UPDATE_PLAYLISTS":
       return [...action.playlists];
 
+    case "REMOVE_PLAYLISTS":
+      return [];
+
     default:
       return state;
   }

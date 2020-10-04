@@ -11,3 +11,9 @@ export const updatePlaylists = (playlists) => {
     playlists,
   };
 };
+
+export const removePlaylists = () => {
+  return {
+    type: "REMOVE_PLAYLISTS",
+  };
+};
