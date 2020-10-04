@@ -1,3 +1,6 @@
 import { combineReducers } from "redux";
 
-export default combineReducers({});
+import playlists from "./playlists/reducers";
+import authentication from "./auth/reducers";
+
+export default combineReducers({ playlists, authentication });
