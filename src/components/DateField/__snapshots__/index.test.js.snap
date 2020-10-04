@@ -14,7 +14,7 @@ exports[`<DateField /> renders correcly 1`] = `
         <input
           class=""
           type="text"
-          value="04/10/2020, 20:07"
+          value="10/12/2017, 00:00"
         />
       </div>
     </div>
