@@ -39,6 +39,7 @@ export const FiltersBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   border-radius: 5px;
+  justify-content: space-between;
 
   ${media.lessThan("large")`
     padding: ${SPACINGS.lg};
@@ -48,16 +49,18 @@ export const FiltersBox = styled.div`
 export const FiltersItem = styled.div`
   width: 100%;
 
-  :not(:last-child) {
+  &:not(:last-child) {
     width: calc(50% - 14px);
-    margin: 0 auto 28px;
-  }
-
-  :nth-child(even) {
-    margin-left: 28px;
+    margin: 0 0 28px;
   }
 
   ${media.lessThan("large")`
     width: 100%
   `}
+`;
+
+export const FiltersValidation = styled.p`
+  color: ${C.PRIMARY_COLOR};
+  text-align: center;
+  margin: 0 auto ${SPACINGS.lg};
 `;
