@@ -3,6 +3,8 @@ import Button from "components/Button";
 import Wrapper from "components/Wrapper";
 import Spacer from "components/Spacer";
 
+import { SPOTIFY_LOGIN_URL } from "constants/config";
+
 import parser from "html-react-parser";
 
 import { loginData } from "constants/data/pages/login";
@@ -10,7 +12,8 @@ import { loginData } from "constants/data/pages/login";
 import * as S from "./styled";
 
 const Login = () => {
-  const buttonFunction = () => {
+  const redirectToLogin = () => {
+    window.location = SPOTIFY_LOGIN_URL;
     return true;
   };
 
@@ -29,7 +32,7 @@ const Login = () => {
 
             <Button
               label={loginData.ctaLabel}
-              onClick={() => buttonFunction()}
+              onClick={() => redirectToLogin()}
             />
           </S.LoginContent>
         </S.LoginSection>
