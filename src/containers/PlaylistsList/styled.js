@@ -8,6 +8,7 @@ export const PlaylistsList = styled.div`
   column-gap: 30px;
   row-gap: 30px;
   margin: ${SPACINGS.xl} 0;
+  justify-items: center;
 
   ${media.lessThan("large")`
     grid-template-columns: repeat(2, 1fr);
