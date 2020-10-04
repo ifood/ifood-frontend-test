@@ -40,31 +40,22 @@ export const FiltersBox = styled.div`
   flex-wrap: wrap;
   border-radius: 5px;
 
-  & > div:not(:last-child) {
-    margin: 0 0 ${SPACINGS.md};
-  }
-
-  & > div:nth-child(2),
-  & > div:nth-child(4) {
-    margin: 0 ${SPACINGS.md} 0 0;
-  }
-
   ${media.lessThan("large")`
     padding: ${SPACINGS.lg};
-
-    & > div:nth-child(2),
-    & > div:nth-child(4) {
-      margin: 0 0 ${SPACINGS.md};
-    }
   `}
 `;
 
-export const FiltersFull = styled.div`
+export const FiltersItem = styled.div`
   width: 100%;
-`;
 
-export const FiltersHalf = styled.div`
-  width: calc(50% - 14px);
+  :not(:last-child) {
+    width: calc(50% - 14px);
+    margin: 0 auto 28px;
+  }
+
+  :nth-child(even) {
+    margin-left: 28px;
+  }
 
   ${media.lessThan("large")`
     width: 100%
