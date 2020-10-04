@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import PlaylistCard from "components/PlaylistCard";
@@ -32,10 +32,14 @@ const PlaylistsList = () => {
     }
   }, [dispatch, token]);
 
+  const playlistsSize = useMemo(() => {
+    return playlistsList.length === 0;
+  }, [playlistsList]);
+
   return (
     <Wrapper>
       <S.PlaylistsList>
-        {playlistsList.length === 0 && <Loader />}
+        {playlistsSize && <Loader />}
 
         {tokenInvalid ? (
           `Token invalido ou expirado`
