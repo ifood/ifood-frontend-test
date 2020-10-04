@@ -2,15 +2,15 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Loader from "components/Loader";
-
 import useEffectUpdate from "hooks/useEffectUpdate";
-
-import { updatePlaylists } from "store/modules/playlists/actions";
-
-import { getFilterField } from "helpers/getFilterField";
-
 import FiltersApiService from "services/filters";
 import PlaylistsApiService from "services/playlists";
+import { getFilterField } from "helpers/getFilterField";
+import { filtersContainerData } from "constants/data/containers/Filters";
+import {
+  updatePlaylists,
+  removePlaylists,
+} from "store/modules/playlists/actions";
 
 import * as S from "./styled";
 
@@ -19,6 +19,7 @@ const Filters = () => {
   const [dataStart, setDataStart] = useState(new Date());
   const [params, setParams] = useState(false);
   const [limitSize, setLimitSize] = useState(false);
+  const [generalError, setGeneralError] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -89,7 +90,8 @@ const Filters = () => {
           dispatch(updatePlaylists(data));
         })
         .catch(() => {
-          console.log("tentou filtrar e deu erro");
+          setGeneralError(true);
+          dispatch(removePlaylists());
         });
     }
   }, [params]);
@@ -107,8 +109,13 @@ const Filters = () => {
 
         {limitSize && (
           <S.FiltersValidation>
-            Erro: Por favor digite um número entre 1 e 50 para o campo de
-            quantidade
+            {filtersContainerData.errors.limit}
+          </S.FiltersValidation>
+        )}
+
+        {generalError && (
+          <S.FiltersValidation>
+            {filtersContainerData.errors.general}
           </S.FiltersValidation>
         )}
 
