@@ -1,8 +1,9 @@
 import React from "react";
 
 import Field from "components/Field";
+import DateField from "components/DateField";
 
-export const getFilterField = (item, func) => {
+export const getFilterField = (item, handleInput, dateFunction, dataStart) => {
   const { id, name } = item;
 
   switch (id) {
@@ -10,7 +11,7 @@ export const getFilterField = (item, func) => {
       return (
         <Field
           as="select"
-          onChange={func}
+          onChange={handleInput}
           inputName={name}
           options={item.values}
         />
@@ -20,20 +21,22 @@ export const getFilterField = (item, func) => {
       return (
         <Field
           as="select"
-          onChange={func}
+          onChange={handleInput}
           inputName={name}
           options={item.values}
         />
       );
 
     case "timestamp":
-      break;
+      return (
+        <DateField onCalendarChange={dateFunction} dataStart={dataStart} />
+      );
 
     case "limit":
-      return <Field type="number" onChange={func} inputName={name} />;
+      return <Field type="number" onChange={handleInput} inputName={name} />;
 
     case "offset":
-      return <Field type="number" onChange={func} inputName={name} />;
+      return <Field type="number" onChange={handleInput} inputName={name} />;
 
     default:
       return false;
