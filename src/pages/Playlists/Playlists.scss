@@ -10,7 +10,7 @@
 
   .playlists-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax($size, 1fr));
     grid-gap: 3rem;
     padding: 4rem 2rem;
     text-align: center;
@@ -35,7 +35,7 @@
       font-size: 1.2rem;
       font-weight: bold;
       color: $primary-color;
-      margin-top: 1rem;
+      margin-top: $base-size;
     }
 
     .not-found__subtitle {

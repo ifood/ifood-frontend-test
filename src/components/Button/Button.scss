@@ -2,15 +2,15 @@
 
 .button-component {
   display: inline-flex;
-  padding: $font-base 1.5rem;
+  padding: $base-size 1.5rem;
   border: none;
   border-radius: .25rem;
   outline: none;
-  font-size: $font-base;
+  font-size: $base-size;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  margin: $font-base 0;
+  margin: $base-size 0;
   transition: all .2s ease-in-out;
   &:hover {
     opacity: .8;

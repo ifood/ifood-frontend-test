@@ -22,7 +22,7 @@
     padding: 2rem;
     .landing-page__logo {
       width: 120px;
-      margin-bottom: 1rem;
+      margin-bottom: $base-size;
     }
     .landing-page__title {
       color: $primary-color;
@@ -35,9 +35,9 @@
       }
     }
     .landing-page__subtitle {
-      font-size: $font-base;
+      font-size: $base-size;
       color: $grey;
-      margin-bottom: 1rem;
+      margin-bottom: $base-size;
     }
   }
 }

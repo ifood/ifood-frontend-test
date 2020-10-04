@@ -4,7 +4,7 @@
 .playlist-filter {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-gap: 1rem;
+  grid-gap: $base-size;
   padding: 1.25rem 2rem;
   margin: 0 auto;
   max-width: 600px;
@@ -17,7 +17,7 @@
     border: 1px solid $grey-light;
     background-color: white;
     color: $grey;
-    font-size: 1rem;
+    font-size: $base-size;
     outline: none;
     overflow: hidden;
     padding: .425rem .8rem;
