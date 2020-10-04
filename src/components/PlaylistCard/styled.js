@@ -19,10 +19,15 @@ export const PlaylistCardLink = styled.span`
 export const PlaylistCard = styled.a`
   width: 100%;
   max-width: 300px;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
   position: relative;
   top: 0;
   transition: 300ms ease all;
+  border: 1px solid ${C.GREY_LIGHTER};
+  border-radius: 5px;
+  overflow: hidden;
 
   &:hover {
     top: -10px;
@@ -39,18 +44,14 @@ export const PlaylistCard = styled.a`
 export const PlaylistCardImage = styled.div`
   img {
     display: block;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
   }
 `;
 
 export const PlaylistCardContent = styled.div`
-  border-top: 1px solid ${C.GREY_LIGHTER};
-  border-right: 1px solid ${C.GREY_LIGHTER};
-  border-left: 1px solid ${C.GREY_LIGHTER};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   overflow: hidden;
+  width: 100%;
 `;
 
 export const PlaylistCardInfo = styled.div`
