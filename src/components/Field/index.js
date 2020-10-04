@@ -3,24 +3,43 @@ import PropTypes from "prop-types";
 
 import * as S from "./styled";
 
-const Field = ({ placeholder, as, children, type }) => (
-  <S.Field as={as} placeholder={placeholder} type={type}>
-    {children && children}
-  </S.Field>
-);
+const Field = ({ as, type, options, onChange, inputName }) => {
+  return (
+    <S.Field as={as} placeholder={inputName} type={type} onChange={onChange}>
+      {options && options.length >= 0 && (
+        <>
+          <option value="">{inputName}</option>
+
+          {options.map(({ value, name }) => (
+            <option key={value} value={value}>
+              {name}
+            </option>
+          ))}
+        </>
+      )}
+    </S.Field>
+  );
+};
 
 Field.defaultProps = {
-  placeholder: null,
-  children: null,
+  inputName: "",
   as: null,
   type: "text",
+  options: null,
+  onChange: () => {},
 };
 
 Field.propTypes = {
-  placeholder: PropTypes.string,
-  children: PropTypes.node,
+  inputName: PropTypes.string,
   as: PropTypes.string,
   type: PropTypes.string,
+  onChange: PropTypes.func,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
 };
 
 export default Field;
