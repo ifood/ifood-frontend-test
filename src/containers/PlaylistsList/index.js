@@ -24,12 +24,6 @@ const PlaylistsList = () => {
   const playlistsList = useSelector((state) => state.playlists.items);
   const playlistsStatus = useSelector((state) => state.playlists.isEmpty);
 
-  // const isEmpty = useCallback(() => {
-  //   if (playlistsList.length === 0) {
-  //     return true;
-  //   }
-  // }, [playlistsList.length]);
-
   useEffect(() => {
     if (token) {
       const requestPlaylists = PlaylistsApiService();
