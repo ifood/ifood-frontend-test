@@ -13,7 +13,6 @@ const spy = jest.spyOn(Swal, 'fire');
 
 const MockUseCustomHook = () => {
   const { playlists, loading, handleFilters, onSearch } = useSearch();
-  const filters = ['locale', 'limit', 'offset', 'timestamp'];
   return (
     <div>
       <span className="loading">{loading ? 'loading' : ''}</span>
@@ -25,9 +24,16 @@ const MockUseCustomHook = () => {
           </li>
         ))}
       </ul>
-      {filters.map(f => (
-        <button key={f} data-testid={`button-${f}`} onClick={() => {handleFilters(f, '2020-10-05T14:58')}}>Filtro</button>
-      ))}
+      <button data-testid="button-locale" onClick={() => {handleFilters('locale', 'pt_BR')}}>Filtro</button>
+      <button data-testid="button-locale-empty" onClick={() => {handleFilters('locale', '')}}>Filtro</button>
+      <button data-testid="button-country" onClick={() => {handleFilters('country', 'BR')}}>Filtro</button>
+      <button data-testid="button-country-empty" onClick={() => {handleFilters('country', '')}}>Filtro</button>
+      <button data-testid="button-limit" onClick={() => {handleFilters('limit', 12)}}>Filtro</button>
+      <button data-testid="button-limit-empty" onClick={() => {handleFilters('limit', '')}}>Filtro</button>
+      <button data-testid="button-offset" onClick={() => {handleFilters('offset', 12)}}>Filtro</button>
+      <button data-testid="button-offset-empty" onClick={() => {handleFilters('offset', '')}}>Filtro</button>
+      <button data-testid="button-timestamp" onClick={() => {handleFilters('timestamp', '2020-10-05T14:58')}}>Filtro</button>
+      <button data-testid="button-timestamp-empty" onClick={() => {handleFilters('timestamp', '')}}>Filtro</button>
       <input type="text" data-testid="search" onChange={(ev) => onSearch(ev.target.value)}  />
     </div>
   )
@@ -133,6 +139,16 @@ describe('useSearch hook', () => {
 
     await act(async () => {
       await fireEvent.click(getByTestId('button-timestamp'));
+      await fireEvent.click(getByTestId('button-limit'));
+      await fireEvent.click(getByTestId('button-offset'));
+      await fireEvent.click(getByTestId('button-locale'));
+      await fireEvent.click(getByTestId('button-country'));
+
+      await fireEvent.click(getByTestId('button-timestamp-empty'));
+      await fireEvent.click(getByTestId('button-limit-empty'));
+      await fireEvent.click(getByTestId('button-offset-empty'));
+      await fireEvent.click(getByTestId('button-locale-empty'));
+      await fireEvent.click(getByTestId('button-country-empty'));
     });
   });
 
@@ -151,5 +167,13 @@ describe('useSearch hook', () => {
     });
 
     expect(container.querySelectorAll('li').length).toBe(1);
+
+    await act(async () => {
+      await fireEvent.change(getByTestId('search'), {
+        target: { value: '' },
+      });
+    });
+
+    expect(container.querySelectorAll('li').length).toBe(3);
   })
 })

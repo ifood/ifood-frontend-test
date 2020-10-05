@@ -17,7 +17,7 @@
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "3.4.0",
     "sweetalert2": "^10.3.5",
     "typescript": "~3.8.3"
   },
@@ -49,12 +49,13 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
-      "!<rootDir>/node_modules/"
+      "!<rootDir>/node_modules/",
+      "src/index.tsx"
     ],
     "coverageThreshold": {
       "global": {
-        "lines": 90,
-        "statements": 90
+        "lines": 80,
+        "statements": 80
       }
     }
   }

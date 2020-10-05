@@ -103,6 +103,18 @@ describe('Playlist Filter', () => {
     expect(container.querySelector('.playlist-filter')).toBeInTheDocument();
   });
 
+  test('Simple render with loader', () => {
+    const { container } = render(
+      <PlaylistFilter
+        filters={[]}
+        loading={true}
+        onChangeFilters={mockChangeFilters}
+        onChangeInputFilters={mockInput}
+        onSearch={mockSearch}
+      />);
+    expect(container.querySelector('.loader')).toBeInTheDocument();
+  });
+
   test('Search by name', async () => {
     const { container, getByTestId } = render(<PlaylistFilter {...initialData} />);
     expect(container.querySelector('.playlist-filter')).toBeInTheDocument();
@@ -140,5 +152,5 @@ describe('Playlist Filter', () => {
     });
 
     expect(mockChangeFilters).toHaveBeenCalled();
-});
+  });
 });
