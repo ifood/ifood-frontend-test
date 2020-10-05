@@ -16,7 +16,7 @@
 
 To run the application locally you must provide a Spotify Client ID, you also need to set the ID as an env variable in .env file.
 
-`/.env`
+`/.env` <br />
 `REACT_APP_SPOTIFY_CLIENTE_ID={YOUR_CLIENT_ID}`
 
 # Testing
