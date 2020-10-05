@@ -24,7 +24,7 @@ export const LoginSection = styled.section`
 `;
 
 export const LoginContent = styled.div`
-  max-width: 490px;
+  max-width: 600px;
 
   ${media.lessThan("large")`
     text-align: center;
