@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import * as S from "./styled";
 
-const PlaylistCard = ({ link, image, title, author, label }) => {
+const PlaylistCard = ({ link, image, title, author, label, authorPrefix }) => {
   return (
     <S.PlaylistCard href={link} target="_blank">
       <S.PlaylistCardImage>
@@ -14,7 +14,8 @@ const PlaylistCard = ({ link, image, title, author, label }) => {
         <S.PlaylistCardInfo>
           <S.PlaylistCardTitle>{title}</S.PlaylistCardTitle>
           <S.PlaylistCardAuthor>
-            by <S.PlaylistCardAuthorDetail>{author}</S.PlaylistCardAuthorDetail>
+            {authorPrefix}
+            <S.PlaylistCardAuthorDetail> {author}</S.PlaylistCardAuthorDetail>
           </S.PlaylistCardAuthor>
         </S.PlaylistCardInfo>
 
@@ -29,6 +30,7 @@ PlaylistCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  authorPrefix: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
 };
 
