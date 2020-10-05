@@ -24,3 +24,16 @@ export const updatePlaylistsStatus = (isEmpty) => {
     isEmpty,
   };
 };
+
+export const filterPlaylists = (filteredItems) => {
+  return {
+    type: "FILTER_PLAYLISTS",
+    filteredItems,
+  };
+};
+
+export const removeFilteredPlaylists = () => {
+  return {
+    type: "REMOVE_FILTERED_PLAYLISTS",
+  };
+};

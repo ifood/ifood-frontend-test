@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -22,7 +22,18 @@ const PlaylistsList = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.authentication.token);
   const playlistsList = useSelector((state) => state.playlists.items);
+  const playlistsFiltered = useSelector(
+    (state) => state.playlists.filteredItems
+  );
   const playlistsStatus = useSelector((state) => state.playlists.isEmpty);
+
+  const playlistsToLoad = useCallback(() => {
+    if (playlistsFiltered.length === 0 && playlistsStatus !== true) {
+      return playlistsList;
+    }
+
+    return playlistsFiltered;
+  }, [playlistsFiltered, playlistsList, playlistsStatus]);
 
   useEffect(() => {
     if (token) {
@@ -66,7 +77,7 @@ const PlaylistsList = () => {
       <S.PlaylistsList>
         {!tokenInvalid && (
           <>
-            {playlistsList.map((item) => (
+            {playlistsToLoad().map((item) => (
               <PlaylistCard
                 key={item.id}
                 title={item.name}

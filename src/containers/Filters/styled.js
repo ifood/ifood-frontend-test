@@ -18,10 +18,18 @@ export const Filters = styled.div`
   }
 `;
 
-export const FiltersTitle = styled.h2`
+export const FilterByName = styled.input`
   color: ${C.GREY};
   text-align: center;
-  padding: ${SPACINGS.xl} 0;
+  padding: ${SPACINGS.xl} 0 ${SPACINGS.md};
+  background: transparent;
+  margin: 0 auto ${SPACINGS.xl};
+  display: block;
+  outline: none;
+  font-family: ${T.PRIMARY_FONT};
+  width: 600px;
+  max-width: 450px;
+  border-bottom: 1px solid grey;
   ${T.TITLE_LARGE};
 
   ${media.lessThan("large")`

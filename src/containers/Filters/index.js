@@ -11,6 +11,8 @@ import {
   updatePlaylists,
   updatePlaylistsStatus,
   removePlaylists,
+  filterPlaylists,
+  removeFilteredPlaylists,
 } from "store/modules/playlists/actions";
 
 import * as S from "./styled";
@@ -20,11 +22,13 @@ const Filters = () => {
   const [dataStart, setDataStart] = useState(new Date());
   const [params, setParams] = useState(false);
   const [limitSize, setLimitSize] = useState(false);
+  const [offsetIsNegative, setOffsetIsNegative] = useState(false);
   const [generalError, setGeneralError] = useState(false);
 
   const dispatch = useDispatch();
 
   const token = useSelector((state) => state.authentication.token);
+  const currentPlaylists = useSelector((state) => state.playlists.items);
 
   useEffect(() => {
     const requestFilters = FiltersApiService();
@@ -52,6 +56,12 @@ const Filters = () => {
   const handleInputChange = useCallback(
     (e, id) => {
       const { value } = e.target;
+
+      if (id === "offset" && Number(value) < 0) {
+        return setOffsetIsNegative(true);
+      }
+
+      setOffsetIsNegative(false);
 
       if (id === "limit" && (Number(value) > 50 || Number(value) < 1)) {
         return setLimitSize(true);
@@ -94,7 +104,7 @@ const Filters = () => {
           } else {
             dispatch(updatePlaylistsStatus(false));
           }
-
+          setGeneralError(false);
           dispatch(updatePlaylists(data));
         })
         .catch(() => {
@@ -108,12 +118,55 @@ const Filters = () => {
     return fields.length === 0;
   }, [fields]);
 
+  const searchByName = useCallback(
+    (e) => {
+      const { value } = e.target;
+
+      const searchTerm = value.toLocaleLowerCase();
+
+      const filteredItems = currentPlaylists.filter(({ name }) =>
+        name.toLocaleLowerCase().includes(searchTerm)
+      );
+
+      if (value === "") {
+        return (
+          dispatch(updatePlaylistsStatus(false)),
+          dispatch(removeFilteredPlaylists())
+        );
+      }
+
+      if (filteredItems.length !== 0) {
+        return (
+          dispatch(updatePlaylistsStatus(false)),
+          dispatch(filterPlaylists(filteredItems))
+        );
+      }
+
+      if (value !== "" && filteredItems.length === 0) {
+        return (
+          dispatch(updatePlaylistsStatus(true)),
+          dispatch(removeFilteredPlaylists())
+        );
+      }
+    },
+    [currentPlaylists, dispatch]
+  );
+
   return (
     <S.Filters>
-      <S.FiltersTitle>Browse in our playlists</S.FiltersTitle>
+      <S.FilterByName
+        onChange={(e) => searchByName(e)}
+        placeholder={filtersContainerData.search_name_label}
+      />
 
       <S.FiltersBox>
         {fieldsSize && <Loader />}
+
+        {offsetIsNegative && (
+          <S.FiltersValidation>
+            {filtersContainerData.errors.offset}
+          </S.FiltersValidation>
+        )}
 
         {limitSize && (
           <S.FiltersValidation>
