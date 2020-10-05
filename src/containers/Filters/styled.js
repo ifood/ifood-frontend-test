@@ -59,9 +59,8 @@ export const FiltersBox = styled.div`
 `;
 
 export const FiltersItem = styled.div`
-  margin: 0 0 28px;
   width: ${({ fieldType }) =>
-    fieldType === "offset" ? "100%" : "calc(50% - 14px);"};
+    fieldType === "offset" ? "100%" : "calc(50% - 14px);  margin: 0 0 28px;"};
 
   ${media.lessThan("large")`
     width: 100%;
