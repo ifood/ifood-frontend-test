@@ -10,11 +10,11 @@ const PlaylistFilter = ({ filters, loading, onChangeFilters, onChangeInputFilter
 
   return (
     <div className="playlist-filter">
-      <input placeholder="Busque pelo nome..." onChange={(ev) => onSearch(ev.target.value)} ></input>
+      <input placeholder="Busque pelo nome..." data-testid="search" onChange={(ev) => onSearch(ev.target.value)} ></input>
       {filters.map((f: IFilters) => (
         <div className="playlist-filter__item" key={f.id}>
           {f.values ? (
-            <select onChange={(ev) => onChangeFilters(f.id, ev.target.value)}>
+            <select data-testid={`select-${f.id}`} onChange={(ev) => onChangeFilters(f.id, ev.target.value)}>
               <option value="">Selecione...</option>
               {f.values.map((op, i) => (
                 <option key={i} value={op.value}>{op.name}</option>
@@ -27,6 +27,7 @@ const PlaylistFilter = ({ filters, loading, onChangeFilters, onChangeInputFilter
               max={f.validation?.primitiveType === 'INTEGER' ? f.validation?.max : ''}
               min={f.validation?.primitiveType === 'INTEGER' ? f.validation?.min || 1 : ''}
               onChange={(ev) => onChangeInputFilters(f.id, ev.target.value)}
+              data-testid={`input-${f.id}`}
             />
           )}
         </div>
