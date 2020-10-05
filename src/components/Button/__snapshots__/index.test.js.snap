@@ -3,7 +3,7 @@
 exports[`<Button/> renders correcly 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdnylx czlNTu"
+    class="sc-bdnylx bCRswN"
   >
     any label
   </button>

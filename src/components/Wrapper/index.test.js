@@ -11,7 +11,13 @@ test("<Wrapper/> renders correcly", () => {
 
   const component = (
     <Wrapper
-      childrren={<Button label="Button label" onClick={() => func()} />}
+      childrren={
+        <Button
+          variation="primary"
+          label="Button label"
+          onClick={() => func()}
+        />
+      }
     />
   );
   const { asFragment } = render(component);
