@@ -15,7 +15,8 @@ export const GlobalStyle = createGlobalStyle`
   ol {
     list-style: none;
   }
-  
+
+  select,
   button {
     background: inherit;
     -webkit-appearance: none;
@@ -30,11 +31,11 @@ export const GlobalStyle = createGlobalStyle`
 	body {
 		font-family: ${T.PRIMARY_FONT};
   }
-  
+
 	a {
 		text-decoration: none;
   }
-  
+
 	img {
 		max-width: 100%;
 	}
