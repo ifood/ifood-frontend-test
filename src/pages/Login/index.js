@@ -33,6 +33,7 @@ const Login = () => {
             <Button
               label={loginData.ctaLabel}
               onClick={() => redirectToLogin()}
+              variation="primary"
             />
           </S.LoginContent>
         </S.LoginSection>

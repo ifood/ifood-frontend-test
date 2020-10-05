@@ -197,7 +197,11 @@ const Filters = () => {
         ))}
 
         {fieldsLoaded && (
-          <Button label="Aplicar Filtros" onClick={() => applyFilters()} />
+          <Button
+            label="Aplicar Filtros"
+            variation="secondary"
+            onClick={() => applyFilters()}
+          />
         )}
       </S.FiltersBox>
     </S.Filters>
