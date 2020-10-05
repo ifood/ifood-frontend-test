@@ -29,11 +29,11 @@ exports[`<PlaylistCard/> renders correcly 1`] = `
         <p
           class="sc-jSFkmK fxJhem"
         >
-          by 
+          por
           <span
             class="sc-gKAblj hnBNSm"
           >
-            Spotify
+             Spotify
           </span>
         </p>
       </div>

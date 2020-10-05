@@ -10,6 +10,7 @@ test("<PlaylistCard/> renders correcly", () => {
     title: "Today's Hitss",
     author: "Spotify",
     label: "Listen on spotify",
+    authorPrefix: "por",
   };
 
   const component = (
@@ -19,6 +20,7 @@ test("<PlaylistCard/> renders correcly", () => {
       title={props.title}
       author={props.author}
       label={props.label}
+      authorPrefix={props.authorPrefix}
     />
   );
   const { asFragment } = render(component);
