@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { SpotifyServiceAuth } from '../services/auth.service';
-import Swal from 'sweetalert2';
 
 const useLogin = () => {
   const goToLogin = useCallback(() => {
@@ -8,19 +7,8 @@ const useLogin = () => {
     window.location.href = login;
   }, []);
 
-  const getUserInformations = useCallback(async () => {
-    try {
-      const user = await SpotifyServiceAuth.getUser();
-      return user;
-    } catch (e) {
-      Swal.fire({
-        text: 'Erro ao fazer o login, tente novamente...',
-        icon: 'error',
-      });
-    }
-  }, []);
-
   const hasToken = useCallback(() => {
+    if (!window.location.hash) return false;
     const token = window.location.hash
 		.split("&")[0]
     .replace("#access_token=", "");
@@ -35,10 +23,8 @@ const useLogin = () => {
 
   return {
     goToLogin,
-    hasToken,
-    getUserInformations
+    hasToken
   }
-
 };
 
 export default useLogin;

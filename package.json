@@ -43,7 +43,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.5"
+    "@types/react-router-dom": "^5.1.5",
+    "ts-jest": "^26.2.0"
   },
   "jest": {
     "collectCoverageFrom": [

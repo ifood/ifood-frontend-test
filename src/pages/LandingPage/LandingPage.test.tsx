@@ -9,10 +9,9 @@ const goToLogin: jest.Mock<any, any> = (useLoginNamed as any).goToLogin;
 jest.mock('../../hooks/useLogin', () => {
   const goToLogin = jest.fn();
   const hasToken = jest.fn();
-  const getUserInformations = jest.fn();
 
   const useLogin = () => {
-    return { goToLogin, hasToken, getUserInformations }
+    return { goToLogin, hasToken }
   }
   return {
     __esModule: true,

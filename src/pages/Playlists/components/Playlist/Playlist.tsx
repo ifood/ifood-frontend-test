@@ -3,12 +3,19 @@ import { FiPlayCircle } from 'react-icons/fi';
 
 import './Playlist.scss';
 
+interface IPlaylist {
+  imageUrl: string;
+  name: string;
+  spotify: string;
+  description: string;
+}
+
 const Playlist = ({
   imageUrl,
   name,
   spotify,
   description
-}: any) => {
+}: IPlaylist) => {
   return (
     <div className="playlist">
       <div className="playlist-click">
