@@ -9,6 +9,7 @@ import { getFilterField } from "helpers/getFilterField";
 import { filtersContainerData } from "constants/data/containers/Filters";
 import {
   updatePlaylists,
+  updatePlaylistsStatus,
   removePlaylists,
 } from "store/modules/playlists/actions";
 
@@ -87,6 +88,13 @@ const Filters = () => {
 
       getPlaylists(token, params)
         .then((data) => {
+          if (data.length === 0) {
+            dispatch(updatePlaylistsStatus(true));
+            dispatch(removePlaylists());
+          } else {
+            dispatch(updatePlaylistsStatus(false));
+          }
+
           dispatch(updatePlaylists(data));
         })
         .catch(() => {

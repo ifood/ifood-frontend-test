@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import media from "styled-media-query";
+
+import * as C from "constants/styles/colors";
 import { SPACINGS } from "constants/styles/spacings";
 
 export const PlaylistsList = styled.div`
@@ -18,4 +20,24 @@ export const PlaylistsList = styled.div`
     grid-template-columns: 1fr;
     justify-items: center;
   `}
+`;
+
+export const PlaylistsListValidations = styled.div`
+  margin: ${SPACINGS.lg} 0;
+  text-align: center;
+  color: ${C.PRIMARY_COLOR};
+`;
+
+export const PlaylistsListLink = styled.div`
+  a {
+    font-weight: bold;
+    color: ${C.PRIMARY_COLOR};
+    border-bottom: 2px solid currentColor;
+    padding-bottom: ${SPACINGS.xs};
+    transition: 300ms ease all;
+
+    &:hover {
+      color: ${C.PRIMARY_COLOR_LIGHT};
+    }
+  }
 `;
