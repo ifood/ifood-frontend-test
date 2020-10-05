@@ -27,13 +27,13 @@ export const FilterByName = styled.input`
   display: block;
   outline: none;
   font-family: ${T.PRIMARY_FONT};
-  width: 600px;
+  width: 80%;
   max-width: 450px;
   border-bottom: 1px solid grey;
   ${T.TITLE_LARGE};
 
   ${media.lessThan("large")`
-    ${T.TITLE_MEDIUM};
+    ${T.BODY_TEXT};
   `}
 `;
 
@@ -63,7 +63,9 @@ export const FiltersItem = styled.div`
   }
 
   ${media.lessThan("large")`
-    width: 100%
+    &:not(:last-child) {
+      width: 100%;
+    }
   `}
 `;
 
