@@ -8,10 +8,13 @@ import Wrapper from "components/Wrapper";
 import Loader from "components/Loader";
 import PlaylistsApiService from "services/playlists";
 import { playlistsListContainerData } from "constants/data/containers/PlaylistsList";
+import useInterval from "hooks/useInterval";
 
 import {
   loadPlaylists,
   removePlaylists,
+  removeFilteredPlaylists,
+  updatePlaylistsStatus,
 } from "store/modules/playlists/actions";
 
 import * as S from "./styled";
@@ -35,7 +38,7 @@ const PlaylistsList = () => {
     return playlistsFiltered;
   }, [playlistsFiltered, playlistsList, playlistsStatus]);
 
-  useEffect(() => {
+  const getPlaylistsService = useCallback(() => {
     if (token) {
       const requestPlaylists = PlaylistsApiService();
       const { getPlaylists } = requestPlaylists;
@@ -52,6 +55,16 @@ const PlaylistsList = () => {
         });
     }
   }, [dispatch, token]);
+
+  useEffect(() => {
+    getPlaylistsService();
+  }, [dispatch, getPlaylistsService, token]);
+
+  useInterval(() => {
+    getPlaylistsService();
+    dispatch(removeFilteredPlaylists());
+    dispatch(updatePlaylistsStatus(false));
+  }, 30000);
 
   return (
     <Wrapper>
