@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import Button from "components/Button";
 import Loader from "components/Loader";
-import useEffectUpdate from "hooks/useEffectUpdate";
 import FiltersApiService from "services/filters";
 import PlaylistsApiService from "services/playlists";
 import { getFilterField } from "helpers/getFilterField";
 import { filtersContainerData } from "constants/data/containers/Filters";
+
 import {
   updatePlaylists,
   updatePlaylistsStatus,
@@ -53,6 +54,29 @@ const Filters = () => {
     });
   }, []);
 
+  const applyFilters = useCallback(() => {
+    if (token) {
+      const requestPlaylists = PlaylistsApiService();
+      const { getPlaylists } = requestPlaylists;
+
+      getPlaylists(token, params)
+        .then((data) => {
+          if (data.length === 0) {
+            dispatch(updatePlaylistsStatus(true));
+            dispatch(removePlaylists());
+          } else {
+            dispatch(updatePlaylistsStatus(false));
+          }
+          setGeneralError(false);
+          dispatch(updatePlaylists(data));
+        })
+        .catch(() => {
+          setGeneralError(true);
+          dispatch(removePlaylists());
+        });
+    }
+  }, [dispatch, params, token]);
+
   const handleInputChange = useCallback(
     (e, id) => {
       const { value } = e.target;
@@ -91,41 +115,22 @@ const Filters = () => {
     [updateParams]
   );
 
-  useEffectUpdate(() => {
-    if (token) {
-      const requestPlaylists = PlaylistsApiService();
-      const { getPlaylists } = requestPlaylists;
-
-      getPlaylists(token, params)
-        .then((data) => {
-          if (data.length === 0) {
-            dispatch(updatePlaylistsStatus(true));
-            dispatch(removePlaylists());
-          } else {
-            dispatch(updatePlaylistsStatus(false));
-          }
-          setGeneralError(false);
-          dispatch(updatePlaylists(data));
-        })
-        .catch(() => {
-          setGeneralError(true);
-          dispatch(removePlaylists());
-        });
-    }
-  }, [params]);
-
   const fieldsSize = useMemo(() => {
     return fields.length === 0;
+  }, [fields]);
+
+  const fieldsLoaded = useMemo(() => {
+    return fields.length > 0;
   }, [fields]);
 
   const searchByName = useCallback(
     (e) => {
       const { value } = e.target;
 
-      const searchTerm = value.toLocaleLowerCase();
+      const searchTermToLowercase = value.toLocaleLowerCase();
 
       const filteredItems = currentPlaylists.filter(({ name }) =>
-        name.toLocaleLowerCase().includes(searchTerm)
+        name.toLocaleLowerCase().includes(searchTermToLowercase)
       );
 
       if (value === "") {
@@ -181,7 +186,7 @@ const Filters = () => {
         )}
 
         {fields.map((item) => (
-          <S.FiltersItem key={item.id}>
+          <S.FiltersItem key={item.id} fieldType={item.id}>
             {getFilterField(
               item,
               (e) => handleInputChange(e, item.id),
@@ -190,6 +195,10 @@ const Filters = () => {
             )}
           </S.FiltersItem>
         ))}
+
+        {fieldsLoaded && (
+          <Button label="Aplicar Filtros" onClick={() => applyFilters()} />
+        )}
       </S.FiltersBox>
     </S.Filters>
   );

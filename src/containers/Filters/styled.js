@@ -49,23 +49,22 @@ export const FiltersBox = styled.div`
   border-radius: 5px;
   justify-content: space-between;
 
+  button {
+    margin: 0 auto;
+  }
+
   ${media.lessThan("large")`
     padding: ${SPACINGS.lg};
   `}
 `;
 
 export const FiltersItem = styled.div`
-  width: 100%;
-
-  &:not(:last-child) {
-    width: calc(50% - 14px);
-    margin: 0 0 28px;
-  }
+  margin: 0 0 28px;
+  width: ${({ fieldType }) =>
+    fieldType === "offset" ? "100%" : "calc(50% - 14px);"};
 
   ${media.lessThan("large")`
-    &:not(:last-child) {
-      width: 100%;
-    }
+    width: 100%;
   `}
 `;
 
