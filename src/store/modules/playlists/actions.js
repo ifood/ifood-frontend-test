@@ -1,19 +1,26 @@
-export const loadPlaylists = (playlists) => {
+export const loadPlaylists = (items) => {
   return {
     type: "LOAD_PLAYLISTS",
-    playlists,
+    items,
   };
 };
 
-export const updatePlaylists = (playlists) => {
+export const updatePlaylists = (items) => {
   return {
     type: "UPDATE_PLAYLISTS",
-    playlists,
+    items,
   };
 };
 
 export const removePlaylists = () => {
   return {
     type: "REMOVE_PLAYLISTS",
+  };
+};
+
+export const updatePlaylistsStatus = (isEmpty) => {
+  return {
+    type: "UPDATE_PLAYLISTS_STATUS",
+    isEmpty,
   };
 };
