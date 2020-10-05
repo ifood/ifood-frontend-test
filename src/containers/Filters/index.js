@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Button from "components/Button";
 import Loader from "components/Loader";
+import useEffectUpdate from "hooks/useEffectUpdate";
 import FiltersApiService from "services/filters";
 import PlaylistsApiService from "services/playlists";
+import { nameFilter } from "helpers/nameFilter";
 import { getFilterField } from "helpers/getFilterField";
 import { filtersContainerData } from "constants/data/containers/Filters";
 
@@ -54,28 +55,20 @@ const Filters = () => {
     });
   }, []);
 
-  const applyFilters = useCallback(() => {
-    if (token) {
-      const requestPlaylists = PlaylistsApiService();
-      const { getPlaylists } = requestPlaylists;
+  useEffectUpdate(() => {
+    const requestPlaylists = PlaylistsApiService();
+    const { getPlaylists } = requestPlaylists;
 
-      getPlaylists(token, params)
-        .then((data) => {
-          if (data.length === 0) {
-            dispatch(updatePlaylistsStatus(true));
-            dispatch(removePlaylists());
-          } else {
-            dispatch(updatePlaylistsStatus(false));
-          }
-          setGeneralError(false);
-          dispatch(updatePlaylists(data));
-        })
-        .catch(() => {
-          setGeneralError(true);
-          dispatch(removePlaylists());
-        });
-    }
-  }, [dispatch, params, token]);
+    getPlaylists(token, params)
+      .then((data) => {
+        dispatch(updatePlaylists(data));
+        dispatch(removeFilteredPlaylists());
+      })
+      .catch(() => {
+        setGeneralError(true);
+        dispatch(removePlaylists());
+      });
+  }, [params]);
 
   const handleInputChange = useCallback(
     (e, id) => {
@@ -119,39 +112,30 @@ const Filters = () => {
     return fields.length === 0;
   }, [fields]);
 
-  const fieldsLoaded = useMemo(() => {
-    return fields.length > 0;
-  }, [fields]);
-
   const searchByName = useCallback(
     (e) => {
       const { value } = e.target;
 
-      const searchTermToLowercase = value.toLocaleLowerCase();
+      const filterByName = nameFilter(value, currentPlaylists);
 
-      const filteredItems = currentPlaylists.filter(({ name }) =>
-        name.toLocaleLowerCase().includes(searchTermToLowercase)
-      );
+      switch (filterByName.nameFilterStatus) {
+        case "isEmpty":
+          dispatch(updatePlaylistsStatus(false));
+          dispatch(removeFilteredPlaylists());
+          break;
 
-      if (value === "") {
-        return (
-          dispatch(updatePlaylistsStatus(false)),
-          dispatch(removeFilteredPlaylists())
-        );
-      }
+        case "hasMatch":
+          dispatch(updatePlaylistsStatus(false));
+          dispatch(filterPlaylists(filterByName.filteredItems));
+          break;
 
-      if (filteredItems.length !== 0) {
-        return (
-          dispatch(updatePlaylistsStatus(false)),
-          dispatch(filterPlaylists(filteredItems))
-        );
-      }
+        case "hasNoMatch":
+          dispatch(updatePlaylistsStatus(true));
+          dispatch(removeFilteredPlaylists());
+          break;
 
-      if (value !== "" && filteredItems.length === 0) {
-        return (
-          dispatch(updatePlaylistsStatus(true)),
-          dispatch(removeFilteredPlaylists())
-        );
+        default:
+          break;
       }
     },
     [currentPlaylists, dispatch]
@@ -195,14 +179,6 @@ const Filters = () => {
             )}
           </S.FiltersItem>
         ))}
-
-        {fieldsLoaded && (
-          <Button
-            label="Aplicar Filtros"
-            variation="secondary"
-            onClick={() => applyFilters()}
-          />
-        )}
       </S.FiltersBox>
     </S.Filters>
   );
