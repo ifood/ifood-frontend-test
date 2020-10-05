@@ -77,13 +77,11 @@ const Filters = () => {
       if (id === "offset" && Number(value) < 0) {
         return setOffsetIsNegative(true);
       }
-
       setOffsetIsNegative(false);
 
       if (id === "limit" && (Number(value) > 50 || Number(value) < 1)) {
         return setLimitSize(true);
       }
-
       setLimitSize(false);
 
       if (id === "country" && value === "en_US") {
