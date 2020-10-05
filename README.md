@@ -1,29 +1,67 @@
-# iFood Frontend Test
+# Spotifood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b5ee843-2be2-4ce3-b444-f378f8b44610/deploy-status)](https://app.netlify.com/sites/spotifood-vncsrbro/deploys)
 
-## Business rules
+# Live Version
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+- [Spotifood](https://spotifood-vncsrbro.netlify.app/)
 
-## Hints or Constraints
+# Running the project
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+- `git clone https://github.com/vncsrbro/ifood-frontend-test.git`
+- `cd ifood-frontend-test`
+- `yarn install && yarn start`
 
-## Non functional requirements
+## Credentials
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+To run the application locally you must provide a Spotify Client ID, you also need to set the ID as an env variable in .env file.
+
+`/.env`
+`REACT_APP_SPOTIFY_CLIENTE_ID={YOUR_CLIENT_ID}`
+
+# Testing
+
+- `yarn test` to run available tests
+
+# Main Technologies
+
+- React
+- Redux
+- Axios
+- styled-components
+- styled-media-queries
+- Testing Library
+- prop-types
+
+## Folder Structure
+
+```sh
+├── README.md
+│
+└── src
+    ├── components/ # Presentational components
+    │
+    ├── pages/ # Pages path to render templates
+    │
+    ├── constants/
+    │   ├── config/ # Application config
+    │   ├── data/ # Static data
+    │   └── styles # Global styles, colors, typography.
+    │
+    ├── containers/ # Containers components. Learn more at: https://redux.js.org/basics/usage-with-react#presentational-and-container-components
+    │
+    ├── helpers/ # Helpers functions
+    │
+    ├── hooks/ # Custom React Hooks
+    │
+    ├── pages/ #  Pages  interfaces
+    │
+    ├── routes/ #  React-router-dom routes
+    │
+    ├── services/ #  Services that get data from external resources
+    │
+    ├── store/
+    │   ├── modules/ # Folder with all actions and reducers, separated by modules.
+    │   │   └── rootReducer.js # File to group all reducers.
+    │   └── index.js # Main file to setup createStore.
+```
