@@ -20,6 +20,7 @@
     "eslint-plugin-react": "^7.21.3",
     "prettier": "^2.1.2",
     "react": "^16.13.1",
+    "react-date-picker": "^8.0.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
