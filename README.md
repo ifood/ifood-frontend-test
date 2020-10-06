@@ -36,9 +36,9 @@ The app consists of showing the featured playlists of Spotify through some optio
 <hr>
 <h2>Demo</h2>
 <br>
-I used Heroku to deploy the application so it can be easily accessed by anyone, anywhere:
+ You can find the application live below (deployed on Heroku), so it can be easily accessed by anyone, anywhere:
 <br>
-https://spotifood-challenge.herokuapp.com/
+https://spotifood-challenge.herokuapp.com
 <hr>
 <br>
 Thank you for the opportunity, it was a great challenge!
