@@ -12,6 +12,7 @@ const useSearch = () => {
   const [country, setCountry] = useState('BR');
   const [timestamp, setTimestamp] = useState(moment().format());
   const [loading, setLoading] = useState(false);
+  const INTERVAL = 30000;
 
   const getFeaturedPlaylist = useCallback(async (limit, offset, locale, country, timestamp) => {
     setLoading(true);
@@ -36,6 +37,10 @@ const useSearch = () => {
 
   useEffect(() => {
     getFeaturedPlaylist(limit, offset, locale, country, timestamp);
+    const interval = setInterval(() => {
+      getFeaturedPlaylist(limit, offset, locale, country, timestamp);
+    }, INTERVAL);
+    return () => clearInterval(interval);
   }, [country, getFeaturedPlaylist, limit, locale, offset, timestamp]);
 
   const handleFilters = useCallback((type, value) => {
