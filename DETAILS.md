@@ -1,9 +1,9 @@
 # Pendencies
 
-- styled-components
+- styled-components \*
 - axe
 - jest
 - react-testing-library
-- axios
+- axios \*
 - eslint
 - prettier
