@@ -1,29 +1,44 @@
-# iFood Frontend Test
-
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
-
-## Business rules
-
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
-
-## Hints or Constraints
-
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
-
-## Non functional requirements
-
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+<h2>Spotifood</h2>
+<br>
+Listen to Spotify while waiting for your iFood delivery: SpotiFood
+<br>
+The app consists of showing the featured playlists of Spotify through some optional filters.
+<br>
+- Responsive behavior to use the application through filter option, updating the list whenever the user changes a value;
+<br>
+- Spotify Authentication to receive a token that is used in the search of the playlists.
+<br>
+<hr>
+<h3>Built With:</h3>
+<br>
+<ul>
+  <li>React (create-react-app)</li>
+  <li>Bootstrap</li>
+  <li>Spotify API</li>
+  <li>Axios</li>
+  <li>Hooks</li>
+  <li>Prettier</li>
+  <li>npm</li>
+  <li>react-redux</li>
+  <li>react-router-dom</li>
+  <li>redux</li>
+  <li>react-bootstrap</li>
+  <li>moment</li>
+</ul>
+<hr>
+<h3>Trying the app locally</h3>
+<br>
+<ul>
+  <li>git clone</li>
+  <li>npm install</li>
+  <li>npm start</li>
+</ul>
+<hr>
+<h2>Demo</h2>
+<br>
+ You can find the application live below (deployed on Netlify), so it can be easily accessed by anyone, anywhere:
+<br>
+https://spotifood-challenge.netlify.app
+<hr>
+<br>
+Thank you for the opportunity, it was a great challenge!
