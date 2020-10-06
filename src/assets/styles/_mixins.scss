@@ -1,0 +1,47 @@
+// Device sizes (from bootstrap's model)
+
+$device-xs-max: 575.98px;
+$device-sm-min: 576px;
+$device-sm-max: 767.98px;
+$device-md-min: 768px;
+$device-md-max: 991.98px;
+$device-lg-min: 992px;
+$device-lg-max: 1199.98px;
+$device-xl-min: 1200px;
+
+// Media queries breakpoints
+
+@mixin media-breakpoint-up($min, $orientation: '') {
+  @if $orientation and ($orientation == landscape or $orientation == portrait) {
+    @media (min-width: $min) and (orientation: $orientation) { @content; }
+  }
+  @else {
+    @media (min-width: $min) { @content; }
+  }
+}
+
+@mixin media-breakpoint-down($max, $orientation: '') {
+  @if $orientation and ($orientation == landscape or $orientation == portrait){
+    @media (max-width: $max) and (orientation: $orientation) { @content; }
+  }
+  @else {
+    @media (max-width: $max) { @content; }
+  }
+}
+
+@mixin orientation($orientation: '') {
+  @if $orientation and ($orientation == landscape or $orientation == portrait) {
+    @media screen and (orientation: $orientation) { @content; }
+  }
+}
+
+// Media queries helpers
+
+@mixin xs     ($orientation: '') { @include media-breakpoint-down    ($device-xs-max, $orientation) { @content; } }
+@mixin sm-min ($orientation: '') { @include media-breakpoint-up      ($device-sm-min, $orientation) { @content; } }
+@mixin sm-max ($orientation: '') { @include media-breakpoint-down    ($device-sm-max, $orientation) { @content; } }
+@mixin md-min ($orientation: '') { @include media-breakpoint-up      ($device-md-min, $orientation) { @content; } }
+@mixin md-max ($orientation: '') { @include media-breakpoint-down    ($device-md-max, $orientation) { @content; } }
+@mixin lg-min ($orientation: '') { @include media-breakpoint-up      ($device-lg-min, $orientation) { @content; } }
+@mixin lg-max ($orientation: '') { @include media-breakpoint-down    ($device-lg-max, $orientation) { @content; } }
+@mixin xl     ($orientation: '') { @include media-breakpoint-up      ($device-xl-min, $orientation) { @content; } }

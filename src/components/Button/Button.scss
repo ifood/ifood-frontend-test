@@ -1,0 +1,22 @@
+@import '../../assets/styles/variables';
+
+.button-component {
+  display: inline-flex;
+  padding: $base-size 1.5rem;
+  border: none;
+  border-radius: .25rem;
+  outline: none;
+  font-size: $base-size;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  margin: $base-size 0;
+  transition: all .2s ease-in-out;
+  &:hover {
+    opacity: .8;
+  }
+  &.default {
+    color: white;
+    background-color: $primary-color;
+  }
+}
