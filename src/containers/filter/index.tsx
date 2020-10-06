@@ -23,7 +23,7 @@ export const Filter: React.FC = () => {
       <h1>Filter</h1>
       <DateField startDate={startDate} onChangeDate={(date) => handleDateChange(date)} />
       <Select />
-      <Input />
+      <Input name="inputName" label="labelText" />
       <Button />
     </>
   );

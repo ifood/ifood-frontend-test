@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import * as S from './styles';
 
-export const Input = (): JSX.Element => {
-  const [inputValue, setInputValue] = useState<string>('');
-  return (
-    <S.Input
-      type="text"
-      value={inputValue}
-      onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => setInputValue(ev.target.value)}
-    />
-  );
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  label: string;
+}
+
+export const Input: React.FC<IInput> = ({ name, label, ...rest }) => {
+  return <S.Input id={name} {...rest} />;
 };
