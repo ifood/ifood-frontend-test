@@ -1,0 +1,17 @@
+.load-more-button {
+  padding: 20px;
+  text-align: center;
+}
+.not-found-results {
+  padding: 20px;
+  text-align: center;
+}
+.not-found-results h2 {
+  color: rgb(236, 236, 236);
+  font-weight: bold;
+}
+
+.not-found-results p {
+  color: rgb(236, 236, 236);
+  font-weight: 300;
+}
