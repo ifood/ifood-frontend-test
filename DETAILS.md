@@ -5,5 +5,5 @@
 - jest
 - react-testing-library
 - axios \*
-- eslint
-- prettier
+- eslint \*
+- prettier \*
