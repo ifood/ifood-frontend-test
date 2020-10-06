@@ -1,0 +1,31 @@
+.search-form {
+  margin: 0px !important;
+  padding: 0px !important;
+  /* width: 60% !important; */
+}
+.filter-options {
+  margin-left: 0px !important;
+  display: flex;
+  justify-content: flex-start;
+}
+.button-filter-options {
+  margin-left: 20px;
+}
+.default-button {
+  background-color: rbg(0, 225, 85); /*spotify color*/
+  font-weight: 500px;
+}
+.filter-title-text {
+  color: rgb(236, 236, 236);
+  font-weight: bold;
+  font-size: 20px;
+}
+.filter-form {
+  padding: 8px !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .input-group {
+    width: 70% !important;
+  }
+}
