@@ -41,7 +41,6 @@ To run the application locally you must provide a Spotify Client ID, you also ne
 └── src
     ├── components/ # Presentational components
     │
-    ├── pages/ # Pages path to render templates
     │
     ├── constants/
     │   ├── config/ # Application config
