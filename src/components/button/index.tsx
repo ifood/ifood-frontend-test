@@ -1,5 +1,7 @@
 import React from 'react';
 
-export const Button: React.FC = () => {
-  return <div>Button</div>;
+import * as S from './styles';
+
+export const Button = (): JSX.Element => {
+  return <S.Button>Button </S.Button>;
 };
