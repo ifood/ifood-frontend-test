@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Home } from 'pages/home';
+import { Playlist } from 'pages/playlist';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-const wrapper = () => render(<Home />);
+const wrapper = () => render(<Playlist />);
 
 test('testing accessibility', async () => {
   const { container } = wrapper();
@@ -14,8 +14,8 @@ test('testing accessibility', async () => {
   expect(results).toHaveNoViolations();
 });
 
-test('renders Home link', () => {
+test('renders error link', () => {
   wrapper();
-  const linkElement = screen.getByText(/ClientId/i);
+  const linkElement = screen.getByText(/Playlist/i);
   expect(linkElement).toBeInTheDocument();
 });

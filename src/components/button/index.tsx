@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 import * as S from './styles';
 
-export const Button = (): JSX.Element => {
-  return <S.Button>Button </S.Button>;
+interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
+
+export const Button: React.FC<IButton> = ({ children, ...rest }) => {
+  return <S.Button {...rest}>{children}</S.Button>;
 };

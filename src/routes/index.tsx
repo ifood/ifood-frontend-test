@@ -1,15 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// import App from '../App';
 import { Home } from 'pages/home';
 import { Error } from 'pages/error';
+import { Playlist } from 'containers/playlist';
 
 const Routes: React.FC = () => (
   <Router>
-    {/* <Route path="/" exact component={App} /> */}
-    <Route path="/" exact component={Home} />
-    <Route component={Error} />
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/playlist" component={Playlist} />
+      <Route component={Error} />
+    </Switch>
   </Router>
 );
 
