@@ -19,6 +19,7 @@ export const Filter: React.FC = () => {
   const [country, setCountry] = useState('');
   const [limit, setLimit] = useState('');
   const [offset, setOffset] = useState('');
+  const [params, setParams] = useState({});
 
   const playlistContext = useContext(PlayListContext);
 
@@ -32,26 +33,42 @@ export const Filter: React.FC = () => {
     })();
   }, []);
 
-  const handleDateChange = (date: Date) => {
-    setStartDate(date);
-  };
+  useEffect(() => {
+    getFeaturedList(params).then((res) => {
+      playlistContext.dispatch.playlist(res);
+    });
+  }, [params]);
 
-  const handleLocaleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleLocaleChange = async (e: React.ChangeEvent<HTMLSelectElement>, id: string) => {
     setLocale(e.target.value);
+    updateParams(id, e.target.value);
   };
 
-  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleCountryChange = async (e: React.ChangeEvent<HTMLSelectElement>, id: string) => {
     setCountry(e.target.value);
+    updateParams(id, e.target.value);
   };
 
-  const handleLimitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDateChange = (date: Date, id: string) => {
+    setStartDate(date);
+    updateParams(id, date.toISOString());
+  };
+
+  const handleLimitChange = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
     setLimit(e.target.value);
-    console.log(e.target.value);
+    updateParams(id, e.target.value);
   };
 
-  const handleOffsetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOffsetChange = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
     setOffset(e.target.value);
-    console.log(e.target.value);
+    updateParams(id, e.target.value);
+  };
+
+  const updateParams = (id: string, value: string) => {
+    setParams((prevData) => ({
+      ...prevData,
+      [id]: value
+    }));
   };
 
   const renderFilter = (i: any) => {
@@ -62,14 +79,14 @@ export const Filter: React.FC = () => {
         return (
           <S.FormControl key={id}>
             <Label name="select-locale">{`${name} : `}</Label>
-            <Select id="select-locale" value={locale} options={values} onChange={handleLocaleChange} />
+            <Select id="select-locale" value={locale} options={values} onChange={(e) => handleLocaleChange(e, id)} />
           </S.FormControl>
         );
       case 'country':
         return (
           <S.FormControl key={id}>
             <Label name="select-country">{`${name} : `}</Label>
-            <Select key={id} value={country} options={values} onChange={handleCountryChange} />
+            <Select key={id} value={country} options={values} onChange={(e) => handleCountryChange(e, id)} />
           </S.FormControl>
         );
 
@@ -77,7 +94,7 @@ export const Filter: React.FC = () => {
         return (
           <S.FormControl key={id}>
             <Label name={id}>{`${name} : `}</Label>
-            <DateField key={id} startDate={startDate} onChangeDate={(date) => handleDateChange(date)} />
+            <DateField key={id} startDate={startDate} onChangeDate={(date) => handleDateChange(date, id)} />
           </S.FormControl>
         );
 
@@ -91,7 +108,7 @@ export const Filter: React.FC = () => {
               type="number"
               validation={validation}
               value={limit}
-              onChange={handleLimitChange}
+              onChange={(e) => handleLimitChange(e, id)}
             />
           </S.FormControl>
         );
@@ -100,7 +117,13 @@ export const Filter: React.FC = () => {
         return (
           <S.FormControl key={id}>
             <Label name={id}>{`${name} : `}</Label>
-            <Input key={id} id="input-offset" type="number" value={offset} onChange={handleOffsetChange} />
+            <Input
+              key={id}
+              id="input-offset"
+              type="number"
+              value={offset}
+              onChange={(e) => handleOffsetChange(e, id)}
+            />
           </S.FormControl>
         );
       default:
