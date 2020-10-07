@@ -33,7 +33,12 @@ export const Home: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <p>Para prosseguir, preencha o campo abaixo.</p>
         <Label name="input-client-id">ClientId: </Label>
-        <Input id="input-client-id" type="text" onChange={(e) => setClientId(e.target.value)} />
+        <Input
+          id="input-client-id"
+          value={clientId ? clientId : ''}
+          type="text"
+          onChange={(e) => setClientId(e.target.value)}
+        />
         <Button>Prosseguir</Button>
       </form>
     </>
