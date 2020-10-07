@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext, ContextType } from 'react';
+
+import { getFeaturedList } from 'services/api-spotify';
 
 import { DateField } from 'components/date-field';
 import { Select } from 'components/select';
 import { Input } from 'components/input';
 import { Label } from 'components/label';
+
+import { PlayListContext } from 'store/play-list-store';
 
 import * as S from './styles';
 
@@ -17,6 +21,17 @@ export const Filter: React.FC<IFilter> = ({ item }) => {
   const [country, setCountry] = useState('');
   const [limit, setLimit] = useState('');
   const [offset, setOffset] = useState('');
+
+  const playlistContext = useContext(PlayListContext);
+
+  useEffect(() => {
+    (async function getData() {
+      await getFeaturedList().then((res) => {
+        // playlistContext.dispatch.playlist(res);
+        console.log(res);
+      });
+    })();
+  }, []);
 
   const handleDateChange = (date: Date) => {
     setStartDate(date);

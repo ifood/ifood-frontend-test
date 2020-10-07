@@ -13,6 +13,8 @@ export const Home: React.FC = () => {
     if (!!clientId) {
       window.location.href = authorizeSpotifyUrl(process.env.REACT_APP_SPOTIFY_CLIENT_ID);
     }
+
+    localStorage.clear();
   }, []);
 
   const loginWithCredential = (clientId: string | undefined) => {
