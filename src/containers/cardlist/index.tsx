@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card } from 'components/card';
 
-export const Playlist: React.FC = () => {
+export const CardList: React.FC = () => {
   return (
     <>
-      <h1>Playlist</h1>
+      <h1>Cardlist</h1>
       <Card>
         <span>Card text</span>
       </Card>

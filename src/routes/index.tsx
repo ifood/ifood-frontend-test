@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Home } from 'pages/home';
 import { Error } from 'pages/error';
-import { Playlist } from 'containers/playlist';
+import { Playlist } from 'pages/playlist';
 
 const Routes: React.FC = () => (
   <Router>
