@@ -1,10 +1,15 @@
 import React, { createContext, useState } from 'react';
 
 interface IPlaylist {
-  playlist: Array<string>;
+  state: {
+    playlist: string[];
+  };
+  dispatch: {
+    playlist(newPlaylist: string[]): void;
+  };
 }
 
-export const PlayListContext = createContext<IPlaylist | undefined>(undefined);
+export const PlayListContext = createContext<IPlaylist>({} as IPlaylist);
 
 PlayListContext.displayName = 'PlaylistContext';
 

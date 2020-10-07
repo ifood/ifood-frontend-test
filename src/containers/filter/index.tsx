@@ -27,8 +27,7 @@ export const Filter: React.FC<IFilter> = ({ item }) => {
   useEffect(() => {
     (async function getData() {
       await getFeaturedList().then((res) => {
-        // playlistContext.dispatch.playlist(res);
-        console.log(res);
+        playlistContext.dispatch.playlist(res);
       });
     })();
   }, []);
