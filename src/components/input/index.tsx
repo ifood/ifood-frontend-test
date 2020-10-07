@@ -25,7 +25,7 @@ export const Input: React.FC<IInput> = ({ id, type, value, validation, onChange,
   }
 
   if (type === 'number') {
-    return <S.Input id={id} type={type} onChange={onChange} value={value} {...rest} />;
+    return <S.Input id={id} type={type} onChange={onChange} min="0" value={value} {...rest} />;
   }
 
   return <S.Input id={id} onChange={onChange} value={value} {...rest} />;

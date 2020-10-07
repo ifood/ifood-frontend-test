@@ -16,6 +16,6 @@ test('testing accessibility', async () => {
 
 test('renders error link', () => {
   wrapper();
-  const linkElement = screen.getByText(/Error/i);
+  const linkElement = screen.getByText(/Notfound/i);
   expect(linkElement).toBeInTheDocument();
 });

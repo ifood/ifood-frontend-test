@@ -16,6 +16,6 @@ test('testing accessibility', async () => {
 
 test('renders error link', () => {
   wrapper();
-  const linkElement = screen.getByText(/Playlist/i);
+  const linkElement = screen.getByText(/Escute sua playlist favorita enquanto aguarda seu pedido./i);
   expect(linkElement).toBeInTheDocument();
 });
