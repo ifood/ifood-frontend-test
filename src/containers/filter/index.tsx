@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import { getFilterData } from 'services/api-mocky';
 import { getFeaturedList } from 'services/api-spotify';
@@ -20,23 +21,39 @@ export const Filter: React.FC = () => {
   const [limit, setLimit] = useState('');
   const [offset, setOffset] = useState('');
   const [params, setParams] = useState({});
+  const [hasError, setError] = useState(false);
 
   const playlistContext = useContext(PlayListContext);
 
   useEffect(() => {
     (async function getData() {
-      await getFilterData().then((res) => setFilterData(res));
+      try {
+        await getFilterData().then((res) => setFilterData(res));
 
-      await getFeaturedList().then((res) => {
-        playlistContext.dispatch.playlist(res);
-      });
+        await getFeaturedList().then((res) => {
+          playlistContext.dispatch.playlist(res);
+        });
+      } catch (err) {
+        setError(true);
+      }
     })();
   }, []);
 
   useEffect(() => {
-    getFeaturedList(params).then((res) => {
-      playlistContext.dispatch.playlist(res);
-    });
+    try {
+      getFeaturedList(params).then((res) => {
+        playlistContext.dispatch.playlist(res);
+      });
+
+      const interval = setInterval(() => {
+        getFeaturedList(params).then((res) => {
+          playlistContext.dispatch.playlist(res);
+        });
+      }, 10000);
+      return () => clearInterval(interval);
+    } catch (err) {
+      setError(true);
+    }
   }, [params]);
 
   const handleLocaleChange = async (e: React.ChangeEvent<HTMLSelectElement>, id: string) => {
@@ -131,5 +148,8 @@ export const Filter: React.FC = () => {
     }
   };
 
+  if (hasError) {
+    return <Redirect to="/" />;
+  }
   return <>{filterData.map((i) => renderFilter(i))}</>;
 };
