@@ -39,3 +39,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 node
 v12.18.4
+
+Utilizando react icons para trazer os icones. 
+
+Necesseario node-sass
