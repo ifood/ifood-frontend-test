@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useContext, ContextType } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
+import { getFilterData } from 'services/api-mocky';
 import { getFeaturedList } from 'services/api-spotify';
 
 import { DateField } from 'components/date-field';
@@ -11,11 +12,8 @@ import { PlayListContext } from 'store/play-list-store';
 
 import * as S from './styles';
 
-interface IFilter {
-  item: any;
-}
-
-export const Filter: React.FC<IFilter> = ({ item }) => {
+export const Filter: React.FC = () => {
+  const [filterData, setFilterData] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [locale, setLocale] = useState('');
   const [country, setCountry] = useState('');
@@ -26,6 +24,8 @@ export const Filter: React.FC<IFilter> = ({ item }) => {
 
   useEffect(() => {
     (async function getData() {
+      await getFilterData().then((res) => setFilterData(res));
+
       await getFeaturedList().then((res) => {
         playlistContext.dispatch.playlist(res);
       });
@@ -108,5 +108,5 @@ export const Filter: React.FC<IFilter> = ({ item }) => {
     }
   };
 
-  return <>{item.map((i: any) => renderFilter(i))}</>;
+  return <>{filterData.map((i) => renderFilter(i))}</>;
 };

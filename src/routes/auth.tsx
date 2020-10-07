@@ -5,6 +5,7 @@ const AuthRoute: React.FC<RouteProps> = ({ component: Component, ...rest }) => {
   let url = window.location.href;
 
   function hasAcessToken(url: any) {
+    //eslint-disable-next-line
     const access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/);
 
     if (!access_token) {

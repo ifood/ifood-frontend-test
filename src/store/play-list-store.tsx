@@ -13,8 +13,8 @@ export const PlayListContext = createContext<IPlaylist>({} as IPlaylist);
 
 PlayListContext.displayName = 'PlaylistContext';
 
-export const PlaylistStore = (props: any) => {
-  const [playlist, setPlaylist] = useState();
+export const PlaylistStore = (props: { children: React.ReactNode }) => {
+  const [playlist, setPlaylist] = useState<string[]>([]);
 
   return (
     <PlayListContext.Provider
