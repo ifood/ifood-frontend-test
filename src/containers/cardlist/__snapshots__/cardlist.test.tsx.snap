@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component without errors 1`] = `
+<div>
+  <div
+    class="sc-dlnjPT ietYiT"
+  >
+    <div
+      class="sc-bdnylx kIxwpW"
+    >
+      <header
+        class="sc-hKFyIo excVIu"
+      >
+        <span>
+          Calm Down
+        </span>
+      </header>
+      <img
+        alt="Imagem do album Calm Down"
+        class="sc-gtssRu Svgfd"
+        height="298px"
+        src="https://i.scdn.co/image/ab67706f00000003278197087524cc094f86e82b"
+      />
+      <footer
+        class="sc-eCApGN hiuAxn"
+      >
+        <a
+          href="[object Object]"
+        >
+          Ouça agora
+        </a>
+      </footer>
+    </div>
+  </div>
+</div>
+`;

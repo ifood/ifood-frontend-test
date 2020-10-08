@@ -1,0 +1,63 @@
+import React, { useEffect, useState } from 'react'; //eslint-disable-line
+
+import { Image } from 'components/image';
+import { Input } from 'components/input';
+import { Label } from 'components/label';
+import { Button } from 'components/button';
+import { Wrapper } from 'components/wrapper';
+
+import Logo from 'assets/images/spotifood-logo.png';
+
+import { authorizeSpotifyUrl } from 'common/utils';
+
+import * as S from './styles';
+
+export const Home: React.FC = () => {
+  const defaultClientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+  const [clientId, setClientId] = useState('');
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
+  useEffect(() => {
+    if (!!defaultClientId) {
+      loginWithCredential(defaultClientId);
+    }
+  }, [defaultClientId]);
+
+  const loginWithCredential = (clientId?: string) => {
+    window.location.href = authorizeSpotifyUrl(clientId);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    loginWithCredential(clientId);
+  };
+
+  return (
+    <Wrapper>
+      <header>
+        <Image src={Logo} alt="Logo marca Spotifood" width="300" />
+      </header>
+
+      <S.Paragraph>Para prosseguir, preencha o campo abaixo.</S.Paragraph>
+
+      <S.Card>
+        <form onSubmit={handleSubmit} data-testid="form">
+          <Label name="input-client-id">ClientId: </Label>
+          <Input
+            id="input-client-id"
+            placeholder="Digite seu CLIENT_ID"
+            value={clientId ? clientId : ''}
+            type="text"
+            onChange={(e) => setClientId(e.target.value)}
+            required
+          />
+          <Button>Prosseguir</Button>
+        </form>
+      </S.Card>
+    </Wrapper>
+  );
+};

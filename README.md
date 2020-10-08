@@ -1,29 +1,52 @@
-# iFood Frontend Test
+# Spotifood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+## 🎉 Live project
 
-## Business rules
+[Spotifood live application](https://spotifood-kimuradev.herokuapp.com/)
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+## 💻 Description
 
-## Hints or Constraints
+Project created using Create React App with TypeScript template.
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+To easy manage states was used Context API from React.
 
-## Non functional requirements
+To keep the code readable and organized was used Prettier and Lint in order to maintain the code pattern.
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+Application tests was made with React Testing library and jest-ax to test web components accessibility.
+
+## 📚 Libraries
+
+Some libraries used in this project:
+
+| Nome                                                                           | Descrição                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [axios](https://www.npmjs.com/package/axios)                                   | Promise based HTTP client for the browser and node.js.                                                                                                                                                             |
+| [eslint](https://www.npmjs.com/package/eslint)                                 | ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. In many ways                                                                                                       |
+| [prettier](https://www.npmjs.com/package/prettier)                             | Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary. |
+| [jext-axe](https://www.npmjs.com/package/jest-axe)                             | Custom Jest matcher for aXe for testing accessibility                                                                                                                                                              |
+| [react-router-dom](https://www.npmjs.com/package/react-router-dom)             | DOM bindings for React Router. Responsible to control routes in web applications                                                                                                                                   |
+| [@testing-library/react](https://www.npmjs.com/package/@testing-library/react) | Simple and complete React DOM testing utilities that encourage good testing practices.                                                                                                                             |
+| [styled-components](https://www.npmjs.com/package/styled-components)           | Visual primitives for the component age. Use the best bits of ES6 and CSS to style your apps without stress                                                                                                        |
+
+---
+
+## 👷‍♂️ Using Spotifood Web Application
+
+1. You must have a `CLIENT_ID` to log at this application
+2. Clone this repository from https://github.com/kimuradev/sptfd
+3. Install dependencies with `npm install` or `yarn` command.
+4. To run this project use `npm start` or `yarn start`
+5. You could fill the `CLIENT_ID` key on `.env` file or open https://localhost:3000/ and fill the `client id` field.
+6. Once you authorize Spotify application you will see the Playlist.
+7. Filter your prefered playlist and enjoy it.
+
+---
+
+## 👨‍🚀 Author
+
+Made by Leandro Kimura.
+
+Get in touch with me 👋
+
+[![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brunohenriquesaibert/)](https://www.linkedin.com/in/kimuradev/)
+[![Twitter Badge](https://img.shields.io/badge/-Twitter-1ca0f1?style=for-the-badge&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/bh_saibert)](https://twitter.com/kimuradev)

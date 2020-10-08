@@ -1,0 +1,446 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders filter component without errors 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="sc-eCApGN imrCDh"
+        height="auto"
+      >
+        <div
+          class="sc-gKAblj JvNgQ"
+        >
+          <div
+            class="sc-jSFkmK jNVZX"
+          >
+            <label
+              class="sc-hKFyIo sWviI"
+              for="select-locale"
+            >
+              Locale
+            </label>
+            <select
+              aria-label="select"
+              class="sc-gtssRu gOVNFe"
+              data-testid="select"
+              id="select-locale"
+            >
+              <option
+                value="en_AU"
+              >
+                en_AU
+              </option>
+              <option
+                value="de_DE"
+              >
+                de_DE 
+              </option>
+              <option
+                value="pt_BR"
+              >
+                pt_BR
+              </option>
+              <option
+                value="fr_FR"
+              >
+                fr_FR
+              </option>
+              <option
+                value="en_US"
+              >
+                en_US
+              </option>
+              <option
+                value="es_AR"
+              >
+                es_AR
+              </option>
+            </select>
+          </div>
+          <div
+            class="sc-jSFkmK jNVZX"
+          >
+            <label
+              class="sc-hKFyIo sWviI"
+              for="select-country"
+            >
+              País
+            </label>
+            <select
+              aria-label="select"
+              class="sc-gtssRu gOVNFe"
+              data-testid="select"
+            >
+              <option
+                value="AU"
+              >
+                Australia
+              </option>
+              <option
+                value="DE"
+              >
+                Alemanhã
+              </option>
+              <option
+                value="BR"
+              >
+                Brasil
+              </option>
+              <option
+                value="PT"
+              >
+                Portugal
+              </option>
+              <option
+                value="en_US"
+              >
+                EUA
+              </option>
+              <option
+                value="RU"
+              >
+                Rússia
+              </option>
+            </select>
+          </div>
+          <div
+            class="sc-jSFkmK jNVZX"
+          >
+            <label
+              class="sc-hKFyIo sWviI"
+              for="timestamp"
+            >
+              Data e Horário
+            </label>
+            <div
+              class="sc-bdnylx iysmyN"
+            >
+              <label
+                for="date-picker"
+              >
+                Date
+              </label>
+              <div
+                class="react-datepicker-wrapper"
+              >
+                <div
+                  class="react-datepicker__input-container"
+                >
+                  <input
+                    class=""
+                    id="date-picker"
+                    type="text"
+                    value="08-10-2020"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-jSFkmK jNVZX"
+          >
+            <label
+              class="sc-hKFyIo sWviI"
+              for="limit"
+            >
+              Quantidade
+            </label>
+            <input
+              aria-label="input"
+              class="sc-dlnjPT iURBZb"
+              id="input-limit"
+              max="50"
+              min="1"
+              placeholder="Quantidade"
+              type="number"
+              value=""
+            />
+          </div>
+          <div
+            class="sc-jSFkmK jNVZX"
+          >
+            <label
+              class="sc-hKFyIo sWviI"
+              for="offset"
+            >
+              Página
+            </label>
+            <input
+              aria-label="input"
+              class="sc-dlnjPT dDiuID"
+              id="input-offset"
+              min="0"
+              placeholder="Página"
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="sc-iCoHVE loJgUn"
+        >
+          <label
+            class="sc-hKFyIo sWviI"
+            for="input-filter-name"
+          >
+            Filtro
+          </label>
+          <input
+            aria-label="input"
+            class="sc-dlnjPT kFaEnh"
+            id="input-filter-name"
+            placeholder="Procure pela sua playlist favorita..."
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="sc-eCApGN imrCDh"
+      height="auto"
+    >
+      <div
+        class="sc-gKAblj JvNgQ"
+      >
+        <div
+          class="sc-jSFkmK jNVZX"
+        >
+          <label
+            class="sc-hKFyIo sWviI"
+            for="select-locale"
+          >
+            Locale
+          </label>
+          <select
+            aria-label="select"
+            class="sc-gtssRu gOVNFe"
+            data-testid="select"
+            id="select-locale"
+          >
+            <option
+              value="en_AU"
+            >
+              en_AU
+            </option>
+            <option
+              value="de_DE"
+            >
+              de_DE 
+            </option>
+            <option
+              value="pt_BR"
+            >
+              pt_BR
+            </option>
+            <option
+              value="fr_FR"
+            >
+              fr_FR
+            </option>
+            <option
+              value="en_US"
+            >
+              en_US
+            </option>
+            <option
+              value="es_AR"
+            >
+              es_AR
+            </option>
+          </select>
+        </div>
+        <div
+          class="sc-jSFkmK jNVZX"
+        >
+          <label
+            class="sc-hKFyIo sWviI"
+            for="select-country"
+          >
+            País
+          </label>
+          <select
+            aria-label="select"
+            class="sc-gtssRu gOVNFe"
+            data-testid="select"
+          >
+            <option
+              value="AU"
+            >
+              Australia
+            </option>
+            <option
+              value="DE"
+            >
+              Alemanhã
+            </option>
+            <option
+              value="BR"
+            >
+              Brasil
+            </option>
+            <option
+              value="PT"
+            >
+              Portugal
+            </option>
+            <option
+              value="en_US"
+            >
+              EUA
+            </option>
+            <option
+              value="RU"
+            >
+              Rússia
+            </option>
+          </select>
+        </div>
+        <div
+          class="sc-jSFkmK jNVZX"
+        >
+          <label
+            class="sc-hKFyIo sWviI"
+            for="timestamp"
+          >
+            Data e Horário
+          </label>
+          <div
+            class="sc-bdnylx iysmyN"
+          >
+            <label
+              for="date-picker"
+            >
+              Date
+            </label>
+            <div
+              class="react-datepicker-wrapper"
+            >
+              <div
+                class="react-datepicker__input-container"
+              >
+                <input
+                  class=""
+                  id="date-picker"
+                  type="text"
+                  value="08-10-2020"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-jSFkmK jNVZX"
+        >
+          <label
+            class="sc-hKFyIo sWviI"
+            for="limit"
+          >
+            Quantidade
+          </label>
+          <input
+            aria-label="input"
+            class="sc-dlnjPT iURBZb"
+            id="input-limit"
+            max="50"
+            min="1"
+            placeholder="Quantidade"
+            type="number"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-jSFkmK jNVZX"
+        >
+          <label
+            class="sc-hKFyIo sWviI"
+            for="offset"
+          >
+            Página
+          </label>
+          <input
+            aria-label="input"
+            class="sc-dlnjPT dDiuID"
+            id="input-offset"
+            min="0"
+            placeholder="Página"
+            type="number"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="sc-iCoHVE loJgUn"
+      >
+        <label
+          class="sc-hKFyIo sWviI"
+          for="input-filter-name"
+        >
+          Filtro
+        </label>
+        <input
+          aria-label="input"
+          class="sc-dlnjPT kFaEnh"
+          id="input-filter-name"
+          placeholder="Procure pela sua playlist favorita..."
+          value=""
+        />
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
