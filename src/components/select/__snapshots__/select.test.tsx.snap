@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component without errors 1`] = `
+<div>
+  <select
+    aria-label="select"
+    class="sc-bdnylx hrtUhL"
+    data-testid="select"
+  >
+    <option
+      value="a"
+    >
+      optionA
+    </option>
+    <option
+      value="b"
+    >
+      optionB
+    </option>
+    <option
+      value="c"
+    >
+      optionC
+    </option>
+  </select>
+</div>
+`;

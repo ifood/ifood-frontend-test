@@ -9,7 +9,7 @@ interface ISelect extends SelectHTMLAttributes<HTMLSelectElement> {
 
 export const Select: React.FC<ISelect> = ({ value, options, onChange, ...rest }) => {
   return (
-    <S.Select value={value} onChange={onChange} {...rest}>
+    <S.Select data-testid="select" value={value} onChange={onChange} aria-label="select" {...rest}>
       {options.map(({ value, name }) => (
         <option key={value} value={value}>
           {name}
