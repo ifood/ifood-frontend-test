@@ -13,15 +13,18 @@ import { authorizeSpotifyUrl } from 'common/utils';
 import * as S from './styles';
 
 export const Home: React.FC = () => {
-  const [clientId, setClientId] = useState(process.env.REACT_APP_SPOTIFY_CLIENT_ID);
+  const defaultClientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+  const [clientId, setClientId] = useState('');
 
   useEffect(() => {
-    if (!!clientId) {
-      window.location.href = authorizeSpotifyUrl(process.env.REACT_APP_SPOTIFY_CLIENT_ID);
-    }
-
     localStorage.clear();
   }, []);
+
+  useEffect(() => {
+    if (!!defaultClientId) {
+      loginWithCredential(defaultClientId);
+    }
+  }, [defaultClientId]);
 
   const loginWithCredential = (clientId: string | undefined) => {
     window.location.href = authorizeSpotifyUrl(clientId);

@@ -62,8 +62,6 @@ export const Filter: React.FC = () => {
   useEffect(() => {
     const filteredItems = filterPlaylistByName(filterName, playlistContext.state.playlist);
 
-    console.log(filteredItems);
-
     if (filterName && !filteredItems.length) {
       playlistContext.dispatch.emptyFilterList(true);
     } else {
