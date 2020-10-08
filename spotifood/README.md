@@ -107,7 +107,7 @@ Copyright :copyright: 2020 - Ifood
 **Anna Fernandes**: *Desenvolvedora web full-stack | Infografista
 - [Linkedin](https://www.linkedin.com/in/annacbfernandes/)
 - [Github](https://github.com/acretelli)
-- [Email](anna.cbf@hotmail.com)
+- [Email](anna.cbf@gmail.com)
 
 <br>
 
