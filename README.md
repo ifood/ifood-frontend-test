@@ -6,7 +6,9 @@
 
 ## 💻 Description
 
-Project created using Create React App with TypeScript template. To manage states I used Context API. Prettier and Lint was configured to mantain the code pattern.
+Project created using Create React App with TypeScript template. To manage states I used Context API. Prettier and Lint were configured to mantain the code pattern.
+
+Application tests was made with React Testing library and jest-axe to test web components acessibility.
 
 ## 📚 Libraries
 
