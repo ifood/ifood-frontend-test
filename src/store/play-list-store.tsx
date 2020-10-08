@@ -7,9 +7,9 @@ interface IPlaylist {
     emptyFilterList: boolean;
   };
   dispatch: {
-    playlist(newPlaylist: string[]): void;
-    filteredList(newFilteredList: string[]): void;
-    emptyFilterList(value: boolean): void;
+    setPlaylist(newPlaylist: string[]): void;
+    setFilteredList(newFilteredList: string[]): void;
+    setEmptyFilterList(value: boolean): void;
   };
 }
 
@@ -31,9 +31,9 @@ export const PlaylistStore = (props: { children: React.ReactNode }) => {
           emptyFilterList
         },
         dispatch: {
-          playlist: setPlaylist,
-          filteredList: setFilteredList,
-          emptyFilterList: setEmptyFilterList
+          setPlaylist: setPlaylist,
+          setFilteredList: setFilteredList,
+          setEmptyFilterList: setEmptyFilterList
         }
       }}
       {...props}

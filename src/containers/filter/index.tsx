@@ -26,7 +26,12 @@ export const Filter: React.FC = () => {
   const [params, setParams] = useState({});
   const [hasError, setError] = useState(false);
 
-  const playlistContext = useContext(PlayListContext);
+  // const playlistContext = useContext(PlayListContext);
+
+  const {
+    state: { playlist: statePlaylist },
+    dispatch: { setPlaylist, setEmptyFilterList, setFilteredList }
+  } = useContext(PlayListContext);
 
   useEffect(() => {
     (async function getData() {
@@ -34,42 +39,42 @@ export const Filter: React.FC = () => {
         await getFilterData().then((res) => setFilterData(res));
 
         await getFeaturedList().then((res) => {
-          playlistContext.dispatch.playlist(res);
+          setPlaylist(res);
         });
       } catch (err) {
         setError(true);
       }
     })();
-  }, []);
+  }, [setPlaylist]);
 
   useEffect(() => {
     try {
       getFeaturedList(params).then((res) => {
-        playlistContext.dispatch.playlist(res);
+        setPlaylist(res);
       });
 
       const interval = setInterval(() => {
         getFeaturedList(params).then((res) => {
-          playlistContext.dispatch.playlist(res);
+          setPlaylist(res);
         });
       }, 10000);
       return () => clearInterval(interval);
     } catch (err) {
       setError(true);
     }
-  }, [params]);
+  }, [params, setPlaylist]);
 
   useEffect(() => {
-    const filteredItems = filterPlaylistByName(filterName, playlistContext.state.playlist);
+    const filteredItems = filterPlaylistByName(filterName, statePlaylist);
 
     if (filterName && !filteredItems.length) {
-      playlistContext.dispatch.emptyFilterList(true);
+      setEmptyFilterList(true);
     } else {
-      playlistContext.dispatch.emptyFilterList(false);
+      setEmptyFilterList(false);
     }
 
-    playlistContext.dispatch.filteredList(filteredItems);
-  }, [filterName]);
+    setFilteredList(filteredItems);
+  }, [filterName, setEmptyFilterList, setFilteredList, statePlaylist]);
 
   const handleLocaleChange = async (e: React.ChangeEvent<HTMLSelectElement>, id: string) => {
     setLocale(e.target.value);
