@@ -50,6 +50,7 @@ export const Home: React.FC = () => {
             value={clientId ? clientId : ''}
             type="text"
             onChange={(e) => setClientId(e.target.value)}
+            required
           />
           <Button>Prosseguir</Button>
         </form>

@@ -6,6 +6,6 @@ interface ICard {
   children: React.ReactNode;
 }
 
-export const Card: React.FC<ICard> = ({ children }) => {
-  return <S.Card>{children} </S.Card>;
+export const Card: React.FC<ICard> = ({ children, ...rest }) => {
+  return <S.Card {...rest}>{children}</S.Card>;
 };

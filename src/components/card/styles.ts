@@ -5,12 +5,18 @@ export const Card = styled.div`
   border: 1px solid #e5ecff;
   box-sizing: border-box;
   border-radius: 4px;
-  width: 200px;
-  padding: 20px;
+  margin-top: 20px;
+  flex: 1 0 40%;
+  margin: 5px;
+  transition: all 0.1s ease-in-out;
+  min-width: 200px;
+  max-width: 300px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  margin-top: 20px;
-  flex: 1 0 21%;
-  margin: 5px;
-  height: 100px;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 1px 4px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 9px 0px rgba(0, 0, 0, 0.12);
+  }
 `;

@@ -15,6 +15,7 @@ import { PlayListContext } from 'store/play-list-store';
 import * as S from './styles';
 
 export const Filter: React.FC = () => {
+  const [filterName, setFilterName] = useState('');
   const [filterData, setFilterData] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [locale, setLocale] = useState('');
@@ -80,6 +81,11 @@ export const Filter: React.FC = () => {
   const handleOffsetChange = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
     setOffset(e.target.value);
     updateParams(id, e.target.value);
+  };
+
+  const handleFilterByName = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+    setFilterName(e.target.value);
+    //updateParams(id, e.target.value);
   };
 
   const updateParams = (id: string, value: string) => {
@@ -159,6 +165,15 @@ export const Filter: React.FC = () => {
   return (
     <Wrapper height="auto">
       <S.Card>{filterData.map((i) => renderFilter(i))}</S.Card>
+
+      <S.InputWrapper>
+        <Input
+          id="input-filter-name"
+          value={filterName}
+          placeholder="Procure pela sua playlist favorita..."
+          onChange={(e) => handleFilterByName(e, 'input-filter-name')}
+        />
+      </S.InputWrapper>
     </Wrapper>
   );
 };

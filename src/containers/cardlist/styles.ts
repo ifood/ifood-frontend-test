@@ -7,4 +7,30 @@ export const Wrapper = styled.div`
   margin-top: -120px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const Header = styled.header`
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ff00004f;
+
+  span {
+    font-weight: 600;
+  }
+`;
+
+export const Footer = styled.footer`
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3px;
+
+  span {
+    font-weight: 600;
+    color: ${colors.RED};
+  }
 `;

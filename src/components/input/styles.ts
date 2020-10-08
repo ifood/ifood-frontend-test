@@ -13,4 +13,6 @@ export const Input = styled.input<IInput>`
   box-sizing: border-box;
   border-radius: 4px;
   padding: 5px 20px;
+  outline: none;
+  color: ${colors.GRAY};
 `;

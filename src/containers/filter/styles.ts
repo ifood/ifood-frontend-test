@@ -22,3 +22,27 @@ export const Card = styled.div`
     width: 800px;
   }
 `;
+
+export const InputWrapper = styled.div`
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+
+  input {
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 0.1em;
+
+    &::placeholder {
+      color: white;
+      font-weight: 600;
+    }
+  }
+`;

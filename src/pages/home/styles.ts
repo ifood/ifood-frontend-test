@@ -22,6 +22,7 @@ export const Card = styled.div`
 
   input {
     margin-bottom: 5px;
+    font-weight: 600;
   }
 
   form {
