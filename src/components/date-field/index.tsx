@@ -7,7 +7,7 @@ import * as S from './styles';
 
 interface IDatePicker {
   startDate: Date;
-  onChangeDate(date: Date, event: React.SyntheticEvent<any> | undefined): void;
+  onChangeDate(date: Date, event?: React.SyntheticEvent<any>): void;
 }
 
 export const DateField: React.FC<IDatePicker> = ({ startDate, onChangeDate }) => {
