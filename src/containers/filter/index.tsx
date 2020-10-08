@@ -149,7 +149,7 @@ export const Filter: React.FC = () => {
   };
 
   if (hasError) {
-    return <Redirect to="/" />;
+    return <Redirect to="/error" />;
   }
   return <>{filterData.map((i) => renderFilter(i))}</>;
 };

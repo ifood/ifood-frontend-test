@@ -14,8 +14,8 @@ test('testing accessibility', async () => {
   expect(results).toHaveNoViolations();
 });
 
-test('renders error link', () => {
+test('renders notfound component', () => {
   wrapper();
-  const linkElement = screen.getByText(/Notfound/i);
-  expect(linkElement).toBeInTheDocument();
+  const element = screen.getByText(/Página não encontrada/i);
+  expect(element).toBeInTheDocument();
 });

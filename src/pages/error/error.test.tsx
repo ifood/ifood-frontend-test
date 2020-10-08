@@ -14,8 +14,8 @@ test('testing accessibility', async () => {
   expect(results).toHaveNoViolations();
 });
 
-test('renders error link', () => {
+test('renders error component', () => {
   wrapper();
-  const linkElement = screen.getByText(/Error/i);
-  expect(linkElement).toBeInTheDocument();
+  const element = screen.getByText(/Algo de errado aconteceu. Por favor, tente novamente mais tarde./i);
+  expect(element).toBeInTheDocument();
 });
