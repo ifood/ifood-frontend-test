@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from 'common/colors';
+import breakpoints from 'common/breakpoints';
 
 export const Wrapper = styled.div`
   background: ${colors.RED};
@@ -29,8 +30,18 @@ export const Footer = styled.footer`
   align-items: center;
   padding-bottom: 3px;
 
-  span {
+  a {
+    width: 100%;
     font-weight: 600;
+    text-align: center;
     color: ${colors.RED};
+    text-decoration: none;
+    &:hover {
+      color: ${colors.GRAY_LIGHT};
+    }
+  }
+
+  @media (${breakpoints.LARGE}) {
+    cursor: pointer;
   }
 `;

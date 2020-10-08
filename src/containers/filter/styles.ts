@@ -1,10 +1,22 @@
 import styled from 'styled-components';
+import colors from 'common/colors';
 import breakpoints from 'common/breakpoints';
 
 export const FormControl = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px 0;
+
+  input,
+  select {
+    padding-left: 10px;
+    color: ${colors.GRAY};
+  }
+
+  @media (${breakpoints.LARGE}) {
+    flex: 1 0 40%;
+    padding: 5px;
+  }
 `;
 
 export const Card = styled.div`
@@ -20,6 +32,8 @@ export const Card = styled.div`
 
   @media (${breakpoints.LARGE}) {
     width: 800px;
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 

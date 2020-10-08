@@ -17,9 +17,9 @@ export const CardList: React.FC = () => {
           <S.Header>
             <span>{item.name}</span>
           </S.Header>
-          <Image src={item.images[0].url} alt={`Imagem do album ${item.name}`} width="100%" />
+          <Image src={item.images[0].url} alt={`Imagem do album ${item.name}`} height="298px" />
           <S.Footer>
-            <span>Ouça agora</span>
+            <a href={item.external_urls}>Ouça agora</a>
           </S.Footer>
         </Card>
       ))}
