@@ -26,7 +26,7 @@ export const Home: React.FC = () => {
     }
   }, [defaultClientId]);
 
-  const loginWithCredential = (clientId: string | undefined) => {
+  const loginWithCredential = (clientId?: string) => {
     window.location.href = authorizeSpotifyUrl(clientId);
   };
 
@@ -45,7 +45,7 @@ export const Home: React.FC = () => {
       <S.Paragraph>Para prosseguir, preencha o campo abaixo.</S.Paragraph>
 
       <S.Card>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-testid="form">
           <Label name="input-client-id">ClientId: </Label>
           <Input
             id="input-client-id"
