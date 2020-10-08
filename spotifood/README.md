@@ -31,6 +31,7 @@ No terminal, clone o projeto:
 git clone 
 ```
 
+
 ### Como rodar a página
 
 Entre na pasta do projeto:
@@ -47,6 +48,7 @@ Execute a aplicação:
 ```
 npm start
 ```
+
 
 ### Como rodar a autenticação
 
