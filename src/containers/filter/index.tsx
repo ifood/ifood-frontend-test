@@ -34,7 +34,9 @@ export const Filter: React.FC = () => {
   useEffect(() => {
     (async function getData() {
       try {
-        await getFilterData().then((res) => setFilterData(res));
+        await getFilterData().then((res) => {
+          setFilterData(res);
+        });
 
         await getFeaturedList().then((res) => {
           setPlaylist(res);
@@ -179,7 +181,7 @@ export const Filter: React.FC = () => {
   }
   return (
     <Wrapper height="auto">
-      <S.Card>{filterData.map((i) => renderFilter(i))}</S.Card>
+      <S.Card>{filterData.map((i: any) => renderFilter(i))}</S.Card>
 
       <S.InputWrapper>
         <Label name="input-filter-name">Filtro</Label>
