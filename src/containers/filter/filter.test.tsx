@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen, waitForDomChange, waitForElement } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Filter } from 'containers/filter';
-import { axe, toHaveNoViolations } from 'jest-axe';
+import { toHaveNoViolations } from 'jest-axe';
 
 import { PlayListContext } from 'store/play-list-store';
 import { act } from 'react-dom/test-utils';
@@ -12,24 +12,6 @@ jest.useFakeTimers();
 
 jest.mock('services/api-spotify', () => ({
   getFeaturedList: jest.fn(() => Promise.resolve(true))
-  // getFeaturedList: jest.fn(() =>
-  //   Promise.resolve([
-  //     {
-  //       external_urls: {
-  //         spotify: 'https://open.spotify.com/playlist/37i9dQZF1DX5bjCEbRU4SJ'
-  //       },
-  //       id: '37i9dQZF1DX5bjCEbRU4SJ',
-  //       images: [
-  //         {
-  //           height: null,
-  //           url: 'https://i.scdn.co/image/ab67706f00000003278197087524cc094f86e82b',
-  //           width: null
-  //         }
-  //       ],
-  //       name: 'Calm Down'
-  //     }
-  //   ])
-  // )
 }));
 
 jest.mock('services/api-mocky', () => ({
