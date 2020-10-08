@@ -38,11 +38,11 @@ Some libraries used in this project:
 
 ---
 
-## [](https://github.com/kimuradev/sptfd#--author) 👨‍🚀 Author
+## 👨‍🚀 Author
 
 Made by Leandro Kimura.
 
-Get in touch 👋
+Get in touch with me 👋
 
 [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brunohenriquesaibert/)](https://www.linkedin.com/in/kimuradev/)
 [![Twitter Badge](https://img.shields.io/badge/-Twitter-1ca0f1?style=for-the-badge&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/bh_saibert)](https://twitter.com/kimuradev)
