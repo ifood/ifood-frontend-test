@@ -1,11 +1,9 @@
 # Frontend - Projeto Spotifood
 
-:dash: [Deploy da aplicação](http://acretelli-labefood.surge.sh/)
-
 [Documentação da API](https://developer.spotify.com/documentation/web-api/reference/browse/get-list-featured-playlists/)
 
 <p align="center">
-  <img height:400 src="" alt="Imagem do app" />
+  <img height:400 src="https://user-images.githubusercontent.com/29711622/95408967-0f34e080-08f7-11eb-8000-6c904bea2173.gif" alt="Imagem do app" />
 </p>
 
 <br>
