@@ -1,10 +1,12 @@
 # Spotifood
 
+## 🎉 Live project
+
+[Spotifood live application](https://spotifood-kimuradev.herokuapp.com/)
+
 ## 💻 Description
 
-Project created using Create React App with TypeScript template.
-
-Context API was used to managed playlist states. Prettier and Lint was configured to mantain the code pattern.
+Project created using Create React App with TypeScript template. To manage states I used Context API. Prettier and Lint was configured to mantain the code pattern.
 
 ## 📚 Libraries
 
@@ -20,6 +22,8 @@ Some libraries used in this project:
 | [@testing-library/react](https://www.npmjs.com/package/@testing-library/react) | Simple and complete React DOM testing utilities that encourage good testing practices.                                                                                                                             |
 | [styled-components](https://www.npmjs.com/package/styled-components)           | Visual primitives for the component age. Use the best bits of ES6 and CSS to style your apps without stress                                                                                                        |
 
+---
+
 ## 👷‍♂️ Using Spotifood Web Application
 
 1. You must have a `CLIENT_ID` to log at this application
@@ -30,6 +34,13 @@ Some libraries used in this project:
 6. Once you authorize Spotify application you will see the Playlist.
 7. Filter your prefered playlist and enjoy it.
 
-## 🎉 Live project
+---
 
-[Spotifood](https://)
+## [](https://github.com/kimuradev/sptfd#--author) 👨‍🚀 Author
+
+Made by Leandro Kimura.
+
+Get in touch 👋
+
+[![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brunohenriquesaibert/)](https://www.linkedin.com/in/kimuradev/)
+[![Twitter Badge](https://img.shields.io/badge/-Twitter-1ca0f1?style=for-the-badge&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/bh_saibert)](https://twitter.com/kimuradev)
