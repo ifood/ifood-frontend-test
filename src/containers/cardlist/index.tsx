@@ -7,10 +7,9 @@ import { PlayListContext } from 'store/play-list-store';
 import * as S from './styles';
 
 export const CardList: React.FC = () => {
-  const playlistContext = useContext(PlayListContext);
-  const playlist = playlistContext.state.playlist;
-  const filteredPlaylist = playlistContext.state.filteredList;
-  const isFilterEmpty = playlistContext.state.emptyFilterList;
+  const {
+    state: { playlist, filteredList, emptyFilterList: isFilterEmpty }
+  } = useContext(PlayListContext);
 
   const renderCardList = (list: any) => {
     return (
@@ -31,11 +30,11 @@ export const CardList: React.FC = () => {
   };
 
   if (isFilterEmpty) {
-    return renderCardList(filteredPlaylist);
+    return renderCardList(filteredList);
   }
 
-  if (filteredPlaylist.length) {
-    return renderCardList(filteredPlaylist);
+  if (filteredList.length) {
+    return renderCardList(filteredList);
   }
 
   return renderCardList(playlist);

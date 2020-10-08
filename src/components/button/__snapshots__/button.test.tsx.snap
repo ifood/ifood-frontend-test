@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component without errors 1`] = `
+<div>
+  <button
+    class="sc-bdnylx jeZkTh"
+  >
+    Text button
+  </button>
+</div>
+`;

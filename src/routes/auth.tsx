@@ -2,11 +2,9 @@ import React from 'react'; //eslint-disable-line
 import { Route, RouteComponentProps, Redirect, RouteProps } from 'react-router-dom';
 
 const AuthRoute: React.FC<RouteProps> = ({ component: Component, ...rest }) => {
-  let url = window.location.href;
-
-  function hasAcessToken(url: any) {
+  function hasAcessToken() {
     //eslint-disable-next-line
-    const access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/);
+    const access_token = window.location.href.match(/\#(?:access_token)\=([\S\s]*?)\&/);
 
     if (!access_token) {
       return false;
@@ -19,7 +17,7 @@ const AuthRoute: React.FC<RouteProps> = ({ component: Component, ...rest }) => {
   if (!Component) {
     return null;
   }
-  const isLoggedIn = hasAcessToken(url);
+  const isLoggedIn = hasAcessToken();
 
   return (
     <Route

@@ -26,8 +26,6 @@ export const Filter: React.FC = () => {
   const [params, setParams] = useState({});
   const [hasError, setError] = useState(false);
 
-  // const playlistContext = useContext(PlayListContext);
-
   const {
     state: { playlist: statePlaylist },
     dispatch: { setPlaylist, setEmptyFilterList, setFilteredList }

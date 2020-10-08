@@ -28,8 +28,8 @@ test('renders component with type number and no validation', () => {
 
 test('renders component with type number and with validation', () => {
   const validation = {
-    min: 1,
-    max: 50
+    min: '1',
+    max: '50'
   };
   const { container } = render(
     <Input id="input-id" type="number" value="value" onChange={() => {}} validation={validation} />
