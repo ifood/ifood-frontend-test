@@ -4,10 +4,12 @@ interface IPlaylist {
   state: {
     playlist: string[];
     filteredList: string[];
+    emptyFilterList: boolean;
   };
   dispatch: {
     playlist(newPlaylist: string[]): void;
     filteredList(newFilteredList: string[]): void;
+    emptyFilterList(value: boolean): void;
   };
 }
 
@@ -18,17 +20,20 @@ PlayListContext.displayName = 'PlaylistContext';
 export const PlaylistStore = (props: { children: React.ReactNode }) => {
   const [playlist, setPlaylist] = useState<string[]>([]);
   const [filteredList, setFilteredList] = useState<string[]>([]);
+  const [emptyFilterList, setEmptyFilterList] = useState(false);
 
   return (
     <PlayListContext.Provider
       value={{
         state: {
           playlist,
-          filteredList
+          filteredList,
+          emptyFilterList
         },
         dispatch: {
           playlist: setPlaylist,
-          filteredList: setFilteredList
+          filteredList: setFilteredList,
+          emptyFilterList: setEmptyFilterList
         }
       }}
       {...props}

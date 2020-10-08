@@ -10,6 +10,7 @@ import { Input } from 'components/input';
 import { Label } from 'components/label';
 import { Wrapper } from 'components/wrapper';
 
+import { filterPlaylistByName } from 'common/helpers';
 import { PlayListContext } from 'store/play-list-store';
 
 import * as S from './styles';
@@ -58,6 +59,20 @@ export const Filter: React.FC = () => {
     }
   }, [params]);
 
+  useEffect(() => {
+    const filteredItems = filterPlaylistByName(filterName, playlistContext.state.playlist);
+
+    console.log(filteredItems);
+
+    if (filterName && !filteredItems.length) {
+      playlistContext.dispatch.emptyFilterList(true);
+    } else {
+      playlistContext.dispatch.emptyFilterList(false);
+    }
+
+    playlistContext.dispatch.filteredList(filteredItems);
+  }, [filterName]);
+
   const handleLocaleChange = async (e: React.ChangeEvent<HTMLSelectElement>, id: string) => {
     setLocale(e.target.value);
     updateParams(id, e.target.value);
@@ -85,7 +100,6 @@ export const Filter: React.FC = () => {
 
   const handleFilterByName = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
     setFilterName(e.target.value);
-    //updateParams(id, e.target.value);
   };
 
   const updateParams = (id: string, value: string) => {

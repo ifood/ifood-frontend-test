@@ -11,7 +11,9 @@ export const Select: React.FC<ISelect> = ({ value, options, onChange, ...rest })
   return (
     <S.Select value={value} onChange={onChange} {...rest}>
       {options.map(({ value, name }) => (
-        <option value={value}>{name}</option>
+        <option key={value} value={value}>
+          {name}
+        </option>
       ))}
     </S.Select>
   );
