@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react'; //eslint-disable-line
 import * as S from './styles';
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; //eslint-disable-line
 
 import { Image } from 'components/image';
 import { Input } from 'components/input';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; //eslint-disable-line
 import { Route, RouteComponentProps, Redirect, RouteProps } from 'react-router-dom';
 
 const AuthRoute: React.FC<RouteProps> = ({ component: Component, ...rest }) => {

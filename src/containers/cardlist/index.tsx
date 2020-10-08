@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'; //eslint-disable-line
 import { Card } from 'components/card';
 import { PlayListContext } from 'store/play-list-store';
 

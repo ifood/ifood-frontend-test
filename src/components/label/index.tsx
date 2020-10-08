@@ -1,4 +1,4 @@
-import React, { LabelHTMLAttributes } from 'react';
+import React, { LabelHTMLAttributes } from 'react'; //eslint-disable-line
 import * as S from './styles';
 
 interface ILabel extends LabelHTMLAttributes<HTMLLabelElement> {

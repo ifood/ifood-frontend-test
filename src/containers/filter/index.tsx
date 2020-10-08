@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react'; //eslint-disable-line
 import { Redirect } from 'react-router-dom';
 
 import { getFilterData } from 'services/api-mocky';

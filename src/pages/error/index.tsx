@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; //eslint-disable-line
 import Oops from 'assets/images/oops.png';
 
 import { Wrapper } from 'components/wrapper';

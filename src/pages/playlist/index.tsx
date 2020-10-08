@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; //eslint-disable-line
 
 import { Filter } from 'containers/filter';
 import { CardList } from 'containers/cardlist';

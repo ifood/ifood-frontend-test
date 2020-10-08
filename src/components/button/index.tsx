@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react'; //eslint-disable-line
 
 import * as S from './styles';
 

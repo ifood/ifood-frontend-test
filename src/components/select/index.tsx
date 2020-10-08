@@ -1,4 +1,4 @@
-import React, { SelectHTMLAttributes } from 'react';
+import React, { SelectHTMLAttributes } from 'react'; //eslint-disable-line
 import * as S from './styles';
 
 interface ISelect extends SelectHTMLAttributes<HTMLSelectElement> {

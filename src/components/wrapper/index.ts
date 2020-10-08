@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'; //eslint-disable-line
 
 export const Wrapper = styled.div`
   display: flex;
