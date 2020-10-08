@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import { Error } from 'pages/error';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-const wrapper = () => render(<App />);
+const wrapper = () => render(<Error />);
 
 test('testing accessibility', async () => {
   const { container } = wrapper();
@@ -14,8 +14,8 @@ test('testing accessibility', async () => {
   expect(results).toHaveNoViolations();
 });
 
-test('renders spotifood link', () => {
+test('renders error component', () => {
   wrapper();
-  const linkElement = screen.getByText(/spotifood/i);
-  expect(linkElement).toBeInTheDocument();
+  const element = screen.getByText(/Algo de errado aconteceu./i);
+  expect(element).toBeInTheDocument();
 });

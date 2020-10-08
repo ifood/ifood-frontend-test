@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component with type number and no validation 1`] = `
+<div>
+  <input
+    aria-label="input"
+    class="sc-bdnylx loWfeg"
+    id="input-id"
+    min="0"
+    type="number"
+    value="value"
+  />
+</div>
+`;
+
+exports[`renders component with type number and with validation 1`] = `
+<div>
+  <input
+    aria-label="input"
+    class="sc-bdnylx loWfeg"
+    id="input-id"
+    max="50"
+    min="1"
+    type="number"
+    value="value"
+  />
+</div>
+`;
+
+exports[`renders component without errors 1`] = `
+<div>
+  <input
+    aria-label="input"
+    class="sc-bdnylx loWfeg"
+    id="input-id"
+    value="value"
+  />
+</div>
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component without errors 1`] = `
+<div>
+  <label
+    class="sc-bdnylx RCTPj"
+    for="labelName"
+  >
+    Label text
+  </label>
+</div>
+`;
