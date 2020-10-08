@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Error } from 'pages/error';
+import { DateField } from 'components/date-field';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-const wrapper = () => render(<Error />);
+const wrapper = () => render(<DateField startDate={new Date()} onChangeDate={() => {}} />);
 
 test('testing accessibility', async () => {
   const { container } = wrapper();
@@ -14,8 +14,8 @@ test('testing accessibility', async () => {
   expect(results).toHaveNoViolations();
 });
 
-test('renders error component', () => {
-  wrapper();
-  const element = screen.getByText(/Algo de errado aconteceu./i);
-  expect(element).toBeInTheDocument();
+test('renders component without errors', () => {
+  const { container } = wrapper();
+
+  expect(container).toMatchSnapshot();
 });

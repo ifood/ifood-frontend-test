@@ -184,6 +184,7 @@ export const Filter: React.FC = () => {
       <S.Card>{filterData.map((i) => renderFilter(i))}</S.Card>
 
       <S.InputWrapper>
+        <Label name="input-filter-name">Filtro</Label>
         <Input
           id="input-filter-name"
           value={filterName}

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component without errors 1`] = `
+<div>
+  <div
+    class="sc-bdnylx iysmyN"
+  >
+    <label
+      for="date-picker"
+    >
+      Date
+    </label>
+    <div
+      class="react-datepicker-wrapper"
+    >
+      <div
+        class="react-datepicker__input-container"
+      >
+        <input
+          class=""
+          id="date-picker"
+          type="text"
+          value="08-10-2020"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

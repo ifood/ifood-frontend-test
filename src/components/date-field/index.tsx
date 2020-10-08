@@ -13,7 +13,8 @@ interface IDatePicker {
 export const DateField: React.FC<IDatePicker> = ({ startDate, onChangeDate }) => {
   return (
     <S.DateField>
-      <DatePicker selected={startDate} onChange={onChangeDate} dateFormat="dd-MM-yyyy" />
+      <label htmlFor="date-picker">Date</label>
+      <DatePicker selected={startDate} onChange={onChangeDate} dateFormat="dd-MM-yyyy" id="date-picker" />
     </S.DateField>
   );
 };

@@ -42,6 +42,9 @@ export const InputWrapper = styled.div`
   width: 100%;
   margin-top: 20px;
 
+  label {
+    visibility: hidden;
+  }
   input {
     font-weight: 600;
     color: white;

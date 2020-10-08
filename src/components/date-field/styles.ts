@@ -6,6 +6,10 @@ export const DateField = styled.div`
     width: 100%;
   }
 
+  label {
+    display: none;
+  }
+
   input {
     height: 26px;
     border: 2px solid ${colors.GRAY_LIGHT};

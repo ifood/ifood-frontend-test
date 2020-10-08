@@ -14,8 +14,10 @@ test('testing accessibility', async () => {
   expect(results).toHaveNoViolations();
 });
 
-test('renders error link', () => {
+test('renders playlist page', () => {
   wrapper();
-  const linkElement = screen.getByText(/Escute sua playlist favorita enquanto aguarda seu pedido./i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(screen.getByText(/Escute/i)).toBeInTheDocument();
+  expect(screen.getByText(/sua playlist/i)).toBeInTheDocument();
+  expect(screen.getByText(/favorita/i)).toBeInTheDocument();
 });
