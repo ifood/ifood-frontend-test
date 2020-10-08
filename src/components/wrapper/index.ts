@@ -1,10 +1,14 @@
 import styled from 'styled-components'; //eslint-disable-line
 
-export const Wrapper = styled.div`
+interface IWrapper {
+  height?: string;
+}
+
+export const Wrapper = styled.div<IWrapper>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: ${(props) => (props.height ? props.height : '100vh')};
   padding: 20px;
 `;

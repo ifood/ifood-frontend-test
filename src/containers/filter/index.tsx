@@ -8,6 +8,7 @@ import { DateField } from 'components/date-field';
 import { Select } from 'components/select';
 import { Input } from 'components/input';
 import { Label } from 'components/label';
+import { Wrapper } from 'components/wrapper';
 
 import { PlayListContext } from 'store/play-list-store';
 
@@ -95,14 +96,14 @@ export const Filter: React.FC = () => {
       case 'locale':
         return (
           <S.FormControl key={id}>
-            <Label name="select-locale">{`${name} : `}</Label>
+            <Label name="select-locale">{`${name}`}</Label>
             <Select id="select-locale" value={locale} options={values} onChange={(e) => handleLocaleChange(e, id)} />
           </S.FormControl>
         );
       case 'country':
         return (
           <S.FormControl key={id}>
-            <Label name="select-country">{`${name} : `}</Label>
+            <Label name="select-country">{`${name}`}</Label>
             <Select key={id} value={country} options={values} onChange={(e) => handleCountryChange(e, id)} />
           </S.FormControl>
         );
@@ -110,7 +111,7 @@ export const Filter: React.FC = () => {
       case 'timestamp':
         return (
           <S.FormControl key={id}>
-            <Label name={id}>{`${name} : `}</Label>
+            <Label name={id}>{`${name}`}</Label>
             <DateField key={id} startDate={startDate} onChangeDate={(date) => handleDateChange(date, id)} />
           </S.FormControl>
         );
@@ -118,14 +119,16 @@ export const Filter: React.FC = () => {
       case 'limit':
         return (
           <S.FormControl key={id}>
-            <Label name={id}>{`${name} : `}</Label>
+            <Label name={id}>{`${name}`}</Label>
             <Input
               key={id}
               id="input-limit"
               type="number"
+              placeholder={name}
               validation={validation}
               value={limit}
               onChange={(e) => handleLimitChange(e, id)}
+              heigth="30px"
             />
           </S.FormControl>
         );
@@ -133,13 +136,15 @@ export const Filter: React.FC = () => {
       case 'offset':
         return (
           <S.FormControl key={id}>
-            <Label name={id}>{`${name} : `}</Label>
+            <Label name={id}>{`${name}`}</Label>
             <Input
               key={id}
               id="input-offset"
+              placeholder={name}
               type="number"
               value={offset}
               onChange={(e) => handleOffsetChange(e, id)}
+              heigth="30"
             />
           </S.FormControl>
         );
@@ -151,5 +156,9 @@ export const Filter: React.FC = () => {
   if (hasError) {
     return <Redirect to="/error" />;
   }
-  return <>{filterData.map((i) => renderFilter(i))}</>;
+  return (
+    <Wrapper height="auto">
+      <S.Card>{filterData.map((i) => renderFilter(i))}</S.Card>
+    </Wrapper>
+  );
 };
