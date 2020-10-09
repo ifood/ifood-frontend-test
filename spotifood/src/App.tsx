@@ -2,12 +2,14 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Home from './pages/Home';
+import Login from './pages/Login';
 
 function App() {
-  return (
-    <Home />
-  );
+    return (
+    <div className="app">
+        <Login />
+    </div>
+    );
 }
 
 export default App;

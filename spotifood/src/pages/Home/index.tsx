@@ -8,13 +8,13 @@ import Footer from '../../components/template/Footer/Footer';
 
 const Home = () => {
     return (
-        <div className="app">
+        <React.Fragment>
             <Header icon="home" title="Spotifood" subtitle="Juntamos música com a vontade de comer." />
             <Main />
             <Logo />
             <Nav />
             <Footer />
-        </div>
+        </React.Fragment>
     )
 }
     
