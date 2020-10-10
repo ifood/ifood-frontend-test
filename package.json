@@ -1,0 +1,33 @@
+{
+  "name": "spotifood",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^10.0.0",
+    "fuse.js": "^6.2.0-beta.1",
+    "js-cookie": "^2.2.1",
+    "next": "9.5.3",
+    "postcss-import": "^12.0.1",
+    "swr": "^0.3.5",
+    "react": "16.13.1",
+    "react-datepicker": "^3.2.2",
+    "react-dom": "16.13.1",
+    "react-toastify": "^6.0.9",
+    "tailwindcss": "^1.8.10",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.0.0"
+  }
+}

@@ -1,0 +1,52 @@
+@layer components {
+    input:focus-within ~ label,
+    input:not(:placeholder-shown) ~ label {
+        @apply transform scale-75 -translate-y-6;
+    }
+
+    input:focus-within ~ label {
+        @apply text-blue-500;
+    }
+
+    .outline input:focus-within ~ label,
+    .outline input:not(:placeholder-shown) ~ label {
+        @apply transform scale-75 -translate-y-4 z-0 ml-3 px-1 py-0;
+    }
+
+    .btn {
+        @apply font-bold py-2 px-4;
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, rgba(32,162,38,1) 0%, rgba(161,0,0,1) 100%);
+        @apply text-white;
+    }
+    .btn-simple {
+        @apply font-bold py-2 px-4  ;
+        background: #ffff;
+    }
+
+    .btn-primary:hover {
+         background-size: 200% 200%;
+        -webkit-animation: AnimationName 5s ease infinite;
+        -moz-animation: AnimationName 5s ease infinite;
+        animation: AnimationName 5s ease infinite;
+    }
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+
+}

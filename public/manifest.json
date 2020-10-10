@@ -1,0 +1,10 @@
+{
+  "name": "Spotifood",
+  "short_name": "Spotifood",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+
+}
