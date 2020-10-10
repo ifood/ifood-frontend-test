@@ -6,16 +6,16 @@ import Logo from '../../components/template/Logo/Logo';
 import Nav from '../../components/template/Nav/Nav';
 import Footer from '../../components/template/Footer/Footer';
 
-const Home = () => {
+const Profile = () => {
     return (
-        <React.Fragment>
+        <div className="app">
             <Header icon="home" title="Spotifood" subtitle="Juntamos música com a vontade de comer." />
             <Main />
             <Logo />
             <Nav />
             <Footer />
-        </React.Fragment>
+        </div>
     )
 }
     
-export default Home;
+export default Profile;
