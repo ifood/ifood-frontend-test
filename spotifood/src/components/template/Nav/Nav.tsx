@@ -1,11 +1,20 @@
-import React from 'react'
-import './Nav.scss'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import './Nav.scss';
+import { FiPower } from 'react-icons/fi';
 
 function Nav() {
+    const history = useHistory();
+    function handleLogout() {
+        localStorage.clear();
+        history.push('/');
+    }
     return (
         <aside className="menu-area">
             <nav className="menu">
-                TESTE
+                <button onClick={handleLogout} type="button">
+                    Sair <FiPower size={18} color="#E02041" />
+                </button>
             </nav>
         </aside>
     );
