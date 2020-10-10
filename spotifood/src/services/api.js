@@ -1,48 +1,35 @@
 import SpotifyWebApi from 'spotify-web-api-node';
 
-const api = () => {
+const api = (token, func) => {
 
     const spotifyApi = new SpotifyWebApi();
 
-    const params = this.getHashParams();
-
-    const token = params.access_token;
-
     if (token) {
         spotifyApi.setAccessToken(token);
-        console.log(`Seu token é: ${token}`);
-        return token;
+
+        // You can pass as parameter another function of the api
+        // https://github.com/thelinmichael/spotify-web-api-node
+        switch (func) {
+            case 'getNowPlaying' :
+                const getNowPlaying = () => {
+                    spotifyApi.getFeaturedPlaylists({ limit : 3, offset: 1, country: 'SE', locale: 'sv_SE', timestamp:'2014-10-23T09:00:00' }).then(
+                        function(data) {
+                            console.log('Artist albums', data.body);
+                            return data.body;
+                        },
+                        function(err) {
+                            console.error(err);
+                        }
+                    );
+                }
+                getNowPlaying();
+                break;
+            default:
+                return 204;
+        }
     }
     else {
-        console.error('Você não tem token');
-    }
-
-    /**
-    * Obtains parameters from the hash of the URL
-    * @return Object
-    */
-    const getHashParams = () => {
-        var hashParams = {};
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-        q = window.location.hash.substring(1);
-        e = r.exec(q)
-        while (e) {
-            hashParams[e[1]] = decodeURIComponent(e[2]);
-            e = r.exec(q);
-        }
-        return hashParams;
-    };
-
-    const getNowPlaying = () => {
-        spotifyApi.getFeaturedPlaylists({ limit : 3, offset: 1, country: 'SE', locale: 'sv_SE', timestamp:'2014-10-23T09:00:00' }).then(
-            function(data) {
-                console.log('Artist albums', data.body);
-                return data.body;
-            },
-            function(err) {
-                console.error(err);
-            }
-        );
+        return 401;
     }
 
 }

@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.6"
+    "@types/react-router-dom": "^5.1.6",
+    "@types/spotify-web-api-node": "^4.0.1"
   }
 }

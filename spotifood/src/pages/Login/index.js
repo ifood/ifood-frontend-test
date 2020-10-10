@@ -29,7 +29,7 @@ export default function Logon() {
     
     async function handleLogin() {
 
-        const getTokenLocal = localStorage.getItem('spotify_token', token);
+        const getTokenLocal = localStorage.getItem('spotify_token');
 
         if (getTokenLocal) {
             history.push('/profile');
