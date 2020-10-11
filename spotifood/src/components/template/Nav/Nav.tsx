@@ -13,7 +13,7 @@ function Nav() {
         <aside className="menu-area">
             <nav className="menu">
                 <button onClick={handleLogout} type="button">
-                    Sair <FiPower size={18} color="#E02041" />
+                    Sair <FiPower size={18} color='red' />
                 </button>
             </nav>
         </aside>
