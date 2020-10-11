@@ -7,22 +7,18 @@ import PlatformsCard from '../../card-playlist';
 function Main() {
     const [playlists, setPlaylists] = useState([] as any);
     const spotifyApi = new SpotifyWebApi();
-    const getTokenLocal = localStorage.getItem('spotify_token');
     const history = useHistory();
 
-    if (getTokenLocal) {
-        try {
+    try {
+        const getTokenLocal = localStorage.getItem('spotify_token');
+        if (getTokenLocal) {
             spotifyApi.setAccessToken(getTokenLocal);
             spotifyApi.getFeaturedPlaylists({ limit : 12, offset: 1, country: 'BR', locale: 'pt_BR', timestamp:'2014-10-23T09:00:00' })
-              .then(data => {
+                .then(data => {
                 setPlaylists(data.body.playlists.items);
-        })
-        } catch (error) {
-            history.push('/');
+            })
         }
-    }
-    else {
-        console.log('Sem token')
+    } catch (error) {
         history.push('/');
     }
 

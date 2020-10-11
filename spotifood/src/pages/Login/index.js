@@ -26,25 +26,16 @@ export default function Logon() {
     const params = getHashParams();
     const token = params.access_token;
     const history = useHistory();
-    
-    async function handleLogin() {
 
-        const getTokenLocal = localStorage.getItem('spotify_token');
-
-        if (getTokenLocal) {
-            history.push('/profile');
-        }
-        else {
-            if (token) {
-                spotifyApi.setAccessToken(token);
-                localStorage.setItem('spotify_token', token);       
-                history.push('/profile');
-            }
-        }
-        
+    if (token) {
+        spotifyApi.setAccessToken(token);
+        localStorage.setItem('spotify_token', token);
     }
     
-    handleLogin();
+    const getTokenLocal = localStorage.getItem('spotify_token');
+    if (getTokenLocal) {
+        history.push('/profile');
+    }
 
     return (
         <div className="logon-container">
