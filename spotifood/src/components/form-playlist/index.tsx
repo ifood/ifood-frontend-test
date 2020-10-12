@@ -7,8 +7,6 @@ const FormPlaylist = () => {
     const [title, setTitle] = useState('');
     const [resLocale, setResLocale] = useState('');
     const [resCountry, setResCountry] = useState('');
-    
-    const ongId = localStorage.getItem('ongId');
 
     const data = { 
         limit : 3, 
@@ -25,7 +23,7 @@ const FormPlaylist = () => {
           setLocale(response.data.filters[0].values);
           setCountry(response.data.filters[1].values);
         })
-      }, []);
+    }, []);
     
     return (
         <section className="logo">
