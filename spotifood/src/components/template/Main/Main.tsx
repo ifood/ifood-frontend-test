@@ -18,12 +18,17 @@ export default function Main() {
     .getFeaturedPlaylists() // note that we don't pass a user id
       .then(
         async function (data) {
-            await setPlaylists(data.playlists.items);
+            setTimeout(async () => {
+                await setPlaylists(data.playlists.items);
+            }, 30000);
+            return data;
         },
         function (err) {
             console.error('O erro é ', err);
         }
     );
+
+    console.log('.');
 
     return (
         <React.Fragment>
