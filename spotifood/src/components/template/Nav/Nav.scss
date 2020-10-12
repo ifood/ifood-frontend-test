@@ -1,3 +1,4 @@
+@import '../../../global.scss';
 aside.menu-area {
     background-color: var(--bg-dark);
     box-shadow: 
@@ -5,33 +6,18 @@ aside.menu-area {
         2px 0 15px 0 rgba(0, 0, 0, 0.09);
 }
 
-.menu a {
-    display: block;
+.menu button {
+    background-color: $green; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    color: #FFF;
-    font-weight: 300;
-    padding: 15px;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
 }
 
-.menu a:hover {
-    background: linear-gradient(135deg, #07a7e3 0%, #32dac3 100%);
-}
-
-@media(max-width: 768px) {
-    .menu {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    .menu a {
-        display: inline;
-        padding: 10px;
-        margin: 0px;
-    }
-
-    .menu {
-        height: 100%;
-        justify-content: space-around;
-    }
+.menu button:hover {
+    background: linear-gradient(135deg, #EA1D2C 0%,#9C050B 100%);
 }

@@ -43,3 +43,6 @@ v12.18.4
 Utilizando react icons para trazer os icones. 
 
 Necesseario node-sass
+
+Guia de design
+https://institucional.ifood.com.br/static/Guia%20de%20Identidade%20Visual%20iFood-60f6e9797a017f8bcfda1be7d91d6d8e.pdf

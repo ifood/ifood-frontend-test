@@ -21,7 +21,7 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        height: '50%',
+        height: '60%',
         width: '50%',
         border: 'none',
         paddingRight: '0px',
@@ -32,7 +32,7 @@ const customStyles = {
     },
 };
 
-const PlatformsCard: React.FC<Props> = ({
+const CardPlaylist: React.FC<Props> = ({
     name,
     cover,
     description,
@@ -53,7 +53,7 @@ const PlatformsCard: React.FC<Props> = ({
         setIsOpen(false);
     }
     return (
-        <section className="col-12 col-lg-4 col-xxl-3 py-4">
+        <section className="col-12 col-md-4 col-lg-3 col-xxl-3 py-4">
             <div className={style.fundCardContainer}>
                 <div className={style.fundCard}>
                     <button className="bg-transparent btn p-0" type="button" onClick={openModal} id="yourAppElement">
@@ -71,7 +71,7 @@ const PlatformsCard: React.FC<Props> = ({
                     contentLabel="Modal"
                 >
                     <button className="close text-white pt-2 pr-4" type="button" onClick={closeModal}>X</button>
-                    <div className="p-4 text-center">
+                    <div className="p-4 text-center align-middle">
                         <h2 className="text-white font-weight-bold font-size-5">{name}</h2>
                         <h4 className="pt-2 pb-4 font-size-7 text-white font-weight-light">{description}</h4>
                         <h4 className="pt-2 pb-4 font-size-7 text-white font-weight-light">Essa playlist tem {total.total} músicas</h4>
@@ -83,4 +83,4 @@ const PlatformsCard: React.FC<Props> = ({
         </section>
     );
 };
-export default PlatformsCard;
+export default CardPlaylist;
