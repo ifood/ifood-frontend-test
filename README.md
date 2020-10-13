@@ -1,4 +1,4 @@
-# Processo seletivo ifood [Front-End]
+# iFood Frontend Test
 
 # How to run
 
