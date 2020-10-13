@@ -1,0 +1,62 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "react-hooks"],
+  "rules": {
+    "comma-dangle": "off",
+    "quotes": [2, "double", "avoid-escape"],
+    "linebreak-style": 0,
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "components": [],
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "allowChildren": true
+      }
+    ],
+    "react/forbid-prop-types": 0,
+    "react/no-array-index-key": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [".storybook/**", "src/**/**/stories.js"]
+      }
+    ],
+    "react/jsx-one-expression-per-line": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  }
+}
