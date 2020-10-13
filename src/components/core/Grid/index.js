@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import media from "styled-media-query";
 
 import authBackground from "assets/images/auth-background.jpg";
 
@@ -32,12 +33,17 @@ export const Container = styled.div`
   padding: 5rem 10rem;
 
   ${({ authScreen }) => !authScreen && authScreenStyle};
+
+  ${media.lessThan("medium")`
+    padding: 2rem;
+  `};
 `;
 
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   z-index: 2;
+  overflow: hidden;
 `;
 
 export const Div = styled.div`

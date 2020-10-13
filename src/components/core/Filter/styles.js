@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "styled-media-query";
 
 export const Div = styled.div`
   padding: 4rem;
@@ -9,6 +10,10 @@ export const Div = styled.div`
 export const Wrapper = styled.div`
   position: relative;
   display: flex;
+
+  ${media.lessThan("medium")`
+    margin-bottom: 2rem;
+  `};
 `;
 
 export const Label = styled.label`

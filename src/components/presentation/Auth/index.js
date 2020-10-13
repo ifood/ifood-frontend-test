@@ -14,7 +14,7 @@ const Auth = () => {
           Spoti<Color color="red">food</Color>
         </Title>
 
-        <Paragraph margin="4rem 0">
+        <Paragraph margin="4rem 0" textAlign="center">
           Acesse a nossa aplicação e ouça suas músicas favoritas!
         </Paragraph>
 
