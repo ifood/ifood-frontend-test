@@ -2,8 +2,8 @@
 :root {
     --bg-dark: #191414;
     
-    --logo-height: 142px;
-    --header-height: 130px;
+    --logo-height: 100px;
+    --header-height: 6rem;
     --menu-top-height: 70px;
     --aside-width: 225px;
     --footer-height: 40px;
@@ -11,6 +11,7 @@
     --shadow: 
     0 2px 23px 0 rgba(0, 0, 0, 0.1),
     0 2px 49px 0 rgba(0, 0, 0, 0.06);
+    background-color: #212121;
 }
 
 * {
@@ -36,7 +37,7 @@
     "menu content"
     "menu footer";
     height: 100vh;
-    background-color: #F5F5F5;
+    background-color: #212121;
 }
 
 aside.logo {
@@ -57,6 +58,8 @@ main.content {
 
 footer.footer {
     grid-area: footer;
+    background-color: #535353;
+    color:#121212;
 }
 
 @media(max-width: 768px) {
@@ -114,7 +117,7 @@ button {
 
 form input {
     width: 100%;
-    height: 60px;
+    height: 40px;
     color: #333;
     border: 1px solid #dcdce6;
     border-radius: 8px;
@@ -124,7 +127,7 @@ form input {
 form textarea {
     width: 100%;
     resize: vertical;
-    min-height: 140px;
+    min-height: 100px;
     color: #333;
     border: 1px solid #dcdce6;
     border-radius: 8px;

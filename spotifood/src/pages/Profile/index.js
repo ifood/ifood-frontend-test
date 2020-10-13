@@ -24,16 +24,22 @@ const Profile = () => {
     const [locale, setLocale] = useState([]);
     const [country, setCountry] = useState([]);
     const [title, setTitle] = useState('');
-    const [resLocale, setResLocale] = useState('');
-    const [resCountry, setResCountry] = useState('');
+    const [resLocale, setResLocale] = useState('en_AU');
+    const [resCountry, setResCountry] = useState('AU');
+    const [msgError, setMsgError] = useState('');
+    const [min, setMin] = useState(1);
+    const [max, setMax] = useState(50);
+    const [limit, setLimit] = useState(8);
     const history = useHistory();
 
-    const filter = { limit : 20, offset: 1, country: resCountry, locale: resLocale, timestamp:'2014-10-23T09:00:00' }
+    const filter = { limit : limit, offset: 1, country: resCountry, locale: resLocale, timestamp:'2014-10-23T09:00:00' }
 
     useEffect(() => {
         api.get('5a25fade2e0000213aa90776').then(response => {
           setLocale(response.data.filters[0].values);
           setCountry(response.data.filters[1].values);
+          setMin(response.data.filters[3].validation.min);
+          setMax(response.data.filters[3].validation.max);
         })
     }, []);
 
@@ -50,16 +56,24 @@ const Profile = () => {
                 return setPlaylists(data.playlists.items);
             },
             function (err) {
-                console.error('O erro é ', err);
-                console.log(typeof(err.response));
-                console.error('Status: ', err.status);
-                console.error('Message: ', err.response);
-                var objeto = JSON.parse(err.response);
+                let objeto = JSON.parse(err.response);
                 console.error('Message: ', objeto.error.message);
+                if (err.status === 401) {
+                    setMsgError(objeto.error.message);
+                    window.location.href = 'http://localhost:8888/login';
+                }
+                if (err.status === 400) {
+                    setMsgError(objeto.error.message);
+                }
+                if (err.status === 404) {
+                    setMsgError(objeto.error.message);
+                    localStorage.clear();
+                    history.push('/');
+                }
                 return err;
-        }
+            }
         );
-    }, [filter, spotifyApi]);
+    }, [filter, history, spotifyApi]);
 
     function handleLogout() {
         localStorage.clear();
@@ -72,45 +86,63 @@ const Profile = () => {
             <Header icon="home" title="Spotifood" subtitle="Juntamos música com a vontade de comer." />
             <main className="container py-4">
                 <div className="row equal profile-container">
-                    <Alert severity="error">This is an error alert — check it out!</Alert>
-                    {playlists.map((playlist) => (
-                        <CardPlaylist key={playlist.id} name={playlist.name} cover={playlist.images[0]} description={playlist.description} more={playlist.external_urls} message={playlist.message} total={playlist.tracks} />
-                    ))}
+                    {msgError ? 
+                        <Alert severity="error">{msgError}</Alert>
+                        :
+                        playlists.map((playlist) => (
+                            <CardPlaylist key={playlist.id} name={playlist.name} cover={playlist.images[0]} description={playlist.description} more={playlist.external_urls} message={playlist.message} total={playlist.tracks} />
+                        ))
+                    }
                 </div>
             </main>
             <Logo />
-            <aside className="menu-area">
+            <aside className="menu-area p-3">
                 <nav className="menu">
                     <section className="logo">
                         <form>
                             <div className="form-group">
+                                <div className="pb-3">
+                                    <input 
+                                        placeholder="Pesquisar"
+                                        value={title}
+                                        onChange={e => setTitle(e.target.value)}
+                                    />
+                                </div>
+                                <div className="pb-3">
+                                    <select 
+                                        className="form-control" 
+                                        id="selectLocale" 
+                                        onChange={e => setResLocale(e.target.value)}
+                                    >
+                                        {locale.map((item, index) => (
+                                            <option key={index} value={item.value}>
+                                                {item.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="pb-3">
+                                    <select 
+                                        className="form-control" 
+                                        id="selectCountry" 
+                                        onChange={e => setResCountry(e.target.value)}
+                                    >
+                                        {country.map((item, index) => (
+                                            <option key={index} value={item.value}>
+                                                {item.name}
+                                            </option>
+                                        ))}
+                                    </select>  
+                                </div>
                                 <input 
-                                    placeholder="Pesquisar"
-                                    value={title}
-                                    onChange={e => setTitle(e.target.value)}
+                                    type="number" 
+                                    id="quantity" 
+                                    name="quantity" 
+                                    min={min} 
+                                    max={max}
+                                    value={limit}
+                                    onChange={e => setLimit(e.target.value)}
                                 />
-                                <select 
-                                    className="form-control" 
-                                    id="selectLocale" 
-                                    onChange={e => setResLocale(e.target.value)}
-                                >
-                                    {locale.map((item, index) => (
-                                        <option key={index} value={item.value}>
-                                            {item.name}
-                                        </option>
-                                    ))}
-                                </select>
-                                <select 
-                                    className="form-control" 
-                                    id="selectCountry" 
-                                    onChange={e => setResCountry(e.target.value)}
-                                >
-                                    {country.map((item, index) => (
-                                        <option key={index} value={item.value}>
-                                            {item.name}
-                                        </option>
-                                    ))}
-                                </select>  
                             </div>  
                         </form>
                     </section>

@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer">
         <span>
-            © Copyright 2020 <FaHeart width={16} color='red' /> <i className="fa fa-heart text-danger"></i>
+            © Copyright 2020 <i className="fa fa-heart text-danger"></i>
             <strong className="red"> Pedro Duarte</strong>
         </span>
     </footer>
