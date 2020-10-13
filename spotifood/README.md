@@ -1,5 +1,7 @@
 ![Alt ou título da imagem](/src/assets/img/logo.png)
 
+[Demo can be acessed here](https://pedroduarte-spotifood.herokuapp.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 The intention of the project was to show knowledge in building interfaces.
