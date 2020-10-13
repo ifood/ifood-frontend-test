@@ -1,0 +1,24 @@
+@import '../../global.scss';
+
+aside.menu-area {
+    background-color: var(--bg-dark);
+    box-shadow: 
+        2px 0 10px 0 rgba(0, 0, 0, 0.12),
+        2px 0 15px 0 rgba(0, 0, 0, 0.09);
+}
+
+.menu button {
+    background-color: $green; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
+
+.menu button:hover {
+    background: linear-gradient(135deg, #EA1D2C 0%,#9C050B 100%);
+}

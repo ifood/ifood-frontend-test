@@ -1,0 +1,10 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+footer.footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 25px;
+    background-color: #FFF;
+    box-shadow: var(--shadow);
+}

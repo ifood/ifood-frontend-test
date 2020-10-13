@@ -1,0 +1,228 @@
+
+/* --- Responsive typography --- */
+
+/* --- Mobile --- */
+@media screen and (max-width: 992px) {
+    .font-size-1 {
+        font-size: 32px; // 32px
+    }
+
+    .font-size-2 {
+        font-size: 32px; // 32px
+    }
+
+    .font-size-3 {
+        font-size: 24px; // 24px
+    }
+
+    .font-size-4 {
+        font-size: 21px; // 21px
+    }
+
+    .font-size-5 {
+        font-size: 18px; // 18px
+    }
+
+    .font-size-6 {
+        font-size: 16px; // 16px
+    }
+
+    .font-size-7 {
+        font-size: 16px; // 16px
+    }
+
+    .font-size-8 {
+        font-size: 14px; // 14px
+    }
+
+    .font-size-9 {
+        font-size: 12px; // 12px
+    }
+}
+
+/* --- Médias --- */
+@media screen and (min-width: 992px) {
+    .font-size-1 {
+        font-size: 56px; // 56px
+    }
+
+    .font-size-2 {
+        font-size: 40px; // 40px
+    }
+
+    .font-size-3 {
+        font-size: 32px; // 32px
+    }
+
+    .font-size-4 {
+        font-size: 24px; // 24px
+    }
+
+    .font-size-5 {
+        font-size: 21px; // 21px
+    }
+
+    .font-size-6 {
+        font-size: 18px; // 18px
+    }
+
+    .font-size-7 {
+        font-size: 16px; // 16px
+    }
+
+    .font-size-8 {
+        font-size: 14px; // 14px
+    }
+
+    .font-size-9 {
+        font-size: 12px; // 12px
+    }
+}
+
+/* --- Grandes --- */
+@media screen and (min-width: 1400px) {
+    .font-size-1 {
+        font-size: 64px; // 64px
+    }
+
+    .font-size-2 {
+        font-size: 48px; // 48px
+    }
+
+    .font-size-3 {
+        font-size: 40px; // 40px
+    }
+
+    .font-size-4 {
+        font-size: 32px; // 32px
+    }
+
+    .font-size-5 {
+        font-size: 24px; // 24px
+    }
+
+    .font-size-6 {
+        font-size: 21px; // 21px
+    }
+
+    .font-size-7 {
+        font-size: 18px; // 18px
+    }
+
+    .font-size-8 {
+        font-size: 16px; // 16px
+    }
+
+    .font-size-9 {
+        font-size: 14px; // 14px
+    }
+}
+/* --- END Responsive typography --- */
+@import '~bootstrap/scss/bootstrap.scss';
+/*---*/
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xxs: 0,
+  xs: 576,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1400px,
+  xxl: 1680px,
+);
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  xs: 540,
+  sm: 720px,
+  md: 960px,
+  lg: 1140px,
+  xl: 1280px,
+  xxl: 1580px,
+);
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:                12;
+$grid-gutter-width:           32px;
+$grid-row-columns:            6;
+
+$primary: #E02041;
+
+$white: #ffffff;
+$black: #091827;
+$black-light: #082534;
+
+$gray-ice: #F2F2F2;
+$gray-light: #D1D5D7;
+$gray-dark: #7E868E;
+$gray-graphite: #49535C;
+$blue-lighter: #f6fafc;
+
+$orange: #FF6D00;
+$orange-light: #FF9B52;
+$purple: #8E24AA;
+$yellow: #FFB300;
+$yellow-dark: #B0810C;
+$yellow-gold: #D4AF37;
+
+$green: #00C853;
+$red: #E02041;
+
+
+$theme-colors: () !default;
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "primary": $primary,
+    "orange": $orange-light,
+    "orange-light": $orange-light,
+    "dark": $black,
+    "dark-lighter": $black-light,
+    "white": $white,
+    "purple": $purple,
+    "blue-lighter": $blue-lighter,
+    "gray-ice": $gray-ice,
+    "gray-light": $gray-light,
+    "gray-dark": $gray-dark,
+    "gray-graphite": $gray-graphite,
+    "yellow": $yellow,
+    "yellow-dark": $yellow-dark,
+    "yellow-gold": $yellow-gold,
+    "green": $green,
+    "red": $red
+  )
+);
+
+@each $color, $value in $theme-colors {
+    @include bg-variant(".bg-#{$color}", $value, true);
+}
+
+@if $enable-gradients {
+    @each $color, $value in $theme-colors {
+        @include bg-gradient-variant(".bg-gradient-#{$color}", $value);
+    }
+}
+
+// Contextual colors
+
+@each $color, $value in $theme-colors {
+    @include text-emphasis-variant(".text-#{$color}", $value, true);
+  }

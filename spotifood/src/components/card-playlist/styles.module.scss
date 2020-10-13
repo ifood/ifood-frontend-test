@@ -1,0 +1,33 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+@include media-breakpoint-up(md) { 
+
+    .fundCardContainer:hover {
+        box-shadow: 0 4px 8px 0 rgba(9,24,39,.16);
+        transform: scale(1.09, 1.13);
+
+        & .fundCardContainer {
+            transform: scale3d(0.909, 0.833, 1) translate3d(0, -10px, 0);
+        }
+
+    }
+    
+}
+
+.fundCardContainer {
+    border: 1px solid #D1D5D7;
+    border-top-left-radius: 3px;
+    border-top-right-radius:3px;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    cursor: pointer;
+    transition: all .2s ease;
+    line-height: 1.5;
+    border-top-left-radius: 3px;
+    border-top-right-radius:3px;
+}
+
+.fundCard h4{
+    line-height: $line-height-base;
+}
