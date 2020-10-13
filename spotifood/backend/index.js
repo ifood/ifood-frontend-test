@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = 'e1afb94832e040fc92da92c758be3f0b'; // Your client id
 var client_secret = '0b1517de3df144948de459e3ad818c13'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = 'https://next-spotifood.herokuapp.com/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -144,4 +144,4 @@ app.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
-app.listen(8888);
+app.listen(process.env.PORT || 8888);

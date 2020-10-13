@@ -85,7 +85,7 @@ const Profile = () => {
                     console.error('Message: ', objeto.error.message);
                     if (err.status === 401) {
                         setMsgError(objeto.error.message);
-                        window.location.href = 'http://localhost:8888/login';
+                        window.location.href = 'https://next-spotifood.herokuapp.com/login';
                     }
                     if (err.status === 400) {
                         setMsgError(objeto.error.message);

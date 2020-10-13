@@ -42,7 +42,7 @@ export default function Logon() {
             <div className="logon-container">
                 <section className="text-center">
                     <img src={logoImg} alt="Spotifood"/>
-                    <a href='http://localhost:8888/login' className="button" > Login Spotify </a>
+                    <a href='https://next-spotifood.herokuapp.com/login' className="button" > Login Spotify </a>
                 </section>
                 
                 <img src={heroesImg} alt="Heroes" />
