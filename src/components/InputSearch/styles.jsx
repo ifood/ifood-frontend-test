@@ -12,7 +12,8 @@ const Search = styled.div`
 
 const Input = styled.input`
   border: none;
-  margin-right: 16px;
+  height: 36px;
+  padding: 8px;
   width: 100%;
 
   &::placeholder{
