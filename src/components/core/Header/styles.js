@@ -20,4 +20,5 @@ export const Title = styled.h1`
 export const Span = styled.span`
   font-size: 1.6rem;
   font-weight: bold;
+  text-align: right;
 `;
