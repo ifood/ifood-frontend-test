@@ -1,6 +1,5 @@
 import React from 'react';
 import './Footer.scss';
-import { FaHeart } from 'react-icons/fa';
 
 function Footer() {
   return (

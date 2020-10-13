@@ -38,13 +38,15 @@ export default function Logon() {
     }
 
     return (
-        <div className="logon-container">
-            <section className="text-center">
-                <img src={logoImg} alt="Spotifood"/>
-                <a href='http://localhost:8888/login' className="button" > Login Spotify </a>
-            </section>
-            
-            <img src={heroesImg} alt="Heroes" />
-        </div>
+        <div className="logon">
+            <div className="logon-container">
+                <section className="text-center">
+                    <img src={logoImg} alt="Spotifood"/>
+                    <a href='http://localhost:8888/login' className="button" > Login Spotify </a>
+                </section>
+                
+                <img src={heroesImg} alt="Heroes" />
+            </div>
+        </div>    
     );
 }
