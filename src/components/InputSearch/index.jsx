@@ -2,10 +2,13 @@ import React from 'react';
 import * as S from './styles';
 import search from './../../assets/search.svg';
 
-const InputSearch = () => {
+const InputSearch = ({
+  onChange,
+}) => {
   return (
     <S.Search>
       <S.Input
+        onChange={onChange}
         placeholder='Busque por sua playlist...'
       />
       <S.Icon>
