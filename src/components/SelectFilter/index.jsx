@@ -2,13 +2,13 @@ import React from 'react';
 import * as S from './styles';
 
 const SelectFilter = ({
-  defaultValue,
+  id,
   optValues,
   onChange,
-s}) => {
+}) => {
   return (
-    <S.Select onChange={onChange}>
-      <option>{defaultValue = '-- Selecione uma opção'} </option>
+    <S.Select id={id} onChange={onChange}>
+      <option required>-- Selecione uma opção</option>
       {optValues
         && optValues.map((opt, key) => (
           <option
