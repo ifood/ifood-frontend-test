@@ -5,18 +5,16 @@ import * as S from './styles';
 const InputFilter = ({
   min,
   max,
+  onChange,
   placeholder,
   type,
 }) => {
   switch (type) {
-    case 'DATE_TIME':
-      type = 'date';
-      break;
     case 'INTEGER':
       type = 'number';
       break;
     default:
-      type = 'text';
+      type = 'date';
       break;
   };
 
@@ -24,6 +22,7 @@ const InputFilter = ({
     <S.Input
       min={min}
       max={max}
+      onChange={onChange}
       placeholder={placeholder}
       type={type}
     />
