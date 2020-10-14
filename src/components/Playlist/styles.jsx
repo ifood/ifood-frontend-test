@@ -4,7 +4,6 @@ const Link = styled.a``;
 
 const Image = styled.img`
   max-width: 100%;
-  width: 360px;
 `;
 
 const Title = styled.h4`

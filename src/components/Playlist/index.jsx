@@ -1,5 +1,4 @@
 import React from 'react';
-import { Title } from '../../pages/Search/styles';
 import * as S from './styles';
 
 const Playlist = ({
@@ -9,7 +8,7 @@ const Playlist = ({
   title,
   description,
 }) => (
-    <div>
+    <>
       <S.Link
         href={href}
         target='_blank'
@@ -18,7 +17,7 @@ const Playlist = ({
       </S.Link>
       <S.Title>{title}</S.Title>
       <S.Description>{description}</S.Description>
-    </div>
+    </>
   );
 
 export default Playlist;
