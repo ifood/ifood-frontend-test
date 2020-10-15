@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+const Playlist = styled.div`
+  width: calc(100% - 8px);
+`;
+
 const Link = styled.a``;
 
 const Image = styled.img`
@@ -17,6 +21,7 @@ const Description = styled.p`
 `;
 
 export {
+  Playlist,
   Link,
   Image,
   Title,

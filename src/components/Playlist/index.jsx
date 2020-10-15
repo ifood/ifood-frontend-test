@@ -8,7 +8,7 @@ const Playlist = ({
   title,
   description,
 }) => (
-    <>
+    <S.Playlist>
       <S.Link
         href={href}
         target='_blank'
@@ -17,7 +17,7 @@ const Playlist = ({
       </S.Link>
       <S.Title>{title}</S.Title>
       <S.Description>{description}</S.Description>
-    </>
+    </S.Playlist>
   );
 
 export default Playlist;
