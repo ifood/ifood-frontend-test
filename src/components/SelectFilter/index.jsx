@@ -8,7 +8,7 @@ const SelectFilter = ({
 }) => {
   return (
     <S.Select id={id} onChange={onChange}>
-      <option required>-- Selecione uma opção</option>
+      <option>-- Selecione uma opção</option>
       {optValues
         && optValues.map((opt, key) => (
           <option
