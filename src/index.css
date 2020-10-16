@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'VinylRegular';
+  src: url('./assets/fonts/VinylOT/VinylRegular.woff2') format('woff2'),
+    url('./assets/fonts/VinylOT/VinylRegular.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sul Sans';
+  src: url('./assets/fonts/SulSans/SulSans-Light.woff2') format('woff2'),
+    url('./assets/fonts/SulSans/SulSans-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sul Sans';
+  src: url('./assets/fonts/SulSans/SulSans-Medium.woff2') format('woff2'),
+    url('./assets/fonts/SulSans/SulSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*:focus-within {
+  outline: none;
+}
+
+canvas {
+  position: fixed;
+  z-index: 1;
+  user-select: none;
+}
+
+.chakra-popover__content {
+  z-index: 20 !important;
+}

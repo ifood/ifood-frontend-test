@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'VinylRegular';
+    src: url('VinylRegular.woff2') format('woff2'),
+        url('VinylRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
