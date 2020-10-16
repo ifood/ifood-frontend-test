@@ -1,0 +1,18 @@
+{
+  "display_name": "Leonardo Elias",
+  "external_urls": {
+    "spotify": "https://open.spotify.com/user/12151178352"
+  },
+  "followers": { "href": null, "total": 82 },
+  "href": "https://api.spotify.com/v1/users/12151178352",
+  "id": "12151178352",
+  "images": [
+    {
+      "height": null,
+      "url": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-1/s320x320/43787916_2016110551779263_4861406313348857856_n.jpg?_nc_cat=111&_nc_sid=0c64ff&_nc_ohc=OBTKTvbEgG8AX_6sMxR&_nc_ht=scontent-ort2-1.xx&tp=7&oh=053832e20105ddec77e98eb051f5d1b3&oe=5FACD098",
+      "width": null
+    }
+  ],
+  "type": "user",
+  "uri": "spotify:user:12151178352"
+}
