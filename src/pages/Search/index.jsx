@@ -19,31 +19,10 @@ const Search = () => {
   const [filters, setFilters] = useState([]);
   const [selectedOpt, setSelectedOpt] = useState({});
   const [playlists, setPlaylists] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    const fetchFilters = async () => {
-      const response = await getFilters();
-      const results = await response.json();
-
-      setIsLoading(false);
-
-      setFilters(results.filters);
-    };
-
-    fetchFilters();
-
-  }, []);
-
-  const handleChange = async (e) => {
-    const {
-      target: {
-        value,
-      }
-    } = e;
-
-    const result = await getPlaylists(selectedOpt);
+  const fetchPlaylists = async (options, value) => {
+    const result = await getPlaylists(options);
 
     const {
       playlists: {
@@ -51,15 +30,44 @@ const Search = () => {
       },
     } = result;
 
-    const itemsFiltered = items.filter(i =>
-      i.name.toLowerCase().includes(value)
+    const itemsFiltered = items.filter(item =>
+      value && item
+        .name
+        .toLowerCase()
+        .includes(value.toLowerCase())
     );
 
-    return setPlaylists(itemsFiltered)
+    setPlaylists(itemsFiltered)
   };
 
 
-  const setParams = e => {
+  useEffect(() => {
+    setIsLoading(true);
+
+    const fetchFilters = async () => {
+      const response = await getFilters();
+      const results = await response.json();
+      setIsLoading(false);
+      setFilters(results.filters);
+    };
+
+    fetchFilters();
+  }, []);
+
+
+  const handleInputChange = async (e) => {
+    const {
+      target: {
+        value,
+      }
+    } = e;
+
+    setInputValue(value);
+    await fetchPlaylists(selectedOpt, value);
+  };
+
+
+  const handleFiltersChange = async e => {
     const {
       target: {
         id,
@@ -67,8 +75,11 @@ const Search = () => {
       }
     } = e;
 
-    return setSelectedOpt(({ ...selectedOpt, [id]: value }));
-  }
+    const options = { ...selectedOpt, [id]: value };
+
+    setSelectedOpt(options);
+    await fetchPlaylists(options, inputValue);
+  };
 
   const hasFilterResult = filters.length !== 0 && !isLoading;
   const hasPlaylistResult = playlists.length !== 0 && !isLoading;
@@ -76,7 +87,7 @@ const Search = () => {
   return (
     <Container>
       <InputSearch
-        onChange={handleChange}
+        onChange={handleInputChange}
       />
       <S.Title>Filtros</S.Title>
       <S.Group>
@@ -96,13 +107,14 @@ const Search = () => {
                   ? <SelectFilter
                     id={id}
                     name={name}
-                    onChange={setParams}
+                    onChange={handleFiltersChange}
                     optValues={values}
                   />
                   : <InputFilter
+                    id={id}
                     min={validation.min}
                     max={validation.max}
-                    onChange={setParams}
+                    onChange={handleFiltersChange}
                     placeholder={validation.pattern}
                     type={validation.primitiveType || validation.entityType}
                   />
@@ -120,10 +132,9 @@ const Search = () => {
         </>
       }
 
-      <Slider {...sliderSettings}>
+      <Slider {...sliderSettings(playlists.length)}>
         {hasPlaylistResult
           && playlists.map((playlist, key) => {
-
             const {
               external_urls: {
                 spotify,
@@ -132,7 +143,6 @@ const Search = () => {
               name,
               description,
             } = playlist;
-
             return (
               <Playlist
                 key={key}

@@ -1,42 +1,37 @@
-const sliderSettings = {
+const sliderSettings = (length) => ({
   infinite: true,
   dots: true,
   speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
   responsive: [
     {
       breakpoint: 920,
       settings: {
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: Math.min(4, length),
+        slidesToScroll: Math.min(4, length),
       }
     },
     {
       breakpoint: 768,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        initialSlide: 2,
+        slidesToShow: Math.min(3, length),
+        slidesToScroll: Math.min(3, length),
       }
     },
     {
       breakpoint: 620,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 1,
+        slidesToShow: Math.min(2, length),
+        slidesToScroll: Math.min(2, length),
       }
     },
     {
       breakpoint: 460,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 1,
+        slidesToShow: Math.min(1, length),
+        slidesToScroll: Math.min(1, length),
       }
     },
   ],
-};
+});
 
 export default sliderSettings;

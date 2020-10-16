@@ -9,23 +9,17 @@ const options = (token) => ({
 
 const getPlaylists = async (params) => {
   const token = await getToken();
-  setInterval(() => token, 30000);
 
-  const {
-    country,
-    locale,
-    timestamp,
-    limit,
-    offset
-  } = params;
+  const finalParams = JSON
+    .parse(JSON.stringify(params));
 
-  const hasCountryParams = country && `country=${country}`;
-  const hasLocaleParams = locale && `locale=${locale}`;
-  const hasTimestampParams = timestamp && `timestamp=${timestamp}`
-  const hasLimitParams = limit && `limit=${limit}`;
-  const hasOffsetParams = limit && `offest=${offset}`
+  const filtersUrl = Object
+    .entries(finalParams)
+    .map(([key, val]) => `${key}=${val}`)
+    .join('&');
 
-  const response = await fetch(`https://api.spotify.com/v1/browse/featured-playlists?${hasCountryParams}&${hasLocaleParams}&${hasTimestampParams}&${hasLimitParams}&${hasOffsetParams}`, options(token));
+  const response = await fetch(`https://api.spotify.com/v1/browse/featured-playlists?${filtersUrl}`, options(token));
+
   const result = await response.json();
 
   return result;
