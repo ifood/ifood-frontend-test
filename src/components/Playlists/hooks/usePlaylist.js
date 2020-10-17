@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { accessToken } from '../atoms/accessToken.atom';
+import { accessToken } from '../../../atoms/accessToken.atom';
 
-import http from '../http';
+import http from '../../../http';
 
 function usePlaylists() {
   const [loading, setLoading] = useState(false);

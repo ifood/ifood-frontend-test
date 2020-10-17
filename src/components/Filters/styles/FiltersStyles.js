@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TextField } from '@material-ui/core';
+import { Input } from 'antd';
 
 const FiltersContainer = styled.section`
   display: flex;
@@ -12,8 +12,6 @@ const Filter = styled.div`
   flex-direction: column;
 `;
 
-const FilterField = styled(TextField)`
-  color: #fff;
-`;
+const FilterField = styled(Input)``;
 
 export { FiltersContainer, FilterField, Filter };

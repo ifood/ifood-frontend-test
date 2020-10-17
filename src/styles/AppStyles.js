@@ -8,14 +8,14 @@ const AppContainer = styled.div`
 `;
 
 const Header = styled.header`
-  border-right: 1px solid black;
-  background: #fa2d3b;
+  padding-bottom: 15px;
+  box-shadow: 2px 4px 5px 0px rgba(138, 138, 138, 0.3);
+
   h1 {
     margin-top: 0px;
     text-align: center;
     padding: 1rem 0;
-    color: #ffff;
-    font-size: 2rem;
+    color: #fa2d3b;
   }
 `;
 

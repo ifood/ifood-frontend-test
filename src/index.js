@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize.css';
 import './index.css';
+import 'antd/dist/antd.css';
 import { RecoilRoot } from 'recoil';
 import App from './App';
 
