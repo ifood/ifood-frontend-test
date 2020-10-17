@@ -44,7 +44,7 @@ const PlaylistTextArea = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 95%;
+  width: 100%;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   padding: 0.2rem 0.5rem;

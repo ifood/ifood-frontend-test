@@ -14,6 +14,7 @@ const Header = styled.header`
   h1 {
     margin-top: 0px;
     text-align: center;
+    font-size: 3rem;
     padding: 1rem 0;
     color: #fa2d3b;
   }
