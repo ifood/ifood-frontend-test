@@ -3,7 +3,7 @@ import http from '../../../http';
 
 function useFilters() {
   const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState(null);
 
   useEffect(() => {
     let mounted = true;

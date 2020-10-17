@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select } from 'antd';
 import styled from 'styled-components';
+import locales from './enums/locales';
 
 const { Option } = Select;
 
@@ -15,17 +16,17 @@ const SelectStyled = styled(Select)`
   width: 10rem;
 `;
 
-export default function SelectCountry(data) {
+export default function SelectLocale(data) {
   const handleChange = (value) => {
     data.onChange(value);
   };
 
   return (
     <SelectContainer>
-      <SelectLabel>Country</SelectLabel>
+      <SelectLabel>Locale</SelectLabel>
       <SelectStyled onChange={handleChange}>
         {data.values?.map((item) => (
-          <Option value={item.value}>{item.name}</Option>
+          <Option value={item.value}>{locales[item.value]}</Option>
         ))}
       </SelectStyled>
     </SelectContainer>
