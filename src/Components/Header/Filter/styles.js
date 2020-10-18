@@ -39,6 +39,36 @@ export const Text = Styled.p`
 `;
 
 export const Modal = Styled.div`
+    width: 100%;
+    justify-content: center;
     display: ${props => props.display ? 'flex' : 'none'};
     padding: 15px;
+`;
+
+export const ParametersContainer = Styled.div`
+    
+    justify-content: center;
+    padding: 15px;
+`;
+
+export const InputParameters = Styled.input`
+    width: 150px;
+    height: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+`;
+
+export const Select = Styled.select`
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+`;
+
+export const Option = Styled.option`
+    font-size: 16px;
+    padding: 10px;
 `;
