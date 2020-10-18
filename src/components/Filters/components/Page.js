@@ -17,9 +17,16 @@ export default function Page({ onChange = () => {}, ...data }) {
   };
 
   return (
-    <InputNumberContainer>
-      <InputNumberLabel>Page</InputNumberLabel>
-      <InputNumbertStyled defaultValue={0} onChange={handleChange} />
+    <InputNumberContainer aria-label="spotifood-filter-page-container">
+      <InputNumberLabel aria-label="spotifood-filter-page-text">
+        Page
+      </InputNumberLabel>
+      <InputNumbertStyled
+        aria-label="spotifood-filter-page-number-input"
+        defaultValue={0}
+        onChange={handleChange}
+        type="number"
+      />
     </InputNumberContainer>
   );
 }

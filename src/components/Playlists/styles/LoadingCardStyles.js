@@ -12,6 +12,8 @@ const LoadingContainer = styled.div`
 const Card = styled(Skeleton.Image)`
   border-radius: 10px;
   margin: 15px 15px;
+  width: 320px !important;
+  height: 400px !important;
 `;
 
 export { LoadingContainer, Card };

@@ -9,7 +9,9 @@ const InputNumberContainer = styled.div`
 const InputNumberLabel = styled.span`
   color: red;
 `;
-const InputNumbertStyled = styled(InputNumber)``;
+const InputNumbertStyled = styled(InputNumber)`
+  border-radius: 6px;
+`;
 
 export default function Amount({ onChange = () => {}, ...data }) {
   const handleChange = (value) => {
@@ -18,14 +20,17 @@ export default function Amount({ onChange = () => {}, ...data }) {
   };
 
   return (
-    <InputNumberContainer>
-      <InputNumberLabel>Amount</InputNumberLabel>
+    <InputNumberContainer aria-label="spotifood-filter-amount-container">
+      <InputNumberLabel aria-label="spotifood-filter-amount-text">
+        Amount
+      </InputNumberLabel>
       <InputNumbertStyled
         defaultValue={20}
         min={1}
         max={50}
         onChange={handleChange}
         type="number"
+        aria-label="spotifood-filter-amount-number-input"
       />
     </InputNumberContainer>
   );

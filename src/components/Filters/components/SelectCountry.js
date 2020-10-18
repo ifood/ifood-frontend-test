@@ -27,12 +27,21 @@ export default function SelectCountry({ onChange = () => {}, ...data }) {
   };
 
   return (
-    <SelectContainer>
-      <SelectLabel>Country</SelectLabel>
-      <SelectStyled onChange={handleChange}>
+    <SelectContainer aria-label="spotifood-filter-country-container">
+      <SelectLabel aria-label="spotifood-filter-country-text">
+        Country
+      </SelectLabel>
+      <SelectStyled
+        aria-label="spotifood-filter-country-select"
+        onChange={handleChange}
+      >
         {data.values?.map((item) => {
           return (
-            <Option key={item.value} value={item.value}>
+            <Option
+              aria-label={`spotifood-filter-country-select-${item.name}-option`}
+              key={item.value}
+              value={item.value}
+            >
               {item.name}
             </Option>
           );

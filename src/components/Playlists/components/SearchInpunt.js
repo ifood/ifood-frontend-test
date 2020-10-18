@@ -13,7 +13,7 @@ const InputStyled = styled(Input)`
 
 export default function Page({ ...props }) {
   return (
-    <InputContainer>
+    <InputContainer aria-label="spotifood-playlists-header-search-input-container">
       <InputStyled
         placeholder="Buscar"
         suffix={<SearchOutlined />}

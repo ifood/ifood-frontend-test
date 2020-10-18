@@ -10,7 +10,7 @@ import {
   Title,
   Header,
 } from './styles/PlaylistsStyles';
-import LoadingCard from './LoadingCard';
+import LoadingCard from './components/LoadingCard';
 import SearchInput from './components/SearchInpunt';
 
 export default function Playlists() {
@@ -22,25 +22,45 @@ export default function Playlists() {
   }
   return (
     <PlaylistsContainer>
-      <Header>
-        <Title>{title}</Title>
-        <SearchInput onChange={hadleChange} />
+      <Header aria-label="spotifood-playlists-header">
+        <Title aria-label="spotifood-playlists-header-title">{title}</Title>
+        <SearchInput
+          aria-label="spotifood-playlists-header-search-input"
+          onChange={hadleChange}
+        />
       </Header>
       {loading ? (
         <LoadingCard />
       ) : (
-        <PlaylistsCardContainer>
+        <PlaylistsCardContainer aria-label="spotifood-playlists-list">
           {playlists
             .filter(
               (item) =>
                 item.name?.toLowerCase().indexOf(filter.toLowerCase()) !== -1
             )
             .map((item) => (
-              <PlaylistCard key={item.id}>
-                <PlaylistImg alt="playlist-img" src={item.images[0]?.url} />
-                <PlaylistTextArea>
-                  <span>{item.name}</span>
-                  <span>{item.description}</span>
+              <PlaylistCard
+                aria-label={`spotifood-playlists-list-card-${item.name}`}
+                key={item.id}
+              >
+                <PlaylistImg
+                  aria-label={`spotifood-playlists-list-card-${item.name}-img`}
+                  alt={`spotifood-${item.name}-img`}
+                  src={item.images[0]?.url}
+                />
+                <PlaylistTextArea
+                  aria-label={`spotifood-playlists-list-card-${item.name}-text-area`}
+                >
+                  <span
+                    aria-label={`spotifood-playlists-list-card-${item.name}-name`}
+                  >
+                    {item.name}
+                  </span>
+                  <span
+                    aria-label={`spotifood-playlists-list-card-${item.name}-description`}
+                  >
+                    {item.description}
+                  </span>
                 </PlaylistTextArea>
               </PlaylistCard>
             ))}

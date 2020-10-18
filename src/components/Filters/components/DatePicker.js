@@ -10,7 +10,9 @@ const DatePickerContainer = styled.div`
 const DatePickerLabel = styled.span`
   color: red;
 `;
-const DatePickertStyled = styled(DatePicker)``;
+const DatePickertStyled = styled(DatePicker)`
+  border-radius: 6px;
+`;
 
 export default function Page({ onChange = () => {}, ...data }) {
   const handleChange = (value) => {
@@ -18,9 +20,16 @@ export default function Page({ onChange = () => {}, ...data }) {
   };
 
   return (
-    <DatePickerContainer>
-      <DatePickerLabel>Date Time</DatePickerLabel>
-      <DatePickertStyled defaultValue={0} showTime onChange={handleChange} />
+    <DatePickerContainer aria-label="spotifood-filter-date-time-container">
+      <DatePickerLabel aria-label="spotifood-filter-date-time-text">
+        Date Time
+      </DatePickerLabel>
+      <DatePickertStyled
+        defaultValue={0}
+        showTime
+        onChange={handleChange}
+        aria-label="spotifood-filter-date-time-picker"
+      />
     </DatePickerContainer>
   );
 }

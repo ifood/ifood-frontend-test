@@ -22,6 +22,10 @@ const Header = styled.section`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+
+  @media (max-width: 860px) {
+    align-items: center;
+  }
   h2 {
     color: #fa2d3b;
   }

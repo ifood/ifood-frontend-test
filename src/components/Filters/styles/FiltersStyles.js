@@ -5,6 +5,7 @@ const FiltersContainer = styled.section`
   display: flex;
   justify-content: space-between;
   color: #fff;
+  flex-wrap: wrap;
 `;
 
 const Filter = styled.div`
