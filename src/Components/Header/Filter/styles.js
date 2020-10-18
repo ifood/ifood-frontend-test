@@ -38,7 +38,7 @@ export const Text = Styled.p`
     font-size: 18px;
 `;
 
-export const Modal = Styled.div`
+export const Form = Styled.div`
     width: 100%;
     justify-content: center;
     display: ${props => props.display ? 'flex' : 'none'};
@@ -61,8 +61,8 @@ export const InputParameters = Styled.input`
 `;
 
 export const Select = Styled.select`
-    width: 150px;
-    height: 25px;
+    width: 170px;
+    height: 37px;
     border-radius: 5px;
     border: 1px solid gray;
     outline: none;
