@@ -1,10 +1,9 @@
 import React from 'react';
+import Index from './Pages'
 
 function App() {
   return (
-    <div className="App">
-      <p>Olá Mundo!</p>
-    </div>
+    <Index/>
   );
 }
 
