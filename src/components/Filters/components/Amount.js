@@ -11,10 +11,10 @@ const InputNumberLabel = styled.span`
 `;
 const InputNumbertStyled = styled(InputNumber)``;
 
-export default function Amount(data) {
+export default function Amount({ onChange = () => {}, ...data }) {
   const handleChange = (value) => {
     if (value >= 50) return;
-    data.onChange(value);
+    onChange(data.id, value);
   };
 
   return (
@@ -25,6 +25,7 @@ export default function Amount(data) {
         min={1}
         max={50}
         onChange={handleChange}
+        type="number"
       />
     </InputNumberContainer>
   );

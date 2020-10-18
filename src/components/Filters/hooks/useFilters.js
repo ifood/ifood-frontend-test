@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
 import http from '../../../http';
+import { filters as filtersAtom } from '../../../atoms/filters.atom';
 
 function useFilters() {
   const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState(null);
+  const setFiltersParams = useSetRecoilState(filtersAtom);
+  const [filters, setFilters] = useState();
 
   useEffect(() => {
     let mounted = true;
@@ -31,7 +34,11 @@ function useFilters() {
     };
   }, []);
 
-  return { loading, filters };
+  const setFilter = (key, value) => {
+    setFiltersParams((prev) => ({ ...prev, [key]: value }));
+  };
+
+  return { loading, filters, setFilter };
 }
 
 export default useFilters;

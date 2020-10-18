@@ -3,31 +3,41 @@ import styled from 'styled-components';
 const PlaylistsContainer = styled.main`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0px 0.9rem;
-
-  @media (max-width: 800px) {
-    justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  h2 {
+    color: #fa2d3b;
   }
+`;
+
+const PlaylistsCardContainer = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+const Header = styled.section`
+  padding: 15px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   h2 {
     color: #fa2d3b;
   }
 `;
 
 const Title = styled.h2`
-  text-align: center;
   font-size: 3rem;
 `;
 
 const PlaylistCard = styled.div`
   position: relative;
   display: flex;
+  flex-grow: 1;
   margin: 15px;
-  width: 20rem;
+  max-width: 22rem;
   height: 25rem;
   border-radius: 10px;
   box-shadow: 7px 8px 24px -13px rgba(20, 20, 20, 1);
-
   :hover {
     transform: scale(1.1);
     transition: 0.3s;
@@ -80,8 +90,10 @@ const PlaylistTextArea = styled.div`
 
 export {
   PlaylistsContainer,
+  PlaylistsCardContainer,
   PlaylistCard,
   PlaylistImg,
   PlaylistTextArea,
   Title,
+  Header,
 };

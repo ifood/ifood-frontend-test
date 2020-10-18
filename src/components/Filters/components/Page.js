@@ -11,9 +11,9 @@ const InputNumberLabel = styled.span`
 `;
 const InputNumbertStyled = styled(InputNumber)``;
 
-export default function Page(data) {
+export default function Page({ onChange = () => {}, ...data }) {
   const handleChange = (value) => {
-    data.onChange(value);
+    onChange(data.id, value);
   };
 
   return (

@@ -3,7 +3,7 @@ import { Input } from 'antd';
 
 const FiltersContainer = styled.section`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   color: #fff;
 `;
 

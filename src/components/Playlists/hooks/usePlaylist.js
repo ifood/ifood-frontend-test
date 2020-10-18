@@ -1,13 +1,17 @@
+/* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { accessToken } from '../../../atoms/accessToken.atom';
+import { filters as filtersAtom } from '../../../atoms/filters.atom';
 
 import http from '../../../http';
 
 function usePlaylists() {
   const [loading, setLoading] = useState(false);
-  const [playlistsData, setPlaylistsData] = useState({});
+  const [playlistsRawData, setPlaylistsRawData] = useState({});
+  const [playlists, setPlaylists] = useState([]);
   const token = useRecoilValue(accessToken);
+  const params = useRecoilValue(filtersAtom);
 
   useEffect(() => {
     setLoading(true);
@@ -21,10 +25,12 @@ function usePlaylists() {
               headers: {
                 Authorization: `Bearer ${token.value}`,
               },
+              params,
             }
           )) || { message: '', playlists: { items: [] } };
           if (mounted) {
-            setPlaylistsData(data);
+            setPlaylistsRawData(data);
+            setPlaylists(data.playlists?.items || []);
           }
         } catch (error) {
           // eslint-disable-next-line no-console
@@ -39,13 +45,13 @@ function usePlaylists() {
     return () => {
       mounted = false;
     };
-  }, [token.value]);
+  }, [token.value, params]);
 
   return {
     loading,
-    title: playlistsData.message || '',
-    playlists: playlistsData.playlists?.items || [],
-    playlistsData,
+    title: playlistsRawData.message || '',
+    playlists,
+    playlistsRawData,
   };
 }
 

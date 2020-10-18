@@ -7,10 +7,17 @@ import Page from './Page';
 import SelectCountry from './SelectCountry';
 import SelectLocale from './SelectLocale';
 
-const locale = (props) => <SelectLocale {...props} />;
-const timestamp = (props) => <DatePicker {...props} />;
-const offset = (props = {}) => <Page {...props} />;
-const country = (props) => <SelectCountry {...props} />;
-const limit = (props) => <Amount {...props} />;
+const locale = (props, setFilter) => (
+  <SelectLocale {...props} onChange={setFilter} />
+);
+const timestamp = (props, setFilter) => (
+  <DatePicker {...props} onChange={setFilter} />
+);
+const offset = (props, setFilter) => <Page {...props} onChange={setFilter} />;
+
+const country = (props, setFilter) => (
+  <SelectCountry {...props} onChange={setFilter} />
+);
+const limit = (props, setFilter) => <Amount {...props} onChange={setFilter} />;
 
 export default { locale, timestamp, offset, country, limit };

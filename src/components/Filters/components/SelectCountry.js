@@ -13,20 +13,30 @@ const SelectLabel = styled.span`
 `;
 const SelectStyled = styled(Select)`
   width: 10rem;
+  height: 2rem !important;
+
+  .ant-select-selector {
+    border-radius: 6px !important;
+    padding: 1rem;
+  }
 `;
 
-export default function SelectCountry(data) {
+export default function SelectCountry({ onChange = () => {}, ...data }) {
   const handleChange = (value) => {
-    data.onChange(value);
+    onChange(data.id, value === 'en_US' ? 'US' : value);
   };
 
   return (
     <SelectContainer>
       <SelectLabel>Country</SelectLabel>
       <SelectStyled onChange={handleChange}>
-        {data.values?.map((item) => (
-          <Option value={item.value}>{item.name}</Option>
-        ))}
+        {data.values?.map((item) => {
+          return (
+            <Option key={item.value} value={item.value}>
+              {item.name}
+            </Option>
+          );
+        })}
       </SelectStyled>
     </SelectContainer>
   );

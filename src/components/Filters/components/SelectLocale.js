@@ -16,9 +16,9 @@ const SelectStyled = styled(Select)`
   width: 10rem;
 `;
 
-export default function SelectLocale(data) {
+export default function SelectLocale({ onChange = () => {}, ...data }) {
   const handleChange = (value) => {
-    data.onChange(value);
+    onChange(data.id, value);
   };
 
   return (
@@ -26,7 +26,9 @@ export default function SelectLocale(data) {
       <SelectLabel>Locale</SelectLabel>
       <SelectStyled onChange={handleChange}>
         {data.values?.map((item) => (
-          <Option value={item.value}>{locales[item.value]}</Option>
+          <Option key={item.value} value={item.value}>
+            {locales[item.value]}
+          </Option>
         ))}
       </SelectStyled>
     </SelectContainer>

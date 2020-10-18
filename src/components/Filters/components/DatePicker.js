@@ -1,6 +1,7 @@
 import React from 'react';
 import { DatePicker } from 'antd';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const DatePickerContainer = styled.div`
   display: flex;
@@ -11,19 +12,15 @@ const DatePickerLabel = styled.span`
 `;
 const DatePickertStyled = styled(DatePicker)``;
 
-export default function Page(data) {
+export default function Page({ onChange = () => {}, ...data }) {
   const handleChange = (value) => {
-    data.onChange(value);
+    onChange(data.id, moment(value).format('YYYY-MM-DDTHH:MM:SSZ'));
   };
 
   return (
     <DatePickerContainer>
       <DatePickerLabel>Date Time</DatePickerLabel>
-      <DatePickertStyled
-        format={data.validation?.pattern}
-        defaultValue={0}
-        onChange={handleChange}
-      />
+      <DatePickertStyled defaultValue={0} showTime onChange={handleChange} />
     </DatePickerContainer>
   );
 }
