@@ -1,15 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 // Pages
 import Login from '../pages/Login';
 import Playlist from '../pages/Playlist';
 
 const Routes = () => (
-  <BrowserRouter>
+  <Switch>
     <Route exact path="/login" component={Login} />
     <Route exact path="/" component={Playlist} />
-  </BrowserRouter>
+  </Switch>
 );
 
 export default Routes;
