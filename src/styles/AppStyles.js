@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const AppContainer = styled.div`
   min-height: 100vh;
   display: flex;
+  flex-grow: 1;
+  width: 100%;
   flex-direction: column;
   background: white;
 `;

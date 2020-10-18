@@ -4,7 +4,6 @@ const PlaylistsContainer = styled.main`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 15px;
   h2 {
     color: #fa2d3b;
   }
@@ -14,7 +13,10 @@ const PlaylistsCardContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: #fa2d3b;
+  padding: 10px 10px 20px 0px;
 `;
+
 const Header = styled.section`
   padding: 15px 30px;
   display: flex;

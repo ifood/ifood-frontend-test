@@ -1,8 +1,11 @@
-body {
-  margin: 0;
+html,
+body,
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
