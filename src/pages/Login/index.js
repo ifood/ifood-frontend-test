@@ -1,4 +1,8 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
+import { authUser } from '../../helpers/auth';
+import { SPOTIFY_LOGIN_URL } from '../../constants';
 
 import { Container, Header, Ribbon, HeroSection } from './styles';
 
@@ -6,6 +10,8 @@ import spotifood from '../../assets/images/icon_spotifood.png';
 import spotifood2x from '../../assets/images/icon_spotifood@2x.png';
 
 function Login() {
+  if (authUser()) return <Redirect to="/dashboard" />;
+
   return (
     <Container>
       <Header>
@@ -14,7 +20,7 @@ function Login() {
             <a href="/" className="header-title">
               Spotifood
             </a>
-            <a href="/" className="button button-small">
+            <a href={SPOTIFY_LOGIN_URL} className="button button-small">
               Entrar com Spotify
             </a>
           </div>
@@ -26,7 +32,7 @@ function Login() {
             Ifood e Spotify. Juntamos seus aplicativos favoritos para
             proporcionar uma experiência incrível para você.
           </span>
-          <a href="/" className="ribbon-link more">
+          <a href={SPOTIFY_LOGIN_URL} className="ribbon-link more">
             Saiba mais
           </a>
         </div>
@@ -42,7 +48,10 @@ function Login() {
           <h1 className="hero-headline">
             Nunca foi tão fácil escutar suas <span>músicas favoritas</span>
           </h1>
-          <a href="/" className="button button-large button-red">
+          <a
+            href={SPOTIFY_LOGIN_URL}
+            className="button button-large button-red"
+          >
             Faça um teste gratuito
           </a>
           <p className="app-store-caption">

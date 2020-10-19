@@ -83,8 +83,7 @@ export default createGlobalStyle`
   }
 
   .button:hover {
-    -webkit-text-stroke: 0.25px white;
-    text-stroke: 0.25px white;
+    -webkit-text-stroke: 0.25px ${colors.white};
   }
 
   a:hover,
