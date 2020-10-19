@@ -1,32 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { BsFilterLeft } from 'react-icons/bs'
-
-import filtersApi from '../../../Services/filters-api.js'
 
 import {
     Container, SearchContainer, Input, Buttom, Text, Form,
     ParametersContainer, Select, Option, InputParameters
 } from './styles'
 
-export default function Filter(){
+export default function Filter({search, handleSearchChange, filters}){
     const [show, setShow] = useState(false)
-    const [filters, setFilters] = useState([])
-
-    useEffect(() => {
-        filtersApi.get('/')
-        .then(response =>{
-            setFilters(response.data.filters)
-            console.log(response.data.filters)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    },[])
-
+    
     return(
         <Container>
             <SearchContainer>
-                <Input placeholder="Buscar"/>
+                <Input placeholder="Buscar" value={search} onChange={event => handleSearchChange(event)}/>
                 <Buttom onClick={() => setShow(!show)}>
                     <Text>Filtros</Text>
                     <BsFilterLeft/>

@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
-
+import Spotify from 'spotify-web-api-js'
 import playlistsApi from '../../Services/playlists-api'
 
 import { Container } from './styles.js'
+
+const spotifyWebApi = new Spotify()
 
 export default function FeaturedPlaylist(){
     const params = getHashParams()
@@ -23,6 +25,7 @@ export default function FeaturedPlaylist(){
     useEffect(() => {
         async function Teste(){
             if(params.access_token){
+                localStorage.setItem("token", params.access_token)
                 await playlistsApi.get('/', {
                     headers: {
                         Authorization: `Bearer ${params.access_token}`
@@ -38,7 +41,23 @@ export default function FeaturedPlaylist(){
             }
         }
         Teste()
-    },[])
+    },[params])
+
+    setInterval(() => {
+        let token = localStorage.getItem("token")
+        playlistsApi.get('/', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((response) => {
+            setPlaylists(response.data.playlists.items)
+                console.log(response.data.playlists.items)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, 30000)
 
     return(
         <Container>
