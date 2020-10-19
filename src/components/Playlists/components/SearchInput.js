@@ -17,6 +17,7 @@ export default function Page({ ...props }) {
       <InputStyled
         placeholder="Buscar"
         suffix={<SearchOutlined />}
+        aria-label="spotifood-playlists-header-search-input"
         {...props}
       />
     </InputContainer>

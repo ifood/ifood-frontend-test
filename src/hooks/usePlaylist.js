@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { accessToken } from '../../../atoms/accessToken.atom';
-import { filters as filtersAtom } from '../../../atoms/filters.atom';
+import { accessToken } from '../atoms/accessToken.atom';
+import { filters as filtersAtom } from '../atoms/filters.atom';
 
-import http from '../../../http';
+import http from '../http';
 
 function usePlaylists() {
   const [loading, setLoading] = useState(false);

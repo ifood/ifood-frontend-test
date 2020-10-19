@@ -35,7 +35,7 @@ const Title = styled.h2`
   font-size: 3rem;
 `;
 
-const PlaylistCard = styled.div`
+const Card = styled.div`
   position: relative;
   display: flex;
   flex-grow: 1;
@@ -50,12 +50,12 @@ const PlaylistCard = styled.div`
   }
 `;
 
-const PlaylistImg = styled.img`
+const Img = styled.img`
   border-radius: 10px;
   width: 100%;
 `;
 
-const PlaylistTextArea = styled.div`
+const TextArea = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -97,9 +97,9 @@ const PlaylistTextArea = styled.div`
 export {
   PlaylistsContainer,
   PlaylistsCardContainer,
-  PlaylistCard,
-  PlaylistImg,
-  PlaylistTextArea,
+  Card,
+  Img,
+  TextArea,
   Title,
   Header,
 };
