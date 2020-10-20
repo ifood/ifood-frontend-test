@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select } from 'antd';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const { Option } = Select;
 
@@ -21,9 +22,9 @@ const SelectStyled = styled(Select)`
   }
 `;
 
-export default function SelectCountry({ onChange = () => {}, ...data }) {
+export default function SelectCountry({ onChange, values = [], id }) {
   const handleChange = (value) => {
-    onChange(data.id, value === 'en_US' ? 'US' : value);
+    onChange(id, value === 'en_US' ? 'US' : value);
   };
 
   return (
@@ -35,7 +36,7 @@ export default function SelectCountry({ onChange = () => {}, ...data }) {
         aria-label="spotifood-filter-country-select"
         onChange={handleChange}
       >
-        {data.values?.map((item) => {
+        {values?.map((item) => {
           return (
             <Option
               aria-label={`spotifood-filter-country-select-${item.name}-option`}
@@ -50,3 +51,9 @@ export default function SelectCountry({ onChange = () => {}, ...data }) {
     </SelectContainer>
   );
 }
+
+SelectCountry.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  values: PropTypes.arrayOf(PropTypes.any).isRequired,
+};

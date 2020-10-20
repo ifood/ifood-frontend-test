@@ -17,7 +17,8 @@
     "react-hook-form": "^6.9.4",
     "react-scripts": "3.4.3",
     "recoil": "^0.0.13",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,7 +53,6 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "jest-environment-jsdom-sixteen": "^1.0.3",
-    "prettier": "^2.1.2",
-    "prop-types": "^15.7.2"
+    "prettier": "^2.1.2"
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { InputNumber } from 'antd';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const InputNumberContainer = styled.div`
   display: flex;
@@ -30,3 +31,8 @@ export default function Page({ onChange = () => {}, ...data }) {
     </InputNumberContainer>
   );
 }
+
+Page.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+};

@@ -1,7 +1,8 @@
 import React from 'react';
-import { DatePicker } from 'antd';
+import { DatePicker as AntdDatePicker } from 'antd';
 import styled from 'styled-components';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 const DatePickerContainer = styled.div`
   display: flex;
@@ -10,13 +11,13 @@ const DatePickerContainer = styled.div`
 const DatePickerLabel = styled.span`
   color: red;
 `;
-const DatePickertStyled = styled(DatePicker)`
+const DatePickertStyled = styled(AntdDatePicker)`
   border-radius: 6px;
 `;
 
-export default function Page({ onChange = () => {}, ...data }) {
+export default function DatePicker({ onChange, id }) {
   const handleChange = (value) => {
-    onChange(data.id, moment(value).format('YYYY-MM-DDTHH:MM:SSZ'));
+    onChange(id, moment(value).format('YYYY-MM-DDTHH:MM:SSZ'));
   };
 
   return (
@@ -33,3 +34,8 @@ export default function Page({ onChange = () => {}, ...data }) {
     </DatePickerContainer>
   );
 }
+
+DatePicker.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+};

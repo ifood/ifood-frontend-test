@@ -1,6 +1,7 @@
 import React from 'react';
 import { InputNumber } from 'antd';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const InputNumberContainer = styled.div`
   display: flex;
@@ -13,10 +14,10 @@ const InputNumbertStyled = styled(InputNumber)`
   border-radius: 6px;
 `;
 
-export default function Amount({ onChange = () => {}, ...data }) {
+export default function Amount({ onChange, id }) {
   const handleChange = (value) => {
     if (value >= 50) return;
-    onChange(data.id, value);
+    onChange(id, value);
   };
 
   return (
@@ -35,3 +36,8 @@ export default function Amount({ onChange = () => {}, ...data }) {
     </InputNumberContainer>
   );
 }
+
+Amount.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+};

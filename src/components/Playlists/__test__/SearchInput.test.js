@@ -5,7 +5,7 @@ import SearchInput from '../components/SearchInput';
 import '@testing-library/jest-dom';
 
 test('Deve renderizar corretamente o componente', () => {
-  render(<SearchInput />);
+  render(<SearchInput onChange={() => {}} />);
 });
 
 test('Deve renderizar visivel ao usuário', () => {

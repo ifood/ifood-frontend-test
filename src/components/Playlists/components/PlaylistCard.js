@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 import { Card, Img, TextArea } from '../styles/PlaylistsStyles';
+import PropTypes from 'prop-types';
 
 export default function PlaylistCard({ data }) {
   return (
@@ -28,3 +29,11 @@ export default function PlaylistCard({ data }) {
     </Card>
   );
 }
+
+PlaylistCard.propTypes = {
+  data: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.any).isRequired,
+    description: PropTypes.string.isRequired,
+  }),
+};
