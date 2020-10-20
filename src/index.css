@@ -1,0 +1,20 @@
+html,
+body,
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.ant-select-selector,
+.ant-input-affix-wrapper {
+  border-radius: 4px !important;
+  padding: 1rem;
+}

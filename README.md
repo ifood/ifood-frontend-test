@@ -1,29 +1,38 @@
-# iFood Frontend Test
+## Scripts
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+Para executar este projeto, é necessário ter o Yarn instalado. Caso utilize um macOS, basta executar o seguinte comando:
+`brew install yarn`
 
-## Business rules
+Com o Yarn instalado, existem 2 comandos que podem ser utilizados dentro do diretório do projeto.
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+### `yarn && yarn start`
 
-## Hints or Constraints
+Instala todas as dependências e executa a aplicação em modo de desenvolvimento
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+### `yarn test`
 
-## Non functional requirements
+Executa a rotina de testes feitas dentro da aplicação, mostrando quantos testes foram ou não executados com êxito
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+## Bibliotecas
+
+Foram utilizadas as seguintes bibliotecas neste projeto:
+
+- Styled Components
+
+Biblioteca que mescla a utilização do ES6 com CSS na estilização dos componentes, muitas vezes nem sendo necessário criar um arquivo separado para isso.
+
+- RecoilJS
+
+Biblioteca de gerenciamento de estado. Funciona como um estado global da aplicação, facilitando com que diferentes partes do projeto possam interagir com seus 'atoms'
+
+- Prop Types
+
+Check de tipagens realizadas em tempo de execução. Utilizada para especificar oque um componente e/ou uma função espera quando chamados.
+
+- Antd
+
+Biblioteca de UI utilizada para criação de interfaces, com o objetivo de faciltar o processo de criação através da utilização de diferentes componentes de alta qualidade.
+
+- React Testing Library
+
+Biblioteca que auxilia no desenvolvimento de testes para componentes React, preocupando-se apenas em como ele deveria funcionar e não em como ele foi implementado
