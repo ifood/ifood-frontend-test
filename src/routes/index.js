@@ -3,12 +3,12 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Pages
 import Login from '../pages/Login';
-import Playlist from '../pages/Playlist';
+import Dashboard from '../pages/Dashboard';
 
 const Routes = () => (
   <Switch>
     <Route exact path="/login" component={Login} />
-    <Route exact path="/dashboard" component={Playlist} />
+    <Route exact path="/dashboard" component={Dashboard} />
     <Route render={() => <Redirect to="/login" />} />
   </Switch>
 );

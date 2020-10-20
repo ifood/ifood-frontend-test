@@ -13,7 +13,8 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 52px;
+  min-height: 52px;
+  background-color: ${colors.white};
 
   .header-wrapper {
     flex: 1;
@@ -74,6 +75,7 @@ export const HeroSection = styled.section`
   flex: 1;
   flex-direction: column;
   overflow: hidden;
+  background-color: ${colors.white};
 
   .section-content {
     flex: 1;
@@ -119,7 +121,7 @@ export const HeroSection = styled.section`
   }
 
   @media screen and (min-width: 768px) {
-    .section-content .app-store-caption {
+    .section-content > .app-store-caption {
       margin-top: 30px;
     }
 
@@ -129,7 +131,7 @@ export const HeroSection = styled.section`
   }
 
   @media screen and (max-width: 767px) {
-    .section-content .button-red {
+    .section-content > .button-red {
       font-size: 16px;
       font-weight: 600;
       line-height: 1.4;

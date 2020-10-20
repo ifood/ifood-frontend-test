@@ -69,4 +69,4 @@ const authUser = () => {
   return logout();
 };
 
-export { getCredentials, authUser };
+export { logout, getCredentials, authUser };
