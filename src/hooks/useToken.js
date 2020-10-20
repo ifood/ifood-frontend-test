@@ -24,10 +24,13 @@ function useToken() {
               },
             }
           )) || {};
+
+        http.defaults.headers.Authorization = `Bearer ${data.access_token}`;
         setAccessToken({
           value: data.access_token,
           expires: data.expires_in,
           tokenType: data.token_type,
+          tokenDate: Date.now(),
         });
       } catch (error) {
         // eslint-disable-next-line no-console

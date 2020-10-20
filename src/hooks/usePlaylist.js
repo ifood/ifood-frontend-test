@@ -22,9 +22,6 @@ function usePlaylists() {
           const { data } = (await http.get(
             'https://api.spotify.com/v1/browse/featured-playlists',
             {
-              headers: {
-                Authorization: `Bearer ${token.value}`,
-              },
               params,
             }
           )) || { message: '', playlists: { items: [] } };
