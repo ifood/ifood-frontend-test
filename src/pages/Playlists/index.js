@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import Head from "components/Head";
 import Filters from "containers/Filters";
+import Search from "containers/Search";
 import PlaylistsList from "containers/PlaylistsList";
 
 import userToken from "helpers/userToken";
@@ -31,6 +32,7 @@ const Playlists = () => {
       {hasToken ? (
         <>
           <Head />
+          <Search />
           <Filters />
           <PlaylistsList />
         </>

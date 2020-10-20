@@ -5,15 +5,12 @@ import Loader from "components/Loader";
 import useEffectUpdate from "hooks/useEffectUpdate";
 import FiltersApiService from "services/filters";
 import PlaylistsApiService from "services/playlists";
-import { nameFilter } from "helpers/nameFilter";
 import { getFilterField } from "helpers/getFilterField";
 import { filtersContainerData } from "constants/data/containers/Filters";
 
 import {
   updatePlaylists,
-  updatePlaylistsStatus,
   removePlaylists,
-  filterPlaylists,
   removeFilteredPlaylists,
 } from "store/modules/playlists/actions";
 
@@ -30,7 +27,6 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const token = useSelector((state) => state.authentication.token);
-  const currentPlaylists = useSelector((state) => state.playlists.items);
 
   useEffect(() => {
     const requestFilters = FiltersApiService();
@@ -110,42 +106,8 @@ const Filters = () => {
     return fields.length === 0;
   }, [fields]);
 
-  const searchByName = useCallback(
-    (e) => {
-      const { value } = e.target;
-
-      const filterByName = nameFilter(value, currentPlaylists);
-
-      switch (filterByName.nameFilterStatus) {
-        case "isEmpty":
-          dispatch(updatePlaylistsStatus(false));
-          dispatch(removeFilteredPlaylists());
-          break;
-
-        case "hasMatch":
-          dispatch(updatePlaylistsStatus(false));
-          dispatch(filterPlaylists(filterByName.filteredItems));
-          break;
-
-        case "hasNoMatch":
-          dispatch(updatePlaylistsStatus(true));
-          dispatch(removeFilteredPlaylists());
-          break;
-
-        default:
-          break;
-      }
-    },
-    [currentPlaylists, dispatch]
-  );
-
   return (
     <S.Filters>
-      <S.FilterByName
-        onChange={(e) => searchByName(e)}
-        placeholder={filtersContainerData.search_name_label}
-      />
-
       <S.FiltersBox>
         {fieldsSize && <Loader />}
 

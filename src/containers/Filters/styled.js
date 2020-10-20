@@ -2,7 +2,6 @@ import styled from "styled-components";
 import media from "styled-media-query";
 
 import * as C from "constants/styles/colors";
-import * as T from "constants/styles/typography";
 import { SPACINGS } from "constants/styles/spacings";
 
 export const Filters = styled.div`
@@ -12,29 +11,10 @@ export const Filters = styled.div`
     content: "";
     position: absolute;
     width: 100%;
-    height: 324px;
+    height: 150px;
     z-index: -1;
     background: ${C.GREY_LIGHT};
   }
-`;
-
-export const FilterByName = styled.input`
-  color: ${C.GREY};
-  text-align: center;
-  padding: ${SPACINGS.xl} 0 ${SPACINGS.md};
-  background: transparent;
-  margin: 0 auto ${SPACINGS.xl};
-  display: block;
-  outline: none;
-  font-family: ${T.PRIMARY_FONT};
-  width: 80%;
-  max-width: 450px;
-  border-bottom: 1px solid grey;
-  ${T.TITLE_LARGE};
-
-  ${media.lessThan("large")`
-    ${T.BODY_TEXT};
-  `}
 `;
 
 export const FiltersBox = styled.div`
