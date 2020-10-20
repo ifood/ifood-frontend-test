@@ -10,7 +10,9 @@
     "formik": "^2.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-elastic-carousel": "^0.9.0",
     "react-icons": "^3.11.0",
+    "react-responsive-carousel": "^3.2.10",
     "react-scripts": "3.4.3",
     "spotify-web-api-js": "^1.5.0",
     "styled-components": "^5.2.0"

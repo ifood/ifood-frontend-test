@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Spotify from 'spotify-web-api-js'
+import data from '../featuredPlaylists.json'
 
 import filtersApi from '../Services/filters-api.js'
 import playlistsApi from '../Services/playlists-api'
@@ -10,12 +11,14 @@ import FeaturedPlaylist from '../Components/FeaturedPlaylists'
 const spotifyWebApi = new Spotify()
 
 export default function Index(){
-    const params = getHashParams()
+    //const params = getHashParams()
     const [filters, setFilters] = useState([])    
     const [search, setSearch] = useState('')
-    const [logged, setLogged] = useState(params.access_token ? true : false)
-    const [playlists, setPlaylists] = useState([])
-    
+    const [logged, setLogged] = useState(true)//params.access_token ? true : false)
+    const [playlists, setPlaylists] = useState(data.playlists.items)
+    const [filteredPlaylists, setFilteredPlaylists] = useState(playlists)
+    console.log(data)
+
     //busca dos filtros
     useEffect(() => {
         filtersApi.get('/')
@@ -33,11 +36,11 @@ export default function Index(){
     }
 
     useEffect(() => {
-        
+        setFilteredPlaylists(playlists.filter(playlist => playlist.name.indexOf(search) !== -1))
     },[search])
-    
+
     //função disponibilizada pelo Spotify para pegar os parâmetros
-    function getHashParams() {
+    /*function getHashParams() {
         var hashParams = {};
         var e, r = /([^&;=]+)=?([^&;]*)/g,
             q = window.location.hash.substring(1);
@@ -47,6 +50,7 @@ export default function Index(){
         return hashParams;
       }
 
+    // requisição a api assim que a tela é carregada pela primeira vez
     useEffect(() => {
         async function Teste(){
             if(params.access_token){
@@ -66,9 +70,9 @@ export default function Index(){
             }
         }
         Teste()
-    },[params])
+    },[])*/
 
-    setInterval(() => {
+    /*setInterval(() => {
         let token = localStorage.getItem("token")
         playlistsApi.get('/', {
             headers: {
@@ -82,12 +86,12 @@ export default function Index(){
         .catch((err) => {
             console.log(err)
         })
-    }, 30000)
+    }, 30000)*/
 
     return(
         <div>
             <Header filters={filters} search={search} handleSearchChange={handleSearchChange}/>
-            <FeaturedPlaylist playlists={playlists} logged={logged}/>
+            <FeaturedPlaylist playlists={filteredPlaylists} logged={logged}/>
         </div>
     )
 }
