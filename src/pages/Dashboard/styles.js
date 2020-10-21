@@ -10,6 +10,7 @@ export const Content = styled.div`
   display: grid;
   grid-gap: 20px;
   padding: 40px 20px;
+  min-width: ${(props) => (props.loading === 'true' ? '980px' : 'initial')};
 
   .content-wrapper {
     display: flex;

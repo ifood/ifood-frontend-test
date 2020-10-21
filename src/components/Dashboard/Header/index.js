@@ -69,7 +69,6 @@ function Header() {
               className="header-profile-item"
             >
               <img src={userAvatar} alt="User avatar" className="avatar" />
-              <span>Felipe</span>
               {profileNav ? (
                 <FaAngleUp size={16} className="fa fa-angle-down" />
               ) : (

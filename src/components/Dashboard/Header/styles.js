@@ -55,10 +55,6 @@ export const Container = styled.div`
             border: 2px solid ${colors.dark};
           }
 
-          span {
-            display: none;
-          }
-
           .fa-angle-down {
             margin-top: 2px;
             margin-left: 3px;
@@ -108,18 +104,6 @@ export const Container = styled.div`
             }
           }
         }
-      }
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    .header-wrapper > .header-content > .header-profile > .header-profile-item {
-      span {
-        display: initial;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: -0.3px;
-        margin-left: 8px;
       }
     }
   }

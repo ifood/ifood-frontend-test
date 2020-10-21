@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import parserParams from '../utils/params';
 
 let accessToken = null;
@@ -10,9 +9,7 @@ const getCredentials = () => {
 };
 
 const RedirectUser = () => {
-  const history = useHistory();
-
-  history.push('/dashboard');
+  window.location.href = '/dashboard';
 };
 
 const logout = () => {
@@ -38,7 +35,10 @@ const setSession = (params) => {
   expiresAt = parseInt(params.expires_in, 10) * 1000 + new Date().getTime();
   tokenType = params.token_type;
 
-  localStorage.setItem('session', btoa(JSON.stringify(params)));
+  localStorage.setItem(
+    'session',
+    btoa(JSON.stringify({ accessToken, expiresAt, tokenType })),
+  );
 
   return RedirectUser();
 };
@@ -50,9 +50,9 @@ const authUser = () => {
     try {
       const params = JSON.parse(atob(session));
 
-      accessToken = params.access_token;
-      expiresAt = parseInt(params.expires_in, 10) * 1000 + new Date().getTime();
-      tokenType = params.token_type;
+      accessToken = params.accessToken;
+      expiresAt = params.expiresAt;
+      tokenType = params.tokenType;
 
       return checkCredentials();
     } catch (e) {

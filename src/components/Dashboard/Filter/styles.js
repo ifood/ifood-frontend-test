@@ -13,7 +13,7 @@ export const Container = styled.div`
     .filter-content {
       display: flex;
       flex-direction: column;
-      padding: ${(props) => (props.showFilter ? '16px 16px 0' : '16px')};
+      padding: 16px;
       margin-top: 20px;
       background-color: rgb(255, 255, 255);
       box-shadow: rgba(0, 0, 0, 0.04) 3px 3px 0px -1px;
@@ -54,13 +54,13 @@ export const Container = styled.div`
       .filter-items {
         display: ${(props) => (props.showFilter ? 'flex' : 'none')};
         flex-wrap: wrap;
-        margin-top: 16px;
+        margin-top: ${(props) => (props.showFilter ? '0' : '16px')};
 
         .select__control,
         input {
           width: 100%;
           margin-right: 16px;
-          margin-bottom: 16px;
+          margin-top: 16px;
         }
 
         .default-input {
