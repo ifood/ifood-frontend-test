@@ -17,10 +17,10 @@ export default function FeaturedPlaylist({loading, logged, playlists, total}){
     }
     function handleRightArrow(){
         let x = scrollX - Math.round(window.innerWidth/2) //total que quero ir
-        let listW = total * 250
+        let listW = total * 280
 
         if(window.innerWidth - listW > x){
-            x= window.innerWidth - listW + 125
+            x= window.innerWidth - listW
         }
 
         setScrollX(x)
