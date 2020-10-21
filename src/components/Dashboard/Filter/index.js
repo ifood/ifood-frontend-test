@@ -1,64 +1,98 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FaSearch, FaFilter, FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import Select from 'react-select';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
+
+import useSkipFirstRender from '../../../utils/useSkipFirstRender';
 
 import { Container, Label } from './styles';
 import 'react-datepicker/dist/react-datepicker.css';
 
 registerLocale('pt', pt);
 
-export const localeOptions = [
-  { value: 'en_AU', label: 'en_AU' },
-  { value: 'de_DE', label: 'de_DE' },
-  { value: 'pt_BR', label: 'pt_BR' },
-  { value: 'fr_FR', label: 'fr_FR' },
-  { value: 'en_US', label: 'en_US' },
-  { value: 'es_AR', label: 'es_AR' },
-];
-
-export const countryOptions = [
-  { value: 'AU', label: 'Australia' },
-  { value: 'DE', label: 'Alemanhã' },
-  { value: 'BR', label: 'Brasil' },
-  { value: 'PT', label: 'Portugal' },
-  { value: 'en_US', label: 'EUA' },
-  { value: 'RU', label: 'Rússia' },
-];
-
-function Filter() {
-  const [isShowingFilter, setIsShowingFilter] = useState(false);
+function Filter({
+  playlists,
+  setPlaylists,
+  setFilters,
+  getPlaylistsService,
+  filtersLabelValue,
+}) {
+  const [localeOptions, setLocaleOptions] = useState([]);
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [playlistsInitial, setPlaylistsInitial] = useState([]);
   const [values, setValues] = useState({});
+  const [isShowingFilter, setIsShowingFilter] = useState(false);
   const [searchValueFocus, setSearchValueFocus] = useState(false);
 
-  const handleInputChange = (event) => {
+  const handleSearchInputChange = (event) => {
     event.persist();
 
-    setValues((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
+    const searchValue = event.target.value;
+
+    if (searchValue.length) {
+      const filteredItems = playlistsInitial.filter(({ name }) =>
+        name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()),
+      );
+
+      setValues((prevState) => ({ ...prevState, searchValue }));
+      setPlaylists(filteredItems);
+    } else {
+      setPlaylists(playlistsInitial);
+      setValues((prevState) => ({ ...prevState, searchValue: '' }));
+    }
   };
 
-  const handleSelectChange = (name, value) => {
-    setValues((prevState) => ({
-      ...prevState,
-      [name]: value.value,
-    }));
+  const handleInputChange = (name, value) => {
+    setValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleDateTimeChange = (value) => {
-    setValues((prevState) => ({
-      ...prevState,
-      date: value,
-    }));
+    setValues((prevState) => ({ ...prevState, date: value }));
   };
 
-  useEffect(() => {
-    console.log(values);
+  useSkipFirstRender(() => {
+    const { searchValue, locale, country, date, limit, offset } = values;
+
+    setFilters({
+      searchValue,
+      locale: locale || 'pt_BR',
+      country: country || 'BR',
+      timestamp: (date && date.toISOString()) || new Date().toISOString(),
+      limit: limit || 12,
+      offset: offset || 0,
+    });
+    getPlaylistsService();
   }, [values]);
+
+  useEffect(() => {
+    if (!playlistsInitial.length) {
+      setPlaylistsInitial(playlists);
+    }
+
+    if (filtersLabelValue) {
+      let locales = filtersLabelValue.find((value) => value.id === 'locale');
+      let countries = filtersLabelValue.find((value) => value.id === 'country');
+
+      locales = locales.values.map((item) => ({ ...item, label: item.name }));
+      countries = countries.values.map((item) => {
+        let { value } = item;
+        let label = item.name;
+
+        if (value === 'en_US') {
+          value = 'US';
+          label = 'Estados Unidos';
+        }
+
+        return { value, label };
+      });
+
+      setLocaleOptions(locales);
+      setCountryOptions(countries);
+    }
+  }, [playlists, playlistsInitial, filtersLabelValue]);
 
   return (
     <Container showFilter={isShowingFilter}>
@@ -71,10 +105,9 @@ function Filter() {
                 name="searchValue"
                 type="text"
                 placeholder="Filtrar"
-                onChange={handleInputChange}
+                onChange={handleSearchInputChange}
                 onFocus={() => setSearchValueFocus(true)}
                 onBlur={() => setSearchValueFocus(false)}
-                value={values.searchValue}
               />
             </Label>
             <button
@@ -98,7 +131,7 @@ function Filter() {
               placeholder="Localidade"
               isSearchable={false}
               options={localeOptions}
-              onChange={(value) => handleSelectChange('locale', value)}
+              onChange={(value) => handleInputChange('locale', value.value)}
             />
             <Select
               name="country"
@@ -107,7 +140,7 @@ function Filter() {
               placeholder="País"
               isSearchable={false}
               options={countryOptions}
-              onChange={(value) => handleSelectChange('country', value)}
+              onChange={(value) => handleInputChange('country', value.value)}
             />
             <DatePicker
               showTimeInput
@@ -125,8 +158,9 @@ function Filter() {
               type="number"
               placeholder="Itens por página"
               className="default-input"
-              onChange={(value) =>
-                value.target.value <= 60 && handleInputChange(value)
+              onChange={(e) =>
+                e.target.value <= 60 &&
+                handleInputChange(e.target.name, e.target.value)
               }
               value={values.limit}
             />
@@ -135,7 +169,7 @@ function Filter() {
               type="number"
               placeholder="Página"
               className="default-input"
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
               value={values.offset}
             />
           </div>
@@ -144,5 +178,17 @@ function Filter() {
     </Container>
   );
 }
+
+Filter.defaultProps = {
+  filtersLabelValue: [],
+};
+
+Filter.propTypes = {
+  filtersLabelValue: PropTypes.arrayOf(PropTypes.any),
+  playlists: PropTypes.arrayOf(PropTypes.any).isRequired,
+  setPlaylists: PropTypes.func.isRequired,
+  setFilters: PropTypes.func.isRequired,
+  getPlaylistsService: PropTypes.func.isRequired,
+};
 
 export default Filter;
