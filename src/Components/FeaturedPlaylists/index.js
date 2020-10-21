@@ -1,22 +1,21 @@
 import React from 'react'
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import Carousel from 'react-elastic-carousel';
 
-import { Container } from './styles.js'
+import { Container, PlaylistsContainer, Playlist } from './styles.js'
 
 export default function FeaturedPlaylist({logged, playlists}){
 
     return(
         <Container>
             {logged ?
-                <Carousel>
+                <PlaylistsContainer>
                     {playlists.map(item =>
-                        <div key={item.id}>
+                        <Playlist key={item.id}>
                             <img src={item.images.url} alt="" width={250} height={250}/>
                             <p>{item.name}</p>
-                        </div>
+                        </Playlist>
                     )}
-                </Carousel>
+                </PlaylistsContainer>
                 : <a href="http://localhost:8888">Login com o spotify</a>
             }
         </Container>
