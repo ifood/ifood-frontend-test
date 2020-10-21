@@ -18,10 +18,11 @@ To maintain consistent code, this project uses [ESLint](https://eslint.org/) and
 
 ### Install
 
-You must have an app on Spotify. [Create here](https://developer.spotify.com/dashboard/login).
+1. You must have an app on Spotify. [Create here](https://developer.spotify.com/dashboard/login).
+2. Create an `.env` file with the following variables:
 
 ```
-REACT_APP_SPOTIFY_CLIENT_ID=
+REACT_APP_SPOTIFY_CLIENT_ID=YOUR_CLIENT_ID
 REACT_APP_SPOTIFY_REDIRECT_URL=http://YOUR_IP_ADDRESS:3000/dashboard
 ```
 
