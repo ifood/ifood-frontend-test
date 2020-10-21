@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 
-import { Container, SliderContainer, PlaylistsContainer, Playlist } from './styles.js'
+import { Container, SliderContainer, PlaylistsContainer, Playlist, PlaylistImage, PlaylistName } from './styles.js'
 
-export default function FeaturedPlaylist({logged, playlists, total}){
+export default function FeaturedPlaylist({loading, logged, playlists, total}){
     const [scrollX, setScrollX] = useState(0)
 
     function handleLeftArrow(){
@@ -28,7 +28,7 @@ export default function FeaturedPlaylist({logged, playlists, total}){
 
     return(
         <Container>
-            {logged ? <SliderContainer>
+            {loading ? "loading..." : logged ? <SliderContainer>
             <MdKeyboardArrowLeft onClick={handleLeftArrow} style={{
                 position: "absolute",
                 left: "0px",
@@ -40,8 +40,8 @@ export default function FeaturedPlaylist({logged, playlists, total}){
                 <PlaylistsContainer margin={scrollX}>
                     {playlists.map(item =>
                         <Playlist key={item.id}>
-                            <img src={item.images.url} alt="" width={250} height={250}/>
-                            <p>{item.name}</p>
+                            <PlaylistImage src="https://image.flaticon.com/icons/png/512/49/49097.png" alt="" width={250} height={250}/>
+                            <PlaylistName>{item.name}</PlaylistName>
                         </Playlist>
                     )}
                 </PlaylistsContainer>

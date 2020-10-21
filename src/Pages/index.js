@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import Spotify from 'spotify-web-api-js'
-import data from '../featuredPlaylists.json'
 
 import filtersApi from '../Services/filters-api.js'
 import playlistsApi from '../Services/playlists-api'
@@ -11,13 +10,14 @@ import FeaturedPlaylist from '../Components/FeaturedPlaylists'
 const spotifyWebApi = new Spotify()
 
 export default function Index(){
-    //const params = getHashParams()
+    const params = getHashParams()
     const [filters, setFilters] = useState([])    
-    const [search, setSearch] = useState('')
-    const [logged, setLogged] = useState(true)//params.access_token ? true : false)
-    const [playlists, setPlaylists] = useState(data.playlists.items)
-    const [filteredPlaylists, setFilteredPlaylists] = useState(playlists)
-    const [totalPlaylists, setTotalPlaylists] = useState(data.playlists.total)
+    const [search, setSearch] = useState()
+    const [logged, setLogged] = useState(params.access_token ? true : false)
+    const [playlists, setPlaylists] = useState()
+    const [filteredPlaylists, setFilteredPlaylists] = useState({})
+    const [totalPlaylists, setTotalPlaylists] = useState()
+    const [loading, setLoading] = useState(true)
 
     //busca dos filtros
     useEffect(() => {
@@ -35,11 +35,13 @@ export default function Index(){
     }
 
     useEffect(() => {
-        setFilteredPlaylists(playlists.filter(playlist => playlist.name.indexOf(search) !== -1))
+        if(playlists){
+            setFilteredPlaylists(playlists.filter(playlist => playlist.name.indexOf(search) !== -1))
+        }
     },[search])
 
     //função disponibilizada pelo Spotify para pegar os parâmetros
-    /*function getHashParams() {
+    function getHashParams() {
         var hashParams = {};
         var e, r = /([^&;=]+)=?([^&;]*)/g,
             q = window.location.hash.substring(1);
@@ -51,6 +53,7 @@ export default function Index(){
 
     // requisição a api assim que a tela é carregada pela primeira vez
     useEffect(() => {
+        setLoading(true)
         async function Teste(){
             if(params.access_token){
                 localStorage.setItem("token", params.access_token)
@@ -61,14 +64,17 @@ export default function Index(){
                 })
                 .then((response) => {
                     setPlaylists(response.data.playlists.items)
+                    setFilteredPlaylists(response.data.playlists.items)                 
+                    setTotalPlaylists(response.data.playlists.total)
                 })
                 .catch((err) => {
                     console.log(err)
                 })
             }
+            setLoading(false)
         }
         Teste()
-    },[])*/
+    },[])
 
     /*setInterval(() => {
         let token = localStorage.getItem("token")
@@ -88,7 +94,7 @@ export default function Index(){
     return(
         <div>
             <Header filters={filters} search={search} handleSearchChange={handleSearchChange}/>
-            <FeaturedPlaylist playlists={filteredPlaylists} total={totalPlaylists} logged={logged}/>
+            <FeaturedPlaylist loading={loading} playlists={filteredPlaylists} total={totalPlaylists} logged={logged}/>
         </div>
     )
 }

@@ -21,3 +21,12 @@ export const Playlist = Styled.div`
     margin: 15px;
     cursor: pointer;
 `;
+
+export const PlaylistImage = Styled.img`
+    height: 250px;
+    width: 250px;
+`;
+
+export const PlaylistName = Styled.h2`
+    text-align: center
+`;
