@@ -18,7 +18,7 @@ export default function Filter({search, handleSearchChange, filters}){
                     <BsFilterLeft/>
                 </Buttom>
             </SearchContainer>
-            <Form display={show} onSubmit={() => console.log('ok')}>
+            <Form display={show}>
                     {filters.map(item =>
                         <ParametersContainer key={item.id}>
                             <Text>{item.name}</Text>

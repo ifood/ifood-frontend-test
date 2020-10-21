@@ -17,14 +17,13 @@ export default function Index(){
     const [logged, setLogged] = useState(true)//params.access_token ? true : false)
     const [playlists, setPlaylists] = useState(data.playlists.items)
     const [filteredPlaylists, setFilteredPlaylists] = useState(playlists)
-    console.log(data)
+    const [totalPlaylists, setTotalPlaylists] = useState(data.playlists.total)
 
     //busca dos filtros
     useEffect(() => {
         filtersApi.get('/')
         .then(response =>{
             setFilters(response.data.filters)
-            console.log(response.data.filters)
         })
         .catch(err => {
             console.log(err)
@@ -62,7 +61,6 @@ export default function Index(){
                 })
                 .then((response) => {
                     setPlaylists(response.data.playlists.items)
-                    console.log(response.data.playlists.items)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -81,7 +79,6 @@ export default function Index(){
         })
         .then((response) => {
             setPlaylists(response.data.playlists.items)
-                console.log(response.data.playlists.items)
         })
         .catch((err) => {
             console.log(err)
@@ -91,7 +88,7 @@ export default function Index(){
     return(
         <div>
             <Header filters={filters} search={search} handleSearchChange={handleSearchChange}/>
-            <FeaturedPlaylist playlists={filteredPlaylists} logged={logged}/>
+            <FeaturedPlaylist playlists={filteredPlaylists} total={totalPlaylists} logged={logged}/>
         </div>
     )
 }

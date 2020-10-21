@@ -7,10 +7,17 @@ export const Container = Styled.div`
     justify-content: center;
 `;
 
+export const SliderContainer = Styled.div`
+    width: 100%;
+`;
+
 export const PlaylistsContainer = Styled.div`
     display: flex;
+    width: 100%;
+    margin-left ${props => props.margin}px;
 `;
 
 export const Playlist = Styled.div`
     margin: 15px;
+    cursor: pointer;
 `;

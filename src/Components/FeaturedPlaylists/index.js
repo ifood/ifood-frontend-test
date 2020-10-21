@@ -1,14 +1,43 @@
-import React from 'react'
-import Carousel from 'react-elastic-carousel';
+import React, {useState} from 'react'
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 
-import { Container, PlaylistsContainer, Playlist } from './styles.js'
+import { Container, SliderContainer, PlaylistsContainer, Playlist } from './styles.js'
 
-export default function FeaturedPlaylist({logged, playlists}){
+export default function FeaturedPlaylist({logged, playlists, total}){
+    const [scrollX, setScrollX] = useState(0)
+
+    function handleLeftArrow(){
+        let x = scrollX + Math.round(window.innerWidth/2)
+        
+        if(x > 0 ){
+            x= 45
+        }
+
+        setScrollX(x)
+    }
+    function handleRightArrow(){
+        let x = scrollX - Math.round(window.innerWidth/2) //total que quero ir
+        let listW = total * 250
+
+        if(window.innerWidth - listW > x){
+            x= window.innerWidth - listW + 125
+        }
+
+        setScrollX(x)
+    }
 
     return(
         <Container>
-            {logged ?
-                <PlaylistsContainer>
+            {logged ? <SliderContainer>
+            <MdKeyboardArrowLeft onClick={handleLeftArrow} style={{
+                position: "absolute",
+                left: "0px",
+                color: "red",
+                width: "80px",
+                height: "80px",
+                marginTop: "100px"
+            }}/>
+                <PlaylistsContainer margin={scrollX}>
                     {playlists.map(item =>
                         <Playlist key={item.id}>
                             <img src={item.images.url} alt="" width={250} height={250}/>
@@ -16,6 +45,16 @@ export default function FeaturedPlaylist({logged, playlists}){
                         </Playlist>
                     )}
                 </PlaylistsContainer>
+                <MdKeyboardArrowRight onClick={handleRightArrow} style={{
+                    position: "absolute",
+                    right: "0px",
+                    color: "red",
+                    width: "80px",
+                    height: "80px",
+                    zIndex: 10,
+                    marginTop: "-210px"
+                }}/>
+                </SliderContainer>
                 : <a href="http://localhost:8888">Login com o spotify</a>
             }
         </Container>
