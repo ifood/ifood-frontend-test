@@ -1,4 +1,5 @@
 import React from 'react'
+import { object, func } from 'prop-types'
 import { InputLabel, FormControl, Select, MenuItem, makeStyles } from '@material-ui/core'
 import { handleCountryError } from '../helpers/handleCountryError'
 
@@ -9,14 +10,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const SelectInput = ({filter, inputsResolver }) => {
+const propTypes = {
+  filter: object.isRequired,
+  inputsResolver: func.isRequired
+}
+
+export const SelectInput = ({ filter, inputsResolver }) => {
   const classes = useStyles();
 
   const handleInput = (filter, values) => {
     const input = handleCountryError(values.value)
     inputsResolver(filter.id, input)
   }
-  const { values } = filter
 
   return (
   <FormControl  key={filter} className={classes.formControl}>
@@ -40,3 +45,5 @@ export const SelectInput = ({filter, inputsResolver }) => {
   </FormControl>
   )
 }
+
+SelectInput.propTypes = propTypes

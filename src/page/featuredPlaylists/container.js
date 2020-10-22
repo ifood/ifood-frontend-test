@@ -1,23 +1,21 @@
 import React, { useEffect } from 'react'
-import { func, array, string, bool, object } from 'prop-types'
+import { func, array, string, object } from 'prop-types'
 import { connect } from 'react-redux'
-import FeaturedPlaylist from './featuredPlaylists'
-import { getFilter, getPlaylist } from '../../redux/actions'
+import { FeaturedPlaylist } from './featuredPlaylists'
+import { getFilters, getPlaylists } from '../../redux/actions'
 import { fetchTokenToLocalStorage } from '../../api/spotify'
 
 const propTypes = {
-  getFilter: func.isRequired,
+  getFilters: func.isRequired,
   filters: array,
   playlists: object,
-  getPlaylist: func,
+  getPlaylists: func.isRequired,
   message: string,
-  loadingFilter: bool,
-  loadingPlaylist: bool,
 }
 
 const mapDispatchToProps = dispatch => ({
-  getFilter: () => dispatch(getFilter()),
-  getPlaylist: (params) => dispatch(getPlaylist(params))
+  getFilters: () => dispatch(getFilters()),
+  getPlaylists: (params) => dispatch(getPlaylists(params))
 })
 
 const FeaturedPlaylistsContainer = (props) => {
@@ -33,15 +31,11 @@ const FeaturedPlaylistsContainer = (props) => {
 
 FeaturedPlaylistsContainer.propTypes = propTypes
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     filters: state.filterReducer.filters,
     playlists: state.playlistReducer.playlists,
     message: state.playlistReducer.message,
-    loadingFilter: state.filterReducer.loading,
-    loadingPlaylist: state.playlistReducer.loading
-  }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   FeaturedPlaylistsContainer

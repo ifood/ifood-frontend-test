@@ -1,8 +1,7 @@
-import { GET_FILTERS_SUCCESS, GET_FILTERS_FAILURE, SET_LOADING } from '../actions/types'
+import { GET_FILTERS_SUCCESS, GET_FILTERS_FAILURE } from '../actions/types'
 
 export const initialState = {
-    filters: [],
-    loading: false
+    filters: []
 }
 
 export const filterReducer = (state = initialState, action) => {
@@ -16,11 +15,6 @@ export const filterReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload.error
-      }
-    case SET_LOADING:
-      return {
-        ...state,
-        ...action.payload
       }
     default:
       return state

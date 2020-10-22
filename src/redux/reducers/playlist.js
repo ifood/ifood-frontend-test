@@ -1,12 +1,10 @@
-import { GET_PLAYLISTS_SUCCESS, GET_PLAYLISTS_FAILURE, SET_LOADING} from '../actions/types'
+import { GET_PLAYLISTS_SUCCESS, GET_PLAYLISTS_FAILURE } from '../actions/types'
 
 export const initialState = {
     message: '',
     playlists: {
-      href: '',
       items: []
-    },
-    loading: false
+    }
 }
 
 export const playlistReducer = (state = initialState, action) => {
@@ -14,17 +12,15 @@ export const playlistReducer = (state = initialState, action) => {
     case GET_PLAYLISTS_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        message: action.payload.message,
+        playlists: {
+          items: action.payload.playlists.items
+        }
       }
     case GET_PLAYLISTS_FAILURE:
       return {
         ...state,
         error: action.payload.error
-      }
-    case SET_LOADING:
-      return {
-        ...state,
-        ...action.payload
       }
     default:
       return state

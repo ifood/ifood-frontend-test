@@ -1,1 +1,1 @@
-export { Filters }  from './filter'
+export { Filter }  from './filter'

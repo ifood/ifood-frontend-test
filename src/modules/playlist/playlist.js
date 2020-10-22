@@ -1,9 +1,8 @@
 import React , { useState } from 'react'
+import { object, string } from 'prop-types'
 import { Typography, makeStyles } from '@material-ui/core';
 import { SearchByNameInput, PlaylistCard } from './components'
-import { Loading } from '../../commons-components/loading'
-import { BoxContainer } from '../../commons-components/boxContainer'
-
+import { Loading, BoxContainer } from '../../commonsComponents'
 
 const useStyles = makeStyles({
   title: {
@@ -21,11 +20,17 @@ const useStyles = makeStyles({
   }
 });
 
-export const Playlist = ({playlists, message}) => {
+const propTypes = {
+  playlists: object.isRequired,
+  message: string.isRequired
+}
+
+export const Playlist = ({ playlists, message }) => {
   const classes = useStyles()
   const [search, setSearch] = useState('')
 
   const { items } = playlists
+  const notNullItems = items.filter(item => !!item)
 
   return (
   <div>
@@ -38,8 +43,8 @@ export const Playlist = ({playlists, message}) => {
         </Typography>
       </div>
     <BoxContainer style={{margin: '10px'}}>
-      {search && items[0] ?
-        items.filter(item =>
+      {search && notNullItems ?
+        notNullItems.filter(item =>
           item.name.toLowerCase()
           .includes(search.toLocaleLowerCase()))
           .map(playlist => (
@@ -48,8 +53,8 @@ export const Playlist = ({playlists, message}) => {
               playlist={playlist}
             />
             )):
-        items[0] ?
-          items.map((playlist) => (
+        notNullItems?
+        notNullItems.map((playlist) => (
             <PlaylistCard
               key={playlist.name}
               playlist={playlist}
@@ -59,3 +64,5 @@ export const Playlist = ({playlists, message}) => {
   </div>
   )
 }
+
+Playlist.propTypes = propTypes

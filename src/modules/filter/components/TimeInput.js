@@ -1,4 +1,5 @@
 import React from 'react'
+import { object, func } from 'prop-types'
 import { TextField, FormControl, makeStyles } from '@material-ui/core'
 import { toISOString } from '../helpers/toISOString'
 
@@ -9,7 +10,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const TimeInput = ({filter, inputsResolver}) => {
+const propTypes = {
+  filter: object.isRequired,
+  inputsResolver: func.isRequired
+}
+
+export const TimeInput = ({ filter, inputsResolver }) => {
 
   const handleInput = (e) => {
       const input = toISOString(e.target.value)
@@ -32,3 +38,5 @@ export const TimeInput = ({filter, inputsResolver}) => {
     </FormControl>
   )
 }
+
+TimeInput.propTypes = propTypes

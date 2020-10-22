@@ -1,4 +1,5 @@
 import React from 'react';
+import { object, func } from 'prop-types'
 import { makeStyles, InputLabel } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -12,7 +13,12 @@ const useStyles = makeStyles({
   }
 });
 
-export const SliderInput = ({filter, inputsResolver}) => {
+const propTypes = {
+  filter: object.isRequired,
+  inputsResolver: func.isRequired
+}
+
+export const SliderInput = ({ filter, inputsResolver }) => {
   const classes = useStyles();
 
   return (
@@ -31,3 +37,5 @@ export const SliderInput = ({filter, inputsResolver}) => {
     </div>
   );
 }
+
+SliderInput.propTypes = propTypes

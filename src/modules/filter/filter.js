@@ -1,11 +1,17 @@
 import React, { useState, useEffect} from 'react'
+import { object, func } from 'prop-types'
 import { SelectInput, SliderInput, TimeInput } from './components'
 import { filtersEnum } from './enum'
 import { Button }  from '@material-ui/core';
-import { Loading } from '../../commons-components/loading';
-import { BoxContainer } from '../../commons-components/boxContainer'
+import { Loading, BoxContainer } from '../../commonsComponents';
 
-export const Filters = ({ filters, getFilter, getPlaylist }) => {
+const propTypes = {
+  getFilters: func.isRequired,
+  filters: object,
+  getPlaylists: func.isRequired,
+}
+
+export const Filter = ({ filters, getFilters, getPlaylists }) => {
   const [offset, setOffset] = useState('')
   const [limit, setLimit] = useState(20)
   const [timestamp, setTimestamp] = useState('')
@@ -32,7 +38,7 @@ export const Filters = ({ filters, getFilter, getPlaylist }) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    getPlaylist({offset, limit, timestamp, country, locale})
+    getPlaylists({offset, limit, timestamp, country, locale})
   }
 
   const myInterval = () => {
@@ -46,7 +52,7 @@ export const Filters = ({ filters, getFilter, getPlaylist }) => {
   },[])
 
   useEffect(() => {
-    getPlaylist({offset, limit, timestamp, country, locale})
+    getPlaylists({offset, limit, timestamp, country, locale})
     setChange(false)
   },[
     offset,
@@ -55,12 +61,12 @@ export const Filters = ({ filters, getFilter, getPlaylist }) => {
     country,
     locale,
     change,
-    getPlaylist
+    getPlaylists
   ])
 
   useEffect(() => {
-    getFilter()
-  },[getFilter])
+    getFilters()
+  },[getFilters])
 
   return (
     <>
@@ -96,3 +102,5 @@ export const Filters = ({ filters, getFilter, getPlaylist }) => {
     </>
   )
 }
+
+Filter.propTypes = propTypes

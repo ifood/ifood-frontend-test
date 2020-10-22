@@ -16,7 +16,7 @@ export async function fetchTokenToLocalStorage () {
   , { headers} )
 
   localStorage.setItem('spotify_token',data.access_token)
-};
+}
 
 export function getTokenFromLocalStorage() {
   const token = localStorage.getItem('spotify_token')

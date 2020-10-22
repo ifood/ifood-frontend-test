@@ -1,4 +1,5 @@
 import React from 'react'
+import { object } from 'prop-types'
 import { CardContent, Card, makeStyles, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles({
@@ -24,7 +25,11 @@ const useStyles = makeStyles({
   }
 });
 
-export const PlaylistCard = ({playlist}) => {
+const propTypes = {
+  playlist: object.isRequired,
+}
+
+export const PlaylistCard = ({ playlist }) => {
   const classes = useStyles();
   return (
     <Card className={classes.root} variant="outlined" key={playlist.id}>
@@ -40,3 +45,5 @@ export const PlaylistCard = ({playlist}) => {
     </Card>
   )
 }
+
+PlaylistCard.propTypes = propTypes

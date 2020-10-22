@@ -1,40 +1,42 @@
 import React from 'react'
-import { Filters } from '../../modules/filter'
+import { object, string, func } from 'prop-types'
+import { Filter } from '../../modules/filter'
 import { Playlist } from '../../modules/playlist'
-import { Navbar } from '../../commons-components/navbar'
-import { BoxContainer } from '../../commons-components/boxContainer'
+import { Navbar, BoxContainer } from '../../commonsComponents'
 
+const propTypes = {
+  playlists: object.isRequired,
+  message: string.isRequired,
+  filters: object.isRequired,
+  getFilters: func.isRequired,
+  getPlaylists: func.isRequired,
+}
 
-
-const FeaturedPlaylist = ({
+export const FeaturedPlaylist = ({
   filters,
-  getFilter,
-  getPlaylist,
+  getFilters,
+  getPlaylists,
   playlists,
   message,
-  loadingFilters,
-  loadingPlaylists
 }) => {
 
   return (
     <>
-    <Navbar />
-    <BoxContainer style={{flexDirection: 'column'}}>
-      <Filters
-        filters={filters}
-        getFilter={getFilter}
-        getPlaylist={getPlaylist}
-        loadingFilters={loadingFilters}
-      />
+      <Navbar />
+      <BoxContainer style={{flexDirection: 'column'}}>
+        <Filter
+          filters={filters}
+          getFilters={getFilters}
+          getPlaylists={getPlaylists}
+        />
 
-      <Playlist
-        playlists={playlists}
-        message={message}
-        loadingPlaylists={loadingPlaylists}
-      />
-    </BoxContainer>
+        <Playlist
+          playlists={playlists}
+          message={message}
+        />
+      </BoxContainer>
     </>
   )
 }
 
-export default FeaturedPlaylist
+FeaturedPlaylist.propTypes = propTypes
