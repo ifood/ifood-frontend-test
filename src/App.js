@@ -44,17 +44,22 @@ export const history = createBrowserHistory();
 class App extends Component {
   constructor(props) {
     super(props);
+    const lastLanguage = localStorage.getItem("language");
+
+    console.log(lastLanguage);
+
     this.state = {
-      locale: DEFAULT_APP_LANGUAGE,
+      locale: translations[lastLanguage] ? lastLanguage : DEFAULT_APP_LANGUAGE,
     };
   }
 
   renderLanguageSwitcher = () => (
     <LanguageSwitcher
-      initialLanguage={DEFAULT_APP_LANGUAGE}
+      initialLanguage={this.state.locale}
       languages={Object.keys(translations).map((lang) => lang)}
       onChange={(language) => {
         this.setState({ locale: language });
+        localStorage.setItem("language", language);
       }}
     />
   );
