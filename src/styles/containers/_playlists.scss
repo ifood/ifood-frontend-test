@@ -1,29 +1,53 @@
 $gutter-desktop: 2rem;
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .playlists {
+  width: 100%;
   padding: $app-vertical-padding-desktop $app-horizontal-padding-desktop;
+
+  @include respond(tab-port) {
+    padding: $app-vertical-padding-tab $app-horizontal-padding-tab;
+  }
+
+  @include respond(phone) {
+    padding: $app-vertical-padding-phone $app-horizontal-padding-phone;
+    padding-top: $app-vertical-padding-phone + 2rem;
+  }
 
   &__logo {
     width: 34rem;
+
+    @include respond(tab-port) {
+      width: 28rem;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+    }
   }
+
   &__content {
     display: flex;
     flex-direction: row;
     width: 100%;
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
   }
 
   &__filters {
     min-width: 36rem;
     width: 25vw;
+
+    @include respond(tab-port) {
+      min-width: 24rem;
+      width: 24vw;
+    }
+
+    @include respond(phone) {
+      min-width: 0;
+      width: 100%;
+    }
   }
 
   &__items {
@@ -32,10 +56,20 @@ $gutter-desktop: 2rem;
     align-items: end;
     padding: 0 $gutter-desktop;
     grid-gap: $gutter-desktop;
-    grid-template-columns: repeat(auto-fit, $card-width-desktop);
+    grid-template-columns: repeat(auto-fit, $card-size-desktop);
     grid-auto-rows: max-content;
     height: fit-content;
     justify-content: flex-start;
+
+    @include respond(tab-land) {
+      grid-template-columns: repeat(auto-fit, $card-size-tab);
+      justify-content: space-evenly;
+    }
+
+    @include respond(phone) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0;
+    }
 
     & > * {
       animation: moveInTopLow 0.4s ease-out;

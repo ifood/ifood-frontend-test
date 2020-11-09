@@ -1,28 +1,29 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
 }
 
 html {
-    height: 100%;
-    background-color: white;
-    //defines what 1rem is:
-    // usually 10px
-    font-size: 62.5%;
+  height: 100%;
+  background-color: white;
+  //defines what 1rem is:
+  // usually 10px
+  font-size: 62.5%;
 }
-
 
 *::-moz-focus-inner {
-    border: 0;
+  border: 0;
 }
-  
 
 .app {
-  width: 100%;
+  width: 100vw;
+  overflow: scroll;
 }
 
-body { 
+body {
   height: 100%;
   box-sizing: border-box;
 }

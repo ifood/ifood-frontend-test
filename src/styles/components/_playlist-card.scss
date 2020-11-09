@@ -1,16 +1,25 @@
 .playlist-card {
-  height: $card-width-desktop;
-  width: $card-width-desktop;
+  height: $card-size-desktop;
+  width: $card-size-desktop;
   border-radius: 3rem;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 2px 14px 8px rgba(0,0,0,0.05);
+  box-shadow: 0px 2px 14px 8px rgba(0, 0, 0, 0.05);
 
+  @include respond(tab-land) {
+    height: $card-size-tab;
+    width: $card-size-tab;
+  }
+
+  @include respond(phone) {
+    height: 100%;
+    width: 100%;
+  }
 
   &:focus {
     box-shadow: 0 0 0 3px rgba(red, 1);
     outline: none;
-  } 
+  }
 
   &__img {
     height: 100%;
@@ -23,7 +32,11 @@
     height: 100%;
     width: 100%;
     z-index: 2;
-    background: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.6));
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 246, 252, 0),
+      rgba(0, 0, 0, 0.6)
+    );
   }
 
   &__private-icon {
@@ -41,5 +54,4 @@
     z-index: 3;
     fill: white;
   }
-  
 }
