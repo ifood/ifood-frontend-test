@@ -13,6 +13,10 @@ import {
   fixInvalidCountryCodes,
   PAGE_SIZE,
 } from "./helper";
+import {
+  PLAYLISTS_REFRESH_TIME,
+  FILTERS_TRIGGER_TIMEOUT,
+} from "../../constants";
 
 function PlaylistFilters({ onChange }) {
   const [filters, setFilters] = useState([]);
@@ -36,13 +40,21 @@ function PlaylistFilters({ onChange }) {
 
   useEffect(() => {
     loadFilters();
+    const refreshTimer = setInterval(() => {
+      onChange(transformSubmitValues(values));
+    }, PLAYLISTS_REFRESH_TIME);
+
+    return () => {
+      clearInterval(refreshTimer);
+    };
   }, []);
 
   useEffect(() => {
     if (!isLoading) {
       const searchTimer = setTimeout(() => {
         onChange(transformSubmitValues(values));
-      }, 700);
+      }, FILTERS_TRIGGER_TIMEOUT);
+
       return () => {
         clearTimeout(searchTimer);
       };
