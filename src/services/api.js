@@ -19,5 +19,10 @@ export const authorize = () => {
   window.location.href = requestURL;
 };
 
-export const getPlaylists = () =>
-  axios.get(`${BASE_SPOTIFY_API_URL}/v1/browse/featured-playlists`);
+export const getPlaylists = ({
+  country,
+  locale,
+  timestamp,
+  limit,
+  offset,
+} = {}) => axios.get(`${BASE_SPOTIFY_API_URL}/v1/browse/featured-playlists`);
