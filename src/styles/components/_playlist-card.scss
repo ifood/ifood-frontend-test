@@ -1,12 +1,29 @@
 .playlist-card {
   height: 14rem;
   width: 14rem;
-  border-radius: 3rem 3rem 3rem 3rem;
+  border-radius: 2rem;
   overflow: hidden;
+  position: relative;
+
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(red, 1);
+    outline: none;
+  } 
+
 
   &__img {
     height: 100%;
     width: 100%;
-    transform: scale(1.1);
+    transform: scale(1.15); // hide image spotify icon by zooming in
   }
+
+  &__dark-cover {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7));
+  }
+
+  
 }

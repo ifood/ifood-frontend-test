@@ -3,6 +3,8 @@ import { getPlaylists } from "services/api";
 import { ReactComponent as YourSvg } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
 
+// TODO: intl translations
+
 export default function Playlists() {
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -28,7 +30,7 @@ export default function Playlists() {
   return (
     <div className="playlists">
       <YourSvg />
-      <div className="playlists__items">
+      <div role="region" className="playlists__items">
         {playlists.map((playlist) => {
           return <PlaylistCard playlist={playlist} />;
         })}
