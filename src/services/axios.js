@@ -6,8 +6,10 @@ const instance = axios.create();
 instance.interceptors.request.use(function (config) {
   const { accessToken, tokenType } = getAuthItems();
 
-  config.headers.Authorization = token ? `${tokenType} ${accessToken}` : "";
+  config.headers.Authorization = `${tokenType} ${accessToken}`;
   return config;
 });
+
+// TODO intercept and handle expired token
 
 export default instance;
