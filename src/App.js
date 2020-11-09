@@ -12,7 +12,7 @@ class App extends Component {
       <Router>
         <div className="app">
           <Switch>
-            <Route path="/callback" component={CallbackHandler} />
+            <PublicOnlyRoute path="/callback" component={CallbackHandler} />
             <PublicOnlyRoute path="/intro" component={Landing} />
             <PrivateRoute path="/" component={Playlists} />
           </Switch>
