@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import PrivateRoute from "components/PrivateRoute";
 import PublicOnlyRoute from "components/PublicOnlyRoute";
 import Landing from "containers/Landing";
 import Playlists from "containers/Playlists";
 import CallbackHandler from "containers/CallbackHandler";
 
+export const history = createBrowserHistory();
+
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <div className="app">
           <Switch>
             <PublicOnlyRoute path="/callback" component={CallbackHandler} />
