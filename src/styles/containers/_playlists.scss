@@ -113,10 +113,10 @@ $gutter-desktop: 2rem;
   }
 
   &__refresh {
-    position: absolute;
+    position: fixed;
     z-index: 300;
-    top: 1.5 * $app-vertical-padding-desktop;
-    right: 1.5 * $app-horizontal-padding-desktop;
+    bottom: 1rem;
+    right: 1rem;
     animation: fadein 1s; // since API loads very quickly, I added this animation to smooth the Spinner appearance
   }
 
