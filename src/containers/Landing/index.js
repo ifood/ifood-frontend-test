@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useIntl, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import queryString from "query-string";
 import { authorize } from "services/api";
 import { Button, KIND, SIZE, SHAPE } from "baseui/button";

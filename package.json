@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "baseui": "^9.104.0",
+    "classnames": "^2.2.6",
     "node-sass": "^4.14.1",
     "query-string": "^6.13.7",
     "react": "^16.14.0",

@@ -27,6 +27,7 @@ $gutter-desktop: 2rem;
 
   &__content {
     display: flex;
+    align-items: flex-start;
     flex-direction: row;
     width: 100%;
 
@@ -38,6 +39,7 @@ $gutter-desktop: 2rem;
   &__filters {
     min-width: 36rem;
     width: 25vw;
+    margin-bottom: 2rem;
 
     @include respond(tab-port) {
       min-width: 24rem;
@@ -48,6 +50,26 @@ $gutter-desktop: 2rem;
       min-width: 0;
       width: 100%;
     }
+  }
+
+  &__filters-content {
+    max-height: 130vh;
+    transition: max-height 0.25s ease-in;
+    overflow: scroll;
+
+    &--collapsed {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.15s ease-out;
+      visibility: hidden;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   &__items {
