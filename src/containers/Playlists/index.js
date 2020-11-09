@@ -33,7 +33,11 @@ export default function Playlists() {
       <YourSvg className="playlists__logo" />
       <div className="playlists__content" role="region">
         <div className="playlists__filters">
-          <PlaylistFilters />
+          <PlaylistFilters
+            onChange={(values) => {
+              console.log(values);
+            }}
+          />
         </div>
 
         <div className="playlists__items">

@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { getFilters } from "services/api";
 import { Select } from "baseui/select";
 import { DatePicker } from "baseui/datepicker";
 import { Input } from "baseui/input";
+import { FormControl } from "baseui/form-control";
+import { Skeleton } from "baseui/skeleton";
+import { getFilterType, getInitialState } from "./helper";
 
-export default function PlaylistFilters() {
+function PlaylistFilters({ onChange }) {
   const [filters, setFilters] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [value, setValue] = React.useState("");
-  const [value2, setValue2] = React.useState([new Date()]);
-  const [value3, setValue3] = React.useState([new Date()]);
+  const [values, setValues] = React.useState({});
 
   const loadFilters = async () => {
     try {
       setLoading(true);
       const { data: filtersData } = await getFilters();
-      if (Array.isArray(filtersData)) {
+      if (Array.isArray(filtersData.filters)) {
+        setValues(getInitialState(filtersData.filters));
         setFilters(filtersData.filters);
       }
     } catch (e) {
@@ -29,39 +32,108 @@ export default function PlaylistFilters() {
     loadFilters();
   }, []);
 
-  const renderFilter = () => {};
+  useEffect(() => {
+    if (!isLoading) {
+      onChange(values);
+    }
+  }, [values]);
 
-  return (
-    <div className="playlist-filters">
-      <Select
-        options={[
-          { label: "AliceBlue", id: "#F0F8FF" },
-          { label: "AntiqueWhite", id: "#FAEBD7" },
-          { label: "Aqua", id: "#00FFFF" },
-          { label: "Aquamarine", id: "#7FFFD4" },
-          { label: "Azure", id: "#F0FFFF" },
-          { label: "Beige", id: "#F5F5DC" },
-        ]}
-        value={value}
-        placeholder="Select color"
-        onChange={(params) => setValue(params.value)}
+  const renderFilter = (filter) => {
+    const { type, default: defaultValue } = getFilterType(filter);
+
+    if (type === "select") {
+      const options = filter.values.map(({ value, name }) => ({
+        id: value,
+        label: name,
+      }));
+      return (
+        <FormControl key={filter.id} label={() => filter.name}>
+          <Select
+            id={filter.id}
+            aria-label="TODO"
+            placeholder={filter.name}
+            options={options}
+            value={values[filter.id]}
+            onChange={(params) => {
+              setValues((prev) => ({ ...prev, [filter.id]: params.value }));
+            }}
+          />
+        </FormControl>
+      );
+    }
+
+    if (type === "datetime") {
+      return (
+        <FormControl key={filter.id} label={() => filter.name}>
+          <DatePicker
+            id={filter.id}
+            aria-label="TODO"
+            clearable
+            formatString={filter.validation.pattern.replace("T", " ")}
+            timeSelectStart
+            value={values[filter.id]}
+            onChange={(params) => {
+              setValues((prev) => ({ ...prev, [filter.id]: params.date }));
+            }}
+          />
+        </FormControl>
+      );
+    }
+
+    if (type === "number") {
+      return (
+        <FormControl key={filter.id} label={() => filter.name}>
+          <Input
+            id={filter.id}
+            max={filter.validation.max}
+            min={filter.validation.min || defaultValue}
+            type="number"
+            placeholder={filter.name}
+            value={values[filter.id] || defaultValue}
+            onChange={(e) => {
+              if (e && e.target && e.target.value) {
+                const { value } = e.target;
+                setValues((prev) => ({ ...prev, [filter.id]: value }));
+              }
+            }}
+            clearOnEscape
+          />
+        </FormControl>
+      );
+    }
+  };
+
+  if (isLoading) {
+    const estimatedHeight = "440px";
+    return (
+      <Skeleton
+        animation
+        rows={5}
+        height={estimatedHeight}
+        width="100%"
+        overrides={{
+          Row: {
+            style: ({ $theme }) => {
+              return {
+                height: "44px",
+                marginTop: "34px",
+              };
+            },
+          },
+        }}
       />
-      <DatePicker
-        clearable
-        formatString="yyyy-MM-dd HH:mm:ss" // dinamic
-        timeSelectStart
-        value={value2}
-        onChange={({ date }) => setValue2(Array.isArray(date) ? date : [date])}
-      />
-      <Input
-        value={value3}
-        max={3}
-        min={1}
-        onChange={(e) => setValue3(e.target.value)}
-        placeholder="Controlled Input"
-        type="number"
-        clearOnEscape
-      />
-    </div>
-  );
+    );
+  }
+
+  return <div className="playlist-filters">{filters.map(renderFilter)}</div>;
 }
+
+PlaylistFilters.propTypes = {
+  onChange: PropTypes.func,
+};
+
+PlaylistFilters.defaultProps = {
+  onChange: () => {},
+};
+
+export default PlaylistFilters;
