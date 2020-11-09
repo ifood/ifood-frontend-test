@@ -6,7 +6,7 @@ import { DatePicker } from "baseui/datepicker";
 import { Input } from "baseui/input";
 import { FormControl } from "baseui/form-control";
 import { Skeleton } from "baseui/skeleton";
-import { getFilterType, getInitialState } from "./helper";
+import { getFilterType, getInitialState, PAGE_SIZE } from "./helper";
 
 function PlaylistFilters({ onChange }) {
   const [filters, setFilters] = useState([]);
@@ -81,19 +81,38 @@ function PlaylistFilters({ onChange }) {
     }
 
     if (type === "number") {
+      const minValue =
+        typeof filter.validation.min === "number" ? filter.validation.min : 1;
+
+      let value = values[filter.id];
+      let valueMultiplier = 1;
+      let valuePenalty = 0;
+      if (
+        filter.id === "offset" &&
+        (values[filter.id] !== undefined || values[filter.id] !== null)
+      ) {
+        valueMultiplier = PAGE_SIZE;
+        valuePenalty = PAGE_SIZE;
+        value = (values[filter.id] + valueMultiplier) / valueMultiplier;
+      }
+
       return (
         <FormControl key={filter.id} label={() => filter.name}>
           <Input
             id={filter.id}
             max={filter.validation.max}
-            min={filter.validation.min || defaultValue}
+            min={minValue}
             type="number"
             placeholder={filter.name}
-            value={values[filter.id] || defaultValue}
+            value={value}
             onChange={(e) => {
               if (e && e.target && e.target.value) {
-                const { value } = e.target;
-                setValues((prev) => ({ ...prev, [filter.id]: value }));
+                const nextValue =
+                  e.target.value * valueMultiplier - valuePenalty;
+                setValues((prev) => ({
+                  ...prev,
+                  [filter.id]: nextValue,
+                }));
               }
             }}
             clearOnEscape
@@ -125,7 +144,12 @@ function PlaylistFilters({ onChange }) {
     );
   }
 
-  return <div className="playlist-filters">{filters.map(renderFilter)}</div>;
+  return (
+    <div className="playlist-filters">
+      {filters.map(renderFilter)}
+      {JSON.stringify(values)}
+    </div>
+  );
 }
 
 PlaylistFilters.propTypes = {

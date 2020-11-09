@@ -1,3 +1,5 @@
+export const PAGE_SIZE = 12;
+
 export const getFilterType = (filter) => {
   if (filter.values) {
     return { type: "select" };
@@ -11,7 +13,13 @@ export const getFilterType = (filter) => {
       return { type: "text" };
     }
     if (primitiveType === "INTEGER") {
-      return { type: "number", default: 1 };
+      let defaultValue = 1;
+      if (filter.id === "limit") {
+        defaultValue = PAGE_SIZE;
+      } else if (filter.id === "offset") {
+        defaultValue = 0;
+      }
+      return { type: "number", default: defaultValue };
     }
   }
   return null;
