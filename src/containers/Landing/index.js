@@ -5,6 +5,7 @@ import { authorize } from "services/api";
 import { Button, KIND, SIZE, SHAPE } from "baseui/button";
 import { ReactComponent as Logo } from "assets/white-logo.svg";
 import messages from "./messages";
+import { primaryColor } from "../../constants";
 
 export default function Landing() {
   const [params, setParams] = useState({});
@@ -52,6 +53,15 @@ export default function Landing() {
           <FormattedMessage {...messages.instruction} />
         </h1>
         <Button
+          overrides={{
+            BaseButton: {
+              style: ({ $theme }) => {
+                return {
+                  color: primaryColor,
+                };
+              },
+            },
+          }}
           onClick={() => authorize()}
           kind={KIND.secondary}
           size={SIZE.large}

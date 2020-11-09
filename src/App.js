@@ -10,7 +10,8 @@ import PublicOnlyRoute from "components/PublicOnlyRoute";
 import Landing from "containers/Landing";
 import Playlists from "containers/Playlists";
 import CallbackHandler from "containers/CallbackHandler";
-import { DEFAULT_APP_LANGUAGE } from "./constants";
+import LanguageSwitcher from "components/LanguageSwitcher";
+import { DEFAULT_APP_LANGUAGE, primaryColor } from "./constants";
 import enJson from "./translations/en.json";
 import ptJson from "./translations/pt.json";
 
@@ -20,14 +21,13 @@ const translations = {
 };
 
 const primitives = {
-  accent: "#EA1D2C",
+  accent: primaryColor,
 };
 
 const overrides = {
   colors: {
     borderFocus: primitives.accent,
     menuFillHover: primitives.accent,
-    buttonSecondaryText: primitives.accent,
     inputFillActive: "white",
     inputBorder: "white",
     menuFontHighlighted: "white",
@@ -49,6 +49,16 @@ class App extends Component {
     };
   }
 
+  renderLanguageSwitcher = () => (
+    <LanguageSwitcher
+      initialLanguage={DEFAULT_APP_LANGUAGE}
+      languages={Object.keys(translations).map((lang) => lang)}
+      onChange={(language) => {
+        this.setState({ locale: language });
+      }}
+    />
+  );
+
   render() {
     return (
       <IntlProvider
@@ -68,6 +78,7 @@ class App extends Component {
                   <PublicOnlyRoute path="/intro" component={Landing} />
                   <PrivateRoute path="/" component={Playlists} />
                 </Switch>
+                {this.renderLanguageSwitcher()}
               </div>
             </BaseProvider>
           </StyletronProvider>

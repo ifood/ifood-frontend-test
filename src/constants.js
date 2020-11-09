@@ -6,3 +6,5 @@ export const PLAYLISTS_REFRESH_TIME = 30 * 1000;
 export const FILTERS_TRIGGER_TIMEOUT = 700;
 
 export const DEFAULT_APP_LANGUAGE = "pt";
+
+export const primaryColor = "#EA1D2C";
