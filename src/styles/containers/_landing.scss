@@ -7,6 +7,11 @@
   background-color: $primary-color;
 
   &__logo {
+    & > * {
+      max-width: 100%;
+      height: 20rem;
+    }
+
     &:hover {
       animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       transform: translate3d(0, 0, 0);
@@ -31,6 +36,11 @@
     font-size: 2rem;
     margin-bottom: 2rem;
     font-weight: bold;
+
+    @include respond(tab-land) {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__message {
@@ -39,5 +49,9 @@
     font-weight: 400;
     margin-bottom: 3rem;
     text-align: center;
+
+    @include respond(tab-land) {
+      font-size: 2rem;
+    }
   }
 }
