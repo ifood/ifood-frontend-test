@@ -11,13 +11,17 @@ export default function Playlists() {
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [isFirstLoading, setIsFirstLoading] = useState(true);
+  const [refreshCount, setRefreshCount] = useState(true);
 
-  const loadPlaylists = async (filters) => {
+  const loadPlaylists = async (filters, preventAnimation) => {
     try {
       setLoading(true);
       const { data } = await getPlaylists(filters);
       if (data.playlists && Array.isArray(data.playlists.items)) {
         setPlaylists(data.playlists.items);
+        if (!preventAnimation) {
+          setRefreshCount((prev) => prev + 1);
+        }
       }
     } catch (e) {
       console.log(e);
@@ -33,7 +37,12 @@ export default function Playlists() {
 
   const renderPlaylistCards = () => {
     return playlists.map((playlist) => {
-      return <PlaylistCard key={playlist.id} playlist={playlist} />;
+      return (
+        <PlaylistCard
+          key={`${refreshCount}-${playlist.id}`}
+          playlist={playlist}
+        />
+      );
     });
   };
 
@@ -61,9 +70,8 @@ export default function Playlists() {
         <div className="playlists__filters">
           <PlaylistFilters
             disabled={isLoading && isFirstLoading}
-            onChange={(filters) => {
-              console.log(filters);
-              loadPlaylists(filters);
+            onChange={(filters, preventAnimation) => {
+              loadPlaylists(filters, preventAnimation);
             }}
           />
         </div>

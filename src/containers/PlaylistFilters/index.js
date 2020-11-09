@@ -40,7 +40,7 @@ function PlaylistFilters({ disabled, onChange }) {
   };
 
   useInterval(() => {
-    onChange(transformSubmitValues(values));
+    onChange(transformSubmitValues(values), true);
   }, PLAYLISTS_REFRESH_TIME);
 
   useEffect(() => {
