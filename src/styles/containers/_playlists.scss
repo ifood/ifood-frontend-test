@@ -11,8 +11,8 @@ $gutter-desktop: 2rem;
     }
 
     &__filters {
-        flex: 1;
-        max-width: 25vw;
+        min-width: 36rem;
+        width: 25vw;
     }
 
     &__items {

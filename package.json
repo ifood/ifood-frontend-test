@@ -4,13 +4,16 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.0",
+    "baseui": "^9.104.0",
     "node-sass": "^4.14.1",
     "query-string": "^6.13.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "styletron-engine-atomic": "^1.4.6",
+    "styletron-react": "^5.2.7"
   },
   "devDependencies": {},
   "scripts": {
