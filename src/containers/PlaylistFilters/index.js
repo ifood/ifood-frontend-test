@@ -6,7 +6,12 @@ import { DatePicker } from "baseui/datepicker";
 import { Input } from "baseui/input";
 import { FormControl } from "baseui/form-control";
 import { Skeleton } from "baseui/skeleton";
-import { getFilterType, getInitialState, PAGE_SIZE } from "./helper";
+import {
+  getFilterType,
+  getInitialState,
+  transformSubmitValues,
+  PAGE_SIZE,
+} from "./helper";
 
 function PlaylistFilters({ onChange }) {
   const [filters, setFilters] = useState([]);
@@ -35,7 +40,7 @@ function PlaylistFilters({ onChange }) {
   useEffect(() => {
     if (!isLoading) {
       const searchTimer = setTimeout(() => {
-        onChange(values);
+        onChange(transformSubmitValues(values));
       }, 700);
       return () => {
         clearTimeout(searchTimer);

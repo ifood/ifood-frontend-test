@@ -33,3 +33,20 @@ export const getInitialState = (filters) => {
   }
   return initialValues;
 };
+
+export const transformSubmitValues = (values) => {
+  const transformedValues = { ...values };
+
+  for (const key of Object.keys(transformedValues)) {
+    console.log(key);
+    if (
+      Array.isArray(values[key]) &&
+      values[key][0] &&
+      typeof values[key][0] === "object" &&
+      values[key][0].id
+    ) {
+      transformedValues[key] = values[key][0].id;
+    }
+  }
+  return transformedValues;
+};
