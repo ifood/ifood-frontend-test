@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ReactComponent as YourSvg } from "assets/logo.svg";
+import { ReactComponent as Logo } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
 import PlaylistFilters from "containers/PlaylistFilters";
 import { getPlaylists } from "services/api";
@@ -51,7 +51,7 @@ export default function Playlists() {
 
   return (
     <div className="playlists">
-      <YourSvg className="playlists__logo" />
+      <Logo className="playlists__logo" />
       <div className="playlists__content" role="region">
         {isLoading && !isFirstLoading && (
           <div className="playlists__refresh">

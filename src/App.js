@@ -19,7 +19,7 @@ const overrides = {
   colors: {
     borderFocus: primitives.accent,
     menuFillHover: primitives.accent,
-    // inputFill: "white",
+    buttonSecondaryText: primitives.accent,
     inputFillActive: "white",
     inputBorder: "white",
     menuFontHighlighted: "white",

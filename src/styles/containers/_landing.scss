@@ -1,0 +1,36 @@
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: $primary-color;
+
+    &__logo {
+        &:hover {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    &__dialog {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10vh;
+        margin-right: 4rem;
+        margin-left: 4rem;
+    }
+
+    &__message {
+        color: white;
+        font-size: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+}

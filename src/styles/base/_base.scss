@@ -1,5 +1,4 @@
 *, *::after, *::before {
-
   margin: 0;
   padding: 0;
   box-sizing: inherit;
@@ -21,7 +20,6 @@ html {
 
 .app {
   width: 100%;
-  padding: $app-padding-desktop;
 }
 
 body { 
