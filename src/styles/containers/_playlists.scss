@@ -57,11 +57,13 @@ $gutter-desktop: 2rem;
     transition: max-height 0.25s ease-in;
     overflow: scroll;
 
-    &--collapsed {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.15s ease-out;
-      visibility: hidden;
+    @include respond(phone) {
+      &--collapsed {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.15s ease-out;
+        visibility: hidden;
+      }
     }
   }
 
@@ -70,6 +72,11 @@ $gutter-desktop: 2rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+
+    @include respond(phone) {
+      visibility: visible;
+    }
   }
 
   &__items {
