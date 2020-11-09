@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPlaylists } from "services/api";
 import { ReactComponent as YourSvg } from "assets/logo.svg";
+import PlaylistCard from "components/PlaylistCard";
 
 export default function Playlists() {
   const [playlists, setPlaylists] = useState([]);
@@ -27,7 +28,11 @@ export default function Playlists() {
   return (
     <div className="playlists">
       <YourSvg />
-      Playlists {playlists.length}
+      <div className="playlists__items">
+        {playlists.map((playlist) => {
+          return <PlaylistCard playlist={playlist} />;
+        })}
+      </div>
     </div>
   );
 }

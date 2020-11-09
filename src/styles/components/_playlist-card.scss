@@ -1,0 +1,12 @@
+.playlist-card {
+  height: 14rem;
+  width: 14rem;
+  border-radius: 3rem 3rem 3rem 3rem;
+  overflow: hidden;
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    transform: scale(1.1);
+  }
+}

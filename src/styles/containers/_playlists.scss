@@ -1,0 +1,14 @@
+$gutter-desktop: 1.4rem;
+
+.playlists {
+    &__items {
+        // background-color: gray;
+        display: grid;
+        align-items: end;
+        grid-gap: $gutter-desktop;
+        grid-template-columns: repeat(auto-fit, 14rem);
+        grid-auto-rows: max-content;
+        height: fit-content;
+        justify-content: center;
+    }
+}
