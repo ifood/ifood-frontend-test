@@ -3,12 +3,14 @@ import { ReactComponent as YourSvg } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
 import PlaylistFilters from "containers/PlaylistFilters";
 import { getPlaylists } from "services/api";
+import { Spinner } from "baseui/spinner";
 
 // TODO: intl translations
 
 export default function Playlists() {
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [isFirstLoading, setIsFirstLoading] = useState(true);
 
   const loadPlaylists = async (filters) => {
     try {
@@ -21,6 +23,7 @@ export default function Playlists() {
       console.log(e);
       // TODO: Show error message on screen
     }
+    setIsFirstLoading(false);
     setLoading(false);
   };
 
@@ -29,27 +32,42 @@ export default function Playlists() {
   }, []);
 
   const renderPlaylistCards = () => {
-    if (isLoading) {
-      return <p>Loading...</p>;
-    }
     return playlists.map((playlist) => {
       return <PlaylistCard playlist={playlist} />;
     });
+  };
+
+  const renderContent = () => {
+    if (isLoading && isFirstLoading) {
+      return (
+        <div className="playlists__loading">
+          <Spinner size="60px" color="#EA1D2C" />
+        </div>
+      );
+    }
+
+    return <div className="playlists__items">{renderPlaylistCards()}</div>;
   };
 
   return (
     <div className="playlists">
       <YourSvg className="playlists__logo" />
       <div className="playlists__content" role="region">
+        {isLoading && !isFirstLoading && (
+          <div className="playlists__refresh">
+            <Spinner size="20px" color="#EA1D2C" />
+          </div>
+        )}
         <div className="playlists__filters">
           <PlaylistFilters
+            disabled={isLoading && isFirstLoading}
             onChange={(filters) => {
               console.log(filters);
               loadPlaylists(filters);
             }}
           />
         </div>
-        <div className="playlists__items">{renderPlaylistCards()}</div>
+        {renderContent()}
       </div>
     </div>
   );
