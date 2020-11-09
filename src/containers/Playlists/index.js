@@ -10,10 +10,10 @@ export default function Playlists() {
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
-  const loadPlaylists = async () => {
+  const loadPlaylists = async (filters) => {
     try {
       setLoading(true);
-      const { data } = await getPlaylists();
+      const { data } = await getPlaylists(filters);
       if (data.playlists && Array.isArray(data.playlists.items)) {
         setPlaylists(data.playlists.items);
       }
@@ -28,23 +28,28 @@ export default function Playlists() {
     loadPlaylists();
   }, []);
 
+  const renderPlaylistCards = () => {
+    if (isLoading) {
+      return <p>Loading...</p>;
+    }
+    return playlists.map((playlist) => {
+      return <PlaylistCard playlist={playlist} />;
+    });
+  };
+
   return (
     <div className="playlists">
       <YourSvg className="playlists__logo" />
       <div className="playlists__content" role="region">
         <div className="playlists__filters">
           <PlaylistFilters
-            onChange={(values) => {
-              console.log(values);
+            onChange={(filters) => {
+              console.log(filters);
+              loadPlaylists(filters);
             }}
           />
         </div>
-
-        <div className="playlists__items">
-          {playlists.map((playlist) => {
-            return <PlaylistCard playlist={playlist} />;
-          })}
-        </div>
+        <div className="playlists__items">{renderPlaylistCards()}</div>
       </div>
     </div>
   );
