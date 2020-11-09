@@ -17,7 +17,10 @@ export default function PlaylistCard({ playlist }) {
         <BsFillPeopleFill className="playlist-card__collab-icon" />
       )}
       <div className="playlist-card__dark-cover" />
-      <img className="playlist-card__img" src={images[0].url}></img>
+      <img
+        className="playlist-card__img"
+        src={images[0] ? images[0].url : ""}
+      ></img>
     </div>
   );
 }
