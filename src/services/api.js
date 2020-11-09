@@ -11,6 +11,7 @@ export const authorize = () => {
     client_id: CLIENT_ID,
     response_type: "token",
     redirect_uri: "http://localhost:3000/callback",
+    show_dialog: false,
     scope:
       "user-read-email playlist-modify-public user-modify-playback-state user-read-recently-played user-read-private playlist-read-private playlist-read-collaborative user-follow-read user-library-read user-top-read",
   });
