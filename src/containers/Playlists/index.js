@@ -3,7 +3,7 @@ import { ReactComponent as Logo } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
 import PlaylistFilters from "containers/PlaylistFilters";
 import { getPlaylists } from "services/api";
-import { Spinner } from "baseui/spinner";
+import { StyledSpinnerNext } from "baseui/spinner";
 
 // TODO: intl translations
 
@@ -41,7 +41,7 @@ export default function Playlists() {
     if (isLoading && isFirstLoading) {
       return (
         <div className="playlists__loading">
-          <Spinner size="60px" color="#EA1D2C" />
+          <StyledSpinnerNext size="60px" color="#EA1D2C" />
         </div>
       );
     }
@@ -55,7 +55,7 @@ export default function Playlists() {
       <div className="playlists__content" role="region">
         {isLoading && !isFirstLoading && (
           <div className="playlists__refresh">
-            <Spinner size="20px" color="#EA1D2C" />
+            <StyledSpinnerNext size="20px" color="#EA1D2C" />
           </div>
         )}
         <div className="playlists__filters">
