@@ -3,5 +3,7 @@
   "containers.Landing.sessionExpired": "Sua sessão expirou",
   "containers.Landing.unexpectedError": "Um erro inesperado ocorreu",
   "containers.Landing.instruction": "Precisamos de sua permissão para acessar suas playlists",
-  "containers.Landing.buttonText": "Autorizar no Spotify.com"
+  "containers.Landing.buttonText": "Autorizar no Spotify.com",
+  "containers.Playlists.hideFilters": "Esconder filtros",
+  "containers.Playlists.expandFilters": "Mostrar filtros"
 }

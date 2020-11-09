@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import { ReactComponent as Logo } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
 import PlaylistFilters from "containers/PlaylistFilters";
@@ -6,6 +7,7 @@ import { getPlaylists } from "services/api";
 import { StyledSpinnerNext } from "baseui/spinner";
 import { Button, KIND, SIZE, SHAPE } from "baseui/button";
 import classNames from "classnames";
+import messages from "./messages";
 
 export default function Playlists() {
   const [playlists, setPlaylists] = useState([]);
@@ -93,7 +95,11 @@ export default function Playlists() {
               size={SIZE.compact}
               shape={SHAPE.pill}
             >
-              {areFiltersOpen ? "Hide filters" : "Expand filters"}
+              {areFiltersOpen ? (
+                <FormattedMessage {...messages.hideFilters} />
+              ) : (
+                <FormattedMessage {...messages.expandFilters} />
+              )}
             </Button>
           </div>
         </div>
