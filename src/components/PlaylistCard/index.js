@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function PlaylistCard({ playlist }) {
-  const { images, collaborative, public } = playlist;
+  const { images, collaborative, public: isPublic } = playlist;
   return (
     <div
       tabindex="0"
