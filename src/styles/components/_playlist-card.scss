@@ -10,7 +10,6 @@
     outline: none;
   } 
 
-
   &__img {
     height: 100%;
     width: 100%;
@@ -25,5 +24,20 @@
     background: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7));
   }
 
+  &__private-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+    fill: white;
+  }
+
+  &__collab-icon {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 3;
+    fill: white;
+  }
   
 }
