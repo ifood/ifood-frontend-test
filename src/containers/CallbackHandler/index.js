@@ -9,7 +9,7 @@ export default function CallbackHandler() {
     sessionStorage.setItem("access_token", parsed.access_token);
     sessionStorage.setItem("expires_in", parsed.expires_in);
     sessionStorage.setItem("token_type", parsed.token_type);
-    history.push("/playlists");
+    history.push("/");
   }, []);
   return <div></div>;
 }
