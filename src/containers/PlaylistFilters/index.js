@@ -34,7 +34,12 @@ function PlaylistFilters({ onChange }) {
 
   useEffect(() => {
     if (!isLoading) {
-      onChange(values);
+      const searchTimer = setTimeout(() => {
+        onChange(values);
+      }, 700);
+      return () => {
+        clearTimeout(searchTimer);
+      };
     }
   }, [values]);
 
@@ -66,6 +71,7 @@ function PlaylistFilters({ onChange }) {
       return (
         <FormControl key={filter.id} label={() => filter.name}>
           <DatePicker
+            orientation="vertical"
             id={filter.id}
             aria-label="TODO"
             clearable
@@ -73,7 +79,9 @@ function PlaylistFilters({ onChange }) {
             timeSelectStart
             value={values[filter.id]}
             onChange={(params) => {
-              setValues((prev) => ({ ...prev, [filter.id]: params.date }));
+              if (params.date != values[filter.id]) {
+                setValues((prev) => ({ ...prev, [filter.id]: params.date }));
+              }
             }}
           />
         </FormControl>
