@@ -50,3 +50,18 @@ export const transformSubmitValues = (values) => {
   }
   return transformedValues;
 };
+
+// workaround because the filters API is returning an invalid country code for the USA
+export const fixInvalidCountryCodes = (filters) =>
+  filters.map((filter) => {
+    if (filter.id === "country" && Array.isArray(filter.values)) {
+      return {
+        ...filter,
+        values: filter.values.map((item) => ({
+          ...item,
+          value: item.value.split("_").pop(),
+        })),
+      };
+    }
+    return filter;
+  });

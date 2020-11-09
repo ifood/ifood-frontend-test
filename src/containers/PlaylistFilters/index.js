@@ -10,6 +10,7 @@ import {
   getFilterType,
   getInitialState,
   transformSubmitValues,
+  fixInvalidCountryCodes,
   PAGE_SIZE,
 } from "./helper";
 
@@ -24,7 +25,7 @@ function PlaylistFilters({ onChange }) {
       const { data: filtersData } = await getFilters();
       if (Array.isArray(filtersData.filters)) {
         setValues(getInitialState(filtersData.filters));
-        setFilters(filtersData.filters);
+        setFilters(fixInvalidCountryCodes(filtersData.filters));
       }
     } catch (e) {
       console.log(e);
