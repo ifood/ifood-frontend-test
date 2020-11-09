@@ -1,14 +1,29 @@
-$gutter-desktop: 1.4rem;
+$gutter-desktop: 2rem;
 
 .playlists {
+    &__logo {
+        width: 34rem;
+    }
+    &__content {
+        display: flex;
+        flex-direction: row;
+        width: 100%
+    }
+
+    &__filters {
+        flex: 1;
+        max-width: 25vw;
+    }
+
     &__items {
-        // background-color: gray;
+        flex: 1;
         display: grid;
         align-items: end;
+        padding: 0 $gutter-desktop;
         grid-gap: $gutter-desktop;
-        grid-template-columns: repeat(auto-fit, 14rem);
+        grid-template-columns: repeat(auto-fit, $card-width-desktop);
         grid-auto-rows: max-content;
         height: fit-content;
-        justify-content: center;
+        justify-content: flex-start;
     }
 }

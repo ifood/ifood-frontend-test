@@ -1,9 +1,11 @@
 .playlist-card {
-  height: 14rem;
-  width: 14rem;
-  border-radius: 2rem;
+  height: $card-width-desktop;
+  width: $card-width-desktop;
+  border-radius: 3rem;
   overflow: hidden;
   position: relative;
+  box-shadow: 0px 2px 14px 8px rgba(0,0,0,0.05);
+
 
   &:focus {
     box-shadow: 0 0 0 4px rgba(red, 1);
@@ -21,7 +23,7 @@
     height: 100%;
     width: 100%;
     z-index: 2;
-    background: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.6));
   }
 
   &__private-icon {

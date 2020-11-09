@@ -1,0 +1,30 @@
+*, *::after, *::before {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+    height: 100%;
+    background-color: white;
+    //defines what 1rem is:
+    // usually 10px
+    font-size: 62.5%;
+}
+
+
+*::-moz-focus-inner {
+    border: 0;
+}
+  
+
+.app {
+  width: 100%;
+  padding: $app-padding-desktop;
+}
+
+body { 
+  height: 100%;
+  box-sizing: border-box;
+}
