@@ -18,7 +18,7 @@ import {
   FILTERS_TRIGGER_TIMEOUT,
 } from "../../constants";
 
-function PlaylistFilters({ onChange }) {
+function PlaylistFilters({ disabled, onChange }) {
   const [filters, setFilters] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [values, setValues] = React.useState({});
@@ -74,6 +74,7 @@ function PlaylistFilters({ onChange }) {
           <Select
             id={filter.id}
             aria-label="TODO"
+            disabled={disabled}
             placeholder={filter.name}
             options={options}
             value={values[filter.id]}
@@ -92,6 +93,7 @@ function PlaylistFilters({ onChange }) {
             orientation="vertical"
             id={filter.id}
             aria-label="TODO"
+            disabled={disabled}
             clearable
             formatString={filter.validation.pattern.replace("T", " ")}
             timeSelectStart
@@ -128,6 +130,7 @@ function PlaylistFilters({ onChange }) {
             id={filter.id}
             max={filter.validation.max}
             min={minValue}
+            disabled={disabled}
             type="number"
             placeholder={filter.name}
             value={value}
@@ -170,16 +173,12 @@ function PlaylistFilters({ onChange }) {
     );
   }
 
-  return (
-    <div className="playlist-filters">
-      {filters.map(renderFilter)}
-      {JSON.stringify(values)}
-    </div>
-  );
+  return <div className="playlist-filters">{filters.map(renderFilter)}</div>;
 }
 
 PlaylistFilters.propTypes = {
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 PlaylistFilters.defaultProps = {
