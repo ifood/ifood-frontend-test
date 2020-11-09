@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getPlaylists } from "services/api";
 import { ReactComponent as YourSvg } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
+import PlaylistFilters from "containers/PlaylistFilters";
+import { getPlaylists } from "services/api";
 
 // TODO: intl translations
 
@@ -29,11 +30,17 @@ export default function Playlists() {
 
   return (
     <div className="playlists">
-      <YourSvg />
-      <div role="region" className="playlists__items">
-        {playlists.map((playlist) => {
-          return <PlaylistCard playlist={playlist} />;
-        })}
+      <YourSvg className="playlists__logo" />
+      <div className="playlists__content" role="region">
+        <div className="playlists__filters">
+          <PlaylistFilters />
+        </div>
+
+        <div className="playlists__items">
+          {playlists.map((playlist) => {
+            return <PlaylistCard playlist={playlist} />;
+          })}
+        </div>
       </div>
     </div>
   );
