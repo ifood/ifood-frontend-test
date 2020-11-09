@@ -1,52 +1,67 @@
 $gutter-desktop: 2rem;
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .playlists {
-    padding: $app-vertical-padding-desktop $app-horizontal-padding-desktop;
+  padding: $app-vertical-padding-desktop $app-horizontal-padding-desktop;
 
-    &__logo {
-        width: 34rem;
-    }
-    &__content {
-        display: flex;
-        flex-direction: row;
-        width: 100%
-    }
+  &__logo {
+    width: 34rem;
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
 
-    &__filters {
-        min-width: 36rem;
-        width: 25vw;
-    }
+  &__filters {
+    min-width: 36rem;
+    width: 25vw;
+  }
 
-    &__items {
-        flex: 1;
-        display: grid;
-        align-items: end;
-        padding: 0 $gutter-desktop;
-        grid-gap: $gutter-desktop;
-        grid-template-columns: repeat(auto-fit, $card-width-desktop);
-        grid-auto-rows: max-content;
-        height: fit-content;
-        justify-content: flex-start;
-    }
+  &__items {
+    flex: 1;
+    display: grid;
+    align-items: end;
+    padding: 0 $gutter-desktop;
+    grid-gap: $gutter-desktop;
+    grid-template-columns: repeat(auto-fit, $card-width-desktop);
+    grid-auto-rows: max-content;
+    height: fit-content;
+    justify-content: flex-start;
 
-    &__refresh {
-        position: absolute;
-        z-index: 300;
-        top: 1.5 * $app-vertical-padding-desktop;
-        right: 1.5 * $app-horizontal-padding-desktop;
-        animation: fadein 1s; // since API loads very quickly, I added this animation to smooth the Spinner appearance
-    }
+    & > * {
+      animation: moveInTopLow 0.4s ease-out;
+      animation-fill-mode: backwards;
 
-    &__loading {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        flex: 1;
+      @for $i from 1 through 50 {
+        &:nth-child(#{$i}) {
+          animation-delay: (0.4s / 2) + $i * (1s / 12);
+        }
+      }
     }
+  }
+
+  &__refresh {
+    position: absolute;
+    z-index: 300;
+    top: 1.5 * $app-vertical-padding-desktop;
+    right: 1.5 * $app-horizontal-padding-desktop;
+    animation: fadein 1s; // since API loads very quickly, I added this animation to smooth the Spinner appearance
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+  }
 }

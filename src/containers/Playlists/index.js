@@ -33,7 +33,7 @@ export default function Playlists() {
 
   const renderPlaylistCards = () => {
     return playlists.map((playlist) => {
-      return <PlaylistCard playlist={playlist} />;
+      return <PlaylistCard key={playlist.id} playlist={playlist} />;
     });
   };
 
