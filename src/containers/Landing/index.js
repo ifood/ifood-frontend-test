@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useIntl, FormattedMessage } from "react-intl";
 import queryString from "query-string";
 import { authorize } from "services/api";
 import { Button, KIND, SIZE, SHAPE } from "baseui/button";
 import { ReactComponent as Logo } from "assets/white-logo.svg";
+import messages from "./messages";
 
 export default function Landing() {
   const [params, setParams] = useState({});
@@ -15,14 +17,24 @@ export default function Landing() {
   const renderCustomMessages = () => {
     if (params) {
       if (params.denied) {
-        return <p className="landing__custom-msg">Permissão negada :(</p>;
+        return (
+          <p className="landing__custom-msg">
+            <FormattedMessage {...messages.permissionDenied} />
+          </p>
+        );
       }
       if (params.expired) {
-        return <p className="landing__custom-msg">Sua sessão expirou</p>;
+        return (
+          <p className="landing__custom-msg">
+            <FormattedMessage {...messages.sessionExpired} />
+          </p>
+        );
       }
       if (params.error) {
         return (
-          <p className="landing__custom-msg">Um erro inesperado ocorreu</p>
+          <p className="landing__custom-msg">
+            <FormattedMessage {...messages.unexpectedError} />
+          </p>
         );
       }
       return null;
@@ -37,7 +49,7 @@ export default function Landing() {
         </div>
         {renderCustomMessages()}
         <h1 className="landing__message">
-          Precisamos de sua permissão para acessar suas playlists
+          <FormattedMessage {...messages.instruction} />
         </h1>
         <Button
           onClick={() => authorize()}
@@ -45,7 +57,7 @@ export default function Landing() {
           size={SIZE.large}
           shape={SHAPE.pill}
         >
-          Autorizar no Spotify.com
+          <FormattedMessage {...messages.buttonText} />
         </Button>
       </div>
     </div>
