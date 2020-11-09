@@ -19,3 +19,10 @@ export const saveAuthItems = () => {
   sessionStorage.setItem("expires_in", parsed.expires_in);
   sessionStorage.setItem("token_type", parsed.token_type);
 };
+
+export const cleanAuthItems = () => {
+  const parsed = getHashParams();
+  sessionStorage.removeItem("access_token");
+  sessionStorage.removeItem("expires_in");
+  sessionStorage.removeItem("token_type");
+};
