@@ -6,6 +6,7 @@ import { DatePicker } from "baseui/datepicker";
 import { Input } from "baseui/input";
 import { FormControl } from "baseui/form-control";
 import { Skeleton } from "baseui/skeleton";
+import useInterval from "react-useinterval";
 import {
   getFilterType,
   getInitialState,
@@ -38,15 +39,12 @@ function PlaylistFilters({ disabled, onChange }) {
     setLoading(false);
   };
 
+  useInterval(() => {
+    onChange(transformSubmitValues(values));
+  }, PLAYLISTS_REFRESH_TIME);
+
   useEffect(() => {
     loadFilters();
-    const refreshTimer = setInterval(() => {
-      onChange(transformSubmitValues(values));
-    }, PLAYLISTS_REFRESH_TIME);
-
-    return () => {
-      clearInterval(refreshTimer);
-    };
   }, []);
 
   useEffect(() => {

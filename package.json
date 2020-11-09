@@ -12,6 +12,7 @@
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "react-useinterval": "^1.0.2",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7"
   },
