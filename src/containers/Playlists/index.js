@@ -5,8 +5,6 @@ import PlaylistFilters from "containers/PlaylistFilters";
 import { getPlaylists } from "services/api";
 import { StyledSpinnerNext } from "baseui/spinner";
 
-// TODO: intl translations
-
 export default function Playlists() {
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setLoading] = useState(false);
