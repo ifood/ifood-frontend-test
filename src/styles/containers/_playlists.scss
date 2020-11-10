@@ -1,4 +1,5 @@
 $gutter-desktop: 2rem;
+$gutter-phone: 1rem;
 
 .playlists {
   width: 100%;
@@ -98,6 +99,7 @@ $gutter-desktop: 2rem;
     @include respond(phone) {
       grid-template-columns: repeat(2, 1fr);
       padding: 0;
+      grid-gap: $gutter-phone;
     }
 
     & > * {
