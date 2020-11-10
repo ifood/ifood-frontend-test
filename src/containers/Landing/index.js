@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import queryString from "query-string";
 import { authorize } from "services/api";
 import { Button, KIND, SIZE, SHAPE } from "baseui/button";
@@ -8,6 +8,7 @@ import messages from "./messages";
 import { primaryColor } from "../../constants";
 
 export default function Landing() {
+  const intl = useIntl();
   const [params, setParams] = useState({});
 
   useEffect(() => {
@@ -44,7 +45,11 @@ export default function Landing() {
 
   return (
     <div className="landing">
-      <div className="landing__dialog" role="region">
+      <div
+        className="landing__dialog"
+        role="region"
+        aria-label={intl.formatMessage(messages.regionAriaLabel)}
+      >
         <div className="landing__logo">
           <Logo />
         </div>

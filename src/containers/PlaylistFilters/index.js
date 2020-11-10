@@ -71,7 +71,7 @@ function PlaylistFilters({ disabled, onChange }) {
         <FormControl key={filter.id} label={() => filter.name}>
           <Select
             id={filter.id}
-            aria-label="TODO"
+            aria-label={filter.name}
             disabled={disabled}
             placeholder={filter.name}
             options={options}
@@ -90,7 +90,7 @@ function PlaylistFilters({ disabled, onChange }) {
           <DatePicker
             orientation="vertical"
             id={filter.id}
-            aria-label="TODO"
+            aria-label={filter.name}
             disabled={disabled}
             clearable
             formatString={filter.validation.pattern.replace("T", " ")}
@@ -129,6 +129,7 @@ function PlaylistFilters({ disabled, onChange }) {
             max={filter.validation.max}
             min={minValue}
             disabled={disabled}
+            aria-label={filter.name}
             type="number"
             placeholder={filter.name}
             value={value}

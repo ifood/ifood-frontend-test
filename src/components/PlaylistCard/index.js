@@ -6,7 +6,6 @@ export default function PlaylistCard({ playlist }) {
   const { images, collaborative, public: isPublic, name, id } = playlist;
   return (
     <Link
-      tabindex="0"
       className="playlist-card"
       aria-label={`Playlist named ${name}`}
       to={`/playlist/${id}`}
@@ -19,6 +18,7 @@ export default function PlaylistCard({ playlist }) {
       )}
       <div className="playlist-card__dark-cover" />
       <img
+        alt={name}
         className="playlist-card__img"
         src={images[0] ? images[0].url : ""}
       ></img>

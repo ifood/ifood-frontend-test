@@ -11,4 +11,8 @@ export default defineMessages({
     id: `${scope}.expandFilters`,
     defaultMessage: "Expand filters",
   },
+  contentAriaLAbel: {
+    id: `${scope}.contentAriaLAbel`,
+    defaultMessage: "Playlist explorer",
+  },
 });

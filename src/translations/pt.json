@@ -4,11 +4,13 @@
   "containers.Landing.unexpectedError": "Um erro inesperado ocorreu",
   "containers.Landing.instruction": "Precisamos de sua permissão para acessar suas playlists",
   "containers.Landing.buttonText": "Autorizar no Spotify.com",
+  "containers.Landing.regionAriaLabel": "Aviso de pedido de permissão",
   "containers.Playlists.hideFilters": "Esconder filtros",
   "containers.Playlists.expandFilters": "Mostrar filtros",
+  "containers.Playlists.contentAriaLAbel": "Encontre playlists",
   "containers.PlaylistDetails.backButtonText": "Voltar",
   "containers.PlaylistDetails.tracksLabel": "faixas",
-  "containers.PlaylistDetails.openAtSpotify": "seguidores",
-  "containers.PlaylistDetails.expandFilters": "Abrir no Spotify.com",
+  "containers.PlaylistDetails.followersLabel": "seguidores",
+  "containers.PlaylistDetails.openAtSpotify": "Abrir no Spotify.com",
   "containers.PlaylistDetails.tracksTitle": "Faixas"
 }
