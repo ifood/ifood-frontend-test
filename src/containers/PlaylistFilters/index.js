@@ -99,7 +99,7 @@ function PlaylistFilters({ disabled, onChange }) {
             timeSelectStart
             value={values[filter.id]}
             onChange={(params) => {
-              if (params.date != values[filter.id]) {
+              if (params.date !== values[filter.id]) {
                 setValues((prev) => ({ ...prev, [filter.id]: params.date }));
               }
             }}
