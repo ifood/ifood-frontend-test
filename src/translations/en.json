@@ -5,5 +5,10 @@
   "containers.Landing.instruction": "Spotify needs your permission to access your playlists",
   "containers.Landing.buttonText": "Allow at Spotify.com",
   "containers.Playlists.hideFilters": "Hide filters",
-  "containers.Playlists.expandFilters": "Expand filters"
+  "containers.Playlists.expandFilters": "Expand filters",
+  "containers.PlaylistDetails.backButtonText": "Back",
+  "containers.PlaylistDetails.tracksLabel": "tracks",
+  "containers.PlaylistDetails.openAtSpotify": "followers",
+  "containers.PlaylistDetails.expandFilters": "Open at Spotify.com",
+  "containers.PlaylistDetails.tracksTitle": "Tracks"
 }

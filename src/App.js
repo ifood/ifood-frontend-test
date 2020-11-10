@@ -5,12 +5,15 @@ import { Provider as StyletronProvider } from "styletron-react";
 import { createTheme, BaseProvider } from "baseui";
 import { Router, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
+
 import PrivateRoute from "components/PrivateRoute";
 import PublicOnlyRoute from "components/PublicOnlyRoute";
-import Landing from "containers/Landing";
-import Playlists from "containers/Playlists";
-import CallbackHandler from "containers/CallbackHandler";
 import LanguageSwitcher from "components/LanguageSwitcher";
+import Landing from "containers/Landing";
+import CallbackHandler from "containers/CallbackHandler";
+import Playlists from "containers/Playlists";
+import PlaylistDetails from "containers/PlaylistDetails";
+
 import { DEFAULT_APP_LANGUAGE, primaryColor } from "./constants";
 import enJson from "./translations/en.json";
 import ptJson from "./translations/pt.json";
@@ -81,6 +84,10 @@ class App extends Component {
                     component={CallbackHandler}
                   />
                   <PublicOnlyRoute path="/intro" component={Landing} />
+                  <PrivateRoute
+                    path="/playlist/:id"
+                    component={PlaylistDetails}
+                  />
                   <PrivateRoute path="/" component={Playlists} />
                 </Switch>
                 {this.renderLanguageSwitcher()}

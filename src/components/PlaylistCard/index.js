@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { BsFillLockFill, BsFillPeopleFill } from "react-icons/bs";
 
 export default function PlaylistCard({ playlist }) {
-  const { images, collaborative, public: isPublic } = playlist;
+  const { images, collaborative, public: isPublic, name, id } = playlist;
   return (
-    <div
+    <Link
       tabindex="0"
-      role="button"
       className="playlist-card"
-      aria-label={`Playlist named ${playlist.name}`}
+      aria-label={`Playlist named ${name}`}
+      to={`/playlist/${id}`}
     >
       {isPublic === false && (
         <BsFillLockFill className="playlist-card__private-icon" />
@@ -21,6 +22,6 @@ export default function PlaylistCard({ playlist }) {
         className="playlist-card__img"
         src={images[0] ? images[0].url : ""}
       ></img>
-    </div>
+    </Link>
   );
 }
