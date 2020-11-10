@@ -18,7 +18,7 @@ instance.interceptors.response.use(
     return response;
   },
   function (error) {
-    if (401 === error.response.status) {
+    if (error && error.response && error.response.status === 401) {
       cleanAuthItems();
       history.push("/intro?expired=true");
     } else {
