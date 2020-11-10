@@ -13,7 +13,7 @@ export default function Playlists() {
   const intl = useIntl();
   const [playlists, setPlaylists] = useState([]);
   const [areFiltersOpen, setFiltersOpen] = useState(false);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const [refreshCount, setRefreshCount] = useState(true);
 
