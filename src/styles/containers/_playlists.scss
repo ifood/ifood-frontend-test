@@ -59,6 +59,7 @@ $gutter-phone: 1rem;
     overflow: scroll;
 
     @include respond(phone) {
+      max-height: 180vh;
       &--collapsed {
         overflow: hidden;
         max-height: 0;
