@@ -7,10 +7,13 @@ import {
 } from "../constants";
 
 export const authorize = () => {
+  const port = window.location.port ? `:${window.location.port}` : "";
+  const callbackURI = `${window.location.protocol}//${window.location.hostname}${port}/callback`;
+  console.log(callbackURI);
   const queryParams = queryString.stringify({
     client_id: CLIENT_ID,
     response_type: "token",
-    redirect_uri: "http://localhost:3000/callback",
+    redirect_uri: callbackURI,
     show_dialog: true,
     scope:
       "user-read-email playlist-modify-public user-modify-playback-state user-read-recently-played user-read-private playlist-read-private playlist-read-collaborative user-follow-read user-library-read user-top-read",
