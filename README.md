@@ -1,5 +1,7 @@
 # Spotifood
 
+![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/other/featuring.png?raw=true)
+
 ## Project overview
 
 ### Spotify authorization approach
