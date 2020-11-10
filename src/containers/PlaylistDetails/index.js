@@ -6,6 +6,7 @@ import { Button, KIND, SIZE, SHAPE } from "baseui/button";
 import ArrowLeft from "baseui/icon/arrow-left";
 import { getPlaylistTracks, getPlaylistDetails } from "services/api";
 import { Tag, VARIANT } from "baseui/tag";
+import { StyledSpinnerNext } from "baseui/spinner";
 import TrackListItem from "components/TrackListItem";
 import messages from "./messages";
 
@@ -39,7 +40,11 @@ export default function PlaylistDetails({ match }) {
   }, []);
 
   if (isLoading) {
-    return <p>loading...</p>;
+    return (
+      <div className="playlist-details__loading">
+        <StyledSpinnerNext size="60px" color="#EA1D2C" />
+      </div>
+    );
   }
 
   const { description, name, images, followers, external_urls } = details;

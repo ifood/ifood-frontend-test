@@ -16,6 +16,10 @@
   &__content {
     width: 110rem;
     max-width: 100%;
+
+    @include respond(tab-port) {
+      padding-top: 1rem;
+    }
   }
 
   &__header {
@@ -23,6 +27,10 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
   }
 
   &__info {
@@ -35,6 +43,12 @@
     min-height: 30rem;
     flex: 1;
     padding: 2rem;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 2rem;
+    }
   }
 
   &__tracks-wrapper {
@@ -42,6 +56,10 @@
     background-color: rgba(white, 0.2);
     border-radius: 3rem;
     padding: 3rem;
+
+    @include respond(tab-port) {
+      padding: 2rem;
+    }
   }
 
   &__tracks {
@@ -53,18 +71,27 @@
     width: 30rem;
     border-radius: 3rem;
     pointer-events: none;
+
+    @include respond(tab-port) {
+      width: 100%;
+      height: auto;
+    }
   }
 
   &__top-layer {
-    position: fixed;
-    overflow: scroll;
+    // position: fixed;
+    // overflow: scroll;
     background-color: rgba(white, 0.2);
     top: 0;
     left: 0;
     z-index: 20;
-    height: 100vh;
+    // height: 100vh;
     width: 100vw;
     padding: $app-vertical-padding-phone $app-horizontal-padding-phone;
+
+    @include respond(tab-port) {
+      padding: $app-vertical-padding-tab $app-horizontal-padding-tab;
+    }
   }
 
   &__bg-layer {
@@ -72,7 +99,7 @@
     top: 0;
     left: 0;
     z-index: 1;
-    height: 100vh;
+    // height: 100vh;
     width: 100vw;
   }
 
@@ -91,5 +118,14 @@
   &__followers {
     font-size: 1.4rem;
     margin-bottom: auto;
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    flex: 1;
   }
 }
