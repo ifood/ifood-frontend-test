@@ -62,7 +62,7 @@ function PlaylistFilters({ disabled, onChange }) {
   }, [values, onChangeMemo, isLoading]);
 
   const renderFilter = (filter) => {
-    const { type, default: defaultValue } = getFilterType(filter);
+    const { type } = getFilterType(filter);
 
     if (type === "select") {
       const options = filter.values.map(({ value, name }) => ({
