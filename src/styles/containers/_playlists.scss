@@ -55,6 +55,7 @@ $gutter-phone: 1rem;
   }
 
   &__filters-content {
+    outline: none;
     max-height: 130vh;
     transition: max-height 0.25s ease-in;
     overflow: scroll;
