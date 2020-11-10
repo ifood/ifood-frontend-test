@@ -2,6 +2,10 @@
 
 ![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/other/featuring.png?raw=true)
 
+## Live demo
+
+https://leoni-spotifood.netlify.app
+
 ## Running
 
 - Recommended Node.js version: 12
