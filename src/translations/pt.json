@@ -10,7 +10,7 @@
   "containers.Playlists.contentAriaLAbel": "Encontre playlists",
   "containers.PlaylistDetails.backButtonText": "Voltar",
   "containers.PlaylistDetails.tracksLabel": "faixas",
-  "containers.PlaylistDetails.openAtSpotify": "seguidores",
-  "containers.PlaylistDetails.expandFilters": "Abrir no Spotify.com",
+  "containers.PlaylistDetails.followersLabel": "seguidores",
+  "containers.PlaylistDetails.openAtSpotify": "Abrir no Spotify.com",
   "containers.PlaylistDetails.tracksTitle": "Faixas"
 }

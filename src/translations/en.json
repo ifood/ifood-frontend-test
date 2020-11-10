@@ -10,7 +10,7 @@
   "containers.Playlists.contentAriaLAbel": "Playlist explorer",
   "containers.PlaylistDetails.backButtonText": "Back",
   "containers.PlaylistDetails.tracksLabel": "tracks",
-  "containers.PlaylistDetails.openAtSpotify": "followers",
-  "containers.PlaylistDetails.expandFilters": "Open at Spotify.com",
+  "containers.PlaylistDetails.followersLabel": "followers",
+  "containers.PlaylistDetails.openAtSpotify": "Open at Spotify.com",
   "containers.PlaylistDetails.tracksTitle": "Tracks"
 }
