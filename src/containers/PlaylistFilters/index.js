@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { getFilters } from "services/api";
 import { Select } from "baseui/select";
@@ -47,17 +47,19 @@ function PlaylistFilters({ disabled, onChange }) {
     loadFilters();
   }, []);
 
+  const onChangeMemo = useCallback(onChange, []);
+
   useEffect(() => {
     if (!isLoading) {
       const searchTimer = setTimeout(() => {
-        onChange(transformSubmitValues(values));
+        onChangeMemo(transformSubmitValues(values));
       }, FILTERS_TRIGGER_TIMEOUT);
 
       return () => {
         clearTimeout(searchTimer);
       };
     }
-  }, [values]);
+  }, [values, onChangeMemo, isLoading]);
 
   const renderFilter = (filter) => {
     const { type, default: defaultValue } = getFilterType(filter);

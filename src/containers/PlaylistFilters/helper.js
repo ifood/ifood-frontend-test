@@ -38,7 +38,6 @@ export const transformSubmitValues = (values) => {
   const transformedValues = { ...values };
 
   for (const key of Object.keys(transformedValues)) {
-    console.log(key);
     if (
       Array.isArray(values[key]) &&
       values[key][0] &&
