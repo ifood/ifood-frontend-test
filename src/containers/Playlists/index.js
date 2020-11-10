@@ -35,10 +35,6 @@ export default function Playlists() {
     setLoading(false);
   };
 
-  useEffect(() => {
-    loadPlaylists();
-  }, []);
-
   const renderPlaylistCards = () => {
     return playlists.map((playlist) => {
       return (
