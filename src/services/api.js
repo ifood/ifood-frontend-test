@@ -37,5 +37,10 @@ export const getPlaylists = ({
     },
   });
 
+export const getPlaylistTracks = (id, params) =>
+  axios.get(`${BASE_SPOTIFY_API_URL}/v1/playlists/${id}/tracks`, {
+    params,
+  });
+
 export const getFilters = () =>
   axios.get("http://www.mocky.io/v2/5a25fade2e0000213aa90776");
