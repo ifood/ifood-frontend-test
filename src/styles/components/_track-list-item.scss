@@ -1,0 +1,13 @@
+.track-list-item {
+  font-size: 1.6rem;
+  padding: 1.4rem 0;
+  //   font-weight: 200;
+
+  &:not(:first-child) {
+    border-top: 1px solid black;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}

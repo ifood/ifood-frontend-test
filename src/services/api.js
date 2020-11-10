@@ -37,6 +37,11 @@ export const getPlaylists = ({
     },
   });
 
+export const getPlaylistDetails = (id, params) =>
+  axios.get(`${BASE_SPOTIFY_API_URL}/v1/playlists/${id}`, {
+    params,
+  });
+
 export const getPlaylistTracks = (id, params) =>
   axios.get(`${BASE_SPOTIFY_API_URL}/v1/playlists/${id}/tracks`, {
     params,
