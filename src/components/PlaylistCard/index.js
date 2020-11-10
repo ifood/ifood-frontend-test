@@ -6,7 +6,6 @@ export default function PlaylistCard({ playlist }) {
   const { images, collaborative, public: isPublic, name, id } = playlist;
   return (
     <Link
-      tabindex="0"
       className="playlist-card"
       aria-label={`Playlist named ${name}`}
       to={`/playlist/${id}`}
