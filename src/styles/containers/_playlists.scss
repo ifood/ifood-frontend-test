@@ -72,7 +72,7 @@ $gutter-phone: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     visibility: hidden;
 
     @include respond(phone) {
