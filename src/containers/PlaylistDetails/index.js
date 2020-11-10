@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { H1, H3, H6 } from "baseui/typography";
@@ -35,9 +35,11 @@ export default function PlaylistDetails({ match }) {
     setLoading(false);
   };
 
+  const loadData = useCallback(loadDetails, []);
+
   useEffect(() => {
-    loadDetails();
-  }, []);
+    loadData();
+  }, [loadData]);
 
   if (isLoading) {
     return (

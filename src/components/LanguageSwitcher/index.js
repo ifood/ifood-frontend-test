@@ -15,7 +15,7 @@ export default function LanguageSwitcher({
         return setSelected(index);
       }
     });
-  }, []);
+  }, [initialLanguage, languages]);
 
   return (
     <div className="language-switcher">

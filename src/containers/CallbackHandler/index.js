@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import queryString from "query-string";
 import { useHistory } from "react-router-dom";
 import { saveAuthItems } from "utils/auth";
@@ -15,6 +15,6 @@ export default function CallbackHandler() {
     }
     saveAuthItems();
     history.push("/");
-  }, []);
+  }, [history]);
   return null;
 }
