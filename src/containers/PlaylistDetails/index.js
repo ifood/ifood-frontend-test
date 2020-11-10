@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { H1, H3, H6 } from "baseui/typography";
 import { Button, KIND, SIZE, SHAPE } from "baseui/button";
 import ArrowLeft from "baseui/icon/arrow-left";
 import { getPlaylistTracks, getPlaylistDetails } from "services/api";
 import { Tag, VARIANT } from "baseui/tag";
 import TrackListItem from "components/TrackListItem";
+import messages from "./messages";
 
 export default function PlaylistDetails({ match }) {
   const history = useHistory();
@@ -53,14 +55,14 @@ export default function PlaylistDetails({ match }) {
       <div className="playlist-details__top-layer">
         <Button
           shape={SHAPE.pill}
-          kind={KIND.minimal}
+          kind={KIND.primary}
           size={SIZE.mini}
           startEnhancer={() => <ArrowLeft size={24} />}
           onClick={() => {
             history.push("/");
           }}
         >
-          Voltar
+          <FormattedMessage {...messages.backButtonText} />
         </Button>
         <div className="playlist-details__content-wrapper">
           <div className="playlist-details__content">
@@ -76,13 +78,17 @@ export default function PlaylistDetails({ match }) {
                   <Tag closeable={false} variant={VARIANT.solid}>
                     {totalTracks}
                   </Tag>
-                  <span>faixas</span>
+                  <span>
+                    <FormattedMessage {...messages.tracksLabel} />
+                  </span>
                 </p>
                 <p className="playlist-details__followers">
                   <Tag closeable={false} variant={VARIANT.solid}>
                     {followers.total}
                   </Tag>
-                  <span>seguidores</span>
+                  <span>
+                    <FormattedMessage {...messages.followersLabel} />
+                  </span>
                 </p>
                 {external_urls && external_urls.spotify && (
                   <Button
@@ -93,13 +99,15 @@ export default function PlaylistDetails({ match }) {
                     href={external_urls.spotify}
                     target="_blank"
                   >
-                    Abrir no Spotify.com
+                    <FormattedMessage {...messages.openAtSpotify} />
                   </Button>
                 )}
               </div>
             </div>
             <div className="playlist-details__tracks-wrapper">
-              <H3>Faixas</H3>
+              <H3>
+                <FormattedMessage {...messages.tracksTitle} />
+              </H3>
               <div className="playlist-details__tracks">{renderTracks()}</div>
             </div>
           </div>
