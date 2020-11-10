@@ -6,6 +6,7 @@
   "containers.Landing.buttonText": "Allow at Spotify.com",
   "containers.Playlists.hideFilters": "Hide filters",
   "containers.Playlists.expandFilters": "Expand filters",
+  "containers.Playlists.contentAriaLAbel": "Playlist explorer",
   "containers.PlaylistDetails.backButtonText": "Back",
   "containers.PlaylistDetails.tracksLabel": "tracks",
   "containers.PlaylistDetails.openAtSpotify": "followers",

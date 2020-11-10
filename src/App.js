@@ -77,7 +77,7 @@ class App extends Component {
         <Router history={history}>
           <StyletronProvider value={engine}>
             <BaseProvider theme={theme}>
-              <div className="app">
+              <main className="app">
                 <Switch>
                   <PublicOnlyRoute
                     path="/callback"
@@ -91,7 +91,7 @@ class App extends Component {
                   <PrivateRoute path="/" component={Playlists} />
                 </Switch>
                 {this.renderLanguageSwitcher()}
-              </div>
+              </main>
             </BaseProvider>
           </StyletronProvider>
         </Router>

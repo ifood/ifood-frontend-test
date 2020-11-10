@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { ReactComponent as Logo } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
 import PlaylistFilters from "containers/PlaylistFilters";
@@ -10,6 +10,7 @@ import classNames from "classnames";
 import messages from "./messages";
 
 export default function Playlists() {
+  const intl = useIntl();
   const [playlists, setPlaylists] = useState([]);
   const [areFiltersOpen, setFiltersOpen] = useState(true);
   const [isLoading, setLoading] = useState(false);
@@ -69,7 +70,11 @@ export default function Playlists() {
   return (
     <div className="playlists">
       <Logo className="playlists__logo" />
-      <div className="playlists__content" role="region">
+      <div
+        className="playlists__content"
+        role="region"
+        aria-label={intl.formatMessage(messages.contentAriaLAbel)}
+      >
         {isLoading && !isFirstLoading && (
           <div className="playlists__refresh">
             <StyledSpinnerNext size="20px" color="#EA1D2C" />
@@ -77,7 +82,6 @@ export default function Playlists() {
         )}
         <div className="playlists__filters">
           <div
-            // hidden={!areFiltersOpen}
             tabIndex={areFiltersOpen ? undefined : -1}
             className={filtersContentClasses}
           >

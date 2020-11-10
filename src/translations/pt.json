@@ -6,6 +6,7 @@
   "containers.Landing.buttonText": "Autorizar no Spotify.com",
   "containers.Playlists.hideFilters": "Esconder filtros",
   "containers.Playlists.expandFilters": "Mostrar filtros",
+  "containers.Playlists.contentAriaLAbel": "Encontre playlists",
   "containers.PlaylistDetails.backButtonText": "Voltar",
   "containers.PlaylistDetails.tracksLabel": "faixas",
   "containers.PlaylistDetails.openAtSpotify": "seguidores",
