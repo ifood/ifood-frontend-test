@@ -2,6 +2,13 @@
 
 ![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/other/featuring.png?raw=true)
 
+## Running
+
+- Recommended Node.js version: 12
+- `npm install` on the project root directory
+- `npm start`
+- The app will run on `http://localhost:3000/`
+
 ## Project overview
 
 ### Spotify authorization approach
