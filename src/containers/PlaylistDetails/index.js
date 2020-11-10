@@ -73,6 +73,7 @@ export default function PlaylistDetails({ match }) {
           <div className="playlist-details__content">
             <div className="playlist-details__header">
               <img
+                alt={name}
                 className="playlist-details__cover"
                 src={images[0] ? images[0].url : ""}
               />
@@ -120,6 +121,8 @@ export default function PlaylistDetails({ match }) {
       </div>
       <div className="playlist-details__bg-layer">
         <img
+          tabIndex={-1}
+          alt="" // ignored by assistive technologies
           className="playlist-details__bg"
           src={images[0] ? images[0].url : ""}
         />
