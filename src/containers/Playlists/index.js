@@ -12,7 +12,7 @@ import messages from "./messages";
 export default function Playlists() {
   const intl = useIntl();
   const [playlists, setPlaylists] = useState([]);
-  const [areFiltersOpen, setFiltersOpen] = useState(true);
+  const [areFiltersOpen, setFiltersOpen] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const [refreshCount, setRefreshCount] = useState(true);
