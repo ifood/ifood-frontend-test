@@ -11,7 +11,7 @@ $gutter-phone: 1rem;
 
   @include respond(phone) {
     padding: $app-vertical-padding-phone $app-horizontal-padding-phone;
-    padding-top: $app-vertical-padding-phone + 2rem;
+    padding-top: $app-vertical-padding-phone;
   }
 
   &__logo {
@@ -22,7 +22,8 @@ $gutter-phone: 1rem;
     }
 
     @include respond(phone) {
-      width: 100%;
+      width: auto;
+      height: 6rem;
     }
   }
 
