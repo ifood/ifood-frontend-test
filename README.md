@@ -56,7 +56,21 @@ When clicking on one of the playlist cards on the explore/search page, you will 
 
 ### Desktop screenshots
 
+##### Landing page
+
 ![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/desktop/landing.png?raw=true)
+
+##### Search/explore page
+
+![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/desktop/explore.png?raw=true)
+
+##### Filters zoom
+
+![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/desktop/filters.png?raw=true)
+
+##### Playlist details page
+
+![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/desktop/details.png?raw=true)
 
 ---
 
