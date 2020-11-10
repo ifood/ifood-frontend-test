@@ -56,7 +56,7 @@ When clicking on one of the playlist cards on the explore/search page, you will 
 
 ### Desktop screenshots
 
-![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/landing.png?raw=true)
+![alt text](https://github.com/leonimurilo/ifood-frontend-test/blob/master/github-images/desktop/landing.png?raw=true)
 
 ---
 
