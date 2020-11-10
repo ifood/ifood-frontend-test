@@ -12,7 +12,7 @@ export default defineMessages({
     defaultMessage: "Your session expired",
   },
   unexpectedError: {
-    id: `${scope}.sessionExpired`,
+    id: `${scope}.unexpectedError`,
     defaultMessage: "An unexpected error occurred",
   },
   instruction: {
