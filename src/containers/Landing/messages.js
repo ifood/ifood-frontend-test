@@ -23,4 +23,8 @@ export default defineMessages({
     id: `${scope}.buttonText`,
     defaultMessage: "Allow at Spotify.com",
   },
+  regionAriaLabel: {
+    id: `${scope}.regionAriaLabel`,
+    defaultMessage: "Permission request introduction",
+  },
 });
