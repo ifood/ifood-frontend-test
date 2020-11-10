@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ReactComponent as Logo } from "assets/logo.svg";
 import PlaylistCard from "components/PlaylistCard";
