@@ -54,6 +54,10 @@ When clicking on one of the playlist cards on the explore/search page, you will 
 - **react-intl**: internationalization (pt and en)
 - **baseui**: good UI modular components. I mostly used the inputs for the filters section
 
+### Desktop screenshots
+
+![alt text](https://github.com/[leonimurilo]/[ifood-frontend-test]/blob/[master]/landing.jpg?raw=true)
+
 ---
 
 # iFood Frontend Test
