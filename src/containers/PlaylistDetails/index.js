@@ -58,17 +58,19 @@ export default function PlaylistDetails({ match }) {
   return (
     <div className="playlist-details">
       <div className="playlist-details__top-layer">
-        <Button
-          shape={SHAPE.pill}
-          kind={KIND.primary}
-          size={SIZE.mini}
-          startEnhancer={() => <ArrowLeft size={24} />}
-          onClick={() => {
-            history.push("/");
-          }}
-        >
-          <FormattedMessage {...messages.backButtonText} />
-        </Button>
+        <div className="playlist-details__back-btn">
+          <Button
+            shape={SHAPE.pill}
+            kind={KIND.primary}
+            size={SIZE.mini}
+            startEnhancer={() => <ArrowLeft size={24} />}
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            <FormattedMessage {...messages.backButtonText} />
+          </Button>
+        </div>
         <div className="playlist-details__content-wrapper">
           <div className="playlist-details__content">
             <div className="playlist-details__header">
