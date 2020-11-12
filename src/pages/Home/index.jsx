@@ -156,4 +156,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(playlistsActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default HomeContainer;
