@@ -2,7 +2,6 @@
   "name": "spotifood",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://hugo-marcelo.github.io/ifood-frontend-test",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -26,9 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -53,7 +50,6 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
-    "gh-pages": "^3.1.0",
     "prettier": "^1.16.4"
   }
 }
