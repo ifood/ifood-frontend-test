@@ -1,10 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { Component } from 'react';
@@ -22,7 +17,6 @@ class App extends Component {
         <GlobalStyles />
         <Router>
           <Switch>
-            <Redirect path="/auth" to="/home" />
             <Route path="/" exact component={Login} />
             <Route path="/home" component={Home} />
           </Switch>

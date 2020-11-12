@@ -3,8 +3,6 @@
 /* eslint-disable no-cond-assign */
 import { Component } from 'react';
 
-import { Switch, Redirect } from 'react-router-dom';
-
 import logo from '../../assets/logo.png';
 
 import getHashParams from '../../utils/getHashParams';
@@ -33,18 +31,13 @@ class Login extends Component {
     localStorage.setItem('@SpotiFood:type', type);
     localStorage.setItem('@SpotiFood:expires_in', expires_in);
 
-    window.history.pushState({ urlPath: '/auth' }, '', '/auth');
+    window.history.pushState({ urlPath: '/home' }, '', '/home');
 
     this.setState({
       loading: false,
     });
 
     window.location.reload();
-    return (
-      <Switch>
-        <Redirect path="/auth" to="/home" />
-      </Switch>
-    );
   };
 
   componentDidMount() {
