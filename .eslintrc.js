@@ -13,6 +13,7 @@ module.exports = {
   ],
   plugins: ['jsx-a11y'],
   rules: {
+    camelcase: 'off',
     'no-console': 1,
     'react/jsx-filename-extension': [
       1,
@@ -20,6 +21,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
       },
     ],
+    'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/no-extraneous-dependencies': [1, { devDependencies: true }],
   },
