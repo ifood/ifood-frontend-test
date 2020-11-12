@@ -1,29 +1,94 @@
-# iFood Frontend Test
+<h1 align="center">
+    Ifood Test Front
+</h1>
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/hugo-marcelo/ifood-frontend-test.svg">
 
-## Business rules
+  <a href="https://www.codacy.com/app/hugo-marcelo/ifood-frontend-test?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hugo-marcelo/ifood-frontend-test&amp;utm_campaign=Badge_Grade">
+    <img alt="Codacy grade" src="https://img.shields.io/codacy/grade/4997e01df18f4441aae384fc60aa4daa.svg">
+  </a>
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/hugo-marcelo/ifood-frontend-test.svg">
+  <a href="https://github.com/hugo-marcelo/ifood-frontend-test/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/hugo-marcelo/ifood-frontend-test.svg">
+  </a>
 
-## Hints or Constraints
+  <a href="https://github.com/hugo-marcelo/ifood-frontend-test/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/hugo-marcelo/ifood-frontend-test.svg">
+  </a>
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+  <img alt="GitHub" src="https://img.shields.io/github/license/hugo-marcelo/ifood-frontend-test.svg">
+</p>
 
-## Non functional requirements
+<h4 align="center">
+  This is the solution of Ifood Test front.
+</h4>
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+<p align="center">
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>
+</p>
+
+![App Screenshot](https://res.cloudinary.com/hugo-marcelo/image/upload/v1605196873/ifood_dxbipw.png)
+
+<p align="center">
+  <a href="https://spotifood-web.herokuapp.com/" target="_blank">
+    <img alt="Demo on Netlify" src="https://res.cloudinary.com/hugo-marcelo/image/upload/v1605198416/heroku_yg5h5y.svg">
+  </a>
+</p>
+
+## :rocket: Technologies
+
+This project was developed with the following technologies:
+
+- [react](https://reactjs.org/): A declarative, efficient, and flexible JavaScript library for building user interfaces.
+- [axios](https://github.com/axios/axios): Promise based HTTP client for the browser and node.js
+- [react-bootstrap](https://github.com/react-bootstrap/react-bootstrap): Bootstrap components built with React
+- [react-datepicker](https://github.com/Hacker0x01/react-datepicker): A simple and reusable datepicker component for React
+- [react-router-dom](https://github.com/ReactTraining/react-router): Declarative routing for React
+- [redux](https://redux.js.org/): Predictable state container for JavaScript apps
+- [styled-components](https://www.styled-components.com/): Visual primitives for the component age. Use the best bits of ES6 and CSS to style your apps without stress
+- [VS Code][vscode] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
+
+## :information_source: How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/hugo-marcelo/ifood-frontend-test
+
+# Go into the repository
+$ cd ifood-frontend-test
+
+# NPM
+
+# Install dependencies
+$ npm run install
+
+# Run the app
+$ npm run start
+
+# YARN
+
+# Install dependencies
+$ yarn install
+
+# Run the app
+$ yarn start
+```
+
+## :memo: License
+
+This project is under the MIT license. See the [LICENSE](https://github.com/hugo-marcelo/ifood-frontend-test/blob/master/LICENSE) for more information.
+
+---
+
+Made by Hugo Marcelo :wave: [Get in touch!](https://www.linkedin.com/in/hugo-marcelo-dev/)
+
+[nodejs]: https://nodejs.org/
+[vscode]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+[yarn]: https://yarnpkg.com/
