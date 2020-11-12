@@ -67,12 +67,6 @@ $ cd ifood-frontend-test
 # Install dependencies
 $ npm run install
 
-# Run the tests
-$ npm run test
-
-# Run the tests with coverage report
-$ npm run test:coverage
-
 # Run the app
 $ npm run start
 
@@ -80,12 +74,6 @@ $ npm run start
 
 # Install dependencies
 $ yarn install
-
-# Run the tests
-$ yarn test
-
-# Run the tests with coverage report
-$ yarn test:coverage
 
 # Run the app
 $ yarn start
