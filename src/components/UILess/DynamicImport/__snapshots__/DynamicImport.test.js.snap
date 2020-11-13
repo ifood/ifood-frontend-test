@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DynamicImport Should render Error component 1`] = `
+<DynamicImport
+  ErrorComponent={[Function]}
+  LoadingComponent={[Function]}
+  loadComponent={[Function]}
+>
+  <ErrorComponent>
+    <div
+      id="error"
+    >
+      Error
+    </div>
+  </ErrorComponent>
+</DynamicImport>
+`;
+
+exports[`DynamicImport Should render component 1`] = `
+<DynamicImport
+  ErrorComponent={[Function]}
+  LoadingComponent={[Function]}
+  loadComponent={[Function]}
+>
+  <a>
+    <div
+      id="content"
+    >
+      test
+    </div>
+  </a>
+</DynamicImport>
+`;
+
+exports[`DynamicImport render proprely 1`] = `
+<DynamicImport
+  ErrorComponent={[Function]}
+  LoadingComponent={[Function]}
+  loadComponent={[Function]}
+>
+  <LoadingComponent>
+    <div
+      id="loading"
+    >
+      Loading...
+    </div>
+  </LoadingComponent>
+</DynamicImport>
+`;

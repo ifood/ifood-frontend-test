@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+#error {
+  font-size: 10rem;
+}
+
+#story-root {
+  display: flex;
+  justify-content: center;
+  background-color: #303030;
+
+  > * {
+    margin: 40px 20px 15px;
+  }
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.position-relative {
+  position: relative !important;
+}

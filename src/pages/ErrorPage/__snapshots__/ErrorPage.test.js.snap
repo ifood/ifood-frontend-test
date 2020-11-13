@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorPage render proprely 1`] = `
+<Styled(Styled(MuiBox))
+  component="main"
+>
+  <WithStyles(ForwardRef(Container))
+    className="page__container"
+    maxWidth="lg"
+  >
+    <Styled(MuiBox)
+      className="error-page__section"
+      component="section"
+    >
+      <WithStyles(ForwardRef(Typography))
+        className="error-page__message"
+        color="textPrimary"
+      >
+        <WarningIcon
+          className="error-page__icon"
+          color="secondary"
+        />
+        Essa pagina não pode ser carregada
+      </WithStyles(ForwardRef(Typography))>
+    </Styled(MuiBox)>
+  </WithStyles(ForwardRef(Container))>
+</Styled(Styled(MuiBox))>
+`;
