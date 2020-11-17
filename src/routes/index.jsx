@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import HeaderComponent from "../components/global/header"
 import LoginComponent from "../components/login"
 import MainComponent from "../components/main"
-import { useStyles } from '../style/styles'
+import FooterComponent from "../components/global/footer"
 
 export default function Navigation() {
   return (
@@ -13,11 +13,12 @@ export default function Navigation() {
       <Route>
         <CssBaseline />
         <HeaderComponent />
-          <Switch>
-            <Route path='/login' component={LoginComponent} />
-            <Route path='/main' component={MainComponent} />
-            <Redirect from="/" to="/login" />
-          </Switch>
+        <Switch>
+          <Route path='/login' component={LoginComponent} />
+          <Route path='/main' component={MainComponent} />
+          <Redirect from="/" to="/login" />
+        </Switch>
+        <FooterComponent />
       </Route>
     </Router>
   );

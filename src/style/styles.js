@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
+    // paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(8),
   },
   card: {
@@ -21,7 +21,7 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '100%',
   },
   cardContent: {
     flexGrow: 1,
@@ -30,4 +30,16 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  filtersComponent: {
+    padding: theme.spacing(4, 0, 4),
+  },
+  filtersFields: {
+    width: '-webkit-fill-available'
+  },
+  localSearch: {
+    display: 'table',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: theme.spacing(0, 0, 4),
+  }
 }));

@@ -13,19 +13,17 @@ export default function HeaderComponent() {
   return (
     <div className={classes.heroContent}>
       <Container maxWidth="sm">
-        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Album layout
+        <Typography component="h2" variant="h3" align="center" color="textPrimary" gutterBottom>
+          Spotify e Ifood, juntos para saciar a sua sede (e fome) musical!
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-          Something short and leading about the collection below—its contents, the creator, etc.
-          Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-          entirely.
+          Vamos começar? É só clicar aí em baixo e se conectar com sua conta Spotify! ;)
         </Typography>
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
               <Button variant="contained" color="primary" href="https://accounts.spotify.com/authorize?client_id=58b105c3bef543ae978f7329e2f4905a&response_type=token&redirect_uri=http://localhost:3000/main">
-                Main call to action
+                Começar!
               </Button>
             </Grid>
           </Grid>
