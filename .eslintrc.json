@@ -1,0 +1,6 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "@typescript-eslint/no-use-before-define": "off"
+  }
+}
