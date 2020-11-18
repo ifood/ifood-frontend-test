@@ -9,8 +9,10 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import { useStyles } from "../../style/styles"
 
@@ -78,6 +80,11 @@ export default function MainComponent() {
                   <Typography>
                     {playlist.description}
                   </Typography>
+                  <CardActions className={classes.cardButton}>
+                    <Button size="small" color="primary" href={playlist.external_urls.spotify} target="_blank">
+                      Abrir no Spotify Web Player
+                    </Button>
+                  </CardActions>
                 </CardContent>
               </Card>
             </Grid>

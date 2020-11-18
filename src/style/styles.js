@@ -1,8 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
-  icon: {
+  iconDonut: {
     marginRight: theme.spacing(2),
+    width: '60px'
+  },
+  iconSpotifood: {
+    marginRight: theme.spacing(2),
+    width: '140px'
+  },
+  header:{
+    backgroundColor: '#000000e8',
+    display: 'grid',
+    alignItems: 'center',
+    minHeight: '80px',
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
@@ -25,6 +36,15 @@ export const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1,
+    position: 'relative',
+    "&:last-child": {
+      paddingBottom: `${theme.spacing(6)}px !important`
+    }
+  },
+  cardButton: {
+    position: 'absolute',
+    bottom: 0,
+    left: '3px',
   },
   footer: {
     backgroundColor: theme.palette.background.paper,

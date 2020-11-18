@@ -2,21 +2,20 @@ import React from "react";
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import AdjustIcon from '@material-ui/icons/Adjust';
 
 import { useStyles } from "../../../style/styles"
+
+import Logo from '../../../resources/donut-green.svg';
+import Title from '../../../resources/spotifood.svg';
 
 export default function HeaderComponent() {
   const classes = useStyles();
 
   return (
-    <AppBar position="relative">
+    <AppBar position="relative" className={classes.header}>
       <Toolbar>
-        <AdjustIcon className={classes.icon} />
-        <Typography variant="h6" color="inherit" noWrap>
-          Spotifood
-        </Typography>
+        <img src={Logo} alt="React Logo" className={classes.iconDonut} />
+        <img src={Title} alt="React Logo" className={classes.iconSpotifood} />
       </Toolbar>
     </AppBar>
   )

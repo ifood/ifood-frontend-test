@@ -18,7 +18,7 @@ export default function Navigation() {
           <Route path='/main' component={MainComponent} />
           <Redirect from="/" to="/login" />
         </Switch>
-        <FooterComponent />
+        {/* <FooterComponent /> */}
       </Route>
     </Router>
   );
