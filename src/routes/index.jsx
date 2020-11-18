@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import HeaderComponent from "../components/global/header"
 import LoginComponent from "../components/login"
 import MainComponent from "../components/main"
-import FooterComponent from "../components/global/footer"
+// import FooterComponent from "../components/global/footer"
 
 export default function Navigation() {
   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import FiltersComponent from "../filters"
 import { getSpotifyFeaturedPlaylists } from "../../services/api/endpoints"
@@ -12,13 +13,17 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 import { useStyles } from "../../style/styles"
 
 export default function MainComponent() {
   const [playlistsItems, setPlaylistsItems] = useState([]);
   const [localSearch, setLocalSearch] = useState([]);
+  const [hasMore, setHasMore] = useState(true)
 
   const filtersRedux = useSelector(store => store.apiFilterChangeReducer);
   console.log(filtersRedux);
@@ -27,15 +32,19 @@ export default function MainComponent() {
 
   useEffect(() => {
     (async () => {
+      setHasMore(true);
       await getPlaylists();
+
       setInterval(async () => {
+        setHasMore(true);
+        window.scrollTo(0, 0);
         await getPlaylists();
       }, 30000);
     })();
     // eslint-disable-next-line
   }, [, filtersRedux]);
 
-  const getPlaylists = async() => {
+  const getPlaylists = async(autoScrollCall = false) => {
     const urlParams = window.location.hash.substring(1).split('&');
     const params = urlParams.reduce((paramsObj, param) => {
       const auxObj = paramsObj;
@@ -46,24 +55,42 @@ export default function MainComponent() {
 
       return auxObj;
     },[]);
+
+    const extractedFilterValues = {...filtersRedux.apiFilterSelectedValues}
+
+    if(autoScrollCall){
+      extractedFilterValues.offset = extractedFilterValues.limit;
+      extractedFilterValues.limit = parseInt(extractedFilterValues.limit) + 6;
+    }
         
-    const featuredPlaylistsResponse = await getSpotifyFeaturedPlaylists(filtersRedux.apiFilterSelectedValues, params.access_token);
-    console.log(featuredPlaylistsResponse);
-    setPlaylistsItems(featuredPlaylistsResponse);
+    let featuredPlaylistsResponse = await getSpotifyFeaturedPlaylists(extractedFilterValues, params.access_token);
+    
+    if(autoScrollCall && (extractedFilterValues.limit <= featuredPlaylistsResponse.total || featuredPlaylistsResponse.total % 6 !== 0) ){
+      featuredPlaylistsResponse.items = [...new Set([...playlistsItems,...featuredPlaylistsResponse.items])];
+      setHasMore(false);
+    }
+    
+    setPlaylistsItems(featuredPlaylistsResponse.items);
   }
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <FiltersComponent />
       <div className={classes.localSearch}>
-        <TextField id="outlined-basic" label="Busca local" variant="outlined" 
+        <TextField id="outlined-basic" label="Search (by playlist name)" variant="outlined" 
           onChange={event => setLocalSearch(event.target.value)}
         />
       </div>
-      <Grid container spacing={4}>
+      <InfiniteScroll
+        dataLength={playlistsItems.length}
+        next={() => getPlaylists(true)}
+        hasMore={hasMore}
+        style={{overflow: 'hidden'}}
+      >
+        <Grid container spacing={4}>
         {playlistsItems.map((playlist) => (
           playlist.name.toLowerCase().includes(localSearch) &&
-            <Grid item key={playlist} xs={12} sm={6} md={4} key={playlist.id}>
+            <Grid item xs={12} sm={6} md={4} key={playlist.id}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
@@ -81,15 +108,19 @@ export default function MainComponent() {
                     {playlist.description}
                   </Typography>
                   <CardActions className={classes.cardButton}>
-                    <Button size="small" color="primary" href={playlist.external_urls.spotify} target="_blank">
-                      Abrir no Spotify Web Player
-                    </Button>
+                    <Tooltip title="Abrir no Spotify Web Player" placement="right">
+                      <IconButton size="small" color="primary" className={classes.buttons}
+                        href={playlist.external_urls.spotify} target="_blank">
+                        <PlayArrowIcon />
+                      </IconButton>
+                    </Tooltip>
                   </CardActions>
                 </CardContent>
               </Card>
             </Grid>
         ))}
       </Grid>
+      </InfiniteScroll>
     </Container>
   )
 }

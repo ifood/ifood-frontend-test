@@ -17,5 +17,5 @@ export const getSpotifyFeaturedPlaylists = async(params, token) => {
     });
 
     console.log(response.data);
-    return response.data.playlists.items;
+    return response.data.playlists;
 }

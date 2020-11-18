@@ -2,7 +2,7 @@ import { API_FILTER_CHANGE } from "../actions/actionTypes";
 
 const initialState = { 
   apiFilterSelectedValues:{
-    limit: 20,
+    limit: 6,
     offset: 0
   }
 };

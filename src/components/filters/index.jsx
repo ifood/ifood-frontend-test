@@ -6,13 +6,12 @@ import { getApiFiltersData } from "../../services/api/endpoints"
 import DateFnsUtils from '@date-io/date-fns';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { TextField } from '@material-ui/core';
 import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
-import { Autocomplete } from '@material-ui/lab';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { useStyles } from "../../style/styles"
 
@@ -51,12 +50,28 @@ export default function FiltersComponent() {
       response.data.filters[0].values = response.data.filters[0].values.map(filter => {
         let updatedFilter = {...filter}
         switch(updatedFilter.value){
-          case "pt_BR": updatedFilter.name = "Português"; break;
-          case "en_US": updatedFilter.name = "Ingles (EUA)"; break;
-          case "en_AU": updatedFilter.name = "Inglês (Australia)"; break;
-          case "de_DE": updatedFilter.name = "Alemão"; break;
-          case "fr_FR": updatedFilter.name = "Francês"; break;
-          case "es_AR": updatedFilter.name = "Espanhol (Argentina)"; break;
+          case "pt_BR": updatedFilter.name = "Portuguese (Brazil)"; break;
+          case "en_US": updatedFilter.name = "English (US)"; break;
+          case "en_AU": updatedFilter.name = "English (Australia)"; break;
+          case "de_DE": updatedFilter.name = "German"; break;
+          case "fr_FR": updatedFilter.name = "French"; break;
+          case "es_AR": updatedFilter.name = "Spanish (Argentina)"; break;
+          default: break;
+        }
+        return updatedFilter;
+      });
+
+      response.data.filters[1].values = response.data.filters[1].values.map(filter => {
+        let updatedFilter = {...filter}
+        switch(updatedFilter.value){
+          case "DE": updatedFilter.name = "Germany"; break;
+          case "BR": updatedFilter.name = "Brazil"; break;
+          case "RU": updatedFilter.name = "Russia"; break;
+          case "en_US": {
+            updatedFilter.name = "EUA";
+            updatedFilter.value = 'US';            
+            break;
+          }
           default: break;
         }
         return updatedFilter;
@@ -75,38 +90,51 @@ export default function FiltersComponent() {
 
   return (
     <>
-      {apiFiltersData.length === 0 ? <></> : 
+      {apiFiltersData.length === 0 
+        ? 
+        <div style={{position: 'relative'}}>
+          <CircularProgress className={classes.filtersLoader}/>
+        </div> 
+        : 
         <div className={classes.filtersComponent}>
         <Container maxWidth="sm">
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item xs={6}>
-                <Autocomplete className={classes.filtersFields}
-                  id="autocomplete-locale"
-                  options={apiFiltersData.locale.values}
-                  getOptionLabel={(option) => option.name}
-                  renderInput={(params) => <TextField {...params} label="Idioma" variant="outlined" />}
-                  onChange={(_, value) => {
-                    inputChange(apiFiltersData.locale.id, value.value)
-                  }}
-                />
+                <FormControl variant="outlined" className={classes.filtersFields}>
+                  <InputLabel id="locale-select-label">Language</InputLabel>
+                  <Select 
+                    labelId="locale-select-label"
+                    id="locale-select"
+                    label="Language"
+                    onChange={event => inputChange(apiFiltersData.locale.id, event.target.value)}
+                  >
+                    {apiFiltersData.locale.values.map((locale, idx) => (
+                      <MenuItem key={idx} value={locale.value}>{locale.name}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
-                <Autocomplete className={classes.filtersFields}
-                  id="autocomplete-country"
-                  options={apiFiltersData.country.values}
-                  getOptionLabel={(option) => option.name}
-                  renderInput={(params) => <TextField {...params} label="País" variant="outlined" />}
-                  onChange={(_, value) => {
-                    inputChange(apiFiltersData.country.id, value.value)
-                  }}
-                />
+                <FormControl variant="outlined" className={classes.filtersFields}>
+                  <InputLabel id="country-select-label">Country</InputLabel>
+                  <Select 
+                    labelId="country-select-label"
+                    id="country-select"
+                    label="Country"
+                    onChange={event => inputChange(apiFiltersData.country.id, event.target.value)}
+                  >
+                    {apiFiltersData.country.values.map((country, idx) => (
+                      <MenuItem key={idx} value={country.value}>{country.name}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <DateTimePicker className={classes.filtersFields}
                     inputVariant="outlined"
-                    label="Data de busca (nostalgia <3)"
+                    label="Search date (if you're nostalgic <3)"
                     value={selectedDate}
                     format="dd/MM/yyyy HH:mm"
                     ampm={false}
@@ -120,11 +148,11 @@ export default function FiltersComponent() {
               </Grid>
               <Grid item xs={6}>
                 <FormControl variant="outlined" className={classes.filtersFields}>
-                  <InputLabel id="limit-select-label">Limite</InputLabel>
+                  <InputLabel id="limit-select-label">Initial limit</InputLabel>
                   <Select 
                     labelId="limit-select-label"
                     id="limit-select"
-                    label="Limite"
+                    label="Initial limit"
                     onChange={event => inputChange(apiFiltersData.limit.id, event.target.value)}
                   >
                     {limitOptions.map((limit, idx) => (
@@ -133,20 +161,6 @@ export default function FiltersComponent() {
                   </Select>
                 </FormControl>
               </Grid>
-              {/* <Grid item xs={6}>
-                <TextField
-                  id="outlined-number"
-                  label="Offset"
-                  type="number"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                  onChange={event => {
-                    inputChange(apiFiltersData.offset.id, event.target.value)
-                  }}
-                />
-              </Grid> */}
             </Grid>
           </div>
         </Container>

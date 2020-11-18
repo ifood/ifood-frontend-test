@@ -16,14 +16,30 @@ export const useStyles = makeStyles((theme) => ({
     minHeight: '80px',
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    position: 'relative',
+    height: '91vh'
   },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
+  loginContainer: {
+    margin: 0,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: `translate(-50%, -50%)`,
+  },
+  buttons: {
+    color: 'white !important',
+    backgroundColor: '#4db85b !important',
+    borderRadius: '24px !important',
+    // minWidth: '250px !important',
+    // height: '48px !important',
+    '&:hover': {
+      backgroundColor: '#379243 !important',
+    }
+  },
   cardGrid: {
-    // paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(8),
   },
   card: {
@@ -43,8 +59,8 @@ export const useStyles = makeStyles((theme) => ({
   },
   cardButton: {
     position: 'absolute',
-    bottom: 0,
-    left: '3px',
+    bottom: '3px',
+    left: '42%',
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -55,6 +71,10 @@ export const useStyles = makeStyles((theme) => ({
   },
   filtersFields: {
     width: '-webkit-fill-available'
+  },
+  filtersLoader: {
+    margin: theme.spacing(13.2, 0, 9.2),
+    marginLeft: '48%'
   },
   localSearch: {
     display: 'table',
