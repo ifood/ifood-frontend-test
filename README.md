@@ -36,7 +36,7 @@ Then, when it finishes, execute the command `npm start` or `yarn start` (based o
 
 ## Images
 This is the landing page, which have a friendly message and the button used to log into Spotify.
-![](picture1.png)
+![](https://github.com/caioat/ifood-frontend-test/blob/branch/newUI/picture1.png)
 
 After the log in, the main page is shown, with the system current timestamp already inputted on the filtes, to retrieve the most updated information from Spotify's API.
-![](picture2.png)
+![](https://github.com/caioat/ifood-frontend-test/blob/branch/newUI/picture2.png)
