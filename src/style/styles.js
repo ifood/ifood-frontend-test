@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     position: 'relative',
-    height: '91vh'
+    height: '85vh'
   },
   heroButtons: {
     marginTop: theme.spacing(4),

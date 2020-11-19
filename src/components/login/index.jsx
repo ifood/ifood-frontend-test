@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { useStyles } from "../../style/styles"
 
+import Headphone from '../../resources/headphone.svg';
+
 export default function HeaderComponent() {
 
   const classes = useStyles();
@@ -14,6 +16,7 @@ export default function HeaderComponent() {
     <div className={classes.heroContent}>
       <Container maxWidth="md" >
         <div className={classes.loginContainer}>
+          <img src={Headphone} alt="Headphone" style={{width: '66%', paddingLeft: '35%'}}/>
           <Typography component="h2" variant="h3" align="center" color="textPrimary" gutterBottom>
             <b>Spotify and iFood</b><br/>together, to satisfy your musical hunger!
           </Typography>

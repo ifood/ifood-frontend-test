@@ -1,29 +1,42 @@
-# iFood Frontend Test
+# Spotifood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+This web application uses Spotify's API to list their featured playlists, each one with it's image, title, owner, description and a button to open it on the Spotify Web Player. The playlists are shown on a infinite scroll, which is incremented by the order of 6 itens per request, until there is no more data to receive.
 
-## Business rules
+The playlists can be recovered using four different filters, which can be freely used between each other:
+- Country: to list the playlists from a specific country;
+- Language: to show the retrieved information in a specific language (if available);
+- Timestamp: the Timestamp from which the playlists will be recovered;
+- Limit: the limit of playlists recovered on a single endpoint call.
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
-    
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+Additionally, after the playlist's list is filled, it is possible to filter it by the playlist names.
 
-## Hints or Constraints
+Also, the Spotify's API is called once every 30 seconds, to provide the user with the most recent data.
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+## Used resources
+To develop this web application, the following tecnologies and components were used:
 
-## Non functional requirements
+- [ReactJS Hooks](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Redux](https://redux.js.org/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Material UI](https://material-ui.com/)
+- [React Infinite Scroll Component](https://www.npmjs.com/package/react-infinite-scroll-component)
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+## How-To
+To run the application, clone it to your machine, then execute the command `npm install` or `yarn install` to install all the dependencies (personally I like yarn more, since it is faster than npm, specially when running on windows, but it is up to you).
+Then, when it finishes, execute the command `npm start` or `yarn start` (based on how you installed all the dependencies.
+
+## Additional notes
+- Initially I planned on use [styled-components](https://styled-components.com/) to do the UI, but due time constraints (mainly because I'm on a project delivery period on my current job) I've scratched that out and opted to continue the development using a [Material UI template](https://v3.material-ui.com/getting-started/page-layout-examples/album/), adapting and enhancing it to my needs.
+- Even though this is a small app, I've chose to use [Redux](https://redux.js.org/) for state management because I've considered a real life scenario, where this app would probably get additional functionalities in the future. It is easier to set-up the whole Redux structure from the beginning than using a different approach (i.e. Context API) and migrating later. This happened to me on another application I've worked on and it was quite consuming refactor from one to another.
+- The Spotify API authentication method I've used is not ideal, since it only provides me a access token that is valid for 60 minutes and it is not refreshable, but unfortunately I found out other ways to authenticate near the delivery due date of this case, but it is definitely a point to improve.
+- I've opted to ask for the user authentication prior the use of the application for two reasons: 1) It was the way I found to get the access token (early on, while developing the main functionalities); and 2) It allows the user to access the playlist directly on the Spotify Web Player without having to authenticate when trying to play a song (which personally I think it is more frustrating).
+- Due a Filters API error, the United States data value is "en_US" instead of following the **[ISO 3166-1 Standard](https://en.wikipedia.org/wiki/ISO_3166-1 "ISO 3166-1")** two letters country codes as the other coutnries returned do. To avoid the wrong information to be passed to the API (which causes an error 400), the correct value was hard-coded.
+- To make the whole application on English, and to make it more user friendly, the country and locale names were also updated to be used on the text labels.
+
+## Images
+This is the landing page, which have a friendly message and the button used to log into Spotify.
+![](picture1.png)
+
+After the log in, the main page is shown, with the system current timestamp already inputted on the filtes, to retrieve the most updated information from Spotify's API.
+![](picture2.png)
