@@ -33,8 +33,8 @@ export const useStyles = makeStyles((theme) => ({
     color: 'white !important',
     backgroundColor: '#4db85b !important',
     borderRadius: '24px !important',
-    // minWidth: '250px !important',
-    // height: '48px !important',
+    minWidth: '250px !important',
+    height: '48px !important',
     '&:hover': {
       backgroundColor: '#379243 !important',
     }
@@ -57,10 +57,20 @@ export const useStyles = makeStyles((theme) => ({
       paddingBottom: `${theme.spacing(6)}px !important`
     }
   },
-  cardButton: {
+  cardButtons: {
     position: 'absolute',
     bottom: '3px',
     left: '42%',
+  },
+  playerButton: {
+    color: 'white !important',
+    backgroundColor: '#4db85b !important',
+    borderRadius: '24px !important',
+    minWidth: '30px !important',
+    height: '30px !important',
+    '&:hover': {
+      backgroundColor: '#379243 !important',
+    }
   },
   footer: {
     backgroundColor: theme.palette.background.paper,

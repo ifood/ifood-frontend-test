@@ -25,7 +25,7 @@ export default function HeaderComponent() {
               <Grid item>
                 <Button variant="contained" color="primary" className={classes.buttons}
                   href="https://accounts.spotify.com/authorize?client_id=58b105c3bef543ae978f7329e2f4905a&response_type=token&redirect_uri=http://localhost:3000/main">
-                  BEGIN!
+                  <b>BEGIN!</b>
                 </Button>
               </Grid>
             </Grid>

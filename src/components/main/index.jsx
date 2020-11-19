@@ -23,6 +23,7 @@ import { useStyles } from "../../style/styles"
 export default function MainComponent() {
   const [playlistsItems, setPlaylistsItems] = useState([]);
   const [localSearch, setLocalSearch] = useState([]);
+  const [autoRefreshOn, setAutoRefreshOn] = useState(false);
   const [hasMore, setHasMore] = useState(true)
 
   const filtersRedux = useSelector(store => store.apiFilterChangeReducer);
@@ -35,11 +36,14 @@ export default function MainComponent() {
       setHasMore(true);
       await getPlaylists();
 
-      setInterval(async () => {
-        setHasMore(true);
-        window.scrollTo(0, 0);
-        await getPlaylists();
-      }, 30000);
+      if(!autoRefreshOn){
+        setInterval(async () => {
+          setHasMore(true);
+          window.scrollTo(0, 0);
+          await getPlaylists();
+        }, 30000);
+        setAutoRefreshOn(true);
+      }
     })();
     // eslint-disable-next-line
   }, [, filtersRedux]);
@@ -85,7 +89,7 @@ export default function MainComponent() {
         dataLength={playlistsItems.length}
         next={() => getPlaylists(true)}
         hasMore={hasMore}
-        style={{overflow: 'hidden'}}
+        style={{overflow: 'initial'}}
       >
         <Grid container spacing={4}>
         {playlistsItems.map((playlist) => (
@@ -107,9 +111,9 @@ export default function MainComponent() {
                   <Typography>
                     {playlist.description}
                   </Typography>
-                  <CardActions className={classes.cardButton}>
+                  <CardActions className={classes.cardButtons}>
                     <Tooltip title="Abrir no Spotify Web Player" placement="right">
-                      <IconButton size="small" color="primary" className={classes.buttons}
+                      <IconButton size="small" color="primary" className={classes.playerButton}
                         href={playlist.external_urls.spotify} target="_blank">
                         <PlayArrowIcon />
                       </IconButton>
