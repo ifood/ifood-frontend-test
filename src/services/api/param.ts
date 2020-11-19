@@ -7,7 +7,6 @@ export default class ParamService {
       accessToken: query.get('access_token'),
       expiresIn: query.get('expires_in'),
     };
-    console.log(result);
     return result;
   }
 }

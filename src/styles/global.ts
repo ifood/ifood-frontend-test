@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 
-export const primary = '#7E3AF2';
-export const background = '#F5F3F4';
-export const accent = '#7E3AF2';
+export const primary = '#B5D99C';
+export const background = '#F5F7DC';
+export const accent = 'E65F5C';
 export const black = '#212429';
 export const white = '#ffffff';
 
@@ -15,16 +15,16 @@ export default createGlobalStyle`
     }
     body {
         -webkit-font-smoothing: antialiased;
-        background: #F8F8FA;
+        background: ${background};
         color: ${black};
     }
     h1, h2, h3, h4, h5 {
-        font-family: 'Arial', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; ;
+        font-family: 'Lato', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; ;
         font-weight:400;
         color: ${black};
     }
     body, button, input, p {
-        font-family: 'Arial', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Lato', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
     button, a {
